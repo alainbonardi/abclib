@@ -1,7 +1,19 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------------abclib----------------------------------------//
+//
+//-------------------------------FAUST CODE FOR MIXED MUSIC-----------------------------//
+//
+//-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
+//--------------------------------------------------------------------------------------//
+
+declare name "abc2Ddecodermeter3_8";
+declare author "Alain Bonardi";
+declare licence "GPLv3";
+
 import("stdfaust.lib");
 
 //--------------------------------------------------------------------------------------//
-//HOA DECODER AT ORDER AO TO NL LOUDSPEAKERS WITH METER OUTPUT//
+//HOA DECODER+METER AT ORDER AO TO NL LOUDSPEAKERS//
 //--------------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------------//
@@ -24,7 +36,7 @@ dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
 //--------------------------------------------------------------------------------------//
 direct = 2 * checkbox("h:decoder/v:global/directangles") - 1; 
 offset = hslider("h:decoder/v:global/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
-a(ind) = (hslider("h:decoder/v:angles/a%ind [unit:deg]", ind * 45, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : smoothLine;
+a(ind) = (hslider("h:decoder/v:angles/a%ind [unit:deg]", ind * 45, -360, 360, 1) * ma.PI / 180 * direct - offset);
 gain = hslider("h:decoder/v:global/gain [unit:dB]", 0, -127, 18, 0.01) : smoothLine : dbcontrol;
 refresh = hslider("h:decoder/v:global/refresh", 100, 10, 1000, 1) * 0.001;//refresh time, default is 100 msec = 0.1 sec
 
@@ -39,18 +51,17 @@ gainLine = par(i, nl, *(gain));
 theta = os.phasor(1, 1/refresh) * 2 * ma.PI;
 
 //--------------------------------------------------------------------------------------//
-//INPUT DISPATCHING
+//ODD EVEN DISPATCHING
 //--------------------------------------------------------------------------------------//
 //
-//starting with 2n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn
-//the result is the vector sigA1, sigB1, sigA2, sigB2, ..., sigAn, sigBn
+//starting with 2n values sigA1, sigA2, sigA3 ... sigA2n
+//the result is the vector sigA1, sigA3, ... sigA2n-1, sigA2, sigA2
 //--------------------------------------------------------------------------------------//
-inputSort(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
-
+oddevensort(n) = si.bus(2*n) <: (par(i, n, ((ba.selector(2*i, 2*n)))), par(i, n, (ba.selector(2*i+1, 2*n))));
 
 //--------------------------------------------------------------------------------------//
 //AMBISONIC DECODING WITH IRREGULAR ORDER
-//-------------------------------------------------------------------
+//--------------------------------------------------------------------------------------//
 mydecoder(n, p)	= par(i, 2*n+1, _) <: par(i, p, speaker(n, a(i)))
 with 
 {
@@ -58,6 +69,18 @@ with
 };
 
 //--------------------------------------------------------------------------------------//
+//CONVERTS THE SIGNAL INTO DB AND THEN RADIUS FOR THE ITH LOUDSPEAKER
+//--------------------------------------------------------------------------------------//
+delta = 5 * ma.PI / 180; //angle tolerance//
+dBLevelNormalized = ((((_ : ba.linear2db), -72) : min), 8 : max) : +(72) : /(80);
+anglecloseto(alpha, i) = (alpha > a(i) - delta) * (alpha < a(i) + delta);
+convertsToRadius(alpha, i) = dBLevelNormalized : *(anglecloseto(alpha, i)) : *(-1) : +(1);
+
+//--------------------------------------------------------------------------------------//
 //DECODING
 //--------------------------------------------------------------------------------------//
-process = mydecoder(ao, nl) : gainLine;
+thisdecoder = mydecoder(ao, nl) : gainLine;
+radiusconverter = par(i, nl, convertsToRadius(theta, i));
+process = thisdecoder : par(i, nl, _ <:(_, _)) : oddevensort(nl) : (si.bus(nl), radiusconverter);
+//process = convertsToRadius(theta, 0);
+//process = dBLevelNormalized;
