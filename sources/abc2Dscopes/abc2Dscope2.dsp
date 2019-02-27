@@ -11,7 +11,7 @@ declare author "Alain Bonardi";
 declare licence "GPLv3";
 
 import("stdfaust.lib");
-import("abcd2dscope.dsp");
+import("../abccommon/abcd2dscope.dsp");
 
 //--------------------------------------------------------------------------------------//
 //AMBISONIC ORDER TO BE MODIFIED

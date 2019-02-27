@@ -11,7 +11,7 @@ declare author "Alain Bonardi";
 declare licence "GPLv3";
 
 import("stdfaust.lib");
-import("abc2dencoder.dsp");
+import("../abccommon/abc2dencoder.dsp");
 
 //--------------------------------------------------------------------------------------//
 //HOA ENCODER//
