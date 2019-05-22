@@ -11,25 +11,14 @@ declare author "Alain Bonardi";
 declare licence "GPLv3";
 
 import("stdfaust.lib");
-import("../abccommon/abc2ddecoder.dsp");
+import("../abccommon/abc2dstereodecoder.dsp");
 
 //--------------------------------------------------------------------------------------//
-//HOA DECODER AT ORDER AO TO NL LOUDSPEAKERS//
+//AMBISONIC ORDER
 //--------------------------------------------------------------------------------------//
+ao  = 2;
 
 //--------------------------------------------------------------------------------------//
-//AMBISONIC ORDER AND NUMBER OF LOUDSPEAKERS
+//STEREO DECODING
 //--------------------------------------------------------------------------------------//
-ao = 1;
-nl = 2;
-
-//--------------------------------------------------------------------------------------//
-//A VECTOR OF GAINS ON THE OUTPUT
-//--------------------------------------------------------------------------------------//
-leftDispatcher = _<:(*(1-direct), *(direct));
-rightDispatcher = _<:(*(direct), *(1-direct));
-
-//--------------------------------------------------------------------------------------//
-//DECODING
-//--------------------------------------------------------------------------------------//
-process = ho.decoderStereo(ao) : gainLine : (leftDispatcher, rightDispatcher) :> (_, _);
+process = mystereodecoder(ao);
