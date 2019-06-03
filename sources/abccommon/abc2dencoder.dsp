@@ -20,7 +20,7 @@ with {
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS FOR THE ENCODER
 //--------------------------------------------------------------------------------------//
-rotfreq = hslider("v:encoder/rotationspeed [unit:s-1]", 0, -1000, 1000, 0.001);
+rotfreq = hslider("v:encoder/rotationspeed [unit:s-1]", 0, -10, 10, 0.001);
 rotphase = hslider("v:encoder/defaultangle [unit:deg]", 0, -360, 360, 0.01) / 360;
 
 
