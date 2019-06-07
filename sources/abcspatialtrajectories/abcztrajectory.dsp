@@ -113,7 +113,7 @@ zy = waveform {0.9999695, 0.9999695, 0.9999695, 0.9999695, 0.9999695, 0.9999695,
 // SQUARE TRAJECTORY CONTROLS
 //--------------------------------------------------------------------------------------// 
 freq = hslider("freq", 1, -1000., 1000., 0.01);
-amp = hslider("amp", 1, 0, 5, 0.01);
+size = hslider("size", 1, 0, 5, 0.01);
 
 Player(f0, mySamp, mySampNum) = myPlayer with {
 	zeroToOnePhase =  os.phasor(1, f0) : ma.decimal; 
@@ -126,4 +126,4 @@ Player(f0, mySamp, mySampNum) = myPlayer with {
 	myPlayer = s1 + d * (s2 - s1);
 };
 
-process = (Player(freq, zx, mySamplesNum), Player(freq, zy, mySamplesNum)) : (*(amp), *(amp));
+process = (Player(freq, zx, mySamplesNum), Player(freq, zy, mySamplesNum)) : (*(size), *(size));
