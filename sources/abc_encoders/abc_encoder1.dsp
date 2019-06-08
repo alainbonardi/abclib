@@ -6,7 +6,7 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc2Dencoder1";
+declare name "abc_encoder1";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 
