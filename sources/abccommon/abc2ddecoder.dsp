@@ -6,9 +6,9 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-//COMMON FAUST CODE FOR 2D DECODERS//
+//----------------------------------ABC 2D DECODERS-------------------------------------//
 
-import("../abccommon/abcgainline.dsp");
+import("../abccommon/abcutilities.dsp");
 
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS: POSITIONS OF THE LOUDSPEAKERS IN DEGREES (anticlockwise)
@@ -17,6 +17,10 @@ direct = 2 * checkbox("h:decoder/v:global/directangles") - 1;
 offset = hslider("h:decoder/v:global/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
 gain = hslider("h:decoder/v:global/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 a(ind) = (hslider("h:decoder/v:angles/a%ind [unit:deg]", ind * 45, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : smoothLine;
+//--------------------------------------------------------------------------------------//
+// GAIN LINES IN PARALLEL
+//--------------------------------------------------------------------------------------//
+gainLine(n) = par(i, n, *(gain));
 //--------------------------------------------------------------------------------------//
 //AMBISONIC DECODING WITH IRREGULAR ORDER
 //-------------------------------------------------------------------

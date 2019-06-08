@@ -9,15 +9,14 @@
 
 //COMMON FAUST CODE FOR ADDITIVE SYNTHESIS//
 
-import("../abccommon/abcsmoothline.dsp");
-import("../abccommon/abcdbcontrol.dsp");
-
-//fundamental frequency//
-f0 = nentry("v:AddSynth/h:General/f0 [unit:Hz]", 110, 0.01, 15000, 0.01);
+import("../abccommon/abcutilities.dsp");
 
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETER: GENERAL VOLUME IN DB
 //--------------------------------------------------------------------------------------//
+//fundamental frequency//
+f0 = nentry("v:AddSynth/h:General/f0 [unit:Hz]", 110, 0.01, 15000, 0.01);
+
 vol = hslider("v:AddSynth/h:General/vol [unit:dB]", 0, -127, 18, 0.01) : smoothLine : dbcontrol;
 
 gain(ind) = hslider("v:AddSynth/h:Partials/v:Gains/gain%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : smoothLine : dbcontrol;
