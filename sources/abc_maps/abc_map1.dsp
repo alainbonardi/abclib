@@ -22,4 +22,8 @@ ao = 1; //ambisonic order is 1//
 //--------------------------------------------------------------------------------------//
 //PROCESS FUNCTION
 //--------------------------------------------------------------------------------------//
-process = ho.map;
+//first input is the signal
+//second input is the radius
+//third output is the angle
+
+process = (_, _, _) : myMap;

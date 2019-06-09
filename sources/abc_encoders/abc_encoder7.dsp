@@ -22,4 +22,4 @@ ao = 7; //ambisonic order is 7//
 //--------------------------------------------------------------------------------------//
 //PROCESS FUNCTION
 //--------------------------------------------------------------------------------------//
-process = freqPhaseEncoder(rotfreq, rotphase);
+process = freqPhaseEncoder(rotfreq, rotphase, returntime);
