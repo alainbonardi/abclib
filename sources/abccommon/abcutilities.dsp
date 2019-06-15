@@ -98,3 +98,7 @@ with {
 //PHASE TO RADIAN ANGLE CONVERSION
 //--------------------------------------------------------------------------------------//
 rotationOrStaticAngle(f, p, dt) = rotationOrStaticPhase(f, p, dt) * 2 * ma.PI;
+
+
+
+

@@ -6,15 +6,15 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc_addsynth8";
+declare name "abc_pan1";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 
 import("stdfaust.lib");
-import("../abccommon/abcaddsynth.dsp");
+import("../abccommon/abcmultipan.dsp");
 
 //--------------------------------------------------------------------------------------//
 //NUMBER OF OSCILLATORS TO MODIFY
 //--------------------------------------------------------------------------------------//
 
-process = multiosc(8);
+process = multipan(4);
