@@ -6,15 +6,16 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc_addsynth8";
-declare author "Alain Bonardi";
-declare licence "GPLv3";
+//----------------------------------ABC MULTIPAN----------------------------------------//
 
-import("stdfaust.lib");
-import("../abccommon/abcaddsynth.dsp");
+import("../abccommon/abcutilities.dsp");
+
+gain = hslider("gain [unit:dB]", 0, -127, 18, 0.01) : smoothLine : dbcontrol;
 
 //--------------------------------------------------------------------------------------//
-//NUMBER OF OSCILLATORS TO MODIFY
+//DEFINITION OF A MULTIPAN
+//
+//defined as a multiple panner with regular progression of pan % from 0 to 1 with a step of 1/(n-1)
 //--------------------------------------------------------------------------------------//
-
-process = multiosc(8);
+pan1 = sp.panner : (*(gain), *(gain));
+multipan(n) = par(i, n, sp.panner(i/(n-1))) :> (*(gain), *(gain));
