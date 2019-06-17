@@ -6,11 +6,24 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-//----------------------------------ABC 2D GAINS----------------------------------------//
+declare name "abc_map5";
+declare author "Alain Bonardi";
+declare licence "GPLv3";
 
-import("../abccommon/abcgainline.dsp");
+import("stdfaust.lib");
+import("../abccommon/abc2dmap.dsp");
 
 //--------------------------------------------------------------------------------------//
-//CONTROL PARAMETER: GAIN IN DB
+//HOA ENCODER//
 //--------------------------------------------------------------------------------------//
-gain = hslider("gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+ao = 5; //ambisonic order is 5//
+
+
+//--------------------------------------------------------------------------------------//
+//PROCESS FUNCTION
+//--------------------------------------------------------------------------------------//
+//first input is the signal
+//second input is the radius
+//third output is the angle
+
+process = (_, _, _) : myMap;

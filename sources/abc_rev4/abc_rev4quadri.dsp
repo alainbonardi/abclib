@@ -6,12 +6,14 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
+//----------------------------------ABC REV4 QUADRI-------------------------------------//
+
 declare name "abcrev4quadri.dsp";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 import("stdfaust.lib");
 
-import("../abccommon/abcline.dsp");
+import("../abccommon/abcutilities.dsp");
 
 //2 controls: revDur which is the duration of the reverb (127 is infinite)
 //revAmp is the amplitude of the output sound of the reverb
