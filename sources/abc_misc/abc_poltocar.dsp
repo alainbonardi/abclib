@@ -12,5 +12,6 @@ declare licence "GPLv3";
 
 import("stdfaust.lib");
 import("../abccommon/abcutilities.dsp");
+//the input angle is a phase between 0 and 1//
 
-process = polar2cartesian;
+process = (_, *(2. * ma.PI)) : polar2cartesian;

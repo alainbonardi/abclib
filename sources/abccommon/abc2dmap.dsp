@@ -9,6 +9,6 @@
 //----------------------------------ABC 2D POLAR MAPS-----------------------------------//
 
 //polar coordinates//
-//the angle is in degrees//
+//the angle is a phase between 0 and 1//
 
-myMap(sig, r, a) = ho.map(ao, sig, r, a * ma.PI / 180.);
+myMap(sig, r, a) = ho.map(ao, sig, r, a * 2. * ma.PI);
