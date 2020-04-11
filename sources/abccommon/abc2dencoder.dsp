@@ -14,7 +14,7 @@ import("../abccommon/abcutilities.dsp");
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS FOR THE ENCODER
 //--------------------------------------------------------------------------------------//
-rotfreq = hslider("v:encoder/speed [unit:s-1]", 0, -10, 10, 0.001);
+rotfreq = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
 rotphase = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 
