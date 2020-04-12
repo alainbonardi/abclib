@@ -13,4 +13,6 @@ declare licence "GPLv3";
 import("stdfaust.lib");
 import("../abccommon/abcutilities.dsp");
 
-process = polar2cartesian;
+freq = hslider("v:phasor2pi/freq [unit:s-1]", 0.1, 0, 20000, 0.00001);
+
+process = phasor2pi(freq);

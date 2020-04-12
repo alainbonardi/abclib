@@ -9,6 +9,11 @@
 //----------------------------------ABC 2D POLAR MAPS-----------------------------------//
 
 //polar coordinates//
-//the angle is a phase between 0 and 1//
+//personal adaptation of the map in hoa.lib that has a bug for r = 1
 
-myMap(sig, r, a) = ho.map(ao, sig, r, a * 2. * ma.PI);
+myMap(sig, r, a) = ho.encoder(ao, sig * volume(r), a) : ho.wider(ao, ouverture(r))
+with
+{
+	volume(r) = 1. / (r * r * (r > 1) + (r <= 1));
+	ouverture(r) = r * (r <= 1) + (r > 1);
+};

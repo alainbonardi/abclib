@@ -13,4 +13,4 @@ declare licence "GPLv3";
 import("stdfaust.lib");
 import("../abccommon/abcutilities.dsp");
 
-process = polar2cartesian;
+process = mult2pi;
