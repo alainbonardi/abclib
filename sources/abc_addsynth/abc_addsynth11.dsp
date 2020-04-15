@@ -6,7 +6,7 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc_addsynth2";
+declare name "abc_addsynth11";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 
@@ -17,4 +17,4 @@ import("../abccommon/abcaddsynth.dsp");
 //NUMBER OF OSCILLATORS TO MODIFY
 //--------------------------------------------------------------------------------------//
 
-process = multiosc(2);
+process = multiosc(11);

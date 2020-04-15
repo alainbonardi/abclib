@@ -6,7 +6,7 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc_addsynth4";
+declare name "abc_addsynth12";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 
