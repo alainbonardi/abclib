@@ -6,7 +6,7 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc_pan1";
+declare name "abc_pan16";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 

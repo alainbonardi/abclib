@@ -6,7 +6,7 @@
 //-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
 //--------------------------------------------------------------------------------------//
 
-declare name "abc_chopan2";
+declare name "abc_chopan10";
 declare author "Alain Bonardi";
 declare licence "GPLv3";
 
@@ -17,4 +17,4 @@ import("../abccommon/abcchowningmultipan.dsp");
 //NUMBER OF OSCILLATORS TO MODIFY
 //--------------------------------------------------------------------------------------//
 
-process = chowningPan(2);
+process = chowningPan(10);
