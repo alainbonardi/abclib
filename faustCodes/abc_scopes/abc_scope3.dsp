@@ -1,21 +1,21 @@
+
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
-//-------------------------------FAUST CODE FOR MIXED MUSIC-----------------------------//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
-
-declare name "abc2Dscope3";
+//
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-
+declare name "abc_scope3";
+//
+//SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING MAX SCOPE~ OBJECT
+//
 import("stdfaust.lib");
 import("../abccommon/abcd2dscope.dsp");
-
-//--------------------------------------------------------------------------------------//
-//AMBISONIC ORDER TO BE MODIFIED
-//--------------------------------------------------------------------------------------//
-n = 3;//ambisonic order 3 here//
-
+//
+n = 3;//ambisonic order//
 process = (rho <: (_, _) : (*(sin(theta)), *(cos(theta))) : (*(-1), _));

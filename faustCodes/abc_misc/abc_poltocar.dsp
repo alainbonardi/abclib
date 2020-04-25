@@ -1,16 +1,20 @@
+
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
-//-------------------------------FAUST CODE FOR MIXED MUSIC-----------------------------//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
-
-declare name "abc_cartopol";
+//
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-
+declare name "abc_poltocar";
+//
+//POLAR TO CARTESIAN CONVERTER
+//
 import("stdfaust.lib");
 import("../abccommon/abcutilities.dsp");
-
+//
 process = polar2cartesian;

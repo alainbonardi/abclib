@@ -2,14 +2,20 @@
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
-//-------------------------------FAUST CODE FOR MIXED MUSIC-----------------------------//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//-------------------------------- BY ALAIN BONARDI - 2020 -----------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
-declare name abc_encoder4;
-declare author Alain Bonardi;
-declare licence GPLv3;
-import(stdfaust.lib);
-import(../abccommon/abc2dencoder.dsp);
-ao = 4;
+//
+declare author "Alain Bonardi";
+declare licence "GPLv3";
+declare name "abc_encoder4";
+//
+//AMBISONIC ENCODERS
+//
+import("stdfaust.lib");
+import("../abccommon/abc2dencoder.dsp");
+//
+ao = 4;//ambisonic order//
 process = freqPhaseEncoder(rotfreq, rotphase, returntime);

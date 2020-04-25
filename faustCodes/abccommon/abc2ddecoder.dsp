@@ -1,11 +1,16 @@
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
-//-------------------------------FAUST CODE FOR MIXED MUSIC-----------------------------//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//-------------------------------- BY ALAIN BONARDI - 2019 -----------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
-
+//
+declare author "Alain Bonardi";
+declare licence "GPLv3";
+declare name "abc2ddecoder.dsp";
+//
 //----------------------------------ABC 2D DECODERS-------------------------------------//
 
 import("../abccommon/abcutilities.dsp");
@@ -16,7 +21,7 @@ import("../abccommon/abcutilities.dsp");
 direct = 2 * checkbox("h:decoder/v:global/directangles") - 1; 
 offset = hslider("h:decoder/v:global/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
 gain = hslider("h:decoder/v:global/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
-a(ind) = (hslider("h:decoder/v:angles/a%2ind [unit:deg]", ind * 360 / nl, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : smoothLine;
+a(ind, nl) = (hslider("h:decoder/v:angles/a%2ind [unit:deg]", ind * 360 / nl, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : smoothLine;
 //--------------------------------------------------------------------------------------//
 // GAIN LINES IN PARALLEL
 //--------------------------------------------------------------------------------------//
@@ -24,7 +29,7 @@ gainLine(n) = par(i, n, *(gain));
 //--------------------------------------------------------------------------------------//
 //AMBISONIC DECODING WITH IRREGULAR ORDER
 //-------------------------------------------------------------------
-mydecoder(n, p)	= par(i, 2*n+1, _) <: par(i, p, speaker(n, a(i))) : gainLine(p)
+mydecoder(n, p)	= par(i, 2*n+1, _) <: par(i, p, speaker(n, a(i,n))) : gainLine(p)
 with 
 {
    speaker(n,alpha)	= /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);

@@ -2,13 +2,19 @@
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
-//-------------------------------FAUST CODE FOR MIXED MUSIC-----------------------------//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//-------------------------------- BY ALAIN BONARDI - 2020 -----------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
-declare name abc_addsynth11;
-declare author Alain Bonardi;
-declare licence GPLv3;
-import(stdfaust.lib);
-import(../abccommon/abcaddsynth.dsp);
+//
+declare author "Alain Bonardi";
+declare licence "GPLv3";
+declare name "abc_addsynth11";
+//
+//MULTICHANNEL DOUBLE OSCILLATORS
+//
+import("stdfaust.lib");
+import("../abccommon/abcaddsynth.dsp");
+//
 process = multiosc(11);
