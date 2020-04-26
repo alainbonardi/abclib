@@ -17,6 +17,6 @@ declare name "abc_phasor2pi";
 import("stdfaust.lib");
 import("../abccommon/abcutilities.dsp");
 //
-freq = hslider(v:phasor2pi/freq [unit:s-1], 0.1, 0, 20000, 0.00001);
+freq = hslider("v:phasor2pi/freq [unit:s-1]", 0.1, 0, 20000, 0.00001);
 //
 process = phasor2pi(freq);

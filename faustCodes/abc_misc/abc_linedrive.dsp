@@ -10,20 +10,14 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_squareandztrajectory";
+declare name "abc_linedrive";
 //
-//GENERATES A SQUARE OR Z TRAJECTORY IN CARTESIAN COORDINATES
-//WITH THE POSSIBILITY OF CROSSFADE BETWEEN THE 2
+//A LINE DRIVE FUNCTION TO SCALE NUMBERS EXPONENTIALLY
 //
 import("stdfaust.lib");
-import("../abccommon/abcspatialtrajectories.dsp");
+import("../abccommon/abcutilities.dsp");
 //
-//crossfade goes from 0 to 1//
-//0 stands for square, 1 stands for z and any value in between gives an interpolation
-//between 2
-crossfade = hslider("crossfade", 0, 0, 1, 0.01);
+outputmax = hslider("outputmax", 1, 0, 100000, 0.01);
+expcurve = hslider("expcurve", 1.06, 0.00001, 2., 0.00001);
 //
-xpos = Player(freq, squarex, mySamplesNum) * (1 - crossfade) + Player(freq, zx, mySamplesNum) * crossfade;
-ypos = Player(freq, squarey, mySamplesNum) * (1 - crossfade) + Player(freq, zy, mySamplesNum) * crossfade;
-//
-process = (xpos, ypos) : (*(size), *(size));
+process = (_, 30, 127, outputmax, expcurve, 30) : pdLineDrive;

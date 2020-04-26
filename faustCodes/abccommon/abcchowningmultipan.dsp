@@ -14,7 +14,7 @@ import("../abccommon/abcutilities.dsp");
 phi0 = hslider("phi0", 30, 1, 90, 1) : smoothLine;
 //incAngle is the incident angle of the source when there is only one (not applicable to several sources)
 incAngle = hslider("incAngle", 0, -90, 90, 1) : smoothLine;
-gain = hslider("gain [unit:dB]", 0, -127, 18, 0.01) : smoothLine : dbcontrol;
+gain = hslider("gain [unit:dB]", -15, -127, 18, 0.01) : smoothLine : dbcontrol;
 
 
 //--------------------------------------------------------------------------------------//
@@ -34,7 +34,7 @@ chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
  	};
  
  //with one input source
- chowningPan1 = chowningPanner(incAngle, phi0);
+ chowningPan1 = chowningPanner(incAngle, phi0) : (*(gain), *(gain));
  
  //with several input sources
  multiChowningPan(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));

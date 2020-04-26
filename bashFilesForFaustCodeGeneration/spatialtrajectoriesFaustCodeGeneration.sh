@@ -28,7 +28,7 @@ import(\"../abccommon/abcspatialtrajectories.dsp\");
 //crossfade goes from 0 to 1//
 //0 stands for square, 1 stands for z and any value in between gives an interpolation
 //between 2
-crossfade = hslider("crossfade", 0, 0, 1, 0.01);
+crossfade = hslider(\"crossfade\", 0, 0, 1, 0.01);
 //
 xpos = Player(freq, squarex, mySamplesNum) * (1 - crossfade) + Player(freq, zx, mySamplesNum) * crossfade;
 ypos = Player(freq, squarey, mySamplesNum) * (1 - crossfade) + Player(freq, zy, mySamplesNum) * crossfade;

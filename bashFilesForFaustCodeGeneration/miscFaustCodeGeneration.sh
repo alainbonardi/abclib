@@ -78,6 +78,27 @@ echo "declare name \"abc_phasor2pi\";
 import(\"stdfaust.lib\");
 import(\"../abccommon/abcutilities.dsp\");
 //
-freq = hslider("v:phasor2pi/freq [unit:s-1]", 0.1, 0, 20000, 0.00001);
+freq = hslider(\"v:phasor2pi/freq [unit:s-1]\", 0.1, 0, 20000, 0.00001);
 //
 process = phasor2pi(freq);" >> $sortie
+#
+#abc_linedrive.dsp
+#
+sortie="abc_linedrive.dsp"
+echo "" > $sortie
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+echo "declare name \"abc_linedrive\";
+//
+//A LINE DRIVE FUNCTION TO SCALE NUMBERS EXPONENTIALLY
+//
+import(\"stdfaust.lib\");
+import(\"../abccommon/abcutilities.dsp\");
+//
+outputmax = hslider(\"outputmax\", 1, 0, 100000, 0.01);
+expcurve = hslider(\"expcurve\", 1.06, 0.00001, 2., 0.00001);
+//
+process = (_, 30, 127, outputmax, expcurve, 30) : pdLineDrive;" >> $sortie

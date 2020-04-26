@@ -10,7 +10,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_rev4quadri.dsp";
+declare name "abc_rev4quadri";
 //
 //REV4 REVERB WITH 4 OUTPUTS FOR QUADRIPHONY
 //
@@ -19,11 +19,8 @@ import("../abccommon/abcutilities.dsp");
 //
 //2 controls: revDur which is the duration of the reverb (127 is infinite)
 //revAmp is the amplitude of the output sound of the reverb
-revDur = hslider(revDur, 120, 0, 127, 1) : /(254.) : smoothLine;
-revGain = hslider(revGain, 100, 0, 127, 1) : basicLineDrive;
-//
-smoothLine = si.smooth(ba.tau2pole(0.05));
-millisec = ma.SR / 1000.0;
+revDur = hslider("revDur", 120, 0, 127, 1) : /(254.) : smoothLine;
+revGain = hslider("revGain", 100, 0, 127, 1) : basicLineDrive;
 //
 //--------------------------------------------------------------------------------------//
 //IMPLEMENTATION OF THE REV4
