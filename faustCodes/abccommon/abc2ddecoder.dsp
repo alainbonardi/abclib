@@ -1,24 +1,18 @@
+//
 //--------------------------------------------------------------------------------------//
-//----------------------------------------abclib----------------------------------------//
-//
-//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
-//
-//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
-//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//AMBISONIC DECODERS
 //--------------------------------------------------------------------------------------//
 //
+import("stdfaust.lib");
 //
-//----------------------------------ABC 2D DECODERS-------------------------------------//
-
-import("../abccommon/abcutilities.dsp");
-
 //--------------------------------------------------------------------------------------//
-//CONTROL PARAMETERS: POSITIONS OF THE LOUDSPEAKERS IN DEGREES (anticlockwise)
+//CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
+//
 direct = 2 * checkbox("h:decoder/v:global/directangles") - 1; 
 offset = hslider("h:decoder/v:global/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
 gain = hslider("h:decoder/v:global/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
-a(ind, nls) = (hslider("h:decoder/v:angles/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : smoothLine;
+a(ind, nls) = (hslider("h:decoder/v:angles/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
 //--------------------------------------------------------------------------------------//
 // GAIN LINES IN PARALLEL
 //--------------------------------------------------------------------------------------//
@@ -31,3 +25,4 @@ with
 {
    speaker(n,alpha)	= /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 };
+//

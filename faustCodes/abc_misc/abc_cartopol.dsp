@@ -1,4 +1,3 @@
-
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
@@ -12,9 +11,14 @@ declare author "Alain Bonardi";
 declare licence "GPLv3";
 declare name "abc_cartopol";
 //
-//CARTESIAN TO POLAR CONVERTER
-//
-import("stdfaust.lib");
-import("../abccommon/abcutilities.dsp");
+//--------------------------------------------------------------------------------------//
+//CARTESIAN TO POLAR CONVERSION
+//angles in radians
+//--------------------------------------------------------------------------------------//
+cartesian2polar = (_, _) <: (module, phase) with {
+	square = _ <: *;
+	module = (square, square) : + : sqrt;
+	phase = atan2 : *(-1);
+};
 //
 process = cartesian2polar;

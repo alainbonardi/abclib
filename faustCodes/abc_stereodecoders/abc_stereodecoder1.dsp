@@ -1,4 +1,3 @@
-
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
@@ -12,10 +11,36 @@ declare author "Alain Bonardi";
 declare licence "GPLv3";
 declare name "abc_stereodecoder1";
 //
-//AMBISONIC ENCODERS
-//
 import("stdfaust.lib");
-import("../abccommon/abc2dstereodecoder.dsp");
 //
-ao = 1;//ambisonic order//
-process = mystereodecoder(ao);
+//--------------------------------------------------------------------------------------//
+//CONTROL PARAMETERS: POSITIONS OF THE LOUDSPEAKERS IN DEGREES (anticlockwise)
+//--------------------------------------------------------------------------------------//
+gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+direct = 2 * checkbox("v:stereodecoder/directangles") - 1; 
+//--------------------------------------------------------------------------------------//
+// GAIN LINES IN PARALLEL
+//--------------------------------------------------------------------------------------//
+gainLine(n) = par(i, n, *(gain));
+//--------------------------------------------------------------------------------------//
+//A VECTOR OF GAINS ON THE OUTPUT
+//--------------------------------------------------------------------------------------//
+leftDispatcher = _<:(*(1-direct), *(direct));
+rightDispatcher = _<:(*(direct), *(1-direct));
+//--------------------------------------------------------------------------------------//
+//AMBISONIC DECODING WITH IRREGULAR ORDER
+//-------------------------------------------------------------------
+mystereodecoder(n)	= ho.decoderStereo(n) : gainLine(2) : (leftDispatcher, rightDispatcher) :> (_, _);
+//
+//--------------------------------------------------------------------------------------//
+// CONVERSION DB=>LINEAR
+//--------------------------------------------------------------------------------------//
+dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+//
+//--------------------------------------------------------------------------------------//
+//CONTROL PARAMETER: GAIN IN DB
+//--------------------------------------------------------------------------------------//
+dbtogain = si.smoo : dbcontrol;
+//
+//
+process = mystereodecoder(1);

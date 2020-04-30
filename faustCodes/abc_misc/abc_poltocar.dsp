@@ -1,4 +1,3 @@
-
 //--------------------------------------------------------------------------------------//
 //----------------------------------------abclib----------------------------------------//
 //
@@ -12,9 +11,10 @@ declare author "Alain Bonardi";
 declare licence "GPLv3";
 declare name "abc_poltocar";
 //
-//POLAR TO CARTESIAN CONVERTER
-//
-import("stdfaust.lib");
-import("../abccommon/abcutilities.dsp");
+//--------------------------------------------------------------------------------------//
+//POLAR TO CARTESIAN CONVERSION
+//angles in radians
+//--------------------------------------------------------------------------------------//
+polar2cartesian = (_, _) <: (_, cos, _, sin) : (*, *);
 //
 process = polar2cartesian;
