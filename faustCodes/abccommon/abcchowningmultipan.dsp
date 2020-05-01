@@ -13,7 +13,7 @@ import("stdfaust.lib");
 phi0 = hslider("phi0", 30, 1, 90, 1) : si.smoo;
 //incAngle is the incident angle of the source when there is only one (not applicable to several sources)
 incAngle = hslider("incAngle", 0, -90, 90, 1) : si.smoo;
-gain = hslider("gain [unit:dB]", -15, -127, 18, 0.01) : dbtogain;
+gain = hslider("gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF CHOWNING MULTIPANNERS

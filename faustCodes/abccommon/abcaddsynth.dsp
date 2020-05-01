@@ -12,7 +12,7 @@ import("stdfaust.lib");
 //fundamental frequency//
 f0 = nentry("v:AddSynth/h:General/f0 [unit:Hz]", 110, 0.01, 15000, 0.01);
 //general gain//
-gain = hslider("v:AddSynth/h:General/gain [unit:dB]", -15, -127, 18, 0.01) : dbtogain;
+gain = hslider("v:AddSynth/h:General/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //amplitude of each partial
 amp(ind) = hslider("v:AddSynth/h:Partials/v:Gains/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
 //frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//

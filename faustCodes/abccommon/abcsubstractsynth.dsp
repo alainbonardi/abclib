@@ -6,7 +6,7 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //fundamental frequency//
 f0 = nentry("v:SubstractSynth/h:General/f0 [unit:Hz]", 440, 0.01, 15000, 0.01);
-gain = hslider("v:SubstractSynth/h:General/gain [unit:dB]", -10, -127, 18, 0.01) : dbtogain;
+gain = hslider("v:SubstractSynth/h:General/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 filterQ = hslider("v:SubstractSynth/h:General/filterQ", 50, 1, 100, 1);
 filterG = hslider("v:SubstractSynth/h:General/filterG", 0.8, 0, 1, 0.01);
 //frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
