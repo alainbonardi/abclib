@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 770.0, 287.0, 566.0, 707.0 ],
+		"rect" : [ 582.0, 79.0, 566.0, 707.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -296,7 +296,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ 0.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -316,7 +316,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10 ],
+					"args" : [ -20 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -330,7 +330,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 425.5, 73.0, 73.0 ],
+					"patching_rect" : [ 53.0, 425.5, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -676,43 +676,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_granu_noise.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/clippings/AudioOut",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/clippings/AudioOut",
+				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -755,8 +755,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

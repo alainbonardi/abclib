@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 717.0, 232.0, 1394.0, 681.0 ],
+		"rect" : [ -9.0, 113.0, 1394.0, 681.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,13 +39,52 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0.0 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-26",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "abc_stereoout.maxpat",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"offset" : [ 0.0, 0.0 ],
+					"patching_rect" : [ 810.571441999999934, 586.5, 185.0, 26.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ 0.0 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-25",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "abc_stereoout.maxpat",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"offset" : [ 0.0, 0.0 ],
+					"patching_rect" : [ 141.5, 426.0, 185.0, 26.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-11",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 299.0, 87.0, 71.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "envelope rarefaction"
 				}
 
@@ -58,7 +97,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 195.0, 87.0, 71.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "envelope frequency"
 				}
 
@@ -134,17 +172,6 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 195.0, 191.0, 96.0, 22.0 ],
 					"text" : "/randenv/freq $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-67",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 141.5, 437.0, 72.0, 22.0 ],
-					"text" : "dac~"
 				}
 
 			}
@@ -305,7 +332,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10.0 ],
+					"args" : [ -20 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -319,7 +346,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.571441999999934, 237.0, 73.0, 72.0 ],
+					"patching_rect" : [ 53.571441999999998, 237.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -687,17 +714,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-8",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 810.571441999999934, 583.0, 164.133333333333894, 22.0 ],
-					"text" : "dac~"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"color" : [ 0.490196, 0.498039, 0.517647, 1.0 ],
 					"fontface" : 0,
 					"fontsize" : 12.0,
@@ -721,7 +737,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 355.0, 402.0, 79.0, 22.0 ],
+					"patching_rect" : [ 423.5, 402.0, 79.0, 22.0 ],
 					"text" : "loadmess 64"
 				}
 
@@ -734,7 +750,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 355.0, 370.0, 79.0, 22.0 ],
+					"patching_rect" : [ 423.5, 370.0, 79.0, 22.0 ],
 					"text" : "loadmess 96"
 				}
 
@@ -748,7 +764,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 273.5, 457.5, 50.0, 49.0 ]
+					"patching_rect" : [ 342.0, 457.5, 50.0, 49.0 ]
 				}
 
 			}
@@ -759,7 +775,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 274.0, 369.0, 80.0, 22.0 ],
+					"patching_rect" : [ 342.5, 369.0, 80.0, 22.0 ],
 					"text" : "abc_scope1~"
 				}
 
@@ -771,7 +787,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 470.571441999999934, 87.0, 263.0, 194.0 ],
+					"patching_rect" : [ 470.571441999999934, 87.0, 264.0, 194.0 ],
 					"text" : "abc_randenv1~, abc_randenv2~, etc. objects \nprovide multichannel envelopes based on cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 				}
 
@@ -1316,14 +1332,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 1 ],
+					"destination" : [ "obj-26", 1 ],
+					"midpoints" : [ 965.204775333333828, 558.75, 986.071441999999934, 558.75 ],
 					"source" : [ "obj-35", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 0 ],
+					"destination" : [ "obj-26", 0 ],
 					"source" : [ "obj-35", 0 ]
 				}
 
@@ -1462,14 +1479,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-67", 1 ],
+					"destination" : [ "obj-25", 1 ],
+					"midpoints" : [ 204.0, 408.0, 317.0, 408.0 ],
 					"source" : [ "obj-66", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-67", 0 ],
+					"destination" : [ "obj-25", 0 ],
 					"source" : [ "obj-66", 0 ]
 				}
 
@@ -1477,29 +1495,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_stereoout.maxpat",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1554,8 +1579,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 416.0, 79.0, 1380.0, 678.0 ],
+		"rect" : [ 26.0, 79.0, 1380.0, 678.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -553,7 +553,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ 0.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -566,7 +566,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 33.5, 267.0, 164.0, 26.0 ],
+					"patching_rect" : [ 33.5, 267.0, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -734,8 +734,8 @@
 					"id" : "obj-10",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 33.5, 227.0, 218.0, 24.0 ],
 					"text" : "abc_substractsynth1~ @f0 220.",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
@@ -1057,7 +1057,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ 0.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1070,7 +1070,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 591.5, 267.0, 164.0, 26.0 ],
+					"patching_rect" : [ 591.5, 267.0, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1349,7 +1349,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 527.5, 347.5, 58.0, 22.0 ],
+					"patching_rect" : [ 591.5, 326.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -1362,7 +1362,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 527.5, 378.0, 261.0, 210.0 ],
+					"patching_rect" : [ 591.5, 356.5, 261.0, 210.0 ],
 					"text" : ";\rs11 /substractsynth/f0 440;\rs11 /substractsynth/partials/fmults/fmult_0 0.56;\rs11 /substractsynth/partials/fmults/fmult_1 0.56;\rs11 /substractsynth/partials/fmults/fmult_2 0.92;\rs11 /substractsynth/partials/fmults/fmult_3 0.92;\rs11 /substractsynth/partials/fmults/fmult_4 1.19;\rs11 /substractsynth/partials/fmults/fmult_5 1.7;\rs11 /substractsynth/partials/fmults/fmult_6 2.;\rs11 /substractsynth/partials/fmults/fmult_7 2.74;\rs11 /substractsynth/partials/fmults/fmult_8 3.;\rs11 /substractsynth/partials/fmults/fmult_9 3.76;\rs11 /substractsynth/partials/fmults/fmult10 4.07;\rs11 /substractsynth/filterQ 70.;\r"
 				}
 
@@ -1500,7 +1500,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0.0 ],
+					"args" : [ -15.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1514,14 +1514,14 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 255.5, 335.5, 74.0, 73.0 ],
+					"patching_rect" : [ 255.5, 335.5, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ 0.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1534,7 +1534,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 345.0, 571.5, 164.0, 26.0 ],
+					"patching_rect" : [ 345.0, 571.5, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1580,7 +1580,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 888.5, 332.5, 182.0, 275.0 ],
+					"patching_rect" : [ 888.5, 332.5, 185.0, 275.0 ],
 					"text" : "abc_substractsynth1~, abc_substract2~, etc. objects enable substractive synthesis by instantiating banks of band pass filters on pink noise (having filterQ as quality factor, and filterG as filter gain).\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 				}
 
@@ -1659,7 +1659,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 1 ],
-					"midpoints" : [ 43.0, 258.5, 188.0, 258.5 ],
+					"midpoints" : [ 43.0, 258.5, 209.0, 258.5 ],
 					"order" : 0,
 					"source" : [ "obj-10", 0 ]
 				}
@@ -1927,7 +1927,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
-					"midpoints" : [ 670.0, 258.5, 746.0, 258.5 ],
+					"midpoints" : [ 670.0, 258.5, 767.0, 258.5 ],
 					"source" : [ "obj-44", 1 ]
 				}
 
@@ -2033,7 +2033,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-23", 1 ],
-					"midpoints" : [ 414.41735537190084, 565.5, 499.5, 565.5 ],
+					"midpoints" : [ 414.41735537190084, 565.5, 520.5, 565.5 ],
 					"source" : [ "obj-50", 1 ]
 				}
 
@@ -2243,36 +2243,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2290,10 +2290,6 @@
 			}
 , 			{
 				"name" : "abc_substractsynth2~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_substractsynth1~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -2319,8 +2315,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

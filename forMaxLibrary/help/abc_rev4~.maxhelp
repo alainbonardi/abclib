@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 516.0, 321.0, 1150.0, 590.0 ],
+		"rect" : [ 191.0, 79.0, 1150.0, 590.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -95,7 +95,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 827.0, 508.0, 166.0, 26.0 ],
+					"patching_rect" : [ 827.0, 508.0, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -120,7 +120,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1005.0, 165.5, 74.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "rev4 gain\n0 to 127"
 				}
 
@@ -133,7 +132,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 817.0, 165.5, 74.0, 47.0 ],
-					"presentation_linecount" : 3,
 					"text" : "rev4 duration\n0 to 127"
 				}
 
@@ -273,6 +271,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -285,7 +284,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 149.0, 503.0, 166.0, 26.0 ],
+					"patching_rect" : [ 149.0, 503.0, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -310,7 +309,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 327.0, 160.5, 74.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "rev4 gain\n0 to 127"
 				}
 
@@ -371,7 +369,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 305.0, 363.0, 97.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "/rev4/revGain $1"
 				}
 
@@ -429,7 +426,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 470.571441999999934, 87.0, 264.0, 127.0 ],
+					"patching_rect" : [ 470.571441999999934, 87.0, 265.0, 127.0 ],
 					"text" : "abc_rev4~ is a classical reverberation module with 2 controls (with values between 0 and 127): the duration (127 means an 'infinite' duration) and the gain.\nAs it is a cascade of delay lines with reinjection, it is proposed in two versions: a stereo one, abc_rev4sterero~, and a quadriphonic one, abc_rev4quadri~ that splits the outputs of the delay lines to the 4 outputs."
 				}
 
@@ -520,7 +517,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-55", 1 ],
-					"midpoints" : [ 211.5, 493.0, 305.5, 493.0 ],
+					"midpoints" : [ 211.5, 493.0, 324.5, 493.0 ],
 					"source" : [ "obj-54", 1 ]
 				}
 
@@ -606,7 +603,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-67", 1 ],
-					"midpoints" : [ 942.5, 498.0, 983.5, 498.0 ],
+					"midpoints" : [ 942.5, 498.0, 1002.5, 498.0 ],
 					"source" : [ "obj-68", 1 ]
 				}
 
@@ -707,35 +704,35 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
@@ -779,8 +776,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
