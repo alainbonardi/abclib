@@ -10,10 +10,10 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //
 //phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
-phi0 = hslider("phi0", 30, 1, 90, 1) : si.smoo;
+phi0 = hslider("v:chopan/phi0", 30, 1, 90, 1) : si.smoo;
 //incAngle is the incident angle of the source when there is only one (not applicable to several sources)
-incAngle = hslider("incAngle", 0, -90, 90, 1) : si.smoo;
-gain = hslider("gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+incAngle = hslider("v:chopan/incAngle", 0, -90, 90, 1) : si.smoo;
+gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF CHOWNING MULTIPANNERS

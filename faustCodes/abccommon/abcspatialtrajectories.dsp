@@ -222,9 +222,9 @@ zy = waveform {0.9999695, 0.9999695, 0.9999695, 0.9999695, 0.9999695, 0.9999695,
 //--------------------------------------------------------------------------------------//
 //TRAJECTORY CONTROLS
 //--------------------------------------------------------------------------------------// 
-freq = hslider("h:trajectory/freq", 1, -1000., 1000., 0.01) : si.smoo;
-size = hslider("h:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
-crossfade = hslider("h:trajectory/crossfade", 0, 0, 1, 0.01) : si.smoo;
+freq = hslider("v:traj/freq", 1, -1000., 1000., 0.01) : si.smoo;
+size = hslider("v:traj/size", 1, 0, 5, 0.01) : si.smoo;
+crossfade = hslider("v:traj/crossfade", 0, 0, 1, 0.01) : si.smoo;
 //
 //--------------------------------------------------------------------------------------//
 //THE 3 TYPES OF TRAJECTORIES

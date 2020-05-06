@@ -22,6 +22,7 @@ fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 associatedcommonfilename="../abccommon/abc2dencoder.dsp"
 utilityfilename1="../abccommon/abcutilities/abcdbcontrol.dsp"
+utilityfilename2="../abccommon/abcutilities/abcencodingrotation.dsp"
 for i in `seq 1 $amborder`
 do
     let "j = 2 * $i + 2"
@@ -43,6 +44,11 @@ while IFS= read -r line
 do
 echo "$line" >> $sortie
 done <"$utilityfilename1"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename2"
 echo "//
 ao = $i;//ambisonic order//
 process = freqPhaseEncoder(rotfreq, rotphase, returntime);" >> $sortie

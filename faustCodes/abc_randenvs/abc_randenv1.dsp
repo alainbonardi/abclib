@@ -13,8 +13,8 @@ declare name "abc_randenv1";
 //
 import("stdfaust.lib");
 //
-shortening = hslider("h:RandomEnv/shortening", 0.5, 0, 1, 0.01) : si.smoo;
-freq = nentry("h:RandomEnv/freq", 10, 0.01, 100, 0.01) : si.smoo;
+shortening = hslider("v:randenv/shortening", 0.5, 0, 1, 0.01) : si.smoo;
+freq = nentry("v:randenv/freq", 10, 0.01, 100, 0.01) : si.smoo;
 //
 //--------------------------------------------------------------------------------------//
 tablesize = 1 << 16;

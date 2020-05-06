@@ -21,10 +21,10 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-direct = 2 * checkbox("h:decoder/v:global/directangles") - 1; 
-offset = hslider("h:decoder/v:global/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
-gain = hslider("h:decoder/v:global/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
-a(ind, nls) = (hslider("h:decoder/v:angles/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
+direct = 2 * checkbox("v:decoder/directangles") - 1; 
+offset = hslider("v:decoder/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
+gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+a(ind, nls) = (hslider("v:decoder/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
 //--------------------------------------------------------------------------------------//
 // GAIN LINES IN PARALLEL
 //--------------------------------------------------------------------------------------//

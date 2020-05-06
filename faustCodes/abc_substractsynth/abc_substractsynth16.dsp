@@ -17,13 +17,19 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //fundamental frequency//
-f0 = nentry("v:SubstractSynth/h:General/f0 [unit:Hz]", 440, 0.01, 15000, 0.01);
-gain = hslider("v:SubstractSynth/h:General/gain [unit:dB]", -10, -127, 18, 0.01) : dbtogain;
-filterQ = hslider("v:SubstractSynth/h:General/filterQ", 50, 1, 100, 1);
-filterG = hslider("v:SubstractSynth/h:General/filterG", 0.8, 0, 1, 0.01);
+f0 = nentry("v:substractsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
+//
+gain = hslider("v:substractsynth/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+//
+filterQ = hslider("v:substractsynth/filterQ", 50, 1, 500, 1);
+//
+filterG = hslider("v:substractsynth/filterG", 0.8, 0, 1, 0.01);
+//
+amp(ind) = hslider("v:substractsynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
+//
 //frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
-fmult(ind) = nentry("v:SubstractSynth/h:Partials/v:Multipliers/fmult%2ind", (ind+1), 0, 1000, 0.00001);
-amp(ind) = hslider("v:SubstractSynth/h:Partials/v:Gains/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
+fmult(ind) = nentry("v:substractsynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
+//
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF A SUBSTRACTIVE SYNTHESIS
 //

@@ -10,15 +10,15 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //
 //fundamental frequency//
-f0 = nentry("v:AddSynth/h:General/f0 [unit:Hz]", 110, 0.01, 15000, 0.01);
+f0 = nentry("v:addsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
 //general gain//
-gain = hslider("v:AddSynth/h:General/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+gain = hslider("v:addsynth/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //amplitude of each partial
-amp(ind) = hslider("v:AddSynth/h:Partials/v:Gains/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
+amp(ind) = hslider("v:addsynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
 //frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
-fmult(ind) = nentry("v:AddSynth/h:Partials/v:Multipliers/fmult%2ind", (ind+1), 0, 1000, 0.00001);
+fmult(ind) = nentry("v:addsynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
 //beats - second oscillator shifted of a few Hz (by default 0)
-fbeat(ind) = nentry("v:AddSynth/h:Partials/v:PlusBeats/fbeat%2ind [unit:Hz]", 0, 0, 20, 0.01);
+fbeat(ind) = nentry("v:addsynth/h:partials/v:fbeats/fbeat%2ind [unit:Hz]", 0, 0, 20, 0.01);
 //
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF A DOUBLE OSCILLATOR

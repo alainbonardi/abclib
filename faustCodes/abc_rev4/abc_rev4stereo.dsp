@@ -23,8 +23,8 @@ import("stdfaust.lib");
 //
 //2 controls: revDur which is the duration of the reverb (127 is infinite)
 //revAmp is the amplitude of the output sound of the reverb
-revDur = hslider("revDur", 120, 0, 127, 1) : /(254.) : si.smoo;
-revGain = hslider("revGain", 100, 0, 127, 1) : basicLineDrive;
+revDur = hslider("v:rev4/revDur", 120, 0, 127, 1) : /(254.) : si.smoo;
+revGain = hslider("v:rev4/revGain", 100, 0, 127, 1) : basicLineDrive;
 //
 //--------------------------------------------------------------------------------------//
 //IMPLEMENTATION OF THE REV4
