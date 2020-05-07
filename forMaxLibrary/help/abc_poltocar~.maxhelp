@@ -238,7 +238,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 158.0, 240.0, 30.0, 22.0 ],
+					"patching_rect" : [ 185.0, 239.0, 30.0, 22.0 ],
 					"text" : "*~ 2"
 				}
 
@@ -250,7 +250,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 158.0, 212.0, 33.0, 22.0 ],
+					"patching_rect" : [ 185.0, 211.0, 33.0, 22.0 ],
 					"text" : "+~ 1"
 				}
 
@@ -262,7 +262,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 158.0, 181.0, 34.0, 22.0 ],
+					"patching_rect" : [ 185.0, 180.0, 34.0, 22.0 ],
 					"text" : "cos~"
 				}
 
@@ -274,7 +274,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 208.5, 212.0, 37.0, 22.0 ],
+					"patching_rect" : [ 264.5, 211.0, 37.0, 22.0 ],
 					"text" : "*~ 10"
 				}
 
@@ -286,7 +286,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 208.5, 181.0, 80.0, 22.0 ],
+					"patching_rect" : [ 264.5, 180.0, 80.0, 22.0 ],
 					"text" : "abc_mult2pi~"
 				}
 
@@ -298,7 +298,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 158.0, 140.0, 79.0, 22.0 ],
+					"patching_rect" : [ 185.0, 139.0, 79.0, 22.0 ],
 					"text" : "phasor~ 0.03"
 				}
 
@@ -402,8 +402,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 105.0, 285.0, 125.0, 22.0 ],
-					"text" : "abc_map1~"
+					"patching_rect" : [ 105.0, 285.0, 178.0, 22.0 ],
+					"text" : "abc_2d_map1~"
 				}
 
 			}
@@ -439,7 +439,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 167.5, 171.0, 218.0, 171.0 ],
+					"midpoints" : [ 194.5, 170.0, 274.0, 170.0 ],
 					"order" : 0,
 					"source" : [ "obj-12", 0 ]
 				}
@@ -471,7 +471,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 1 ],
-					"midpoints" : [ 218.0, 259.0, 432.5, 259.0 ],
+					"midpoints" : [ 274.0, 255.0, 432.5, 255.0 ],
 					"order" : 0,
 					"source" : [ "obj-20", 0 ]
 				}
@@ -510,7 +510,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 167.5, 273.0, 341.5, 273.0 ],
+					"midpoints" : [ 194.5, 273.0, 341.5, 273.0 ],
 					"order" : 0,
 					"source" : [ "obj-25", 0 ]
 				}
@@ -555,48 +555,48 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_granu_noise.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/clippings/AudioOut",
-				"patcherrelativepath" : "../clippings/AudioOut",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_map1~.mxo",
+				"name" : "abc_2d_map1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -634,8 +634,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

@@ -287,7 +287,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 249.5, 390.5, 77.0, 22.0 ],
+					"patching_rect" : [ 260.5, 390.5, 77.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -586,8 +586,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -894,8 +894,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -923,8 +923,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 136.5, 363.0, 100.0, 22.0 ],
-					"text" : "abc_encoder1~"
+					"patching_rect" : [ 143.5, 363.0, 112.0, 22.0 ],
+					"text" : "abc_2d_encoder1~"
 				}
 
 			}
@@ -1001,7 +1001,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 249.5, 313.0, 74.0, 72.0 ],
+					"patching_rect" : [ 260.5, 313.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1091,8 +1091,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 16,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 478.0, 341.0, 217.214285714285893, 22.0 ],
-					"text" : "abc_map7~"
+					"patching_rect" : [ 478.0, 341.0, 217.214285714285779, 22.0 ],
+					"text" : "abc_2d_map7~"
 				}
 
 			}
@@ -1141,7 +1141,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
 					"patching_rect" : [ 577.0, 184.0, 185.0, 22.0 ],
-					"text" : "abc_squaretrajectory~"
+					"text" : "abc_2d_squaretrajectory~"
 				}
 
 			}
@@ -1241,8 +1241,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 30.0, 363.0, 100.0, 22.0 ],
-					"text" : "abc_encoder1~"
+					"patching_rect" : [ 30.0, 363.0, 112.0, 22.0 ],
+					"text" : "abc_2d_encoder1~"
 				}
 
 			}
@@ -1699,7 +1699,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 2 ],
-					"midpoints" : [ 628.0, 323.0, 685.714285714285893, 323.0 ],
+					"midpoints" : [ 628.0, 323.0, 685.714285714285779, 323.0 ],
 					"source" : [ "obj-28", 1 ]
 				}
 
@@ -1788,7 +1788,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 259.0, 392.0, 259.0, 392.0 ],
+					"midpoints" : [ 270.0, 392.0, 270.0, 392.0 ],
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -1796,7 +1796,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 259.0, 457.75, 39.5, 457.75 ],
+					"midpoints" : [ 270.0, 457.75, 39.5, 457.75 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -1812,43 +1812,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_granu_noise.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/clippings/AudioOut",
-				"patcherrelativepath" : "../clippings/AudioOut",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1857,11 +1857,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_encoder1~.mxo",
+				"name" : "abc_2d_encoder1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_squaretrajectory~.mxo",
+				"name" : "abc_2d_squaretrajectory~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1869,7 +1869,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_map7~.mxo",
+				"name" : "abc_2d_map7~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1911,8 +1911,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
