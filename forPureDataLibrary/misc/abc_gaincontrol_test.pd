@@ -1,0 +1,3 @@
+#N canvas 178 243 462 345 12;
+#X obj 100 84 abc_gaincontrol;
+#X obj 272 91 abc_gaincontrol -20;

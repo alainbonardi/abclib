@@ -1,0 +1,35 @@
+#N canvas 968 113 787 425 12;
+#X obj 105 105 tgl 15 0 empty empty DSP 17 7 0 10 -262144 -1 -1 0 1
+;
+#X msg 50 177 \; pd dsp \$1 \;;
+#X obj 13 5 inlet~;
+#X obj 13 51 *~;
+#X obj 199 11 loadbang;
+#X obj 199 35 f \$1;
+#X obj 209 104 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 69 4 inlet~;
+#X obj 69 51 *~;
+#X floatatom 145 103 5 -127 18 1 dB - -;
+#X obj 211 212 dbtorms;
+#X obj 211 182 expr ($f1 + 127) * 100 / 127;
+#X floatatom 211 236 5 0 0 0 - - -;
+#X msg 211 259 \$1 20;
+#X obj 211 283 line~;
+#X obj 34 109 dac~;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 15 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 15 1;
+#X connect 9 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 8 1;
+#X connect 14 0 3 1;
+#X coords 0 -1 1 1 130 25 2 100 100;

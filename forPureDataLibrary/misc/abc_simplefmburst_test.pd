@@ -1,0 +1,7 @@
+#N canvas 885 284 619 542 12;
+#X obj 137 96 abc_simplefmburst;
+#X obj 68 214 abc_meter;
+#X obj 226 244 abc_stereoout;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 0 0 2 1;

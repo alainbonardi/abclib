@@ -1,0 +1,6 @@
+#N canvas 165 517 845 556 12;
+#X obj 14 6 cnv 15 400 25 empty empty abc_decoderN~  20 12 0 18 -99865
+-262144 0;
+#X obj 11 520 abc_helpcredit;
+#X obj 14 32 cnv 15 400 25 empty empty an_ambisonic_decoder 20 12 0
+12 -99865 -262144 0;
