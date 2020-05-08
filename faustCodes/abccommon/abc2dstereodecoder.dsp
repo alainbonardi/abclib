@@ -16,7 +16,7 @@ gainLine(n) = par(i, n, *(gain));
 leftDispatcher = _<:(*(1-direct), *(direct));
 rightDispatcher = _<:(*(direct), *(1-direct));
 //--------------------------------------------------------------------------------------//
-//AMBISONIC DECODING WITH IRREGULAR ORDER
+//AMBISONIC DECODING IN STEREO WITH IRREGULAR ORDER
 //-------------------------------------------------------------------
 mystereodecoder(n)	= ho.decoderStereo(n) : gainLine(2) : (leftDispatcher, rightDispatcher) :> (_, _);
 //

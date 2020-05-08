@@ -1,6 +1,24 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------------abclib----------------------------------------//
+//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
+//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//--------------------------------------------------------------------------------------//
+//
+declare author "Alain Bonardi";
+declare licence "GPLv3";
+declare name "abc_2d_syn_delay7";
 //
 //--------------------------------------------------------------------------------------//
-//SYN DELAY ON SPATIAL COMPONENTS IN AMBISONICS
+//SYN DELAY GENERATES SPATIAL DELAYED COMPONENTS IN AMBISONICS FROM ONE MONO SIGNAL
+//FX DELAY APPLIES DELAYS TO SPATIAL COMPONENTS ALREADY CREATED
+//IF WE ARE AT ORDER N IN AMBISONICS, THE NUMBER OF SPATIAL COMPONENTS IS P = 2*N+1
+//THE P DELAYS ARE EQUALLY SPREAD BETWEEN DELTIME / P AND DELTIME WHICH IS THE MAXIMUM
+//THE PURPOSE IS TO EXPLORE TEMPORAL DECORRELATION BETWEEN SPATIAL COMPONENTS
+//EITHER BY CREATING P DELAYED COPIES OF THE INCOMING SIGNAL (SYN DELAY)
+//OR BY ADDING DELAYS TO THE ALREADY EXISTING P SPATIAL COMPONENTS
 //--------------------------------------------------------------------------------------//
 //
 import("stdfaust.lib");
@@ -9,26 +27,11 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-window = nentry("syndelay/window [unit:msec]", 400, 10, 1000, 1);
+window = hslider("v:synfxdelay/window [unit:msec]", 400, 10, 1000, 1);
 winfreq = 1000. / window;
-deltime = nentry("syndelay/deltim [unit:msec]", 1000, 10, 10000, 0.01);
+deltime = hslider("v:synfxdelay/deltime [unit:msec]", 100, 2, 10000, 0.01);
+feedback = hslider("v:synfxdelay/feedback", 0, 0, 1, 0.001) :  si.smoo;
 //
-//--------------------------------------------------------------------------------------//
-//FUNCTIONS
-//--------------------------------------------------------------------------------------//
-//
-//converts a duration in milliseconds into a number of samples
-//
-toSamp(d) = d * 0.001 * ma.SR;
-//
-//
-tablesize = 1 << 16;
-sinustable = os.sinwaveform(tablesize);
-//
-delay21s(nsamp) = de.delay(maxSampSize, nsamp);
-//--------------------------------------------------------------------------------------//
-// GENERATORS
-//--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 // PHASOR THAT ACCEPTS BOTH NEGATIVE AND POSITIVE FREQUENCES
 //--------------------------------------------------------------------------------------//
@@ -37,6 +40,10 @@ pdPhasor(f) = os.phasor(1, f);
 //--------------------------------------------------------------------------------------//
 // SINUS ENVELOPE
 //--------------------------------------------------------------------------------------//
+//
+tablesize = 1 << 16;
+sinustable = os.sinwaveform(tablesize);
+//
 sinusEnvelop(phase) = s1 + d * (s2 - s1)
 	with {
 			zeroToOnePhase = phase : ma.decimal;
@@ -46,19 +53,23 @@ sinusEnvelop(phase) = s1 + d * (s2 - s1)
 			i2 = (i1+1) % int(tablesize);
 			s1 = rdtable(tablesize, sinustable, i1);
 			s2 = rdtable(tablesize, sinustable, i2);
-
 };
+//
+//--------------------------------------------------------------------------------------//
+//CONVERTS A DURATION IN MILLISECONDS INTO A NUMBER OF SAMPLES
+//--------------------------------------------------------------------------------------//
+//
+toSamp(d) = d * 0.001 * ma.SR;
+//
 //--------------------------------------------------------------------------------------//
 //DOUBLE OVERLAPPED DELAY
 //--------------------------------------------------------------------------------------//
-//
-//nsamp is an integer number corresponding to the number of samples of delay
+//nsamp is the number of samples of delay
 //freq is the frequency of envelopping for the overlapping between the 2 delay lines
-//--------------------------------------------------------------------------------------//
-
-maxSampSize = 1048576;
+//
+maxSampSize = 1048576; //roughly a capacity of 21,84 sec of delay at sampling rate = 48KHz//
 delay21s(nsamp) = de.delay(maxSampSize, nsamp);
-
+//
 overlappedDoubleDelay21s(nsamp, freq) = doubleDelay
 	with {
 			env1 = freq : pdPhasor : sinusEnvelop : *(0.5) : +(0.5);
@@ -69,11 +80,9 @@ overlappedDoubleDelay21s(nsamp, freq) = doubleDelay
 			nsamp2 = nsamp : ba.sAndH(th2);
 			doubleDelay =	_ <: (delay21s(nsamp1), delay21s(nsamp2)) : (*(env1), *(env1c)) : + ;
 		};
+fdOverlappedDoubleDelay21s(nsamp, freq, fd) = (+ : overlappedDoubleDelay21s(nsamp, freq)) ~ (*(fd));
 //
-doubleDelaySet(n, durmax, f) = _ <: si.bus(n) : par(i, n, overlappedDoubleDelay21s(toSamp(durmax * (i+1) / n), f));
+fxdelay(n, durmax, f, fd) = par(i, n, fdOverlappedDoubleDelay21s(toSamp(durmax * (i+1) / n), f, fd));
+sindelay(n, durmax, f, fd) = _ <: si.bus(n) : fxdelay(n, durmax, f, fd);
 //
-process = doubleDelaySet(7, deltime, winfreq);
-//
-//process = doubleDelay21s(24000);
-//process = doubleDelaySet(7, deltime);
-//process = overlappedDoubleDelay21s(256, 30);
+process = sindelay(15, deltime, winfreq, feedback);

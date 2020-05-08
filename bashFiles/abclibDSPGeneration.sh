@@ -31,7 +31,8 @@ chmod +x scopes2dFaustCodeGeneration.sh
 chmod +x spatialtrajectories2dFaustCodeGeneration.sh
 chmod +x stereodecodersFaustCodeGeneration.sh
 chmod +x substractsynthFaustCodeGeneration.sh
-#
+chmod +x synfxdelay2dFaustCodeGeneration.sh
+#runs the various scripts to generated DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $1
 ./chowningMultipansFaustCodeGeneration.sh $1
 ./decoders2dFaustCodeGeneration.sh $1
@@ -45,3 +46,4 @@ chmod +x substractsynthFaustCodeGeneration.sh
 ./spatialtrajectories2dFaustCodeGeneration.sh
 ./stereodecodersFaustCodeGeneration.sh $1
 ./substractsynthFaustCodeGeneration.sh $1
+./synfxdelay2dFaustCodeGeneration.sh $1
