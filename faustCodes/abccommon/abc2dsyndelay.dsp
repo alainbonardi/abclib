@@ -10,6 +10,7 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //
 window = nentry("syndelay/window [unit:msec]", 400, 10, 1000, 1);
+winfreq = 1000. / window;
 deltime = nentry("syndelay/deltim [unit:msec]", 1000, 10, 10000, 0.01);
 //
 //--------------------------------------------------------------------------------------//
@@ -20,16 +21,22 @@ deltime = nentry("syndelay/deltim [unit:msec]", 1000, 10, 10000, 0.01);
 //
 toSamp(d) = d * 0.001 * ma.SR;
 //
-//double delay with 
 //
-maxSampSize = 1048576;
 tablesize = 1 << 16;
 sinustable = os.sinwaveform(tablesize);
 //
 delay21s(nsamp) = de.delay(maxSampSize, nsamp);
+//--------------------------------------------------------------------------------------//
+// GENERATORS
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+// PHASOR THAT ACCEPTS BOTH NEGATIVE AND POSITIVE FREQUENCES
+//--------------------------------------------------------------------------------------//
+pdPhasor(f) = os.phasor(1, f);
 //
-//sinus envelop
-//
+//--------------------------------------------------------------------------------------//
+// SINUS ENVELOPE
+//--------------------------------------------------------------------------------------//
 sinusEnvelop(phase) = s1 + d * (s2 - s1)
 	with {
 			zeroToOnePhase = phase : ma.decimal;
@@ -39,13 +46,22 @@ sinusEnvelop(phase) = s1 + d * (s2 - s1)
 			i2 = (i1+1) % int(tablesize);
 			s1 = rdtable(tablesize, sinustable, i1);
 			s2 = rdtable(tablesize, sinustable, i2);
+
 };
+//--------------------------------------------------------------------------------------//
+//DOUBLE OVERLAPPED DELAY
+//--------------------------------------------------------------------------------------//
 //
-//overlapped double delay
-//
+//nsamp is an integer number corresponding to the number of samples of delay
+//freq is the frequency of envelopping for the overlapping between the 2 delay lines
+//--------------------------------------------------------------------------------------//
+
+maxSampSize = 1048576;
+delay21s(nsamp) = de.delay(maxSampSize, nsamp);
+
 overlappedDoubleDelay21s(nsamp, freq) = doubleDelay
 	with {
-			env1 = os.phasor(freq) : sinusEnvelop : *(0.5) : +(0.5);
+			env1 = freq : pdPhasor : sinusEnvelop : *(0.5) : +(0.5);
 			env1c = 1 - env1;
 			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
 			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
@@ -54,9 +70,10 @@ overlappedDoubleDelay21s(nsamp, freq) = doubleDelay
 			doubleDelay =	_ <: (delay21s(nsamp1), delay21s(nsamp2)) : (*(env1), *(env1c)) : + ;
 		};
 //
-doubleDelay21s(nsamp, f) = overlappedDoubleDelay21s(nsamp, f);
+doubleDelaySet(n, durmax, f) = _ <: si.bus(n) : par(i, n, overlappedDoubleDelay21s(toSamp(durmax * (i+1) / n), f));
 //
-doubleDelaySet(n, durmax) = par(i, n, doubleDelay21s(toSamp(durmax * (i+1) / n)));
-
+process = doubleDelaySet(7, deltime, winfreq);
+//
+//process = doubleDelay21s(24000);
 //process = doubleDelaySet(7, deltime);
-process = overlappedDoubleDelay21s(256, 30);
+//process = overlappedDoubleDelay21s(256, 30);
