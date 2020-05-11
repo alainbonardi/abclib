@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 625.0, 418.0, 1811.0, 746.0 ],
+		"rect" : [ 799.0, 384.0, 1811.0, 746.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -319,8 +319,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1307.678558000000066, 503.5, 61.0, 22.0 ],
-					"text" : "r fx_delay"
+					"patching_rect" : [ 1307.678558000000066, 503.5, 59.0, 22.0 ],
+					"text" : "r fx_grain"
 				}
 
 			}
@@ -333,8 +333,8 @@
 					"numinlets" : 15,
 					"numoutlets" : 16,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 1370.678558000000066, 541.0, 273.571428571428214, 24.0 ],
-					"text" : "abc_2d_fx_delay7~"
+					"patching_rect" : [ 1370.678558000000066, 541.0, 273.571428571428442, 24.0 ],
+					"text" : "abc_2d_fx_grain7~"
 				}
 
 			}
@@ -750,8 +750,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 974.5, 456.5, 61.0, 22.0 ],
-					"text" : "r fx_delay"
+					"patching_rect" : [ 974.5, 456.5, 59.0, 22.0 ],
+					"text" : "r fx_grain"
 				}
 
 			}
@@ -765,7 +765,7 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 952.0, 490.5, 158.5, 24.0 ],
-					"text" : "abc_2d_fx_delay1~"
+					"text" : "abc_2d_fx_grain1~"
 				}
 
 			}
@@ -830,7 +830,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1297.357116000000133, 83.0, 150.0, 20.0 ],
-					"text" : "FX DELAYS"
+					"text" : "FX GRANULATORS"
 				}
 
 			}
@@ -840,8 +840,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1162.678558000000066, 226.5, 63.0, 22.0 ],
-					"text" : "s fx_delay"
+					"patching_rect" : [ 1162.678558000000066, 226.5, 61.0, 22.0 ],
+					"text" : "s fx_grain"
 				}
 
 			}
@@ -967,7 +967,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 301.0, 75.0, 150.0, 20.0 ],
-					"text" : "SYN DELAYS"
+					"text" : "SYN GRANULATORS"
 				}
 
 			}
@@ -1142,8 +1142,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 533.178557999999839, 422.0, 70.0, 22.0 ],
-					"text" : "r syn_delay"
+					"patching_rect" : [ 533.178557999999839, 422.0, 68.0, 22.0 ],
+					"text" : "r syn_grain"
 				}
 
 			}
@@ -1154,8 +1154,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 160.571441999999934, 417.0, 70.0, 22.0 ],
-					"text" : "r syn_delay"
+					"patching_rect" : [ 160.571441999999934, 417.0, 68.0, 22.0 ],
+					"text" : "r syn_grain"
 				}
 
 			}
@@ -1165,8 +1165,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 183.571441999999934, 226.5, 72.0, 22.0 ],
-					"text" : "s syn_delay"
+					"patching_rect" : [ 125.571441999999934, 221.5, 70.0, 22.0 ],
+					"text" : "s syn_grain"
 				}
 
 			}
@@ -1179,8 +1179,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 16,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 496.178557999999953, 458.5, 267.340659340659272, 24.0 ],
-					"text" : "abc_2d_syn_delay7~"
+					"patching_rect" : [ 496.178557999999953, 458.5, 277.5, 24.0 ],
+					"text" : "abc_2d_syn_grain7~"
 				}
 
 			}
@@ -1242,7 +1242,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 460.571441999999934, 145.0, 50.0, 22.0 ]
+					"patching_rect" : [ 418.821441999999934, 140.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -1253,8 +1253,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.571441999999934, 114.0, 80.0, 22.0 ],
-					"text" : "loadmess 0.2"
+					"patching_rect" : [ 418.821441999999934, 109.0, 73.0, 22.0 ],
+					"text" : "loadmess 0."
 				}
 
 			}
@@ -1265,8 +1265,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 460.571441999999934, 176.0, 137.0, 22.0 ],
-					"text" : "/synfxdelay/feedback $1"
+					"patching_rect" : [ 418.821441999999934, 171.0, 135.0, 22.0 ],
+					"text" : "/synfxgrain/feedback $1"
 				}
 
 			}
@@ -1277,8 +1277,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 318.25, 114.0, 83.0, 22.0 ],
-					"text" : "loadmess 300"
+					"patching_rect" : [ 276.5, 109.0, 83.0, 22.0 ],
+					"text" : "loadmess 100"
 				}
 
 			}
@@ -1292,7 +1292,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 318.25, 145.0, 50.0, 22.0 ]
+					"patching_rect" : [ 276.5, 140.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -1303,8 +1303,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 318.25, 176.0, 127.0, 22.0 ],
-					"text" : "/synfxdelay/deltime $1"
+					"patching_rect" : [ 276.5, 171.0, 125.0, 22.0 ],
+					"text" : "/synfxgrain/deltime $1"
 				}
 
 			}
@@ -1315,7 +1315,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.571441999999934, 114.0, 83.0, 22.0 ],
+					"patching_rect" : [ 125.571441999999934, 109.0, 83.0, 22.0 ],
 					"text" : "loadmess 400"
 				}
 
@@ -1330,7 +1330,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 183.571441999999934, 145.0, 50.0, 22.0 ]
+					"patching_rect" : [ 125.571441999999934, 140.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -1341,8 +1341,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.571441999999934, 176.0, 129.0, 22.0 ],
-					"text" : "/synfxdelay/window $1"
+					"patching_rect" : [ 125.571441999999934, 171.0, 135.0, 22.0 ],
+					"text" : "/synfxgrain/grainsize $1"
 				}
 
 			}
@@ -1554,7 +1554,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_2d_syn_delayN~", "&", "abc_2d_fx_delayN~", "@obj-desc", "Delay", "processes", "to", "generate", "or", "process", "spatial", "components" ],
+					"args" : [ "@obj-name", "abc_2d_syn_grainN~", "&", "abc_2d_fx_grainN~", "@obj-desc", "Granular", "processes", "to", "generate", "or", "process", "spatial", "components" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -1581,8 +1581,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 130.571441999999934, 453.5, 177.999999999999972, 24.0 ],
-					"text" : "abc_2d_syn_delay1~"
+					"patching_rect" : [ 130.571441999999934, 453.5, 159.0, 24.0 ],
+					"text" : "abc_2d_syn_grain1~"
 				}
 
 			}
@@ -1618,7 +1618,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 193.071441999999934, 220.5, 193.071441999999934, 220.5 ],
+					"midpoints" : [ 135.071441999999934, 215.5, 135.071441999999934, 215.5 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -1634,7 +1634,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 327.75, 220.5, 193.071441999999934, 220.5 ],
+					"midpoints" : [ 286.0, 215.5, 135.071441999999934, 215.5 ],
 					"source" : [ "obj-15", 0 ]
 				}
 
@@ -1715,7 +1715,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 470.071441999999934, 220.5, 193.071441999999934, 220.5 ],
+					"midpoints" : [ 428.321441999999934, 215.5, 135.071441999999934, 215.5 ],
 					"source" : [ "obj-22", 0 ]
 				}
 
@@ -2805,7 +2805,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_2d_syn_delay1~.mxo",
+				"name" : "abc_2d_syn_grain1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2813,7 +2813,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_syn_delay7~.mxo",
+				"name" : "abc_2d_syn_grain7~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2825,7 +2825,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_fx_delay1~.mxo",
+				"name" : "abc_2d_fx_grain1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2845,7 +2845,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_fx_delay7~.mxo",
+				"name" : "abc_2d_fx_grain7~.mxo",
 				"type" : "iLaX"
 			}
  ],
