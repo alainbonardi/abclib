@@ -41,9 +41,9 @@ inputSort(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n,
 //
 //computes the duration of delays in samples according to the dispatching in the process
 //
-durToSamp(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)) * 0.001 * ma.SR;
-gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1);
+dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
+gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
 //
-syngrain(n, gs, d, fd, s) = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : inputSort(n)  : par(i, n, granulator(gsize(gs, i, n), durToSamp(d, i, n), s))) ~ (par(i, n, _) :> *(fd));
-fxgrain(n, gs, d, fd, s) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : inputSort(n) : par(i, n, granulator(gsize(gs, i, n), durToSamp(d, i, n), s))) ~ (par(i, n, *(fd)));
+syngrain(n, gs, d, fd, s) = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : inputSort(n)  : par(i, n, granulator(gsize(gs, i, n), dur(d, i, n), s))) ~ (par(i, n, _) :> *(fd));
+fxgrain(n, gs, d, fd, s) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : inputSort(n) : par(i, n, granulator(gsize(gs, i, n), dur(d, i, n), s))) ~ (par(i, n, *(fd)));
 //
