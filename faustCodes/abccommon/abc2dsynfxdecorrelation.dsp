@@ -14,11 +14,13 @@
 //0					1-1/P				0 OR DELAY/P
 //-1				1-2/P				0 OR 2*DELAY/P
 //1					1-3/P				0 OR 3*DELAY/P
-//-2
-//2
+//-2				1-4/P				0 OR 4*DELAY/P
+//2					1-5/P				0 OR 5*DELAY/P
 //...
-//-(N-1)& (N-1)		N*DELTIME/(N+1)
-//-N & N			DELTIME	
+//-(N-1)			1-(P-3)/P			0 OR (P-3)*DELAY/P
+//(N-1)				1-(P-2)/P			0 OR (P-2)*DELAY/P
+//-N				1-(P-1)/P			0 OR (P-1)*DELAY/P
+//N					1-P/P				0 OR P*DELAY/P
 //
 //THE PURPOSE IS TO EXPLORE TEMPORAL DECORRELATION BETWEEN SPATIAL COMPONENTS
 //EITHER BY CREATING P DELAYED COPIES OF THE INCOMING SIGNAL (SYN DELAY)
@@ -41,8 +43,8 @@ factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 //--------------------------------------------------------------------------------------//
 //computes the ith duration of the ith delay in samples
 //
-dur(d, i, p) = int((factor >= 1 - (i+1) / n) * i * delay / n); //the delay is either 0 (when factor < 1-(i+1)/n) or (i+1) * delay / n
+dur(d, i, p, fa) = int((fa >= 1 - (i+1) / p) * i * d / p); //the delay is either 0 (when factor fa < 1-(i+1)/p) or (i+1)*delay /p
 //
-fxdelay(n, durmax, f) = par(i, n, fdOverlappedDoubleDelay21s(dur(delay, i, n), f, fd));
-sindelay(n, durmax, f, fd) = _ <: si.bus(n) : fxdelay(n, delay, f, fd);
+fxdelay(n, d, f, fa) = par(i, n, overlappedDoubleDelay21s(dur(d, i, n, fa), f));
+sindelay(n, d, f, fa) = _ <: si.bus(n) : fxdelay(n, d, f, fa);
 //
