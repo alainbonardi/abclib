@@ -237,7 +237,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 462.770844000000011, 475.0, 74.0, 22.0 ],
+					"patching_rect" : [ 405.770844000000011, 489.0, 74.0, 22.0 ],
 					"text" : "prepend set"
 				}
 
@@ -354,7 +354,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : ".",
 				"type" : "PNG",
 				"implicit" : 1

@@ -78,8 +78,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 654.0, 66.5, 108.0, 22.0 ],
-					"text" : "/encoder/speed $1"
+					"patching_rect" : [ 654.0, 66.5, 58.0, 22.0 ],
+					"text" : "speed $1"
 				}
 
 			}
@@ -212,8 +212,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.0, 109.0, 108.0, 22.0 ],
-					"text" : "/encoder/speed $1"
+					"patching_rect" : [ 102.0, 109.0, 58.0, 22.0 ],
+					"text" : "speed $1"
 				}
 
 			}
@@ -347,8 +347,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 248.0, 148.0, 101.0, 22.0 ],
-					"text" : "/scope/refresh $1"
+					"patching_rect" : [ 248.0, 148.0, 63.0, 22.0 ],
+					"text" : "refresh $1"
 				}
 
 			}
@@ -742,8 +742,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

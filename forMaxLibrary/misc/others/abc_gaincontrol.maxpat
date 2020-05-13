@@ -121,7 +121,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 3.0, 198.0, 60.0, 22.0 ],
-					"text" : "@gain $1"
+					"text" : "gain $1"
 				}
 
 			}
