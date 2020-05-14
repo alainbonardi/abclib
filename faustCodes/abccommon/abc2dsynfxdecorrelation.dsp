@@ -43,8 +43,8 @@ factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 //--------------------------------------------------------------------------------------//
 //computes the ith duration of the ith delay in samples
 //
-dur(d, i, p, fa) = int((fa >= 1 - (i+1) / p) * i * d / p); //the delay is either 0 (when factor fa < 1-(i+1)/p) or (i+1)*delay /p
+dur(d, i, p, fa) = int((fa >= 1 - (i+1) / p) * (i+1) * d / p); //the delay is either 0 (when factor fa < 1-(i+1)/p) or (i+1)*delay /p
 //
-fxdelay(n, d, f, fa) = par(i, n, overlappedDoubleDelay21s(dur(d, i, n, fa), f));
-sindelay(n, d, f, fa) = _ <: si.bus(n) : fxdelay(n, d, f, fa);
+fxdecorrelation(n, d, f, fa) = par(i, n, overlappedDoubleDelay21s(dur(d, i, n, fa), f));
+sindecorrelation(n, d, f, fa) = _ <: si.bus(n) : fxdecorrelation(n, d, f, fa);
 //
