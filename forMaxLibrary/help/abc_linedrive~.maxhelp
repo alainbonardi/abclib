@@ -92,8 +92,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 621.0, 352.0, 125.0, 22.0 ],
-					"text" : "/linedrive/expcurve $1"
+					"patching_rect" : [ 621.0, 352.0, 74.0, 22.0 ],
+					"text" : "expcurve $1"
 				}
 
 			}
@@ -274,8 +274,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 275.0, 323.0, 125.0, 22.0 ],
-					"text" : "/linedrive/expcurve $1"
+					"patching_rect" : [ 275.0, 323.0, 74.0, 22.0 ],
+					"text" : "expcurve $1"
 				}
 
 			}
@@ -286,8 +286,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 139.0, 323.0, 133.0, 22.0 ],
-					"text" : "/linedrive/outputmax $1"
+					"patching_rect" : [ 139.0, 323.0, 81.0, 22.0 ],
+					"text" : "outputmax $1"
 				}
 
 			}
@@ -394,7 +394,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 388.5, 397.0, 124.0, 127.0 ],
+					"patching_rect" : [ 388.5, 397.0, 127.0, 127.0 ],
 					"text" : "abc_linedrive~ converts a signal between 0 and 127 to a signal between 0 and outputmax following an exponential profile to be defined by the expcurve parameter"
 				}
 
