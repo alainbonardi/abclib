@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 625.0, 418.0, 1733.0, 746.0 ],
+		"rect" : [ 897.0, 536.0, 1733.0, 746.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,12 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-84",
-					"linecount" : 14,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 648.75, 83.0, 358.0, 194.0 ],
-					"text" : "abc_2d_syn_delay1~, abc_2d_syn_delay2~, ... objects generate spatial delayed components in ambisonic from one mono signal.\nabc_2d_fx_delay1~, abc_2d_fx_delay2~, ... objects apply delays to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delays are equally spread between deltime/N and deltime which the maximum delay in milliseconds (H0 => deltime/N, H-1 & H1 => 2*deltime/N, etc., H-N & HN => deltime).\nWindow is the duration in milliseconds of the interpolation between two values of delay without any click.\nThe feedback (between 0 and 1) provides a possibiity of reinjection on the P delay lines."
+					"patching_rect" : [ 607.75, 60.0, 358.0, 234.0 ],
+					"text" : "abc_2d_syn_delay1~, abc_2d_syn_delay2~, ... objects generate spatial delayed components in ambisonic from one mono signal.\nabc_2d_fx_delay1~, abc_2d_fx_delay2~, ... objects apply delays to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delays are equally spread between deltime/N and deltime which the maximum delay in milliseconds (H0 => deltime/N, H-1 & H1 => 2*deltime/N, etc., H-N & HN => deltime).\ndeltime is the maximum delay in milliseconds of the upper spatial component (defaut value 100, minimum 2, maximum 10000)\nWindow is the duration in milliseconds of the interpolation between two values of delay without any click (default value 400, minimum 10, maximum 1000).\nThe feedback (between 0 and 1) provides a possibiity of reinjection on the P delay lines."
 				}
 
 			}
@@ -2192,8 +2192,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

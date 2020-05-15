@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 525.0, 448.0, 1732.0, 754.0 ],
+		"rect" : [ 707.0, 91.0, 1732.0, 754.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -430,8 +430,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -482,12 +482,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-84",
-					"linecount" : 16,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 795.0, 42.5, 361.0, 221.0 ],
-					"text" : "abc_2d_syn_decorrelation1~, abc_2d_syn_decorrelation2~, ... objects generate spatial decorrelated components in ambisonic from one mono signal.\nabc_2d_fx_decorrelated1~, abc_2d_fx_decorrelated2~, ... objects apply decorrelation to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delay lines are driven by a 'factor' parameter between 0 and 1. The ith (i between 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter is compared to 1-(i+1)/P. If it is greater than this threshold the delay is (i+1)*delay/P, else the delay is 0.\ndelay is the maximum duration in samples of the delays (by default it is 44100)\nfactor (between 0 and 1) is a control parameter that 'opens' the delay lines when increasing."
+					"patching_rect" : [ 795.0, 42.5, 361.0, 234.0 ],
+					"text" : "abc_2d_syn_decorrelation1~, abc_2d_syn_decorrelation2~, ... objects generate spatial decorrelated components in ambisonic from one mono signal.\nabc_2d_fx_decorrelated1~, abc_2d_fx_decorrelated2~, ... objects apply decorrelation to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delay lines are driven by a 'factor' parameter between 0 and 1. The ith (i between 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter is compared to 1-(i+1)/P. If it is greater than this threshold the delay is (i+1)*delay/P, else the delay is 0.\ndelay is the maximum duration in samples of the delays (by default it is 44100, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)\nfactor (between 0 and 1) is a control parameter that 'opens' the delay lines when increasing."
 				}
 
 			}
@@ -2467,8 +2467,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
