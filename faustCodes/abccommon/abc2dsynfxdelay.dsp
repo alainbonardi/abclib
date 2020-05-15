@@ -37,6 +37,9 @@ feedback = hslider("v:synfxdelay/feedback", 0, 0, 1, 0.001) :  si.smoo;
 //
 durToSamp(d, i, p) = d * 2 / (p+1) * (1 + int((i+1)/2)) * 0.001 * ma.SR;
 //
-fxdelay(n, durmax, f, fd) = par(i, n, fdOverlappedDoubleDelay21s(durToSamp(durmax, i, n), f, fd));
+//Double overlapped delays with a maximum capacity of storage of 524288 samples, 
+//which is roughly 10,92 seconds at 48Khz
+//
+fxdelay(n, durmax, f, fd) = par(i, n, fdOverlappedDoubleDelay(durToSamp(durmax, i, n), 524288, f, fd));
 sindelay(n, durmax, f, fd) = _ <: si.bus(n) : fxdelay(n, durmax, f, fd);
 //

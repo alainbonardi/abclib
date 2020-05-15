@@ -33,7 +33,7 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 44100, 10, maxSampSize, 1);
+delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 44100, 10, 262144, 1);
 window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
 winfreq = 1000. / window;
 factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
@@ -45,6 +45,9 @@ factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 //
 dur(d, i, p, fa) = int((fa >= 1 - (i+1) / p) * (i+1) * d / p); //the delay is either 0 (when factor fa < 1-(i+1)/p) or (i+1)*delay /p
 //
-fxdecorrelation(n, d, f, fa) = par(i, n, overlappedDoubleDelay21s(dur(d, i, n, fa), f));
+//Double overlapped delays with a capacity of storage of 262144 samples
+//which is roughly 5,46 seconds at 48 KHz
+//
+fxdecorrelation(n, d, f, fa) = par(i, n, overlappedDoubleDelay(dur(d, i, n, fa), 262144, f));
 sindecorrelation(n, d, f, fa) = _ <: si.bus(n) : fxdecorrelation(n, d, f, fa);
 //

@@ -21,9 +21,9 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-grainsize = hslider("v:synfxgrain/grainsize [unit:msec]", 400, 10, 5000, 1);
+grainsize = hslider("v:synfxgrain/grainsize [unit:msec]", 400, 2, 3000, 1);
 grainfreq = 1000. / grainsize;
-deltime = hslider("v:synfxgrain/deltime [unit:msec]", 100, 2, 10000, 0.01);
+deltime = hslider("v:synfxgrain/deltime [unit:msec]", 100, 2, 5000, 0.01);
 feedback = hslider("v:synfxgrain/feedback", 0, 0, 1, 0.001) :  si.smoo;
 rarefaction = hslider("v:synfxgrain/rarefaction", 0.5, 0, 1, 0.001);
 //

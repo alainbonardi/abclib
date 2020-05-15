@@ -33,9 +33,9 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-grainsize = hslider("v:synfxgrain/grainsize [unit:msec]", 400, 10, 5000, 1);
+grainsize = hslider("v:synfxgrain/grainsize [unit:msec]", 400, 2, 3000, 1);
 grainfreq = 1000. / grainsize;
-deltime = hslider("v:synfxgrain/deltime [unit:msec]", 100, 2, 10000, 0.01);
+deltime = hslider("v:synfxgrain/deltime [unit:msec]", 100, 2, 5000, 0.01);
 feedback = hslider("v:synfxgrain/feedback", 0, 0, 1, 0.001) :  si.smoo;
 rarefaction = hslider("v:synfxgrain/rarefaction", 0.5, 0, 1, 0.001);
 //
@@ -77,19 +77,18 @@ sinusEnvelop(phase) = s1 + d * (s2 - s1)
 			s2 = rdtable(tablesize, sinustable, i2);
 };
 //
-maxSampSize = 1048576; //roughly a capacity of 21,84 sec of delay at sampling rate = 48KHz//
-//
 //--------------------------------------------------------------------------------------//
 //GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
 //USES A COSINUS ENVELOP
 //--------------------------------------------------------------------------------------//
 //
-granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(maxSampSize, _)) : *
+granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
 	with {
 			//gs is the grain size in milliseconds//
 			//d is the max delay in milliseconds//
 			//s is the rarefaction between 0 and 1//
 			//f is the frequency of the grain
+			//the capacity of storage of the delay line is 524288 which is roughly 5,46 sec of delay at 48KHz
 			f = 1000. / gs;
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
