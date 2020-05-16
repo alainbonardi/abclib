@@ -1,6 +1,8 @@
 //
 import("stdfaust.lib");
 //
+//uses abcdbcontrol.dsp
+//
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS: POSITIONS OF THE LOUDSPEAKERS IN DEGREES (anticlockwise)
 //--------------------------------------------------------------------------------------//

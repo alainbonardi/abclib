@@ -1,3 +1,15 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------------abclib----------------------------------------//
+//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
+//
+//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//--------------------------------------------------------------------------------------//
+//
+declare author "Alain Bonardi";
+declare licence "GPLv3";
+declare name "abc_soundgrain";
 //
 import("stdfaust.lib");
 //
@@ -14497,3 +14509,67 @@ rainstickSamples = waveform { -0.0005493, 0.0080566, 0.0126953, 0.0058899, 0.000
  0.0000000, 0.0000000,-0.0000305, 0.0000000, 0.0000610,-0.0000610, 0.0000305,-0.0000305, 0.0000305,-0.0000305,
  0.0000610,-0.0000610, 0.0000000, 0.0000305,-0.0000305, 0.0000610,-0.0000916, 0.0000916};
 //
+//--------------------------------------------------------------------------------------//
+// CONVERSION DB=>LINEAR
+//--------------------------------------------------------------------------------------//
+dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+//
+//--------------------------------------------------------------------------------------//
+//CONTROL PARAMETER: GAIN IN DB
+//--------------------------------------------------------------------------------------//
+dbtogain = si.smoo : dbcontrol;
+//
+//
+//--------------------------------------------------------------------------------------//
+//PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION
+//--------------------------------------------------------------------------------------//
+Player(f0, mySamp, mySampNum) = myPlayer with {
+	zeroToOnePhase =  os.phasor(1, f0) : ma.decimal; 
+	myIndex = zeroToOnePhase * float(mySampNum); 
+	i1 = int(myIndex);
+	i2 = (i1+1) % int(mySampNum);
+	d = ma.decimal(myIndex);
+	s1 = (mySamp, i1) : (+(1), _, _) : rdtable;
+	s2 = (mySamp, i2) : (+(1), _, _) : rdtable;
+	myPlayer = s1 + d * (s2 - s1);
+};
+//
+//--------------------------------------------------------------------------------------//
+//GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
+//USES A COSINUS ENVELOP
+//--------------------------------------------------------------------------------------//
+//
+granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
+	with {
+			//gs is the grain size in milliseconds//
+			//d is the max delay in milliseconds//
+			//s is the rarefaction between 0 and 1//
+			//the capacity of storage of the delay line is 524288 which is roughly 5,46 sec of delay at 48KHz
+			f = 1000. / gs; //f is the frequency of the grain
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			randTest = (_, (s : *(2) : -(1))) : >;
+			factor = randTest : ba.sAndH(th);
+			env = ((ramp : *(0.5) : sinusEnvelop), _) : *(factor);
+			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : ba.sAndH(th);
+		};		 
+//
+//--------------------------------------------------------------------------------------//
+// SINUS ENVELOPE
+//--------------------------------------------------------------------------------------//
+//
+tablesize = 1 << 16;
+sinustable = os.sinwaveform(tablesize);
+//
+sinusEnvelop(phase) = s1 + d * (s2 - s1)
+	with {
+			zeroToOnePhase = phase : ma.decimal;
+			myIndex = zeroToOnePhase * float(tablesize);
+			i1 = int(myIndex);
+			d = ma.decimal(myIndex);
+			i2 = (i1+1) % int(tablesize);
+			s1 = rdtable(tablesize, sinustable, i1);
+			s2 = rdtable(tablesize, sinustable, i2);
+};
+//
+process = soundgrain(freqmult, origFreq, rainstickSamples, rainstickNsamp, gain);

@@ -1,6 +1,8 @@
 //
 import("stdfaust.lib");
 //
+//uses abcplayer.dsp and abclines.dsp
+//
 mySamplesNum = 512;
 //
 //x coordinates for a square//
