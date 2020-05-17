@@ -64,8 +64,10 @@ soundcoat(n, fund, f) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) 
 //
 rainstickNsamp = 144408;
 origFreq = ma.SR / rainstickNsamp;
-soundgrain(fmult, ofreq, mySamp, numSamp, g) = (no.noise, Player((fmult*ofreq), mySamp, numSamp)) : (granulator(20, 5000, 0) ~ (*(0.99))) : *(g) ; //
-//
+soundgrain(fmult, ofreq, mySamp, numSamp, g) = Player((fmult*ofreq), mySamp, numSamp) : (((no.multinoise(2), ((_, _) : +)) : p : granulator(20, 5000, 0)) ~ (*(1.))) : *(g)
+	with {
+			p(a, b, c) = (a, c, b);
+};
 //
 rainstickSamples = waveform { -0.0005493, 0.0080566, 0.0126953, 0.0058899, 0.0000610, 0.0021362, 0.0027466,-0.0027771,-0.0026245, 0.0052185,
  0.0080872, 0.0042114, 0.0036316, 0.0037231,-0.0002441,-0.0014038, 0.0015869, 0.0058899, 0.0054626, 0.0010986,
