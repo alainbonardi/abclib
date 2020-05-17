@@ -894,7 +894,7 @@
 					"id" : "obj-31",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_granu_noise.maxpat",
+					"name" : "abc_env_noise.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -1548,7 +1548,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_granu_noise.maxpat",
+				"name" : "abc_env_noise.maxpat",
 				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",

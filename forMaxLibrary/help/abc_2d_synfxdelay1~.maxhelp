@@ -280,7 +280,7 @@
 					"id" : "obj-70",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_granu_noise.maxpat",
+					"name" : "abc_env_noise.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -782,7 +782,7 @@
 					"id" : "obj-6",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_granu_noise.maxpat",
+					"name" : "abc_env_noise.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -2098,7 +2098,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_granu_noise.maxpat",
+				"name" : "abc_env_noise.maxpat",
 				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",
@@ -2186,8 +2186,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

@@ -339,8 +339,8 @@
 					"id" : "obj-16",
 					"maxclass" : "newobj",
 					"numinlets" : 15,
-					"numoutlets" : 15,
-					"outlettype" : [ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" ],
+					"numoutlets" : 16,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 892.571442000000047, 292.0, 271.023312653057928, 22.0 ],
 					"text" : "abc_randenv15~"
 				}
@@ -454,8 +454,8 @@
 					"id" : "obj-45",
 					"maxclass" : "newobj",
 					"numinlets" : 15,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "signal", "signal", "list" ],
 					"patching_rect" : [ 1215.0, 452.0, 166.0, 22.0 ],
 					"text" : "abc_2d_scope7~"
 				}
@@ -533,8 +533,8 @@
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "signal", "signal", "list" ],
 					"patching_rect" : [ 28.0, 524.5, 100.0, 22.0 ],
 					"text" : "abc_2d_scope1~"
 				}
@@ -574,7 +574,7 @@
 					"id" : "obj-13",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_granu_noise.maxpat",
+					"name" : "abc_env_noise.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -1607,7 +1607,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_granu_noise.maxpat",
+				"name" : "abc_env_noise.maxpat",
 				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",
@@ -1643,7 +1643,19 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "abc_2d_scope1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_2d_decoder7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_scope7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_randenv15~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -1669,8 +1681,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
