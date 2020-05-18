@@ -36,6 +36,7 @@ chmod +x synfxgrain2dFaustCodeGeneration.sh
 chmod +x synfxdecorrelation2dFaustCodeGeneration.sh
 chmod +x synfxringmod2dFaustCodeGeneration.sh
 chmod +x synthetizersFaustCodeGeneration.sh
+chmod +x fxmirror2dFaustCodeGeneration.sh
 #runs the various scripts to generated DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $1
 ./chowningMultipansFaustCodeGeneration.sh $1
@@ -55,3 +56,4 @@ chmod +x synthetizersFaustCodeGeneration.sh
 ./synfxdecorrelation2dFaustCodeGeneration.sh $1
 ./synfxringmod2dFaustCodeGeneration.sh $1
 ./synthetizersFaustCodeGeneration.sh
+./fxmirror2dFaustCodeGeneration.sh $1
