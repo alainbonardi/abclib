@@ -9,7 +9,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_2d_encoder1";
+declare name "abc_2d_rotate2";
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC ENCODERS
@@ -23,19 +23,19 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-rotfreq = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
-rotphase = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
-returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
+rotfreq = hslider("v:rotate/speed [unit:s-1]", 0, -100, 100, 0.001);
+rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
+returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 //
 //--------------------------------------------------------------------------------------//
 //SELECTING AN ENCODER FROM HO FAUST LIBRARY
 //--------------------------------------------------------------------------------------//
-myEncoder(sig, angle) = ho.encoder(ao, sig, angle);//at ambisonic order ao.             //
+myRotate(angle) = ho.rotate(ao, angle);//at ambisonic order ao.             //
 //
 //--------------------------------------------------------------------------------------//
 //SENDING THE PHASED ANGLE FUNCTION TO THE ENCODER
 //--------------------------------------------------------------------------------------//
-freqPhaseEncoder(f, p, dt) = (_, rotationOrStaticAngle(f, p, dt)) : myEncoder;
+freqPhaseRotate(f, p, dt) = myRotate(rotationOrStaticAngle(f, p, dt));
 //
 //--------------------------------------------------------------------------------------//
 //STATIC OR ROTATION PHASE BETWEEN 0 AND 1
@@ -52,5 +52,5 @@ with {
 //--------------------------------------------------------------------------------------//
 rotationOrStaticAngle(f, p, dt) = rotationOrStaticPhase(f, p, dt) * 2 * ma.PI;
 //
-ao = 1;//ambisonic order//
-process = freqPhaseEncoder(rotfreq, rotphase, returntime);
+ao = 2;//ambisonic order//
+process = freqPhaseRotate(rotfreq, rotphase, returntime);
