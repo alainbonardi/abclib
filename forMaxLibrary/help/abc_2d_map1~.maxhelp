@@ -404,7 +404,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_mapN~", "@obj-desc", "Ambisonic", "maps" ],
+					"args" : [ "@obj-name", "abc_2d_mapN~", "@obj-desc", "Ambisonic", "maps" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,

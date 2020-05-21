@@ -623,7 +623,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_decoderN~", "@obj-desc", "Ambisonic", "decoders", "at", "orders", 1, "(4", "LS),", 2, "(6", "LS),", 3, "(8LS)..." ],
+					"args" : [ "@obj-name", "abc_2d_decoderN~", "@obj-desc", "Ambisonic", "decoders", "at", "orders", 1, "(4", "LS),", 2, "(6", "LS),", 3, "(8LS)..." ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,

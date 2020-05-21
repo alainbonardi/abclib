@@ -555,7 +555,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_randomenvN~", "@obj-desc", "Random", "envelopes" ],
+					"args" : [ "@obj-name", "abc_randenvN~", "@obj-desc", "Random", "envelopes" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
