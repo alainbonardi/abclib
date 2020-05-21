@@ -9,7 +9,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_2d_fx_mirror3";
+declare name "abc_2d_mirror7";
 //
 //--------------------------------------------------------------------------------------//
 //FX MIRROR APPLIES A FACTOR AS A WEIGHT TO THE NEGATIVE HARMONICS
@@ -46,6 +46,6 @@ factor = hslider("v:fxmirror/factor", 1, -1, 1, 1);
 //(with 2*N+1) components
 //--------------------------------------------------------------------------------------//
 //
-fxmirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
+mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 //
-process = fxmirror(3, factor);
+process = mirror(7, factor);
