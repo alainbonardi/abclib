@@ -37,8 +37,8 @@ fmult(ind) = nentry("v:substractsynth/h:partials/v:fmults/fmult%2ind", (ind+1), 
 //
 //defined as a multiple oscillator with frequencies that are specific multiples of a fondamental
 //with amplitude and beat setting
-//--------------------------------------------------------------------------------------//
-multisubstractsynth(n) = no.noise <: par(i, n, fi.resonbp(f0 * fmult(i), filterQ, filterG) : *(amp(i)) : *(gain)) ;
+//--------------------------------------------------------------------------------------// 
+multisubstractsynth(n) = par(i, n, fi.resonbp(f0 * fmult(i), filterQ, filterG) : *(amp(i)) : *(gain)) ;
 //
 //
 //--------------------------------------------------------------------------------------//
