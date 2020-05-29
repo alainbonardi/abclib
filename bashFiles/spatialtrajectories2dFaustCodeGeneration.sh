@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_2D_SPATIALTRAJECTORIES FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_2d_spatialtrajectories folder
 rm -R abc_2d_spatialtrajectories
 mkdir abc_2d_spatialtrajectories
 cd abc_2d_spatialtrajectories/

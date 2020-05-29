@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_SUBSTRACTSYNTH FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_substractsynth folder
 rm -R abc_substractsynth
 mkdir abc_substractsynth
 cd abc_substractsynth/

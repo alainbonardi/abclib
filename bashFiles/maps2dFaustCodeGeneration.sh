@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_2D_MAP FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_2d_maps folder
 rm -R abc_2d_maps
 mkdir abc_2d_maps
 cd abc_2d_maps/

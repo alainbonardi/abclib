@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_SYNTHETIZERS FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_synthetizers folder
 rm -R abc_synthetizers
 mkdir abc_synthetizers
 cd abc_synthetizers/

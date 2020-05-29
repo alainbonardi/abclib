@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 719.0, 335.0, 1254.0, 480.0 ],
+		"rect" : [ 839.0, 599.0, 1254.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"args" : [ 0 ],
@@ -313,7 +314,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 504.5, 249.0, 171.0, 127.0 ],
-					"text" : "abc_chopan1~ to abc_chopan16~ objects enable multichannel panning using Chowning model to have a constant acoustic energy and avoiding feeling a loss in the center of the scene (contrary to linear panning)\n"
+					"text" : "abc_chopan1~, abc_chopan2~, etc. objects enable multichannel panning using Chowning model to have a constant acoustic energy and avoiding feeling a loss in the center of the scene (contrary to linear panning)\n"
 				}
 
 			}
@@ -854,8 +855,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

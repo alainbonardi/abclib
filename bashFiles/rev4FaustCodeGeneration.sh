@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_REV4 FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_rev4 folder
 rm -R abc_rev4
 mkdir abc_rev4
 cd abc_rev4/

@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_2D_SCOPES FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_2d_scopes folder
 rm -R abc_2d_scopes
 mkdir abc_2d_scopes
 cd abc_2d_scopes/

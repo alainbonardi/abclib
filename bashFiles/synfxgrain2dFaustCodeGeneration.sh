@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_2D_SYN_GRAINS FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_2d_syn_delays folder
+#deletes the previous abc_2d_syn_grains folder
 rm -R abc_2d_syn_grains
 mkdir abc_2d_syn_grains
 cd abc_2d_syn_grains/

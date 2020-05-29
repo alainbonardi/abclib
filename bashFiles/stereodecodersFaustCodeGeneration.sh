@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_STEREODECODERS FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_stereodecoders folder
 rm -R abc_stereodecoders
 mkdir abc_stereodecoders
 cd abc_stereodecoders/

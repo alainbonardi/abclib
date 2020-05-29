@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_2D_ENCODERS FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_2d_encoders folder
 rm -R abc_2d_encoders
 mkdir abc_2d_encoders
 cd abc_2d_encoders/

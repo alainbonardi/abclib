@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_2D_SYN_RINGMODS FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_2d_syn_delays folder
+#deletes the previous abc_2d_syn_ringmods folder
 rm -R abc_2d_syn_ringmods
 mkdir abc_2d_syn_ringmods
 cd abc_2d_syn_ringmods/

@@ -39,6 +39,7 @@ chmod +x synthetizersFaustCodeGeneration.sh
 chmod +x mirror2dFaustCodeGeneration.sh
 chmod +x rotate2dFaustCodeGeneration.sh
 chmod +x multinoiseFaustCodeGeneration.sh
+chmod +x optim2dFaustCodeGeneration.sh
 #runs the various scripts to generated DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $1
 ./chowningMultipansFaustCodeGeneration.sh $1
@@ -61,3 +62,4 @@ chmod +x multinoiseFaustCodeGeneration.sh
 ./mirror2dFaustCodeGeneration.sh $1
 ./rotate2dFaustCodeGeneration.sh $1
 ./multinoiseFaustCodeGeneration.sh $1
+./optim2dFaustCodeGeneration.sh $1

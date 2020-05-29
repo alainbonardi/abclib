@@ -1,7 +1,7 @@
 #!/bin/bash
 #ABC_MULTINOISE FAUST CODE GENERATION
 cd ../faustCodes/
-#deletes the previous abc_addsynth folder
+#deletes the previous abc_multinoise folder
 rm -R abc_multinoise
 mkdir abc_multinoise
 cd abc_multinoise/

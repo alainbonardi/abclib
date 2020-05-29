@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-58",
@@ -459,7 +460,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 387.5, 249.0, 241.0, 181.0 ],
-					"text" : "abc_encoder1~ to abc_encoder7~ objects enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n- speed is the rotation speed in turns by second\n- angle is the default angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position in the rotation when the speed is more than 0"
+					"text" : "abc_encoder1~, abc_encoder2~, etc. objects enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n- speed is the rotation speed in turns by second\n- angle is the default angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position in the rotation when the speed is more than 0"
 				}
 
 			}
@@ -1499,8 +1500,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
