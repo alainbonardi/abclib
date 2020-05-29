@@ -1,2 +1,2 @@
 # abclib
-Faust code for mixed music
+Faust code for ambisonic and multi-channel mixed music
