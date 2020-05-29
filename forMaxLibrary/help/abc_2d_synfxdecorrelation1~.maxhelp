@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-8",
@@ -81,8 +82,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 476.592883999999913, 341.5, 92.0, 22.0 ],
-					"text" : "abc_randenv3~"
+					"patching_rect" : [ 476.592883999999913, 341.5, 110.0, 22.0 ],
+					"text" : "abc_cosrandenv3~"
 				}
 
 			}
@@ -202,7 +203,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -235,6 +236,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-9",
@@ -2431,7 +2433,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv3~.mxo",
+				"name" : "abc_cosrandenv3~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

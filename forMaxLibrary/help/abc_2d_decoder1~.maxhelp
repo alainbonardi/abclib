@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-34",
@@ -341,8 +342,8 @@
 					"numinlets" : 15,
 					"numoutlets" : 16,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 892.571442000000047, 292.0, 271.023312653057928, 22.0 ],
-					"text" : "abc_randenv15~"
+					"patching_rect" : [ 892.571442000000047, 292.0, 271.023312653058497, 22.0 ],
+					"text" : "abc_cosrandenv15~"
 				}
 
 			}
@@ -1655,7 +1656,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv15~.mxo",
+				"name" : "abc_cosrandenv15~.mxo",
 				"type" : "iLaX"
 			}
  ],

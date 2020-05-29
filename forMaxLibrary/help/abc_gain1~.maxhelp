@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-8",
@@ -149,8 +150,8 @@
 					"numinlets" : 16,
 					"numoutlets" : 17,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 497.057142857142765, 235.0, 199.205714285714237, 22.0 ],
-					"text" : "abc_randenv16~"
+					"patching_rect" : [ 497.057142857142765, 235.0, 199.197868015582287, 22.0 ],
+					"text" : "abc_cosrandenv16~"
 				}
 
 			}
@@ -158,7 +159,7 @@
 				"box" : 				{
 					"id" : "obj-15",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 16,
 					"numoutlets" : 17,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 496.947295075295074, 172.5, 211.336599538732798, 22.0 ],
@@ -787,7 +788,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv16~.mxo",
+				"name" : "abc_cosrandenv16~.mxo",
 				"type" : "iLaX"
 			}
  ],

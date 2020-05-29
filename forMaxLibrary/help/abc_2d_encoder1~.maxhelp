@@ -100,8 +100,8 @@
 					"numinlets" : 5,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 686.25, 58.5, 92.0, 22.0 ],
-					"text" : "abc_randenv5~"
+					"patching_rect" : [ 686.25, 58.5, 110.0, 22.0 ],
+					"text" : "abc_cosrandenv5~"
 				}
 
 			}
@@ -112,7 +112,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 685.0, 25.5, 111.8125, 22.0 ],
+					"patching_rect" : [ 685.0, 25.5, 135.874999999999886, 22.0 ],
 					"text" : "abc_addsynth5~"
 				}
 
@@ -459,7 +459,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 387.5, 249.0, 241.0, 181.0 ],
+					"patching_rect" : [ 387.5, 249.0, 242.0, 181.0 ],
 					"text" : "abc_encoder1~, abc_encoder2~, etc. objects enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n- speed is the rotation speed in turns by second\n- angle is the default angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position in the rotation when the speed is more than 0"
 				}
 
@@ -1474,7 +1474,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv5~.mxo",
+				"name" : "abc_cosrandenv5~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -1500,8 +1500,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

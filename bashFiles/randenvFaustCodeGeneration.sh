@@ -25,14 +25,14 @@ headerfilename="../../bashFiles/faustCodeHeader.txt"
 associatedcommonfilename="../abccommon/abcrandenv.dsp"
 for i in `seq 1 $Nch`
 do
-    sortie="abc_randenv$i.dsp"
+    sortie="abc_cosrandenv$i.dsp"
 #writes the header
     while IFS= read -r line
     do
         echo "$line" >> $sortie
     done <"$headerfilename"
 #writes the declared name
-echo "declare name \"abc_randenv$i\";" >> $sortie
+echo "declare name \"abc_cosrandenv$i\";" >> $sortie
 #writes the associated common file
     while IFS= read -r line
     do

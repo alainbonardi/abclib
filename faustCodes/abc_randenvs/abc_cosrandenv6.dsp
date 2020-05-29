@@ -9,7 +9,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_randenv6";
+declare name "abc_cosrandenv6";
 //
 import("stdfaust.lib");
 //

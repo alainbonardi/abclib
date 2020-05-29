@@ -164,8 +164,8 @@
 					"numinlets" : 7,
 					"numoutlets" : 8,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 933.0, 182.0, 110.5, 22.0 ],
-					"text" : "abc_randenv7~"
+					"patching_rect" : [ 933.0, 182.0, 110.714285714285779, 22.0 ],
+					"text" : "abc_cosrandenv7~"
 				}
 
 			}
@@ -350,7 +350,7 @@
 					"numoutlets" : 12,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 111.0, 278.5, 140.487603305785342, 22.0 ],
-					"text" : "abc_randenv11~"
+					"text" : "abc_cosrandenv11~"
 				}
 
 			}
@@ -1091,7 +1091,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv11~.mxo",
+				"name" : "abc_cosrandenv11~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1107,7 +1107,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv7~.mxo",
+				"name" : "abc_cosrandenv7~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1141,8 +1141,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

@@ -904,8 +904,8 @@
 					"numinlets" : 11,
 					"numoutlets" : 12,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 345.0, 505.5, 150.818181818181813, 22.0 ],
-					"text" : "abc_randenv11~"
+					"patching_rect" : [ 345.0, 505.5, 150.818181818181756, 22.0 ],
+					"text" : "abc_cosrandenv11~"
 				}
 
 			}
@@ -1726,7 +1726,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv11~.mxo",
+				"name" : "abc_cosrandenv11~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1764,8 +1764,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

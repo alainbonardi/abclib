@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"args" : [ 0 ],
@@ -410,8 +411,8 @@
 					"numinlets" : 5,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 827.25, 78.0, 92.0, 22.0 ],
-					"text" : "abc_randenv5~"
+					"patching_rect" : [ 827.25, 78.0, 110.0, 22.0 ],
+					"text" : "abc_cosrandenv5~"
 				}
 
 			}
@@ -422,7 +423,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 826.0, 45.0, 111.8125, 22.0 ],
+					"patching_rect" : [ 826.0, 45.0, 134.3125, 22.0 ],
 					"text" : "abc_addsynth5~"
 				}
 
@@ -1909,7 +1910,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv5~.mxo",
+				"name" : "abc_cosrandenv5~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1947,8 +1948,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

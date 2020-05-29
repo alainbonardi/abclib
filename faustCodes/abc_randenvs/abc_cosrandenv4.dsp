@@ -9,7 +9,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_randenv13";
+declare name "abc_cosrandenv4";
 //
 import("stdfaust.lib");
 //
@@ -66,4 +66,4 @@ mTShorteningEnv(n, f, s) = no.multinoise(n) : par(i, n, shorteningEnv(f, s));
 //
 mTShortening(n, f, s) = par(i, n, _), mTShorteningEnv(n, f, s) : inputSort(n) : par(i, n, *);
 //
-process = mTShortening(13, freq, shortening);
+process = mTShortening(4, freq, shortening);

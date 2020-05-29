@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 777.0, 542.0, 1394.0, 681.0 ],
+		"rect" : [ 365.0, 539.0, 1482.0, 701.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,91 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-37",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 530.071441999999934, 589.0, 122.0, 33.0 ],
+					"text" : "shape of the cosinus random envelope"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-31",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 604.0, 353.0, 73.0, 22.0 ],
+					"text" : "loadmess 5."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-33",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 604.0, 385.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-34",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 604.0, 414.0, 46.0, 22.0 ],
+					"text" : "freq $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-30",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 550.571441999999934, 511.0, 81.0, 76.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 550.571441999999934, 419.0, 41.0, 22.0 ],
+					"text" : "sig~ 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 1,
+					"fontsize" : 14.0,
+					"id" : "obj-28",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "list" ],
+					"patching_rect" : [ 550.571441999999934, 459.0, 135.0, 24.0 ],
+					"text" : "abc_cosrandenv1~"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-21",
 					"maxclass" : "newobj",
@@ -387,8 +472,8 @@
 					"numinlets" : 15,
 					"numoutlets" : 16,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 810.571442000000047, 227.0, 330.0, 24.0 ],
-					"text" : "abc_randenv15~"
+					"patching_rect" : [ 810.571442000000047, 227.0, 330.000000000000114, 24.0 ],
+					"text" : "abc_cosrandenv15~"
 				}
 
 			}
@@ -562,13 +647,13 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 470.571441999999934, 87.0, 264.0, 194.0 ],
-					"text" : "abc_randenv1~, abc_randenv2~, etc. objects \nprovide multichannel envelopes based on cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
+					"text" : "abc_cosrandenv1~, abc_cosrandenv2~, etc. objects provide multichannel envelopes based on cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_randenvN~", "@obj-desc", "Random", "envelopes" ],
+					"args" : [ "@obj-name", "abc_cosrandenvN~", "@obj-desc", "Cosinus", "random", "envelopes" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -596,8 +681,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 141.5, 302.5, 178.000000000000057, 24.0 ],
-					"text" : "abc_randenv3~",
+					"patching_rect" : [ 141.5, 302.5, 178.000000000000114, 24.0 ],
+					"text" : "abc_cosrandenv3~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
 					"varname" : "faustgen-3857d0"
 				}
@@ -609,7 +694,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 569.571441999999934, 335.0, 45.0, 45.0 ]
+					"patching_rect" : [ 569.571441999999934, 292.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -1144,9 +1229,45 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"source" : [ "obj-31", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
 					"midpoints" : [ 1142.5, 206.5, 820.071442000000047, 206.5 ],
 					"source" : [ "obj-32", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-34", 0 ],
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 0 ],
+					"midpoints" : [ 613.5, 447.0, 560.071441999999934, 447.0 ],
+					"source" : [ "obj-34", 0 ]
 				}
 
 			}
@@ -1341,7 +1462,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_randenv3~.mxo",
+				"name" : "abc_cosrandenv3~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1357,7 +1478,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv15~.mxo",
+				"name" : "abc_cosrandenv15~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1366,6 +1487,10 @@
 			}
 , 			{
 				"name" : "abc_2d_decoder1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_cosrandenv1~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -1391,8 +1516,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
