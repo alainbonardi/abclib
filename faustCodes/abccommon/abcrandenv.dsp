@@ -20,7 +20,6 @@ sinusEnvelop(phase) = s1 + d * (s2 - s1)
 			i2 = (i1+1) % int(tablesize);
 			s1 = rdtable(tablesize, sinustable, i1);
 			s2 = rdtable(tablesize, sinustable, i2);
-
 };
 //
 //--------------------------------------------------------------------------------------//
