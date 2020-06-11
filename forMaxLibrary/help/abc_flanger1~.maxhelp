@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 951.0, 275.0, 1162.0, 626.0 ],
+		"rect" : [ 183.0, 133.0, 1162.0, 626.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -93,7 +93,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1053.0, 401.0, 69.0, 89.0 ],
-					"presentation_linecount" : 7,
 					"text" : ";\rrate2 100.;\rdepth2 10.;\roffset2 5.;\rfdbk2 0.6;\r"
 				}
 
@@ -229,7 +228,7 @@
 					"format" : 6,
 					"id" : "obj-35",
 					"maxclass" : "flonum",
-					"maximum" : 100.0,
+					"maximum" : 200.0,
 					"minimum" : 0.0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -534,7 +533,7 @@
 					"format" : 6,
 					"id" : "obj-16",
 					"maxclass" : "flonum",
-					"maximum" : 100.0,
+					"maximum" : 200.0,
 					"minimum" : 0.0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
@@ -1210,7 +1209,7 @@
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc",
 				"patcherrelativepath" : "../misc",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1258,8 +1257,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
