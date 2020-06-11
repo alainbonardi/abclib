@@ -15,6 +15,7 @@ associatedcommonfilename5="../abccommon/abclinedrive.dsp"
 utilityfilename5="../abccommon/abcutilities/abclines.dsp"
 associatedcommonfilename6="../abccommon/abcpeakamp.dsp"
 associatedcommonfilename7="../abccommon/abcflanger.dsp"
+utilityfilename7="../abccommon/abcutilities/abcsinenv.dsp"
 #
 #abc_cartopol.dsp
 #
@@ -128,21 +129,3 @@ echo "$line" >> $sortie
 done <"$associatedcommonfilename6"
 echo "//
 process = peakamp(nsamp);" >> $sortie
-#
-#abc_flanger.dsp
-#
-sortie="abc_flanger.dsp"
-#writes the header
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$headerfilename"
-#writes the declared name
-echo "declare name \"abc_flanger\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename7"
-echo "//
-process = myFlanger;" >> $sortie

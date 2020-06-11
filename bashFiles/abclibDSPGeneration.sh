@@ -22,6 +22,7 @@ chmod +x addsynthFaustCodeGeneration.sh
 chmod +x chowningMultipansFaustCodeGeneration.sh
 chmod +x decoders2dFaustCodeGeneration.sh
 chmod +x encoders2dFaustCodeGeneration.sh
+chmod +x flangersFaustCodeGeneration.sh
 chmod +x gainFaustCodeGeneration.sh
 chmod +x maps2dFaustCodeGeneration.sh
 chmod +x miscFaustCodeGeneration.sh
@@ -46,6 +47,7 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./chowningMultipansFaustCodeGeneration.sh $1
 ./decoders2dFaustCodeGeneration.sh $1
 ./encoders2dFaustCodeGeneration.sh $1
+./flangersFaustCodeGeneration.sh $1
 ./gainFaustCodeGeneration.sh $1
 ./maps2dFaustCodeGeneration.sh $1
 ./miscFaustCodeGeneration.sh

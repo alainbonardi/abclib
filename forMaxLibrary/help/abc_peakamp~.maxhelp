@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 401.0, 91.0, 976.0, 684.0 ],
+		"rect" : [ 401.0, 91.0, 954.0, 641.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 758.0, 320.0, 150.0, 60.0 ],
+					"text" : "a simple flanger with a rate controlled by the amplitude given by abc_peakamp~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-49",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -57,7 +69,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 615.498964130878448, 467.289716005325317, 49.0, 22.0 ],
+					"patching_rect" : [ 615.732608795166016, 468.289716005325317, 49.0, 22.0 ],
 					"text" : "tapout~"
 				}
 
@@ -158,7 +170,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 682.111113011837006, 100.629629969596863, 50.0, 22.0 ]
+					"patching_rect" : [ 692.130836486816406, 101.629629969596863, 50.0, 22.0 ]
 				}
 
 			}
@@ -169,7 +181,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 682.111113011837006, 70.629629969596863, 80.0, 22.0 ],
+					"patching_rect" : [ 692.130836486816406, 71.629629969596863, 80.0, 22.0 ],
 					"text" : "loadmess 0.1"
 				}
 
@@ -181,7 +193,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 682.111113011837006, 129.629629969596863, 69.0, 22.0 ],
+					"patching_rect" : [ 692.130836486816406, 130.629629969596863, 69.0, 22.0 ],
 					"text" : "freqmult $1"
 				}
 
@@ -193,7 +205,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 588.111113011837006, 182.129629969596863, 101.0, 22.0 ],
+					"patching_rect" : [ 598.130836486816406, 183.129629969596863, 101.0, 22.0 ],
 					"text" : "abc_soundgrain~"
 				}
 
@@ -214,7 +226,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 588.111113011837006, 80.629629969596863, 74.0, 72.0 ],
+					"patching_rect" : [ 598.130836486816406, 81.629629969596863, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -409,7 +421,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
-					"midpoints" : [ 597.611113011837006, 218.870370864868164, 699.152472257614136, 218.870370864868164 ],
+					"midpoints" : [ 607.630836486816406, 218.870370864868164, 699.152472257614136, 218.870370864868164 ],
 					"order" : 0,
 					"source" : [ "obj-14", 0 ]
 				}
@@ -418,6 +430,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-47", 0 ],
+					"midpoints" : [ 607.630836486816406, 313.279766619205475, 625.232608795166016, 313.279766619205475 ],
 					"order" : 1,
 					"source" : [ "obj-14", 0 ]
 				}
@@ -486,7 +499,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 691.611113011837006, 166.379629969596863, 597.611113011837006, 166.379629969596863 ],
+					"midpoints" : [ 701.630836486816406, 167.379629969596863, 607.630836486816406, 167.379629969596863 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -529,6 +542,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
+					"midpoints" : [ 699.152472257614136, 455.859809637069702, 625.232608795166016, 455.859809637069702 ],
 					"source" : [ "obj-46", 0 ]
 				}
 
@@ -592,29 +606,29 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
