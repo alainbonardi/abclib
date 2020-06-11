@@ -25,6 +25,7 @@ chmod +x encoders2dFaustCodeGeneration.sh
 chmod +x flangersFaustCodeGeneration.sh
 chmod +x gainFaustCodeGeneration.sh
 chmod +x maps2dFaustCodeGeneration.sh
+chmod +x matricesFaustCodeGeneration.sh
 chmod +x miscFaustCodeGeneration.sh
 chmod +x randenvFaustCodeGeneration.sh
 chmod +x rev4FaustCodeGeneration.sh
@@ -50,6 +51,7 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./flangersFaustCodeGeneration.sh $1
 ./gainFaustCodeGeneration.sh $1
 ./maps2dFaustCodeGeneration.sh $1
+./matricesFaustCodeGeneration.sh $1
 ./miscFaustCodeGeneration.sh
 ./randenvFaustCodeGeneration.sh $1
 ./rev4FaustCodeGeneration.sh
