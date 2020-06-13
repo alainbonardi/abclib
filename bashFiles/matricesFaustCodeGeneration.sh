@@ -24,6 +24,7 @@ let "Nch = 2 * $amborder + 2"
 #creates flangers
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 associatedcommonfilename="../abccommon/abcmatrix.dsp"
+utilityfilename1="../abccommon/abcutilities/abclines.dsp"
 for i in `seq 2 $Nch`
 do
     sortie="abc_matrix$i.dsp"
@@ -39,6 +40,11 @@ echo "declare name \"abc_matrix$i\";" >> $sortie
     do
         echo "$line" >> $sortie
     done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
 echo "//
 process = matrix($i, $i);" >> $sortie
 done

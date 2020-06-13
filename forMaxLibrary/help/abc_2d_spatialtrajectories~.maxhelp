@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-80",
@@ -120,7 +121,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -153,13 +154,14 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 111.75, 220.0, 58.0, 22.0 ],
+									"patching_rect" : [ 125.25, 219.0, 58.0, 22.0 ],
 									"text" : "send~ s4"
 								}
 
@@ -170,7 +172,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 93.5, 191.0, 58.0, 22.0 ],
+									"patching_rect" : [ 102.5, 190.0, 58.0, 22.0 ],
 									"text" : "send~ s3"
 								}
 
@@ -181,7 +183,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 75.25, 161.0, 58.0, 22.0 ],
+									"patching_rect" : [ 79.75, 160.0, 58.0, 22.0 ],
 									"text" : "send~ s2"
 								}
 
@@ -204,8 +206,8 @@
 									"numinlets" : 4,
 									"numoutlets" : 5,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 57.0, 74.0, 92.0, 22.0 ],
-									"text" : "abc_randenv4~"
+									"patching_rect" : [ 57.0, 74.0, 110.0, 22.0 ],
+									"text" : "abc_cosrandenv4~"
 								}
 
 							}
@@ -216,7 +218,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 5,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 57.0, 41.0, 116.333333333333314, 22.0 ],
+									"patching_rect" : [ 57.0, 41.0, 140.333333333333314, 22.0 ],
 									"text" : "abc_addsynth4~"
 								}
 
@@ -1138,7 +1140,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 727.0, 154.5, 240.0, 194.0 ],
+					"patching_rect" : [ 727.0, 154.5, 244.0, 194.0 ],
 					"text" : "abc_2d_squaretrajectory~, abc_2d_ztrajectory~,\nabc_2d_squareandztrajectory~,\nabc_2d_randomtrajectory~objects generate 2D trajectories in cartesian coordinates. abc_2d_squaretrajectory~ stands for a square, abc_2d_ztrajectory~ for a Z, abc_2d_squareandztrajectory~ for an interpolation between a square and a Z, abc_2d_randomtrajectory~ for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 				}
 
@@ -1925,36 +1927,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Documents/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2015,7 +2017,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_randenv4~.mxo",
+				"name" : "abc_cosrandenv4~.mxo",
 				"type" : "iLaX"
 			}
  ],
