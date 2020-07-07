@@ -14,8 +14,8 @@ utilityfilename4="../abccommon/abcutilities/abcphasor2pi.dsp"
 associatedcommonfilename5="../abccommon/abclinedrive.dsp"
 utilityfilename5="../abccommon/abcutilities/abclines.dsp"
 associatedcommonfilename6="../abccommon/abcpeakamp.dsp"
-associatedcommonfilename7="../abccommon/abcflanger.dsp"
-utilityfilename7="../abccommon/abcutilities/abcsinenv.dsp"
+associatedcommonfilename7="../abccommon/abcrissetsbell.dsp"
+utilityfilename7="../abccommon/abcutilities/abcdbcontrol.dsp"
 #
 #abc_cartopol.dsp
 #
@@ -129,3 +129,26 @@ echo "$line" >> $sortie
 done <"$associatedcommonfilename6"
 echo "//
 process = peakamp(nsamp);" >> $sortie
+#
+#abc_peakamp.dsp
+#
+sortie="abc_rissetsbell.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_rissetsbell\";" >> $sortie
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename7"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename7"
+echo "//
+process = rissetsbell;" >> $sortie
