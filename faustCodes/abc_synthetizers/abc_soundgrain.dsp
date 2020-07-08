@@ -13,6 +13,14 @@ declare name "abc_soundgrain";
 //
 import("stdfaust.lib");
 //
+//--------------------------------------------------------------------------------------//
+//SYNTHETIZERS
+//INSPIRED BY HOA SYNTHETIZERS BY PIERRE GUILLOT, ELIOTT PARIS AND JULIEN COLAFRANCESCO
+//CICM
+//SOUNDCOAT GENERATES N HARMONIC BANDPASS FILTERS ON A NOISE SOUND
+//SOUNDGRAIN GENERATES A GRANULAR PROCESS ON A RAINSTICK SOUND (ENCLOSED IN THE FAUST CODE)
+//--------------------------------------------------------------------------------------//
+//
 //uses abcdbcontrol.dsp, abcplayer.dsp, abcgranu.dsp, abcsinenv.dsp
 //
 //--------------------------------------------------------------------------------------//

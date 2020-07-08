@@ -12,7 +12,7 @@ declare licence "GPLv3";
 declare name "abc_2d_rotate4";
 //
 //--------------------------------------------------------------------------------------//
-//AMBISONIC ENCODERS
+//AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
 import("stdfaust.lib");

@@ -41,6 +41,8 @@ declare name "abc_2d_syn_decorrelation1";
 //
 import("stdfaust.lib");
 //
+//uses abcsinenv.dsp and abcdoubledelay.dsp
+//
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//

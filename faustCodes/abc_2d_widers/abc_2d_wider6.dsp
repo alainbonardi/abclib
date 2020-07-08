@@ -25,7 +25,7 @@ width = hslider("width", 0, 0, 1, 0.01) : si. smoo;
 //
 //--------------------------------------------------------------------------------------//
 //----------------`wider`-------------------------
-// Can be used to wide the diffusion of a localized sound. The order 
+// Can be used to widen the diffusion of a localized sound. The order 
 // depending signals are weighted and appear in a logarithmic way to 
 // have linear changes.
 //

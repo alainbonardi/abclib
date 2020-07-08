@@ -87,7 +87,7 @@ linRandEnv(f, s) = (_, _) : (randVol, _) : *
 //--------------------------------------------------------------------------------------//
 //
 mTlinRandEnv(n, f, s) = (no.multinoise(n), si.bus(n)) : inputSort(n) : par(i, n, linRandEnv(f,s));
-
+//
 
 //
 process = mTShortening(7, freq, shortening);
