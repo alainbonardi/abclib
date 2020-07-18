@@ -40,6 +40,19 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 3.0, -25.0, 70.0, 22.0 ],
+					"text" : "loadmess 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "",
 					"id" : "obj-15",
 					"index" : 0,
@@ -107,7 +120,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 66.0, 4.0, 50.0, 22.0 ]
+					"patching_rect" : [ 72.0, 4.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -169,7 +182,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 3.0, 4.0, 61.0, 22.0 ],
+					"patching_rect" : [ 3.0, 4.0, 67.0, 22.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_enum" : [ "whole", "half", "quarter", "8th", "16th", "32th", "triplet" ],
@@ -198,7 +211,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 75.5, 207.5, 12.5, 207.5 ],
+					"midpoints" : [ 81.5, 207.5, 12.5, 207.5 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -288,6 +301,14 @@
 					"destination" : [ "obj-8", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-2", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
