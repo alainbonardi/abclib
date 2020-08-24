@@ -30,14 +30,14 @@ utilityfilename3="../abccommon/abcutilities/abcdbcontrol.dsp"
 #starts with parallel delays
 for i in `seq 1 $Nch`
 do
-    sortie="abc_delaypar$i.dsp"
+    sortie="abc_delay$i.dsp"
 #writes the header
     while IFS= read -r line
     do
         echo "$line" >> $sortie
     done <"$headerfilename"
 #writes the declared name
-echo "declare name \"abc_delaypar$i\";" >> $sortie
+echo "declare name \"abc_delay$i\";" >> $sortie
 #writes the associated common file
     while IFS= read -r line
     do

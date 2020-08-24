@@ -9,7 +9,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_delaypar10";
+declare name "abc_delay1";
 //
 import("stdfaust.lib");
 //
@@ -116,4 +116,4 @@ dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
 dbtogain = si.smoo : dbcontrol;
 //
 //
-process = delparset(10);
+process = delparset(1);

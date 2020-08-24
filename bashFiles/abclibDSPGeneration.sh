@@ -29,6 +29,7 @@ chmod +x matricesFaustCodeGeneration.sh
 chmod +x mirror2dFaustCodeGeneration.sh
 chmod +x miscFaustCodeGeneration.sh
 chmod +x multidelaysFaustCodeGeneration.sh
+chmod +x multiharmosFaustCodeGeneration.sh
 chmod +x multinoiseFaustCodeGeneration.sh
 chmod +x optim2dFaustCodeGeneration.sh
 chmod +x randenvFaustCodeGeneration.sh
@@ -44,7 +45,7 @@ chmod +x synfxgrain2dFaustCodeGeneration.sh
 chmod +x synfxringmod2dFaustCodeGeneration.sh
 chmod +x synthetizersFaustCodeGeneration.sh
 chmod +x wider2dFaustCodeGeneration.sh
-#runs the various scripts to generated DSP Faust codes
+#runs the various scripts to generate DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $amborder
 ./chowningMultipansFaustCodeGeneration.sh $amborder
 ./decoders2dFaustCodeGeneration.sh $amborder
@@ -56,6 +57,7 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./mirror2dFaustCodeGeneration.sh $amborder
 ./miscFaustCodeGeneration.sh
 ./multidelaysFaustCodeGeneration.sh $amborder
+./multiharmosFaustCodeGeneration.sh $amborder
 ./multinoiseFaustCodeGeneration.sh $amborder
 ./optim2dFaustCodeGeneration.sh $amborder
 ./randenvFaustCodeGeneration.sh $amborder

@@ -9,7 +9,7 @@
 //
 declare author "Alain Bonardi";
 declare licence "GPLv3";
-declare name "abc_delaypar5";
+declare name "abc_delay5";
 //
 import("stdfaust.lib");
 //
