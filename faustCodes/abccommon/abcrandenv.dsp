@@ -7,8 +7,8 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-shortening = hslider("v:randenv/shortening", 0.5, 0, 1, 0.01) : si.smoo;
-freq = nentry("v:randenv/freq", 10, 0.01, 100, 0.01) : si.smoo;
+rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
+freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
 //
 //--------------------------------------------------------------------------------------//
 tablesize = 1 << 16;

@@ -9,13 +9,13 @@ import("stdfaust.lib");
 //
 
 //FOR THE SOUND DETECTOR
-offset = nentry("v:Detector/h:calibration_dB/offset", 10, -64, 64, 1) : si.smoo;
-noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor", -50, -120, 0, 1) : si.smoo;
-noteOn = nentry("v:Detector/h:calibration_dB/noteOn", -60, -120, 0, 1) : smoothLine;
+offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
+noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
+noteOn = nentry("v:Detector/h:calibration_dB/noteOn [unit:dB]", -60, -120, 0, 1) : smoothLine;
 attack = nentry("v:Detector/h:soundFollow/attack", 0, 0, 1, 1);
 tSlice = nentry("v:Detector/h:soundFollow/tSlice", 10, 1, 100, 1);
-noteDur = nentry("v:Detector/h:noteOnOff/noteDur", 50, 1, 500, 1) : smoothLine;
-offDur = nentry("v:Detector/h:noteOnOff/offDur", 25, 1, 500, 1) : smoothLine;
+noteDur = nentry("v:Detector/h:noteOnOff/noteDur [unit:msec]", 50, 1, 500, 1) : smoothLine;
+offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : smoothLine;
 
 impulse = _ <: _, mem : - : (_ > 0.0);
 release(n) = + ~ (_ <: _, (_ > 0) / n : -);

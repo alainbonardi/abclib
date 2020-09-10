@@ -19,8 +19,8 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-shortening = hslider("v:randenv/shortening", 0.5, 0, 1, 0.01) : si.smoo;
-freq = nentry("v:randenv/freq", 10, 0.01, 100, 0.01) : si.smoo;
+rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
+freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
 //
 //--------------------------------------------------------------------------------------//
 tablesize = 1 << 16;
@@ -132,4 +132,4 @@ pdLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
 basicLineDrive = (_, 30, 127, 1, 1.06, 30) : pdLineDrive;
 pdLineDrive4096 = (_, 30, 127, 4096, 1.07177, 30) : pdLineDrive;
 //
-process = mTlinRandEnv(4, freq, shortening);
+process = mTlinRandEnv(4, freq, rarefaction);

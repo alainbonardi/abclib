@@ -130,7 +130,7 @@ done <"$associatedcommonfilename6"
 echo "//
 process = peakamp(nsamp);" >> $sortie
 #
-#abc_peakamp.dsp
+#abc_rissetbell.dsp
 #
 sortie="abc_rissetsbell.dsp"
 #writes the header

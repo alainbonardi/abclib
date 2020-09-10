@@ -224,7 +224,7 @@ zy = waveform {0.9999695, 0.9999695, 0.9999695, 0.9999695, 0.9999695, 0.9999695,
 //--------------------------------------------------------------------------------------//
 //TRAJECTORY CONTROLS
 //--------------------------------------------------------------------------------------// 
-freq = hslider("v:trajectory/freq", 1, -1000., 1000., 0.01) : si.smoo;
+freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
 crossfade = hslider("v:trajectory/crossfade", 0, 0, 1, 0.01) : si.smoo;
 //

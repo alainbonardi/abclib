@@ -7,9 +7,9 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-rate = vslider("h:flanger/rate", 0.5, 0.01, 500, 0.001) : si.smoo;
-depth = vslider("h:flanger/depth", 40, 0, 1000, 0.001) : si.smoo;
-offset = vslider("h:flanger/offset", 10, 0, 200, 0.001) : si.smoo;
+rate = vslider("h:flanger/rate [unit:Hz]", 0.5, 0.01, 500, 0.001) : si.smoo;
+depth = vslider("h:flanger/depth [unit:msec]", 40, 0, 1000, 0.001) : si.smoo;
+offset = vslider("h:flanger/offset [unit:msec]", 10, 0, 200, 0.001) : si.smoo;
 fdbk = vslider("h:flanger/fdbk", 1, 0, 1, 0.001) : si.smoo;
 spread = vslider("h:flanger/spread", 0, 0, 1, 0.001) : si.smoo;
 //

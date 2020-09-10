@@ -19,7 +19,7 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS: NUMBER OF COMPLETE CYCLES (COMPLETE DRAWINGS) PER SECOND
 //--------------------------------------------------------------------------------------//
-refresh = hslider("v:scope/refresh", 100, 10, 1000, 1) * 0.001;//refresh time, default is 100 msec
+refresh = hslider("v:scope/refresh [unit:msec]", 100, 10, 1000, 1) * 0.001;//refresh time, default is 100 msec
 nsamp = int(ma.SR * 0.1);
 gain = hslider("v:scope/gain", 100, 1, 100, 0.01) / 100; //gain of the scope between 1 and 100
 //--------------------------------------------------------------------------------------//

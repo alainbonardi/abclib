@@ -40,7 +40,7 @@ echo "declare name \"abc_cosrandenv$i\";" >> $sortie
         echo "$line" >> $sortie
     done <"$associatedcommonfilename"
 echo "//
-process = mTShortening($i, freq, shortening);" >> $sortie
+process = mTShortening($i, freq, rarefaction);" >> $sortie
 done
 #creates linear random envelopes
 headerfilename="../../bashFiles/faustCodeHeader.txt"
@@ -67,5 +67,5 @@ do
 echo "$line" >> $sortie
 done <"$utilityfilename1"
 echo "//
-process = mTlinRandEnv($i, freq, shortening);" >> $sortie
+process = mTlinRandEnv($i, freq, rarefaction);" >> $sortie
 done

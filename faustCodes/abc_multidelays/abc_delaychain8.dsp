@@ -22,17 +22,17 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-updatefreq = vslider("h:multidelays/v:general/updatefreq", 30, 0.0001, 1000, 0.0001);
-fdbk(ind) = hslider("h:multidelays/v:feedbacks/fdbk%2ind", 0, 0, 0.99999, 0.0001) : si.smoo;
+updatefreq = vslider("h:multidelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
+fdbk(ind) = hslider("h:multidelays/v:fdbks/fdbk%2ind", 0, 0, 0.99999, 0.0001) : si.smoo;
 //
-tempo = nentry("h:multidelays/v:general/tempo", 60, 1, 600, 0.01);
+tempo = nentry("h:multidelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
 //--------------------------------------------------------------------------------------//
 //Maximum number of samples if a common delay line
 //corresponding to a bit more than 21,8 seconds at 48 KHz
 Ndelsamp = 1048576;
 //--------------------------------------------------------------------------------------//
-dur(ind)=((nentry("h:multidelays/v:rythm/dur%2ind", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
-gain(ind) = nentry("h:multidelays/v:dynamics/gain%2ind", 0, -127, 18, 0.001) : dbtogain;
+dur(ind)=((hslider("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
+gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : dbtogain;
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF A DOUBLE DELAY LINE FOR PARALLEL IMPLEMENTATION
 //--------------------------------------------------------------------------------------//

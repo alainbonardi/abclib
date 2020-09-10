@@ -12,9 +12,9 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //global parameters to control the features of the bell
 //
-dur = nentry("dur", 10, 10, 600000, 1) / 1000;//global duration in milliseconds
-freq = nentry("freq", 440, 1, 10000, 0.01);
-pfreq2 = nentry("pfreq2", 1, 0, 10, 0.001) : si.smoo;
+dur = hslider("v:rissetbell/dur [unit:msec]", 10, 10, 600000, 1) / 1000;//global duration in milliseconds
+freq = hslider("v:rissetbell/freq [unit:Hz]", 440, 1, 10000, 0.01);
+pfreq2 = hslider("v:rissetbell/pfreq2 [unit:Hz]", 1, 0, 10, 0.001) : si.smoo;
 //----------------------------------------------------------------------------------------//
 //global parameters to control the reson bandpass filters//
 //

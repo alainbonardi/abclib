@@ -30,6 +30,7 @@ chmod +x mirror2dFaustCodeGeneration.sh
 chmod +x miscFaustCodeGeneration.sh
 chmod +x multidelaysFaustCodeGeneration.sh
 chmod +x multiharmosFaustCodeGeneration.sh
+chmod +x multigrainsFaustCodeGeneration.sh
 chmod +x multinoiseFaustCodeGeneration.sh
 chmod +x optim2dFaustCodeGeneration.sh
 chmod +x randenvFaustCodeGeneration.sh
@@ -58,6 +59,7 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./miscFaustCodeGeneration.sh
 ./multidelaysFaustCodeGeneration.sh $amborder
 ./multiharmosFaustCodeGeneration.sh $amborder
+./multigrainsFaustCodeGeneration.sh $amborder
 ./multinoiseFaustCodeGeneration.sh $amborder
 ./optim2dFaustCodeGeneration.sh $amborder
 ./randenvFaustCodeGeneration.sh $amborder

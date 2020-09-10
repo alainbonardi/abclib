@@ -10,13 +10,13 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //
 //amount of transposition (in midicents) of the harmonizer #i
-trans(ind) = nentry("h:multiharmo/v:pitches/trans%2ind", 0, -2400, 2400, 0.001);
+trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.01);
 //
 //gain in dB of the harmonizer #i
-gain(ind) = nentry("h:multiharmo/v:gains/gain%2ind", 0, -127, 18, 0.001) : dbtogain;
+gain(ind) = hslider("h:multiharmo/v:gains/gain%2ind [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //
 //window size of the harmonizer #i
-winsize(ind) = nentry("h:multiharmo/v:windows/winsize%2ind", 50, 0, 127, 0.001) : pdLineDrive4096;
+winsize(ind) = hslider("h:multiharmo/v:windowsizes/winsize%2ind", 50, 0, 127, 0.01) : pdLineDrive4096;
 //
 //--------------------------------------------------------------------------------------//
 //A PHASOR THAT ACCEPTS BOTH NEGATIVE AND POSITIVE FREQUENCES
