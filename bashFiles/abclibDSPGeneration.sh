@@ -29,6 +29,7 @@ chmod +x matricesFaustCodeGeneration.sh
 chmod +x mirror2dFaustCodeGeneration.sh
 chmod +x miscFaustCodeGeneration.sh
 chmod +x multidelaysFaustCodeGeneration.sh
+chmod +x multifreqshiftsFaustCodeGeneration.sh
 chmod +x multiharmosFaustCodeGeneration.sh
 chmod +x multigrainsFaustCodeGeneration.sh
 chmod +x multinoiseFaustCodeGeneration.sh
@@ -58,6 +59,7 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./mirror2dFaustCodeGeneration.sh $amborder
 ./miscFaustCodeGeneration.sh
 ./multidelaysFaustCodeGeneration.sh $amborder
+./multifreqshiftsFaustCodeGeneration.sh $amborder
 ./multiharmosFaustCodeGeneration.sh $amborder
 ./multigrainsFaustCodeGeneration.sh $amborder
 ./multinoiseFaustCodeGeneration.sh $amborder
