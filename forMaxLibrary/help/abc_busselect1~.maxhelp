@@ -73,7 +73,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 580.0, 216.0, 18.0, 34.0 ],
 					"size" : 2,
-					"value" : 0
+					"value" : 1
 				}
 
 			}
@@ -170,7 +170,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 54.0, 176.0, 18.0, 34.0 ],
 					"size" : 2,
-					"value" : 0
+					"value" : 1
 				}
 
 			}
@@ -193,8 +193,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 314.0, 219.0, 97.0, 22.0 ],
-					"text" : "loadmess 10000"
+					"patching_rect" : [ 314.0, 219.0, 90.0, 22.0 ],
+					"text" : "loadmess 7000"
 				}
 
 			}

@@ -27,7 +27,7 @@ leftOrRight = (nentry("v:busselect/leftOrRight", 0, 0, 1, 1), ramp) : line; //se
 //--------------------------------------------------------------------------------------//
 // MIX TO ONE BUS
 //--------------------------------------------------------------------------------------//
-busselect(n) = (par(i, n, *(leftOrRight)), par(i, n, *(1-leftOrRight))) :> si.bus(n);
+busselect(n) = (par(i, n, *(1-leftOrRight)), par(i, n, *(leftOrRight))) :> si.bus(n);
 //
 //-------------------------------------------------------------------------
 // Implementation of Max/MSP line~. Generate signal ramp or envelope 
