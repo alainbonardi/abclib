@@ -96,7 +96,7 @@ granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
 			env = ((ramp : *(0.5) : sinusEnvelop), _) : *(factor);
-			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : ba.sAndH(th);
+			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
 		};		 
 //
 process = syngrain(5, grainsize, deltime, feedback, rarefaction);
