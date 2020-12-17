@@ -39,7 +39,7 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-factor = hslider("v:fxmirror/factor", 1, -1, 1, 1);
+factor = hslider("v:fxmirror/factor", 1, -1, 1, 1) : si.smoo;
 //
 //--------------------------------------------------------------------------------------//
 //COMPUTES THE FXMIRROR AT AMBISONIC ORDER N
