@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1010.0, 183.0, 1244.0, 803.0 ],
+		"rect" : [ 343.0, 224.0, 1244.0, 802.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,16 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-52",
+					"maxclass" : "ezdac~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 692.5, 612.5, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"format" : 6,
 					"id" : "obj-32",
@@ -118,7 +128,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 979.0, 233.5, 90.0, 35.0 ],
-					"text" : "f0 660"
+					"text" : "f0 330"
 				}
 
 			}
@@ -134,7 +144,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 5,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -329,8 +339,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -1605,43 +1615,43 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_musdur.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1688,8 +1698,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

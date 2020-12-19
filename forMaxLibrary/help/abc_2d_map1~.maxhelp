@@ -505,7 +505,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 557.0, 258.0, 102.0, 22.0 ],
+					"patching_rect" : [ 557.0, 258.0, 108.0, 22.0 ],
 					"text" : "abc_cartopol~"
 				}
 
@@ -513,12 +513,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-2",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 557.0, 184.0, 185.0, 22.0 ],
-					"text" : "abc_2d_squaretrajectory~"
+					"patching_rect" : [ 557.0, 184.0, 197.0, 35.0 ],
+					"text" : "abc_2d_squaretrajectory~ @size 1.2 @freq 0.2"
 				}
 
 			}
@@ -583,12 +584,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-17",
-					"linecount" : 7,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 263.0, 581.833333333333485, 212.0, 100.0 ],
-					"text" : "abc_map1~ to abc_map7~ objects receive three signals as inputs:\n- the source to be spatialized,\n- the radius of the position of the source,\n- the angle of the position of the source in radians"
+					"patching_rect" : [ 263.0, 581.833333333333485, 212.0, 114.0 ],
+					"text" : "abc_map1~ to abc_map7~ objects receive three signals as inputs:\n- the source to be spatialized,\n- the radius of the position of the source (distance to the centre of the scene)\n- the angle of the position of the source in radians"
 				}
 
 			}
@@ -720,7 +721,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 2 ],
-					"midpoints" : [ 608.0, 323.0, 645.0, 323.0 ],
+					"midpoints" : [ 611.0, 323.0, 645.0, 323.0 ],
 					"source" : [ "obj-16", 1 ]
 				}
 
@@ -1180,15 +1181,15 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
@@ -1201,36 +1202,36 @@
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_quadriout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_pict2map.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

@@ -607,12 +607,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-24",
-					"linecount" : 19,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 538.5, 6.0, 259.0, 261.0 ],
-					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3 8 LS, ... at order 7 16 LS\n- gain is the output gain in dB\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implentation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+					"patching_rect" : [ 538.5, 6.0, 337.0, 234.0 ],
+					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3 8 LS, ... at order 7 16 LS\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implentation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 				}
 
 			}
@@ -1690,43 +1690,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_env_noise.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
-				"patcherrelativepath" : "../clippings/AudioOut",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_quadriout.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

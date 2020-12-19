@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 183.0, 133.0, 1162.0, 626.0 ],
+		"rect" : [ 183.0, 133.0, 1391.0, 631.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,12 +41,12 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-49",
-					"linecount" : 5,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 490.333333333333258, 90.129629969596863, 186.0, 74.0 ],
-					"text" : "spread controls spatial spreading\n0 => mono, all outputs identical\n1 => maximum spatial split. For abc_flanger2~ it means a maximum stereo effect."
+					"patching_rect" : [ 516.261672973632812, 6.0, 448.869163513183594, 141.0 ],
+					"text" : "abc_flanger1~, abc_flanger2~, ..., provide classic multichannel flangers with sinusoidal delay\n- rate is the frequency of the sinusoid varying the delay duration\n- depth is the maximum of the delay duration expressed in milliseconds\n- offset enables to shift the variation of the delay duration between offset and offset+depth\n- feeedback is the amount of delayed sound added to the original\n- spread controls spatial spreading\n0 => mono, all outputs identical\n1 => maximum spatial split. For abc_flanger2~ it means a maximum stereo effect."
 				}
 
 			}
@@ -56,7 +56,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 898.0, 516.0, 59.5, 55.0 ]
+					"patching_rect" : [ 1130.0, 516.0, 59.5, 55.0 ]
 				}
 
 			}
@@ -67,7 +67,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 898.0, 466.0, 100.0, 22.0 ],
+					"patching_rect" : [ 1130.0, 466.0, 100.0, 22.0 ],
 					"text" : "abc_2d_scope3~"
 				}
 
@@ -79,7 +79,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1053.0, 366.0, 58.0, 22.0 ],
+					"patching_rect" : [ 1285.0, 366.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -102,7 +102,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1053.0, 401.0, 69.0, 89.0 ],
+					"patching_rect" : [ 1285.0, 401.0, 69.0, 89.0 ],
 					"text" : ";\rrate2 100.;\rdepth2 10.;\roffset2 5.;\rfdbk2 0.6;\r"
 				}
 
@@ -115,7 +115,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 675.130836486816406, 375.0, 24.0, 24.0 ]
+					"patching_rect" : [ 907.130836486816406, 375.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -136,7 +136,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 675.130836486816406, 407.0, 59.0, 22.0 ],
+					"patching_rect" : [ 907.130836486816406, 407.0, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -147,7 +147,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 743.130836486816179, 498.556159347295761, 115.0, 22.0 ],
+					"patching_rect" : [ 975.130836486816179, 498.556159347295761, 115.0, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -159,7 +159,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 743.130836486816179, 446.0, 128.714285714285779, 22.0 ],
+					"patching_rect" : [ 975.130836486816179, 446.0, 128.714285714285779, 22.0 ],
 					"text" : "abc_2d_decoder3~"
 				}
 
@@ -173,7 +173,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1078.261672973632812, 238.0, 50.0, 22.0 ]
+					"patching_rect" : [ 1310.261672973632812, 238.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -184,7 +184,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1078.261672973632812, 207.0, 45.0, 22.0 ],
+					"patching_rect" : [ 1310.261672973632812, 207.0, 45.0, 22.0 ],
 					"text" : "r fdbk2"
 				}
 
@@ -200,7 +200,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1020.261672973632812, 238.0, 50.0, 22.0 ]
+					"patching_rect" : [ 1252.261672973632812, 238.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -211,7 +211,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1020.261672973632812, 207.0, 52.0, 22.0 ],
+					"patching_rect" : [ 1252.261672973632812, 207.0, 52.0, 22.0 ],
 					"text" : "r offset2"
 				}
 
@@ -227,7 +227,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 963.130836486816406, 238.0, 50.0, 22.0 ]
+					"patching_rect" : [ 1195.130836486816406, 238.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -238,7 +238,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 963.130836486816406, 207.0, 53.0, 22.0 ],
+					"patching_rect" : [ 1195.130836486816406, 207.0, 53.0, 22.0 ],
 					"text" : "r depth2"
 				}
 
@@ -254,7 +254,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 911.130836486816406, 238.0, 50.0, 22.0 ]
+					"patching_rect" : [ 1143.130836486816406, 238.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -265,7 +265,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 911.130836486816406, 207.0, 43.0, 22.0 ],
+					"patching_rect" : [ 1143.130836486816406, 207.0, 43.0, 22.0 ],
 					"text" : "r rate2"
 				}
 
@@ -287,7 +287,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1078.261672973632812, 294.0, 48.0, 22.0 ],
+					"patching_rect" : [ 1310.261672973632812, 294.0, 48.0, 22.0 ],
 					"text" : "fdbk $1"
 				}
 
@@ -309,7 +309,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1020.261672973632812, 294.0, 54.0, 22.0 ],
+					"patching_rect" : [ 1252.261672973632812, 294.0, 54.0, 22.0 ],
 					"text" : "offset $1"
 				}
 
@@ -331,7 +331,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 963.261672973632812, 294.0, 55.0, 22.0 ],
+					"patching_rect" : [ 1195.261672973632812, 294.0, 55.0, 22.0 ],
 					"text" : "depth $1"
 				}
 
@@ -353,7 +353,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 911.130836486816406, 294.0, 46.0, 22.0 ],
+					"patching_rect" : [ 1143.130836486816406, 294.0, 46.0, 22.0 ],
 					"text" : "rate $1"
 				}
 
@@ -367,7 +367,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 8,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 743.130836486816406, 340.0, 146.999999999998408, 24.0 ],
+					"patching_rect" : [ 975.130836486816406, 340.0, 146.999999999998408, 24.0 ],
 					"text" : "abc_flanger7~"
 				}
 
@@ -379,7 +379,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 743.130836486816406, 219.129629969596863, 142.0, 22.0 ],
+					"patching_rect" : [ 975.130836486816406, 219.129629969596863, 142.0, 22.0 ],
 					"text" : "abc_soundcoat~ @f0 50."
 				}
 
@@ -400,7 +400,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 743.130836486816406, 117.629629969596863, 74.0, 72.0 ],
+					"patching_rect" : [ 975.130836486816406, 117.629629969596863, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1053,7 +1053,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
-					"midpoints" : [ 1087.761672973632812, 329.5, 752.630836486816406, 329.5 ],
+					"midpoints" : [ 1319.761672973632812, 329.5, 984.630836486816406, 329.5 ],
 					"source" : [ "obj-37", 0 ]
 				}
 
@@ -1061,7 +1061,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
-					"midpoints" : [ 1029.761672973632812, 329.5, 752.630836486816406, 329.5 ],
+					"midpoints" : [ 1261.761672973632812, 329.5, 984.630836486816406, 329.5 ],
 					"source" : [ "obj-38", 0 ]
 				}
 
@@ -1069,7 +1069,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
-					"midpoints" : [ 972.761672973632812, 329.5, 752.630836486816406, 329.5 ],
+					"midpoints" : [ 1204.761672973632812, 329.5, 984.630836486816406, 329.5 ],
 					"source" : [ "obj-39", 0 ]
 				}
 
@@ -1077,7 +1077,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
-					"midpoints" : [ 920.630836486816406, 329.5, 752.630836486816406, 329.5 ],
+					"midpoints" : [ 1152.630836486816406, 329.5, 984.630836486816406, 329.5 ],
 					"source" : [ "obj-40", 0 ]
 				}
 
@@ -1260,7 +1260,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-42", 0 ],
-					"midpoints" : [ 684.630836486816406, 437.5, 752.630836486816179, 437.5 ],
+					"midpoints" : [ 916.630836486816406, 437.5, 984.630836486816179, 437.5 ],
 					"source" : [ "obj-45", 0 ]
 				}
 
@@ -1291,7 +1291,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
-					"midpoints" : [ 400.833333333333258, 327.5, 752.630836486816406, 327.5 ],
+					"midpoints" : [ 400.833333333333258, 327.5, 984.630836486816406, 327.5 ],
 					"order" : 0,
 					"source" : [ "obj-6", 0 ]
 				}
@@ -1331,36 +1331,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1407,8 +1407,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 6,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -373,7 +373,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 6,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -595,8 +595,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -980,8 +980,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 535.0, 6.0, 359.0, 87.0 ],
-					"text" : "abc_harmo1~, abc_harmo2~, ... provide parallel multiple frequency shifters. Each line is frequency shifter in Direct Form 2 provided by a quadruple biquad.\nEach frequency shifter has got a shifting frequency: fr00, fr01, etc. in Hz (positive or negative) and an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
+					"patching_rect" : [ 535.0, 6.0, 362.0, 87.0 ],
+					"text" : "abc_harmo1~, abc_harmo2~, ... provide parallel multiple frequency shifters. Each line is a frequency shifter in Direct Form 2 provided by a quadruple biquad.\nEach frequency shifter has got a shifting frequency: fr00, fr01, etc. in Hz (positive or negative) and an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
 				}
 
 			}
@@ -1744,8 +1744,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
