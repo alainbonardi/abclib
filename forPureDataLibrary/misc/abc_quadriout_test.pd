@@ -1,0 +1,3 @@
+#N canvas 576 291 450 300 12;
+#X obj 80 52 abc_quadriout;
+#X obj 165 165 abc_quadriout -20;

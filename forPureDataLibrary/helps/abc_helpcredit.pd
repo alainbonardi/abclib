@@ -1,4 +1,4 @@
-#N canvas 621 202 598 251 12;
-#X obj 101 100 cnv 15 400 25 empty empty abclibrary|Alain_Bonardi_@2019-2020_CICM|University_Paris_8
+#N canvas 788 233 593 238 12;
+#X obj 101 100 cnv 15 400 25 empty empty abclibrary|@Alain_Bonardi_2019-2021_CICM|University_Paris_8
 20 12 0 10 -99865 -262144 0;
 #X coords 0 -1 1 1 400 25 2 100 100;
