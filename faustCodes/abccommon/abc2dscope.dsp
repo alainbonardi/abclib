@@ -7,9 +7,8 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //CONTROL PARAMETERS: NUMBER OF COMPLETE CYCLES (COMPLETE DRAWINGS) PER SECOND
 //--------------------------------------------------------------------------------------//
-refresh = hslider("v:scope/refresh [unit:msec]", 100, 10, 1000, 1) * 0.001;//refresh time, default is 100 msec
-nsamp = int(ma.SR * 0.1);
-gain = hslider("v:scope/gain", 100, 1, 100, 0.01) / 100; //gain of the scope between 1 and 100
+refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;//refresh time, default is 10 msec
+
 //--------------------------------------------------------------------------------------//
 //ANGLE SWEEPING PERIODICALLY 0 TO 2*PI INTERVAL
 //--------------------------------------------------------------------------------------//
@@ -20,11 +19,6 @@ theta = os.phasor(1, 1/refresh) * 2 * ma.PI;
 //--------------------------------------------------------------------------------------//
 //we get the vector of harmonic functions thanks to the encoding function//
 harmonicsVector = ho.encoder(n, 1, theta);
-
-//--------------------------------------------------------------------------------------//
-//KEEPING INPUT VALUES DURING THE CYCLE
-//--------------------------------------------------------------------------------------//
-memoryFunction = *(ba.pulse(nsamp)) : (+ ~ (*(1-ba.pulse(nsamp))));
 
 //--------------------------------------------------------------------------------------//
 //INPUT DISPATCHING
@@ -47,10 +41,10 @@ normalizedInput = connect2nplus1Vers4nplus2 : (connect2nplus1, norm2nplus1) : in
 //--------------------------------------------------------------------------------------//
 //BUILDING THE 2 NORMALIZED VECTORS: HARMONIC WEIGHTS CAPTURED AS INPUTS AND SPATIAL HARMONICS
 //--------------------------------------------------------------------------------------//
-memorizedInput = ((memoryFunction : /(2)), par(i, (2*n), memoryFunction)) : normalizedInput;
+inputVector = (*(0.5), par(i, (2*n), _)) : normalizedInput;
 normalizedHarmonics = harmonicsVector : normalizedInput;
 
 //--------------------------------------------------------------------------------------//
 //BUILDING RHO
 //--------------------------------------------------------------------------------------//
-rho = memorizedInput, normalizedHarmonics : si.dot(2*n+1) : ma.fabs : *(gain) ;
+rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1) ;

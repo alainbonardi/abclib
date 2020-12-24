@@ -39,5 +39,5 @@ echo "declare name \"abc_2d_scope$i\";" >> $sortie
     done <"$associatedcommonfilename"
 echo "//
 n = $i;//ambisonic order//
-process = (rho <: (_, _) : (*(sin(theta)), *(cos(theta))) : (*(-1), _));" >> $sortie
+process = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);" >> $sortie
 done

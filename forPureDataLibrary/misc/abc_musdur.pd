@@ -1,8 +1,8 @@
-#N canvas 439 380 506 469 12;
-#X obj 89 71 vradio 15 1 0 7 empty empty Duration 0 -8 0 10 -262144
+#N canvas 439 380 506 469 10;
+#X obj 85 82 vradio 15 1 0 7 empty empty Duration 0 -8 0 10 -262144
 -1 -1 3;
 #X obj 94 226 select 0 1 2 3 4 5 6;
-#X floatatom 159 55 5 0 0 0 - - -;
+#X floatatom 153 68 5 0 0 0 - - -;
 #X msg 94 290 4;
 #X floatatom 197 352 5 0 0 0 - - -;
 #X msg 130 290 2;
@@ -11,16 +11,16 @@
 #X msg 229 290 0.25;
 #X msg 268 290 0.125;
 #X msg 314 290 0.333;
-#X text 109 84 half;
-#X text 108 68 whole;
-#X text 108 99 quarter;
+#X text 105 95 half;
+#X text 104 79 whole;
+#X text 104 110 quarter;
 #X obj 198 395 outlet;
-#X text 109 115 8th;
+#X text 105 126 8th;
 #X msg 90 26 3;
 #X obj 90 2 loadbang;
-#X text 107 130 16th;
-#X text 107 146 32th;
-#X text 107 161 triplet;
+#X text 103 141 16th;
+#X text 103 157 32th;
+#X text 103 172 triplet;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 1 1 5 0;
@@ -40,4 +40,4 @@
 #X connect 10 0 4 0;
 #X connect 16 0 0 0;
 #X connect 17 0 16 0;
-#X coords 0 -1 1 1 120 132 2 80 50;
+#X coords 0 -1 1 1 110 140 1 80 50;

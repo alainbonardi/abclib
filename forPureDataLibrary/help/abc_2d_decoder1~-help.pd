@@ -1,0 +1,179 @@
+#N canvas 276 31 1376 787 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_decoderN~  20 12 0 18 -99865
+-262144 0;
+#X obj 13 746 abc_helpcredit;
+#X obj 14 32 cnv 15 500 25 empty empty Ambisonic_decoders_at_orders_1_(4_LS)_2_(6_LS)_3_(8LS)_etc.
+20 12 0 12 -99865 -262144 0;
+#X obj 80 227 abc_2d_encoder1~;
+#X obj 35 372 abc_2d_decoder1;
+#X obj 174 112 abc_env_noise 200 0.3;
+#X obj 80 112 loadbang;
+#X msg 80 136 0.1;
+#X floatatom 80 160 5 0 0 0 - - -;
+#X msg 80 183 speed \$1;
+#X obj 35 337 r dec1;
+#X obj 108 661 abc_quadriout -20;
+#X obj 325 201 abc_gain -127;
+#X obj 325 420 s dec1;
+#X obj 432 290 loadbang;
+#X floatatom 432 338 5 0 0 0 - - -;
+#X msg 432 314 0;
+#X msg 432 361 angularoffset \$1;
+#X obj 558 289 loadbang;
+#X msg 558 313 1;
+#X obj 558 337 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 558 361 directangles \$1;
+#X text 324 172 gain \, angularoffsert and directangles for the abc_decoder1~
+below;
+#X text 819 19 abc_2d_decoder1~ \, abc_2d_decoder2~ \, etc. objects
+enable to decode from ambisonic spatial components to sets of loudspeakers.
+Since these decoders were developed in Faust language \, we had to
+set fixed configurations. At order 1 \, 4 loudspeakers \, at order
+2 \, 6 LS \, at order 3 8 LS \, ... at order 7 16 LS - gain is the
+output gain in dB that can directly be controlled - angularoffset is
+the possible angular shift of the loudspeakers (in degrees) - directangles
+is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise -
+a_0 \, a_1 \, ... \, a_9 \, a10 \, a11... are the angles of the loudspeakers
+on the circle \, making possible to decode an irregular implentation
+It is possible to decode in stereo when setting the stereo control
+to 1 - stereo sets the decoding: 1 for stereo \, 0 for ambisonic;
+#X obj 412 493 loadbang;
+#X msg 412 517 0 90 180 270;
+#X obj 412 538 unpack 0 0 0 0;
+#X floatatom 412 565 5 -360 360 0 - - -;
+#X floatatom 467 565 5 -360 360 0 - - -;
+#X floatatom 523 565 5 -360 360 0 - - -;
+#X floatatom 577 565 5 -360 360 0 - - -;
+#X obj 412 655 s dec1;
+#X obj 339 595 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 339 619 stereo \$1;
+#X text 369 469 angles for the abc_decoder1~ below;
+#X msg 412 585 a-0 \$1;
+#X msg 467 585 a-1 \$1;
+#X msg 523 585 a-2 \$1;
+#X msg 578 585 a-3 \$1;
+#X obj 1031 242 noise~;
+#X obj 1031 263 *~ 0.2;
+#X obj 955 397 abc_cosrandenv15~ -----------;
+#X obj 849 260 abc_gain -10;
+#X obj 760 394 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 760 418 stereo \$1;
+#X obj 956 534 abc_2d_decoder7~ ------------;
+#X obj 926 684 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 1211 516 abc_ambi_scope;
+#X msg 1253 429 refresh \$1;
+#X obj 1253 383 loadbang;
+#X msg 1253 407 10;
+#X obj 1158 480 abc_2d_scope7~ ------------;
+#X connect 3 1 4 1;
+#X connect 3 2 4 2;
+#X connect 3 3 4 3;
+#X connect 4 1 11 0;
+#X connect 4 2 11 1;
+#X connect 4 3 11 2;
+#X connect 4 4 11 3;
+#X connect 5 0 3 1;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 0;
+#X connect 10 0 4 0;
+#X connect 12 0 13 0;
+#X connect 14 0 16 0;
+#X connect 15 0 17 0;
+#X connect 16 0 15 0;
+#X connect 17 0 13 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 13 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 26 1 28 0;
+#X connect 26 2 29 0;
+#X connect 26 3 30 0;
+#X connect 27 0 35 0;
+#X connect 28 0 36 0;
+#X connect 29 0 37 0;
+#X connect 30 0 38 0;
+#X connect 32 0 33 0;
+#X connect 33 0 31 0;
+#X connect 35 0 31 0;
+#X connect 36 0 31 0;
+#X connect 37 0 31 0;
+#X connect 38 0 31 0;
+#X connect 39 0 40 0;
+#X connect 40 0 41 1;
+#X connect 40 0 41 2;
+#X connect 40 0 41 3;
+#X connect 40 0 41 4;
+#X connect 40 0 41 5;
+#X connect 40 0 41 6;
+#X connect 40 0 41 7;
+#X connect 40 0 41 8;
+#X connect 40 0 41 9;
+#X connect 40 0 41 10;
+#X connect 40 0 41 11;
+#X connect 40 0 41 12;
+#X connect 40 0 41 13;
+#X connect 40 0 41 14;
+#X connect 40 0 41 15;
+#X connect 41 1 45 1;
+#X connect 41 1 51 1;
+#X connect 41 2 45 2;
+#X connect 41 2 51 2;
+#X connect 41 3 45 3;
+#X connect 41 3 51 3;
+#X connect 41 4 45 4;
+#X connect 41 4 51 4;
+#X connect 41 5 45 5;
+#X connect 41 5 51 5;
+#X connect 41 6 45 6;
+#X connect 41 6 51 6;
+#X connect 41 7 45 7;
+#X connect 41 7 51 7;
+#X connect 41 8 45 8;
+#X connect 41 8 51 8;
+#X connect 41 9 45 9;
+#X connect 41 9 51 9;
+#X connect 41 10 45 10;
+#X connect 41 10 51 10;
+#X connect 41 11 45 11;
+#X connect 41 11 51 11;
+#X connect 41 12 45 12;
+#X connect 41 12 51 12;
+#X connect 41 13 45 13;
+#X connect 41 13 51 13;
+#X connect 41 14 45 14;
+#X connect 41 14 51 14;
+#X connect 41 15 45 15;
+#X connect 41 15 51 15;
+#X connect 42 0 45 0;
+#X connect 43 0 44 0;
+#X connect 44 0 45 0;
+#X connect 45 1 46 0;
+#X connect 45 2 46 1;
+#X connect 45 3 46 2;
+#X connect 45 4 46 3;
+#X connect 45 5 46 4;
+#X connect 45 6 46 5;
+#X connect 45 7 46 6;
+#X connect 45 8 46 7;
+#X connect 45 9 46 8;
+#X connect 45 10 46 9;
+#X connect 45 11 46 10;
+#X connect 45 12 46 11;
+#X connect 45 13 46 12;
+#X connect 45 14 46 13;
+#X connect 45 15 46 14;
+#X connect 45 16 46 15;
+#X connect 48 0 51 0;
+#X connect 49 0 50 0;
+#X connect 50 0 48 0;
+#X connect 51 1 47 0;
+#X connect 51 2 47 1;
+#X connect 51 3 47 2;
