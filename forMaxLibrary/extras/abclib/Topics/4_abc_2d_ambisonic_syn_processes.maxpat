@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 35.0, 79.0, 2111.0, 943.0 ],
+		"rect" : [ 34.0, 247.0, 1823.0, 966.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -123,7 +123,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 848.428558000000066, 12.5, 272.0, 20.0 ],
-					"text" : "<= previous topic: 2d_ambisonic_syn_processes"
+					"text" : "<= previous topic: 2d_ambisonic_fx_processes"
 				}
 
 			}
@@ -1149,7 +1149,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 911.571441999999934, 901.0, 115.0, 22.0 ],
+					"patching_rect" : [ 911.571441999999934, 901.0, 117.916666666666288, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -1161,7 +1161,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 911.071441999999934, 833.5, 112.0, 22.0 ],
+					"patching_rect" : [ 911.071441999999934, 833.5, 132.714285714285325, 22.0 ],
 					"text" : "abc_2d_decoder3~"
 				}
 
@@ -1230,7 +1230,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.0, 921.0, 548.0, 23.0 ],
+					"patching_rect" : [ 6.0, 929.0, 548.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 57.0, 747.916625999999951, 548.0, 23.0 ],
 					"viewvisibility" : 1
@@ -1244,8 +1244,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 499.0, 6.0, 269.75, 87.0 ],
-					"text" : "We here provide 2D FX processes on ambisonic components:\n- 2D SYN decorrelators\n- 2D SYN delays\n- 2D SYN granulators\n- 2D SYN ring modulators"
+					"patching_rect" : [ 499.0, 6.0, 285.75, 87.0 ],
+					"text" : "We here provide 2D SYN processes on ambisonic components:\n- 2D SYN decorrelators\n- 2D SYN delays\n- 2D SYN granulators\n- 2D SYN ring modulators"
 				}
 
 			}

@@ -52,7 +52,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 964.0, 540.0, 93.0, 82.5 ],
+					"patching_rect" : [ 964.0, 526.5, 93.0, 102.5 ],
 					"viewvisibility" : 1
 				}
 
@@ -71,7 +71,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 309.0, 526.5, 93.0, 82.5 ],
+					"patching_rect" : [ 309.0, 526.5, 93.0, 102.5 ],
 					"viewvisibility" : 1
 				}
 
@@ -753,7 +753,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 524.0, 584.0, 45.0, 45.0 ]
+					"patching_rect" : [ 535.0, 587.25, 45.0, 45.0 ]
 				}
 
 			}
