@@ -70,6 +70,9 @@ to 1 - stereo sets the decoding: 1 for stereo \, 0 for ambisonic;
 #X obj 308 302 abc_2d_scope1~;
 #X obj 297 371 abc_ambi_scope 0;
 #X obj 1353 516 abc_ambi_scope 1;
+#X obj 817 596 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 817 626 \; pd dsp \$1 \;;
 #X connect 3 1 4 1;
 #X connect 3 1 51 1;
 #X connect 3 2 4 2;
@@ -185,3 +188,4 @@ to 1 - stereo sets the decoding: 1 for stereo \, 0 for ambisonic;
 #X connect 51 1 52 0;
 #X connect 51 2 52 1;
 #X connect 51 3 52 2;
+#X connect 54 0 55 0;

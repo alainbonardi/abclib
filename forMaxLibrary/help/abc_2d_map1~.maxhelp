@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1142.0, 283.0, 1271.0, 736.0 ],
+		"rect" : [ 1142.0, 283.0, 1216.0, 744.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,38 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-48",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "abc_ambiscope.maxpat",
+					"numinlets" : 3,
+					"numoutlets" : 0,
+					"offset" : [ 0.0, 0.0 ],
+					"patching_rect" : [ 1013.5, 576.333333333333485, 93.0, 105.5 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-45",
+					"maxclass" : "newobj",
+					"numinlets" : 7,
+					"numoutlets" : 4,
+					"outlettype" : [ "signal", "signal", "signal", "list" ],
+					"patching_rect" : [ 1013.5, 543.083333333333485, 130.0, 22.0 ],
+					"text" : "abc_2d_scope3~"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-63",
 					"maxclass" : "comment",
@@ -219,7 +251,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 793.0, 405.5, 74.0, 72.0 ],
+					"patching_rect" : [ 796.0, 379.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -282,7 +314,7 @@
 					"id" : "obj-60",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -314,7 +346,7 @@
 					"id" : "obj-13",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -325,7 +357,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20 ],
+					"args" : [ -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -571,7 +603,7 @@
 					"id" : "obj-15",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -604,7 +636,7 @@
 					"id" : "obj-11",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -736,6 +768,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 6 ],
+					"order" : 1,
 					"source" : [ "obj-18", 6 ]
 				}
 
@@ -743,6 +776,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 5 ],
+					"order" : 1,
 					"source" : [ "obj-18", 5 ]
 				}
 
@@ -750,6 +784,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 4 ],
+					"order" : 1,
 					"source" : [ "obj-18", 4 ]
 				}
 
@@ -757,6 +792,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 3 ],
+					"order" : 1,
 					"source" : [ "obj-18", 3 ]
 				}
 
@@ -764,6 +800,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 2 ],
+					"order" : 1,
 					"source" : [ "obj-18", 2 ]
 				}
 
@@ -771,6 +808,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 1 ],
+					"order" : 1,
 					"source" : [ "obj-18", 1 ]
 				}
 
@@ -778,6 +816,63 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
+					"order" : 1,
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 6 ],
+					"order" : 0,
+					"source" : [ "obj-18", 6 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 5 ],
+					"order" : 0,
+					"source" : [ "obj-18", 5 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 4 ],
+					"order" : 0,
+					"source" : [ "obj-18", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 3 ],
+					"order" : 0,
+					"source" : [ "obj-18", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 2 ],
+					"order" : 0,
+					"source" : [ "obj-18", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 1 ],
+					"order" : 0,
+					"source" : [ "obj-18", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 0 ],
+					"order" : 0,
 					"source" : [ "obj-18", 0 ]
 				}
 
@@ -936,7 +1031,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
-					"midpoints" : [ 802.5, 490.5, 886.600000000000023, 490.5 ],
+					"midpoints" : [ 805.5, 490.5, 886.600000000000023, 490.5 ],
 					"source" : [ "obj-26", 0 ]
 				}
 
@@ -1002,6 +1097,27 @@
 				"patchline" : 				{
 					"destination" : [ "obj-18", 1 ],
 					"source" : [ "obj-42", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 2 ],
+					"source" : [ "obj-45", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 1 ],
+					"source" : [ "obj-45", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"source" : [ "obj-45", 0 ]
 				}
 
 			}
@@ -1181,20 +1297,20 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
+				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
@@ -1202,36 +1318,43 @@
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"name" : "abc_stereoout~.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"name" : "abc_quadriout~.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_pict2map.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_ambiscope.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1277,6 +1400,10 @@
 			}
 , 			{
 				"name" : "abc_soundcoat~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_scope3~.mxo",
 				"type" : "iLaX"
 			}
  ],

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 988.0, 428.0, 1364.0, 796.0 ],
+		"rect" : [ 624.0, 81.0, 1364.0, 796.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -59,6 +60,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -78,6 +80,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -97,6 +100,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -496,7 +500,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 500.0, 6.0, 286.0, 154.0 ],
+					"patching_rect" : [ 500.0, 6.0, 290.0, 154.0 ],
 					"text" : "abc_2d_optim1~, abc_2d_optim2~, etc. objects enable to apply optimizations to the sound field with 3 levels (depending on optimtype value). It provides solutions when having an audience that cannot be considered as staying in the center of the ambisonic circle.\n-basic (0) has no effect;\n-maxRe (1) optimization is used when the audience is confined to the center of the circle;\n-inPhase (2) optimization is used when the audience covers all the circle."
 				}
 

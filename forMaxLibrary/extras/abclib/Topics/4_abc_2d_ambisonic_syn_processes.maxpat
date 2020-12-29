@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 247.0, 1823.0, 966.0 ],
+		"rect" : [ 311.0, 79.0, 1823.0, 966.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -148,8 +148,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1824.0, 76.0, 158.0, 22.0 ],
-					"text" : "load 5_multichannel.maxpat"
+					"patching_rect" : [ 1824.0, 76.0, 196.0, 22.0 ],
+					"text" : "load 5_abc_multichannel.maxpat"
 				}
 
 			}
@@ -373,7 +373,7 @@
 					"id" : "obj-50",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -737,7 +737,7 @@
 					"id" : "obj-26",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -1251,7 +1251,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "and", "creation", "in", "mixed", "music", "in", "Faust", "language" ],
+					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "teaching", "and", "creation", "in", "mixed", "music", "=>", "Faust" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -1671,15 +1671,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-121", 0 ],
-					"order" : 1,
-					"source" : [ "obj-26", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"order" : 0,
 					"source" : [ "obj-26", 0 ]
 				}
 
@@ -2337,7 +2328,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
+				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../../../clippings/AudioOut",
 				"type" : "JSON",
@@ -2345,8 +2336,8 @@
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 459.0, 1780.0, 756.0 ],
+		"rect" : [ 235.0, 79.0, 1780.0, 756.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -52,13 +53,14 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 1546.071441999999934, 584.0, 93.0, 82.5 ],
+					"patching_rect" : [ 1546.071441999999934, 584.0, 93.0, 103.5 ],
 					"viewvisibility" : 1
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -71,7 +73,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 1055.678558000000066, 581.25, 93.0, 82.5 ],
+					"patching_rect" : [ 1055.678558000000066, 584.0, 93.0, 103.5 ],
 					"viewvisibility" : 1
 				}
 
@@ -490,7 +492,7 @@
 					"id" : "obj-70",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -556,7 +558,7 @@
 					"id" : "obj-49",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -653,7 +655,7 @@
 					"id" : "obj-60",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -745,7 +747,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -815,7 +817,7 @@
 					"id" : "obj-6",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -2090,14 +2092,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
+				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
+				"name" : "abc_quadriout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
@@ -2105,8 +2107,8 @@
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2204,8 +2206,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

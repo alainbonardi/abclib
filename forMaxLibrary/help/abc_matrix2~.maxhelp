@@ -73,11 +73,11 @@
 					"id" : "obj-134",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 923.0, 596.0, 185.0, 26.0 ],
+					"patching_rect" : [ 923.0, 601.5, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -150,11 +150,11 @@
 					"id" : "obj-129",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 529.0, 596.0, 185.0, 26.0 ],
+					"patching_rect" : [ 529.0, 601.5, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1898,7 +1898,7 @@
 					"id" : "obj-26",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -2663,36 +2663,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"name" : "abc_stereoout~.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

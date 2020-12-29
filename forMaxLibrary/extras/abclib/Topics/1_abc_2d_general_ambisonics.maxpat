@@ -692,7 +692,7 @@
 					"id" : "obj-20",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -1004,7 +1004,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 949.5, 6.0, 414.0, 33.0 ],
+					"patching_rect" : [ 943.5, 6.0, 414.0, 33.0 ],
 					"text" : "abc_2d_general_ambisonic objects"
 				}
 
@@ -1045,7 +1045,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "and", "creation", "in", "mixed", "music", "in", "Faust", "language" ],
+					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "teaching", "and", "creation", "in", "mixed", "music", "=>", "Faust" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -2615,7 +2615,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
+				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",

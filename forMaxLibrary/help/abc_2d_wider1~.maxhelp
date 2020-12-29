@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 841.0, 360.0, 1426.0, 803.0 ],
+		"rect" : [ 242.0, 79.0, 1426.0, 803.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -59,6 +60,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -78,6 +80,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -97,6 +100,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -635,7 +639,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 172.0, 706.0, 120.374999999999943, 22.0 ],
+					"patching_rect" : [ 167.0, 706.0, 125.071428571428555, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -708,7 +712,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 196.5, 566.5, 24.0, 24.0 ]
+					"patching_rect" : [ 191.5, 565.0, 29.367346938775711, 29.367346938775711 ]
 				}
 
 			}
@@ -729,7 +733,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 196.5, 598.5, 59.0, 22.0 ],
+					"patching_rect" : [ 191.5, 598.5, 64.367346938775711, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -772,7 +776,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 98.0, 536.0, 74.0, 72.0 ],
+					"patching_rect" : [ 93.0, 536.0, 79.367346938775711, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -828,7 +832,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 172.0, 646.0, 134.85714285714289, 22.0 ],
+					"patching_rect" : [ 167.0, 646.0, 140.224489795918373, 22.0 ],
 					"text" : "abc_2d_decoder3~"
 				}
 
@@ -1221,7 +1225,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 107.5, 621.5, 181.5, 621.5 ],
+					"midpoints" : [ 102.5, 621.5, 176.5, 621.5 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -1236,7 +1240,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 206.0, 632.75, 181.5, 632.75 ],
+					"midpoints" : [ 201.0, 632.75, 176.5, 632.75 ],
 					"source" : [ "obj-56", 0 ]
 				}
 

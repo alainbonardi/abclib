@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1068.0, 265.0, 553.0, 712.0 ],
+		"rect" : [ 451.0, 79.0, 553.0, 712.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -82,7 +82,7 @@
 					"id" : "obj-60",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -181,7 +181,7 @@
 					"id" : "obj-11",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -394,43 +394,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"name" : "abc_env_noise~.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
+				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/extras",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/extras",
+				"name" : "abc_quadriout~.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -473,8 +473,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

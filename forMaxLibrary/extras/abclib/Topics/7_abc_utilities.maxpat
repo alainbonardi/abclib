@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 389.0, 2492.0, 931.0 ],
+		"rect" : [ 34.0, 81.0, 2478.0, 934.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,184 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-160",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2010.833333333333485, 96.5, 51.0, 22.0 ],
+					"text" : "pcontrol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-161",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 2010.833333333333485, 64.5, 181.0, 22.0 ],
+					"text" : "load 8_abc_abstractions.maxpat"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-162",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "bang" ],
+					"patching_rect" : [ 1941.833333333333485, 33.5, 32.0, 22.0 ],
+					"text" : "t b b"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-163",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1941.833333333333485, 64.5, 45.0, 22.0 ],
+					"text" : "wclose"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-164",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1941.833333333333485, 96.5, 67.0, 22.0 ],
+					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+					"text" : "thispatcher"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-165",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1484.0, 7.5, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-166",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1335.0, 7.5, 149.178558000000066, 20.0 ],
+					"text" : "next topic: abstractions =>"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-152",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 878.333333333333485, 103.0, 51.0, 22.0 ],
+					"text" : "pcontrol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-154",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 878.333333333333485, 71.0, 167.0, 22.0 ],
+					"text" : "load 6_abc_synthesis.maxpat"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-155",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "bang" ],
+					"patching_rect" : [ 809.333333333333485, 40.0, 32.0, 22.0 ],
+					"text" : "t b b"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-156",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 809.333333333333485, 71.0, 45.0, 22.0 ],
+					"text" : "wclose"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-157",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 809.333333333333485, 103.0, 67.0, 22.0 ],
+					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+					"text" : "thispatcher"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-158",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 809.333333333333485, 7.5, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-159",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 835.333333333333485, 7.5, 195.0, 20.0 ],
+					"text" : "<= previous topic: sound synthesis"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-147",
 					"maxclass" : "comment",
@@ -681,7 +859,7 @@
 					"id" : "obj-71",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -764,7 +942,7 @@
 					"id" : "obj-41",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -1063,7 +1241,7 @@
 					"id" : "obj-134",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -1221,7 +1399,7 @@
 					"id" : "obj-129",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -2201,8 +2379,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -2416,7 +2594,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 825.0, 6.0, 317.0, 33.0 ],
+					"patching_rect" : [ 1066.0, 1.0, 240.0, 33.0 ],
 					"text" : "abc_utilities objects"
 				}
 
@@ -2457,7 +2635,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "and", "creation", "in", "mixed", "music", "in", "Faust", "language" ],
+					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "teaching", "and", "creation", "in", "mixed", "music", "=>", "Faust" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -2868,6 +3046,89 @@
 				"patchline" : 				{
 					"destination" : [ "obj-145", 0 ],
 					"source" : [ "obj-146", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-152", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-154", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-154", 0 ],
+					"hidden" : 1,
+					"midpoints" : [ 831.833333333333485, 66.0, 887.833333333333485, 66.0 ],
+					"source" : [ "obj-155", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-156", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-155", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-157", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-156", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-155", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-158", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-160", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-161", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-161", 0 ],
+					"hidden" : 1,
+					"midpoints" : [ 1964.333333333333485, 59.5, 2020.333333333333485, 59.5 ],
+					"source" : [ "obj-162", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-163", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-162", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-164", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-163", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-162", 0 ],
+					"hidden" : 1,
+					"midpoints" : [ 1493.5, 32.0, 1951.333333333333485, 32.0 ],
+					"source" : [ "obj-165", 0 ]
 				}
 
 			}
@@ -4184,36 +4445,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../../../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"name" : "abc_stereoout~.maxpat",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -4313,7 +4574,25 @@
 				"multi" : 0
 			}
 , 			{
+				"name" : "newobjBlue-2",
+				"default" : 				{
+					"accentcolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
 				"name" : "newobjGreen-1",
+				"default" : 				{
+					"accentcolor" : [ 0.0, 0.533333, 0.168627, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjGreen-2",
 				"default" : 				{
 					"accentcolor" : [ 0.0, 0.533333, 0.168627, 1.0 ]
 				}
@@ -4324,8 +4603,18 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+, 			{
+				"name" : "newobjYellow-2",
+				"default" : 				{
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

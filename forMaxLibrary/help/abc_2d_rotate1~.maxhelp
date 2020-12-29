@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -59,6 +60,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -78,6 +80,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -97,6 +100,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -168,11 +172,11 @@
 				"box" : 				{
 					"id" : "obj-41",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 932.678558000000066, 182.0, 91.0, 22.0 ],
-					"text" : "hoa.soundgrain"
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "list" ],
+					"patching_rect" : [ 932.678558000000066, 182.0, 101.0, 22.0 ],
+					"text" : "abc_soundgrain~"
 				}
 
 			}
@@ -758,7 +762,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20 ],
+					"args" : [ -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -908,7 +912,7 @@
 					"id" : "obj-60",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -928,7 +932,7 @@
 					"id" : "obj-6",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -2255,23 +2259,16 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
+				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
+				"name" : "abc_quadriout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "hoa.soundgrain.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/HoaLibrary-Mac-v2.2/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/HoaLibrary-Mac-v2.2/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2320,6 +2317,10 @@
 			}
 , 			{
 				"name" : "abc_2d_rotate7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
 			}
  ],

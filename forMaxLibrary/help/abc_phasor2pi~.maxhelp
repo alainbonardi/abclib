@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -101,7 +102,7 @@
 					"id" : "obj-60",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -237,7 +238,7 @@
 					"id" : "obj-12",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -558,7 +559,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
+				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
@@ -572,7 +573,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
+				"name" : "abc_quadriout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",

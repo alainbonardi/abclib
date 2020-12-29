@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1164.0, 361.0, 1190.0, 444.0 ],
+		"rect" : [ 243.0, 79.0, 1190.0, 444.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -303,7 +304,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ -20 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -333,7 +334,7 @@
 					"id" : "obj-23",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -1058,7 +1059,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
+				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",

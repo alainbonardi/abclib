@@ -5,7 +5,7 @@
 #X text 350 7 Y between -1 and 1;
 #X obj 18 4 loadbang;
 #X obj 56 152 vsl 15 128 0 5 0 0 empty empty size 0 -9 0 10 -262144
--1 -1 4700 1;
+-1 -1 6350 1;
 #X floatatom 56 287 5 0 0 0 - - -;
 #X obj 172 604 scopeXYZ~ 1024;
 #X msg 169 287 draw point;

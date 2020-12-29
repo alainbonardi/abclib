@@ -46,7 +46,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 776.0, 412.5, 93.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "abc_ambiscope\nabstraction"
 				}
 
@@ -65,6 +64,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -84,6 +84,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

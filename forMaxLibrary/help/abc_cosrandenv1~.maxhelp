@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 314.0, 525.0, 1357.0, 682.0 ],
+		"rect" : [ 279.0, 79.0, 1357.0, 682.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -59,6 +60,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -286,7 +288,7 @@
 					"id" : "obj-25",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -318,7 +320,7 @@
 					"id" : "obj-26",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -461,7 +463,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20 ],
+					"args" : [ -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -729,7 +731,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 470.571441999999934, 87.0, 271.0, 194.0 ],
+					"patching_rect" : [ 470.571441999999934, 87.0, 274.0, 194.0 ],
 					"text" : "abc_cosrandenv1~, abc_cosrandenv2~, ... objects provide multichannel envelopes based on the cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 				}
 
@@ -1545,14 +1547,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
+				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
+				"name" : "abc_quadriout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",

@@ -211,7 +211,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1839.428558000000066, 108.0, 51.0, 22.0 ],
+					"patching_rect" : [ 1868.428558000000066, 108.0, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -224,7 +224,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1839.428558000000066, 76.0, 268.0, 22.0 ],
+					"patching_rect" : [ 1868.428558000000066, 76.0, 268.0, 22.0 ],
 					"text" : "load 3_abc_2d_ambisonic_fx_processes.maxpat"
 				}
 
@@ -237,7 +237,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 1770.428558000000066, 45.0, 32.0, 22.0 ],
+					"patching_rect" : [ 1799.428558000000066, 45.0, 32.0, 22.0 ],
 					"text" : "t b b"
 				}
 
@@ -250,7 +250,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1770.428558000000066, 76.0, 45.0, 22.0 ],
+					"patching_rect" : [ 1799.428558000000066, 76.0, 45.0, 22.0 ],
 					"text" : "wclose"
 				}
 
@@ -263,7 +263,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 1770.428558000000066, 108.0, 67.0, 22.0 ],
+					"patching_rect" : [ 1799.428558000000066, 108.0, 67.0, 22.0 ],
 					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}
@@ -277,7 +277,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1770.428558000000066, 12.5, 24.0, 24.0 ]
+					"patching_rect" : [ 1799.428558000000066, 12.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -287,7 +287,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1535.428558000000066, 12.5, 236.0, 20.0 ],
+					"patching_rect" : [ 1564.428558000000066, 12.5, 236.0, 20.0 ],
 					"text" : "next topic: 2d_ambisonic_fx_processes =>"
 				}
 
@@ -390,7 +390,7 @@
 					"id" : "obj-73",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout.maxpat",
+					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -866,7 +866,7 @@
 					"id" : "obj-66",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_quadriout.maxpat",
+					"name" : "abc_quadriout~.maxpat",
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
@@ -886,7 +886,7 @@
 					"id" : "obj-67",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise.maxpat",
+					"name" : "abc_env_noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -1515,7 +1515,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1095.428558000000066, 6.0, 438.0, 33.0 ],
+					"patching_rect" : [ 1110.428558000000066, 6.0, 438.0, 33.0 ],
 					"text" : "abc_2d_ambisonic_geometry objects"
 				}
 
@@ -1556,7 +1556,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "and", "creation", "in", "mixed", "music", "in", "Faust", "language" ],
+					"args" : [ "@obj-name", "abclib_Library", "@obj-desc", 20, "years", "of", "research", "teaching", "and", "creation", "in", "mixed", "music", "=>", "Faust" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -2437,7 +2437,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 2 ],
-					"midpoints" : [ 1115.678558000000066, 459.0, 1450.428557999999839, 459.0 ],
+					"midpoints" : [ 1115.678558000000066, 448.0, 1450.428557999999839, 448.0 ],
 					"order" : 0,
 					"source" : [ "obj-67", 0 ]
 				}
@@ -2446,7 +2446,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 1 ],
-					"midpoints" : [ 1115.678558000000066, 457.0, 1367.178558000000066, 457.0 ],
+					"midpoints" : [ 1115.678558000000066, 448.0, 1367.178558000000066, 448.0 ],
 					"order" : 1,
 					"source" : [ "obj-67", 0 ]
 				}
@@ -2455,7 +2455,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 0 ],
-					"midpoints" : [ 1115.678558000000066, 458.0, 1283.928558000000066, 458.0 ],
+					"midpoints" : [ 1115.678558000000066, 448.0, 1283.928558000000066, 448.0 ],
 					"order" : 2,
 					"source" : [ "obj-67", 0 ]
 				}
@@ -2464,7 +2464,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-60", 2 ],
-					"midpoints" : [ 1115.678558000000066, 501.0, 1226.928558000000066, 501.0 ],
+					"midpoints" : [ 1115.678558000000066, 465.0, 1226.928558000000066, 465.0 ],
 					"order" : 3,
 					"source" : [ "obj-67", 0 ]
 				}
@@ -2473,7 +2473,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-60", 1 ],
-					"midpoints" : [ 1115.678558000000066, 503.0, 1171.428558000000066, 503.0 ],
+					"midpoints" : [ 1115.678558000000066, 465.0, 1171.428558000000066, 465.0 ],
 					"order" : 4,
 					"source" : [ "obj-67", 0 ]
 				}
@@ -2861,7 +2861,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-93", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 1792.928558000000066, 71.0, 1848.928558000000066, 71.0 ],
+					"midpoints" : [ 1821.928558000000066, 71.0, 1877.928558000000066, 71.0 ],
 					"source" : [ "obj-94", 1 ]
 				}
 
@@ -2927,21 +2927,21 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise.maxpat",
+				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../../../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_quadriout.maxpat",
+				"name" : "abc_quadriout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout.maxpat",
+				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../../../misc/others",
 				"type" : "JSON",

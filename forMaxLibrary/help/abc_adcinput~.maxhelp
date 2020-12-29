@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 323.0, 79.0, 843.0, 379.0 ],
+		"rect" : [ 283.0, 248.0, 731.0, 498.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,14 +40,12 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"format" : 6,
-					"id" : "obj-19",
-					"maxclass" : "flonum",
+					"id" : "obj-16",
+					"maxclass" : "live.meter~",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 717.0, 151.0, 50.0, 22.0 ]
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 159.0, 334.0, 5.0, 100.0 ]
 				}
 
 			}
@@ -57,187 +55,123 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 717.0, 121.0, 73.0, 22.0 ],
-					"text" : "loadmess 1."
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 329.0, 305.0, 58.0, 22.0 ],
+					"text" : "loadbang"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
-					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
-					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.0,
-					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
-					"bgfillcolor_color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
-					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
-					"bgfillcolor_proportion" : 0.5,
-					"bgfillcolor_type" : "color",
-					"gradient" : 1,
-					"id" : "obj-17",
+					"id" : "obj-14",
+					"linecount" : 4,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 717.0, 180.0, 69.0, 22.0 ],
-					"text" : "freqmult $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontface" : 1,
-					"fontsize" : 14.0,
-					"id" : "obj-14",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 623.0, 232.5, 125.0, 24.0 ],
-					"text" : "abc_soundgrain~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 160.0, 121.0, 90.0, 22.0 ],
-					"text" : "loadmess 3000"
+					"patching_rect" : [ 329.0, 360.0, 94.0, 76.0 ],
+					"text" : ";\rdel1 tempo 60;\rdel1 dur00 0.5;\rdel1 fdbk00 0.4;\r"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-12",
-					"maxclass" : "number",
-					"maximum" : 20000,
-					"minimum" : 1,
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 160.0, 151.0, 50.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
-					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
-					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.0,
-					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
-					"bgfillcolor_color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
-					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
-					"bgfillcolor_proportion" : 0.5,
-					"bgfillcolor_type" : "color",
-					"gradient" : 1,
-					"id" : "obj-6",
-					"maxclass" : "message",
-					"numinlets" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 160.0, 180.0, 67.0, 22.0 ],
-					"text" : "randwin $1"
+					"patching_rect" : [ 135.0, 233.0, 39.0, 22.0 ],
+					"text" : "r del1"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontface" : 1,
-					"fontsize" : 14.0,
-					"id" : "obj-5",
+					"id" : "obj-11",
+					"maxclass" : "live.meter~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 38.0, 334.0, 5.0, 100.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 71.0, 232.5, 119.0, 24.0 ],
-					"text" : "abc_soundcoat~"
+					"patching_rect" : [ 110.0, 271.0, 77.0, 22.0 ],
+					"text" : "abc_delay1~"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-10",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc_gaincontrol.maxpat",
-					"numinlets" : 0,
+					"id" : "obj-9",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 111.0, 84.0, 41.0, 20.0 ],
+					"text" : "on/off"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
 					"numoutlets" : 1,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 623.0, 131.0, 74.0, 72.0 ],
-					"viewvisibility" : 1
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 84.0, 82.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
+					"id" : "obj-6",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 421.0, 132.0, 298.0, 87.0 ],
+					"text" : "The abc_adcinput~ abstraction is a mono adc~ input with possible dc filtering. The bpatcher can accept three default values as arguments\n-argument 1 is the number of the channel (adc)\n-argument 2 is the amplitude in dB\n-argument 3 is the enabling (1/0) of the dc filtering"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
+					"maxclass" : "ezdac~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 84.0, 389.0, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ 2, -10.0, 1 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-8",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_gaincontrol.maxpat",
-					"numinlets" : 0,
+					"name" : "abc_adcinput~.maxpat",
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 71.0, 131.0, 74.0, 72.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-67",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout~.maxpat",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 623.0, 282.5, 185.0, 26.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ 0 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-55",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout~.maxpat",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 71.0, 282.5, 185.0, 26.0 ],
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 84.0, 141.0, 322.0, 42.0 ],
+					"varname" : "abc.adcinput~",
 					"viewvisibility" : 1
 				}
 
@@ -257,7 +191,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.0, 353.0, 548.0, 23.0 ],
+					"patching_rect" : [ 6.0, 470.0, 548.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 					"viewvisibility" : 1
@@ -266,19 +200,7 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-24",
-					"linecount" : 10,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 300.571441999999934, 113.5, 269.0, 141.0 ],
-					"text" : "abc_soundcoat~ is a set of 16 bandpass filters receiving a noise sound as input. The output gains of the filters are slowly randomized. randwin is the duration of the cycle of randomization of the 16 outputs in milliseconds (3000 is the default value, 1 minimum, 20000 maximum).\nabc_soundgrain~ is a granulator on a rainstick sound which is looped at freqmult speed (default value 1, minimum 0.01, maximum 100)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "@obj-name", "abc_soundcoat~", "&", "abc_soundgrain~", "@obj-desc", "Synthetizers", "in", "Faust" ],
+					"args" : [ "@obj-name", "abc_adcinput~", "@obj-desc", "Mono", "adc~", "input", "with", "possible", "dc", "filtering" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -336,9 +258,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -439,7 +361,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 32.0, 412.0, 21.0 ],
-									"text" : "Synthetizers in Faust",
+									"text" : "Mono adc~ input with possible dc filtering",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_digest[1]"
 								}
@@ -455,7 +377,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 4.0, 398.0, 27.0 ],
-									"text" : "abc_soundcoat~ & abc_soundgrain~",
+									"text" : "abc_adcinput~",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_title[1]"
 								}
@@ -471,7 +393,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 5.0, 401.0, 27.0 ],
-									"text" : "abc_soundcoat~ & abc_soundgrain~",
+									"text" : "abc_adcinput~",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_title[2]"
 								}
@@ -486,7 +408,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 33.0, 401.0, 21.0 ],
-									"text" : "Synthetizers in Faust",
+									"text" : "Mono adc~ input with possible dc filtering",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_digest[4]"
 								}
@@ -654,110 +576,78 @@
 				}
 
 			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 425.0, 263.5, 45.0, 45.0 ]
-				}
-
-			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
+					"destination" : [ "obj-16", 0 ],
+					"order" : 0,
 					"source" : [ "obj-10", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-4", 1 ],
+					"order" : 1,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"source" : [ "obj-13", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-67", 1 ],
-					"midpoints" : [ 632.5, 263.25, 798.5, 263.25 ],
-					"order" : 0,
-					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-67", 0 ],
-					"order" : 1,
-					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
+					"destination" : [ "obj-14", 0 ],
 					"source" : [ "obj-15", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 726.5, 216.75, 632.5, 216.75 ],
-					"source" : [ "obj-17", 0 ]
+					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-7", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
-					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-55", 1 ],
-					"midpoints" : [ 80.5, 268.0, 246.5, 268.0 ],
+					"destination" : [ "obj-10", 0 ],
 					"order" : 0,
-					"source" : [ "obj-5", 0 ]
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-55", 0 ],
+					"destination" : [ "obj-11", 0 ],
+					"order" : 2,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
 					"order" : 1,
-					"source" : [ "obj-5", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 169.5, 217.25, 80.5, 217.25 ],
-					"source" : [ "obj-6", 0 ]
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
  ],
+		"parameters" : 		{
+			"obj-8::obj-2" : [ "live.gain~", "live.gain~", 0 ],
+			"parameterbanks" : 			{
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc_help_icon.png",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
@@ -773,25 +663,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout~.maxpat",
+				"name" : "abc_adcinput~.maxpat",
 				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_soundcoat~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_soundgrain~.mxo",
+				"name" : "abc_delay1~.mxo",
 				"type" : "iLaX"
 			}
  ],

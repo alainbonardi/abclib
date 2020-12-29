@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -46,8 +46,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3.0, -25.0, 70.0, 22.0 ],
-					"text" : "loadmess 3"
+					"patching_rect" : [ 3.0, -25.0, 77.0, 22.0 ],
+					"text" : "loadmess #1"
 				}
 
 			}
