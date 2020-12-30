@@ -1,4 +1,4 @@
-#N canvas 276 31 1518 795 10;
+#N canvas 153 23 1440 733 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_decoderN~  20 12 0 18 -99865
 -262144 0;
 #X obj 13 746 abc_helpcredit;
@@ -68,11 +68,11 @@ to 1 - stereo sets the decoding: 1 for stereo \, 0 for ambisonic;
 #X msg 1382 407 10;
 #X obj 1287 480 abc_2d_scope7~ ------------;
 #X obj 308 302 abc_2d_scope1~;
-#X obj 297 371 abc_ambi_scope 0;
-#X obj 1353 516 abc_ambi_scope 1;
 #X obj 817 596 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X msg 817 626 \; pd dsp \$1 \;;
+#X obj 291 374 abc_ambi_scope 0 0 2.5;
+#X obj 1353 516 abc_ambi_scope 1 0 2.5;
 #X connect 3 1 4 1;
 #X connect 3 1 51 1;
 #X connect 3 2 4 2;
@@ -182,10 +182,10 @@ to 1 - stereo sets the decoding: 1 for stereo \, 0 for ambisonic;
 #X connect 47 0 50 0;
 #X connect 48 0 49 0;
 #X connect 49 0 47 0;
-#X connect 50 1 53 0;
-#X connect 50 2 53 1;
-#X connect 50 3 53 2;
-#X connect 51 1 52 0;
-#X connect 51 2 52 1;
-#X connect 51 3 52 2;
-#X connect 54 0 55 0;
+#X connect 50 1 55 0;
+#X connect 50 2 55 1;
+#X connect 50 3 55 2;
+#X connect 51 1 54 0;
+#X connect 51 2 54 1;
+#X connect 51 3 54 2;
+#X connect 52 0 53 0;
