@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 81.0, 79.0, 1178.0, 885.0 ],
+		"rect" : [ 201.0, 79.0, 692.0, 621.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -224,7 +224,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 598.5, 277.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "load 4_abc_2d_ambisonic_syn_processes.maxpat"
 				}
 
@@ -263,7 +262,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 530.5, 268.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "load 3_abc_2d_ambisonic_fx_processes.maxpat"
 				}
 
@@ -302,7 +300,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 585.0, 462.5, 246.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "load 2_abc_2d_ambisonic_geometry.maxpat"
 				}
 
@@ -352,7 +349,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 63.0, 85.0, 328.0, 476.0 ],
+					"patching_rect" : [ 63.0, 85.0, 329.0, 476.0 ],
 					"text" : "abclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language. The main topics addressed are:\n- spatial sound processing and synthesis using ambisonics\n- multi-channel sound processing\nThe library is based on Faust processes implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances) or if not ambisonic with various dimensions from 1 to 16 parallel instances.\nThe Faust processes are compiled to Max objects. Help patches are also provided as well as some overview patches or graphic abstractions based on Jitter (abc_ambiscope).\nTeaching mixed music at Paris 8 University helped us for many implementation choices, thinking of practical requirements for composers, testing their patches either in multichannel academic studios ar at home in simple stereo. \nAll theses objects and abstractions are organized in 8 topics:\n\n1) general ambisonic objects\n\n2) ambisonic geometry objects\n\n3) ambisonic fx processes\n\n4) ambisonic syn processes\n\n5) multichannel processes\n\n6) sound synthesis\n\n7) utilities\n\n8) abstractions"
 				}
 
@@ -612,8 +609,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
@@ -622,8 +619,8 @@
 , 			{
 				"name" : "newobjYellow-2",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
