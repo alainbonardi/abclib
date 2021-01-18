@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 9.0, 79.0, 1397.0, 821.0 ],
+		"rect" : [ 34.0, 79.0, 1397.0, 821.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -574,7 +574,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 548.571441999999934, 6.0, 376.0, 194.0 ],
-					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3 8 LS, ... at order 7 16 LS\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implentation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 				}
 
 			}
@@ -1648,8 +1648,8 @@
 			}
 , 			{
 				"name" : "abc_env_noise~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
-				"patcherrelativepath" : "../clippings/AudioOut",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}

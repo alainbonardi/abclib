@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 272.0, 83.0, 945.0, 541.0 ],
+		"rect" : [ 235.0, 79.0, 945.0, 541.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 776.0, 412.5, 93.0, 33.0 ],
-					"text" : "abc_ambiscope\nabstraction"
+					"text" : "abc_scope\nabstraction"
 				}
 
 			}
@@ -57,8 +57,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 143.0, 412.5, 93.0, 33.0 ],
-					"text" : "abc_ambiscope\nabstraction"
+					"patching_rect" : [ 149.0, 412.5, 93.0, 33.0 ],
+					"text" : "abc_scope\nabstraction"
 				}
 
 			}
@@ -268,12 +268,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-4",
-					"linecount" : 12,
+					"linecount" : 11,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 417.0, 288.0, 153.0, 167.0 ],
-					"text" : "abc_scope1~, abcscope~2, ... objects enable the visualization of the ambisonic field in a scope~ Max graphical object\nThe abc_ambiscope abstraction within a bpatcher enables to graphically render the ambisonic field using Jitter OpenGL"
+					"patching_rect" : [ 417.0, 288.0, 156.0, 154.0 ],
+					"text" : "abc_scope1~, abc_scope~2, ... objects enable the visualization of the ambisonic field in a scope~ Max graphical object\nThe abc_scope abstraction within a bpatcher enables to graphically render the ambisonic field using Jitter OpenGL"
 				}
 
 			}
@@ -350,7 +350,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_2d_scopeN~", "@obj-desc", "Creates", "X", "Y", "signals", "for", "ambisonic", "vizualisation", "using", "Max", "scope~" ],
+					"args" : [ "@obj-name", "abc_2d_scopeN~", "@obj-desc", "Creates", "X", "Y", "signals", "for", "ambisonic", "vizualisation", "using", "abc_scope" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,

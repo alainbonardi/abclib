@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 848.0, 354.0, 558.0, 496.0 ],
+		"rect" : [ 235.0, 79.0, 558.0, 496.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -188,9 +188,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_caption" : "hoa.2d.scope~",
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
 									}
 ,
 									"maxclass" : "fpic",
