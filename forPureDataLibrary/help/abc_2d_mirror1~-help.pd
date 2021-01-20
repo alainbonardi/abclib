@@ -1,4 +1,4 @@
-#N canvas 1070 23 1490 788 10;
+#N canvas 190 23 1490 788 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_mirrorN~  20 12 0 18
 -99865 -262144 0;
 #X obj 13 746 abc_helpcredit;
@@ -63,7 +63,7 @@
 #X text 267 133 0 = Original + Mirror sound field;
 #X text 262 148 -1 = Mirror sound field;
 #X text 268 102 Mirror factor;
-#X text 525 50 abc_2d_mirror1~ \, abc_2d_mirror2~ \, etc. objects apply
+#X text 532 26 abc_2d_mirror1~ \, abc_2d_mirror2~ \, etc. objects apply
 mirror L/R symmetry to a set of ambisonic spatial components using
 a simple multiplication of negative components by a 'factor'. This
 'factor' parameter can take three different values: 1 (original sound
@@ -73,6 +73,12 @@ the mirror sound field);
 #X text 1113 228 0 = Original + Mirror sound field;
 #X text 1108 243 -1 = Mirror sound field;
 #X text 1114 197 Mirror factor;
+#X text 905 8 CONTROLS;
+#X text 532 7 DESCRIPTION;
+#X text 905 42 1 = Original sound field;
+#X text 905 58 0 = Original + Mirror sound field;
+#X text 900 73 -1 = Mirror sound field;
+#X text 906 27 Mirror factor;
 #X connect 3 1 11 1;
 #X connect 3 1 27 1;
 #X connect 3 2 11 2;

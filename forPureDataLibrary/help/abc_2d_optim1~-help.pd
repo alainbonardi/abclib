@@ -1,10 +1,10 @@
-#N canvas 1070 23 1490 788 10;
+#N canvas 190 23 1490 788 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_optimN~  20 12 0 18 -99865
 -262144 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_optimizers_at_orders_1_2_3...
 20 12 0 12 -99865 -262144 0;
-#X obj 533 364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 533 364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 533 388 stereo \$1;
 #X obj 1111 548 abc_2d_decoder7~ ------------;
@@ -20,10 +20,10 @@
 #X msg 64 158 -0.2;
 #X floatatom 64 179 5 0 0 0 - - -;
 #X msg 64 199 speed \$1;
-#X obj 206 137 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+#X obj 195 137 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
 -1 -1 2;
-#X floatatom 206 208 5 0 0 0 - - -;
-#X obj 206 82 loadbang;
+#X floatatom 195 208 5 0 0 0 - - -;
+#X obj 195 82 loadbang;
 #X obj 715 116 loadbang;
 #X floatatom 715 158 5 0 0 0 - - -;
 #X msg 715 178 speed \$1;
@@ -35,7 +35,7 @@
 #X obj 43 371 abc_scope 0 0 2.5;
 #X obj 917 504 abc_2d_scope7~ ------------;
 #X obj 1327 428 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X msg 1327 452 stereo \$1;
 #X obj 772 551 abc_scope 0 0 2.5;
 #X obj 64 225 abc_2d_encoder3~;
@@ -43,8 +43,8 @@
 #X obj 364 465 abc_2d_decoder3~;
 #X obj 37 305 abc_2d_scope3~;
 #X obj 193 398 abc_2d_scope3~;
-#X msg 205 228 optimtype \$1;
-#X msg 206 111 2;
+#X msg 194 228 optimtype \$1;
+#X msg 195 111 2;
 #X obj 419 528 dac~ 1 2 3 4 5 6 7 8;
 #X text 268 102 optimtype value;
 #X text 267 117 0 = basic \, no effect;
@@ -52,7 +52,7 @@
 confined to the center of the circle;
 #X text 267 155 2 = inPhase optimization \, used when the audience
 covers all the circle;
-#X text 529 13 abc_2d_optim1~ \, abc_2d_optim2~ \, etc. objects enable
+#X text 529 29 abc_2d_optim1~ \, abc_2d_optim2~ \, etc. objects enable
 to apply optimizations to the sound field with 3 levels (depending
 on optimtype value). It provides solutions when having an audience
 that cannot be considered as staying in the center of the ambisonic
@@ -72,6 +72,14 @@ covers all the circle;
 #X obj 201 442 abc_scope 1 0 2.5;
 #X obj 972 553 abc_scope 0 0 2.5;
 #X obj 1233 289 abc_gain -127;
+#X text 905 8 CONTROLS;
+#X text 532 7 DESCRIPTION;
+#X text 905 28 optimtype value;
+#X text 904 43 0 = basic \, no effect;
+#X text 904 56 1 = maxRe optimization \, used when the audience is
+confined to the center of the circle;
+#X text 904 81 2 = inPhase optimization \, used when the audience covers
+all the circle;
 #X connect 3 0 4 0;
 #X connect 4 0 34 0;
 #X connect 5 1 6 0;
