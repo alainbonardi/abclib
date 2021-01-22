@@ -1,0 +1,207 @@
+#N canvas -92 76 1640 711 10;
+#X obj 11 6 cnv 15 500 25 empty empty abc_2d_syn_decorrelationN~ &_fx
+20 12 0 18 -99865 -262144 0;
+#X obj 10 681 abc_helpcredit;
+#X obj 11 32 cnv 15 500 25 empty empty Decorrelation_processes_to_generate_or_process_spatial_components
+20 12 0 12 -99865 -262144 0;
+#X obj 696 649 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 696 677 \; pd dsp \$1 \;;
+#X text 936 4 CONTROLS;
+#X text 539 6 DESCRIPTION;
+#X obj 353 205 s factor;
+#X obj 265 281 abc_env_noise 125 0.25;
+#X obj 112 304 r factor;
+#X obj 112 342 abc_2d_syn_decorrelation1~;
+#X obj 142 437 abc_2d_decoder1~;
+#X obj 145 498 abc_quadriout;
+#X obj 70 380 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 70 400 stereo \$1;
+#X text 540 26 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~
+\, ... objects generate spatial decorrelated components in ambisonic
+from one mono signal. abc_2d_fx_decorrelated1~ \, abc_2d_fx_decorrelated2~
+\, ... objects apply decorrelation to spatial components already created
+by encoders or maps for instance. If we are at order N in ambisonics
+\, the number of spatial components is P = 2*N+1. The P delay lines
+are driven by a 'factor' parameter between 0 and 1 The ith (i between
+0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter
+is compared to 1-(i+1)/P. If it is greater than this threshold the
+delay is (i+1)*delay/P \, else the delay is 0;
+#X text 936 28 delay is the maximum duration in samples of the delays
+(by default it is 44100 \, minimum is 10 maximum 262144 \, that is
+roughly 5 \, 46 sec at 48KHz) factor (between 0 and 1) is a control
+parameter that 'opens' the delay lines when increasing;
+#X obj 24 178 abc_gain -127;
+#X obj 353 151 abc_upanddown;
+#X obj 764 190 abc_addsynth9~ -----;
+#X obj 766 266 abc_cosrandenv3~;
+#X obj 667 308 r factor;
+#X obj 667 345 abc_2d_syn_decorrelation3~;
+#X obj 820 307 *~ 0.3;
+#X obj 587 385 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 587 405 stereo \$1;
+#X obj 690 442 abc_2d_decoder3~;
+#X obj 585 183 abc_gain -15;
+#X obj 682 511 dac~ 1 2 3 4 5 6 7 8;
+#X obj 1155 237 abc_soundgrain~;
+#X obj 1174 324 abc_2d_encoder1~;
+#X obj 1080 338 r factor;
+#X obj 1080 376 abc_2d_fx_decorrelation1~;
+#X obj 1087 442 abc_2d_decoder1~;
+#X obj 1090 503 abc_quadriout;
+#X obj 1015 385 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 1015 405 stereo \$1;
+#X obj 969 183 abc_gain -127;
+#X obj 1473 170 abc_env_noise 90 0.3;
+#X obj 1574 313 abc_2d_randomtrajectory~;
+#X obj 1597 349 abc_cartopol~;
+#X msg 1574 289 freq \$1;
+#X obj 1574 225 loadbang;
+#X msg 1574 246 2;
+#X floatatom 1574 267 5 0 0 0 - - -;
+#X obj 1465 395 r factor;
+#X obj 1484 447 abc_2d_fx_decorrelation7~ ------------;
+#X obj 1533 394 abc_2d_map7~ -------- ----- ---;
+#X obj 1207 442 abc_2d_scope1~;
+#X obj 1403 413 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 1403 433 stereo \$1;
+#X obj 1357 211 abc_gain -127;
+#X obj 1448 598 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 1480 531 abc_2d_decoder7~ ---------------;
+#X obj 1211 501 abc_scope 0 0 2.5;
+#X obj 1732 519 abc_scope 0 0 2.5;
+#X obj 1728 460 abc_2d_scope7~ -----------;
+#X connect 3 0 4 0;
+#X connect 8 0 10 1;
+#X connect 9 0 10 0;
+#X connect 10 1 11 1;
+#X connect 10 2 11 2;
+#X connect 10 3 11 3;
+#X connect 11 1 12 0;
+#X connect 11 2 12 1;
+#X connect 11 3 12 2;
+#X connect 11 4 12 3;
+#X connect 13 0 14 0;
+#X connect 14 0 11 0;
+#X connect 17 0 11 0;
+#X connect 18 0 7 0;
+#X connect 19 1 20 1;
+#X connect 19 2 20 2;
+#X connect 19 3 20 3;
+#X connect 19 4 20 1;
+#X connect 19 5 20 2;
+#X connect 19 6 20 3;
+#X connect 19 7 20 1;
+#X connect 19 8 20 2;
+#X connect 19 9 20 3;
+#X connect 20 1 23 0;
+#X connect 20 2 23 0;
+#X connect 20 3 23 0;
+#X connect 21 0 22 0;
+#X connect 22 1 26 1;
+#X connect 22 2 26 2;
+#X connect 22 3 26 3;
+#X connect 22 4 26 4;
+#X connect 22 5 26 5;
+#X connect 22 6 26 6;
+#X connect 22 7 26 7;
+#X connect 23 0 22 1;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 1 28 0;
+#X connect 26 2 28 1;
+#X connect 26 3 28 2;
+#X connect 26 4 28 3;
+#X connect 26 5 28 4;
+#X connect 26 6 28 5;
+#X connect 26 7 28 6;
+#X connect 26 8 28 7;
+#X connect 27 0 26 0;
+#X connect 29 1 30 1;
+#X connect 30 1 32 1;
+#X connect 30 2 32 2;
+#X connect 30 3 32 3;
+#X connect 31 0 32 0;
+#X connect 32 1 33 1;
+#X connect 32 1 48 1;
+#X connect 32 2 33 2;
+#X connect 32 2 48 2;
+#X connect 32 3 33 3;
+#X connect 32 3 48 3;
+#X connect 33 1 34 0;
+#X connect 33 2 34 1;
+#X connect 33 3 34 2;
+#X connect 33 4 34 3;
+#X connect 35 0 36 0;
+#X connect 36 0 33 0;
+#X connect 37 0 33 0;
+#X connect 38 0 47 1;
+#X connect 39 1 40 1;
+#X connect 39 2 40 2;
+#X connect 40 1 47 2;
+#X connect 40 2 47 3;
+#X connect 41 0 39 0;
+#X connect 42 0 43 0;
+#X connect 43 0 44 0;
+#X connect 44 0 41 0;
+#X connect 45 0 46 0;
+#X connect 46 1 53 1;
+#X connect 46 2 53 2;
+#X connect 46 3 53 3;
+#X connect 46 4 53 4;
+#X connect 46 5 53 5;
+#X connect 46 6 53 6;
+#X connect 46 7 53 7;
+#X connect 46 8 53 8;
+#X connect 46 9 53 9;
+#X connect 46 10 53 10;
+#X connect 46 11 53 11;
+#X connect 46 12 53 12;
+#X connect 46 13 53 13;
+#X connect 46 14 53 14;
+#X connect 46 15 53 15;
+#X connect 47 1 46 1;
+#X connect 47 2 46 2;
+#X connect 47 3 46 3;
+#X connect 47 4 46 4;
+#X connect 47 5 46 5;
+#X connect 47 6 46 6;
+#X connect 47 7 46 7;
+#X connect 47 8 46 8;
+#X connect 47 9 46 9;
+#X connect 47 10 46 10;
+#X connect 47 11 46 11;
+#X connect 47 12 46 12;
+#X connect 47 13 46 13;
+#X connect 47 14 46 14;
+#X connect 47 15 46 15;
+#X connect 48 1 54 0;
+#X connect 48 2 54 1;
+#X connect 48 3 54 2;
+#X connect 49 0 50 0;
+#X connect 50 0 53 0;
+#X connect 51 0 53 0;
+#X connect 53 1 52 0;
+#X connect 53 2 52 1;
+#X connect 53 3 52 2;
+#X connect 53 4 52 3;
+#X connect 53 5 52 4;
+#X connect 53 6 52 5;
+#X connect 53 7 52 6;
+#X connect 53 8 52 7;
+#X connect 53 9 52 8;
+#X connect 53 10 52 9;
+#X connect 53 11 52 10;
+#X connect 53 12 52 11;
+#X connect 53 13 52 12;
+#X connect 53 14 52 13;
+#X connect 53 15 52 14;
+#X connect 53 16 52 15;
+#X connect 56 1 55 0;
+#X connect 56 2 55 1;
+#X connect 56 3 55 2;
+#X coords 0 711 1 710 85 60 0;
