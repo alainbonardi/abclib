@@ -1,24 +1,24 @@
-#N canvas 0 76 1680 818 10;
-#X obj 11 7 cnv 15 500 25 empty empty abc_2d_syn_decorrelationN~ &_fx
+#N canvas 346 243 1959 791 10;
+#X obj 11 8 cnv 15 500 25 empty empty abc_2d_syn_decorrelationN~ &_fx
 20 12 0 18 -99865 -262144 0;
-#X obj 10 709 abc_helpcredit;
-#X obj 11 33 cnv 15 500 25 empty empty Decorrelation_processes_to_generate_or_process_spatial_components
+#X obj 10 736 abc_helpcredit;
+#X obj 11 34 cnv 15 500 25 empty empty Decorrelation_processes_to_generate_or_process_spatial_components
 20 12 0 12 -99865 -262144 0;
-#X obj 696 637 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
-#X msg 696 665 \; pd dsp \$1 \;;
-#X text 936 5 CONTROLS;
-#X text 539 7 DESCRIPTION;
-#X obj 353 206 s factor;
-#X obj 265 282 abc_env_noise 125 0.25;
-#X obj 112 305 r factor;
-#X obj 112 343 abc_2d_syn_decorrelation1~;
-#X obj 142 438 abc_2d_decoder1~;
-#X obj 145 499 abc_quadriout;
-#X obj 70 381 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 696 638 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 1 1;
+#X msg 696 666 \; pd dsp \$1 \;;
+#X text 936 6 CONTROLS;
+#X text 539 8 DESCRIPTION;
+#X obj 911 222 s factor;
+#X obj 257 307 abc_env_noise 125 0.25;
+#X obj 104 329 r factor;
+#X obj 104 365 abc_2d_syn_decorrelation1~;
+#X obj 134 460 abc_2d_decoder1~;
+#X obj 137 521 abc_quadriout;
+#X obj 16 410 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 70 401 stereo \$1;
-#X text 540 27 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~
+#X msg 16 432 stereo \$1;
+#X text 540 28 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~
 \, ... objects generate spatial decorrelated components in ambisonic
 from one mono signal. abc_2d_fx_decorrelated1~ \, abc_2d_fx_decorrelated2~
 \, ... objects apply decorrelation to spatial components already created
@@ -28,53 +28,53 @@ are driven by a 'factor' parameter between 0 and 1 The ith (i between
 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter
 is compared to 1-(i+1)/P. If it is greater than this threshold the
 delay is (i+1)*delay/P \, else the delay is 0;
-#X obj 24 179 abc_gain -127;
-#X obj 353 152 abc_upanddown;
-#X obj 764 191 abc_addsynth9~ -----;
-#X obj 766 267 abc_cosrandenv3~;
-#X obj 667 309 r factor;
-#X obj 667 346 abc_2d_syn_decorrelation3~;
-#X obj 820 308 *~ 0.3;
-#X obj 587 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 16 201 abc_gain -127;
+#X obj 911 168 abc_upanddown;
+#X obj 756 237 abc_addsynth9~ -----;
+#X obj 758 313 abc_cosrandenv3~;
+#X obj 659 355 r factor;
+#X obj 659 392 abc_2d_syn_decorrelation3~;
+#X obj 812 354 *~ 0.3;
+#X obj 579 432 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 587 406 stereo \$1;
-#X obj 690 443 abc_2d_decoder3~;
-#X obj 585 184 abc_gain -15;
-#X obj 682 512 dac~ 1 2 3 4 5 6 7 8;
-#X obj 1155 238 abc_soundgrain~;
-#X obj 1174 325 abc_2d_encoder1~;
-#X obj 1080 339 r factor;
-#X obj 1080 377 abc_2d_fx_decorrelation1~;
-#X obj 1087 443 abc_2d_decoder1~;
-#X obj 1090 504 abc_quadriout;
-#X obj 1015 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X msg 579 452 stereo \$1;
+#X obj 682 489 abc_2d_decoder3~;
+#X obj 577 230 abc_gain -15;
+#X obj 674 558 dac~ 1 2 3 4 5 6 7 8;
+#X obj 1169 279 abc_soundgrain~;
+#X obj 1163 306 abc_2d_encoder1~;
+#X obj 1111 340 r factor;
+#X obj 1111 378 abc_2d_fx_decorrelation1~;
+#X obj 1118 464 abc_2d_decoder1~;
+#X obj 1121 505 abc_quadriout;
+#X obj 1017 413 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X msg 1015 406 stereo \$1;
-#X obj 969 184 abc_gain -127;
-#X obj 1473 171 abc_env_noise 90 0.3;
-#X obj 1574 314 abc_2d_randomtrajectory~;
-#X obj 1597 350 abc_cartopol~;
-#X msg 1574 290 freq \$1;
-#X obj 1574 226 loadbang;
-#X msg 1574 247 2;
-#X floatatom 1574 268 5 0 0 0 - - -;
-#X obj 1465 396 r factor;
-#X obj 1484 448 abc_2d_fx_decorrelation7~ ------------;
-#X obj 1533 395 abc_2d_map7~ -------- ----- ---;
-#X obj 1207 443 abc_2d_scope1~;
-#X obj 1403 414 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X msg 1403 434 stereo \$1;
-#X obj 1357 212 abc_gain -127;
-#X obj 1448 599 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
-#X obj 1480 532 abc_2d_decoder7~ ---------------;
-#X obj 1211 502 abc_scope 0 0 2.5;
-#X obj 1748 571 abc_scope 0 0 2.5;
-#X obj 1688 530 abc_2d_scope7~ --------------;
-#X text 936 29 delay is the maximum duration in samples of the delays
+#X msg 1017 433 stereo \$1;
+#X obj 1022 214 abc_gain -127;
+#X obj 1625 191 abc_env_noise 90 0.3;
+#X obj 1638 329 abc_2d_randomtrajectory~;
+#X obj 1661 365 abc_cartopol~;
+#X msg 1638 305 freq \$1;
+#X obj 1638 241 loadbang;
+#X msg 1638 262 2;
+#X floatatom 1638 283 5 0 0 0 - - -;
+#X obj 1516 375 r factor;
+#X obj 1515 449 abc_2d_fx_decorrelation7~ ------------;
+#X obj 1564 396 abc_2d_map7~ -------- ----- ---;
+#X obj 1238 444 abc_2d_scope1~;
+#X obj 1447 407 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 1447 427 stereo \$1;
+#X obj 1388 213 abc_gain -127;
+#X obj 1479 600 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 1511 533 abc_2d_decoder7~ ---------------;
+#X obj 1242 503 abc_scope 0 0 2.5;
+#X obj 1779 572 abc_scope 0 0 2.5;
+#X obj 1719 531 abc_2d_scope7~ --------------;
+#X text 936 27 delay is the maximum duration in samples of the delays
 (by default it is 44100 \, minimum is 10 maximum 262144 \, that is
 roughly 5 \, 46 sec at 48KHz);
-#X text 935 74 factor (between 0 and 1) is a control parameter that
+#X text 935 67 factor (between 0 and 1) is a control parameter that
 'opens' the delay lines when increasing;
 #X connect 3 0 4 0;
 #X connect 8 0 10 1;
@@ -220,4 +220,4 @@ roughly 5 \, 46 sec at 48KHz);
 #X connect 55 1 54 0;
 #X connect 55 2 54 1;
 #X connect 55 3 54 2;
-#X coords 0 818 1 817 85 60 0;
+#X coords 0 791 1 790 85 60 0;
