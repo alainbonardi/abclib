@@ -1,0 +1,142 @@
+#N canvas 557 417 1760 776 10;
+#X obj 11 5 cnv 15 500 25 empty empty abc_2d_syn_widerN~ 20 12 0 18
+-99865 -262144 0;
+#X obj 10 733 abc_helpcredit;
+#X obj 11 31 cnv 15 500 25 empty empty Ambisonic_widening_of_the_sound_field_at_orders_1_2_3_...
+20 12 0 12 -99865 -262144 0;
+#X obj 644 673 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 1 1;
+#X msg 644 701 \; pd dsp \$1 \;;
+#X text 936 3 CONTROLS;
+#X text 539 5 DESCRIPTION;
+#X text 935 64 comment;
+#X text 936 24 width parameter varies between 0 and 1;
+#X obj 322 381 abc_meter;
+#X obj 714 479 abc_meter;
+#X text 540 25 abc_addsynth1~ \, abc_addsynth2~ \, ... objects enable
+additive synthesis by adding elementary sound modules. Each module
+includes two oscillators that start at the same frequency but can be
+tuned finely thanks to fbeat frequencies (fbeat is the frequential
+increment of the second oscillator). f0 is the general fundamental
+frequency. fmult00 \, fmult01 \, etc. are the multipliers of f0 to
+get the frequencies of the partials. For an harmonic spectrum \, one
+can use fmult00 = 1 \, fmult01 = 2 \, fmult02 = 3 etc. The amplitudes
+of the partials (in dB) can also be set individually thanks to amp00
+\, amp01 \, etc. messages. gain (in dB) is the general control of the
+amplitude.;
+#X obj 570 200 abc_gain -127;
+#X obj 746 233 loadbang;
+#X floatatom 680 330 5 0 0 0 - - -;
+#X msg 680 350 f0 \$1;
+#X floatatom 724 330 5 0 0 0 - - -;
+#X msg 724 309 1;
+#X floatatom 982 330 5 0 0 0 - - -;
+#X msg 982 309 10;
+#X msg 1012 309 15;
+#X msg 1044 309 0;
+#X obj 391 381 abc_stereoout;
+#X obj 58 202 abc_addsynth1;
+#X msg 724 350 fmult-0 \$1;
+#X obj 436 326 *~ 0.15;
+#X obj 777 430 abc_addsynth2~;
+#X msg 680 309 330;
+#X floatatom 800 330 5 0 0 0 - - -;
+#X msg 800 309 2;
+#X msg 800 350 fmult-1 \$1;
+#X obj 779 479 abc_stereoout;
+#X floatatom 884 330 5 0 0 0 - - -;
+#X msg 884 309 10;
+#X msg 914 309 15;
+#X msg 946 309 0;
+#X msg 884 350 fbeat-0 \$1;
+#X msg 982 350 fbeat-1 \$1;
+#X floatatom 1085 330 5 0 0 0 - - -;
+#X floatatom 1161 330 5 0 0 0 - - -;
+#X msg 1085 350 amp-0 \$1;
+#X msg 1161 350 amp-1 \$1;
+#X msg 1085 309 0;
+#X msg 1161 309 -6;
+#X obj 83 123 loadbang;
+#X msg 39 170 gain -127;
+#X obj 1294 107 abc_addsynth11;
+#X obj 1294 77 r s11;
+#X obj 1201 537 loadbang;
+#X obj 1391 550 abc_cosrandenv11~ -------------;
+#X obj 1401 589 abc_chopan11~ -------------;
+#X obj 1466 634 abc_stereoout;
+#X msg 1201 562 \; s11 gain -15 \; s11 f0 440 \; s11 fmult-0 0.56 \;
+s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
+1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
+fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
+\; s11 fbeat-3 1.7 \;;
+#X msg 109 170 fbeat-0 10;
+#X connect 3 0 4 0;
+#X connect 12 0 26 0;
+#X connect 13 0 27 0;
+#X connect 13 0 17 0;
+#X connect 13 0 29 0;
+#X connect 13 0 42 0;
+#X connect 13 0 43 0;
+#X connect 14 0 15 0;
+#X connect 15 0 26 0;
+#X connect 16 0 24 0;
+#X connect 17 0 16 0;
+#X connect 18 0 37 0;
+#X connect 19 0 18 0;
+#X connect 20 0 18 0;
+#X connect 21 0 18 0;
+#X connect 23 1 25 0;
+#X connect 24 0 26 0;
+#X connect 25 0 22 0;
+#X connect 25 0 22 1;
+#X connect 25 0 9 0;
+#X connect 26 1 31 0;
+#X connect 26 1 10 0;
+#X connect 26 2 31 1;
+#X connect 27 0 14 0;
+#X connect 28 0 30 0;
+#X connect 29 0 28 0;
+#X connect 30 0 26 0;
+#X connect 32 0 36 0;
+#X connect 33 0 32 0;
+#X connect 34 0 32 0;
+#X connect 35 0 32 0;
+#X connect 36 0 26 0;
+#X connect 37 0 26 0;
+#X connect 38 0 40 0;
+#X connect 39 0 41 0;
+#X connect 40 0 26 0;
+#X connect 41 0 26 0;
+#X connect 42 0 38 0;
+#X connect 43 0 39 0;
+#X connect 44 0 45 0;
+#X connect 44 0 53 0;
+#X connect 45 0 23 0;
+#X connect 46 1 49 1;
+#X connect 46 2 49 2;
+#X connect 46 3 49 3;
+#X connect 46 4 49 4;
+#X connect 46 5 49 5;
+#X connect 46 6 49 6;
+#X connect 46 7 49 7;
+#X connect 46 8 49 8;
+#X connect 46 9 49 9;
+#X connect 46 10 49 10;
+#X connect 46 11 49 11;
+#X connect 47 0 46 0;
+#X connect 48 0 52 0;
+#X connect 49 1 50 1;
+#X connect 49 2 50 2;
+#X connect 49 3 50 3;
+#X connect 49 4 50 4;
+#X connect 49 5 50 5;
+#X connect 49 6 50 6;
+#X connect 49 7 50 7;
+#X connect 49 8 50 8;
+#X connect 49 9 50 9;
+#X connect 49 10 50 10;
+#X connect 49 11 50 11;
+#X connect 50 1 51 0;
+#X connect 50 2 51 1;
+#X connect 53 0 23 0;
+#X coords 0 776 1 775 85 60 0;

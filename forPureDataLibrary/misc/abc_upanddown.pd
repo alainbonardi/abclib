@@ -13,7 +13,6 @@
 #X msg 300 203 0;
 #X obj 58 384 outlet;
 #X floatatom 56 69 5 0 0 0 - - -;
-#X msg 57 227 factor \$1;
 #X obj 269 294 line 0;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
@@ -24,13 +23,12 @@
 #X connect 4 0 1 0;
 #X connect 5 0 7 0;
 #X connect 5 1 6 0;
-#X connect 6 0 14 0;
-#X connect 7 0 14 0;
+#X connect 6 0 13 0;
+#X connect 7 0 13 0;
 #X connect 8 0 9 0;
 #X connect 8 1 10 0;
-#X connect 9 0 14 0;
-#X connect 10 0 14 0;
-#X connect 12 0 13 0;
-#X connect 13 0 11 0;
-#X connect 14 0 12 0;
+#X connect 9 0 13 0;
+#X connect 10 0 13 0;
+#X connect 12 0 11 0;
+#X connect 13 0 12 0;
 #X coords 0 -1 1 1 50 40 1 50 50;

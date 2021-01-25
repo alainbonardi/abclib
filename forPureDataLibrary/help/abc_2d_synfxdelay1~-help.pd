@@ -5,7 +5,7 @@
 #X obj 11 34 cnv 15 500 25 empty empty Delay_processes_to_generate_or_process_spatial_components
 20 12 0 12 -99865 -262144 0;
 #X obj 924 662 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 924 690 \; pd dsp \$1 \;;
 #X text 932 6 CONTROLS;
 #X text 539 8 DESCRIPTION;
@@ -26,7 +26,7 @@
 #X obj 1127 445 abc_2d_decoder1~;
 #X obj 1121 505 abc_quadriout;
 #X obj 1030 397 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X msg 1030 417 stereo \$1;
 #X obj 1070 187 abc_gain -127;
 #X obj 1654 208 abc_env_noise 90 0.3;
@@ -103,8 +103,13 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X msg 1163 255 speed \$1;
 #X obj 1544 466 abc_2d_fx_delay7~ ------------;
 #X obj 1545 392 r fx_delay;
+#X obj 79 562 abc_meter;
+#X obj 511 561 abc_meter;
+#X obj 1053 506 abc_meter;
+#X obj 1439 587 abc_meter;
 #X connect 3 0 4 0;
 #X connect 7 1 8 0;
+#X connect 7 1 85 0;
 #X connect 7 2 8 1;
 #X connect 7 3 8 2;
 #X connect 7 4 8 3;
@@ -114,6 +119,7 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 12 0 13 0;
 #X connect 13 0 14 0;
 #X connect 14 1 16 0;
+#X connect 14 1 86 0;
 #X connect 14 2 16 1;
 #X connect 14 3 16 2;
 #X connect 14 4 16 3;
@@ -127,6 +133,7 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 18 2 66 2;
 #X connect 18 3 66 3;
 #X connect 19 1 20 0;
+#X connect 19 1 87 0;
 #X connect 19 2 20 1;
 #X connect 19 3 20 2;
 #X connect 19 4 20 3;
@@ -164,6 +171,7 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 34 0 37 0;
 #X connect 35 0 37 0;
 #X connect 37 1 36 0;
+#X connect 37 1 88 0;
 #X connect 37 2 36 1;
 #X connect 37 3 36 2;
 #X connect 37 4 36 3;

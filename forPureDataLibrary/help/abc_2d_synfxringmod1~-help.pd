@@ -4,16 +4,16 @@
 #X obj 10 738 abc_helpcredit;
 #X obj 11 36 cnv 15 500 25 empty empty Ring_modulation_to_generate_or_process_spatial_components
 20 12 0 12 -99865 -262144 0;
-#X obj 475 636 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
-#X msg 475 664 \; pd dsp \$1 \;;
+#X obj 625 642 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 625 670 \; pd dsp \$1 \;;
 #X text 936 8 CONTROLS;
 #X text 539 10 DESCRIPTION;
-#X obj 627 246 s factor;
+#X obj 627 259 s factor;
 #X obj 131 305 r factor;
 #X obj 134 462 abc_2d_decoder1~;
 #X obj 137 523 abc_quadriout;
-#X obj 32 412 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 32 412 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 32 434 stereo \$1;
 #X obj 32 203 abc_gain -127;
@@ -37,7 +37,7 @@
 #X obj 1358 362 r factor;
 #X obj 1017 442 abc_2d_scope1~;
 #X obj 1289 394 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X msg 1289 414 stereo \$1;
 #X obj 1230 200 abc_gain -127;
 #X obj 1321 587 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
@@ -96,20 +96,27 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X msg 1392 288 220;
 #X obj 1446 362 abc_cosrandenv15~ ------------;
 #X obj 1454 268 abc_addsynth15~ ------------;
+#X msg 627 237 factor \$1;
+#X obj 71 521 abc_meter;
+#X obj 369 526 abc_meter;
+#X obj 837 503 abc_meter;
+#X obj 1257 557 abc_meter;
 #X connect 3 0 4 0;
 #X connect 8 0 39 0;
 #X connect 9 1 10 0;
+#X connect 9 1 63 0;
 #X connect 9 2 10 1;
 #X connect 9 3 10 2;
 #X connect 9 4 10 3;
 #X connect 11 0 12 0;
 #X connect 12 0 9 0;
 #X connect 13 0 9 0;
-#X connect 14 0 7 0;
+#X connect 14 0 62 0;
 #X connect 15 0 42 0;
 #X connect 16 0 17 0;
 #X connect 17 0 18 0;
 #X connect 18 1 20 0;
+#X connect 18 1 64 0;
 #X connect 18 2 20 1;
 #X connect 18 3 20 2;
 #X connect 18 4 20 3;
@@ -124,6 +131,7 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 22 3 46 3;
 #X connect 23 0 46 0;
 #X connect 24 1 25 0;
+#X connect 24 1 65 0;
 #X connect 24 2 25 1;
 #X connect 24 3 25 2;
 #X connect 24 4 25 3;
@@ -138,6 +146,7 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 32 0 35 0;
 #X connect 33 0 35 0;
 #X connect 35 1 34 0;
+#X connect 35 1 66 0;
 #X connect 35 2 34 1;
 #X connect 35 3 34 2;
 #X connect 35 4 34 3;
@@ -247,4 +256,5 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 61 13 60 13;
 #X connect 61 14 60 14;
 #X connect 61 15 60 15;
+#X connect 62 0 7 0;
 #X coords 0 781 1 780 85 60 0;
