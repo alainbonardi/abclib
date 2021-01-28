@@ -2,9 +2,9 @@
 #ABC_STEREODECODERS FAUST CODE GENERATION
 cd ../faustCodes/
 #deletes the previous abc_stereodecoders folder
-rm -R abc_2d_stereodecoders
-mkdir abc_2d_stereodecoders
-cd abc_2d_stereodecoders/
+rm -R abc_stereodecoders
+mkdir abc_stereodecoders
+cd abc_stereodecoders/
 #is there a parameter?
 #if not we force 7 as default value
 if [ -z $1 ]

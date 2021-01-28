@@ -3,12 +3,12 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
 declare author "Alain Bonardi";
-declare licence "GPLv3";
+declare licence "LGPLv3";
 declare name "abc_substractsynth12";
 //
 import("stdfaust.lib");
@@ -19,7 +19,7 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //fundamental frequency//
-f0 = nentry("v:substractsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
+f0 = hslider("v:substractsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
 //
 gain = hslider("v:substractsynth/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //
