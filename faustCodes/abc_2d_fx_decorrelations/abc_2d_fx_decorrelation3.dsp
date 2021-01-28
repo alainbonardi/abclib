@@ -3,12 +3,12 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
 declare author "Alain Bonardi";
-declare licence "GPLv3";
+declare licence "LGPLv3";
 declare name "abc_2d_fx_decorrelation3";
 //
 //--------------------------------------------------------------------------------------//
@@ -57,13 +57,13 @@ factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 //--------------------------------------------------------------------------------------//
 //computes the ith duration of the ith delay in samples
 //
-dur(d, i, p, fa) = int((fa >= 1 - (i+1) / p) * (i+1) * d / p); //the delay is either 0 (when factor fa < 1-(i+1)/p) or (i+1)*delay /p
+dur(d, i, p, fa) = int((fa > (1 - (i+1) / p)) * (i+1) * d / p); //the delay is either 0 (when factor fa < 1-(i+1)/p) or (i+1)*delay /p
 //
 //Double overlapped delays with a capacity of storage of 262144 samples
 //which is roughly 5,46 seconds at 48 KHz
 //
 fxdecorrelation(n, d, f, fa) = par(i, n, overlappedDoubleDelay(dur(d, i, n, fa), 262144, f));
-sindecorrelation(n, d, f, fa) = _ <: si.bus(n) : fxdecorrelation(n, d, f, fa);
+syndecorrelation(n, d, f, fa) = _ <: si.bus(n) : fxdecorrelation(n, d, f, fa);
 //
 //--------------------------------------------------------------------------------------//
 // SINUS ENVELOPE

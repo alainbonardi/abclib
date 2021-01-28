@@ -3,12 +3,12 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//----------------------------- BY ALAIN BONARDI - 2019-2020 ---------------------------//
+//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
 declare author "Alain Bonardi";
-declare licence "GPLv3";
+declare licence "LGPLv3";
 declare name "abc_2d_fx_delay2";
 //
 //--------------------------------------------------------------------------------------//
@@ -55,7 +55,7 @@ durToSamp(d, i, p) = d * 2 / (p+1) * (1 + int((i+1)/2)) * 0.001 * ma.SR;
 //which is roughly 10,92 seconds at 48Khz
 //
 fxdelay(n, durmax, f, fd) = par(i, n, fdOverlappedDoubleDelay(durToSamp(durmax, i, n), 524288, f, fd));
-sindelay(n, durmax, f, fd) = _ <: si.bus(n) : fxdelay(n, durmax, f, fd);
+syndelay(n, durmax, f, fd) = _ <: si.bus(n) : fxdelay(n, durmax, f, fd);
 //
 //--------------------------------------------------------------------------------------//
 // SINUS ENVELOPE

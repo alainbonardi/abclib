@@ -50,7 +50,7 @@ do
         echo "$line" >> $sortie
     done <"$utilityfilename2"
 echo "//
-process = sindelay($j, deltime, winfreq, feedback);" >> $sortie
+process = syndelay($j, deltime, winfreq, feedback);" >> $sortie
 done
 #now moves to faustCodes directory to create the FX_DELAYS directory and files
 cd ../
