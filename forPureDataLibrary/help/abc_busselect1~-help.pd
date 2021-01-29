@@ -1,0 +1,118 @@
+#N canvas 82 43 1321 776 10;
+#X obj 11 5 cnv 15 500 25 empty empty abc_busselectN~ 20 12 0 18 -99865
+-262144 0;
+#X obj 10 733 abc_helpcredit;
+#X obj 11 31 cnv 15 500 25 empty empty Selection_between_2_buses_of_n_signals_towards_a_bus_of_n_signals
+20 12 0 12 -99865 -262144 0;
+#X obj 541 589 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 541 617 \; pd dsp \$1 \;;
+#X text 935 3 CONTROLS;
+#X text 539 5 DESCRIPTION;
+#X obj 149 531 abc_meter;
+#X obj 828 558 abc_meter;
+#X obj 915 138 abc_gain -127;
+#X obj 214 531 abc_stereoout;
+#X text 540 26 abc_busselect1~ \, abc_busselect2~ \, ... objects enable
+to implement multichannel bus selections (from 1 signal to 15 signals).
+Two buses are connected to the object \, the left one and the right
+one. - the leftOrRight parameter enables to select between the left
+or the right bus. - the ramp parameter enables to set a crossfade duration
+when switching between the two buses;
+#X obj 173 406 abc_busselect1;
+#X obj 173 290 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X msg 173 351 leftOrRight \$1;
+#X obj 274 288 loadbang;
+#X msg 274 309 7000;
+#X floatatom 274 330 5 0 0 0 - - -;
+#X msg 274 350 ramp \$1;
+#X obj 338 350 abc_soundcoat~;
+#X obj 430 350 abc_soundgrain~;
+#X obj 405 139 abc_gain -10;
+#X text 192 287 soundcoat;
+#X text 194 305 soundgrain;
+#X obj 644 331 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X msg 644 392 leftOrRight \$1;
+#X obj 825 346 abc_multinoise8~;
+#X obj 809 393 abc_substractsynth8~;
+#X obj 940 393 abc_cosrandenv8~;
+#X obj 950 346 abc_addsynth8~;
+#X obj 740 330 loadbang;
+#X msg 740 351 7000;
+#X floatatom 740 372 5 0 0 0 - - -;
+#X msg 740 392 ramp \$1;
+#X text 935 23 The leftOrRight parameter enables to select between
+the left or the right bus.;
+#X text 935 55 The ramp parameter enables to set a crossfade duration
+when switching between the two buses;
+#X obj 841 463 abc_busselect8~ -------------;
+#X obj 856 504 abc_chopan8~ ---------;
+#X obj 898 558 abc_stereoout;
+#X connect 3 0 4 0;
+#X connect 9 0 27 0;
+#X connect 9 0 29 0;
+#X connect 12 1 10 1;
+#X connect 12 1 10 0;
+#X connect 12 1 7 0;
+#X connect 13 0 14 0;
+#X connect 14 0 12 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 12 0;
+#X connect 19 0 12 1;
+#X connect 20 0 12 2;
+#X connect 21 0 20 0;
+#X connect 21 0 19 0;
+#X connect 24 0 25 0;
+#X connect 25 0 36 0;
+#X connect 26 1 27 1;
+#X connect 26 2 27 2;
+#X connect 26 3 27 3;
+#X connect 26 4 27 4;
+#X connect 26 5 27 5;
+#X connect 26 6 27 6;
+#X connect 26 7 27 7;
+#X connect 26 8 27 8;
+#X connect 27 1 36 1;
+#X connect 27 2 36 2;
+#X connect 27 3 36 3;
+#X connect 27 4 36 4;
+#X connect 27 5 36 5;
+#X connect 27 6 36 6;
+#X connect 27 7 36 7;
+#X connect 27 8 36 8;
+#X connect 28 1 36 9;
+#X connect 28 2 36 10;
+#X connect 28 3 36 11;
+#X connect 28 4 36 12;
+#X connect 28 5 36 13;
+#X connect 28 6 36 14;
+#X connect 28 7 36 15;
+#X connect 28 8 36 16;
+#X connect 29 1 28 1;
+#X connect 29 2 28 2;
+#X connect 29 3 28 3;
+#X connect 29 4 28 4;
+#X connect 29 5 28 5;
+#X connect 29 6 28 6;
+#X connect 29 7 28 7;
+#X connect 29 8 28 8;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 33 0 36 0;
+#X connect 36 1 37 1;
+#X connect 36 2 37 2;
+#X connect 36 3 37 3;
+#X connect 36 4 37 4;
+#X connect 36 5 37 5;
+#X connect 36 6 37 6;
+#X connect 36 7 37 7;
+#X connect 36 8 37 8;
+#X connect 37 1 38 0;
+#X connect 37 1 8 0;
+#X connect 37 2 38 1;
+#X coords 0 776 1 775 85 60 0;

@@ -1,0 +1,47 @@
+#N canvas 330 27 762 776 10;
+#X obj 11 5 cnv 15 500 25 empty empty abc_cartopol~ 20 12 0 18 -99865
+-262144 0;
+#X obj 10 733 abc_helpcredit;
+#X obj 11 31 cnv 15 500 25 empty empty Cartesian_to_polar_coordinates
+20 12 0 12 -99865 -262144 0;
+#X obj 338 654 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 338 682 \; pd dsp \$1 \;;
+#X text 405 580 CONTROLS;
+#X text 403 499 DESCRIPTION;
+#X obj 104 543 abc_meter;
+#X text 404 520 abc_cartopol~ converts cartesian coordinates to polar
+coordinates (both as signals) The angle is in radians;
+#X text 405 600 no specific control;
+#X obj 158 138 abc_env_noise 200 0.3;
+#X obj 204 243 abc_2d_squaretrajectory~;
+#X obj 182 304 abc_cartopol~;
+#X obj 285 302 abc_scope 1 0 2.5;
+#X obj 138 401 abc_2d_map1~;
+#X text 199 214 generates a square trajectory in cartesian;
+#X obj 169 543 abc_quadriout;
+#X obj 128 468 abc_2d_decoder1~;
+#X obj 23 228 abc_gain -20;
+#X obj 15 420 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 15 440 stereo \$1;
+#X connect 3 0 4 0;
+#X connect 10 0 14 1;
+#X connect 11 1 12 1;
+#X connect 11 1 13 1;
+#X connect 11 2 12 2;
+#X connect 11 2 13 2;
+#X connect 12 1 14 2;
+#X connect 12 2 14 3;
+#X connect 14 1 17 1;
+#X connect 14 2 17 2;
+#X connect 14 3 17 3;
+#X connect 17 1 16 0;
+#X connect 17 1 7 0;
+#X connect 17 2 16 1;
+#X connect 17 3 16 2;
+#X connect 17 4 16 3;
+#X connect 18 0 17 0;
+#X connect 19 0 20 0;
+#X connect 20 0 17 0;
+#X coords 0 776 1 775 85 60 0;
