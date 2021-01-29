@@ -1,0 +1,101 @@
+#N canvas 31 23 1342 776 10;
+#X obj 11 5 cnv 15 500 25 empty empty abc_chopanN~ 20 12 0 18 -99865
+-262144 0;
+#X obj 10 733 abc_helpcredit;
+#X obj 11 31 cnv 15 500 25 empty empty Chowning_panners 20 12 0 12
+-99865 -262144 0;
+#X obj 544 584 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 544 612 \; pd dsp \$1 \;;
+#X text 962 26 CONTROLS;
+#X text 536 28 DESCRIPTION;
+#X obj 150 476 abc_meter;
+#X obj 335 288 abc_env_noise 200 0.3;
+#X obj 35 94 abc_gain -127;
+#X obj 201 141 hsl 128 20 -90 90 0 0 empty empty incidental_angle_in_deg
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X floatatom 198 166 5 0 0 0 - - -;
+#X msg 198 186 incAngle \$1;
+#X text 149 210 (available only in the case of one source);
+#X obj 451 134 loadbang;
+#X msg 451 155 30;
+#X floatatom 451 176 5 0 0 0 - - -;
+#X msg 451 196 phi0 \$1;
+#X obj 107 334 abc_chopan1;
+#X obj 228 477 abc_stereoout;
+#X obj 910 210 abc_gain -20;
+#X obj 994 262 abc_addsynth16~ --------------;
+#X obj 993 358 abc_cosrandenv16~ ------------;
+#X obj 1006 462 abc_chopan16~ ------------;
+#X obj 763 310 loadbang;
+#X msg 763 331 30;
+#X floatatom 763 352 5 0 0 0 - - -;
+#X msg 763 372 phi0 \$1;
+#X obj 985 510 abc_meter;
+#X obj 1063 511 abc_stereoout;
+#X text 645 287 Half angle of the stereophony (in degrees);
+#X text 963 47 phi0 angle is a parameter to set the opening angle of
+the stereo in degrees;
+#X text 964 79 for abc_chopan1~ only \, there is an incAngle parameter
+that controls the incident angle (in degrees) of the incoming sound
+;
+#X text 537 49 abc_chopan1~ \, abc_chopan2~ \, ... objects enable multichannel
+stereo panning using Chowning model to have a constant acoustic energy
+and avoiding feeling a loss in the center of the scene (contrary to
+linear panning). The first source is panned to the left \, the last
+one to the right \, and the other ones are progressively spread from
+the left to the right.;
+#X connect 3 0 4 0;
+#X connect 8 0 18 1;
+#X connect 9 0 18 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 18 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 1 19 0;
+#X connect 18 1 7 0;
+#X connect 18 2 19 1;
+#X connect 20 0 23 0;
+#X connect 21 1 22 1;
+#X connect 21 2 22 2;
+#X connect 21 3 22 3;
+#X connect 21 4 22 4;
+#X connect 21 5 22 5;
+#X connect 21 6 22 6;
+#X connect 21 7 22 7;
+#X connect 21 8 22 8;
+#X connect 21 9 22 9;
+#X connect 21 10 22 10;
+#X connect 21 11 22 11;
+#X connect 21 12 22 12;
+#X connect 21 13 22 13;
+#X connect 21 14 22 14;
+#X connect 21 15 22 15;
+#X connect 21 16 22 16;
+#X connect 22 1 23 1;
+#X connect 22 2 23 2;
+#X connect 22 3 23 3;
+#X connect 22 4 23 4;
+#X connect 22 5 23 5;
+#X connect 22 6 23 6;
+#X connect 22 7 23 7;
+#X connect 22 8 23 8;
+#X connect 22 9 23 9;
+#X connect 22 10 23 10;
+#X connect 22 11 23 11;
+#X connect 22 12 23 12;
+#X connect 22 13 23 13;
+#X connect 22 14 23 14;
+#X connect 22 15 23 15;
+#X connect 22 16 23 16;
+#X connect 23 1 29 0;
+#X connect 23 1 28 0;
+#X connect 23 2 29 1;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 23 0;
+#X coords 0 776 1 775 85 60 0;
