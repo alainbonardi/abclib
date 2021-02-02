@@ -1,0 +1,169 @@
+#N canvas 172 167 1409 697 10;
+#X obj 9 9 cnv 15 500 25 empty empty abc_freqshiftN~ 20 12 0 18 -99865
+-262144 0;
+#X obj 8 657 abc_helpcredit;
+#X obj 9 35 cnv 15 500 25 empty empty Parallel_multiple_frequency_values
+20 12 0 12 -99865 -262144 0;
+#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 533 494 \; pd dsp \$1 \;;
+#X text 935 30 CONTROLS;
+#X text 534 32 DESCRIPTION;
+#X obj 63 239 loadbang;
+#X obj 63 260 del 1000;
+#X obj 63 309 abc_simplefmburst;
+#X obj 92 538 abc_stereoout;
+#X text 12 372 original;
+#X obj 200 243 loadbang;
+#X floatatom 200 309 5 0 0 0 - - -;
+#X obj 405 493 loadbang;
+#X msg 405 515 1;
+#X obj 405 539 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 405 561 metro 20000;
+#X obj 405 584 s top;
+#X obj 81 281 r top;
+#X obj 730 296 loadbang;
+#X msg 730 318 30;
+#X floatatom 730 339 5 0 0 0 - - -;
+#X msg 730 359 updatefreq \$1;
+#X obj 902 430 r dels;
+#X obj 1149 331 loadbang;
+#X text 936 51 Durations are parameters dur-0 \, dur-1 \, dur-2 \,
+etc.These musical durations are automatically converted to milliseconds
+thanks to the tempo parameter expressed in bpm.;
+#X obj 120 418 abc_delaychain3~;
+#X text 225 420 echoes 1 to 3;
+#X obj 95 489 abc_chopan4~;
+#X obj 1049 365 r top;
+#X obj 1049 388 del 5000;
+#X obj 1049 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 1116 82 249 299 noisenv 0;
+#X obj 140 23 inlet;
+#X obj 140 44 t b b;
+#X msg 167 75 -0.25;
+#X msg 140 101 0.25 50;
+#X obj 42 73 noise~;
+#X obj 42 94 *~ 0.2;
+#X obj 106 211 *~;
+#X obj 140 162 cos~;
+#X obj 106 255 outlet~;
+#X obj 140 142 line~;
+#X obj 179 44 loadbang;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X connect 2 0 9 0;
+#X connect 3 0 9 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 1;
+#X connect 9 0 7 0;
+#X connect 10 0 2 0;
+#X restore 1049 430 pd noisenv;
+#X obj 902 469 abc_delaychain6~ --------;
+#X obj 899 541 abc_2d_decoder3~ ---------;
+#X obj 926 575 dac~ 1 2 3 4 5 6 7 8;
+#X obj 836 233 abc_gain 0;
+#X obj 735 458 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 735 478 stereo \$1;
+#X obj 735 412 loadbang;
+#X msg 735 434 1;
+#X text 937 96 Since it is a chain of delays \, there is no abc-delaychain1~
+object.;
+#X msg 200 329 fr-0 \$1;
+#X msg 200 284 50;
+#X floatatom 263 309 5 0 0 0 - - -;
+#X msg 263 284 -100;
+#X floatatom 323 309 5 0 0 0 - - -;
+#X msg 323 284 200;
+#X msg 263 329 fr-1 \$1;
+#X msg 323 329 fr-2 \$1;
+#X obj 122 446 abc_freqshift3~;
+#X text 938 131 Each line has got an individual gain: gain-0 \, gain-1
+\, gain-2 \, etc. in dB (between -127 and +18);
+#X msg 1149 388 \; dels dur-0 0.5 \; dels dur-1 1 \; dels dur-2 0.5
+\; dels dur-3 1 \; dels dur-4 0.5 \; dels dur-5 0.25 \; dels tempo
+200 \;;
+#X obj 940 507 abc_freqshift6~;
+#X msg 1266 386 \; harmos fr-0 100 \; harmos gain-0 0 \; harmos fr-1
+-200 \; harmos gain-1 2 \; harmos fr-2 300 \; harmos gain-2 4 \; harmos
+fr-3 -400 \; harmos gain-3 6 \; harmos fr-4 500 \; harmos gain-4 8
+\; harmos fr-5 -50 \; harmos gain-5 10 \;;
+#X obj 817 477 r harmos;
+#X text 535 53 abc_freqshift1~ \, abc_freqshift2~ \, ... provide parallel
+multiple frequency shifters. Each line is a frequency shifter in Direct
+Form 2 provided by a quadruple biquad;
+#X connect 3 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 27 1;
+#X connect 9 0 29 0;
+#X connect 12 0 44 0;
+#X connect 12 0 46 0;
+#X connect 12 0 48 0;
+#X connect 13 0 43 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 19 0 9 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 27 0;
+#X connect 23 0 34 0;
+#X connect 24 0 34 0;
+#X connect 25 0 53 0;
+#X connect 25 0 55 0;
+#X connect 27 1 51 1;
+#X connect 27 2 51 2;
+#X connect 27 3 51 3;
+#X connect 29 1 10 0;
+#X connect 29 2 10 1;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 33 0 34 1;
+#X connect 33 0 35 1;
+#X connect 34 1 54 1;
+#X connect 34 2 54 2;
+#X connect 34 3 54 3;
+#X connect 34 4 54 4;
+#X connect 34 5 54 5;
+#X connect 34 6 54 6;
+#X connect 35 1 36 0;
+#X connect 35 2 36 1;
+#X connect 35 3 36 2;
+#X connect 35 4 36 3;
+#X connect 35 5 36 4;
+#X connect 35 6 36 5;
+#X connect 35 7 36 6;
+#X connect 35 8 36 7;
+#X connect 37 0 35 0;
+#X connect 38 0 39 0;
+#X connect 39 0 35 0;
+#X connect 40 0 41 0;
+#X connect 41 0 38 0;
+#X connect 43 0 51 0;
+#X connect 44 0 13 0;
+#X connect 45 0 49 0;
+#X connect 46 0 45 0;
+#X connect 47 0 50 0;
+#X connect 48 0 47 0;
+#X connect 49 0 51 0;
+#X connect 50 0 51 0;
+#X connect 51 1 29 1;
+#X connect 51 2 29 2;
+#X connect 51 3 29 4;
+#X connect 54 1 35 2;
+#X connect 54 2 35 3;
+#X connect 54 3 35 4;
+#X connect 54 4 35 5;
+#X connect 54 5 35 6;
+#X connect 54 6 35 7;
+#X connect 56 0 54 0;
+#X coords 0 697 1 696 85 60 0;

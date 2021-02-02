@@ -981,7 +981,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 535.0, 6.0, 368.0, 87.0 ],
-					"text" : "abc_harmo1~, abc_harmo2~, ... provide parallel multiple frequency shifters. Each line is a frequency shifter in Direct Form 2 provided by a quadruple biquad.\nEach frequency shifter has got a shifting frequency: fr00, fr01, etc. in Hz (positive or negative) and an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
+					"text" : "abc_freqshift1~, abc_freqshift2~, ... provide parallel multiple frequency shifters. Each line is a frequency shifter in Direct Form 2 provided by a quadruple biquad.\nEach frequency shifter has got a shifting frequency: fr00, fr01, etc. in Hz (positive or negative) and an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
 				}
 
 			}
