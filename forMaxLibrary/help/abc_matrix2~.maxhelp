@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 183.0, 388.0, 1263.0, 701.0 ],
+		"rect" : [ 66.0, 476.0, 1263.0, 896.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,8 +45,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 529.0, 11.0, 271.0, 87.0 ],
-					"text" : "abc_matrix2~, abc_matrix3~, etc. objects (there is no abc_matrix1~) provide signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come"
+					"patching_rect" : [ 529.0, 11.0, 275.0, 87.0 ],
+					"text" : "abc_matrix2~, abc_matrix3~, etc. objects (there is no abc_matrix1~) provide signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
 				}
 
 			}
@@ -2675,35 +2675,35 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
