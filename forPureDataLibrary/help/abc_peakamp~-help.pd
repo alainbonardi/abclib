@@ -26,9 +26,9 @@ signal on a duration defined by period attribute in milliseconds;
 #X obj 345 401 snapshot~;
 #X floatatom 345 422 5 0 0 0 - - -;
 #X obj 197 311 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 313 1;
+-1 -1 6350 1;
 #X obj 348 447 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12364 1;
+-1 -1 6350 1;
 #X obj 345 235 osc~ 0.2;
 #X text 538 110 period control enables to set the window of measurement
 of the peak on the absolute signal;
@@ -54,7 +54,7 @@ of the peak on the absolute signal;
 #X obj 541 467 delwrite~ soundgrain 500;
 #X obj 751 442 snapshot~;
 #X floatatom 751 463 5 0 0 0 - - -;
-#X text 872 483 a simple flanger with a rate controlled by the amplitude
+#X text 829 403 a simple flanger with a rate controlled by the amplitude
 given by abc_peakamp~;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;

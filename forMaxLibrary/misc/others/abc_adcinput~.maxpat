@@ -75,8 +75,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 247.0, 25.0, 71.0, 18.0 ],
-					"text" : "abc.adcinput~"
+					"patching_rect" : [ 247.0, 25.0, 76.0, 18.0 ],
+					"text" : "abc_adcinput~"
 				}
 
 			}
