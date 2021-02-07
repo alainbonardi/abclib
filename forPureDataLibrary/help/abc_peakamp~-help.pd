@@ -1,0 +1,101 @@
+#N canvas 1277 253 1224 843 10;
+#X obj 10 10 cnv 15 500 25 empty empty abc_peakamp~ 20 12 0 18 -99865
+-262144 0;
+#X obj 9 805 abc_helpcredit;
+#X obj 10 36 cnv 15 500 25 empty empty Peak_amplitude_measurement 20
+12 0 12 -99865 -262144 0;
+#X obj 422 608 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 0 1;
+#X msg 422 636 \; pd dsp \$1 \;;
+#X text 538 90 CONTROLS;
+#X text 536 9 DESCRIPTION;
+#X obj 631 614 abc_meter;
+#X text 537 27 abc_computes the highest absolute value of the incoming
+signal on a duration defined by period attribute in milliseconds;
+#X obj 147 149 loadbang;
+#X msg 194 196 1;
+#X obj 194 235 metro 50;
+#X obj 194 268 snapshot~;
+#X obj 194 215 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 194 289 5 0 0 0 - - -;
+#X msg 117 195 20;
+#X floatatom 117 216 5 0 0 0 - - -;
+#X msg 117 236 period \$1;
+#X obj 117 336 abc_peakamp;
+#X obj 345 401 snapshot~;
+#X floatatom 345 422 5 0 0 0 - - -;
+#X obj 197 311 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 313 1;
+#X obj 348 447 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12364 1;
+#X obj 345 235 osc~ 0.2;
+#X text 538 110 period control enables to set the window of measurement
+of the peak on the absolute signal;
+#X obj 628 198 abc_gain -10;
+#X obj 628 388 abc_soundgrain~;
+#X obj 730 212 loadbang;
+#X floatatom 730 254 5 0 0 0 - - -;
+#X msg 730 233 0.1;
+#X msg 730 274 freqmult \$1;
+#X obj 730 295 abc_soundgrain~;
+#X floatatom 830 275 5 0 0 0 - - -;
+#X msg 830 295 period \$1;
+#X msg 830 254 50;
+#X obj 748 412 abc_peakamp~;
+#X obj 817 442 *~ 5;
+#X obj 817 463 phasor~;
+#X obj 817 484 cos~;
+#X obj 817 505 +~ 1;
+#X obj 817 526 *~ 20;
+#X obj 817 547 +~ 10;
+#X obj 817 581 vd~ soundgrain;
+#X obj 714 618 abc_stereoout;
+#X obj 541 467 delwrite~ soundgrain 500;
+#X obj 751 442 snapshot~;
+#X floatatom 751 463 5 0 0 0 - - -;
+#X text 872 483 a simple flanger with a rate controlled by the amplitude
+given by abc_peakamp~;
+#X connect 3 0 4 0;
+#X connect 9 0 10 0;
+#X connect 9 0 15 0;
+#X connect 10 0 13 0;
+#X connect 11 0 12 0;
+#X connect 11 0 19 0;
+#X connect 11 0 45 0;
+#X connect 12 0 14 0;
+#X connect 13 0 11 0;
+#X connect 14 0 21 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 1 19 0;
+#X connect 19 0 20 0;
+#X connect 20 0 22 0;
+#X connect 23 0 12 0;
+#X connect 23 0 18 1;
+#X connect 25 0 26 0;
+#X connect 26 1 35 0;
+#X connect 26 1 43 0;
+#X connect 26 1 44 0;
+#X connect 27 0 29 0;
+#X connect 27 0 34 0;
+#X connect 28 0 30 0;
+#X connect 29 0 28 0;
+#X connect 30 0 31 0;
+#X connect 31 1 35 1;
+#X connect 32 0 33 0;
+#X connect 33 0 35 0;
+#X connect 34 0 32 0;
+#X connect 35 1 36 0;
+#X connect 35 1 45 0;
+#X connect 36 0 37 0;
+#X connect 37 0 38 0;
+#X connect 38 0 39 0;
+#X connect 39 0 40 0;
+#X connect 40 0 41 0;
+#X connect 41 0 42 0;
+#X connect 42 0 43 1;
+#X connect 42 0 7 0;
+#X connect 45 0 46 0;
+#X coords 0 843 1 842 85 60 0;

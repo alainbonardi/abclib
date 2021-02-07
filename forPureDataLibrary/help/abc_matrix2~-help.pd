@@ -1,12 +1,12 @@
-#N canvas 44 132 1440 776 10;
+#N canvas 813 458 1440 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_matrixN~ 20 12 0 18 -99865
 -262144 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Signal_matrices_with_coefficients_from_-1_to_1_and_transition_ramp
 20 12 0 12 -99865 -262144 0;
-#X obj 644 673 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
-#X msg 644 701 \; pd dsp \$1 \;;
+#X obj 749 672 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 1 1;
+#X msg 749 700 \; pd dsp \$1 \;;
 #X text 935 3 CONTROLS;
 #X text 539 5 DESCRIPTION;
 #X obj 168 446 abc_meter;
@@ -108,7 +108,7 @@
 #X restore 469 158 pd randomcells;
 #X text 239 517 here a 2x2 matrix with coefficients m-0 \, m-1 \, m-2
 \, m-3;
-#X obj 505 346 abc_matrix3;
+#X obj 505 340 abc_matrix3;
 #X msg 450 221 m-0 \$1;
 #X msg 497 221 m-1 \$1;
 #X msg 544 221 m-2 \$1;
@@ -118,25 +118,38 @@
 #X msg 450 273 m-6 \$1;
 #X msg 497 273 m-7 \$1;
 #X msg 544 273 m-8 \$1;
-#X obj 647 278 abc_addsynth5~;
-#X obj 647 177 loadbang;
-#X msg 647 198 10000;
-#X floatatom 647 219 5 0 0 0 - - -;
-#X msg 647 239 ramp \$1;
+#X obj 653 303 abc_addsynth5~;
+#X obj 673 115 loadbang;
+#X msg 629 208 10000;
+#X floatatom 629 229 5 0 0 0 - - -;
+#X msg 629 249 ramp \$1;
 #X obj 642 512 abc_chopan3~;
-#X obj 641 557 abc_stereoout;
 #X text 540 26 abc_matrix2~ \, abc_matrix3~ \, etc. objects (there
 is no abc_matrix1~) provide signal matrices with coefficients from
 -1 and 1;
 #X text 934 21 The ramp parameter enables to set the crossfade duration
 between the current status of the matrix and the next to come (in milliseconds)
 ;
-#X obj 1070 186 abc_multinoise6~;
-#X obj 1057 238 abc_substractsynth6~;
-#X obj 872 346 abc_matrix6;
-#X obj 932 85 abc_gain -15;
-#X obj 1123 609 abc_chopan6~;
-#X obj 1117 648 abc_stereoout;
+#X obj 1083 238 abc_multinoise6~;
+#X obj 1070 290 abc_substractsynth6~;
+#X obj 872 339 abc_matrix6;
+#X obj 1099 563 abc_chopan6~;
+#X obj 1084 598 abc_stereoout;
+#X obj 641 557 abc_stereoout -15;
+#X obj 569 558 abc_meter;
+#X obj 1021 599 abc_meter;
+#X obj 872 306 r mat;
+#X msg 868 162 \; mat m-0 0.2 \; mat m-1 0.3 \; mat m-4 0.25 \; mat
+m-8 0.1 \; mat m-9 0.25 \; mat m-17 0.2 \; mat m-18 0.1 \; mat m-24
+0.2 \; mat m-25 0.3 \; mat m-35 0.2 \;;
+#X obj 995 97 abc_gain -20;
+#X obj 868 135 loadbang;
+#X msg 1243 157 \; mat m-0 0 \; mat m-1 0 \; mat m-4 0 \; mat m-8 0
+\; mat m-9 0 \; mat m-17 0 \; mat m-18 0 \; mat m-24 0 \; mat m-25
+0 \; mat m-35 0 \;;
+#X floatatom 727 229 5 0 0 0 - - -;
+#X msg 727 208 415;
+#X msg 727 250 f0 \$1;
 #X connect 3 0 4 0;
 #X connect 9 1 8 0;
 #X connect 9 1 7 0;
@@ -167,18 +180,29 @@ between the current status of the matrix and the next to come (in milliseconds)
 #X connect 25 0 23 0;
 #X connect 26 0 23 0;
 #X connect 27 0 23 0;
+#X connect 28 0 23 0;
 #X connect 29 0 23 0;
+#X connect 30 0 23 0;
 #X connect 31 0 23 0;
 #X connect 32 0 23 0;
 #X connect 33 1 23 1;
 #X connect 33 3 23 2;
 #X connect 33 5 23 3;
 #X connect 34 0 35 0;
+#X connect 34 0 55 0;
 #X connect 35 0 36 0;
 #X connect 36 0 37 0;
 #X connect 37 0 23 0;
-#X connect 38 1 39 0;
-#X connect 38 2 39 1;
+#X connect 37 0 43 0;
+#X connect 38 1 46 0;
+#X connect 38 1 47 0;
+#X connect 38 2 46 1;
+#X connect 41 1 42 1;
+#X connect 41 2 42 2;
+#X connect 41 3 42 3;
+#X connect 41 4 42 4;
+#X connect 41 5 42 5;
+#X connect 41 6 42 6;
 #X connect 42 1 43 1;
 #X connect 42 2 43 2;
 #X connect 42 3 43 3;
@@ -191,13 +215,13 @@ between the current status of the matrix and the next to come (in milliseconds)
 #X connect 43 4 44 4;
 #X connect 43 5 44 5;
 #X connect 43 6 44 6;
-#X connect 44 1 46 1;
-#X connect 44 2 46 2;
-#X connect 44 3 46 3;
-#X connect 44 4 46 4;
-#X connect 44 5 46 5;
-#X connect 44 6 46 6;
-#X connect 45 0 43 0;
-#X connect 46 1 47 0;
-#X connect 46 2 47 1;
+#X connect 44 1 45 0;
+#X connect 44 1 48 0;
+#X connect 44 2 45 1;
+#X connect 49 0 43 0;
+#X connect 51 0 42 0;
+#X connect 52 0 50 0;
+#X connect 54 0 56 0;
+#X connect 55 0 54 0;
+#X connect 56 0 33 0;
 #X coords 0 776 1 775 85 60 0;
