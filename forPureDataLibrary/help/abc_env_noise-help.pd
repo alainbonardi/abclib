@@ -1,5 +1,0 @@
-#N canvas 971 62 749 608 12;
-#X obj 207 110 abc_env_noise;
-#X obj 403 235 abc_env_noise 100 0.3;
-#X obj 403 320 abc_meter;
-#X connect 1 0 2 0;
