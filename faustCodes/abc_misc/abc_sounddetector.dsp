@@ -1,3 +1,15 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------------abclib----------------------------------------//
+//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
+//
+//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//--------------------------------------------------------------------------------------//
+//
+declare author "Alain Bonardi";
+declare licence "LGPLv3";
+declare name "abc_sounddetector";
 //
 import("stdfaust.lib");
 //
@@ -58,3 +70,16 @@ thisCompleteSoundDetector = _ <:(offBeforeUse, thisSoundDetector) : * <: (_, one
 			delta = 20 * millisec; //20 msec impulsion for attack or release//
 	};
 
+
+//--------------------------------------------------------------------------------------//
+//DEFINITION OF PEAKAMP PROCESS
+//--------------------------------------------------------------------------------------//
+//
+peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
+	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
+	resetMax = ba.pulse(n)@1;
+	getPeak = ba.pulse(n);
+};
+
+//
+process = thisCompleteSoundDetector;

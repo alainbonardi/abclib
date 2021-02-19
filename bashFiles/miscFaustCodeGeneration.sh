@@ -13,9 +13,11 @@ utilityfilename3="../abccommon/abcutilities/abcmult2pi.dsp"
 utilityfilename4="../abccommon/abcutilities/abcphasor2pi.dsp"
 associatedcommonfilename5="../abccommon/abclinedrive.dsp"
 utilityfilename5="../abccommon/abcutilities/abclines.dsp"
-associatedcommonfilename6="../abccommon/abcpeakamp.dsp"
+associatedcommonfilename6="../abccommon/abcpeakamp2.dsp"
+utilityfilename6="../abccommon/abcutilities/abcpeakamp.dsp"
 associatedcommonfilename7="../abccommon/abcrissetsbell.dsp"
 utilityfilename7="../abccommon/abcutilities/abcdbcontrol.dsp"
+associatedcommonfilename8="../abccommon/abcsounddetector.dsp"
 #
 #abc_cartopol.dsp
 #
@@ -127,6 +129,11 @@ while IFS= read -r line
 do
 echo "$line" >> $sortie
 done <"$associatedcommonfilename6"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename6"
 echo "//
 process = peakamp(nsamp);" >> $sortie
 #
@@ -152,3 +159,26 @@ echo "$line" >> $sortie
 done <"$utilityfilename7"
 echo "//
 process = rissetsbell;" >> $sortie
+#
+#abc_sounddetector.dsp
+#
+sortie="abc_sounddetector.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_sounddetector\";" >> $sortie
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename8"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename6"
+echo "//
+process = thisCompleteSoundDetector;" >> $sortie
