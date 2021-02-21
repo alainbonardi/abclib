@@ -18,6 +18,7 @@ utilityfilename6="../abccommon/abcutilities/abcpeakamp.dsp"
 associatedcommonfilename7="../abccommon/abcrissetsbell.dsp"
 utilityfilename7="../abccommon/abcutilities/abcdbcontrol.dsp"
 associatedcommonfilename8="../abccommon/abcsounddetector.dsp"
+associatedcommonfilename9="../abccommon/abcenvfollower.dsp"
 #
 #abc_cartopol.dsp
 #
@@ -182,3 +183,21 @@ echo "$line" >> $sortie
 done <"$utilityfilename6"
 echo "//
 process = thisCompleteSoundDetector;" >> $sortie
+#
+#abc_envfollower.dsp
+#
+sortie="abc_envfollower.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_envfollower\";" >> $sortie
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename9"
+echo "//
+process = envfollower;" >> $sortie

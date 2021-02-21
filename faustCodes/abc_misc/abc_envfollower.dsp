@@ -9,19 +9,23 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_phasor2pi";
+declare name "abc_envfollower";
+//
+//--------------------------------------------------------------------------------------//
+//ENVELOPE FOLLOWER
+//--------------------------------------------------------------------------------------//
 //
 import("stdfaust.lib");
 //
-//--------------------------------------------------------------------------------------//
-// CONTROL PARAMETER
-//--------------------------------------------------------------------------------------//
-//
-freq = hslider("v:phasor2pi/freq [unit:s-1]", 0.1, 0, 20000, 0.00001);
+//does not require any .dsp file from abcutilities
 //
 //--------------------------------------------------------------------------------------//
-// 2PI phasor (variation between 0 and 2*PI)
+//CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
-phasor2pi(f) = os.phasor((2. * ma.PI), f);
+attack = hslider("v:envfollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
+release = hslider("v:envfollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
 //
-process = phasor2pi(freq);
+envfollower = an.amp_follower_ar(attack, release);
+//
+//
+process = envfollower;
