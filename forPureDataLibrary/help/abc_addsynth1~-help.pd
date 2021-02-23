@@ -1,11 +1,11 @@
-#N canvas 23 23 1440 776 10;
+#N canvas 70 33 1440 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_addsynthN~ 20 12 0 18 -99865
 -262144 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Additive_synthesis_generators
 20 12 0 12 -99865 -262144 0;
 #X obj 644 673 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 644 701 \; pd dsp \$1 \;;
 #X text 935 3 CONTROLS;
 #X text 539 5 DESCRIPTION;
@@ -45,17 +45,12 @@
 #X msg 1161 309 -6;
 #X obj 83 123 loadbang;
 #X msg 39 170 gain -127;
-#X obj 1339 107 abc_addsynth11;
-#X obj 1339 77 r s11;
-#X obj 1246 537 loadbang;
-#X obj 1436 550 abc_cosrandenv11~ -------------;
-#X obj 1446 589 abc_chopan11~ -------------;
-#X obj 1511 634 abc_stereoout;
-#X msg 1246 562 \; s11 gain -15 \; s11 f0 440 \; s11 fmult-0 0.56 \;
-s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
-1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
-fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
-\; s11 fbeat-3 1.7 \;;
+#X obj 1337 84 abc_addsynth11;
+#X obj 1337 54 r s11;
+#X obj 1244 514 loadbang;
+#X obj 1434 527 abc_cosrandenv11~ -------------;
+#X obj 1444 566 abc_chopan11~ -------------;
+#X obj 1509 611 abc_stereoout;
 #X msg 109 170 fbeat-0 10;
 #X text 540 25 abc_addsynth1~ \, abc_addsynth2~ \, ... objects enable
 additive synthesis by adding elementary sound modules.;
@@ -70,6 +65,12 @@ the partials. For an harmonic spectrum \, one can use fmult00 = 1 \,
 fmult01 = 2 \, fmult02 = 3 etc.;
 #X text 936 165 gain (in dB) is the general control of the amplitude.
 ;
+#X msg 1244 539 \; s11 gain -30 \; s11 f0 440 \; s11 fmult-0 0.56 \;
+s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
+1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
+fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
+\; s11 fbeat-3 1.7 \;;
+#X obj 1427 593 abc_meter;
 #X connect 3 0 4 0;
 #X connect 9 0 23 0;
 #X connect 10 0 24 0;
@@ -110,7 +111,7 @@ fmult01 = 2 \, fmult02 = 3 etc.;
 #X connect 39 0 35 0;
 #X connect 40 0 36 0;
 #X connect 41 0 42 0;
-#X connect 41 0 50 0;
+#X connect 41 0 49 0;
 #X connect 42 0 20 0;
 #X connect 43 1 46 1;
 #X connect 43 2 46 2;
@@ -124,7 +125,7 @@ fmult01 = 2 \, fmult02 = 3 etc.;
 #X connect 43 10 46 10;
 #X connect 43 11 46 11;
 #X connect 44 0 43 0;
-#X connect 45 0 49 0;
+#X connect 45 0 55 0;
 #X connect 46 1 47 1;
 #X connect 46 2 47 2;
 #X connect 46 3 47 3;
@@ -137,6 +138,7 @@ fmult01 = 2 \, fmult02 = 3 etc.;
 #X connect 46 10 47 10;
 #X connect 46 11 47 11;
 #X connect 47 1 48 0;
+#X connect 47 1 56 0;
 #X connect 47 2 48 1;
-#X connect 50 0 20 0;
+#X connect 49 0 20 0;
 #X coords 0 776 1 775 85 60 0;

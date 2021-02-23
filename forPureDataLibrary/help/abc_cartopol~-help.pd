@@ -1,4 +1,4 @@
-#N canvas 330 27 762 776 10;
+#N canvas 676 25 762 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_cartopol~ 20 12 0 18 -99865
 -262144 0;
 #X obj 10 733 abc_helpcredit;
@@ -21,11 +21,11 @@ coordinates (both as signals) The angle is in radians;
 #X text 199 214 generates a square trajectory in cartesian;
 #X obj 169 543 abc_quadriout;
 #X obj 128 468 abc_2d_decoder1~;
-#X obj 23 228 abc_gain -20;
-#X obj 15 420 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 15 420 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 15 440 stereo \$1;
 #X obj 384 266 sig~ 1;
+#X obj 23 228 abc_gain -35;
 #X connect 3 0 4 0;
 #X connect 10 0 14 1;
 #X connect 11 1 12 1;
@@ -42,8 +42,8 @@ coordinates (both as signals) The angle is in radians;
 #X connect 17 2 16 1;
 #X connect 17 3 16 2;
 #X connect 17 4 16 3;
-#X connect 18 0 17 0;
-#X connect 19 0 20 0;
-#X connect 20 0 17 0;
-#X connect 21 0 13 2;
+#X connect 18 0 19 0;
+#X connect 19 0 17 0;
+#X connect 20 0 13 2;
+#X connect 21 0 17 0;
 #X coords 0 776 1 775 85 60 0;
