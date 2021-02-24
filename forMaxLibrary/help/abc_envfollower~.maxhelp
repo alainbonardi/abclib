@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1866.0, 524.0, 1132.0, 561.0 ],
+		"rect" : [ 143.0, 189.0, 1132.0, 561.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,27 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"args" : [ 500, 0.7 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-13",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "abc_env_noise~.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 569.0, 154.5, 210.0, 31.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "comment",
@@ -181,42 +202,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 571.0, 159.0, 40.0, 22.0 ],
-					"text" : "*~ 0.2"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 571.0, 128.0, 44.0, 22.0 ],
-					"text" : "noise~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 571.0, 193.0, 193.0, 22.0 ],
-					"text" : "abc_grain1~ @gs00 200 @rrf0 0.9"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "scope~",
 					"numinlets" : 2,
@@ -333,7 +318,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -693,15 +678,9 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"source" : [ "obj-11", 0 ]
+					"destination" : [ "obj-38", 1 ],
+					"midpoints" : [ 578.5, 213.25, 514.0, 213.25 ],
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -798,14 +777,6 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-38", 1 ],
-					"midpoints" : [ 580.5, 230.0, 514.0, 230.0 ],
-					"source" : [ "obj-7", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc_help_icon.png",
@@ -836,11 +807,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_envfollower~.mxo",
-				"type" : "iLaX"
+				"name" : "abc_env_noise~.maxpat",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/clippings/AudioOut",
+				"type" : "JSON",
+				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_grain1~.mxo",
+				"name" : "abc_envfollower~.mxo",
 				"type" : "iLaX"
 			}
  ],
@@ -866,8 +840,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

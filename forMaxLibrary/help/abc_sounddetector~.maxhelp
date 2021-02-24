@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 51.0, 82.0, 1132.0, 561.0 ],
+		"rect" : [ 253.0, 329.0, 1132.0, 561.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,119 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "bang" ],
+					"patching_rect" : [ 825.0, 117.0, 32.0, 22.0 ],
+					"text" : "t b b"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 764.0, 117.0, 55.0, 22.0 ],
+					"text" : "del 1000"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 764.0, 145.0, 29.5, 22.0 ],
+					"text" : "0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 838.0, 145.0, 29.5, 22.0 ],
+					"text" : "1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 653.0, 210.0, 29.5, 22.0 ],
+					"text" : "*~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 570.0, 129.0, 54.0, 54.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 5,
+					"numoutlets" : 4,
+					"outlettype" : [ "signal", "signal", "", "" ],
+					"patching_rect" : [ 764.0, 174.0, 129.0, 22.0 ],
+					"text" : "adsr~ 10 100 0.8 1000"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "list" ],
+					"patching_rect" : [ 653.0, 174.0, 101.0, 22.0 ],
+					"text" : "abc_soundgrain~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 356.0, 366.0, 130.0, 130.0 ],
+					"range" : [ -2.0, 2.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-9",
 					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 764.0, 6.0, 346.0, 87.0 ],
-					"presentation_linecount" : 14,
 					"text" : "offset: dB offset to increase the measurement of the amplitude if necessary (10 dB by default)\nnoiseFloor: dB threshold to make the distinction between the incoming sound and ambient noise (-50 dB by default)\nnoteOn: on a scale between 0 and 120 dB, noteOn is the threshold in dB of detection of the attack (60 by default)"
 				}
 
@@ -179,7 +285,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 494.0, 242.0, 29.5, 22.0 ],
+					"patching_rect" : [ 494.0, 252.0, 29.5, 22.0 ],
 					"text" : "+~"
 				}
 
@@ -319,42 +425,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 571.0, 159.0, 40.0, 22.0 ],
-					"text" : "*~ 0.1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 571.0, 128.0, 44.0, 22.0 ],
-					"text" : "noise~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 571.0, 193.0, 193.0, 22.0 ],
-					"text" : "abc_grain1~ @gs00 200 @rrf0 0.9"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "scope~",
 					"numinlets" : 2,
@@ -471,7 +541,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -831,15 +901,41 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
+					"destination" : [ "obj-13", 1 ],
+					"midpoints" : [ 773.5, 202.5, 673.0, 202.5 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"source" : [ "obj-11", 0 ]
+					"destination" : [ "obj-19", 0 ],
+					"midpoints" : [ 579.5, 193.0, 643.0, 193.0, 643.0, 105.0, 834.5, 105.0 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 1 ],
+					"midpoints" : [ 662.5, 238.0, 514.0, 238.0 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"midpoints" : [ 847.5, 170.0, 773.5, 170.0 ],
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"midpoints" : [ 773.5, 168.5, 773.5, 168.5 ],
+					"source" : [ "obj-16", 0 ]
 				}
 
 			}
@@ -847,6 +943,28 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-19", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"midpoints" : [ 834.5, 149.0, 822.0, 149.0, 822.0, 110.0, 773.5, 110.0 ],
+					"source" : [ "obj-19", 0 ]
 				}
 
 			}
@@ -920,7 +1038,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-66", 1 ],
 					"midpoints" : [ 503.5, 279.5, 1061.5, 279.5 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-38", 0 ]
 				}
 
@@ -929,7 +1047,16 @@
 				"patchline" : 				{
 					"destination" : [ "obj-66", 0 ],
 					"midpoints" : [ 503.5, 279.5, 895.5, 279.5 ],
-					"order" : 2,
+					"order" : 3,
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"midpoints" : [ 503.5, 290.5, 365.5, 290.5 ],
+					"order" : 1,
 					"source" : [ "obj-38", 0 ]
 				}
 
@@ -1009,38 +1136,37 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-38", 1 ],
-					"midpoints" : [ 580.5, 230.0, 514.0, 230.0 ],
-					"source" : [ "obj-7", 0 ]
+					"destination" : [ "obj-13", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1049,7 +1175,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_grain1~.mxo",
+				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
 			}
  ],

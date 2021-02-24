@@ -1,2 +1,0 @@
-#N canvas 990 325 450 300 12;
-#X obj 182 87 abc_stereoout;

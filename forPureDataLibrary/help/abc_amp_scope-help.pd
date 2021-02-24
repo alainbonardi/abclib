@@ -1,0 +1,67 @@
+#N canvas 90 25 910 740 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_amp_scope 20 12 0 18 -99865
+-262144 0;
+#X obj 13 698 abc_helpcredit;
+#X obj 14 32 cnv 15 500 25 empty empty Visualization_of_the_amplitude_of_a_signal_over_time
+20 12 0 12 -99865 -262144 0;
+#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+-1 1 1;
+#X msg 362 628 \; pd dsp \$1 \;;
+#X text 18 68 DESCRIPTION;
+#X text 397 65 CONTROLS;
+#X obj 27 224 *~ 0.6;
+#X obj 366 206 r scope;
+#X obj 27 200 phasor~ 200;
+#X text 18 91 The oscilloscope offers a visual representation of the
+amplitude of a signal over time. The horizontal axis represents time
+in samples. The vertical axis represents the amplitude of the signal.
+The optimal tick time to visualize a specific frequency is around a
+multiple of the period \, ie 1000 divided by the frequency.;
+#X obj 614 485 s scope;
+#X msg 441 404 onoff \$1;
+#X obj 441 381 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 524 382 5 0 0 0 - - -;
+#X text 436 315 Scope controls;
+#X obj 612 301 loadbang;
+#X msg 524 405 ticktime \$1;
+#X msg 613 404 buffersize \$1;
+#X floatatom 613 381 5 0 0 0 - - -;
+#X msg 613 358 512;
+#X floatatom 718 381 5 0 0 0 - - -;
+#X msg 718 404 amprange \$1;
+#X msg 718 358 1;
+#X msg 753 358 2;
+#X msg 786 358 5;
+#X msg 441 360 1;
+#X text 28 610 thanks to Pierre Guillot;
+#X msg 524 359 100;
+#X text 397 90 - onoff (1/0): displays or not the input signal;
+#X text 397 104 - ticktime: duration in milliseconds between two triggerings
+of the display from left to right;
+#X text 396 130 - blocksize: block size in samples;
+#X text 396 146 - amprange: max amplitude in absolute value;
+#X text 29 627 https://github.com/pierreguillot/Pad;
+#X obj 27 266 abc_amp_scope;
+#X connect 3 0 4 0;
+#X connect 7 0 34 0;
+#X connect 8 0 34 1;
+#X connect 9 0 7 0;
+#X connect 12 0 11 0;
+#X connect 13 0 12 0;
+#X connect 14 0 17 0;
+#X connect 16 0 28 0;
+#X connect 16 0 20 0;
+#X connect 16 0 23 0;
+#X connect 16 0 26 0;
+#X connect 17 0 11 0;
+#X connect 18 0 11 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 22 0 11 0;
+#X connect 23 0 21 0;
+#X connect 24 0 21 0;
+#X connect 25 0 21 0;
+#X connect 26 0 13 0;
+#X connect 28 0 14 0;
