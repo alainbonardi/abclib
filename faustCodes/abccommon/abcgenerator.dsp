@@ -57,5 +57,5 @@ phasorgenerator = (os.phasor(1, phasorfreq), pulseEnv(phasorpulserate, phasorpul
 //--------------------------------------------------------------------------------------//
 //COMBINATION OF THE THREE GENERATORS
 //--------------------------------------------------------------------------------------//
-globalgenerator = (noisegenerator, sinusgenerator, phasorgenerator) :> _;
+globalgenerator = (noisegenerator, sinusgenerator, phasorgenerator) :> *(gain);
 

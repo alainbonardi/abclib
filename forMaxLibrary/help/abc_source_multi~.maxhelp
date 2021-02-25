@@ -65,8 +65,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 368.0, 150.0, 151.0, 154.0 ],
-					"presentation_linecount" : 11,
+					"patching_rect" : [ 368.0, 150.0, 152.0, 154.0 ],
 					"text" : "abc_source_multi~ is an abstraction that enables the generation of various sounds (noise, sinus, phasor) or to read sound files. Generated sounds are pulsed at a certain frequency (pulse rate) and have a pulse ratio (duty: ratio between sound and silence) "
 				}
 
@@ -125,7 +124,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_source_multi~", "@obj-desc", "Simple", "multi-source", "generator" ],
+					"args" : [ "@obj-name", "abc_source_multi~", "@obj-desc", "Simple", "multi-source", "generator", "and", "mono", "file", "player" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -183,9 +182,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -286,7 +285,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 32.0, 412.0, 21.0 ],
-									"text" : "Simple multi-source generator",
+									"text" : "Simple multi-source generator and mono file player",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_digest[1]"
 								}
@@ -333,7 +332,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 33.0, 401.0, 21.0 ],
-									"text" : "Simple multi-source generator",
+									"text" : "Simple multi-source generator and mono file player",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_digest[4]"
 								}
@@ -505,6 +504,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-66", 1 ],
+					"midpoints" : [ 42.5, 324.625, 208.5, 324.625 ],
 					"order" : 0,
 					"source" : [ "obj-6", 0 ]
 				}
@@ -548,21 +548,21 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_source_noise~.maxpat",
+				"name" : "abc_source_noise.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_source_sinus~.maxpat",
+				"name" : "abc_source_sinus.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_source_phasor~.maxpat",
+				"name" : "abc_source_phasor.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
@@ -574,6 +574,10 @@
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_generator~.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0,
@@ -598,8 +602,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
