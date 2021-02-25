@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 177.0, 98.0, 1212.0, 551.0 ],
+		"rect" : [ 34.0, 129.0, 1212.0, 551.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"linecount" : 10,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 315.0, 369.5, 150.0, 141.0 ],
+					"text" : "abc_generator~ enables the generation of various sounds (noise, sinus, phasor). Generated sounds are pulsed at a certain frequency (pulse rate) and have a pulse ratio (or duty: ratio between sound and silence) "
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-17",
 					"maxclass" : "number",
@@ -536,8 +548,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 142.0, 151.0, 88.0, 22.0 ],
-					"text" : "phasoronoff $1"
+					"patching_rect" : [ 142.0, 151.0, 75.0, 22.0 ],
+					"text" : "phasoron $1"
 				}
 
 			}
@@ -560,8 +572,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 233.0, 151.0, 80.0, 22.0 ],
-					"text" : "noiseonoff $1"
+					"patching_rect" : [ 233.0, 151.0, 67.0, 22.0 ],
+					"text" : "noiseon $1"
 				}
 
 			}
@@ -584,8 +596,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 315.0, 151.0, 80.0, 22.0 ],
-					"text" : "sinusonoff $1"
+					"patching_rect" : [ 315.0, 151.0, 67.0, 22.0 ],
+					"text" : "sinuson $1"
 				}
 
 			}
@@ -747,9 +759,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",

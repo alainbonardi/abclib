@@ -26,21 +26,21 @@ gain = hslider("v:generator/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 //
 //controls for the noise generator
 //
-noiseonoff = checkbox("v:generator/h:noise/noiseonoff") : si.smoo;
+noiseonoff = checkbox("v:generator/h:noise/noiseon") : si.smoo;
 noisecutoff = hslider("v:generator/h:noise/noisecutoff [unit:Hz]", 1760, 20, 20000, 0.01);
 noisepulserate = hslider("v:generator/h:noise/noisepulserate [unit:Hz]", 3, 0.01, 20, 0.01) * 0.5;
 noisepulseratio = hslider("v:generator/h:noise/noisepulseratio", 1, 0, 10, 1);
 //
 //controls for the sinus generator
 //
-sinusonoff = checkbox("v:generator/h:sinus/sinusonoff") : si.smoo;
+sinusonoff = checkbox("v:generator/h:sinus/sinuson") : si.smoo;
 sinusfreq = hslider("v:generator/h:sinus/sinusfreq [unit:Hz]", 440, 20, 20000, 0.01);
 sinuspulserate = hslider("v:generator/h:sinus/sinuspulserate [unit:Hz]", 3, 0.01, 20, 0.01) * 0.5;
 sinuspulseratio = hslider("v:generator/h:sinus/sinuspulseratio", 1, 0, 10, 1);
 //
 //controls for the phasor generator
 //
-phasoronoff = checkbox("v:generator/h:phasor/phasoronoff") : si.smoo;
+phasoronoff = checkbox("v:generator/h:phasor/phasoron") : si.smoo;
 phasorfreq = hslider("v:generator/h:phasor/phasorfreq [unit:Hz]", 440, 20, 20000, 0.01);
 phasorpulserate = hslider("v:generator/h:phasor/phasorpulserate [unit:Hz]", 3, 0.01, 20, 0.01) * 0.5;
 phasorpulseratio = hslider("v:generator/h:phasor/phasorpulseratio", 1, 0, 10, 1);

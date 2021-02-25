@@ -97,8 +97,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 7.0, 101.0, 119.0, 22.0 ],
-					"text" : "prepend phasoronoff"
+					"patching_rect" : [ 7.0, 101.0, 106.0, 22.0 ],
+					"text" : "prepend phasoron"
 				}
 
 			}

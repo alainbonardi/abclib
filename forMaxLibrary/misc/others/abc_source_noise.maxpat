@@ -97,8 +97,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 6.0, 97.0, 111.0, 22.0 ],
-					"text" : "prepend noiseonoff"
+					"patching_rect" : [ 6.0, 97.0, 98.0, 22.0 ],
+					"text" : "prepend noiseon"
 				}
 
 			}
