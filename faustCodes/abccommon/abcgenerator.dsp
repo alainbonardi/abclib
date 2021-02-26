@@ -38,7 +38,7 @@ phasorpulseratio = hslider("v:generator/h:phasor/phasorpulseratio", 1, 0, 10, 1)
 //--------------------------------------------------------------------------------------//
 clip(x) = 1 * supTest + x * rangeTest
 	with {
-			infTest = (x < -1);
+			infTest = (x < 0);
 			supTest = (x > 1);
 			rangeTest = (1 - infTest) * (1 - supTest);
 };
