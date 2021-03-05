@@ -3,11 +3,11 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2021 ------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
-declare author "Alain Bonardi";
+declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_delaychain3";
 //
@@ -22,7 +22,7 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-updatefreq = vslider("h:multidelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
+updatefreq = hslider("h:multidelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
 fdbk(ind) = hslider("h:multidelays/v:fdbks/fdbk%2ind", 0, 0, 0.99999, 0.0001) : si.smoo;
 //
 tempo = nentry("h:multidelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
