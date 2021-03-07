@@ -50,7 +50,7 @@ do
         echo "$line" >> $sortie
     done <"$utilityfilename2"
 echo "//
-process = syndecorrelation($j, delay, winfreq, factor);" >> $sortie
+process = syndecorrelation($j, delay, winfreq, factor, fdbk, functiontype);" >> $sortie
 done
 #now moves to faustCodes directory to create the FX_DECORRELATIONS directory and files
 cd ../
@@ -86,5 +86,5 @@ do
         echo "$line" >> $sortie
     done <"$utilityfilename2"
 echo "//
-process = fxdecorrelation($j, delay, winfreq, factor);" >> $sortie
+process = fxdecorrelation($j, delay, winfreq, factor, fdbk, functiontype);" >> $sortie
 done

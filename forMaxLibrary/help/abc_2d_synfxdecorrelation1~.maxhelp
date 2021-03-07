@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 275.0, 457.0, 1741.0, 756.0 ],
+		"rect" : [ 653.0, 280.0, 1741.0, 756.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,103 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
+					"id" : "obj-30",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 348.592883999999913, 173.0, 90.0, 22.0 ],
+					"presentation_linecount" : 3,
+					"text" : "functiontype $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 348.592883999999913, 118.0, 70.0, 22.0 ],
+					"text" : "loadmess 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 465.592883999999913, 118.0, 73.0, 22.0 ],
+					"text" : "loadmess 0."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-23",
+					"items" : [ "linear", ",", "square", ",", "sinus", ",", "log(1+x)", ",", "sqrt" ],
+					"maxclass" : "umenu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 348.592883999999913, 146.0, 70.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
+					"id" : "obj-19",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 465.592883999999913, 173.0, 48.0, 22.0 ],
+					"text" : "fdbk $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-16",
+					"maxclass" : "flonum",
+					"maximum" : 0.999,
+					"minimum" : 0.0,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 465.592883999999913, 146.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-13",
 					"maxclass" : "ezdac~",
@@ -200,8 +297,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 403.0, 46.0, 22.0 ],
-					"text" : "r factor"
+					"patching_rect" : [ 512.0, 403.0, 38.0, 22.0 ],
+					"text" : "r cmd"
 				}
 
 			}
@@ -254,8 +351,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 556.333333333333258, 205.0, 48.0, 22.0 ],
-					"text" : "s factor"
+					"patching_rect" : [ 556.333333333333258, 211.0, 41.0, 22.0 ],
+					"text" : "s cmd"
 				}
 
 			}
@@ -267,7 +364,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 793.321441999999934, 6.0, 361.0, 234.0 ],
-					"text" : "abc_2d_syn_decorrelation1~, abc_2d_syn_decorrelation2~, ... objects generate spatial decorrelated components in ambisonic from one mono signal.\nabc_2d_fx_decorrelated1~, abc_2d_fx_decorrelated2~, ... objects apply decorrelation to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delay lines are driven by a 'factor' parameter between 0 and 1. The ith (i between 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter is compared to 1-(i+1)/P. If it is greater than this threshold the delay is (i+1)*delay/P, else the delay is 0.\ndelay is the maximum duration in samples of the delays (by default it is 44100, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)\nfactor (between 0 and 1) is a control parameter that 'opens' the delay lines when increasing."
+					"text" : "abc_2d_syn_decorrelation1~, abc_2d_syn_decorrelation2~, ... objects generate spatial decorrelated components in ambisonic from one mono signal.\nabc_2d_fx_decorrelated1~, abc_2d_fx_decorrelated2~, ... objects apply decorrelation to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delay lines are driven by a 'factor' parameter between 0 and 1. The ith (i between 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter is compared to 1-(i+1)/P. If it is greater than this threshold the delay is (i+1)*delay/P, else the delay is 0.\ndelay is the maximum duration in samples of the delays (by default it is 48000, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)\nfactor (between 0 and 1) is a control parameter that 'opens' the delay lines when increasing."
 				}
 
 			}
@@ -431,8 +528,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1229.678558000000066, 454.5, 46.0, 22.0 ],
-					"text" : "r factor"
+					"patching_rect" : [ 1229.678558000000066, 454.5, 38.0, 22.0 ],
+					"text" : "r cmd"
 				}
 
 			}
@@ -691,8 +788,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 881.5, 407.5, 46.0, 22.0 ],
-					"text" : "r factor"
+					"patching_rect" : [ 881.5, 407.5, 38.0, 22.0 ],
+					"text" : "r cmd"
 				}
 
 			}
@@ -805,8 +902,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 126.392883999999924, 403.0, 46.0, 22.0 ],
-					"text" : "r factor"
+					"patching_rect" : [ 126.392883999999924, 403.0, 38.0, 22.0 ],
+					"text" : "r cmd"
 				}
 
 			}
@@ -967,6 +1064,21 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-55", 0 ],
+					"midpoints" : [ 475.092883999999913, 204.0, 565.833333333333258, 204.0 ],
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-60", 3 ],
 					"source" : [ "obj-2", 3 ]
 				}
@@ -998,6 +1110,27 @@
 					"destination" : [ "obj-82", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-25", 0 ]
 				}
 
 			}
@@ -1071,6 +1204,14 @@
 					"destination" : [ "obj-26", 0 ],
 					"midpoints" : [ 401.749999999999943, 525.0, 487.872208793650771, 525.0 ],
 					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-55", 0 ],
+					"midpoints" : [ 358.092883999999913, 204.5, 565.833333333333258, 204.5 ],
+					"source" : [ "obj-30", 0 ]
 				}
 
 			}
@@ -2224,8 +2365,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
