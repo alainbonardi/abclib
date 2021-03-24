@@ -13,6 +13,7 @@ utilityfilename2="../abccommon/abcutilities/abcplayer.dsp"
 utilityfilename3="../abccommon/abcutilities/abcgranu.dsp"
 utilityfilename4="../abccommon/abcutilities/abcsinenv.dsp"
 associatedcommonfilename2="../abccommon/abcgenerator.dsp"
+associatedcommonfilename3="../abccommon/abcrissetsbell.dsp"
 #
 #abc_soundcoat.dsp
 #
@@ -97,3 +98,26 @@ do
 done <"$utilityfilename1"
 echo "//
 process = globalgenerator;" >> $sortie
+#
+#abc_rissetbell.dsp
+#
+sortie="abc_rissetsbell.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_rissetsbell\";" >> $sortie
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename3"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename1"
+echo "//
+process = rissetsbell;" >> $sortie
