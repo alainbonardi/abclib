@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 201.0, 79.0, 692.0, 621.0 ],
+		"rect" : [ 175.0, 81.0, 1089.0, 759.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 628.5, 51.0, 22.0 ],
+					"patching_rect" : [ 900.0, 728.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -59,7 +59,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 598.5, 181.0, 22.0 ],
+					"patching_rect" : [ 900.0, 698.5, 181.0, 22.0 ],
 					"text" : "load 8_abc_abstractions.maxpat"
 				}
 
@@ -72,7 +72,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 560.5, 51.0, 22.0 ],
+					"patching_rect" : [ 900.0, 660.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -85,7 +85,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 530.5, 153.0, 22.0 ],
+					"patching_rect" : [ 900.0, 630.5, 153.0, 22.0 ],
 					"text" : "load 7_abc_utilities.maxpat"
 				}
 
@@ -98,7 +98,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 492.5, 51.0, 22.0 ],
+					"patching_rect" : [ 900.0, 592.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -111,7 +111,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 462.5, 167.0, 22.0 ],
+					"patching_rect" : [ 900.0, 562.5, 167.0, 22.0 ],
 					"text" : "load 6_abc_synthesis.maxpat"
 				}
 
@@ -124,7 +124,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 426.5, 51.0, 22.0 ],
+					"patching_rect" : [ 900.0, 526.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -137,7 +137,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 900.0, 396.5, 184.0, 22.0 ],
+					"patching_rect" : [ 900.0, 496.5, 184.0, 22.0 ],
 					"text" : "load 5_abc_multichannel.maxpat"
 				}
 
@@ -150,7 +150,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 540.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 684.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -162,7 +162,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 513.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 657.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -174,7 +174,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 486.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 630.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -186,7 +186,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 459.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 603.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -198,7 +198,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 432.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 576.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -210,7 +210,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 628.5, 51.0, 22.0 ],
+					"patching_rect" : [ 585.0, 728.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -223,7 +223,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 598.5, 277.0, 22.0 ],
+					"patching_rect" : [ 585.0, 698.5, 277.0, 22.0 ],
 					"text" : "load 4_abc_2d_ambisonic_syn_processes.maxpat"
 				}
 
@@ -236,7 +236,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 405.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 549.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -248,7 +248,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 560.5, 51.0, 22.0 ],
+					"patching_rect" : [ 585.0, 660.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -261,7 +261,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 530.5, 268.0, 22.0 ],
+					"patching_rect" : [ 585.0, 630.5, 268.0, 22.0 ],
 					"text" : "load 3_abc_2d_ambisonic_fx_processes.maxpat"
 				}
 
@@ -274,7 +274,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 378.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 522.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -286,7 +286,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 492.5, 51.0, 22.0 ],
+					"patching_rect" : [ 585.0, 592.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -299,7 +299,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 462.5, 246.0, 22.0 ],
+					"patching_rect" : [ 585.0, 562.5, 246.0, 22.0 ],
 					"text" : "load 2_abc_2d_ambisonic_geometry.maxpat"
 				}
 
@@ -312,7 +312,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 426.5, 51.0, 22.0 ],
+					"patching_rect" : [ 585.0, 526.5, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -325,7 +325,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 585.0, 396.5, 243.0, 22.0 ],
+					"patching_rect" : [ 585.0, 496.5, 243.0, 22.0 ],
 					"text" : "load 1_abc_2d_general_ambisonics.maxpat"
 				}
 
@@ -338,19 +338,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 351.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 495.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-2",
-					"linecount" : 35,
+					"linecount" : 46,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 63.0, 85.0, 329.0, 476.0 ],
-					"text" : "abclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language. The main topics addressed are:\n- spatial sound processing and synthesis using ambisonics\n- multi-channel sound processing\nThe library is based on Faust processes implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances) or if not ambisonic with various dimensions from 1 to 16 parallel instances.\nThe Faust processes are compiled to Max objects. Help patches are also provided as well as some overview patches or graphic abstractions based on Jitter (abc_ambiscope).\nTeaching mixed music at Paris 8 University helped us for many implementation choices, thinking of practical requirements for composers, testing their patches either in multichannel academic studios ar at home in simple stereo. \nAll theses objects and abstractions are organized in 8 topics:\n\n1) general ambisonic objects\n\n2) ambisonic geometry objects\n\n3) ambisonic fx processes\n\n4) ambisonic syn processes\n\n5) multichannel processes\n\n6) sound synthesis\n\n7) utilities\n\n8) abstractions"
+					"patching_rect" : [ 63.0, 85.0, 1009.0, 623.0 ],
+					"text" : "abclib library\n20 years of research, teaching and creation in mixed music using Faust language\nCICM (Centre de recherches Informatique et Création Musicale) - University Paris\nhttp://cicm.mshparisnord.org/\nAlain Bonardi & Paul Goutmann - 2019-2021\n\nabclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.\nThe main topics addressed are:\n- spatial sound processing and synthesis using ambisonics\n- multi-channel sound processing\n- utility objects for mixed music\n\nIt comes after the HOA library developed by the CICM between 2012 and 2015 which provided an impressive framework for ambisonics.\nhoalibrary.mshparisnord.fr\n\nabclib takes over HOA, proposing a large set of processes written in Faust language and implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances). It also puts the emphasis, outside the scope of ambisonics on multi-channel sound processing with various dimensions from 1 to 16 parallel instances. Faust language guarantees software durability and interoperability between Mac and Windows systems, as well as Max and PureData softwares.\n\nThe Faust processes are compiled to Max or PureData objects. Help patches are also provided as well as some overview patches or graphic abstractions based on jitter (in Max) or gem libraries (in PureData). In the field of ambisonics, 2D objects are provided, including general objects (encoders, decoders), geometry objects (maps, mirrors, rotates, specific trajectory generators), and a set of spatial sound processes (decorrelators, delays, granulators, ring modulators). The names of the ambisonic objects in 2D use '2d' as a prefix: for instance abc_2d_decoder3~ is an ambisonic decoder in 2D at order 3. Multi-channel sound process objects do not use '2d' prefix: for instance, abc_delays16 includes 16 parallel delay lines.\n\nThe abclib library also provides utility objects for mixed music:  chowning-like panners, matrices, envelopes, an attack and release detector, synthesizers (additive, substractive, sound coat, sound grain, Risset's bell).\n\nTeaching mixed music at Paris 8 University helped us in many implementation choices, thinking of practical requirements for composers, to allow them to test their patches either in multichannel academic studios or at home in simple stereo.\n\n\n1) general ambisonic objects\n\n2) ambisonic geometry objects\n\n3) ambisonic fx processes\n\n4) ambisonic syn processes\n\n5) multichannel processes\n\n6) sound synthesis\n\n7) utilities\n\n8) abstractions"
 				}
 
 			}
@@ -382,7 +382,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.0, 588.0, 548.0, 23.0 ],
+					"patching_rect" : [ 6.0, 725.0, 548.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 57.0, 747.916625999999951, 548.0, 23.0 ],
 					"viewvisibility" : 1
@@ -414,7 +414,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-79", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 377.24999988079071, 594.5, 377.24999988079071 ],
+					"midpoints" : [ 265.5, 529.0, 430.0, 529.0, 430.0, 485.5, 594.5, 485.5 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -431,7 +431,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 459.416662991046906, 594.5, 459.416662991046906 ],
+					"midpoints" : [ 265.5, 648.75, 594.5, 648.75 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -440,7 +440,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 581.0, 909.5, 581.0 ],
+					"midpoints" : [ 265.5, 718.5, 587.5, 718.5, 587.5, 687.5, 909.5, 687.5 ],
 					"source" : [ "obj-15", 0 ]
 				}
 
@@ -449,7 +449,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 547.5, 587.5, 547.5, 587.5, 519.5, 909.5, 519.5 ],
+					"midpoints" : [ 265.5, 691.5, 587.5, 691.5, 587.5, 619.5, 909.5, 619.5 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -458,7 +458,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 520.5, 587.5, 520.5, 587.5, 451.5, 909.5, 451.5 ],
+					"midpoints" : [ 265.5, 664.5, 587.5, 664.5, 587.5, 551.5, 909.5, 551.5 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -467,7 +467,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 493.5, 587.5, 493.5, 587.5, 385.5, 909.5, 385.5 ],
+					"midpoints" : [ 265.5, 637.5, 587.5, 637.5, 587.5, 485.5, 909.5, 485.5 ],
 					"source" : [ "obj-18", 0 ]
 				}
 
@@ -516,7 +516,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 404.583331763744354, 594.5, 404.583331763744354 ],
+					"midpoints" : [ 265.5, 553.75, 594.5, 553.75 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -541,7 +541,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 265.5, 430.416664063930511, 594.5, 430.416664063930511 ],
+					"midpoints" : [ 265.5, 601.25, 594.5, 601.25 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
