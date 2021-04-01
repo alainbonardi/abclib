@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 976.0, 199.0, 1828.0, 1022.0 ],
+		"rect" : [ 698.0, 199.0, 1828.0, 1022.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -436,8 +436,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1510.342883999999913, 434.0, 40.0, 22.0 ],
-					"text" : "*~ 0.3"
+					"patching_rect" : [ 1510.342883999999913, 434.0, 47.0, 22.0 ],
+					"text" : "*~ 0.03"
 				}
 
 			}
@@ -564,7 +564,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 550, 0.6 ],
+					"args" : [ 550, 0.6, -30 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -578,7 +578,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 946.451573873016059, 382.25, 210.0, 31.0 ],
+					"patching_rect" : [ 946.451573873016059, 382.25, 310.0, 31.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -845,7 +845,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 30, 0.85 ],
+					"args" : [ 30, 0.85, -25 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -859,7 +859,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 533.571441999999934, 382.25, 210.0, 31.0 ],
+					"patching_rect" : [ 533.571441999999934, 382.25, 312.857116000000133, 31.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1028,8 +1028,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 197.592883999999913, 428.0, 40.0, 22.0 ],
-					"text" : "*~ 0.3"
+					"patching_rect" : [ 197.592883999999913, 428.0, 47.0, 22.0 ],
+					"text" : "*~ 0.03"
 				}
 
 			}
@@ -1059,7 +1059,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -35 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -2470,43 +2470,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_env_noise~.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/clippings/AudioOut",
-				"patcherrelativepath" : "../../../clippings/AudioOut",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2583,8 +2583,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -2593,8 +2593,8 @@
 , 			{
 				"name" : "newobjYellow-2",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -437.0, 79.0, 2372.0, 934.0 ],
+		"rect" : [ 34.0, 79.0, 2372.0, 934.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-148",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 563.833333333333485, 675.5, 40.0, 22.0 ],
+					"text" : "*~ 0.1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-136",
 					"maxclass" : "scope~",
@@ -74,7 +86,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -107,7 +119,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 563.833333333333485, 618.0, 60.0, 67.0 ],
+					"patching_rect" : [ 563.833333333333485, 597.5, 60.0, 67.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1106,8 +1118,8 @@
 					"numinlets" : 16,
 					"numoutlets" : 17,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 1066.0, 576.5, 211.336599538732798, 22.0 ],
-					"text" : "abc_substractsynth16~"
+					"patching_rect" : [ 1066.0, 576.5, 211.0, 22.0 ],
+					"text" : "abc_substractsynth16~ @gain -45"
 				}
 
 			}
@@ -1177,8 +1189,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 17,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 1014.0, 114.5, 198.199999999999932, 22.0 ],
-					"text" : "abc_addsynth16~"
+					"patching_rect" : [ 1014.0, 114.5, 198.200000000000045, 22.0 ],
+					"text" : "abc_addsynth16~ @gain -40"
 				}
 
 			}
@@ -1320,7 +1332,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 767.333333333333485, 393.5, 68.0, 33.0 ],
+					"patching_rect" : [ 797.833333333333485, 397.0, 68.0, 33.0 ],
 					"text" : "right 8 signal bus"
 				}
 
@@ -1356,7 +1368,7 @@
 					"numinlets" : 8,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 682.333333333333485, 341.0, 130.124999999999773, 22.0 ],
+					"patching_rect" : [ 709.833333333333485, 341.0, 181.75, 22.0 ],
 					"text" : "abc_cosrandenv8~"
 				}
 
@@ -1368,8 +1380,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 682.333333333333485, 294.5, 146.0, 22.0 ],
-					"text" : "abc_addsynth8~ @f0 330"
+					"patching_rect" : [ 709.833333333333485, 294.5, 205.0, 22.0 ],
+					"text" : "abc_addsynth8~ @f0 330 @gain -40"
 				}
 
 			}
@@ -1409,7 +1421,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 549.333333333333485, 190.5, 18.0, 34.0 ],
 					"size" : 2,
-					"value" : 0
+					"value" : 1
 				}
 
 			}
@@ -1483,7 +1495,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -40 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1497,7 +1509,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 814.833333333333485, 195.5, 74.0, 72.0 ],
+					"patching_rect" : [ 871.333333333333485, 367.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1509,7 +1521,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 448.333333333333485, 294.5, 200.714285714287143, 22.0 ],
+					"patching_rect" : [ 432.61904761904816, 294.5, 263.571428571428442, 22.0 ],
 					"text" : "abc_multinoise8~"
 				}
 
@@ -1521,8 +1533,8 @@
 					"numinlets" : 8,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 448.333333333333485, 341.0, 178.0, 22.0 ],
-					"text" : "abc_substractsynth8~ @f0 220."
+					"patching_rect" : [ 432.61904761904816, 341.0, 233.0, 22.0 ],
+					"text" : "abc_substractsynth8~ @f0 220 @gain -45"
 				}
 
 			}
@@ -2587,8 +2599,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -3014,26 +3026,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-124", 1 ],
-					"midpoints" : [ 573.333333333333485, 703.75, 865.833333333333485, 703.75 ],
-					"order" : 3,
-					"source" : [ "obj-119", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-124", 0 ],
-					"midpoints" : [ 573.333333333333485, 703.75, 699.833333333333485, 703.75 ],
-					"order" : 4,
-					"source" : [ "obj-119", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-136", 0 ],
-					"midpoints" : [ 573.333333333333485, 703.25, 290.5, 703.25 ],
+					"midpoints" : [ 573.333333333333485, 670.25, 290.5, 670.25 ],
 					"order" : 2,
 					"source" : [ "obj-119", 0 ]
 				}
@@ -3042,7 +3036,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 573.333333333333485, 702.75, 433.5, 702.75 ],
+					"midpoints" : [ 573.333333333333485, 670.75, 433.5, 670.75 ],
 					"order" : 1,
 					"source" : [ "obj-119", 0 ]
 				}
@@ -3050,7 +3044,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-98", 0 ],
+					"destination" : [ "obj-148", 0 ],
 					"order" : 0,
 					"source" : [ "obj-119", 0 ]
 				}
@@ -3305,6 +3299,32 @@
 				"patchline" : 				{
 					"destination" : [ "obj-145", 0 ],
 					"source" : [ "obj-146", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-124", 1 ],
+					"midpoints" : [ 573.333333333333485, 703.75, 865.833333333333485, 703.75 ],
+					"order" : 1,
+					"source" : [ "obj-148", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-124", 0 ],
+					"midpoints" : [ 573.333333333333485, 703.75, 699.833333333333485, 703.75 ],
+					"order" : 2,
+					"source" : [ "obj-148", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-98", 0 ],
+					"order" : 0,
+					"source" : [ "obj-148", 0 ]
 				}
 
 			}
@@ -3732,18 +3752,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-128", 0 ],
-					"midpoints" : [ 824.333333333333485, 329.75, 457.833333333333485, 329.75 ],
-					"order" : 1,
-					"source" : [ "obj-42", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
-					"midpoints" : [ 824.333333333333485, 279.0, 691.833333333333485, 279.0 ],
-					"order" : 0,
+					"destination" : [ "obj-133", 0 ],
+					"midpoints" : [ 880.833333333333485, 500.25, 558.833333333334167, 500.25 ],
 					"source" : [ "obj-42", 0 ]
 				}
 
@@ -4769,43 +4779,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -4942,8 +4952,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -4952,8 +4962,8 @@
 , 			{
 				"name" : "newobjYellow-2",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
