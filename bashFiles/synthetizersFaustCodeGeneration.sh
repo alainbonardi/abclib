@@ -7,13 +7,15 @@ mkdir abc_synthetizers
 cd abc_synthetizers/
 #no parameter is necessary for these spatial trajectories dsp files
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abcsynthetizers.dsp"
+associatedcommonfilename1a="../abccommon/abcsoundcoat.dsp"
+associatedcommonfilename1b="../abccommon/abcsoundgrain.dsp"
 utilityfilename1="../abccommon/abcutilities/abcdbcontrol.dsp"
 utilityfilename2="../abccommon/abcutilities/abcplayer.dsp"
 utilityfilename3="../abccommon/abcutilities/abcgranu.dsp"
 utilityfilename4="../abccommon/abcutilities/abcsinenv.dsp"
 associatedcommonfilename2="../abccommon/abcgenerator.dsp"
 associatedcommonfilename3="../abccommon/abcrissetsbell.dsp"
+associatedcommonfilename4="../abccommon/abcdrops.dsp"
 #
 #abc_soundcoat.dsp
 #
@@ -29,7 +31,7 @@ echo "declare name \"abc_soundcoat\";" >> $sortie
 while IFS= read -r line
 do
     echo "$line" >> $sortie
-done <"$associatedcommonfilename"
+done <"$associatedcommonfilename1a"
 #writes the other common file (utility functions)
 while IFS= read -r line
 do
@@ -52,7 +54,7 @@ echo "declare name \"abc_soundgrain\";" >> $sortie
 while IFS= read -r line
 do
     echo "$line" >> $sortie
-done <"$associatedcommonfilename"
+done <"$associatedcommonfilename1b"
 #writes the other common file (utility functions)
 while IFS= read -r line
 do
@@ -121,3 +123,26 @@ echo "$line" >> $sortie
 done <"$utilityfilename1"
 echo "//
 process = rissetsbell;" >> $sortie
+#
+#abc_drops.dsp
+#
+sortie="abc_drops.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_drops\";" >> $sortie
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename4"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename1"
+echo "//
+process = rainDrops(dropfreq, dropthinness, avgfreq, attackdur, qf, gain);" >> $sortie
