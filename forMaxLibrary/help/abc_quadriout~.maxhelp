@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 325.0, 79.0, 568.0, 500.0 ],
+		"rect" : [ 1376.0, 246.0, 568.0, 500.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 252.0, 212.0, 150.0, 114.0 ],
+					"patching_rect" : [ 326.0, 213.0, 150.0, 114.0 ],
 					"text" : "abc_quadriout is an abstraction that enables 4 channel output (dac~ 1 to 4) with a control of the global gain in dB. This global gain can be set as default value in the bpatcher inspector"
 				}
 
@@ -57,7 +57,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 50.0, 243.0, 110.0, 22.0 ],
+					"patching_rect" : [ 50.0, 255.0, 240.333333333333371, 22.0 ],
 					"text" : "abc_cosrandenv4~"
 				}
 
@@ -69,8 +69,8 @@
 					"numinlets" : 4,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 50.0, 201.75, 140.333333333333485, 22.0 ],
-					"text" : "abc_substractsynth4~"
+					"patching_rect" : [ 50.0, 201.75, 188.0, 22.0 ],
+					"text" : "abc_substractsynth4~ @gain -30."
 				}
 
 			}
@@ -81,14 +81,14 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 50.0, 164.0, 180.777777777778738, 22.0 ],
+					"patching_rect" : [ 50.0, 164.0, 244.333333333333371, 22.0 ],
 					"text" : "abc_multinoise4~"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -30 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -149,7 +149,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -188,9 +188,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -538,6 +538,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-55", 3 ],
+					"midpoints" : [ 186.25, 232.875, 280.833333333333371, 232.875 ],
 					"source" : [ "obj-54", 3 ]
 				}
 
@@ -545,6 +546,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-55", 2 ],
+					"midpoints" : [ 144.0, 239.875, 207.055555555555571, 239.875 ],
 					"source" : [ "obj-54", 2 ]
 				}
 
@@ -552,6 +554,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-55", 1 ],
+					"midpoints" : [ 101.75, 241.875, 133.277777777777771, 241.875 ],
 					"source" : [ "obj-54", 1 ]
 				}
 
@@ -594,22 +597,22 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_quadriout~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
