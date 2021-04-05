@@ -1,11 +1,11 @@
-#N canvas 52 25 1331 697 10;
+#N canvas 50 27 1331 697 10;
 #X obj 9 9 cnv 15 500 25 empty empty abc_delaychainN~ 20 12 0 18 -99865
 -262144 0;
-#X obj 8 657 abc_helpcredit;
+#X obj 8 663 abc_helpcredit;
 #X obj 9 35 cnv 15 500 25 empty empty Sequential_double_overlapped_delays_without_reinjection
 20 12 0 12 -99865 -262144 0;
 #X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 533 494 \; pd dsp \$1 \;;
 #X text 935 30 CONTROLS;
 #X text 534 32 DESCRIPTION;
@@ -29,17 +29,17 @@
 #X obj 405 561 metro 20000;
 #X obj 405 584 s top;
 #X obj 81 281 r top;
-#X obj 730 296 loadbang;
-#X msg 730 318 30;
-#X floatatom 730 339 5 0 0 0 - - -;
-#X msg 730 359 updatefreq \$1;
-#X obj 902 430 r dels;
-#X obj 1149 404 loadbang;
-#X obj 953 274 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
+#X obj 730 280 loadbang;
+#X msg 730 302 30;
+#X floatatom 730 323 5 0 0 0 - - -;
+#X msg 730 343 updatefreq \$1;
+#X obj 902 414 r dels;
+#X obj 1149 388 loadbang;
+#X obj 953 258 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
 -1 -1 9900 1;
-#X obj 953 216 loadbang;
-#X floatatom 953 410 5 0 0 0 - - -;
-#X msg 953 430 tempo \$1;
+#X obj 953 200 loadbang;
+#X floatatom 953 394 5 0 0 0 - - -;
+#X msg 953 414 tempo \$1;
 #X text 936 51 Durations are parameters dur-0 \, dur-1 \, dur-2 \,
 etc.These musical durations are automatically converted to milliseconds
 thanks to the tempo parameter expressed in bpm.;
@@ -55,9 +55,9 @@ thanks to the tempo parameter expressed in bpm.;
 #X floatatom 491 355 5 0 0 0 - - -;
 #X obj 491 206 abc_musdur 4;
 #X msg 491 375 dur-2 \$1;
-#X obj 1049 365 r top;
-#X obj 1049 388 del 5000;
-#X obj 1049 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 1049 349 r top;
+#X obj 1049 372 del 5000;
+#X obj 1049 394 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #N canvas 1116 82 249 299 noisenv 0;
 #X obj 140 23 inlet;
@@ -65,37 +65,37 @@ thanks to the tempo parameter expressed in bpm.;
 #X msg 167 75 -0.25;
 #X msg 140 101 0.25 50;
 #X obj 42 73 noise~;
-#X obj 42 94 *~ 0.2;
 #X obj 106 211 *~;
 #X obj 140 162 cos~;
 #X obj 106 255 outlet~;
 #X obj 140 142 line~;
 #X obj 179 44 loadbang;
+#X obj 42 94 *~ 0.1;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 1 1 2 0;
-#X connect 2 0 9 0;
-#X connect 3 0 9 0;
-#X connect 4 0 5 0;
-#X connect 5 0 6 0;
-#X connect 6 0 8 0;
-#X connect 7 0 6 1;
-#X connect 9 0 7 0;
-#X connect 10 0 2 0;
-#X restore 1049 430 pd noisenv;
-#X obj 902 469 abc_delaychain6~ --------;
-#X msg 953 238 100;
-#X obj 899 508 abc_2d_decoder3~ ---------;
-#X obj 926 575 dac~ 1 2 3 4 5 6 7 8;
-#X msg 1149 426 \; dels dur-0 0.5 \; dels gain-0 -10 \; dels dur-1
+#X connect 2 0 8 0;
+#X connect 3 0 8 0;
+#X connect 4 0 10 0;
+#X connect 5 0 7 0;
+#X connect 6 0 5 1;
+#X connect 8 0 6 0;
+#X connect 9 0 2 0;
+#X connect 10 0 5 0;
+#X restore 1049 414 pd noisenv;
+#X obj 902 453 abc_delaychain6~ --------;
+#X msg 953 222 100;
+#X obj 899 492 abc_2d_decoder3~ ---------;
+#X obj 926 559 dac~ 1 2 3 4 5 6 7 8;
+#X msg 1149 410 \; dels dur-0 0.5 \; dels gain-0 -10 \; dels dur-1
 1 \; dels gain-1 -5 \; dels dur-2 0.5 \; dels gain-2 -5 \; dels dur-3
 1 \; dels gain-3 0 \; dels dur-4 0.5 \; dels gain-4 5 \; dels dur-5
 0.25 \; dels gain-5 5 \;;
-#X obj 735 458 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 735 442 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 735 478 stereo \$1;
-#X obj 735 412 loadbang;
-#X msg 735 434 1;
+#X msg 735 462 stereo \$1;
+#X obj 735 396 loadbang;
+#X msg 735 418 1;
 #X text 535 53 abc_delaychain2~ \, abc_delaychain3~ \, ... objects
 provide chains of delays (the output of the delay #k is internally
 connected to the input of the delay #k+1) without reinjection. Each
@@ -111,14 +111,14 @@ object.;
 #X text 374 186 echo 2;
 #X text 488 187 echo 3;
 #X obj 69 503 abc_meter;
-#X obj 853 535 abc_meter;
-#X obj 144 559 abc_stereoout -30;
-#X obj 836 233 abc_gain -5;
+#X obj 853 519 abc_meter;
+#X obj 63 349 *~ 0.15;
+#X obj 144 559 abc_stereoout 0;
+#X obj 836 218 abc_gain -10;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
-#X connect 9 0 37 1;
-#X connect 9 0 39 1;
+#X connect 9 0 66 0;
 #X connect 11 0 37 0;
 #X connect 12 0 15 0;
 #X connect 13 0 14 0;
@@ -147,8 +147,8 @@ object.;
 #X connect 37 2 39 3;
 #X connect 37 3 39 4;
 #X connect 39 1 64 0;
-#X connect 39 1 66 0;
-#X connect 39 2 66 1;
+#X connect 39 1 67 0;
+#X connect 39 2 67 1;
 #X connect 41 0 42 0;
 #X connect 42 0 37 0;
 #X connect 43 0 41 0;
@@ -180,5 +180,7 @@ object.;
 #X connect 57 0 53 0;
 #X connect 58 0 59 0;
 #X connect 59 0 56 0;
-#X connect 67 0 53 0;
+#X connect 66 0 37 1;
+#X connect 66 0 39 1;
+#X connect 68 0 53 0;
 #X coords 0 697 1 696 85 60 0;

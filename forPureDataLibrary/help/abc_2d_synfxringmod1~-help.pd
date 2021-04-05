@@ -1,4 +1,4 @@
-#N canvas 0 27 1440 781 10;
+#N canvas -406 25 1440 781 10;
 #X obj 11 10 cnv 15 500 25 empty empty abc_2d_syn_ringmodN~ &_fx 20
 12 0 18 -99865 -262144 0;
 #X obj 10 738 abc_helpcredit;
@@ -24,7 +24,7 @@
 #X msg 345 449 stereo \$1;
 #X obj 448 486 abc_2d_decoder3~;
 #X obj 440 555 dac~ 1 2 3 4 5 6 7 8;
-#X obj 948 277 abc_soundgrain~;
+#X obj 948 237 abc_soundgrain~;
 #X obj 942 304 abc_2d_encoder1~;
 #X obj 890 338 r factor;
 #X obj 897 462 abc_2d_decoder1~;
@@ -80,16 +80,16 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X text 935 69 factor (between 0 and 1) is a control parameter that
 'opens' the ring modulators when increasing.;
 #X obj 890 376 abc_2d_fx_ringmod1~;
-#X obj 942 192 loadbang;
-#X msg 942 213 0.1;
-#X floatatom 942 234 5 0 0 0 - - -;
-#X msg 942 254 speed \$1;
+#X obj 903 195 loadbang;
+#X msg 903 216 0.1;
+#X floatatom 903 237 5 0 0 0 - - -;
+#X msg 903 257 speed \$1;
 #X obj 462 233 loadbang;
 #X floatatom 462 275 5 0 0 0 - - -;
 #X msg 462 254 10;
 #X msg 462 295 f0 \$1;
 #X obj 1357 436 abc_2d_fx_ringmod7~ ------------;
-#X obj 1392 267 loadbang;
+#X obj 1392 223 loadbang;
 #X floatatom 1392 309 5 0 0 0 - - -;
 #X msg 1392 329 f0 \$1;
 #X msg 1392 288 220;
@@ -100,7 +100,10 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X obj 369 526 abc_meter;
 #X obj 837 503 abc_meter;
 #X obj 1257 557 abc_meter;
-#X obj 356 228 abc_gain -25;
+#X obj 555 355 *~ 0.2;
+#X obj 356 228 abc_gain -10;
+#X obj 1035 270 *~ 0.2;
+#X msg 1454 247 gain -30;
 #X connect 3 0 4 0;
 #X connect 8 0 38 0;
 #X connect 9 1 10 0;
@@ -124,7 +127,7 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 18 6 19 5;
 #X connect 18 7 19 6;
 #X connect 18 8 19 7;
-#X connect 20 1 21 1;
+#X connect 20 1 68 0;
 #X connect 21 1 45 1;
 #X connect 21 2 45 2;
 #X connect 21 3 45 3;
@@ -176,7 +179,7 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 41 5 18 5;
 #X connect 41 6 18 6;
 #X connect 41 7 18 7;
-#X connect 42 1 41 1;
+#X connect 42 1 66 0;
 #X connect 45 1 23 1;
 #X connect 45 1 29 1;
 #X connect 45 2 23 2;
@@ -222,6 +225,7 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 54 15 34 15;
 #X connect 54 15 37 15;
 #X connect 55 0 58 0;
+#X connect 55 0 69 0;
 #X connect 56 0 57 0;
 #X connect 57 0 54 0;
 #X connect 58 0 56 0;
@@ -256,5 +260,8 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 60 14 59 14;
 #X connect 60 15 59 15;
 #X connect 61 0 7 0;
-#X connect 66 0 18 0;
+#X connect 66 0 41 1;
+#X connect 67 0 18 0;
+#X connect 68 0 21 1;
+#X connect 69 0 60 0;
 #X coords 0 781 1 780 85 60 0;

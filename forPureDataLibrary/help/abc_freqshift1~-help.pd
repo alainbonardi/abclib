@@ -1,4 +1,4 @@
-#N canvas 38 98 1411 604 10;
+#N canvas 497 112 1411 604 10;
 #X obj 9 10 cnv 15 500 25 empty empty abc_freqshiftN~ 20 12 0 18 -99865
 -262144 0;
 #X obj 8 568 abc_helpcredit;
@@ -96,11 +96,11 @@ gain: gain-0 \, gain-1 \, gain-2 \, etc. in dB (between -127 and +18)
 #X obj 119 434 abc_stereoout -30;
 #X obj 54 412 abc_meter;
 #X obj 742 448 abc_meter;
+#X obj 63 276 *~ 0.15;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
-#X connect 9 0 24 1;
-#X connect 9 0 26 1;
+#X connect 9 0 58 0;
 #X connect 11 0 40 0;
 #X connect 11 0 42 0;
 #X connect 11 0 44 0;
@@ -167,4 +167,6 @@ gain: gain-0 \, gain-1 \, gain-2 \, etc. in dB (between -127 and +18)
 #X connect 49 6 32 7;
 #X connect 51 0 49 0;
 #X connect 53 0 16 0;
+#X connect 58 0 26 1;
+#X connect 58 0 24 1;
 #X coords 0 604 1 603 85 60 0;

@@ -1,10 +1,10 @@
-#N canvas 16 25 1187 811 10;
+#N canvas 503 25 1187 811 10;
 #X obj 11 21 cnv 15 500 25 empty empty abc_generator~ 20 12 0 18 -99865
 -262144 0;
 #X obj 11 47 cnv 15 500 25 empty empty Simple_multi-source_generator
 20 12 0 12 -99865 -262144 0;
 #X obj 216 677 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 216 705 \; pd dsp \$1 \;;
 #X text 539 21 DESCRIPTION;
 #X obj 14 768 cnv 15 480 25 empty empty abclibrary|Alain_Bonardi_&_Paul_Goutmann_2019-2021_CICM|University_Paris_8
@@ -23,7 +23,7 @@ sound and silence);
 1;
 #X obj 264 266 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 355 265 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 355 265 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 129 125 hsl 128 15 50 5000 0 0 empty empty phasorfreq -2 -8
 0 10 -262144 -1 -1 0 1;
@@ -75,7 +75,7 @@ sound and silence);
 #X msg 167 293 phasoron \$1;
 #X msg 264 293 noiseon \$1;
 #X msg 355 292 sinuson \$1;
-#X msg 811 623 \; gen2 gain -10 \; gen2 phasorfreq 330 \; gen2 sinusfreq
+#X msg 811 622 \; gen2 gain -30 \; gen2 phasorfreq 330 \; gen2 sinusfreq
 880 \; gen2 noisepulserate 1 \; gen2 phasorpulserate 1.01 \; gen2 sinuspulserate
 0.99 \; gen2 noisepulseratio 3 \; gen2 phasorpulseratio 4 \; gen2 sinuspulseratio
 2 \; gen2 noiseon 1 \; gen2 phasoron 1 \; gen2 sinuson 1 \;;
