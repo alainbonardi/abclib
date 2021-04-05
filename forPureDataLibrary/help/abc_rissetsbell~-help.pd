@@ -1,19 +1,19 @@
-#N canvas 207 23 1440 791 10;
-#X obj 11 8 cnv 15 500 25 empty empty abc_rissetsbell~ 20 12 0 18 -99865
--262144 0;
-#X obj 11 34 cnv 15 500 25 empty empty Risset's_bell_synthesis 20 12
+#N canvas -224 25 1440 811 10;
+#X obj 11 28 cnv 15 500 25 empty empty abc_rissetsbell~ 20 12 0 18
+-99865 -262144 0;
+#X obj 11 54 cnv 15 500 25 empty empty Risset's_bell_synthesis 20 12
 0 12 -99865 -262144 0;
-#X obj 1015 608 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
+#X obj 1015 628 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
 -1 0 1;
-#X msg 1015 636 \; pd dsp \$1 \;;
-#X text 932 6 CONTROLS;
-#X text 539 8 DESCRIPTION;
-#X obj 54 330 abc_gain -127;
-#X obj 489 476 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X msg 1015 656 \; pd dsp \$1 \;;
+#X text 932 26 CONTROLS;
+#X text 539 28 DESCRIPTION;
+#X obj 54 350 abc_gain -127;
+#X obj 489 496 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 489 496 stereo \$1;
-#X obj 79 562 abc_meter;
-#X obj 511 561 abc_meter;
+#X msg 489 516 stereo \$1;
+#X obj 79 582 abc_meter;
+#X obj 511 581 abc_meter;
 #N canvas 614 242 298 220 fx_delay_settings 0;
 #X obj 118 38 loadbang;
 #X msg 47 74 400;
@@ -39,102 +39,102 @@
 #X connect 7 0 10 0;
 #X connect 9 0 5 0;
 #X connect 11 0 4 0;
-#X restore 292 146 pd fx_delay_settings;
-#X obj 225 575 abc_stereoout;
-#X obj 164 525 abc_chopan11~ ------------;
-#X obj 327 283 bng 50 250 50 0 empty empty triggers_the_bell 0 -10
+#X restore 292 166 pd fx_delay_settings;
+#X obj 225 595 abc_stereoout;
+#X obj 164 545 abc_chopan11~ ------------;
+#X obj 327 303 bng 50 250 50 0 empty empty triggers_the_bell 0 -10
 0 10 -262144 -1 -1;
-#X obj 327 338 t b b;
-#X obj 327 364 del 100;
-#X msg 382 364 1;
-#X msg 327 385 0;
-#X obj 156 461 abc_rissetsbell~ ------------;
-#X obj 156 357 loadbang;
-#X msg 156 384 440;
-#X floatatom 156 405 5 0 0 0 - - -;
-#X msg 156 425 freq \$1;
-#X floatatom 209 404 5 0 0 0 - - -;
-#X msg 210 424 dur \$1;
-#X msg 209 383 30000;
-#X text 540 28 abc_rissetsbell~ provides a bell synthesis according
+#X obj 327 358 t b b;
+#X obj 327 384 del 100;
+#X msg 382 384 1;
+#X msg 327 405 0;
+#X obj 156 481 abc_rissetsbell~ ------------;
+#X obj 156 377 loadbang;
+#X msg 156 404 440;
+#X floatatom 156 425 5 0 0 0 - - -;
+#X msg 156 445 freq \$1;
+#X floatatom 209 424 5 0 0 0 - - -;
+#X msg 210 444 dur \$1;
+#X msg 209 403 30000;
+#X text 540 48 abc_rissetsbell~ provides a bell synthesis according
 to Risset's bell model. It is based on 11 layouts with oscillators
 and envelopes. In our implementation \, the model is extended with
 a double oscillator that enables detuning and a filter that inverts
 the behavior (possible crossfade between synthesis and filtering) using
 the osc2filter parameter;
-#X obj 584 602 dac~ 1 2 3 4 5 6 7 8 9 10 11 12;
-#X obj 592 533 abc_2d_decoder5~ -----------;
-#X obj 588 389 r fx_delay;
-#X obj 588 452 abc_2d_fx_delay5~ -----------;
-#X obj 769 534 abc_2d_scope5~ ------------;
-#X obj 732 212 bng 50 250 50 0 empty empty triggers_the_bell 0 -10
+#X obj 584 622 dac~ 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 592 553 abc_2d_decoder5~ -----------;
+#X obj 588 409 r fx_delay;
+#X obj 588 472 abc_2d_fx_delay5~ -----------;
+#X obj 769 554 abc_2d_scope5~ ------------;
+#X obj 732 232 bng 50 250 50 0 empty empty triggers_the_bell 0 -10
 0 10 -262144 -1 -1;
-#X obj 732 267 t b b;
-#X obj 732 293 del 100;
-#X msg 787 293 1;
-#X msg 732 314 0;
-#X obj 656 388 abc_rissetsbell~ ------------;
-#X obj 630 263 loadbang;
-#X floatatom 630 308 5 0 0 0 - - -;
-#X msg 631 328 dur \$1;
-#X obj 733 168 r tr2;
-#X msg 630 287 16000;
-#X obj 655 352 r cmd;
-#X obj 827 327 noise~;
-#X obj 827 357 *~ 0.5;
-#X obj 1020 248 loadbang;
-#X msg 1020 269 1;
-#X obj 1020 290 metro 5000;
-#X obj 1020 311 t b b;
-#X obj 1020 334 s tr2;
-#X obj 1047 354 random 23;
-#X obj 1047 375 + 60;
-#X floatatom 1047 396 5 0 0 0 midi_code - -;
-#X obj 1047 416 mtof;
-#X floatatom 1047 437 5 0 0 0 - - -;
-#X msg 1047 457 freq \$1;
-#X obj 1272 587 s cmd;
-#X obj 1120 394 loadbang;
-#X msg 1120 415 8000;
-#X floatatom 1120 436 5 0 0 0 - - -;
-#X msg 1120 456 dur \$1;
-#X obj 1187 297 abc_gain 0;
-#X obj 1272 417 hsl 128 15 1 2 0 0 empty empty detuning -2 -8 0 10
+#X obj 732 287 t b b;
+#X obj 732 313 del 100;
+#X msg 787 313 1;
+#X msg 732 334 0;
+#X obj 656 408 abc_rissetsbell~ ------------;
+#X obj 630 283 loadbang;
+#X floatatom 630 328 5 0 0 0 - - -;
+#X msg 631 348 dur \$1;
+#X obj 733 188 r tr2;
+#X msg 630 307 16000;
+#X obj 655 372 r cmd;
+#X obj 827 347 noise~;
+#X obj 827 377 *~ 0.5;
+#X obj 1020 268 loadbang;
+#X msg 1020 289 1;
+#X obj 1020 310 metro 5000;
+#X obj 1020 331 t b b;
+#X obj 1020 354 s tr2;
+#X obj 1047 374 random 23;
+#X obj 1047 395 + 60;
+#X floatatom 1047 416 5 0 0 0 midi_code - -;
+#X obj 1047 436 mtof;
+#X floatatom 1047 457 5 0 0 0 - - -;
+#X msg 1047 477 freq \$1;
+#X obj 1272 607 s cmd;
+#X obj 1120 414 loadbang;
+#X msg 1120 435 8000;
+#X floatatom 1120 456 5 0 0 0 - - -;
+#X msg 1120 476 dur \$1;
+#X obj 1272 437 hsl 128 15 1 2 0 0 empty empty detuning -2 -8 0 10
 -262144 -1 -1 0 1;
-#X floatatom 1269 437 5 0 0 0 - - -;
-#X msg 1269 457 pfreq2 \$1;
-#X obj 1414 417 hsl 128 15 0 1 0 0 empty empty crossfade_synthesis/filtering
+#X floatatom 1269 457 5 0 0 0 - - -;
+#X msg 1269 477 pfreq2 \$1;
+#X obj 1414 437 hsl 128 15 0 1 0 0 empty empty crossfade_synthesis/filtering
 -2 -8 0 10 -262144 -1 -1 0 1;
-#X floatatom 1411 437 5 0 0 0 - - -;
-#X msg 1411 457 osc2filter \$1;
-#X obj 1595 394 loadbang;
-#X floatatom 1595 436 5 0 0 0 - - -;
-#X msg 1595 415 10;
-#X msg 1595 456 resg \$1;
-#X floatatom 1651 436 5 0 0 0 - - -;
-#X msg 1651 456 resq \$1;
-#X msg 1651 415 100;
-#X obj 826 560 abc_scope 1 0 2.5;
-#X text 931 25 freq (Hz) is the basic frequency used in Risset's model
+#X floatatom 1411 457 5 0 0 0 - - -;
+#X msg 1411 477 osc2filter \$1;
+#X obj 1595 414 loadbang;
+#X floatatom 1595 456 5 0 0 0 - - -;
+#X msg 1595 435 10;
+#X msg 1595 476 resg \$1;
+#X floatatom 1651 456 5 0 0 0 - - -;
+#X msg 1651 476 resq \$1;
+#X msg 1651 435 100;
+#X obj 826 580 abc_scope 1 0 2.5;
+#X text 931 45 freq (Hz) is the basic frequency used in Risset's model
 to compute the 11 partials to be heard;
-#X text 931 50 dur (milliseconds) is the global duration of the synthetized
+#X text 931 70 dur (milliseconds) is the global duration of the synthetized
 bell;
-#X text 931 75 gain is the global gain of the synthesis in dB;
-#X text 931 92 pfreq2 is the factor of multiplication of the frequency
+#X text 931 95 gain is the global gain of the synthesis in dB;
+#X text 931 112 pfreq2 is the factor of multiplication of the frequency
 of each 2nd oscillator (when 1 no detuning);
-#X text 931 120 osc2filter is the factor of multiplication of the frequency
+#X text 931 140 osc2filter is the factor of multiplication of the frequency
 of each 2nd oscillator (when 1 no detuning);
-#X text 1321 24 resg is the gain of the filters when activated in crossfade
+#X text 1321 44 resg is the gain of the filters when activated in crossfade
 with the corresponding oscillator;
-#X text 1321 53 resq is the quality factor of the filters when activated
+#X text 1321 73 resq is the quality factor of the filters when activated
 in crossfade with the corresponding oscillator;
-#X obj 14 755 cnv 15 480 25 empty empty abclibrary|Alain_Bonardi_&_Paul_Goutmann_2019-2021_CICM|University_Paris_8
+#X obj 14 775 cnv 15 480 25 empty empty abclibrary|Alain_Bonardi_&_Paul_Goutmann_2019-2021_CICM|University_Paris_8
 20 12 0 10 -99865 -262144 0;
-#X obj 487 274 abc_gain -20;
-#X msg 327 417 gate \$1;
-#X msg 732 344 gate \$1;
-#X obj 422 411 loadbang;
-#X msg 422 435 1;
+#X msg 327 437 gate \$1;
+#X msg 732 364 gate \$1;
+#X obj 422 431 loadbang;
+#X msg 422 455 1;
+#X obj 1187 317 abc_gain -20;
+#X obj 487 294 abc_gain 0;
 #X connect 2 0 3 0;
 #X connect 6 0 13 0;
 #X connect 7 0 8 0;
@@ -146,8 +146,8 @@ in crossfade with the corresponding oscillator;
 #X connect 15 0 16 0;
 #X connect 15 1 17 0;
 #X connect 16 0 18 0;
-#X connect 17 0 87 0;
-#X connect 18 0 87 0;
+#X connect 17 0 85 0;
+#X connect 18 0 85 0;
 #X connect 19 1 13 1;
 #X connect 19 2 13 2;
 #X connect 19 3 13 3;
@@ -203,15 +203,15 @@ in crossfade with the corresponding oscillator;
 #X connect 31 10 32 10;
 #X connect 31 11 29 11;
 #X connect 31 11 32 11;
-#X connect 32 1 77 0;
-#X connect 32 2 77 1;
-#X connect 32 3 77 2;
+#X connect 32 1 76 0;
+#X connect 32 2 76 1;
+#X connect 32 3 76 2;
 #X connect 33 0 34 0;
 #X connect 34 0 35 0;
 #X connect 34 1 36 0;
 #X connect 35 0 37 0;
-#X connect 36 0 88 0;
-#X connect 37 0 88 0;
+#X connect 36 0 86 0;
+#X connect 37 0 86 0;
 #X connect 38 1 31 1;
 #X connect 38 2 31 2;
 #X connect 38 3 31 3;
@@ -246,24 +246,24 @@ in crossfade with the corresponding oscillator;
 #X connect 60 0 61 0;
 #X connect 61 0 62 0;
 #X connect 62 0 58 0;
-#X connect 63 0 58 0;
+#X connect 63 0 64 0;
 #X connect 64 0 65 0;
-#X connect 65 0 66 0;
-#X connect 66 0 58 0;
+#X connect 65 0 58 0;
+#X connect 66 0 67 0;
 #X connect 67 0 68 0;
-#X connect 68 0 69 0;
-#X connect 69 0 58 0;
+#X connect 68 0 58 0;
+#X connect 69 0 71 0;
+#X connect 69 0 75 0;
 #X connect 70 0 72 0;
-#X connect 70 0 76 0;
-#X connect 71 0 73 0;
-#X connect 72 0 71 0;
-#X connect 73 0 58 0;
-#X connect 74 0 75 0;
-#X connect 75 0 58 0;
-#X connect 76 0 74 0;
-#X connect 86 0 29 0;
-#X connect 87 0 19 0;
-#X connect 88 0 38 0;
-#X connect 89 0 90 0;
-#X connect 90 0 7 0;
-#X coords 0 791 1 790 85 60 0;
+#X connect 71 0 70 0;
+#X connect 72 0 58 0;
+#X connect 73 0 74 0;
+#X connect 74 0 58 0;
+#X connect 75 0 73 0;
+#X connect 85 0 19 0;
+#X connect 86 0 38 0;
+#X connect 87 0 88 0;
+#X connect 88 0 7 0;
+#X connect 89 0 58 0;
+#X connect 90 0 29 0;
+#X coords 0 811 1 810 85 60 0;

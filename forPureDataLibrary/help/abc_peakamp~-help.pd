@@ -1,4 +1,4 @@
-#N canvas 433 25 1224 812 10;
+#N canvas 85 25 1224 812 10;
 #X obj 10 -21 cnv 15 500 25 empty empty abc_peakamp~ 20 12 0 18 -99865
 -262144 0;
 #X obj 9 755 abc_helpcredit;
@@ -26,9 +26,9 @@ signal on a duration defined by period attribute in milliseconds;
 #X obj 345 370 snapshot~;
 #X floatatom 345 391 5 0 0 0 - - -;
 #X obj 197 280 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 199 1;
+-1 -1 2295 1;
 #X obj 348 416 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12572 1;
+-1 -1 10638 1;
 #X obj 345 204 osc~ 0.2;
 #X text 538 79 period control enables to set the window of measurement
 of the peak on the absolute signal;
@@ -55,7 +55,7 @@ of the peak on the absolute signal;
 #X floatatom 751 432 5 0 0 0 - - -;
 #X text 829 372 a simple flanger with a rate controlled by the amplitude
 given by abc_peakamp~;
-#X obj 628 167 abc_gain -25;
+#X obj 628 167 abc_gain -30;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;
 #X connect 9 0 15 0;

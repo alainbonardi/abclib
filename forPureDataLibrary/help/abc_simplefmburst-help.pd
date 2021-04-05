@@ -1,4 +1,4 @@
-#N canvas 1237 284 732 387 12;
+#N canvas 206 53 732 387 12;
 #X obj 137 98 abc_simplefmburst;
 #X obj 69 188 abc_meter;
 #X obj 149 188 abc_stereoout;
@@ -15,7 +15,7 @@
 short (110 milliseconds) FM synthetized sound (carrier at 440 Hz \,
 modulator at 220 Hz \, modulation index equals 5). There is no default
 value in the bpatcher;
-#X obj 137 138 *~ 0.3;
+#X obj 137 138 *~ 0.15;
 #X connect 0 0 9 0;
 #X connect 6 0 7 0;
 #X connect 9 0 1 0;

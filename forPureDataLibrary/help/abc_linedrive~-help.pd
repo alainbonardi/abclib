@@ -1,4 +1,4 @@
-#N canvas 748 56 918 779 10;
+#N canvas 36 25 918 779 10;
 #X obj 11 8 cnv 15 500 25 empty empty abc_linedrive~ 20 12 0 18 -99865
 -262144 0;
 #X obj 10 736 abc_helpcredit;
@@ -11,7 +11,7 @@
 #X text 419 76 DESCRIPTION;
 #X text 421 177 no specific control;
 #X obj 307 236 hsl 128 15 0 127 0 0 empty empty input_[0-127] -2 -8
-0 10 -262144 -1 -1 12700 1;
+0 10 -262144 -1 -1 0 1;
 #X floatatom 304 256 5 0 0 0 - - -;
 #X obj 304 276 sig~;
 #X obj 76 306 abc_linedrive;
@@ -43,9 +43,9 @@ be defined by the expcurve parameter;
 #X msg 574 402 1.06;
 #X msg 609 402 2;
 #X obj 708 601 hsl 128 15 0 127 0 0 empty empty input -2 -8 0 10 -262144
--1 -1 4196 1;
+-1 -1 10592 1;
 #X obj 708 635 hsl 128 15 0 1 0 0 empty empty linedrive -2 -8 0 10
--262144 -1 -1 73 1;
+-262144 -1 -1 3043 1;
 #X connect 3 0 4 0;
 #X connect 8 0 9 0;
 #X connect 9 0 10 0;
