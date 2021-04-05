@@ -1,25 +1,25 @@
-#N canvas 190 25 1440 788 10;
+#N canvas 62 280 1477 788 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_optimN~  20 12 0 18 -99865
 -262144 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_optimizers_at_orders_1_2_3...
 20 12 0 12 -99865 -262144 0;
-#X obj 533 364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 533 364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 533 388 stereo \$1;
 #X obj 1111 548 abc_2d_decoder7~ ------------;
 #X obj 1111 686 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
 #X obj 721 458 abc_2d_scope7~ ------------;
 #X obj 574 674 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X msg 574 704 \; pd dsp \$1 \;;
 #X obj 1390 619 abc_meter;
 #X obj 349 527 abc_meter;
-#X obj 75 106 abc_soundcoat~;
-#X obj 64 137 loadbang;
-#X msg 64 158 -0.2;
-#X floatatom 64 179 5 0 0 0 - - -;
-#X msg 64 199 speed \$1;
+#X obj 65 110 abc_soundcoat~;
+#X obj 53 137 loadbang;
+#X msg 53 158 -0.2;
+#X floatatom 53 179 5 0 0 0 - - -;
+#X msg 53 199 speed \$1;
 #X obj 195 137 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
 -1 -1 2;
 #X floatatom 195 208 5 0 0 0 - - -;
@@ -35,10 +35,10 @@
 #X obj 43 371 abc_scope 0 0 2.5;
 #X obj 917 504 abc_2d_scope7~ ------------;
 #X obj 1327 428 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X msg 1327 452 stereo \$1;
 #X obj 772 551 abc_scope 0 0 2.5;
-#X obj 64 225 abc_2d_encoder3~;
+#X obj 53 225 abc_2d_encoder3~;
 #X obj 193 305 abc_2d_optim3~;
 #X obj 364 465 abc_2d_decoder3~;
 #X obj 37 305 abc_2d_scope3~;
@@ -58,7 +58,7 @@ on optimtype value). It provides solutions when having an audience
 that cannot be considered as staying in the center of the ambisonic
 circle.;
 #X msg 714 137 0.15;
-#X obj 799 177 abc_soundgrain~;
+#X obj 799 158 abc_soundgrain~;
 #X msg 1002 149 2;
 #X msg 1002 251 optimtype \$1;
 #X text 1079 143 optimtype value;
@@ -79,7 +79,9 @@ covers all the circle;
 confined to the center of the circle;
 #X text 904 81 2 = inPhase optimization \, used when the audience covers
 all the circle;
-#X obj 439 223 abc_gain -20;
+#X obj 146 152 *~ 0.2;
+#X obj 439 223 abc_gain -10;
+#X obj 886 179 *~ 0.2;
 #X connect 3 0 4 0;
 #X connect 4 0 34 0;
 #X connect 5 1 6 0;
@@ -103,7 +105,7 @@ all the circle;
 #X connect 7 2 31 1;
 #X connect 7 3 31 2;
 #X connect 8 0 9 0;
-#X connect 12 1 32 1;
+#X connect 12 1 63 0;
 #X connect 13 0 14 0;
 #X connect 14 0 15 0;
 #X connect 15 0 16 0;
@@ -197,7 +199,7 @@ all the circle;
 #X connect 37 0 33 0;
 #X connect 38 0 17 0;
 #X connect 45 0 21 0;
-#X connect 46 1 23 1;
+#X connect 46 1 65 0;
 #X connect 47 0 24 0;
 #X connect 48 0 53 0;
 #X connect 53 1 28 1;
@@ -231,4 +233,6 @@ all the circle;
 #X connect 53 15 28 15;
 #X connect 53 15 5 15;
 #X connect 56 0 5 0;
-#X connect 63 0 34 0;
+#X connect 63 0 32 1;
+#X connect 64 0 34 0;
+#X connect 65 0 23 1;

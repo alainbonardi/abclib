@@ -26,7 +26,7 @@ to create punctual sources either in rotation at a certain speed or
 static and located at a precise angle (in degrees) on the ambisonic
 circle.;
 #X obj 59 348 abc_scope 0 0 2.5;
-#X obj 394 333 abc_scope 1 0 2.5;
+#X obj 394 343 abc_scope 1 0 2.5;
 #X text 545 98 CONTROLS;
 #X text 542 6 DESCRIPTION;
 #X obj 48 227 abc_2d_encoder1~;

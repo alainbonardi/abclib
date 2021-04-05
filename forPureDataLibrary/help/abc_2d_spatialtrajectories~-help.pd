@@ -1,4 +1,4 @@
-#N canvas -78 25 1440 733 10;
+#N canvas 254 28 1705 733 10;
 #X obj 14 9 cnv 15 500 25 empty empty abc_2d_squaretrajectory~ &_al.
 20 12 0 18 -99865 -262144 0;
 #X obj 13 697 abc_helpcredit;
@@ -7,7 +7,7 @@
 #X obj 48 167 loadbang;
 #X floatatom 48 229 5 0 0 0 - - -;
 #X obj 699 652 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X msg 699 680 \; pd dsp \$1 \;;
 #X text 939 7 CONTROLS;
 #X text 542 9 DESCRIPTION;
@@ -25,12 +25,14 @@
 #X obj 213 549 abc_stereoout;
 #X obj 344 446 abc_meter;
 #N canvas 919 350 321 239 4harmonics 0;
-#X obj 78 41 abc_addsynth4~;
-#X obj 73 108 abc_cosrandenv4~;
-#X obj 43 170 send~ s1;
-#X obj 100 170 send~ s2;
-#X obj 158 170 send~ s3;
-#X obj 214 170 send~ s4;
+#X obj 79 76 abc_addsynth4~;
+#X obj 74 143 abc_cosrandenv4~;
+#X obj 44 205 send~ s1;
+#X obj 101 205 send~ s2;
+#X obj 159 205 send~ s3;
+#X obj 215 205 send~ s4;
+#X msg 79 47 gain -30;
+#X obj 79 20 loadbang;
 #X connect 0 1 1 1;
 #X connect 0 2 1 2;
 #X connect 0 3 1 3;
@@ -39,6 +41,8 @@
 #X connect 1 2 3 0;
 #X connect 1 3 4 0;
 #X connect 1 4 5 0;
+#X connect 6 0 0 0;
+#X connect 7 0 6 0;
 #X restore 427 75 pd 4harmonics;
 #X obj 467 166 loadbang;
 #X floatatom 467 228 5 0 0 0 - - -;
@@ -100,10 +104,10 @@ a square and a Z \, abc_2d_randomtrajectory~ for a random trajectory.
 All of them have in common two controllers: freq (frequency of the
 shape in s-1) \, and size.;
 #X msg 1313 204 1.3;
-#X obj 1476 168 abc_gain -35;
-#X obj 1101 169 abc_gain -35;
-#X obj 640 166 abc_gain -30;
-#X obj 221 167 abc_gain -30;
+#X obj 221 167 abc_gain -15;
+#X obj 640 166 abc_gain -15;
+#X obj 1101 169 abc_gain -15;
+#X obj 1476 168 abc_gain -15;
 #X connect 3 0 56 0;
 #X connect 3 0 51 0;
 #X connect 4 0 11 0;
@@ -213,8 +217,8 @@ shape in s-1) \, and size.;
 #X connect 73 0 60 0;
 #X connect 74 0 36 0;
 #X connect 76 0 62 0;
-#X connect 77 0 71 0;
-#X connect 78 0 44 0;
-#X connect 79 0 33 0;
-#X connect 80 0 19 0;
+#X connect 77 0 19 0;
+#X connect 78 0 33 0;
+#X connect 79 0 44 0;
+#X connect 80 0 71 0;
 #X coords 0 733 1 732 85 60 0;
