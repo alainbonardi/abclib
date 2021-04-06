@@ -999,7 +999,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0.0 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1054,11 +1054,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-70",
-					"linecount" : 18,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 887.5, 342.5, 219.0, 261.0 ],
+					"patching_rect" : [ 887.5, 342.5, 222.0, 248.0 ],
 					"text" : "abc_substractsynth1~, abc_substract2~, ... objects enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 				}
 
@@ -1804,36 +1804,36 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-51",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 197.5, 258.0, 40.0, 22.0 ],
+					"text" : "*~ 0.2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 124.5, 258.0, 40.0, 22.0 ],
+					"text" : "*~ 0.2"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-44",
 					"maxclass" : "toggle",
@@ -1570,8 +1594,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 1 ],
-					"midpoints" : [ 208.5, 281.75, 259.0, 281.75 ],
+					"destination" : [ "obj-51", 0 ],
 					"source" : [ "obj-46", 0 ]
 				}
 
@@ -1586,9 +1609,24 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 134.0, 281.75, 151.0, 281.75 ],
+					"destination" : [ "obj-50", 0 ],
 					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 134.0, 290.75, 151.0, 290.75 ],
+					"source" : [ "obj-50", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"midpoints" : [ 207.0, 290.75, 259.0, 290.75 ],
+					"source" : [ "obj-51", 0 ]
 				}
 
 			}
@@ -1661,43 +1699,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_scope.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

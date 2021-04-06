@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 303.0, 270.0, 1957.0, 1003.0 ],
+		"rect" : [ 199.0, 79.0, 1957.0, 1003.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,50 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-38",
+					"maxclass" : "live.meter~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 1645.0, 732.5, 5.0, 100.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"maxclass" : "live.meter~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 1050.828558000000157, 677.5, 5.0, 100.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-32",
+					"maxclass" : "live.meter~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 545.178558000000066, 677.5, 5.0, 100.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "live.meter~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 130.178558000000066, 677.5, 5.0, 100.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"args" : [ 700, 0.35, -30 ],
 					"bgmode" : 0,
@@ -1408,7 +1452,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 574.571441999999934, 753.5, 24.0, 24.0 ]
+					"patching_rect" : [ 645.333333333332121, 753.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -1429,7 +1473,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 574.571441999999934, 784.0, 59.0, 22.0 ],
+					"patching_rect" : [ 645.333333333332121, 784.0, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -1810,6 +1854,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"order" : 1,
+					"source" : [ "obj-120", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-76", 6 ],
 					"source" : [ "obj-120", 6 ]
 				}
@@ -1853,7 +1905,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 0 ],
+					"order" : 0,
 					"source" : [ "obj-120", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"order" : 1,
+					"source" : [ "obj-121", 0 ]
 				}
 
 			}
@@ -1902,7 +1963,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 0 ],
+					"order" : 0,
 					"source" : [ "obj-121", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-36", 0 ],
+					"order" : 1,
+					"source" : [ "obj-122", 0 ]
 				}
 
 			}
@@ -1951,7 +2021,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 0 ],
+					"order" : 0,
 					"source" : [ "obj-122", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"order" : 0,
+					"source" : [ "obj-123", 0 ]
 				}
 
 			}
@@ -2000,6 +2079,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 0 ],
+					"order" : 1,
 					"source" : [ "obj-123", 0 ]
 				}
 
@@ -2962,7 +3042,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 0 ],
-					"midpoints" : [ 584.071441999999934, 817.25, 1084.078558000000157, 817.25 ],
+					"midpoints" : [ 654.833333333332121, 817.25, 1084.078558000000157, 817.25 ],
 					"source" : [ "obj-80", 0 ]
 				}
 
@@ -3170,8 +3250,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
@@ -3180,8 +3260,8 @@
 , 			{
 				"name" : "newobjYellow-2",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

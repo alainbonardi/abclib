@@ -325,7 +325,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -30 ],
+					"args" : [ -40 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1069,43 +1069,43 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_scope.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

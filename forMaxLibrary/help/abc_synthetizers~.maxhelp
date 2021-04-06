@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 958.0, 440.0, 1583.0, 382.0 ],
+		"rect" : [ 943.0, 440.0, 1583.0, 382.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -468,7 +468,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20 ],
+					"args" : [ -30 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -555,7 +555,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 301.571441999999934, 73.5, 269.0, 181.0 ],
+					"patching_rect" : [ 301.571441999999934, 73.5, 271.0, 181.0 ],
 					"text" : "abc_soundcoat~ is a set of 16 bandpass filters receiving a noise sound as input. The output gains of the filters are slowly randomized. randwin is the duration of the cycle of randomization of the 16 outputs in milliseconds (3000 is the default value, 1 minimum, 20000 maximum).\nabc_soundgrain~ is a granulator on a rainstick sound which is looped at freqmult speed (default value 1, minimum 0.01, maximum 100)\nabc_drops~ simulates raindrops with a periodic exciter that enters a reson filter whose frequency varies randomly at a random speed"
 				}
 
@@ -620,9 +620,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -1200,29 +1200,29 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1261,8 +1261,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
