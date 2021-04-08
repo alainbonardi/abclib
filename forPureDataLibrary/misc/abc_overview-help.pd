@@ -1,0 +1,54 @@
+#N canvas 118 60 533 835 10;
+#X obj 14 6 cnv 15 500 25 empty empty abclib_Library 20 12 0 18 -99865
+-262144 0;
+#X obj 13 785 abc_helpcredit;
+#X obj 14 32 cnv 15 500 25 empty empty 20_years_of_research_teaching_and_creation_in_mixed_music_=>_Faust
+20 12 0 12 -99865 -262144 0;
+#X text 28 641 The abclib library also provides utility objects for
+mixed music: chowning-like panners \, matrices \, envelopes \, an attack
+and release detector \, synthesizers (additive \, substractive \, sound
+coat \, sound grain \, Risset's bell).;
+#X text 27 700 Teaching mixed music at Paris 8 University helped us
+in many implementation choices \, thinking of practical requirements
+for composers \, to allow them to test their patches either in multichannel
+academic studios or at home in simple stereo.;
+#X text 30 110 CICM (Centre de recherches Informatique et Création
+Musicale) - University Paris 8;
+#X text 29 135 http://cicm.mshparisnord.org/;
+#X text 29 149 Alain Bonardi & Paul Goutmann - 2019-2021;
+#X text 30 85 abclib library 20 years of research \, teaching and creation
+in mixed music using Faust language;
+#X text 32 213 - spatial sound processing and synthesis using ambisonic
+;
+#X text 32 225 - multi-channel sound processing;
+#X text 32 237 - utility objects for mixed music;
+#X text 31 177 abclib library is the result of 20 years of research
+\, teaching and creation in mixed music \, expressed as a set of codes
+in Faust language. The main topics addressed are:;
+#X text 30 269 It comes as a prolongation of the HOA library developed
+by the CICM between 2012 and 2015 which provided an impressive framework
+for ambisonics: hoalibrary.mshparisnord.fr;
+#X text 29 327 abclib takes over HOA \, proposing a large set of processes
+written in Faust language and implemented at various ambisonic orders
+(from 1 to 7 \, which means from 3 to 15 parallel instances). It also
+puts the emphasis \, outside the scope of ambisonics on multi-channel
+sound processing with various dimensions from 1 to 16 parallel instances.
+The use of Faust language guarantees software durability and interoperability
+between Mac and Windows systems \, as well as Max and PureData softwares.
+Faust files are available on a Github repository : https://github.com/alainbonardi/abclib/
+;
+#X text 28 446 The Faust processes are compiled to Max or PureData
+objects. Help patches are also provided as well as some overview patches
+or graphic abstractions based on jitter (in Max) or gem libraries (in
+PureData). In the field of ambisonics \, 2D objects are provided \,
+including general objects (encoders \, decoders \, optimizers \, scopes)
+\, geometry objects (maps \, mirrors \, rotates \, specific trajectory
+generators) \, and a set of spatial sound processes (decorrelators
+\, delays \, granulators \, ring modulators) in both 'syn' and 'fx'
+modes. The names of the ambisonic objects in 2D use '2d' as a prefix:
+for instance abc_2d_decoder3~ is an ambisonic decoder in 2D at order
+3 Multi-channel sound process objects do not use '2d' prefix: for instance
+\, abc_delays16 implements a set of 16 parallel delay lines. Multi-channel
+sound processors include flangers \, parallel and sequential delays
+\, frequency shifters \, harmonizers \, granulators \, reverberations.
+;
