@@ -27,7 +27,7 @@ dropfreq = 1000. / dropperiod;
 qf = hslider("v:drops/qf", 50, 1, 1000, 1); //quality factor for the reson filter, 50 by default
 //
 //use of the limiter or not
-limiter = checkbox("v:drops/limiter") : si.smoo;
+limiter = nentry("v:drops/limiter", 1, 0, 1, 1) : si.smoo;
 //
 //average randomized frequency
 avgfreq = hslider("v:drops/avgfreq", 1407, 50, 10000, 0.01);

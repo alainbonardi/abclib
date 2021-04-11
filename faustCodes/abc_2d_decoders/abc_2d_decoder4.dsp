@@ -3,11 +3,11 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2021 ------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
-declare author "Alain Bonardi";
+declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_decoder4";
 //
@@ -23,11 +23,11 @@ import("stdfaust.lib");
 //CONTROL PARAMETERS
 //--------------------------------------------------------------------------------------//
 //
-direct = 2 * checkbox("v:decoder/directangles") - 1; 
+direct = 2 * nentry("v:decoder/directangles", 1, 0, 1, 1) - 1; 
 offset = hslider("v:decoder/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
 gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 a(ind, nls) = (hslider("v:decoder/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
-stereo = checkbox("v:decoder/stereo") : si.smoo;
+stereo = nentry("v:decoder/stereo", 0, 0, 1, 1) : si.smoo;
 ambisonic = 1 - stereo;
 //--------------------------------------------------------------------------------------//
 // GAIN LINES IN PARALLEL
