@@ -5,7 +5,21 @@ cd ../faustCodes/
 rm -R abc_synthetizers
 mkdir abc_synthetizers
 cd abc_synthetizers/
-#no parameter is necessary for these spatial trajectories dsp files
+#is there a parameter?
+#if not we force 7 as default value
+if [ -z $1 ]
+then
+    amborder=7
+else
+    amborder=$1
+fi
+#is the parameter lower than 7
+#we then force 7 as a minimum
+if [ $amborder -le 7 ]
+then
+    amborder=7
+fi
+#
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 associatedcommonfilename1a="../abccommon/abcsoundcoat.dsp"
 associatedcommonfilename1b="../abccommon/abcsoundgrain.dsp"
@@ -17,6 +31,7 @@ associatedcommonfilename2="../abccommon/abcgenerator.dsp"
 associatedcommonfilename3="../abccommon/abcrissetsbell.dsp"
 associatedcommonfilename4="../abccommon/abcdrops.dsp"
 associatedcommonfilename5="../abccommon/abcaudiotester.dsp"
+associatedcommonfilename6="../abccommon/abcadditivefm.dsp"
 #
 #abc_soundcoat.dsp
 #
@@ -170,3 +185,30 @@ echo "$line" >> $sortie
 done <"$utilityfilename1"
 echo "//
 process = audiotester;" >> $sortie
+#
+#abc_additivefm.dsp
+#
+for i in `seq 1 $amborder`
+do
+let "j = 2 * $i + 2"
+    sortie="abc_additivefm$i.dsp"
+#writes the header
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_additivefm$i\";" >> $sortie
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename6"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
+echo "//
+process = fmSpectrum($i);" >> $sortie
+done
