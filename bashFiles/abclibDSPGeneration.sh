@@ -20,6 +20,7 @@ fi
 #gives the permission to run to all bash scripts
 chmod +x addsynthFaustCodeGeneration.sh
 chmod +x busselectsFaustCodeGeneration.sh
+chmod +x chaindelaysFaustCodeGeneration.sh
 chmod +x chowningMultipansFaustCodeGeneration.sh
 chmod +x decoders2dFaustCodeGeneration.sh
 chmod +x encoders2dFaustCodeGeneration.sh
@@ -31,8 +32,8 @@ chmod +x mirror2dFaustCodeGeneration.sh
 chmod +x miscFaustCodeGeneration.sh
 chmod +x multidelaysFaustCodeGeneration.sh
 chmod +x multifreqshiftsFaustCodeGeneration.sh
-chmod +x multiharmosFaustCodeGeneration.sh
 chmod +x multigrainsFaustCodeGeneration.sh
+chmod +x multiharmosFaustCodeGeneration.sh
 chmod +x multinoiseFaustCodeGeneration.sh
 chmod +x optim2dFaustCodeGeneration.sh
 chmod +x randenvFaustCodeGeneration.sh
@@ -46,11 +47,12 @@ chmod +x synfxdecorrelation2dFaustCodeGeneration.sh
 chmod +x synfxdelay2dFaustCodeGeneration.sh
 chmod +x synfxgrain2dFaustCodeGeneration.sh
 chmod +x synfxringmod2dFaustCodeGeneration.sh
-chmod +x synthetizersFaustCodeGeneration.sh
+chmod +x synthesizersFaustCodeGeneration.sh
 chmod +x wider2dFaustCodeGeneration.sh
 #runs the various scripts to generate DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $amborder
 ./busselectsFaustCodeGeneration.sh $amborder
+./chaindelaysFaustCodeGeneration.sh $amborder
 ./chowningMultipansFaustCodeGeneration.sh $amborder
 ./decoders2dFaustCodeGeneration.sh $amborder
 ./encoders2dFaustCodeGeneration.sh $amborder
@@ -62,8 +64,8 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./miscFaustCodeGeneration.sh
 ./multidelaysFaustCodeGeneration.sh $amborder
 ./multifreqshiftsFaustCodeGeneration.sh $amborder
-./multiharmosFaustCodeGeneration.sh $amborder
 ./multigrainsFaustCodeGeneration.sh $amborder
+./multiharmosFaustCodeGeneration.sh $amborder
 ./multinoiseFaustCodeGeneration.sh $amborder
 ./optim2dFaustCodeGeneration.sh $amborder
 ./randenvFaustCodeGeneration.sh $amborder
@@ -77,5 +79,5 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./synfxdelay2dFaustCodeGeneration.sh $amborder
 ./synfxgrain2dFaustCodeGeneration.sh $amborder
 ./synfxringmod2dFaustCodeGeneration.sh $amborder
-./synthetizersFaustCodeGeneration.sh
+./synthesizersFaustCodeGeneration.sh
 ./wider2dFaustCodeGeneration.sh $amborder

@@ -2,9 +2,9 @@
 #ABC_SYNTHETIZERS FAUST CODE GENERATION
 cd ../faustCodes/
 #deletes the previous abc_synthetizers folder
-rm -R abc_synthetizers
-mkdir abc_synthetizers
-cd abc_synthetizers/
+rm -R abc_synthesizers
+mkdir abc_synthesizers
+cd abc_synthesizers/
 #is there a parameter?
 #if not we force 7 as default value
 if [ -z $1 ]
@@ -185,4 +185,3 @@ echo "$line" >> $sortie
 done <"$utilityfilename1"
 echo "//
 process = audiotester;" >> $sortie
-done

@@ -1,10 +1,10 @@
 #!/bin/bash
-#ABC_MULTIDELAYS FAUST CODE GENERATION
+#ABC_CHAINDELAYS FAUST CODE GENERATION
 cd ../faustCodes/
 #deletes the previous abc_multidelays folder
-rm -R abc_multidelays
-mkdir abc_multidelays
-cd abc_multidelays/
+rm -R abc_chaindelays
+mkdir abc_chaindelays
+cd abc_chaindelays/
 #is there a parameter?
 #if not we force 7 as default value
 if [ -z $1 ]
@@ -23,23 +23,22 @@ fi
 let "Nch = 2 * $amborder + 2"
 #creates parallel and sequential delays
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abcmultidelay.dsp"
+associatedcommonfilename="../abccommon/abcchaindelay.dsp"
 utilityfilename1="../abccommon/abcutilities/abcdoubledelay.dsp"
 utilityfilename2="../abccommon/abcutilities/abcsinenv.dsp"
 utilityfilename3="../abccommon/abcutilities/abcdbcontrol.dsp"
-#
-#parallel delays
-#
-for i in `seq 1 $Nch`
+#sequential delays
+for i in `seq 2 $Nch`
 do
-    sortie="abc_delay$i.dsp"
+    let "j = i - 1"
+    sortie="abc_delaychain$i.dsp"
 #writes the header
     while IFS= read -r line
     do
         echo "$line" >> $sortie
     done <"$headerfilename"
 #writes the declared name
-echo "declare name \"abc_delay$i\";" >> $sortie
+    echo "declare name \"abc_delaychain$i\";" >> $sortie
 #writes the associated common file
     while IFS= read -r line
     do
@@ -61,5 +60,5 @@ echo "declare name \"abc_delay$i\";" >> $sortie
         echo "$line" >> $sortie
     done <"$utilityfilename3"
 echo "//
-process = delparset($i);" >> $sortie
+process = delseqset($j);" >> $sortie
 done
