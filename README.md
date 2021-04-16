@@ -1,5 +1,5 @@
 # abclib
-20 years of research, teaching and creation in mixed music using Faust language
+## 20 years of research, teaching and creation in mixed music using Faust language
 CICM (Centre de recherches Informatique et Création Musicale) - University Paris 8
 http://cicm.mshparisnord.org/
 Alain Bonardi & Paul Goutmann - 2019-2021
