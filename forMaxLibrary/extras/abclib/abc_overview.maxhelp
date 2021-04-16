@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 10,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 115.0, 79.0, 1249.0, 777.0 ],
+		"rect" : [ 115.0, 79.0, 1252.0, 842.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -56,7 +56,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 938.0, 284.0, 229.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "https://github.com/alainbonardi/abclib/",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -80,7 +79,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 881.0, 230.0, 194.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "http://hoalibrary.mshparisnord.fr",
 					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
@@ -98,7 +96,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1113.0, 343.0, 114.0, 30.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rmax launchbrowser $1"
 				}
 
@@ -238,7 +235,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 688.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 723.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -250,7 +247,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 661.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 696.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -262,7 +259,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 634.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 669.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -274,7 +271,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 607.5, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 642.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -286,7 +283,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 580.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 615.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -324,7 +321,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 553.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 588.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -362,7 +359,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 526.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 561.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -426,19 +423,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 256.0, 499.0, 24.0, 24.0 ]
+					"patching_rect" : [ 256.0, 534.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-2",
-					"linecount" : 47,
+					"linecount" : 50,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 62.0, 70.0, 1038.0, 637.0 ],
-					"text" : "abclib library\n20 years of research, teaching and creation in mixed music using Faust language\nCICM (Centre de recherches Informatique et Création Musicale) - University Paris 8\n\nAlain Bonardi & Paul Goutmann - 2019-2021\n\nabclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.\nThe main topics addressed are:\n- spatial sound processing and synthesis using ambisonics\n- multi-channel sound processing\n- utility objects for mixed music\n\nIt comes as a prolongation of the HOA library developed by the CICM between 2012 and 2015 which provided an impressive framework for ambisonics:\n\nabclib takes over HOA, proposing a large set of processes written in Faust language and implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances). It also puts the emphasis, outside the scope of ambisonics on multi-channel sound processing with various dimensions from 1 to 16 parallel instances. The use of Faust language guarantees software durability and interoperability between Mac and Windows systems, as well as Max and PureData softwares. Faust files are available on a Github repository\n\n\nThe Faust processes are compiled to Max or PureData objects. Help patches are also provided as well as some overview patches or graphic abstractions based on jitter (in Max) or gem libraries (in PureData). In the field of ambisonics, 2D objects are provided, including general objects (encoders, decoders, optimizers, scopes), geometry objects (maps, mirrors, rotates, specific trajectory generators), and a set of spatial sound processes (decorrelators, delays, granulators, ring modulators) in both 'syn' and 'fx' modes. The names of the ambisonic objects in 2D use '2d' as a prefix: for instance abc_2d_decoder3~ is an ambisonic decoder in 2D at order 3. Multi-channel sound process objects do not use '2d' prefix: for instance, abc_delays16 implements a set of 16 parallel delay lines. Multi-channel sound processors include flangers, parallel and sequential delays, frequency shifters, harmonizers, granulators, reverberations.\n\nThe abclib library also provides utility objects for mixed music:  chowning-like panners, matrices, envelopes, an attack and release detector, synthesizers (additive, substractive, sound coat, sound grain, Risset's bell, rain drops).\n\nTeaching mixed music at Paris 8 University helped us in many implementation choices, thinking of practical requirements for composers, to allow them to test their patches either in multichannel academic studios or at home in simple stereo.\n\n\n1) general ambisonic objects\n\n2) ambisonic geometry objects\n\n3) ambisonic fx processes\n\n4) ambisonic syn processes\n\n5) multichannel processes\n\n6) sound synthesis\n\n7) utilities\n\n8) abstractions"
+					"patching_rect" : [ 62.0, 70.0, 1038.0, 677.0 ],
+					"text" : "abclib library\n20 years of research, teaching and creation in mixed music using Faust language\nCICM (Centre de recherches Informatique et Création Musicale) - University Paris 8\n\nAlain Bonardi & Paul Goutmann - 2019-2021\n\nabclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.\nThe main topics addressed are:\n- spatial sound processing and synthesis using ambisonics\n- multi-channel sound processing\n- utility objects for mixed music\n\nIt comes as a prolongation of the HOA library developed by the CICM between 2012 and 2015 which provided an impressive framework for ambisonics:\n\nabclib takes over HOA, proposing a large set of processes written in Faust language and implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances). It also puts the emphasis, outside the scope of ambisonics on multi-channel sound processing with various dimensions from 1 to 16 parallel instances. The use of Faust language guarantees software durability and interoperability between Mac and Windows systems, as well as Max and PureData softwares. Faust files are available on a Github repository\n\n\nThe Faust processes are compiled to Max or PureData objects. Help patches are also provided as well as some overview patches or graphic abstractions based on jitter (in Max) or gem libraries (in PureData). In the field of ambisonics, 2D objects are provided, including general objects (encoders, decoders, optimizers, scopes), geometry objects (maps, mirrors, rotates, specific trajectory generators), and a set of spatial sound processes (decorrelators, delays, granulators, ring modulators) in both 'syn' and 'fx' modes. The names of the ambisonic objects in 2D use '2d' as a prefix: for instance abc_2d_decoder3~ is an ambisonic decoder in 2D at order 3. Multi-channel sound process objects do not use '2d' prefix: for instance, abc_delays16 implements a set of 16 parallel delay lines. Multi-channel sound processors include flangers, parallel and sequential delays, frequency shifters, harmonizers, granulators, reverberations.\n\nThe abclib library also provides utility objects for mixed music:  chowning-like panners, matrices, envelopes, an attack and release detector, synthesizers (additive, substractive, sound coat, sound grain, Risset's bell, rain drops).\n\nGraphic objects especially to represent spatial components were developed using simple available technology in the two softwares: in Max, we use openGL primitives implemented thanks to Jitter. In PureData, we use the GEM library (that should be installed to enable ambisonic field visualization).\n\nTeaching mixed music at Paris 8 University helped us in many implementation choices, thinking of practical requirements for composers, to allow them to test their patches either in multichannel academic studios or at home in simple stereo.\n\n\n1) general ambisonic objects\n\n2) ambisonic geometry objects\n\n3) ambisonic fx processes\n\n4) ambisonic syn processes\n\n5) multichannel processes\n\n6) sound synthesis\n\n7) utilities\n\n8) abstractions"
 				}
 
 			}
@@ -470,7 +467,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.0, 733.0, 548.0, 23.0 ],
+					"patching_rect" : [ 6.0, 810.0, 548.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 57.0, 747.916625999999951, 548.0, 23.0 ],
 					"viewvisibility" : 1
@@ -664,22 +661,22 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -724,8 +721,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -734,8 +731,8 @@
 , 			{
 				"name" : "newobjYellow-2",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

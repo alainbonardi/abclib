@@ -2,9 +2,9 @@
 #ABC_CHAINDELAYS FAUST CODE GENERATION
 cd ../faustCodes/
 #deletes the previous abc_multidelays folder
-rm -R abc_chaindelays
-mkdir abc_chaindelays
-cd abc_chaindelays/
+rm -R abc_delaychainss
+mkdir abc_delaychains
+cd abc_delaychains/
 #is there a parameter?
 #if not we force 7 as default value
 if [ -z $1 ]
@@ -23,7 +23,7 @@ fi
 let "Nch = 2 * $amborder + 2"
 #creates parallel and sequential delays
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abcchaindelay.dsp"
+associatedcommonfilename="../abccommon/abcdelaychain.dsp"
 utilityfilename1="../abccommon/abcutilities/abcdoubledelay.dsp"
 utilityfilename2="../abccommon/abcutilities/abcsinenv.dsp"
 utilityfilename3="../abccommon/abcutilities/abcdbcontrol.dsp"
