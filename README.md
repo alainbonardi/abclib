@@ -4,13 +4,12 @@
 ### http://cicm.mshparisnord.org/
 ### Alain Bonardi & Paul Goutmann - 2019-2021
 
-<img width="1436" alt="pureDataScreenShot" src="https://user-images.githubusercontent.com/9354260/115057934-eebc9300-9ee4-11eb-842e-82f49f8b84b0.png">
-
 abclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.
 The main topics addressed are:
 - spatial sound processing and synthesis using ambisonics
 - multi-channel sound processing
 - utility objects for mixed music
+<img width="1436" alt="pureDataScreenShot" src="https://user-images.githubusercontent.com/9354260/115057934-eebc9300-9ee4-11eb-842e-82f49f8b84b0.png">
 
 It comes as a prolongation of the HOA library developed by the CICM between 2012 and 2015 which provided an impressive framework for ambisonics:
 hoalibrary.mshparisnord.fr
