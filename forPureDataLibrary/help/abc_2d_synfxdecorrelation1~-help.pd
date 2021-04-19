@@ -1,20 +1,20 @@
-#N canvas 41 253 1972 791 10;
+#N canvas 662 23 1680 791 10;
 #X obj 11 8 cnv 15 500 25 empty empty abc_2d_syn_decorrelationN~ &_fx
 20 12 0 18 -99865 -262144 0;
 #X obj 10 736 abc_helpcredit;
 #X obj 11 34 cnv 15 500 25 empty empty Decorrelation_processes_to_generate_or_process_spatial_components
 20 12 0 12 -99865 -262144 0;
 #X obj 919 684 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 919 712 \; pd dsp \$1 \;;
 #X text 936 6 CONTROLS;
 #X text 539 8 DESCRIPTION;
-#X obj 104 365 abc_2d_syn_decorrelation1~;
-#X obj 134 460 abc_2d_decoder1~;
-#X obj 137 521 abc_quadriout;
+#X obj 104 289 abc_2d_syn_decorrelation1~;
+#X obj 134 384 abc_2d_decoder1~;
+#X obj 137 445 abc_quadriout;
 #X obj 16 410 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 16 432 stereo \$1;
+#X msg 16 356 stereo \$1;
 #X text 540 28 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~
 \, ... objects generate spatial decorrelated components in ambisonic
 from one mono signal. abc_2d_fx_decorrelated1~ \, abc_2d_fx_decorrelated2~
@@ -25,16 +25,16 @@ are driven by a 'factor' parameter between 0 and 1 The ith (i between
 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter
 is compared to 1-(i+1)/P. If it is greater than this threshold the
 delay is (i+1)*delay/P \, else the delay is 0;
-#X obj 16 201 abc_gain -127;
-#X obj 378 129 abc_upanddown;
-#X obj 780 237 abc_addsynth9~ -----;
-#X obj 782 313 abc_cosrandenv3~;
-#X obj 683 392 abc_2d_syn_decorrelation3~;
-#X obj 603 432 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 16 125 abc_gain -127;
+#X obj 492 336 abc_upanddown;
+#X obj 807 237 abc_addsynth9~ -----;
+#X obj 809 313 abc_cosrandenv3~;
+#X obj 710 392 abc_2d_syn_decorrelation3~;
+#X obj 630 432 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X msg 603 452 stereo \$1;
-#X obj 706 489 abc_2d_decoder3~;
-#X obj 698 558 dac~ 1 2 3 4 5 6 7 8;
+#X msg 630 452 stereo \$1;
+#X obj 733 489 abc_2d_decoder3~;
+#X obj 725 558 dac~ 1 2 3 4 5 6 7 8;
 #X obj 1169 251 abc_soundgrain~;
 #X obj 1163 306 abc_2d_encoder1~;
 #X obj 1111 378 abc_2d_fx_decorrelation1~;
@@ -67,34 +67,51 @@ delay is (i+1)*delay/P \, else the delay is 0;
 roughly 5 \, 46 sec at 48KHz);
 #X text 935 67 factor (between 0 and 1) is a control parameter that
 'opens' the delay lines when increasing;
-#X msg 378 174 factor \$1;
-#X obj 69 521 abc_meter;
-#X obj 627 532 abc_meter;
+#X msg 492 381 factor \$1;
+#X obj 69 445 abc_meter;
+#X obj 654 532 abc_meter;
 #X obj 1049 524 abc_meter;
 #X obj 1409 580 abc_meter;
-#X obj 104 329 r cmd;
-#X obj 683 355 r cmd;
+#X obj 104 253 r cmd;
+#X obj 710 355 r cmd;
 #X obj 1111 340 r cmd;
 #X obj 1516 375 r cmd;
-#X obj 378 257 s cmd;
-#X obj 243 90 loadbang;
-#X msg 243 113 0;
-#X obj 243 140 vradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
+#X obj 493 708 s cmd;
+#X obj 357 297 loadbang;
+#X msg 357 320 0;
+#X obj 357 347 vradio 15 1 0 22 empty empty empty 0 -8 0 10 -262144
 -1 -1 0;
-#X msg 276 113 0;
-#X floatatom 276 140 5 0 1 0 - - -;
-#X msg 243 241 functiontype \$1;
-#X msg 276 173 fdbk \$1;
-#X text 203 140 linear;
-#X text 203 154 square;
-#X text 209 170 sinus;
-#X text 191 185 log(1+x);
-#X text 215 201 sqrt;
-#X obj 257 307 abc_env_noise 125 0.25 -30;
-#X obj 601 230 abc_gain -10;
-#X obj 836 354 *~ 0.03;
+#X msg 390 320 0;
+#X floatatom 390 347 5 0 1 0 - - -;
+#X msg 357 687 functiontype \$1;
+#X msg 390 380 fdbk \$1;
+#X text 305 392 log(1+x);
+#X obj 257 231 abc_env_noise 125 0.25 -30;
+#X obj 628 230 abc_gain -10;
+#X obj 863 354 *~ 0.03;
 #X obj 1256 277 *~ 0.2;
 #X obj 1625 191 abc_env_noise 90 0.3 -30;
+#X text 343 348 x;
+#X text 330 362 x^2;
+#X text 330 378 sin;
+#X text 308 408 sqrt(x);
+#X text 272 423 1-cos(Pi/2*x);
+#X text 260 438 (1-cos(Pi*x))/2;
+#X text 295 453 1-(1-x)^2;
+#X text 283 467 composite 1;
+#X text 331 482 x^3;
+#X text 295 497 1-(1-x)^3;
+#X text 283 511 composite 2;
+#X text 331 526 x^4;
+#X text 295 541 1-(1-x)^4;
+#X text 283 556 composite 3;
+#X text 283 601 composite 4;
+#X text 331 571 x^5;
+#X text 295 586 1-(1-x)^5;
+#X text 283 631 composite 5;
+#X text 283 616 2^(10(x-1));
+#X text 271 648 1-sqrt(1-x^2);
+#X text 259 663 sqrt(1-(x-1)^2);
 #X connect 3 0 4 0;
 #X connect 7 1 8 1;
 #X connect 7 2 8 2;
@@ -117,9 +134,9 @@ roughly 5 \, 46 sec at 48KHz);
 #X connect 15 7 16 1;
 #X connect 15 8 16 2;
 #X connect 15 9 16 3;
-#X connect 16 1 73 0;
-#X connect 16 2 73 0;
-#X connect 16 3 73 0;
+#X connect 16 1 69 0;
+#X connect 16 2 69 0;
+#X connect 16 3 69 0;
 #X connect 17 1 20 1;
 #X connect 17 2 20 2;
 #X connect 17 3 20 3;
@@ -138,7 +155,7 @@ roughly 5 \, 46 sec at 48KHz);
 #X connect 20 6 21 5;
 #X connect 20 7 21 6;
 #X connect 20 8 21 7;
-#X connect 22 1 74 0;
+#X connect 22 1 70 0;
 #X connect 23 1 24 1;
 #X connect 23 2 24 2;
 #X connect 23 3 24 3;
@@ -248,9 +265,9 @@ roughly 5 \, 46 sec at 48KHz);
 #X connect 63 0 65 0;
 #X connect 64 0 58 0;
 #X connect 65 0 58 0;
-#X connect 71 0 7 1;
-#X connect 72 0 20 0;
-#X connect 73 0 17 1;
-#X connect 74 0 23 1;
-#X connect 75 0 37 1;
+#X connect 67 0 7 1;
+#X connect 68 0 20 0;
+#X connect 69 0 17 1;
+#X connect 70 0 23 1;
+#X connect 71 0 37 1;
 #X coords 0 791 1 790 85 60 0;

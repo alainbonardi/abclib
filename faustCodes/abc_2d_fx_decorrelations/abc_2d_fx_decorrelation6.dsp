@@ -57,15 +57,43 @@ fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.99, 0.001);
 functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 4, 1);
 //
 //--------------------------------------------------------------------------------------//
+//TYPES OF DISTRIBUTION 
+//--------------------------------------------------------------------------------------//
+th(0, i, p) = (i+1) / p;
+th(1, i, p) = ((i+1) / p)^2;
+th(2, i, p) = sin(ma.PI * 0.5 * (i+1) / p);
+th(3, i, p) = log10(1 + (i+1) / p) / log10(2);
+th(4, i, p) = sqrt((i+1) / p);
+th(5, i, p) = 1 - cos(ma.PI * 0.5 * (i+1) / p);
+th(6, i, p) = (1 - cos(ma.PI * (i+1) / p)) * 0.5;
+th(7, i, p) = 1 - (1 - (i+1) / p )^2;
+th(8, i, p) = ((i+1) / p < 0.5) * 2 * ((i+1) / p)^2 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^2 * 0.5) ;
+th(9, i, p) = ((i+1) / p)^3 ;
+th(10, i, p) = 1 - (1 - (i+1) / p)^3 ;
+th(11, i, p) = ((i+1) / p < 0.5) * 4 * ((i+1) / p)^3 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^3 * 0.5) ;
+th(12, i, p) = ((i+1) / p)^4 ; 
+th(13, i, p) = 1 - (1 - (i+1) / p)^4 ;
+th(14, i, p) = ((i+1) / p < 0.5) * 8 * ((i+1) / p)^4 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^4 * 0.5) ;
+th(15, i, p) = ((i+1) / p)^5 ; 
+th(16, i, p) = 1 - (1 - (i+1) / p)^5 ;
+th(17, i, p) = ((i+1) / p < 0.5) * 16 * ((i+1) / p)^5 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^5 * 0.5) ;
+th(18, i, p) = 2^(10 * (i+1) / p - 10) ;
+th(19, i, p) = ((i+1) / p < 1) * (1 - 2^(-10 * (i+1) / p)) + ((i+1) / p == 1) ;
+th(20, i, p) = 1 - sqrt(1 - ((i+1) / p)^2) ; 
+th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2) ;
+//
+//--------------------------------------------------------------------------------------//
 //COMPUTES DURATIONS IN SAMPLES ACCORDING TO THE INDEX OF THE SPATIAL COMPONENT AND THE DELAY//
 //--------------------------------------------------------------------------------------//
-//computes the ith duration of the ith delay in samples with five possibilities of distribution
+//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
 //
-dur(d, i, p, fa, tf) = int(((tf == 0) * (fa > (1 - (i+1) / p)) * d * (i+1) / p) 
-						+ ((tf == 1) * (fa > (1 - ((i+1) / p)^2)) * d * ((i+1) / p)^2)
-						+ ((tf == 2) * (fa > (1 - sin(1.570796327 * (i+1) / p))) * d * sin( 1.570796327 * (i+1) / p ))
-						+ ((tf == 3) * (fa > (1 - log10(1 + (i+1) / p) / log10(2))) * d * log10(1 + (i+1) / p) / log10(2))
-						+ ((tf == 4) * (fa > (1 - sqrt((i+1) / p ))) * d * sqrt( (i+1) / p )));
+elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x with {
+	x = th(ind, i, p);
+};
+//
+//duration in samples computed as a sum of the 22 cases//
+//
+dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 //
 //Double overlapped delays with a capacity of storage of 262144 samples
 //which is roughly 5,46 seconds at 48 KHz
