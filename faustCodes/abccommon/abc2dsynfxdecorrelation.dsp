@@ -42,7 +42,7 @@ window = 100; //by default a window of 100 milliseconds for the interpolation of
 winfreq = 1000. / window;
 factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.99, 0.001);
-functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 4, 1);
+functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 21, 1);
 //
 //--------------------------------------------------------------------------------------//
 //TYPES OF DISTRIBUTION 
