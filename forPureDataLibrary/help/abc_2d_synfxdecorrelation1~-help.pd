@@ -12,7 +12,7 @@
 #X obj 104 289 abc_2d_syn_decorrelation1~;
 #X obj 134 384 abc_2d_decoder1~;
 #X obj 137 445 abc_quadriout;
-#X obj 16 410 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 16 330 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 16 356 stereo \$1;
 #X text 540 28 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~
