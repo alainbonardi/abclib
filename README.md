@@ -4,17 +4,17 @@
 ### http://cicm.mshparisnord.org/
 ### Alain Bonardi & Paul Goutmann - 2019-2021
 
-abclib library is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.
+abclib library is released by the CICM / MUSIDANSE (Centre de Recherches Informatique et Création Musicale, Paris 8 University) and is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.
 The main topics addressed are:
 - spatial sound processing and synthesis using ambisonics
 - multi-channel sound processing
 - utility objects for mixed music
 <img width="1436" alt="pureDataScreenShot" src="https://user-images.githubusercontent.com/9354260/115057934-eebc9300-9ee4-11eb-842e-82f49f8b84b0.png">
 
-It comes as a prolongation of the HOA library developed by the CICM between 2012 and 2015 which provided an impressive framework for ambisonics:
+It comes as a prolongation of the HOA library developed by the CICM between 2012 and 2015 which provided an important environment for ambisonics in Max and PureData :
 hoalibrary.mshparisnord.fr
 
-abclib takes over HOA, proposing a large set of processes written in Faust language and implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances). It also puts the emphasis, outside the scope of ambisonics on multi-channel sound processing with various dimensions from 1 to 16 parallel instances. The use of Faust language guarantees software durability and interoperability between Mac and Windows systems, as well as Max and PureData softwares. 
+abclib takes over HOA, proposing a large set of processes written in Faust language and implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances). It also puts the emphasis, outside the scope of ambisonics on multi-channel sound processing with various dimensions from 1 to 16 parallel instances. The use of Faust language guarantees software durability and interoperability between MacOS and Windows operating systems, as well as Max and PureData softwares. 
 
 <img width="1177" alt="maxScreenShot" src="https://user-images.githubusercontent.com/9354260/115058116-2a575d00-9ee5-11eb-8cb1-35549280a741.png">
 
