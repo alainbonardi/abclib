@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 10,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -482.0, 79.0, 2262.0, 1182.0 ],
+		"rect" : [ 236.0, 84.0, 2262.0, 1182.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1267,7 +1267,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1722,7 +1722,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 578.0, 438.0, 74.0, 72.0 ],
+					"patching_rect" : [ 608.0, 404.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1794,7 +1794,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 860.0, 613.5, 114.5, 20.0 ],
-					"text" : "original + 3 echoes"
+					"text" : "original + 2 echoes"
 				}
 
 			}
@@ -1828,17 +1828,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 882.0, 509.5, 5.0, 100.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-72",
-					"maxclass" : "live.meter~",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 871.0, 509.5, 5.0, 100.0 ]
 				}
 
 			}
@@ -1965,11 +1954,11 @@
 				"box" : 				{
 					"id" : "obj-32",
 					"maxclass" : "newobj",
-					"numinlets" : 4,
+					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
 					"patching_rect" : [ 673.0, 536.5, 88.0, 22.0 ],
-					"text" : "abc_chopan4~"
+					"text" : "abc_chopan3~"
 				}
 
 			}
@@ -2055,22 +2044,11 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-31",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 929.0, 479.0, 84.0, 20.0 ],
-					"text" : "echoes 1 to 3"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-35",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 687.0, 421.5, 50.0, 20.0 ],
+					"patching_rect" : [ 735.333333333333485, 366.0, 50.0, 20.0 ],
 					"text" : "original"
 				}
 
@@ -2261,7 +2239,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 190.0, 142.5, 90.0, 35.0 ],
-					"text" : "f0 330"
+					"text" : "f0 110"
 				}
 
 			}
@@ -2277,7 +2255,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3573,27 +3551,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 0 ],
-					"order" : 2,
-					"source" : [ "obj-169", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-52", 0 ],
 					"midpoints" : [ 682.5, 392.75, 848.5, 392.75 ],
-					"order" : 1,
-					"source" : [ "obj-169", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-72", 0 ],
-					"hidden" : 1,
-					"midpoints" : [ 682.5, 503.5, 873.5, 503.5 ],
-					"order" : 0,
 					"source" : [ "obj-169", 0 ]
 				}
 
@@ -4009,8 +3968,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 3 ],
-					"midpoints" : [ 921.833333333333371, 495.75, 751.5, 495.75 ],
+					"destination" : [ "obj-32", 2 ],
+					"midpoints" : [ 921.833333333333371, 496.75, 751.5, 496.75 ],
 					"order" : 1,
 					"source" : [ "obj-52", 2 ]
 				}
@@ -4018,8 +3977,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 2 ],
-					"midpoints" : [ 885.166666666666629, 489.25, 728.5, 489.25 ],
+					"destination" : [ "obj-32", 1 ],
+					"midpoints" : [ 885.166666666666629, 489.25, 717.0, 489.25 ],
 					"order" : 1,
 					"source" : [ "obj-52", 1 ]
 				}
@@ -4027,8 +3986,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 1 ],
-					"midpoints" : [ 848.5, 482.75, 705.5, 482.75 ],
+					"destination" : [ "obj-32", 0 ],
+					"midpoints" : [ 848.5, 482.75, 682.5, 482.75 ],
 					"order" : 1,
 					"source" : [ "obj-52", 0 ]
 				}
@@ -4115,7 +4074,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-32", 0 ],
-					"midpoints" : [ 587.5, 522.75, 682.5, 522.75 ],
+					"midpoints" : [ 617.5, 522.75, 682.5, 522.75 ],
 					"source" : [ "obj-63", 0 ]
 				}
 
@@ -4592,50 +4551,50 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_musdur.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -4672,7 +4631,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_chopan4~.mxo",
+				"name" : "abc_chopan3~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -4693,6 +4652,10 @@
 			}
 , 			{
 				"name" : "abc_harmo3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_chopan4~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 10,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 192.0, 213.0, 1272.0, 683.0 ],
+		"rect" : [ 1231.0, 289.0, 1272.0, 683.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,17 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "live.meter~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "int" ],
+					"patching_rect" : [ 1165.988108666666449, 455.0, 5.0, 100.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
 					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
@@ -128,7 +139,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 266.0, 604.0, 114.5, 20.0 ],
-					"text" : "original + 3 echoes"
+					"text" : "original + 2 echoes"
 				}
 
 			}
@@ -162,17 +173,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 288.0, 500.0, 5.0, 100.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-72",
-					"maxclass" : "live.meter~",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 277.0, 500.0, 5.0, 100.0 ]
 				}
 
 			}
@@ -260,7 +260,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 10,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -465,8 +465,8 @@
 , 							{
 								"name" : "newobjYellow-1",
 								"default" : 								{
-									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-									"fontsize" : [ 12.059008 ]
+									"fontsize" : [ 12.059008 ],
+									"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -777,11 +777,11 @@
 				"box" : 				{
 					"id" : "obj-32",
 					"maxclass" : "newobj",
-					"numinlets" : 4,
+					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
 					"patching_rect" : [ 79.0, 527.0, 88.0, 22.0 ],
-					"text" : "abc_chopan4~"
+					"text" : "abc_chopan3~"
 				}
 
 			}
@@ -881,13 +881,13 @@
 					"bgfillcolor_type" : "color",
 					"gradient" : 1,
 					"id" : "obj-53",
-					"linecount" : 14,
+					"linecount" : 16,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1025.988108666666449, 107.5, 97.0, 196.0 ],
-					"text" : ";\rdels dur00 0.5;\rdels gain00 -10.;\rdels dur01 1.;\rdels gain01 -5.;\rdels dur02 0.5;\rdels gain02 -5.;\rdels dur03 1.;\rdels gain03 0.;\rdels dur04 0.5;\rdels gain04 5.;\rdels dur05 0.25;\rdels gain05 5.;\rdels fdbk 0.3"
+					"patching_rect" : [ 1025.988108666666449, 92.5, 97.0, 223.0 ],
+					"text" : ";\rdels dur00 0.5;\rdels gain00 -10.;\rdels dur01 1.;\rdels gain01 -5.;\rdels dur02 0.5;\rdels gain02 -5.;\rdels dur03 1.;\rdels gain03 0.;\rdels dur04 0.5;\rdels gain04 5.;\rdels dur05 0.25;\rdels gain05 5.;\rdels dur06 2.;\rdels gain06 0.;\rdels fdbk 0.3"
 				}
 
 			}
@@ -993,10 +993,10 @@
 					"id" : "obj-43",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 7,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
+					"numoutlets" : 8,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 1050.154775333332964, 367.0, 129.0, 24.0 ],
-					"text" : "abc_delaychain6~"
+					"text" : "abc_delaychain7~"
 				}
 
 			}
@@ -1094,22 +1094,11 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-18",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 335.0, 469.5, 84.0, 20.0 ],
-					"text" : "echoes 1 to 3"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 93.0, 412.0, 50.0, 20.0 ],
+					"patching_rect" : [ 94.0, 388.0, 50.0, 20.0 ],
 					"text" : "original"
 				}
 
@@ -1198,7 +1187,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 570.5, 6.0, 357.0, 248.0 ],
-					"text" : "abc_delaychain2~, abc_delaychain3~, ... objects provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) without reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nSince it is a chain of delays, there is no abc-delaychain1~ object.\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\nA feedback parameter (fdbk) enables to loop the rhythmic structure."
+					"text" : "abc_delaychain2~, abc_delaychain3~, ... objects provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nSince it is a chain of delays, there is no abc-delaychain1~ object.\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\nA feedback parameter (fdbk) enables to loop the rhythmic structure."
 				}
 
 			}
@@ -1309,33 +1298,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"midpoints" : [ 88.5, 383.25, 254.5, 383.25 ],
-					"order" : 1,
 					"source" : [ "obj-10", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 0 ],
-					"order" : 2,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-72", 0 ],
-					"hidden" : 1,
-					"midpoints" : [ 88.5, 494.0, 279.5, 494.0 ],
-					"order" : 0,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-32", 3 ],
-					"midpoints" : [ 327.833333333333314, 486.25, 157.5, 486.25 ],
+					"destination" : [ "obj-32", 2 ],
+					"midpoints" : [ 327.833333333333314, 488.25, 157.5, 488.25 ],
 					"order" : 1,
 					"source" : [ "obj-11", 2 ]
 				}
@@ -1343,8 +1313,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 2 ],
-					"midpoints" : [ 291.166666666666686, 479.75, 134.5, 479.75 ],
+					"destination" : [ "obj-32", 1 ],
+					"midpoints" : [ 291.166666666666686, 479.75, 123.0, 479.75 ],
 					"order" : 1,
 					"source" : [ "obj-11", 1 ]
 				}
@@ -1352,8 +1322,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-32", 1 ],
-					"midpoints" : [ 254.5, 473.25, 111.5, 473.25 ],
+					"destination" : [ "obj-32", 0 ],
+					"midpoints" : [ 254.5, 473.25, 88.5, 473.25 ],
 					"order" : 1,
 					"source" : [ "obj-11", 0 ]
 				}
@@ -1436,25 +1406,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
 					"midpoints" : [ 960.666666666666515, 349.5, 1059.654775333332964, 349.5 ],
-					"order" : 1,
-					"source" : [ "obj-20", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-50", 0 ],
-					"order" : 2,
-					"source" : [ "obj-20", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-58", 0 ],
-					"hidden" : 1,
-					"midpoints" : [ 960.666666666666515, 422.5, 1091.488108666666449, 422.5 ],
-					"order" : 0,
 					"source" : [ "obj-20", 0 ]
 				}
 
@@ -1591,9 +1542,18 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"hidden" : 1,
+					"order" : 0,
+					"source" : [ "obj-43", 6 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-50", 6 ],
 					"order" : 1,
-					"source" : [ "obj-43", 5 ]
+					"source" : [ "obj-43", 6 ]
 				}
 
 			}
@@ -1601,7 +1561,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-50", 5 ],
 					"order" : 1,
-					"source" : [ "obj-43", 4 ]
+					"source" : [ "obj-43", 5 ]
 				}
 
 			}
@@ -1609,7 +1569,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-50", 4 ],
 					"order" : 1,
-					"source" : [ "obj-43", 3 ]
+					"source" : [ "obj-43", 4 ]
 				}
 
 			}
@@ -1617,7 +1577,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-50", 3 ],
 					"order" : 1,
-					"source" : [ "obj-43", 2 ]
+					"source" : [ "obj-43", 3 ]
 				}
 
 			}
@@ -1625,13 +1585,21 @@
 				"patchline" : 				{
 					"destination" : [ "obj-50", 2 ],
 					"order" : 1,
-					"source" : [ "obj-43", 1 ]
+					"source" : [ "obj-43", 2 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-50", 1 ],
+					"order" : 1,
+					"source" : [ "obj-43", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-50", 0 ],
 					"order" : 1,
 					"source" : [ "obj-43", 0 ]
 				}
@@ -1888,50 +1856,50 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_musdur.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../Dropbox/faustFactory/abclib_factory/abclib_mac/Max/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1940,11 +1908,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_delaychain6~.mxo",
+				"name" : "abc_delaychain7~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_chopan4~.mxo",
+				"name" : "abc_chopan3~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1974,8 +1942,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
