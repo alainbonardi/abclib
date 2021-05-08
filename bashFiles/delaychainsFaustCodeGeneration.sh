@@ -2,7 +2,7 @@
 #ABC_CHAINDELAYS FAUST CODE GENERATION
 cd ../faustCodes/
 #deletes the previous abc_multidelays folder
-rm -R abc_delaychainss
+rm -R abc_delaychains
 mkdir abc_delaychains
 cd abc_delaychains/
 #is there a parameter?
@@ -30,7 +30,6 @@ utilityfilename3="../abccommon/abcutilities/abcdbcontrol.dsp"
 #sequential delays
 for i in `seq 2 $Nch`
 do
-    let "j = i - 1"
     sortie="abc_delaychain$i.dsp"
 #writes the header
     while IFS= read -r line
@@ -60,5 +59,5 @@ do
         echo "$line" >> $sortie
     done <"$utilityfilename3"
 echo "//
-process = delseqset($j);" >> $sortie
+process = delseqset($i);" >> $sortie
 done

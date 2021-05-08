@@ -24,7 +24,7 @@ gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18,
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF A DOUBLE DELAY LINE FOR SEQUENTIAL IMPLEMENTATION
 //--------------------------------------------------------------------------------------//
-delseq(ind) = overlappedDoubleDelay(dur(ind), Ndelsamp, updatefreq);
+delseq(ind) = overlappedDoubleDelay(dur(ind-1), Ndelsamp, updatefreq);
 //
 //--------------------------------------------------------------------------------------//
 //BUS INVERSION FOR A BUS OF N SIGNALS (1st input => N, 2nd => N-1, 3rd => N-2, etc)
@@ -38,7 +38,7 @@ delaychain(1) = delseq(1);
 delaychain(2) = delseq(1) <: (delseq(2), _);
 delaychain(n) = delaychain(n-1) : ((_ <: (delseq(n), _)), si.bus(n-2));
 //
-delseqset(n) = ((+ : delseq(0) <: (delaychain(n), _) : par(i, (n+1), *(gain(n-i)))) ~ (*(fdbk))) : invBus(n+1);
+delseqset(n) = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, invBus(n));
 //
 //
 
