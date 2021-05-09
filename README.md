@@ -11,7 +11,7 @@ The main topics addressed are:
 <img width="1436" alt="pureDataScreenShot" src="https://user-images.githubusercontent.com/9354260/115057934-eebc9300-9ee4-11eb-842e-82f49f8b84b0.png">
 
 It comes as a prolongation of the HOA library developed by the CICM between 2012 and 2015 which provided an impressive framework for ambisonics:
-hoalibrary.mshparisnord.fr
+http://hoalibrary.mshparisnord.fr/
 
 abclib takes over HOA, proposing a large set of processes written in Faust language and implemented at various ambisonic orders (from 1 to 7, which means from 3 to 15 parallel instances). It also puts the emphasis, outside the scope of ambisonics on multi-channel sound processing with various dimensions from 1 to 16 parallel instances. The use of Faust language guarantees software durability and interoperability between Mac and Windows systems, as well as Max and PureData softwares.
 
