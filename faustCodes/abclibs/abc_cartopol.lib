@@ -9,6 +9,19 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_2d_encoder4";
+declare name "abc_cartopol";
 //
-process = library("abc_2d_encoder.lib").abc_2d_encoder(4);
+//--------------------------------------------------------------------------------------//
+//CARTESIAN TO POLAR CONVERSION
+//angles in radians
+//--------------------------------------------------------------------------------------//
+//
+import("stdfaust.lib");
+//
+abc_cartesian2polar = permutation <: (module, phase) with {
+	permutation(a, b) = (b, a);
+	square = _ <: *;
+	module = (square, square) : + : sqrt;
+	phase = atan2;
+};
+//

@@ -9,6 +9,17 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_2d_encoder4";
+declare name "abc_lines";
 //
-process = library("abc_2d_encoder.lib").abc_2d_encoder(4);
+//--------------------------------------------------------------------------------------//
+//DEFINITION OF PEAKAMP PROCESS
+//--------------------------------------------------------------------------------------//
+//
+import("stdfaust.lib");
+//
+abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
+	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
+	resetMax = ba.pulse(n)@1;
+	getPeak = ba.pulse(n);
+};
+

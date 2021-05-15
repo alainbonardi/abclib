@@ -9,6 +9,13 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_2d_encoder4";
+declare name "abc_mult2pi";
 //
-process = library("abc_2d_encoder.lib").abc_2d_encoder(4);
+//
+import("stdfaust.lib");
+//
+//--------------------------------------------------------------------------------------//
+//MULTIPLICATION BY 2*PI
+//--------------------------------------------------------------------------------------//
+abc_mult2pi = *(2. * ma.PI);
+//
