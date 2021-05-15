@@ -1,6 +1,6 @@
 #!/bin/bash
 #ABC_2D_DECODERS FAUST CODE GENERATION
-cd $HOME/Documents/Github/abclib/faustCodes/
+cd ../faustCodes/
 #deletes the previous abc_2d_decoders folder
 rm -R abc_2d_decoders
 mkdir abc_2d_decoders
@@ -20,6 +20,8 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abc2ddecoder.dsp"
+utilityfilename1="../abccommon/abcutilities/abcdbcontrol.dsp"
 for i in `seq 1 $amborder`
 do
 let "j = 2 * $i + 2"
@@ -31,7 +33,16 @@ let "j = 2 * $i + 2"
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_2d_decoder$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
 echo "//
-process = library(\"abc_2d_decoder.lib\").abc_2d_decoder($i, $j);" >> $sortie
+process = mydecoder($i, $j);" >> $sortie
 done
