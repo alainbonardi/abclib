@@ -1,0 +1,112 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------------abclib----------------------------------------//
+//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
+//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2021 ------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//--------------------------------------------------------------------------------------//
+//
+declare author "Alain Bonardi & Paul Goutmann";
+declare licence "LGPLv3";
+declare name "abclib";
+//
+import("stdfaust.lib");
+//
+//--------------------------------------------------------------------------------------//
+//DOUBLE OVERLAPPED DELAY
+//--------------------------------------------------------------------------------------//
+//
+//A double overlapped delay without reinjection//
+//--------------------------------------------------------------------------------------//
+abc_overlappedDoubleDelay(nsamp, nmax, freq) = doubleDelay
+	with {
+			pdPhasor(f) = os.phasor(1, f);
+			env1 = freq : pdPhasor : sinusEnvelop : *(0.5) : +(0.5);
+			env1c = 1 - env1;
+			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
+			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
+			nsamp1 = nsamp : ba.sAndH(th1);
+			nsamp2 = nsamp : ba.sAndH(th2);
+			doubleDelay =	_ <: (de.delay(nmax, nsamp1), de.delay(nmax,nsamp2)) : (*(env1), *(env1c)) : + ;
+		};
+//
+//A double overlapped delay with reinjection//
+//--------------------------------------------------------------------------------------//
+abc_fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : abc_overlappedDoubleDelay(nsamp, nmax, freq)) ~ (*(fd));
+//
+//
+//--------------------------------------------------------------------------------------//
+// MAX LIKE AND PUREDATA LIKE BIQUADS + HILBERT FILTER + FREQUENCY SHIFTERS
+//--------------------------------------------------------------------------------------//
+//
+//A max like biquad
+//y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
+//--------------------------------------------------------------------------------------//
+abc_maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
+	with {
+		conv2(c0,c1,x) = c0*x+c1*x';
+		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
+	};
+//
+//A PureData like biquad
+//in direct form 2
+//--------------------------------------------------------------------------------------//
+abc_pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = abc_maxLikeBiquad(x, ff1, ff2, ff3, fb1, fb2) 
+	with {
+		//first, compute the stability of the biquad//	
+		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
+		condition1 = ((discriminant < 0) & (c_fb2 >= -1.0));
+		condition2 = ((discriminant >= 0) & (c_fb1 >= -2.0) & (c_fb1 <= 2.0) & (c_fb1+c_fb2 <= 1.0) & (c_fb1-c_fb2 >= -1.0));
+		stable = (condition1 | condition2);//stable is 0 (unstable) or 1 (stable)		
+		//second the final coefficients to apply to biquad that is defined in maxmsp.lib//
+		fb1 = c_fb1 : *(stable) : (*(-1.));
+		fb2 = c_fb2 : *(stable) : (*(-1.));
+		ff1 = c_ff1 : *(stable);	
+		ff2 = c_ff2 : *(stable);	
+		ff3 = c_ff3 : *(stable);
+	};
+//
+//Hilbert filter
+//--------------------------------------------------------------------------------------//
+abc_hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
+	with {
+			biquad1(x) = abc_pdLikeBiquad((x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
+			biquad2(x) = abc_pdLikeBiquad((x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
+			biquad3(x) = abc_pdLikeBiquad((x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
+			biquad4(x) = abc_pdLikeBiquad((x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
+	};
+//
+//frequency shifter definition
+//1 inlet, 2 outlets : +f0 outlet and -f0 outlet
+//--------------------------------------------------------------------------------------//
+abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
+	with {
+		//cosinus enveloppe//
+		osc1 = *(-1) : +(0.25) : ma.frac : sinusEnvelop;
+		//permutation//
+		p1(a, b, c, d) = (a, c, b, d);
+		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
+		hilbertByCosAndMinusSin = (hilbertFilter, cosAndMinusSin) : p1 : (*, *);
+};
+//
+//We define specific fshift with only pos or neg output//
+//--------------------------------------------------------------------------------------//
+abc_fshiftp(freq) = fshift(freq) : (_, !);
+abc_fshiftn(freq) = fshift(freq) : (!, _);
+//
+//--------------------------------------------------------------------------------------//
+// AMPLITUDE CONTROL IN DB
+//--------------------------------------------------------------------------------------//
+//
+//A dB to linear conversion with threshold (-127)
+//
+abc_dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+//
+//
+//Amplitude control with gain in dB C
+//
+abc_dbtogain = si.smoo : abc_dbcontrol;
+//
+
+
