@@ -1,0 +1,332 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------------abclib----------------------------------------//
+//
+//-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
+//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2021 ------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//--------------------------------------------------------------------------------------//
+//
+declare author "Alain Bonardi & Paul Goutmann";
+declare licence "LGPLv3";
+declare name "abclib";
+//
+import("stdfaust.lib");
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//MAIN PROCESSES OF THE ABCLIB LIBRARY
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//--------------------------------------------------------------------------------------//
+//AMBISONIC DECODER WITH DOUBLE MODE: IRREGULAR AND STEREO
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_decoder(n, p) = thisDecoder
+	with {
+			direct = 2 * nentry("v:decoder/directangles", 1, 0, 1, 1) - 1; 
+			offset = hslider("v:decoder/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
+			gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
+			a(ind, nls) = (hslider("v:decoder/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
+			stereo = nentry("v:decoder/stereo", 0, 0, 1, 1) : si.smoo;
+			ambisonic = 1 - stereo;
+			//
+			gainLine(n) = par(i, n, *(gain));
+			//
+			//basic irregular decoder
+			//
+			basicIrregularDecoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, a(i,p)))
+			with {
+   					speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
+			};
+			//
+			//for stereo decoding
+			//
+			leftDispatcher = _<:(*(1-direct), *(direct));
+			rightDispatcher = _<:(*(direct), *(1-direct));
+			//
+			basicStereoDecoder(n, p) = ((ho.decoderStereo(n) : (leftDispatcher, rightDispatcher) :> (_, _)), (0 <: si.bus(p-2)));
+			//
+			//inputDispatch
+			//starting with n values A1, A2,...An, we want to get A1, A2, ..., An, A1, A2,..., An
+			//
+			inputDispatch(n) = si.bus(n) <: (si.bus(n), si.bus(n));
+			thisDecoder = inputDispatch(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : gainLine(p);
+};
+//
+//--------------------------------------------------------------------------------------//
+//AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_encoder(n) = thisEncoder
+	with {
+			rotfreq = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
+			rotphase = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
+			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
+			//
+			myEncoder(sig, angle) = ho.encoder(n, sig, angle);//at ambisonic order n
+			//
+			freqPhaseEncoder(f, p, dt) = (_, abc_rotationOrStaticAngle(f, p, dt)) : myEncoder;
+			//
+			thisEncoder = freqPhaseEncoder(rotfreq, rotphase, returntime);
+};
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//--------------------------------------------------------------------------------------//
+//DOUBLE OVERLAPPED DELAY
+//--------------------------------------------------------------------------------------//
+//
+//A double overlapped delay without reinjection//
+//--------------------------------------------------------------------------------------//
+abc_overlappedDoubleDelay(nsamp, nmax, freq) = doubleDelay
+	with {
+			pdPhasor(f) = os.phasor(1, f);
+			env1 = freq : pdPhasor : sinusEnvelop : *(0.5) : +(0.5);
+			env1c = 1 - env1;
+			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
+			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
+			nsamp1 = nsamp : ba.sAndH(th1);
+			nsamp2 = nsamp : ba.sAndH(th2);
+			doubleDelay =	_ <: (de.delay(nmax, nsamp1), de.delay(nmax,nsamp2)) : (*(env1), *(env1c)) : + ;
+		};
+//
+//A double overlapped delay with reinjection//
+//--------------------------------------------------------------------------------------//
+abc_fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : abc_overlappedDoubleDelay(nsamp, nmax, freq)) ~ (*(fd));
+//
+//
+//--------------------------------------------------------------------------------------//
+// MAX LIKE AND PUREDATA LIKE BIQUADS + HILBERT FILTER + FREQUENCY SHIFTERS
+//--------------------------------------------------------------------------------------//
+//
+//A max like biquad
+//y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
+//--------------------------------------------------------------------------------------//
+abc_maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
+	with {
+		conv2(c0,c1,x) = c0*x+c1*x';
+		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
+	};
+//
+//A PureData like biquad
+//in direct form 2
+//--------------------------------------------------------------------------------------//
+abc_pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = abc_maxLikeBiquad(x, ff1, ff2, ff3, fb1, fb2) 
+	with {
+		//first, compute the stability of the biquad//	
+		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
+		condition1 = ((discriminant < 0) & (c_fb2 >= -1.0));
+		condition2 = ((discriminant >= 0) & (c_fb1 >= -2.0) & (c_fb1 <= 2.0) & (c_fb1+c_fb2 <= 1.0) & (c_fb1-c_fb2 >= -1.0));
+		stable = (condition1 | condition2);//stable is 0 (unstable) or 1 (stable)		
+		//second the final coefficients to apply to biquad that is defined in maxmsp.lib//
+		fb1 = c_fb1 : *(stable) : (*(-1.));
+		fb2 = c_fb2 : *(stable) : (*(-1.));
+		ff1 = c_ff1 : *(stable);	
+		ff2 = c_ff2 : *(stable);	
+		ff3 = c_ff3 : *(stable);
+	};
+//
+//Hilbert filter
+//--------------------------------------------------------------------------------------//
+abc_hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
+	with {
+			biquad1(x) = abc_pdLikeBiquad(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
+			biquad2(x) = abc_pdLikeBiquad(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
+			biquad3(x) = abc_pdLikeBiquad(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
+			biquad4(x) = abc_pdLikeBiquad(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
+	};
+//
+//frequency shifter definition
+//1 inlet, 2 outlets : +f0 outlet and -f0 outlet
+//--------------------------------------------------------------------------------------//
+abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
+	with {
+		//cosinus enveloppe//
+		osc1 = *(-1) : +(0.25) : ma.frac : sinusEnvelop;
+		//permutation//
+		p1(a, b, c, d) = (a, c, b, d);
+		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
+		hilbertByCosAndMinusSin = (hilbertFilter, cosAndMinusSin) : p1 : (*, *);
+};
+//
+//We define specific fshift with only pos or neg output//
+//--------------------------------------------------------------------------------------//
+abc_fshiftp(freq) = fshift(freq) : (_, !);
+abc_fshiftn(freq) = fshift(freq) : (!, _);
+//
+//--------------------------------------------------------------------------------------//
+//GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
+//USES A COSINUS ENVELOP
+//--------------------------------------------------------------------------------------//
+//
+abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
+	with {
+			//gs is the grain size in milliseconds//
+			//d is the max delay in milliseconds//
+			//s is the rarefaction between 0 and 1//
+			//the capacity of storage of the delay line is 262144 which is roughly 5,46 sec of delay at 48KHz
+			f = 1000. / gs; //f is the frequency of the grain
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			randTest = (_, (s : *(2) : -(1))) : >;
+			factor = randTest : ba.sAndH(th);
+			env = ((ramp : *(0.5) : sinusEnvelop), _) : *(factor);
+			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
+		};		 
+//
+//--------------------------------------------------------------------------------------//
+// AMPLITUDE CONTROL IN DB
+//--------------------------------------------------------------------------------------//
+//
+//A dB to linear conversion with threshold (-127)
+//
+abc_dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+//
+//
+//Amplitude control with gain in dB C
+//
+abc_dbtogain = si.smoo : abc_dbcontrol;
+//
+//--------------------------------------------------------------------------------------//
+//STATIC OR ROTATION PHASE BETWEEN 0 AND 1 + CORRESPONDING ANGLE IN RADIANS
+//--------------------------------------------------------------------------------------//
+//
+//A phase generator between 0 and 1, with frequency of rotation and static position
+//--------------------------------------------------------------------------------------//
+abc_rotationOrStaticPhase(f, p, dt) = (1-vn) * x + vn * p
+with {
+		//f is the frequency of rotation
+		//p the position if f values zero
+		//dt is the interpolation time between the two situations (static / rotation)
+		vn = (f == 0) : si.smooth(ba.tau2pole(dt));
+		//to manage the case where frequency is zero, smoothly switches from one mode to another//
+		x = (os.phasor(1, f), p, 1) : (+, _) : fmod;
+};
+//
+//The corresponding generator as an angle in radians
+//--------------------------------------------------------------------------------------//
+abc_rotationOrStaticAngle(f, p, dt) = abc_rotationOrStaticPhase(f, p, dt) * 2 * ma.PI;
+//
+//--------------------------------------------------------------------------------------//
+//LINES AND DRIVE LINES
+//--------------------------------------------------------------------------------------//
+//
+// Implementation of Max/MSP line~. Generate signal ramp or envelope 
+// USAGE : line(value, time)
+// 	value : the desired output value
+//	time  : the interpolation time to reach this value (in milliseconds)
+//
+// NOTE : the interpolation process is restarted every time the desired
+// output value changes. The interpolation time is sampled only then.
+//--------------------------------------------------------------------------------------//
+abc_line (value, time) = state~(_,_):!,_ 
+	with {
+		state (t, c) = nt, ba.if (nt <= 0, value, c+(value - c) / nt)
+		with {
+			nt = ba.if( value != value', samples, t-1);
+			samples = time*ma.SR/1000.0;
+		};
+	};
+//
+//Definition of a PureData like linedrive object
+//--------------------------------------------------------------------------------------//
+abc_pdLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
+	with {
+			//vol = current volume in Midi (0-127)
+			//ti = current time of evolution (in msec)
+			//r is the range, usually Midi range (127)
+			//f is the factor, usually 2
+			//b is the basis, usually 1.07177
+			//t is the ramp time usually 30 ms
+
+			pre_val = ba.if (vol < r, vol, r);
+			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
+			pre_ti = ba.if (ti < 1.46, t, ti);
+			transitionLineDrive = line(val, pre_ti);
+		};
+abc_basicLineDrive = (_, 30, 127, 1, 1.06, 30) : abc_pdLineDrive;
+abc_pdLineDrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdLineDrive;
+//
+//--------------------------------------------------------------------------------------//
+//MULTIPLICATION BY 2*PI
+//--------------------------------------------------------------------------------------//
+abc_mult2pi = *(2. * ma.PI);
+//
+//--------------------------------------------------------------------------------------//
+//PEAKAMP ON N SAMPLES
+//--------------------------------------------------------------------------------------//
+//
+abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
+	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
+	resetMax = ba.pulse(n)@1;
+	getPeak = ba.pulse(n);
+};
+//
+//--------------------------------------------------------------------------------------//
+//2PI phasor (variation between 0 and 2*PI)
+//--------------------------------------------------------------------------------------//
+abc_phasor2pi(f) = os.phasor((2. * ma.PI), f);
+//
+//--------------------------------------------------------------------------------------//
+//PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION
+//--------------------------------------------------------------------------------------//
+abc_player(f0, mySamp, mySampNum) = thisPlayer with {
+	//f0 is the playing frequency
+	//mySamp the array of samples
+	//mySampNum the number of samples
+	zeroToOnePhase =  os.phasor(1, f0) : ma.decimal; 
+	myIndex = zeroToOnePhase * float(mySampNum); 
+	i1 = int(myIndex);
+	i2 = (i1+1) % int(mySampNum);
+	d = ma.decimal(myIndex);
+	s1 = (mySamp, i1) : (+(1), _, _) : rdtable;
+	s2 = (mySamp, i2) : (+(1), _, _) : rdtable;
+	thisPlayer = s1 + d * (s2 - s1);
+};
+//
+//--------------------------------------------------------------------------------------//
+//POLAR TO CARTESIAN CONVERSION
+//angles in radians
+//--------------------------------------------------------------------------------------//
+//
+abc_polar2cartesian = (_, _) <: (_, cos, _, sin) : (*, *);
+//
+//--------------------------------------------------------------------------------------//
+//CARTESIAN TO POLAR CONVERSION
+//angles in radians
+//--------------------------------------------------------------------------------------//
+//
+abc_cartesian2polar = permutation <: (module, phase) with {
+	permutation(a, b) = (b, a);
+	square = _ <: *;
+	module = (square, square) : + : sqrt;
+	phase = atan2;
+};
+//
+//--------------------------------------------------------------------------------------//
+// SINUS ENVELOPE
+//--------------------------------------------------------------------------------------//
+//
+abc_sinusEnvelop(phase) = s1 + d * (s2 - s1)
+	with {
+			tablesize = 1 << 16;
+			sinustable = os.sinwaveform(tablesize);
+			zeroToOnePhase = phase : ma.decimal;
+			myIndex = zeroToOnePhase * float(tablesize);
+			i1 = int(myIndex);
+			d = ma.decimal(myIndex);
+			i2 = (i1+1) % int(tablesize);
+			s1 = rdtable(tablesize, sinustable, i1);
+			s2 = rdtable(tablesize, sinustable, i2);
+};
+
