@@ -132,6 +132,58 @@ abc_2d_fx_decorrelation(n) = thisfxdecorrelator
 };
 //
 //--------------------------------------------------------------------------------------//
+//syn decorrelation process
+//--------------------------------------------------------------------------------------//
+abc_2d_syn_decorrelation(n) = _ <: si.bus(n) : abc_2d_fx_decorrelation(n);
+//
+//
+//--------------------------------------------------------------------------------------//
+//SYN AND FX DELAY PROCESSES
+//--------------------------------------------------------------------------------------//
+//
+//--------------------------------------------------------------------------------------//
+//SYN DELAY GENERATES SPATIAL DELAYED COMPONENTS IN AMBISONICS FROM ONE MONO SIGNAL
+//FX DELAY APPLIES DELAYS TO SPATIAL COMPONENTS ALREADY CREATED
+//THE 2*N+1 DELAYS ARE EQUALLY SPREAD BETWEEN DELTIME/(N+1) AND DELTIME WHICH IS THE MAXIMUM
+//H0 HAS A DELAY OF DELTIME/N, H-1 AND H1 OF 2*DELTIME/N, ETC.
+//
+//H					DELAY
+//0					DELTIME/(N+1)
+//-1 & 1			2*DELTIME/(N+1)
+//-2 & 2			3*DELTIME/(N+1)
+//-3 & 3			4*DELTIME/(N+1)
+//...
+//-(N-1)& (N-1)		N*DELTIME/(N+1)
+//-N & N			DELTIME	
+//
+//THE PURPOSE IS TO EXPLORE TEMPORAL DECORRELATION BETWEEN SPATIAL COMPONENTS
+//EITHER BY CREATING P DELAYED COPIES OF THE INCOMING SIGNAL (SYN DELAY)
+//OR BY ADDING DELAYS TO THE ALREADY EXISTING P SPATIAL COMPONENTS
+//--------------------------------------------------------------------------------------//
+//
+//--------------------------------------------------------------------------------------//
+//fx delay process
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_fx_delay(n) = thisfxdelay
+	with {
+		window = hslider("v:synfxdelay/window [unit:msec]", 400, 10, 1000, 1);
+		winfreq = 1000. / window;
+		deltime = hslider("v:synfxdelay/deltime [unit:msec]", 100, 2, 10000, 0.01);
+		feedback = hslider("v:synfxdelay/feedback", 0, 0, 1, 0.001) :  si.smoo;
+		//
+		durToSamp(d, i, p) = d * 2 / (p+1) * (1 + int((i+1)/2)) * 0.001 * ma.SR;
+		//
+		thisfxdelay = par(i, n, abc_fdOverlappedDoubleDelay(durToSamp(deltime, i, n), 524288, winfreq, feedback));
+};
+//
+//--------------------------------------------------------------------------------------//
+//syn delay process
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_syn_delay(n) = _ <: si.bus(n) : abc_2d_fx_delay(n);
+//
+//--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
 //UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS, WITH NO INTERFACE
@@ -148,7 +200,7 @@ abc_2d_fx_decorrelation(n) = thisfxdecorrelator
 abc_overlappedDoubleDelay(nsamp, nmax, freq) = doubleDelay
 	with {
 			pdPhasor(f) = os.phasor(1, f);
-			env1 = freq : pdPhasor : sinusEnvelop : *(0.5) : +(0.5);
+			env1 = freq : pdPhasor : abc_sinusEnvelop : *(0.5) : +(0.5);
 			env1c = 1 - env1;
 			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
 			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
@@ -209,7 +261,7 @@ abc_hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 	with {
 		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : ma.frac : sinusEnvelop;
+		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusEnvelop;
 		//permutation//
 		p1(a, b, c, d) = (a, c, b, d);
 		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
@@ -237,7 +289,7 @@ abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) 
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
-			env = ((ramp : *(0.5) : sinusEnvelop), _) : *(factor);
+			env = ((ramp : *(0.5) : abc_sinusEnvelop), _) : *(factor);
 			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
 		};		 
 //
