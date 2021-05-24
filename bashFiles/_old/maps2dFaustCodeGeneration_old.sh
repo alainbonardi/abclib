@@ -20,6 +20,7 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abc2dmap.dsp"
 for i in `seq 1 $amborder`
 do
 sortie="abc_2d_map$i.dsp"
@@ -30,7 +31,16 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_2d_map$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename"
 echo "//
-process = (_, _, _) : library(\"abc.lib\").abc_2d_map($i);" >> $sortie
+ao = $i;//ambisonic order//
+//first input is the signal
+//second input is the radius
+//third output is the angle
+//
+process = (_, _, _) : myMap;" >> $sortie
 done

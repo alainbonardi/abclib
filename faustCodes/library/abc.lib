@@ -288,6 +288,21 @@ abc_2d_fx_ringmod(n) = thisfxringmod
 //
 abc_2d_syn_ringmod(n) = _ <: si.bus(n) : abc_2d_fx_ringmod(n);
 //
+//
+//--------------------------------------------------------------------------------------//
+//2D MAPS
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_map(n) = thisMap
+	with {
+		thisMap(sig, r, a) = ho.encoder(n, sig * volume(r), a) : ho.wider(n, ouverture(r))
+			with {
+				volume(r) = 1. / (r * r * (r > 1) + (r <= 1));
+				ouverture(r) = r * (r <= 1) + (r > 1);
+			};
+};
+//
+//
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
@@ -544,7 +559,6 @@ abc_sinusEnvelop(phase) = s1 + d * (s2 - s1)
 			s1 = rdtable(tablesize, sinustable, i1);
 			s2 = rdtable(tablesize, sinustable, i2);
 };
-
 //
 //--------------------------------------------------------------------------------------//
 //INPUTSORT3
@@ -557,6 +571,7 @@ abc_sinusEnvelop(phase) = s1 + d * (s2 - s1)
 abc_inputSort3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
 //
 //--------------------------------------------------------------------------------------//
+//
 //--------------------------------------------------------------------------------------//
 //
 //UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
