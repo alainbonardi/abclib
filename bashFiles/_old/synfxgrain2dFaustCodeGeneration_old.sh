@@ -20,6 +20,9 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abc2dsynfxgrain.dsp"
+utilityfilename1="../abccommon/abcutilities/abcsinenv.dsp"
+utilityfilename2="../abccommon/abcutilities/abcgranu.dsp"
 for i in `seq 1 $amborder`
 do
     let "j = 2 * $i + 1"
@@ -31,9 +34,23 @@ do
     done <"$headerfilename"
 #writes the declared name
     echo "declare name \"abc_2d_syn_grain$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename2"
 echo "//
-process = library(\"abc.lib\").abc_2d_syn_grain($i);" >> $sortie
+process = syngrain($j, grainsize, deltime, feedback, rarefaction);" >> $sortie
 done
 #now moves to faustCodes directory to create the FX_GRAINS directory and files
 cd ../
@@ -53,7 +70,21 @@ do
     done <"$headerfilename"
 #writes the declared name
     echo "declare name \"abc_2d_fx_grain$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename2"
 echo "//
-process = library(\"abc.lib\").abc_2d_fx_grain($i);" >> $sortie
+process = fxgrain($j, grainsize, deltime, feedback, rarefaction);" >> $sortie
 done
