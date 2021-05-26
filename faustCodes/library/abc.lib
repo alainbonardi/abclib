@@ -75,6 +75,60 @@ abc_2d_encoder(n) = thisEncoder
 };
 //
 //--------------------------------------------------------------------------------------//
+//AMBISONIC MIRROR WITH FACTOR
+//--------------------------------------------------------------------------------------//
+//
+//FX MIRROR APPLIES A FACTOR AS A WEIGHT TO THE NEGATIVE HARMONICS
+//TO CREATE THE MIRROR SOUNDFIELD TO ITSELF
+//
+//H					WEIGHT
+//0					1				
+//-1				FACTOR				
+//1					1				
+//-2				FACTOR				
+//2					1				
+//...
+//-(N-1)			FACTOR
+//(N-1)				1			
+//-N				FACTOR
+//N					1				
+//
+//THE FACTOR CAN TAKE 3 VALUES:
+//1 => ORIGINAL SOUND FIELD
+//0 => ORIGINAL + MIRROR SOUND FIELD
+//-1 => MIRROR SOUND FIELD
+//--------------------------------------------------------------------------------------//
+abc_2d_mirror(n) = (*(1), par(i, n, (*(factor), *(1))))
+		with {
+			factor = hslider("factor", 1, -1, 1, 1) : si.smoo;
+};
+//
+//--------------------------------------------------------------------------------------//
+//AMBISONIC OPTIMIZATION WITH OPTIM TYPE
+//--------------------------------------------------------------------------------------//
+//
+//A COMBINED OPTIMIZATION FUNCTION ENABLING THREE MODES OF OPTIMIZATION:
+//-basic
+//-maxRe
+//-inPhase
+//----------------`optimBasic`-------------------------
+//The basic optimization has no effect and should be used for a perfect 
+//circle of loudspeakers with one listener at the perfect center loudspeakers 
+//array.
+//----------------`optimMaxRe`-------------------------
+//The maxRe optimization optimize energy vector. It should be used for an 
+//auditory confined in the center of the loudspeakers array.
+//----------------`optimInPhase`-------------------------
+//The inPhase Optimization optimize energy vector and put all loudspeakers signals 
+//in phase. It should be used for an auditory.
+//--------------------------------------------------------------------------------------//
+abc_2d_optim(n) = thisoptimizer
+		with {
+			optimtype = nentry("optimtype", 0, 0, 2, 1);
+			thisoptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), (((optimtype == 0) <: si.bus(2*n+1)), ((optimtype ==1) <: si.bus(2*n+1)), ((optimtype == 2) <: si.bus(2*n+1)))) : abc_interlace2(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
+};
+//
+//--------------------------------------------------------------------------------------//
 //SYN AND FX DECORRELATION PROCESSES
 //--------------------------------------------------------------------------------------//
 //
@@ -216,7 +270,7 @@ abc_2d_fx_grain(n) = thisfxgrain
 		//
 		dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
-		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_inputSort3(n) : par(i, n, abc_granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
+		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_interlace3(n) : par(i, n, abc_granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -232,7 +286,7 @@ abc_2d_syn_grain(n) = thissyngrain
 		//
 		dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
-		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : abc_inputSort3(n)  : par(i, n, abc_granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
+		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : abc_interlace3(n)  : par(i, n, abc_granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
 };
 //
 //
@@ -561,14 +615,20 @@ abc_sinusEnvelop(phase) = s1 + d * (s2 - s1)
 };
 //
 //--------------------------------------------------------------------------------------//
-//INPUTSORT3
+//INTERLACE FUNCTIONS WITH 2 OR 3 SETS OF SIGNALS
 //--------------------------------------------------------------------------------------//
+//
+//--------------------------------------------------------------------------------------//
+//starting with 2n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn
+//the result is the vector sigA1, sigB1, sigA2, sigB2, ..., sigAn, sigBn
+//--------------------------------------------------------------------------------------//
+abc_interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
 //
 //--------------------------------------------------------------------------------------//
 //starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
 //the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
 //--------------------------------------------------------------------------------------//
-abc_inputSort3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
+abc_interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
 //
 //--------------------------------------------------------------------------------------//
 //

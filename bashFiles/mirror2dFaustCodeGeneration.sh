@@ -20,7 +20,6 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abc2dmirror.dsp"
 for i in `seq 1 $amborder`
 do
     sortie="abc_2d_mirror$i.dsp"
@@ -31,11 +30,7 @@ do
     done <"$headerfilename"
 #writes the declared name
     echo "declare name \"abc_2d_mirror$i\";" >> $sortie
-#writes the associated common file
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$associatedcommonfilename"
+#writes the process line
 echo "//
-process = mirror($i, factor);" >> $sortie
+process = library(\"abc.lib\").abc_2d_mirror($i);" >> $sortie
 done
