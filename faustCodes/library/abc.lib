@@ -75,6 +75,19 @@ abc_2d_encoder(n) = thisEncoder
 };
 //
 //--------------------------------------------------------------------------------------//
+//2D MAPS
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_map(n) = thisMap
+	with {
+		thisMap(sig, r, a) = ho.encoder(n, sig * volume(r), a) : ho.wider(n, ouverture(r))
+			with {
+				volume(r) = 1. / (r * r * (r > 1) + (r <= 1));
+				ouverture(r) = r * (r <= 1) + (r > 1);
+			};
+};
+//
+//--------------------------------------------------------------------------------------//
 //AMBISONIC MIRROR WITH FACTOR
 //--------------------------------------------------------------------------------------//
 //
@@ -126,6 +139,19 @@ abc_2d_optim(n) = thisoptimizer
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
 			thisoptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), (((optimtype == 0) <: si.bus(2*n+1)), ((optimtype ==1) <: si.bus(2*n+1)), ((optimtype == 2) <: si.bus(2*n+1)))) : abc_interlace2(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
+};
+//
+//--------------------------------------------------------------------------------------//
+//AMBISONIC SOUND FIELD ROTATION
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_rotate(n) = thisrotate
+		with {
+			rotfreq = hslider("v:rotate/speed [unit:s-1]", 0, -100, 100, 0.001);
+			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
+			returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
+			//
+			thisrotate =  ho.rotate(n, abc_rotationOrStaticPhase(rotfreq, rotphase, returntime));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -341,20 +367,6 @@ abc_2d_fx_ringmod(n) = thisfxringmod
 //--------------------------------------------------------------------------------------//
 //
 abc_2d_syn_ringmod(n) = _ <: si.bus(n) : abc_2d_fx_ringmod(n);
-//
-//
-//--------------------------------------------------------------------------------------//
-//2D MAPS
-//--------------------------------------------------------------------------------------//
-//
-abc_2d_map(n) = thisMap
-	with {
-		thisMap(sig, r, a) = ho.encoder(n, sig * volume(r), a) : ho.wider(n, ouverture(r))
-			with {
-				volume(r) = 1. / (r * r * (r > 1) + (r <= 1));
-				ouverture(r) = r * (r <= 1) + (r > 1);
-			};
-};
 //
 //
 //--------------------------------------------------------------------------------------//

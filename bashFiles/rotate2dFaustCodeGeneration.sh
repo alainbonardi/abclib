@@ -20,8 +20,6 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abc2drotate.dsp"
-utilityfilename1="../abccommon/abcutilities/abcencodingrotation.dsp"
 for i in `seq 1 $amborder`
 do
     let "j = 2 * $i + 2"
@@ -31,19 +29,7 @@ do
     do
         echo "$line" >> $sortie
     done <"$headerfilename"
-#writes the declared name
-echo "declare name \"abc_2d_rotate$i\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-ao = $i;//ambisonic order//
-process = freqPhaseRotate(rotfreq, rotphase, returntime);" >> $sortie
+process = library(\"abc.lib\").abc_2d_rotate($i);" >> $sortie
 done
