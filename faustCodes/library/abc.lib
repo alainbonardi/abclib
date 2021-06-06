@@ -155,6 +155,26 @@ abc_2d_rotate(n) = thisrotate
 };
 //
 //--------------------------------------------------------------------------------------//
+//SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_scope(n) = thisscope
+		with {
+			//Control parameter: number of complete cycles (complete drawings) per second
+			refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;//refresh time, default is 10 msec
+			//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
+			theta = os.phasor(1, 1/refresh) * 2 * ma.PI;
+			//we get the vector of harmonic functions thanks to the encoding function//
+			harmonicsVector = ho.encoder(n, 1, theta);
+			//building (2n+1) normalized vectors
+			inputVector = (*(0.5), par(i, (2*n), _)) : abc_normalizedvector(2*n+1);
+			normalizedHarmonics = harmonicsVector : normalizedInput;
+			//
+			rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1);
+			thisscope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);
+};
+//
+//--------------------------------------------------------------------------------------//
 //SYN AND FX DECORRELATION PROCESSES
 //--------------------------------------------------------------------------------------//
 //
@@ -643,7 +663,14 @@ abc_interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i
 abc_interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
 //
 //--------------------------------------------------------------------------------------//
+//normalizes a vector of n components
+//--------------------------------------------------------------------------------------//
+abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : par(i, n, /)
+			with {
+					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
+};
 //
+//--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
 //UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
