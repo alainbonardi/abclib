@@ -168,7 +168,7 @@ abc_2d_scope(n) = thisscope
 			harmonicsVector = ho.encoder(n, 1, theta);
 			//building (2n+1) normalized vectors
 			inputVector = (*(0.5), par(i, (2*n), _)) : abc_normalizedvector(2*n+1);
-			normalizedHarmonics = harmonicsVector : normalizedInput;
+			normalizedHarmonics = harmonicsVector : abc_normalizedvector(2*n+1);
 			//
 			rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1);
 			thisscope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);

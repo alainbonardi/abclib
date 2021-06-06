@@ -20,6 +20,7 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abc2dscope.dsp"
 for i in `seq 1 $amborder`
 do
 let "j = 2 * $i + 2"
@@ -31,7 +32,12 @@ let "j = 2 * $i + 2"
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_2d_scope$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
 echo "//
-process = library(\"abc.lib\").abc_2d_scope($i);" >> $sortie
+n = $i;//ambisonic order//
+process = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);" >> $sortie
 done
