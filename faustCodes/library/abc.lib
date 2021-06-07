@@ -212,7 +212,7 @@ abc_2d_zTrajectory = abc_2d_z(freq, size)
 //2D RANDOM TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_random_xy(f, s) = thisRandomPos
+abc_2d_random_xy(f, s) = thisRandomPos
 		with {
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
@@ -222,12 +222,24 @@ abc_random_xy(f, s) = thisRandomPos
 			p(a, b, c, d) = (a, c, b, d);
 			thisRandomPos = (no.multinoise(2), dt, dt) : (temporalFilter, temporalFilter, _, _) : (*(s), *(s), _, _) : p : (abc_line, abc_line);
 };
-abc_2d_randomTrajectory = abc_random_xy(freq, size)
+abc_2d_randomTrajectory = abc_2d_random_xy(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
 };
 //
+//--------------------------------------------------------------------------------------//
+//2D SQUARE AND Z TRAJECTORIES
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : abc_interlace2(2) : (+, +);
+//
+abc_2d_squareAndZTrajectory = abc_2d_squareZ(freq, size, crossfade)
+			with {
+				freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
+				size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
+				crossfade = hslider("v:trajectory/crossfade", 0, 0, 1, 0.01) : si.smoo;
+};
 //
 //--------------------------------------------------------------------------------------//
 //SYN AND FX DECORRELATION PROCESSES
