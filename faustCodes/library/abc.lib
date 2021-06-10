@@ -22,9 +22,24 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //
 //--------------------------------------------------------------------------------------//
-//AMBISONIC DECODER WITH DOUBLE MODE: IRREGULAR AND STEREO
+//AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
+abc_2d_toStereo(n, d, g) = thisStereoDecoder
+	with {
+			//d is direct mode (1) or indirect mode (-1)
+			//g is the absolute gain
+			leftDispatcher = _<:(*(1-d), *(d));
+			rightDispatcher = _<:(*(d), *(1-d));
+			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
+}; 
+
+abc_2d_stereoDecoder(n) = abc_2d_toStereo(n, direct, gain)
+	with {
+			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
+			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
+};
+
 abc_2d_decoder(n, p) = thisDecoder
 	with {
 			direct = 2 * nentry("v:decoder/directangles", 1, 0, 1, 1) - 1; 
@@ -44,17 +59,9 @@ abc_2d_decoder(n, p) = thisDecoder
 			};
 			//
 			//for stereo decoding
+			basicStereoDecoder(n, p) = (abc_2d_toStereo(n, direct, gain), (0 <: si.bus(p-2)));
 			//
-			leftDispatcher = _<:(*(1-direct), *(direct));
-			rightDispatcher = _<:(*(direct), *(1-direct));
-			//
-			basicStereoDecoder(n, p) = ((ho.decoderStereo(n) : (leftDispatcher, rightDispatcher) :> (_, _)), (0 <: si.bus(p-2)));
-			//
-			//inputDispatch
-			//starting with n values A1, A2,...An, we want to get A1, A2, ..., An, A1, A2,..., An
-			//
-			inputDispatch(n) = si.bus(n) <: (si.bus(n), si.bus(n));
-			thisDecoder = inputDispatch(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : gainLine(p);
+			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : gainLine(p);
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -728,6 +735,13 @@ abc_interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i
 //the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
 //--------------------------------------------------------------------------------------//
 abc_interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
+//
+//--------------------------------------------------------------------------------------//
+//BUS DUPLICATION
+//--------------------------------------------------------------------------------------//
+//
+//starting with n values A1, A2,...An, we want to get A1, A2, ..., An, A1, A2,..., An
+abc_busduplicate(n) = si.bus(n) <: (si.bus(n), si.bus(n));
 //
 //--------------------------------------------------------------------------------------//
 //NORMALIZES A VECTOR OF N COMPONENTS
