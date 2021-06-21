@@ -23,6 +23,8 @@ fi
 let "Nch = 2 * $amborder + 2"
 #creates flangers
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abcflanger.dsp"
+utilityfilename1="../abccommon/abcutilities/abcsinenv.dsp"
 for i in `seq 1 $Nch`
 do
     sortie="abc_flanger$i.dsp"
@@ -33,7 +35,16 @@ do
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_flanger$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
 echo "//
-process = library(\"abc.lib\").abc_multiflanger($i);" >> $sortie
+process = myFlanger($i, rate, depth, offset, fdbk, spread);" >> $sortie
 done

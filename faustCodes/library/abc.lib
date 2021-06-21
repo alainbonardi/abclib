@@ -49,8 +49,6 @@ abc_2d_decoder(n, p) = thisDecoder
 			stereo = nentry("v:decoder/stereo", 0, 0, 1, 1) : si.smoo;
 			ambisonic = 1 - stereo;
 			//
-			gainLine(n) = par(i, n, *(gain));
-			//
 			//basic irregular decoder
 			//
 			basicIrregularDecoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, a(i,p)))
@@ -61,7 +59,7 @@ abc_2d_decoder(n, p) = thisDecoder
 			//for stereo decoding
 			basicStereoDecoder(n, p) = (abc_2d_toStereo(n, direct, gain), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : gainLine(p);
+			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, gain);
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -606,18 +604,47 @@ abc_delaychain(n) = thisdelaychain
 //FLANGERS
 //--------------------------------------------------------------------------------------//
 //
-abc_multiflanger(n) = thismultipleflanger
+abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
+			with {
+				//variable delay in samples//
+				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : ma.decimal : abc_sinusenvelop : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
+				//elementary flanger that mixes the original signal and the delayed one//
+				flanger(i) = _ <: (de.fdelay(Nflangersamp, variableDelaySampNumber(i)), _) : (*(f), _) : +; 
+				thismultipleflanger = _ <: par(i, n, flanger(i));
+};
+//
+abc_multiflanger(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
 			with {
 				rate = vslider("h:flanger/rate [unit:Hz]", 0.5, 0.01, 500, 0.001) : si.smoo;
 				depth = vslider("h:flanger/depth [unit:msec]", 40, 0, 1000, 0.001) : si.smoo;
 				offset = vslider("h:flanger/offset [unit:msec]", 10, 0, 200, 0.001) : si.smoo;
 				fdbk = vslider("h:flanger/fdbk", 1, 0, 1, 0.001) : si.smoo;
 				spread = vslider("h:flanger/spread", 0, 0, 1, 0.001) : si.smoo;
-				//variable delay in samples//
-				variableDelaySampNumber(i, n, r, d, off, s) = os.phasor(1, r) : + (i * s / n) : ma.decimal : sinusEnvelop : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
-				//elementary flanger that mixes the original signal and the delayed one//
-				flanger(i, n, r, d, off, f, s) = _ <: (de.fdelay(nsamp, variableDelaySampNumber(i, n, r, d, off, s)), _) : (*(f), _) : +; 
-				thismultipleflanger = _ <: par(i, n, flanger(i, n, r, d, off, f, s));
+};
+//
+//--------------------------------------------------------------------------------------//
+//MULTI CHANNEL GAINS
+//--------------------------------------------------------------------------------------//
+//
+abc_gainline(n, g) = par(i, n, *(g));
+//
+abc_multigain(n) = abc_gainline(n, gain)
+			with {
+				gain = hslider("v:gains/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+
+};
+//
+//--------------------------------------------------------------------------------------//
+//MATRICES
+//--------------------------------------------------------------------------------------//
+//
+abc_matrix(n, m) = thismatrix
+			with {
+				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
+				//
+				toggle(c, in) = (nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001), ramp) : abc_line;
+				mixer(n,out) 	= par(in, n, *(toggle(in, in+out*n)) ) :> _ ;
+				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -637,7 +664,7 @@ abc_multiflanger(n) = thismultipleflanger
 abc_overlappedDoubleDelay(nsamp, nmax, freq) = doubleDelay
 	with {
 			pdPhasor(f) = os.phasor(1, f);
-			env1 = freq : pdPhasor : abc_sinusEnvelop : *(0.5) : +(0.5);
+			env1 = freq : pdPhasor : abc_sinusenvelop : *(0.5) : +(0.5);
 			env1c = 1 - env1;
 			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
 			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
@@ -698,7 +725,7 @@ abc_hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 	with {
 		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusEnvelop;
+		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusenvelop;
 		//permutation//
 		p1(a, b, c, d) = (a, c, b, d);
 		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
@@ -733,7 +760,7 @@ abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) 
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
-			env = ((ramp : *(0.5) : abc_sinusEnvelop), _) : *(factor);
+			env = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor);
 			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
 		};		 
 //
@@ -867,10 +894,10 @@ abc_cartesian2polar = permutation <: (module, phase) with {
 };
 //
 //--------------------------------------------------------------------------------------//
-//SINUS ENVELOPE
+//SINUS ENVELOP
 //--------------------------------------------------------------------------------------//
 //
-abc_sinusEnvelop(phase) = s1 + d * (s2 - s1)
+abc_sinusenvelop(phase) = s1 + d * (s2 - s1)
 	with {
 			tablesize = 1 << 16;
 			sinustable = os.sinwaveform(tablesize);
@@ -935,6 +962,9 @@ abc_clip(x) = (x < -1) * (-1) + (x > 1) + (x >= -1) * (x <= 1) * x;
 //Maximum number of samples for a common delay line
 //corresponding to a bit more than 21,8 seconds at 48 KHz
 Ndelsamp = 1048576;
+//
+//For flangers variable delays
+Nflangersamp = 262144;
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
