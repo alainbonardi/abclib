@@ -23,10 +23,6 @@ fi
 let "Nch = 2 * $amborder + 2"
 #creates parallel and sequential delays
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abcdelaychain.dsp"
-utilityfilename1="../abccommon/abcutilities/abcdoubledelay.dsp"
-utilityfilename2="../abccommon/abcutilities/abcsinenv.dsp"
-utilityfilename3="../abccommon/abcutilities/abcdbcontrol.dsp"
 #sequential delays
 for i in `seq 2 $Nch`
 do
@@ -38,26 +34,7 @@ do
     done <"$headerfilename"
 #writes the declared name
     echo "declare name \"abc_delaychain$i\";" >> $sortie
-#writes the associated common file
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$associatedcommonfilename"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename1"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename2"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename3"
+#writes the process line
 echo "//
-process = delseqset($i);" >> $sortie
+process = library(\"abc.lib\").abc_delaychain($i);" >> $sortie
 done

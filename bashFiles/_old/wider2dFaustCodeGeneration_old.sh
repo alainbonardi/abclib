@@ -20,6 +20,7 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abc2dwider.dsp"
 for i in `seq 1 $amborder`
 do
 sortie="abc_2d_wider$i.dsp"
@@ -30,7 +31,11 @@ sortie="abc_2d_wider$i.dsp"
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_2d_wider$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
 echo "//
-process = library(\"abc.lib\").abc_2d_wider($i);" >> $sortie
+process = widerprocess($i, width);" >> $sortie
 done

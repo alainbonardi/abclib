@@ -162,6 +162,15 @@ abc_2d_rotate(n) = thisrotate
 };
 //
 //--------------------------------------------------------------------------------------//
+//AMBISONIC SOUND FIELD ROTATION
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_wider(n) = ho.wider(n, width)
+		with {
+			width = hslider("width", 0, 0, 1, 0.01) : si. smoo;
+};
+//
+//--------------------------------------------------------------------------------------//
 //SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
 //--------------------------------------------------------------------------------------//
 //
@@ -466,6 +475,154 @@ abc_2d_syn_ringmod(n) = _ <: si.bus(n) : abc_2d_fx_ringmod(n);
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
+//MULTICHANNEL FUNCTIONS
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//
+//--------------------------------------------------------------------------------------//
+//ADDITIVE SYNTHESIS
+//--------------------------------------------------------------------------------------//
+//
+abc_addsynth(n) = thisadditivesynth
+			with {
+				//fundamental frequency//
+				f0 = nentry("v:addsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
+				//general gain//
+				gain = hslider("v:addsynth/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				//amplitude of each partial
+				amp(ind) = hslider("v:addsynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : abc_dbtogain;
+				//frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
+				fmult(ind) = nentry("v:addsynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
+				//beats - second oscillator shifted of a few Hz (by default 0)
+				fbeat(ind) = nentry("v:addsynth/h:partials/v:fbeats/fbeat%2ind [unit:Hz]", 0, 0, 20, 0.01);
+				//
+				thisadditivesynth = par(i, n, abc_doubleoscillator(f0, fmult(i), fbeat(i)) : *(amp(i)) : *(gain));
+};
+//
+//--------------------------------------------------------------------------------------//
+//AUDIOTESTER
+//--------------------------------------------------------------------------------------//
+//
+abc_audiotester = thisaudiotester
+			with {
+				nmax = 64; //maximum number of loudspeakers
+				n = nentry("v:audiotester/n", 2, 1, nmax, 1); //number of loudspeakers used (from 1 to 64)
+				freq = hslider("v:audiotester/freq", 1, 0.01, 100, 0.01);//frequency of the envelopes
+				gain = hslider("v:audiotester/gain [unit:dB]", -20, -127, 18, 0.01) : abc_dbtogain;
+				//
+				dur = 1000 / freq; //duration in milliseconds between two envelopes//
+				globalfreq = freq / n;//global frequency of the whole cycle of loudspeakers
+				//
+				//we define an impulsion at the frequency freq
+				impulse = ba.pulse(int(dur * ma.SR / 1000));
+				//we define a counter from 0 to n-1
+				counter = (_, (os.phasor(n, globalfreq) : int)) : ba.sAndH;
+				//
+				//we define a pink noise generator with an ar envelope
+				generator = (((0.005, (dur * 0.5 / 1000), _) : en.ar), no.pink_noise) : * : *(gain);
+				//
+				//we define a selector to choose one output #x
+				selector(x) = _ <: par(i, nmax, *(x == i));
+				//
+				//the audiotester
+				thisaudiotester = impulse <: (counter, generator) : selector;
+};
+//
+//--------------------------------------------------------------------------------------//
+//BUS SELECTOR (BUSSELECT)
+//--------------------------------------------------------------------------------------//
+//
+abc_busselect(n) = thisbusselect
+			with {
+				ramp = nentry("v:busselect/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
+				leftOrRight = (nentry("v:busselect/leftOrRight", 0, 0, 1, 1), ramp) : abc_line; //selection between left and right buses
+				thisbusselect = (par(i, n, *(1-leftOrRight)), par(i, n, *(leftOrRight))) :> si.bus(n);
+};
+//
+//--------------------------------------------------------------------------------------//
+//CHOWNING PANNERS
+//--------------------------------------------------------------------------------------//
+//defined as a multiple panner with regular progression of pan angle from phi0 to -phi0
+//--------------------------------------------------------------------------------------//
+abc_chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
+			with {
+			//as is the incident angle of the source//
+			//ahp is the angle of the left loudspeaker, the right loudspeaker being at -ahp//
+			//we chose clockwise convention
+			//
+			aseff = max(min(ahp, as), -ahp);//to force as to be between -ahp and ahp//
+			chowningLeftLevel = sqrt((ahp - aseff)/(2*ahp));
+			chowningRighLevel = sqrt((ahp + aseff)/(2*ahp));
+ 	};
+//
+//with several input sources
+abc_multiChowningPan(n, ahp, amp) = par(i, n, (abc_chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
+
+//with one input source (exception for one source)
+abc_chowningPan1 = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
+			with {
+				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
+				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
+				//incAngle is the incident angle of the source when there is only one (not applicable to several sources)
+				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
+				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+};
+abc_chowningPan(n) = abc_multiChowningPan(n, phi0, gain)
+			with {
+				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
+				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
+				//incAngle is the incident angle of the source when there is only one (not applicable to several sources)
+				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
+				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+};
+//
+//--------------------------------------------------------------------------------------//
+//DELAY CHAINS
+//--------------------------------------------------------------------------------------//
+//
+abc_delaychain(n) = thisdelaychain
+			with {
+				updatefreq = hslider("h:chaindelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
+				fdbk = hslider("h:chaindelays/v:general/fdbk", 0, 0, 0.99999, 0.0001) : si.smoo;
+				tempo = nentry("h:chaindelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
+				//
+				dur(ind)=((hslider("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
+				gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : abc_dbtogain;
+				delseq(ind) = abc_overlappedDoubleDelay(dur(ind-1), Ndelsamp, updatefreq);
+				//
+				//--------------------------------------------------------------------------------------//
+				//RECURSIVE DEFINITION OF A DELAY CHAIN WITH DELSEQ ELEMENTARY DELAYS
+				//--------------------------------------------------------------------------------------//
+				delaychain(1) = delseq(1);
+				delaychain(2) = delseq(1) <: (delseq(2), _);
+				delaychain(n) = delaychain(n-1) : ((_ <: (delseq(n), _)), si.bus(n-2));
+				//
+				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, abc_invbus(n));
+};
+//
+//--------------------------------------------------------------------------------------//
+//FLANGERS
+//--------------------------------------------------------------------------------------//
+//
+abc_multiflanger(n) = thismultipleflanger
+			with {
+				rate = vslider("h:flanger/rate [unit:Hz]", 0.5, 0.01, 500, 0.001) : si.smoo;
+				depth = vslider("h:flanger/depth [unit:msec]", 40, 0, 1000, 0.001) : si.smoo;
+				offset = vslider("h:flanger/offset [unit:msec]", 10, 0, 200, 0.001) : si.smoo;
+				fdbk = vslider("h:flanger/fdbk", 1, 0, 1, 0.001) : si.smoo;
+				spread = vslider("h:flanger/spread", 0, 0, 1, 0.001) : si.smoo;
+				//variable delay in samples//
+				variableDelaySampNumber(i, n, r, d, off, s) = os.phasor(1, r) : + (i * s / n) : ma.decimal : sinusEnvelop : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
+				//elementary flanger that mixes the original signal and the delayed one//
+				flanger(i, n, r, d, off, f, s) = _ <: (de.fdelay(nsamp, variableDelaySampNumber(i, n, r, d, off, s)), _) : (*(f), _) : +; 
+				thismultipleflanger = _ <: par(i, n, flanger(i, n, r, d, off, f, s));
+};
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
 //UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS, WITH NO INTERFACE
 //
 //--------------------------------------------------------------------------------------//
@@ -553,6 +710,12 @@ abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 abc_fshiftp(freq) = fshift(freq) : (_, !);
 abc_fshiftn(freq) = fshift(freq) : (!, _);
 //
+//--------------------------------------------------------------------------------------//
+//DOUBLE OSCILLATOR
+//--------------------------------------------------------------------------------------//
+//2 added oscillators as harmonics of a fundamental frequency and shifted//
+//f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
+abc_doubleoscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
 //
 //--------------------------------------------------------------------------------------//
 //GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
@@ -739,9 +902,13 @@ abc_interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i
 //--------------------------------------------------------------------------------------//
 //BUS DUPLICATION
 //--------------------------------------------------------------------------------------//
-//
 //starting with n values A1, A2,...An, we want to get A1, A2, ..., An, A1, A2,..., An
 abc_busduplicate(n) = si.bus(n) <: (si.bus(n), si.bus(n));
+//
+//--------------------------------------------------------------------------------------//
+//BUS INVERSION FOR A BUS OF N SIGNALS (1st input => N, 2nd => N-1, 3rd => N-2, etc)
+//--------------------------------------------------------------------------------------//
+abc_invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 //
 //--------------------------------------------------------------------------------------//
 //NORMALIZES A VECTOR OF N COMPONENTS
@@ -755,6 +922,19 @@ abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : p
 //CLIP FUNCTION BETWEEN -1 AND 1
 //--------------------------------------------------------------------------------------//
 abc_clip(x) = (x < -1) * (-1) + (x > 1) + (x >= -1) * (x <= 1) * x;
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//CONSTANTS OF THE ABCLIB LIBRARY
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//--------------------------------------------------------------------------------------//
+//Maximum number of samples for a common delay line
+//corresponding to a bit more than 21,8 seconds at 48 KHz
+Ndelsamp = 1048576;
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//

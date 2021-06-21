@@ -22,6 +22,8 @@ fi
 #number of channels
 let "Nch = 2 * $amborder + 2"
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abcchowningmultipan.dsp"
+utilityfilename1="../abccommon/abcutilities/abcdbcontrol.dsp"
 for i in `seq 1 $Nch`
 do
     sortie="abc_chopan$i.dsp"
@@ -32,12 +34,21 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_chopan$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$utilityfilename1"
 #we have to manage the exception for one source when i equals 1
 if [ $i = 1 ]
 then
-echo "process = library(\"abc.lib\").abc_chowningPan1;" >> $sortie
+echo "process = chowningPan1;" >> $sortie
 else
-echo "process = library(\"abc.lib\").abc_chowningPan($i);" >> $sortie
+echo "process = chowningPan($i);" >> $sortie
 fi
 done
