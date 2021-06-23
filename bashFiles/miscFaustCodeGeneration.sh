@@ -7,16 +7,6 @@ mkdir abc_misc
 cd abc_misc/
 #no parameter is necessary for these misc dsp files
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-utilityfilename1="../abccommon/abcutilities/abccartopol.dsp"
-utilityfilename2="../abccommon/abcutilities/abcpoltocar.dsp"
-utilityfilename3="../abccommon/abcutilities/abcmult2pi.dsp"
-utilityfilename4="../abccommon/abcutilities/abcphasor2pi.dsp"
-associatedcommonfilename5="../abccommon/abclinedrive.dsp"
-utilityfilename5="../abccommon/abcutilities/abclines.dsp"
-associatedcommonfilename6="../abccommon/abcpeakamp2.dsp"
-utilityfilename6="../abccommon/abcutilities/abcpeakamp.dsp"
-associatedcommonfilename7="../abccommon/abcsounddetector.dsp"
-associatedcommonfilename8="../abccommon/abcenvfollower.dsp"
 #
 #abc_cartopol.dsp
 #
@@ -28,13 +18,9 @@ do
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_cartopol\";" >> $sortie
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = cartesian2polar;" >> $sortie
+process = library(\"abc.lib\").abc_cartesian2polar;" >> $sortie
 #
 #abc_poltocar.dsp
 #
@@ -46,13 +32,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_poltocar\";" >> $sortie
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename2"
+#writes the process line
 echo "//
-process = polar2cartesian;" >> $sortie
+process = library(\"abc.lib\").abc_polar2cartesian;" >> $sortie
 #
 #abc_mult2pi.dsp
 #
@@ -64,13 +46,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_mult2pi\";" >> $sortie
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename3"
+#writes the process line
 echo "//
-process = mult2pi;" >> $sortie
+process = library(\"abc.lib\").abc_mult2pi;" >> $sortie
 #
 #abc_phasor2pi.dsp
 #
@@ -82,13 +60,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_phasor2pi\";" >> $sortie
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename4"
+#writes the process line
 echo "//
-process = phasor2pi(freq);" >> $sortie
+process = library(\"abc.lib\").abc_phasor2pi;" >> $sortie
 #
 #abc_linedrive.dsp
 #
@@ -100,18 +74,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_linedrive\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename5"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename5"
+#writes the process line
 echo "//
-process = (_, 30, 127, outputmax, expcurve, 30) : pdLineDrive;" >> $sortie
+process = library(\"abc.lib\").abc_linedrive;" >> $sortie
 #
 #abc_peakamp.dsp
 #
@@ -123,18 +88,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_peakamp\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename6"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename6"
+#writes the process file
 echo "//
-process = peakamp(nsamp);" >> $sortie
+process = library(\"abc.lib\").abc_peakamp;" >> $sortie
 #
 #abc_sounddetector.dsp
 #
@@ -146,18 +102,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_sounddetector\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename7"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename6"
+#writes the process line
 echo "//
-process = thisCompleteSoundDetector;" >> $sortie
+process = library(\"abc.lib\").abc_fullsounddetector;" >> $sortie
 #
 #abc_envfollower.dsp
 #
@@ -169,10 +116,6 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_envfollower\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename8"
+#writes the process line
 echo "//
-process = envfollower;" >> $sortie
+process = library(\"abc.lib\").abc_envfollower;" >> $sortie

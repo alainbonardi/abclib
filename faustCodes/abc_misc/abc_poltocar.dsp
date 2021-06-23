@@ -11,10 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_poltocar";
 //
-//--------------------------------------------------------------------------------------//
-//POLAR TO CARTESIAN CONVERSION
-//angles in radians
-//--------------------------------------------------------------------------------------//
-polar2cartesian = (_, _) <: (_, cos, _, sin) : (*, *);
-//
-process = polar2cartesian;
+process = library("abc.lib").abc_polar2cartesian;

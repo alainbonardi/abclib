@@ -11,11 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_mult2pi";
 //
-import("stdfaust.lib");
-//
-//--------------------------------------------------------------------------------------//
-//MULTIPLICATION BY 2*PI
-//--------------------------------------------------------------------------------------//
-mult2pi = *(2. * ma.PI);
-//
-process = mult2pi;
+process = library("abc.lib").abc_mult2pi;
