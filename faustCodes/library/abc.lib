@@ -16,7 +16,9 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
-//MAIN PROCESSES OF THE ABCLIB LIBRARY WITH THEIR CONTROL INTERFACE
+//MAIN PROCESSES OF THE ABCLIB LIBRARY 
+//- WITH THEIR CONTROL INTERFACE: no suffix in the name of the function
+//- WITHOUT ANY CONTROL INTERFACE: _r (for raw) suffix in the name of the function
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -25,7 +27,7 @@ import("stdfaust.lib");
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_toStereo(n, d, g) = thisStereoDecoder
+abc_2d_stereodecoder_r(n, d, g) = thisStereoDecoder
 	with {
 			//d is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
@@ -34,17 +36,17 @@ abc_2d_toStereo(n, d, g) = thisStereoDecoder
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 }; 
 
-abc_2d_stereoDecoder(n) = abc_2d_toStereo(n, direct, gain)
+abc_2d_stereodecoder(n) = abc_2d_stereodecoder(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
-			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
+			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol_r;
 };
 
 abc_2d_decoder(n, p) = thisDecoder
 	with {
 			direct = 2 * nentry("v:decoder/directangles", 1, 0, 1, 1) - 1; 
 			offset = hslider("v:decoder/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
-			gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
+			gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol_r;
 			a(ind, nls) = (hslider("v:decoder/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
 			stereo = nentry("v:decoder/stereo", 0, 0, 1, 1) : si.smoo;
 			ambisonic = 1 - stereo;
@@ -57,9 +59,9 @@ abc_2d_decoder(n, p) = thisDecoder
 			};
 			//
 			//for stereo decoding
-			basicStereoDecoder(n, p) = (abc_2d_toStereo(n, direct, gain), (0 <: si.bus(p-2)));
+			basicStereoDecoder(n, p) = (abc_2d_stereodecoder(n, direct, gain), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, gain);
+			thisDecoder = abc_busduplicate_r(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, gain);
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -72,9 +74,7 @@ abc_2d_encoder(n) = thisEncoder
 			rotphase = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			myEncoder(sig, angle) = ho.encoder(n, sig, angle);//at ambisonic order n
-			//
-			freqPhaseEncoder(f, p, dt) = (_, abc_rotationOrStaticAngle(f, p, dt)) : myEncoder;
+			freqPhaseEncoder(f, p, dt) = (_, abc_rotationorstaticangle_r(f, p, dt)) : ho.encoder;
 			//
 			thisEncoder = freqPhaseEncoder(rotfreq, rotphase, returntime);
 };
@@ -143,7 +143,7 @@ abc_2d_mirror(n) = (*(1), par(i, n, (*(factor), *(1))))
 abc_2d_optim(n) = thisoptimizer
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
-			thisoptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), (((optimtype == 0) <: si.bus(2*n+1)), ((optimtype ==1) <: si.bus(2*n+1)), ((optimtype == 2) <: si.bus(2*n+1)))) : abc_interlace2(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
+			thisoptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), (((optimtype == 0) <: si.bus(2*n+1)), ((optimtype ==1) <: si.bus(2*n+1)), ((optimtype == 2) <: si.bus(2*n+1)))) : abc_interlace2_r(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -156,7 +156,7 @@ abc_2d_rotate(n) = thisrotate
 			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			thisrotate =  ho.rotate(n, abc_rotationOrStaticPhase(rotfreq, rotphase, returntime));
+			thisrotate =  ho.rotate(n, abc_rotationorstaticphase_r(rotfreq, rotphase, returntime));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -181,8 +181,8 @@ abc_2d_scope(n) = thisscope
 			//we get the vector of harmonic functions thanks to the encoding function//
 			harmonicsVector = ho.encoder(n, 1, theta);
 			//building (2n+1) normalized vectors
-			inputVector = (*(0.5), par(i, (2*n), _)) : abc_normalizedvector(2*n+1);
-			normalizedHarmonics = harmonicsVector : abc_normalizedvector(2*n+1);
+			inputVector = (*(0.5), par(i, (2*n), _)) : abc_normalizedvector_r(2*n+1);
+			normalizedHarmonics = harmonicsVector : abc_normalizedvector_r(2*n+1);
 			//
 			rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1);
 			thisscope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);
@@ -198,9 +198,9 @@ abc_2d_scope(n) = thisscope
 //2D SQUARE TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_square(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (abc_clip, abc_clip) : (*(s), *(s)) : (*(-1), *(1));
+abc_2d_square_r(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (abc_clip_r, abc_clip_r) : (*(s), *(s)) : (*(-1), *(1));
 //
-abc_2d_squareTrajectory = abc_2d_square(freq, size)
+abc_2d_squareTrajectory = abc_2d_square_r(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -210,13 +210,13 @@ abc_2d_squareTrajectory = abc_2d_square(freq, size)
 //2D Z TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_z(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
+abc_2d_z_r(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
 		with {
 			x(t) = (t < 0.25) * (-1 + t * 8) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25)*8) + (t >= 0.5) * (t < 0.75) * (-1 + (t - 0.5) * 8) + (t >= 0.75) * (1 - (t - 0.75) * 8);
 			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
 };
 //
-abc_2d_zTrajectory = abc_2d_z(freq, size)
+abc_2d_zTrajectory = abc_2d_z_r(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -226,7 +226,7 @@ abc_2d_zTrajectory = abc_2d_z(freq, size)
 //2D RANDOM TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_random_xy(f, s) = thisRandomPos
+abc_2d_random_xy_r(f, s) = thisRandomPos
 		with {
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
@@ -234,9 +234,9 @@ abc_2d_random_xy(f, s) = thisRandomPos
 			//computes the temporal interval taking into account the case when f=0 and when f<0
 			dt = (1000., ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
 			p(a, b, c, d) = (a, c, b, d);
-			thisRandomPos = (no.multinoise(2), dt, dt) : (temporalFilter, temporalFilter, _, _) : (*(s), *(s), _, _) : p : (abc_line, abc_line);
+			thisRandomPos = (no.multinoise(2), dt, dt) : (temporalFilter, temporalFilter, _, _) : (*(s), *(s), _, _) : p : (abc_line_r, abc_line_r);
 };
-abc_2d_randomTrajectory = abc_2d_random_xy(freq, size)
+abc_2d_randomTrajectory = abc_2d_random_xy_r(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -246,9 +246,9 @@ abc_2d_randomTrajectory = abc_2d_random_xy(freq, size)
 //2D SQUARE AND Z TRAJECTORIES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : abc_interlace2(2) : (+, +);
+abc_2d_squareZ_r(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : abc_interlace2_r(2) : (+, +);
 //
-abc_2d_squareAndZTrajectory = abc_2d_squareZ(freq, size, crossfade)
+abc_2d_squareAndZTrajectory = abc_2d_squareZ_r(freq, size, crossfade)
 			with {
 				freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 				size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -298,12 +298,12 @@ abc_2d_fx_decorrelation(n) = thisfxdecorrelator
 		fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.99, 0.001);
 		functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 21, 1);
 		//
-		fxdecorrelation(n, d, f, fa, fd, tf) = par(i, n, abc_fdOverlappedDoubleDelay(dur(d, i, n, fa, tf), 262144, f, fd))
+		fxdecorrelation(n, d, f, fa, fd, tf) = par(i, n, abc_fdoverlappeddoubledelay_r(dur(d, i, n, fa, tf), 262144, f, fd))
 			with {
 				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
 				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x
 					with {
-							x = abc_th(ind, i, p);
+							x = abc_th_r(ind, i, p);
 					};
 					//duration in samples computed as a sum of the 22 cases//
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
@@ -355,7 +355,7 @@ abc_2d_fx_delay(n) = thisfxdelay
 		//
 		durToSamp(d, i, p) = d * 2 / (p+1) * (1 + int((i+1)/2)) * 0.001 * ma.SR;
 		//
-		thisfxdelay = par(i, n, abc_fdOverlappedDoubleDelay(durToSamp(deltime, i, n), 524288, winfreq, feedback));
+		thisfxdelay = par(i, n, abc_fdoverlappeddoubledelay_r(durToSamp(deltime, i, n), 524288, winfreq, feedback));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -397,7 +397,7 @@ abc_2d_fx_grain(n) = thisfxgrain
 		//
 		dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
-		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_interlace3(n) : par(i, n, abc_granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
+		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_interlace3_r(n) : par(i, n, abc_granulator_r(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -413,7 +413,7 @@ abc_2d_syn_grain(n) = thissyngrain
 		//
 		dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
-		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : abc_interlace3(n)  : par(i, n, abc_granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
+		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : abc_interlace3_r(n)  : par(i, n, abc_granulator_r(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
 };
 //
 //
@@ -488,15 +488,15 @@ abc_addsynth(n) = thisadditivesynth
 				//fundamental frequency//
 				f0 = nentry("v:addsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
 				//general gain//
-				gain = hslider("v:addsynth/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				gain = hslider("v:addsynth/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain_r;
 				//amplitude of each partial
-				amp(ind) = hslider("v:addsynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : abc_dbtogain;
+				amp(ind) = hslider("v:addsynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : abc_dbtogain_r;
 				//frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
 				fmult(ind) = nentry("v:addsynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
 				//beats - second oscillator shifted of a few Hz (by default 0)
 				fbeat(ind) = nentry("v:addsynth/h:partials/v:fbeats/fbeat%2ind [unit:Hz]", 0, 0, 20, 0.01);
 				//
-				thisadditivesynth = par(i, n, abc_doubleoscillator(f0, fmult(i), fbeat(i)) : *(amp(i)) : *(gain));
+				thisadditivesynth = par(i, n, abc_doubleoscillator_r(f0, fmult(i), fbeat(i)) : *(amp(i)) : *(gain));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -508,7 +508,7 @@ abc_audiotester = thisaudiotester
 				nmax = 64; //maximum number of loudspeakers
 				n = nentry("v:audiotester/n", 2, 1, nmax, 1); //number of loudspeakers used (from 1 to 64)
 				freq = hslider("v:audiotester/freq", 1, 0.01, 100, 0.01);//frequency of the envelopes
-				gain = hslider("v:audiotester/gain [unit:dB]", -20, -127, 18, 0.01) : abc_dbtogain;
+				gain = hslider("v:audiotester/gain [unit:dB]", -20, -127, 18, 0.01) : abc_dbtogain_r;
 				//
 				dur = 1000 / freq; //duration in milliseconds between two envelopes//
 				globalfreq = freq / n;//global frequency of the whole cycle of loudspeakers
@@ -535,7 +535,7 @@ abc_audiotester = thisaudiotester
 abc_busselect(n) = thisbusselect
 			with {
 				ramp = nentry("v:busselect/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
-				leftOrRight = (nentry("v:busselect/leftOrRight", 0, 0, 1, 1), ramp) : abc_line; //selection between left and right buses
+				leftOrRight = (nentry("v:busselect/leftOrRight", 0, 0, 1, 1), ramp) : abc_line_r; //selection between left and right buses
 				thisbusselect = (par(i, n, *(1-leftOrRight)), par(i, n, *(leftOrRight))) :> si.bus(n);
 };
 //
@@ -544,7 +544,7 @@ abc_busselect(n) = thisbusselect
 //--------------------------------------------------------------------------------------//
 //defined as a multiple panner with regular progression of pan angle from phi0 to -phi0
 //--------------------------------------------------------------------------------------//
-abc_chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
+abc_chowningPanner_r(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 			with {
 			//as is the incident angle of the source//
 			//ahp is the angle of the left loudspeaker, the right loudspeaker being at -ahp//
@@ -556,24 +556,24 @@ abc_chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
  	};
 //
 //with several input sources
-abc_multiChowningPan(n, ahp, amp) = par(i, n, (abc_chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
+abc_multiChowningPan_r(n, ahp, amp) = par(i, n, (abc_chowningPanner_r(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
 
 //with one input source (exception for one source)
-abc_chowningPan1 = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
+abc_chowningPan1 = abc_chowningPanner_r(incAngle, phi0) : (*(gain), *(gain))
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
 				//incAngle is the incident angle of the source when there is only one (not applicable to several sources)
 				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
-				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain_r;
 };
-abc_chowningPan(n) = abc_multiChowningPan(n, phi0, gain)
+abc_chowningPan(n) = abc_multiChowningPan_r(n, phi0, gain)
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
 				//incAngle is the incident angle of the source when there is only one (not applicable to several sources)
 				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
-				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain_r;
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -587,8 +587,8 @@ abc_delaychain(n) = thisdelaychain
 				tempo = nentry("h:chaindelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
 				//
 				dur(ind)=((hslider("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
-				gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : abc_dbtogain;
-				delseq(ind) = abc_overlappedDoubleDelay(dur(ind-1), Ndelsamp, updatefreq);
+				gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : abc_dbtogain_r;
+				delseq(ind) = abc_overlappeddoubledelay_r(dur(ind-1), Ndelsamp, updatefreq);
 				//
 				//--------------------------------------------------------------------------------------//
 				//RECURSIVE DEFINITION OF A DELAY CHAIN WITH DELSEQ ELEMENTARY DELAYS
@@ -597,23 +597,23 @@ abc_delaychain(n) = thisdelaychain
 				delaychain(2) = delseq(1) <: (delseq(2), _);
 				delaychain(n) = delaychain(n-1) : ((_ <: (delseq(n), _)), si.bus(n-2));
 				//
-				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, abc_invbus(n));
+				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, abc_invbus_r(n));
 };
 //
 //--------------------------------------------------------------------------------------//
 //FLANGERS
 //--------------------------------------------------------------------------------------//
 //
-abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
+abc_flangerline_r(n, r, d, off, f, s) = thismultipleflanger
 			with {
 				//variable delay in samples//
-				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : ma.decimal : abc_sinusenvelop : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
+				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : ma.decimal : abc_sinusenvelop_r : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
 				//elementary flanger that mixes the original signal and the delayed one//
 				flanger(i) = _ <: (de.fdelay(Nflangersamp, variableDelaySampNumber(i)), _) : (*(f), _) : +; 
 				thismultipleflanger = _ <: par(i, n, flanger(i));
 };
 //
-abc_multiflanger(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
+abc_multiflanger(n) = abc_flangerline_r(n, rate, depth, offset, fdbk, spread)
 			with {
 				rate = vslider("h:flanger/rate [unit:Hz]", 0.5, 0.01, 500, 0.001) : si.smoo;
 				depth = vslider("h:flanger/depth [unit:msec]", 40, 0, 1000, 0.001) : si.smoo;
@@ -626,11 +626,11 @@ abc_multiflanger(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
 //MULTI CHANNEL GAINS
 //--------------------------------------------------------------------------------------//
 //
-abc_gainline(n, g) = par(i, n, *(g));
+abc_gainline_r(n, g) = par(i, n, *(g));
 //
-abc_multigain(n) = abc_gainline(n, gain)
+abc_multigain(n) = abc_gainline_r(n, gain)
 			with {
-				gain = hslider("v:gains/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				gain = hslider("v:gains/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain_r;
 
 };
 //
@@ -642,7 +642,7 @@ abc_matrix(n, m) = thismatrix
 			with {
 				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
 				//
-				toggle(c, in) = (nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001), ramp) : abc_line;
+				toggle(c, in) = (nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001), ramp) : abc_line_r;
 				mixer(n,out) 	= par(in, n, *(toggle(in, in+out*n)) ) :> _ ;
 				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
@@ -661,21 +661,21 @@ abc_matrix(n, m) = thismatrix
 //
 //A double overlapped delay without reinjection//
 //--------------------------------------------------------------------------------------//
-abc_overlappedDoubleDelay(nsamp, nmax, freq) = doubleDelay
+abc_overlappeddoubledelay_r(nsamp, nmax, freq) = thisdoubledelay
 	with {
 			pdPhasor(f) = os.phasor(1, f);
-			env1 = freq : pdPhasor : abc_sinusenvelop : *(0.5) : +(0.5);
+			env1 = freq : pdPhasor : abc_sinusenvelop_r : *(0.5) : +(0.5);
 			env1c = 1 - env1;
 			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
 			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
 			nsamp1 = nsamp : ba.sAndH(th1);
 			nsamp2 = nsamp : ba.sAndH(th2);
-			doubleDelay =	_ <: (de.delay(nmax, nsamp1), de.delay(nmax,nsamp2)) : (*(env1), *(env1c)) : + ;
+			thisdoubledelay =	_ <: (de.delay(nmax, nsamp1), de.delay(nmax,nsamp2)) : (*(env1), *(env1c)) : + ;
 		};
 //
 //A double overlapped delay with reinjection//
 //--------------------------------------------------------------------------------------//
-abc_fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : abc_overlappedDoubleDelay(nsamp, nmax, freq)) ~ (*(fd));
+abc_fdoverlappeddoubledelay_r(nsamp, nmax, freq, fd) = (+ : abc_overlappeddoubledelay_r(nsamp, nmax, freq)) ~ (*(fd));
 //
 //
 //--------------------------------------------------------------------------------------//
@@ -685,7 +685,7 @@ abc_fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : abc_overlappedDoubleDe
 //A max like biquad
 //y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
 //--------------------------------------------------------------------------------------//
-abc_maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
+abc_maxlikebiquad_r(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
 	with {
 		conv2(c0,c1,x) = c0*x+c1*x';
 		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
@@ -694,7 +694,7 @@ abc_maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0,
 //A PureData like biquad
 //in direct form 2
 //--------------------------------------------------------------------------------------//
-abc_pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = abc_maxLikeBiquad(x, ff1, ff2, ff3, fb1, fb2) 
+abc_pdlikebiquad_r(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = abc_maxlikebiquad_r(x, ff1, ff2, ff3, fb1, fb2) 
 	with {
 		//first, compute the stability of the biquad//	
 		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
@@ -711,21 +711,21 @@ abc_pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = abc_maxLikeBiquad(x, ff
 //
 //Hilbert filter
 //--------------------------------------------------------------------------------------//
-abc_hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
+abc_hilbertfilter_r = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 	with {
-			biquad1(x) = abc_pdLikeBiquad(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
-			biquad2(x) = abc_pdLikeBiquad(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
-			biquad3(x) = abc_pdLikeBiquad(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
-			biquad4(x) = abc_pdLikeBiquad(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
+			biquad1(x) = abc_pdlikebiquad_r(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
+			biquad2(x) = abc_pdlikebiquad_r(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
+			biquad3(x) = abc_pdlikebiquad_r(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
+			biquad4(x) = abc_pdlikebiquad_r(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
 	};
 //
 //frequency shifter definition
 //1 inlet, 2 outlets : +f0 outlet and -f0 outlet
 //--------------------------------------------------------------------------------------//
-abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
+abc_fshift_r(freq) = hilbertByCosAndMinusSin <: (+, -)
 	with {
 		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusenvelop;
+		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusenvelop_r;
 		//permutation//
 		p1(a, b, c, d) = (a, c, b, d);
 		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
@@ -734,22 +734,22 @@ abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 //
 //We define specific fshift with only pos or neg output//
 //--------------------------------------------------------------------------------------//
-abc_fshiftp(freq) = fshift(freq) : (_, !);
-abc_fshiftn(freq) = fshift(freq) : (!, _);
+abc_fshift_rp(freq) = fshift(freq) : (_, !);
+abc_fshift_rn(freq) = fshift(freq) : (!, _);
 //
 //--------------------------------------------------------------------------------------//
 //DOUBLE OSCILLATOR
 //--------------------------------------------------------------------------------------//
 //2 added oscillators as harmonics of a fundamental frequency and shifted//
 //f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
-abc_doubleoscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
+abc_doubleoscillator_r(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
 //
 //--------------------------------------------------------------------------------------//
 //GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
 //USES A COSINUS ENVELOP
 //--------------------------------------------------------------------------------------//
 //
-abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
+abc_granulator_r(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
 	with {
 			//gs is the grain size in milliseconds//
 			//d is the max delay in milliseconds//
@@ -760,7 +760,7 @@ abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) 
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
-			env = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor);
+			env = ((ramp : *(0.5) : abc_sinusenvelop_r), _) : *(factor);
 			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
 		};		 
 //
@@ -770,12 +770,12 @@ abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) 
 //
 //A dB to linear conversion with threshold (-127)
 //
-abc_dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+abc_dbcontrol_r = _ <: ((_ > -127.0), ba.db2linear) : *;
 //
 //
 //Amplitude control with gain in dB C
 //
-abc_dbtogain = si.smoo : abc_dbcontrol;
+abc_dbtogain_r = si.smoo : abc_dbcontrol_r;
 //
 //--------------------------------------------------------------------------------------//
 //STATIC OR ROTATION PHASE BETWEEN 0 AND 1 + CORRESPONDING ANGLE IN RADIANS
@@ -783,7 +783,7 @@ abc_dbtogain = si.smoo : abc_dbcontrol;
 //
 //A phase generator between 0 and 1, with frequency of rotation and static position
 //--------------------------------------------------------------------------------------//
-abc_rotationOrStaticPhase(f, p, dt) = (1-vn) * x + vn * p
+abc_rotationorstaticphase_r(f, p, dt) = (1-vn) * x + vn * p
 with {
 		//f is the frequency of rotation
 		//p the position if f values zero
@@ -795,7 +795,7 @@ with {
 //
 //The corresponding generator as an angle in radians
 //--------------------------------------------------------------------------------------//
-abc_rotationOrStaticAngle(f, p, dt) = abc_rotationOrStaticPhase(f, p, dt) * 2 * ma.PI;
+abc_rotationorstaticangle_r(f, p, dt) = abc_rotationorstaticphase_r(f, p, dt) * 2 * ma.PI;
 //
 //--------------------------------------------------------------------------------------//
 //LINES AND DRIVE LINES
@@ -809,7 +809,7 @@ abc_rotationOrStaticAngle(f, p, dt) = abc_rotationOrStaticPhase(f, p, dt) * 2 * 
 // NOTE : the interpolation process is restarted every time the desired
 // output value changes. The interpolation time is sampled only then.
 //--------------------------------------------------------------------------------------//
-abc_line (value, time) = state~(_,_):!,_ 
+abc_line_r(value, time) = state~(_,_):!,_ 
 	with {
 		state (t, c) = nt, ba.if (nt <= 0, value, c+(value - c) / nt)
 		with {
@@ -820,7 +820,7 @@ abc_line (value, time) = state~(_,_):!,_
 //
 //Definition of a PureData like linedrive object
 //--------------------------------------------------------------------------------------//
-abc_pdLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
+abc_pdlinedrive_r(vol, ti, r, f, b, t) = transitionLineDrive
 	with {
 			//vol = current volume in Midi (0-127)
 			//ti = current time of evolution (in msec)
@@ -834,19 +834,19 @@ abc_pdLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
 			pre_ti = ba.if (ti < 1.46, t, ti);
 			transitionLineDrive = line(val, pre_ti);
 		};
-abc_basicLineDrive = (_, 30, 127, 1, 1.06, 30) : abc_pdLineDrive;
-abc_pdLineDrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdLineDrive;
+abc_basiclinedrive_r = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive_r;
+abc_pdlinedrive_r_4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive_r;
 //
 //--------------------------------------------------------------------------------------//
 //MULTIPLICATION BY 2*PI
 //--------------------------------------------------------------------------------------//
-abc_mult2pi = *(2. * ma.PI);
+abc_mult2pi_r = *(2. * ma.PI);
 //
 //--------------------------------------------------------------------------------------//
 //PEAKAMP ON N SAMPLES
 //--------------------------------------------------------------------------------------//
 //
-abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
+abc_peakamp_r(n) = maxVal(n) : ba.sAndH(getPeak) with {
 	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
 	resetMax = ba.pulse(n)@1;
 	getPeak = ba.pulse(n);
@@ -855,12 +855,12 @@ abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
 //--------------------------------------------------------------------------------------//
 //2PI phasor (variation between 0 and 2*PI)
 //--------------------------------------------------------------------------------------//
-abc_phasor2pi(f) = os.phasor((2. * ma.PI), f);
+abc_phasor2pi_r(f) = os.phasor((2. * ma.PI), f);
 //
 //--------------------------------------------------------------------------------------//
 //PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION
 //--------------------------------------------------------------------------------------//
-abc_player(f0, mySamp, mySampNum) = thisPlayer with {
+abc_player_r(f0, mySamp, mySampNum) = thisPlayer with {
 	//f0 is the playing frequency
 	//mySamp the array of samples
 	//mySampNum the number of samples
@@ -879,14 +879,14 @@ abc_player(f0, mySamp, mySampNum) = thisPlayer with {
 //angles in radians
 //--------------------------------------------------------------------------------------//
 //
-abc_polar2cartesian = (_, _) <: (_, cos, _, sin) : (*, *);
+abc_polar2cartesian_r = (_, _) <: (_, cos, _, sin) : (*, *);
 //
 //--------------------------------------------------------------------------------------//
 //CARTESIAN TO POLAR CONVERSION
 //angles in radians
 //--------------------------------------------------------------------------------------//
 //
-abc_cartesian2polar = permutation <: (module, phase) with {
+abc_cartesian2polar_r = permutation <: (module, phase) with {
 	permutation(a, b) = (b, a);
 	square = _ <: *;
 	module = (square, square) : + : sqrt;
@@ -897,7 +897,7 @@ abc_cartesian2polar = permutation <: (module, phase) with {
 //SINUS ENVELOP
 //--------------------------------------------------------------------------------------//
 //
-abc_sinusenvelop(phase) = s1 + d * (s2 - s1)
+abc_sinusenvelop_r(phase) = s1 + d * (s2 - s1)
 	with {
 			tablesize = 1 << 16;
 			sinustable = os.sinwaveform(tablesize);
@@ -918,29 +918,29 @@ abc_sinusenvelop(phase) = s1 + d * (s2 - s1)
 //starting with 2n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn
 //the result is the vector sigA1, sigB1, sigA2, sigB2, ..., sigAn, sigBn
 //--------------------------------------------------------------------------------------//
-abc_interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
+abc_interlace2_r(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
 //
 //--------------------------------------------------------------------------------------//
 //starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
 //the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
 //--------------------------------------------------------------------------------------//
-abc_interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
+abc_interlace3_r(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
 //
 //--------------------------------------------------------------------------------------//
 //BUS DUPLICATION
 //--------------------------------------------------------------------------------------//
 //starting with n values A1, A2,...An, we want to get A1, A2, ..., An, A1, A2,..., An
-abc_busduplicate(n) = si.bus(n) <: (si.bus(n), si.bus(n));
+abc_busduplicate_r(n) = si.bus(n) <: (si.bus(n), si.bus(n));
 //
 //--------------------------------------------------------------------------------------//
 //BUS INVERSION FOR A BUS OF N SIGNALS (1st input => N, 2nd => N-1, 3rd => N-2, etc)
 //--------------------------------------------------------------------------------------//
-abc_invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
+abc_invbus_r(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 //
 //--------------------------------------------------------------------------------------//
 //NORMALIZES A VECTOR OF N COMPONENTS
 //--------------------------------------------------------------------------------------//
-abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : par(i, n, /)
+abc_normalizedvector_r(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2_r(n) : par(i, n, /)
 			with {
 					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
 };
@@ -948,7 +948,7 @@ abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : p
 //--------------------------------------------------------------------------------------//
 //CLIP FUNCTION BETWEEN -1 AND 1
 //--------------------------------------------------------------------------------------//
-abc_clip(x) = (x < -1) * (-1) + (x > 1) + (x >= -1) * (x <= 1) * x;
+abc_clip_r(x) = (x < -1) * (-1) + (x > 1) + (x >= -1) * (x <= 1) * x;
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -975,28 +975,28 @@ Nflangersamp = 262144;
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
-abc_th(0, i, p) = (i+1) / p;
-abc_th(1, i, p) = ((i+1) / p)^2;
-abc_th(2, i, p) = sin(ma.PI * 0.5 * (i+1) / p);
-abc_th(3, i, p) = log10(1 + (i+1) / p) / log10(2);
-abc_th(4, i, p) = sqrt((i+1) / p);
-abc_th(5, i, p) = 1 - cos(ma.PI * 0.5 * (i+1) / p);
-abc_th(6, i, p) = (1 - cos(ma.PI * (i+1) / p)) * 0.5;
-abc_th(7, i, p) = 1 - (1 - (i+1) / p )^2;
-abc_th(8, i, p) = ((i+1) / p < 0.5) * 2 * ((i+1) / p)^2 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^2 * 0.5) ;
-abc_th(9, i, p) = ((i+1) / p)^3 ;
-abc_th(10, i, p) = 1 - (1 - (i+1) / p)^3 ;
-abc_th(11, i, p) = ((i+1) / p < 0.5) * 4 * ((i+1) / p)^3 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^3 * 0.5) ;
-abc_th(12, i, p) = ((i+1) / p)^4 ; 
-abc_th(13, i, p) = 1 - (1 - (i+1) / p)^4 ;
-abc_th(14, i, p) = ((i+1) / p < 0.5) * 8 * ((i+1) / p)^4 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^4 * 0.5) ;
-abc_th(15, i, p) = ((i+1) / p)^5 ; 
-abc_th(16, i, p) = 1 - (1 - (i+1) / p)^5 ;
-abc_th(17, i, p) = ((i+1) / p < 0.5) * 16 * ((i+1) / p)^5 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^5 * 0.5) ;
-abc_th(18, i, p) = 2^(10 * (i+1) / p - 10) ;
-abc_th(19, i, p) = ((i+1) / p < 1) * (1 - 2^(-10 * (i+1) / p)) + ((i+1) / p == 1) ;
-abc_th(20, i, p) = 1 - sqrt(1 - ((i+1) / p)^2) ; 
-abc_th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2) ;
+abc_th_r(0, i, p) = (i+1) / p;
+abc_th_r(1, i, p) = ((i+1) / p)^2;
+abc_th_r(2, i, p) = sin(ma.PI * 0.5 * (i+1) / p);
+abc_th_r(3, i, p) = log10(1 + (i+1) / p) / log10(2);
+abc_th_r(4, i, p) = sqrt((i+1) / p);
+abc_th_r(5, i, p) = 1 - cos(ma.PI * 0.5 * (i+1) / p);
+abc_th_r(6, i, p) = (1 - cos(ma.PI * (i+1) / p)) * 0.5;
+abc_th_r(7, i, p) = 1 - (1 - (i+1) / p )^2;
+abc_th_r(8, i, p) = ((i+1) / p < 0.5) * 2 * ((i+1) / p)^2 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^2 * 0.5) ;
+abc_th_r(9, i, p) = ((i+1) / p)^3 ;
+abc_th_r(10, i, p) = 1 - (1 - (i+1) / p)^3 ;
+abc_th_r(11, i, p) = ((i+1) / p < 0.5) * 4 * ((i+1) / p)^3 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^3 * 0.5) ;
+abc_th_r(12, i, p) = ((i+1) / p)^4 ; 
+abc_th_r(13, i, p) = 1 - (1 - (i+1) / p)^4 ;
+abc_th_r(14, i, p) = ((i+1) / p < 0.5) * 8 * ((i+1) / p)^4 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^4 * 0.5) ;
+abc_th_r(15, i, p) = ((i+1) / p)^5 ; 
+abc_th_r(16, i, p) = 1 - (1 - (i+1) / p)^5 ;
+abc_th_r(17, i, p) = ((i+1) / p < 0.5) * 16 * ((i+1) / p)^5 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^5 * 0.5) ;
+abc_th_r(18, i, p) = 2^(10 * (i+1) / p - 10) ;
+abc_th_r(19, i, p) = ((i+1) / p < 1) * (1 - 2^(-10 * (i+1) / p)) + ((i+1) / p == 1) ;
+abc_th_r(20, i, p) = 1 - sqrt(1 - ((i+1) / p)^2) ; 
+abc_th_r(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2) ;
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
