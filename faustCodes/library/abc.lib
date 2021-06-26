@@ -36,7 +36,7 @@ abc_2d_stereodecoder_r(n, d, g) = thisStereoDecoder
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 }; 
 
-abc_2d_stereodecoder(n) = abc_2d_stereodecoder(n, direct, gain)
+abc_2d_stereodecoder(n) = abc_2d_stereodecoder_r(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol_r;
@@ -59,9 +59,9 @@ abc_2d_decoder(n, p) = thisDecoder
 			};
 			//
 			//for stereo decoding
-			basicStereoDecoder(n, p) = (abc_2d_stereodecoder(n, direct, gain), (0 <: si.bus(p-2)));
+			basicStereoDecoder(n, p) = (abc_2d_stereodecoder_r(n, direct, gain), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = abc_busduplicate_r(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, gain);
+			thisDecoder = abc_busduplicate_r(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline_r(p, gain);
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -74,7 +74,8 @@ abc_2d_encoder(n) = thisEncoder
 			rotphase = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			freqPhaseEncoder(f, p, dt) = (_, abc_rotationorstaticangle_r(f, p, dt)) : ho.encoder;
+			basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+			freqPhaseEncoder(f, p, dt) = (_, abc_rotationorstaticangle_r(f, p, dt)) : basicEncoder;
 			//
 			thisEncoder = freqPhaseEncoder(rotfreq, rotphase, returntime);
 };

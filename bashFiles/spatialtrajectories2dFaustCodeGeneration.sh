@@ -20,7 +20,7 @@ done <"$headerfilename"
 echo "declare name \"abc_2d_squareandztrajectory\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_squareAndZTrajectory;" >> $sortie
+process = library(\"abc.lib\").abc_2d_squareAndZTrajectory_r;" >> $sortie
 #
 #abc_squaretrajectory.dsp
 #
@@ -34,7 +34,7 @@ done <"$headerfilename"
 echo "declare name \"abc_2d_squaretrajectory\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_squareTrajectory;" >> $sortie
+process = library(\"abc.lib\").abc_2d_squareTrajectory_r;" >> $sortie
 #
 #abc_ztrajectory.dsp
 #
@@ -48,7 +48,7 @@ done <"$headerfilename"
 echo "declare name \"abc_2d_ztrajectory\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_zTrajectory;" >> $sortie
+process = library(\"abc.lib\").abc_2d_zTrajectory_r;" >> $sortie
 #
 #abc_randomtrajectory.dsp
 #
@@ -62,4 +62,4 @@ done <"$headerfilename"
 echo "declare name \"abc_2d_randomtrajectory\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_randomTrajectory;" >> $sortie
+process = library(\"abc.lib\").abc_2d_randomTrajectory_r;" >> $sortie
