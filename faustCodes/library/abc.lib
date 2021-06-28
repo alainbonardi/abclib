@@ -316,7 +316,7 @@ abc_2d_fx_decorrelation_obj(n) = thisfxdecorrelator
 //--------------------------------------------------------------------------------------//
 //syn decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_2d_syn_decorrelation_obj(n) = _ <: si.bus(n) : abc_2d_fx_decorrelation(n);
+abc_2d_syn_decorrelation_obj(n) = _ <: si.bus(n) : abc_2d_fx_decorrelation_obj(n);
 //
 //
 //--------------------------------------------------------------------------------------//

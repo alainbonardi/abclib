@@ -33,7 +33,7 @@ do
     echo "declare name \"abc_2d_syn_decorrelation$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_syn_decorrelation($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_syn_decorrelation_obj($i);" >> $sortie
 done
 #now moves to faustCodes directory to create the FX_DECORRELATIONS directory and files
 cd ../
@@ -55,5 +55,5 @@ do
     echo "declare name \"abc_2d_fx_decorrelation$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_fx_decorrelation($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_fx_decorrelation_obj($i);" >> $sortie
 done
