@@ -33,7 +33,7 @@ do
     echo "declare name \"abc_2d_syn_grain$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_syn_grain($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_syn_grain_obj($i);" >> $sortie
 done
 #now moves to faustCodes directory to create the FX_GRAINS directory and files
 cd ../
@@ -55,5 +55,5 @@ do
     echo "declare name \"abc_2d_fx_grain$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_fx_grain($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_fx_grain_obj($i);" >> $sortie
 done

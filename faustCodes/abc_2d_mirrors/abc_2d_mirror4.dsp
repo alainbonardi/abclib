@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_mirror4";
 //
-process = library("abc.lib").abc_2d_mirror(4);
+process = library("abc.lib").abc_2d_mirror_obj(4);

@@ -363,7 +363,7 @@ abc_2d_fx_delay_obj(n) = thisfxdelay
 //syn delay process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_delay_obj(n) = _ <: si.bus(n) : abc_2d_fx_delay(n);
+abc_2d_syn_delay_obj(n) = _ <: si.bus(n) : abc_2d_fx_delay_obj(n);
 //
 //--------------------------------------------------------------------------------------//
 //SYN AND FX GRAIN PROCESSES
@@ -468,7 +468,7 @@ abc_2d_fx_ringmod_obj(n) = thisfxringmod
 //syn ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_ringmod_obj(n) = _ <: si.bus(n) : abc_2d_fx_ringmod(n);
+abc_2d_syn_ringmod_obj(n) = _ <: si.bus(n) : abc_2d_fx_ringmod_obj(n);
 //
 //
 //--------------------------------------------------------------------------------------//
