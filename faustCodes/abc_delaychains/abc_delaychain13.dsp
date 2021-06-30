@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_delaychain13";
 //
-process = library("abc.lib").abc_delaychain(13);
+process = library("abc.lib").abc_delaychain_obj(13);

@@ -35,5 +35,5 @@ do
 echo "declare name \"abc_matrix$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_matrix($i, $i);" >> $sortie
+process = library(\"abc.lib\").abc_matrix_obj($i, $i);" >> $sortie
 done

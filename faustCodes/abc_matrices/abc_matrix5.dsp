@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_matrix5";
 //
-process = library("abc.lib").abc_matrix(5, 5);
+process = library("abc.lib").abc_matrix_obj(5, 5);

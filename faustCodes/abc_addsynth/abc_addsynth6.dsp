@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_addsynth6";
 //
-process = library("abc.lib").abc_addsynth(6);
+process = library("abc.lib").abc_addsynth_obj(6);

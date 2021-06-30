@@ -36,8 +36,8 @@ echo "declare name \"abc_chopan$i\";" >> $sortie
 #we have to manage the exception for one source when i equals 1
 if [ $i = 1 ]
 then
-echo "process = library(\"abc.lib\").abc_chowningPan1;" >> $sortie
+echo "process = library(\"abc.lib\").abc_chowningPan1_obj;" >> $sortie
 else
-echo "process = library(\"abc.lib\").abc_chowningPan($i);" >> $sortie
+echo "process = library(\"abc.lib\").abc_chowningPan_obj($i);" >> $sortie
 fi
 done

@@ -32,5 +32,5 @@ sortie="abc_2d_wider$i.dsp"
 echo "declare name \"abc_2d_wider$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_wider($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_wider_obj($i);" >> $sortie
 done

@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_flanger12";
 //
-process = library("abc.lib").abc_multiflanger(12);
+process = library("abc.lib").abc_multiflanger_obj(12);

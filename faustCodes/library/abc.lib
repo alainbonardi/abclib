@@ -63,6 +63,7 @@ abc_2d_decoder_obj(n, p) = thisDecoder
 			//
 			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, gain);
 };
+
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
@@ -839,6 +840,12 @@ abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
 abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
 abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
 //
+abc_linedrive_obj = (_, 30, 127, outputmax, expcurve, 30) : abc_pdlinedrive
+		with {
+			outputmax = hslider("v:linedrive/outputmax", 1, 0, 100000, 0.01);
+			expcurve = hslider("v:linedrive/expcurve", 1.06, 0.00001, 2., 0.00001);
+		};
+//
 //--------------------------------------------------------------------------------------//
 //MULTIPLICATION BY 2*PI
 //--------------------------------------------------------------------------------------//
@@ -854,10 +861,79 @@ abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
 	getPeak = ba.pulse(n);
 };
 //
+abc_peakamp_obj = abc_peakamp(nsamp)
+		with {
+			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
+		}
+//
+//--------------------------------------------------------------------------------------//
+//SOUNDDETECTOR
+//--------------------------------------------------------------------------------------//
+abc_impulse = _ <: _, mem : - : (_ > 0.0);
+abc_release(n) = + ~ (_ <: _, (_ > 0) / n : -);
+abc_trigger(n) = abc_impulse : abc_release(n) : _ > 0;
+abc_onetozero(n) = abc_impulse : abc_release(n) : min(1) : max(0);
+//
+abc_impulsedec = _ <: _, mem : - : (_ < 0.0);
+abc_triggerdec(n) = abc_impulsedec : abc_release(n) : _ > 0;
+abc_onetozerodec(n) = abc_impulsedec : abc_release(n) : min(1) : max(0);
+//
+abc_offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
+//
+abc_millisec = ma.SR / 1000.0;
+//
+abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
+	with {
+			
+			nsamp = int(measureDur*abc_millisec);
+			nsampNoteOn = int(noteDur*abc_millisec);
+			nsampOff = int(offDur*abc_millisec);
+			measuredLevel = x : peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
+			previousMeasuredLevel = measuredLevel@(nsamp);
+			ascendingInput = measuredLevel >= previousMeasuredLevel;
+			//attack type = 0 or 1
+			//0 = attack is detected as soon as the measured level is higher than thresh//
+			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
+			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
+			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
+			noteOnPhase = max((attackTrig : trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
+			noteOffPhase = releaseTrig : trigger(nsampOff);
+};
+abc_sounddetector_obj(x) = soundDetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
+		with (
+			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
+			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
+			noteOn = nentry("v:Detector/h:calibration_dB/noteOn [unit:dB]", -60, -120, 0, 1) : si.smoo;
+			attack = nentry("v:Detector/h:soundFollow/attack", 0, 0, 1, 1);
+			tSlice = nentry("v:Detector/h:soundFollow/tSlice", 10, 1, 100, 1);
+			noteDur = nentry("v:Detector/h:noteOnOff/noteDur [unit:msec]", 50, 1, 500, 1) : si.smoo;
+			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
+		);
+//
+abc_fullsounddetector_obj = _ <:(abc_offbeforeuse, abc_sounddetector_obj) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
+	with {
+		delta = 20 * abc_millisec; //20 msec impulsion for attack or release//
+	};
+//
+//--------------------------------------------------------------------------------------//
+//ENVELOPE FOLLOWER
+//--------------------------------------------------------------------------------------//
+//
+abc_enfollower_obj = an.amp_follower_ar(attack, release)
+		with {
+			attack = hslider("v:envfollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
+			release = hslider("v:envfollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
+		};
+//
 //--------------------------------------------------------------------------------------//
 //2PI phasor (variation between 0 and 2*PI)
 //--------------------------------------------------------------------------------------//
 abc_phasor2pi(f) = os.phasor((2. * ma.PI), f);
+//
+abc_phasor2pi_obj = abc_phasor2pi(freq)
+		with {
+			freq = hslider("v:phasor2pi/freq [unit:s-1]", 0.1, 0, 20000, 0.00001);
+		};
 //
 //--------------------------------------------------------------------------------------//
 //PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION

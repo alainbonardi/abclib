@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_gain11";
 //
-process = library("abc.lib").abc_multigain(11);
+process = library("abc.lib").abc_multigain_obj(11);
