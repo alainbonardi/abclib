@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_ztrajectory";
 //
-process = library("abc.lib").abc_2d_zTrajectory_r;
+process = library("abc.lib").abc_2d_zTrajectory_obj;

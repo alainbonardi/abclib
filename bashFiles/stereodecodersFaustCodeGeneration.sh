@@ -33,5 +33,5 @@ sortie="abc_2d_stereodecoder$i.dsp"
 echo "declare name \"abc_2d_stereodecoder$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_stereoDecoder($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_stereodecoder_obj($i);" >> $sortie
 done

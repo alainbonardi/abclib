@@ -835,7 +835,7 @@ abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
 			pre_val = ba.if (vol < r, vol, r);
 			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
 			pre_ti = ba.if (ti < 1.46, t, ti);
-			transitionLineDrive = line(val, pre_ti);
+			transitionLineDrive = abc_line(val, pre_ti);
 		};
 abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
 abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
@@ -864,7 +864,7 @@ abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
 abc_peakamp_obj = abc_peakamp(nsamp)
 		with {
 			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
-		}
+		};
 //
 //--------------------------------------------------------------------------------------//
 //SOUNDDETECTOR
@@ -888,7 +888,7 @@ abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (not
 			nsamp = int(measureDur*abc_millisec);
 			nsampNoteOn = int(noteDur*abc_millisec);
 			nsampOff = int(offDur*abc_millisec);
-			measuredLevel = x : peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
+			measuredLevel = x : abc_peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
 			previousMeasuredLevel = measuredLevel@(nsamp);
 			ascendingInput = measuredLevel >= previousMeasuredLevel;
 			//attack type = 0 or 1
@@ -896,11 +896,12 @@ abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (not
 			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
 			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
 			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
-			noteOnPhase = max((attackTrig : trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
-			noteOffPhase = releaseTrig : trigger(nsampOff);
-};
-abc_sounddetector_obj(x) = soundDetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
-		with (
+			noteOnPhase = max((attackTrig : abc_trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
+			noteOffPhase = releaseTrig : abc_trigger(nsampOff);
+	};
+//
+abc_sounddetector_obj(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
+		with {
 			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
 			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
 			noteOn = nentry("v:Detector/h:calibration_dB/noteOn [unit:dB]", -60, -120, 0, 1) : si.smoo;
@@ -908,7 +909,7 @@ abc_sounddetector_obj(x) = soundDetector(tSlice, offset, noiseFloor, noteOn, not
 			tSlice = nentry("v:Detector/h:soundFollow/tSlice", 10, 1, 100, 1);
 			noteDur = nentry("v:Detector/h:noteOnOff/noteDur [unit:msec]", 50, 1, 500, 1) : si.smoo;
 			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
-		);
+		};
 //
 abc_fullsounddetector_obj = _ <:(abc_offbeforeuse, abc_sounddetector_obj) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
 	with {
@@ -919,7 +920,7 @@ abc_fullsounddetector_obj = _ <:(abc_offbeforeuse, abc_sounddetector_obj) : * <:
 //ENVELOPE FOLLOWER
 //--------------------------------------------------------------------------------------//
 //
-abc_enfollower_obj = an.amp_follower_ar(attack, release)
+abc_envfollower_obj = an.amp_follower_ar(attack, release)
 		with {
 			attack = hslider("v:envfollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
 			release = hslider("v:envfollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds

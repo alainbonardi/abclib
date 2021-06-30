@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_linedrive";
 //
-process = library("abc.lib").abc_linedrive;
+process = library("abc.lib").abc_linedrive_obj;
