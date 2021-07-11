@@ -21,12 +21,8 @@ then
 fi
 #number of channels
 let "Nch = 2 * $amborder + 2"
-#creates parallel and sequential delays
+#creates parallel delays
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abcmultidelay.dsp"
-utilityfilename1="../abccommon/abcutilities/abcdoubledelay.dsp"
-utilityfilename2="../abccommon/abcutilities/abcsinenv.dsp"
-utilityfilename3="../abccommon/abcutilities/abcdbcontrol.dsp"
 #
 #parallel delays
 #
@@ -40,26 +36,7 @@ do
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_delay$i\";" >> $sortie
-#writes the associated common file
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$associatedcommonfilename"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename1"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename2"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename3"
+#writes the process line
 echo "//
-process = delparset($i);" >> $sortie
+process = library(\"abc.lib\").abc_pardelset_obj($i);" >> $sortie
 done
