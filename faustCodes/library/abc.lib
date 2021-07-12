@@ -589,6 +589,7 @@ abc_pardelset_obj(n) = par(i, n, (pardel(i) : *(gain(i))))
 					gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : abc_dbtogain;
 					fdbk(ind) = hslider("h:multidelays/v:fdbks/fdbk%2ind", 0, 0, 0.99999, 0.0001) : si.smoo;
 					updatefreq = hslider("h:multidelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
+					//
 					pardel(ind) = abc_fdoverlappeddoubledelay(dur(ind), Ndelsamp, updatefreq, fdbk(ind));
 
 			};
@@ -618,7 +619,7 @@ abc_delaychain_obj(n) = thisdelaychain
 };
 //
 //--------------------------------------------------------------------------------------//
-//FLANGERS
+//MULTI FLANGERS
 //--------------------------------------------------------------------------------------//
 //
 abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
@@ -638,6 +639,19 @@ abc_multiflanger_obj(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
 				fdbk = vslider("h:flanger/fdbk", 1, 0, 1, 0.001) : si.smoo;
 				spread = vslider("h:flanger/spread", 0, 0, 1, 0.001) : si.smoo;
 };
+//
+//--------------------------------------------------------------------------------------//
+//MULTI FREQUENCY SHIFTERS
+//--------------------------------------------------------------------------------------//
+//
+abc_multifreqshift_obj(n) = par(i, n, (abc_fshiftp(fr(i)) : *(gain(i))))
+			with {
+				//Shifting frequencies
+				fr(ind) = hslider("h:multifreqshifts/v:shiftingfreqs/fr%2ind [unit:Hz]", 0, -10000, 10000, 0.001);
+				//Gains in dB
+				gain(ind) = hslider("h:multifreqshifts/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : abc_dbtogain;
+				//
+			};
 //
 //--------------------------------------------------------------------------------------//
 //MULTI CHANNEL GAINS
@@ -746,13 +760,13 @@ abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 		//permutation//
 		p1(a, b, c, d) = (a, c, b, d);
 		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
-		hilbertByCosAndMinusSin = (hilbertFilter, cosAndMinusSin) : p1 : (*, *);
+		hilbertByCosAndMinusSin = (abc_hilbertfilter, cosAndMinusSin) : p1 : (*, *);
 };
 //
 //We define specific fshift with only pos or neg output//
 //--------------------------------------------------------------------------------------//
-abc_fshiftp(freq) = fshift(freq) : (_, !);
-abc_fshiftn(freq) = fshift(freq) : (!, _);
+abc_fshiftp(freq) = abc_fshift(freq) : (_, !);
+abc_fshiftn(freq) = abc_fshift(freq) : (!, _);
 //
 //--------------------------------------------------------------------------------------//
 //DOUBLE OSCILLATOR
