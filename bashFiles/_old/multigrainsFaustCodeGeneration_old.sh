@@ -21,8 +21,11 @@ then
 fi
 #number of channels
 let "Nch = 2 * $amborder + 2"
-#creates an array of granulators
+#creates an array of harmonizers
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+associatedcommonfilename="../abccommon/abcmultigrain.dsp"
+utilityfilename1="../abccommon/abcutilities/abcgranu.dsp"
+utilityfilename2="../abccommon/abcutilities/abcsinenv.dsp"
 #
 for i in `seq 1 $Nch`
 do
@@ -34,7 +37,21 @@ do
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_grain$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename1"
+#writes the other common file (utility functions)
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$utilityfilename2"
 echo "//
-process = library(\"abc.lib\").abc_multigrain_obj($i);" >> $sortie
+process = multigrain($i);" >> $sortie
 done
