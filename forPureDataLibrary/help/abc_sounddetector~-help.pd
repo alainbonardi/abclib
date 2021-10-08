@@ -1,4 +1,4 @@
-#N canvas 120 25 1308 811 10;
+#N canvas 490 39 1308 811 10;
 #X obj 11 21 cnv 15 500 25 empty empty abc_sounddetector~ 20 12 0 18
 -99865 -262144 0;
 #X obj 11 47 cnv 15 500 25 empty empty Sound_detector 20 12 0 12 -99865
@@ -60,13 +60,13 @@ is the threshold in dB of detection of the attack (60 by default);
 #X obj 899 517 dac~;
 #X obj 455 529 vsl 15 128 0 1 0 0 empty empty amplitude 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 910 465 *~ 0.05;
 #X obj 551 180 abc_env_noise 200 0.9 0;
+#X obj 910 465 *~ 0.04;
 #X connect 2 0 3 0;
 #X connect 9 0 10 0;
 #X connect 10 0 29 0;
 #X connect 10 0 11 1;
-#X connect 10 0 45 0;
+#X connect 10 0 46 0;
 #X connect 11 1 36 1;
 #X connect 11 2 22 0;
 #X connect 11 3 24 0;
@@ -103,7 +103,7 @@ is the threshold in dB of detection of the attack (60 by default);
 #X connect 40 0 42 0;
 #X connect 41 0 40 0;
 #X connect 42 0 36 0;
-#X connect 45 0 43 0;
-#X connect 45 0 43 1;
-#X connect 46 0 10 1;
+#X connect 45 0 10 1;
+#X connect 46 0 43 0;
+#X connect 46 0 43 1;
 #X coords 0 811 1 810 85 60 0;

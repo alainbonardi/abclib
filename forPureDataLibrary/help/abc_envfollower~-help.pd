@@ -32,7 +32,7 @@ value : 0.01 sec);
 #X obj 734 449 r scope;
 #X msg 26 199 \; scope ticktime 258 \; scope buffersize 512 \; scope
 amprange 1 \; scope onoff 1 \;;
-#X obj 473 162 abc_env_noise 500 0.7 -15;
+#X obj 473 162 abc_env_noise 500 0.7 -5;
 #X connect 2 0 3 0;
 #X connect 7 0 8 0;
 #X connect 8 0 12 0;

@@ -1,4 +1,4 @@
-#N canvas 6 26 585 784 10;
+#N canvas 578 82 585 784 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_slider2map 20 12 0 18 -99865
 -262144 0;
 #X obj 13 746 abc_helpcredit;
@@ -21,8 +21,8 @@
 #X text 140 69 DESCRIPTION;
 #X text 140 89 abc_slider2map is an abstraction that enables to graphically
 control the abc_2d_map objects. There are no default values;
-#X obj 210 357 *~ 0.2;
 #X obj 29 205 abc_gain -10;
+#X obj 210 357 *~ 0.5;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
@@ -52,8 +52,8 @@ control the abc_2d_map objects. There are no default values;
 #X connect 10 1 14 0;
 #X connect 10 2 14 1;
 #X connect 10 3 14 2;
-#X connect 11 1 17 0;
+#X connect 11 1 18 0;
 #X connect 12 0 9 2;
 #X connect 12 1 9 3;
-#X connect 17 0 9 1;
-#X connect 18 0 7 0;
+#X connect 17 0 7 0;
+#X connect 18 0 9 1;

@@ -1,11 +1,11 @@
-#N canvas 196 118 1331 697 10;
+#N canvas 610 180 1331 697 10;
 #X obj 9 9 cnv 15 500 25 empty empty abc_delaychainN~ 20 12 0 18 -99865
 -262144 0;
 #X obj 8 663 abc_helpcredit;
 #X obj 9 35 cnv 15 500 25 empty empty Sequential_double_overlapped_delays_without_reinjection
 20 12 0 12 -99865 -262144 0;
 #X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 533 494 \; pd dsp \$1 \;;
 #X text 935 15 CONTROLS;
 #X text 534 17 DESCRIPTION;
@@ -95,9 +95,6 @@ object.;
 #X text 521 187 echo 3;
 #X obj 69 503 abc_meter;
 #X obj 853 519 abc_meter;
-#X obj 59 349 *~ 0.15;
-#X obj 144 559 abc_stereoout 0;
-#X obj 836 218 abc_gain -10;
 #X obj 171 219 vsl 15 128 0 0.999 0 0 empty empty fdbk 0 -9 0 10 -262144
 -1 -1 3178 1;
 #X obj 171 161 loadbang;
@@ -124,10 +121,13 @@ at 30 Hz (30 Hz means one can change the duration of the delay up to
 is that all durations are given not in milliseconds but as a musical
 durations: 1 stands for a quarter \, 0.5 for an 8th \, 0.25 for a 16th
 \, etc.;
+#X obj 59 349 *~ 0.3;
+#X obj 144 559 abc_stereoout -15;
+#X obj 836 218 abc_gain -15;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
-#X connect 9 0 61 0;
+#X connect 9 0 72 0;
 #X connect 11 0 37 0;
 #X connect 12 0 15 0;
 #X connect 13 0 14 0;
@@ -145,16 +145,16 @@ durations: 1 stands for a quarter \, 0.5 for an 8th \, 0.25 for a 16th
 #X connect 26 0 27 0;
 #X connect 27 0 28 0;
 #X connect 28 0 37 0;
-#X connect 28 0 72 0;
-#X connect 29 0 72 0;
-#X connect 30 0 73 0;
+#X connect 28 0 69 0;
+#X connect 29 0 69 0;
+#X connect 30 0 70 0;
 #X connect 31 0 33 0;
 #X connect 32 0 49 0;
 #X connect 33 0 34 0;
-#X connect 34 0 72 0;
-#X connect 37 1 70 1;
-#X connect 37 2 70 2;
-#X connect 37 3 70 3;
+#X connect 34 0 69 0;
+#X connect 37 1 67 1;
+#X connect 37 2 67 2;
+#X connect 37 3 67 3;
 #X connect 40 0 41 0;
 #X connect 41 0 37 0;
 #X connect 42 0 40 0;
@@ -163,7 +163,7 @@ durations: 1 stands for a quarter \, 0.5 for an 8th \, 0.25 for a 16th
 #X connect 45 0 46 0;
 #X connect 46 0 47 0;
 #X connect 47 0 48 0;
-#X connect 48 0 72 1;
+#X connect 48 0 69 1;
 #X connect 49 0 31 0;
 #X connect 50 1 51 0;
 #X connect 50 1 60 0;
@@ -178,22 +178,22 @@ durations: 1 stands for a quarter \, 0.5 for an 8th \, 0.25 for a 16th
 #X connect 53 0 50 0;
 #X connect 54 0 55 0;
 #X connect 55 0 52 0;
-#X connect 61 0 37 1;
-#X connect 63 0 50 0;
-#X connect 64 0 66 0;
-#X connect 65 0 68 0;
-#X connect 66 0 67 0;
-#X connect 67 0 37 0;
-#X connect 68 0 64 0;
-#X connect 70 1 59 0;
-#X connect 70 1 62 0;
-#X connect 70 2 62 1;
-#X connect 71 0 43 0;
-#X connect 72 1 50 1;
-#X connect 72 2 50 2;
-#X connect 72 3 50 3;
-#X connect 72 4 50 4;
-#X connect 72 5 50 5;
-#X connect 72 6 50 6;
-#X connect 72 7 50 7;
+#X connect 61 0 63 0;
+#X connect 62 0 65 0;
+#X connect 63 0 64 0;
+#X connect 64 0 37 0;
+#X connect 65 0 61 0;
+#X connect 67 1 59 0;
+#X connect 67 1 73 0;
+#X connect 67 2 73 1;
+#X connect 68 0 43 0;
+#X connect 69 1 50 1;
+#X connect 69 2 50 2;
+#X connect 69 3 50 3;
+#X connect 69 4 50 4;
+#X connect 69 5 50 5;
+#X connect 69 6 50 6;
+#X connect 69 7 50 7;
+#X connect 72 0 37 1;
+#X connect 74 0 50 0;
 #X coords 0 697 1 696 85 60 0;

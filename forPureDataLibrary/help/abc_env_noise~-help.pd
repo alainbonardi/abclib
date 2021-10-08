@@ -20,7 +20,7 @@ a positive cosine shape (Hanning window). It uses rarefaction.;
 #X obj 382 386 abc_meter;
 #X obj 107 278 *~ 0.1;
 #X obj 277 280 *~ 0.1;
-#X obj 136 386 abc_stereoout 0;
+#X obj 136 386 abc_stereoout -15;
 #X connect 3 0 4 0;
 #X connect 8 0 7 0;
 #X connect 8 0 14 0;

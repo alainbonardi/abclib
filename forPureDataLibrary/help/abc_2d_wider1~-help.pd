@@ -1,16 +1,16 @@
-#N canvas 46 61 1394 776 10;
+#N canvas 477 68 1394 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_2d_syn_widerN~ 20 12 0 18
 -99865 -262144 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Ambisonic_widening_of_the_sound_field_at_orders_1_2_3_...
 20 12 0 12 -99865 -262144 0;
 #X obj 644 673 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+-1 0 1;
 #X msg 644 701 \; pd dsp \$1 \;;
 #X text 936 3 CONTROLS;
 #X text 539 5 DESCRIPTION;
 #X obj 199 154 abc_upanddown;
-#X obj 31 374 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 31 374 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 31 394 stereo \$1;
 #X obj 195 460 abc_2d_decoder3~;
@@ -55,9 +55,9 @@ changes.;
 #X floatatom 726 193 5 0 0 0 - - -;
 #X obj 114 530 abc_meter;
 #X obj 672 505 abc_meter;
-#X obj 381 223 *~ 0.2;
-#X obj 1001 225 *~ 0.2;
-#X obj 99 231 abc_gain -10;
+#X obj 1001 225 *~ 0.5;
+#X obj 381 223 *~ 0.5;
+#X obj 99 231 abc_gain -15;
 #X connect 3 0 4 0;
 #X connect 7 0 18 0;
 #X connect 8 0 9 0;
@@ -71,7 +71,7 @@ changes.;
 #X connect 10 6 11 5;
 #X connect 10 7 11 6;
 #X connect 10 8 11 7;
-#X connect 12 1 47 0;
+#X connect 12 1 48 0;
 #X connect 13 0 20 0;
 #X connect 14 0 21 0;
 #X connect 17 1 10 1;
@@ -195,7 +195,7 @@ changes.;
 #X connect 36 14 35 14;
 #X connect 36 15 39 15;
 #X connect 36 15 35 15;
-#X connect 37 1 48 0;
+#X connect 37 1 47 0;
 #X connect 38 0 34 0;
 #X connect 39 1 42 0;
 #X connect 39 2 42 1;
@@ -205,7 +205,7 @@ changes.;
 #X connect 40 3 41 2;
 #X connect 43 0 44 0;
 #X connect 44 0 30 0;
-#X connect 47 0 19 1;
-#X connect 48 0 36 1;
+#X connect 47 0 36 1;
+#X connect 48 0 19 1;
 #X connect 49 0 10 0;
 #X coords 0 776 1 775 85 60 0;

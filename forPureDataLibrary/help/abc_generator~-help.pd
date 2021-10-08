@@ -26,15 +26,15 @@ sound and silence);
 #X obj 355 265 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 129 125 hsl 128 15 50 5000 0 0 empty empty phasorfreq -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 2200 1;
 #X floatatom 126 145 5 0 0 0 - - -;
 #X msg 126 166 phasorfreq \$1;
 #X obj 269 125 hsl 128 15 50 5000 0 0 empty empty noisecutoff -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 6100 1;
 #X floatatom 266 145 5 0 0 0 - - -;
 #X msg 266 166 noisecutoff \$1;
 #X obj 408 124 hsl 128 15 50 5000 0 0 empty empty sinusfreq -2 -8 0
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -1 2900 1;
 #X floatatom 405 144 5 0 0 0 - - -;
 #X msg 405 165 sinusfreq \$1;
 #X obj 266 217 s gen;
@@ -55,7 +55,7 @@ sound and silence);
 #X msg 700 325 noisepulseratio \$1;
 #X msg 837 324 sinuspulseratio \$1;
 #X obj 563 123 hsl 128 15 0.01 20 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 3900 1;
 #X floatatom 560 143 5 0 0 0 - - -;
 #X floatatom 697 142 5 0 0 0 - - -;
 #X floatatom 834 141 5 0 0 0 - - -;
@@ -64,9 +64,9 @@ sound and silence);
 #X msg 697 162 noisepulserate \$1;
 #X msg 834 161 sinuspulserate \$1;
 #X obj 700 123 hsl 128 15 0.01 20 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 5900 1;
 #X obj 837 122 hsl 128 15 0.01 20 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 3700 1;
 #X obj 414 437 abc_generator;
 #X obj 414 397 r gen2;
 #X obj 1055 624 abc_meter;
