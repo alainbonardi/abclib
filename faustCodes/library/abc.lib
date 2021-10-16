@@ -678,10 +678,10 @@ abc_multigrain_obj(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_
 			};
 //
 //--------------------------------------------------------------------------------------//
-//MULTI GRANULATORS
+//MULTI HARMONIZERS
 //--------------------------------------------------------------------------------------//
 //
-abc_multi_harmo_obj(n) = par(ind, n, harmonizer(trans(ind), winsize(ind), gain(ind)))
+abc_multiharmo_obj(n) = par(ind, n, abc_harmonizer(trans(ind), winsize(ind), gain(ind)))
 			with {
 				//amount of transposition (in midicents) of the harmonizer #i
 				trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.01);
@@ -841,7 +841,7 @@ abc_transposer(moffset, tr, w, g) = dopplerDelay
 					trig_win = w : ba.sAndH(th_trigger);
 					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
 					variableDelay = de.fdelay(262144, delayInSgainles);
-					cosinusEnvelop = adjustedPhasor : *(0.5) : sinusEnvelop;
+					cosinusEnvelop = adjustedPhasor : *(0.5) : abc_sinusenvelop;
 					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
 				};
 //
