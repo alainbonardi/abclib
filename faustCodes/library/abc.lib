@@ -698,6 +698,36 @@ abc_multiharmo_obj(n) = par(ind, n, abc_harmonizer(trans(ind), winsize(ind), gai
 abc_multinoise_obj(n) = no.multinoise(n);
 //
 //--------------------------------------------------------------------------------------//
+//MULTIPLE SHORTENING ENVELOPS
+//--------------------------------------------------------------------------------------//
+//
+abc_multishorteningenv(n, f, s) = no.multinoise(n) : par(i, n, abc_shorteningenv(f, s));
+//
+//
+//--------------------------------------------------------------------------------------//
+//MULTIPLE SHORTENING ENVELOPS APPLIED TO N INPUT SIGNALS
+//--------------------------------------------------------------------------------------//
+//
+abc_multishorteningenv_obj(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction) : abc_interlace2(n) : par(i, n, *) 
+			with {
+				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
+				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
+};
+//
+//--------------------------------------------------------------------------------------//
+//MULTIPLE LINEAR RANDOM ENVELOPES
+//--------------------------------------------------------------------------------------//
+//
+abc_multilinrandenv(n, f, s) = (no.multinoise(n), si.bus(n)) : abc_interlace2(n) : par(i, n, abc_linrandenv(f,s));
+//
+abc_multilinrandenv_obj(n) = abc_multilinrandenv(n, freq, rarefaction)
+			with {
+				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
+				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
+};
+//
+//
+//--------------------------------------------------------------------------------------//
 //MATRICES
 //--------------------------------------------------------------------------------------//
 //
@@ -1076,6 +1106,30 @@ abc_sinusenvelop(phase) = s1 + d * (s2 - s1)
 			i2 = (i1+1) % int(tablesize);
 			s1 = rdtable(tablesize, sinustable, i1);
 			s2 = rdtable(tablesize, sinustable, i2);
+};
+//
+//--------------------------------------------------------------------------------------//
+//SHORTENING ENVELOP (COSINUS RANDOMIZED ENVELOP TO BE FED BY NOISE)
+//--------------------------------------------------------------------------------------//
+//
+abc_shorteningenv(f, s) = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor)
+	with {
+			randTest = (_, (s : *(2) : -(1))) : >;
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			factor = randTest : ba.sAndH(th);
+	};
+//
+//--------------------------------------------------------------------------------------//
+//LINEAR RANDOM ENVELOPE
+//--------------------------------------------------------------------------------------//
+//
+abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
+	with {
+			randVol = ((_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)), 1000./f) : abc_line;
+			randTest = (_, (s : *(2) : -(1))) : >;
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 };
 //
 //--------------------------------------------------------------------------------------//
