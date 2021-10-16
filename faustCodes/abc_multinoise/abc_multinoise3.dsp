@@ -3,28 +3,12 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//----------------------------- BY ALAIN BONARDI - 2019-2021 ---------------------------//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2021 ------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
-declare author "Alain Bonardi";
+declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_multinoise3";
 //
-import("stdfaust.lib");
-//
-//does not use other .dsp file
-//
-//--------------------------------------------------------------------------------------//
-//CONTROL PARAMETERS
-//--------------------------------------------------------------------------------------//
-//no control parameters
-//
-//--------------------------------------------------------------------------------------//
-//DEFINITION OF A DECORRELATED MULTINOISE
-//
-//--------------------------------------------------------------------------------------// 
-multinoise(n) = no.multinoise(n);
-//
-//
-process = multinoise(3);
+process = library("abc.lib").abc_multinoise_obj(3);

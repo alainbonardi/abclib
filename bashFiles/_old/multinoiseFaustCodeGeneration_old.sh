@@ -22,7 +22,7 @@ fi
 #number of channels
 let "Nch = 2 * $amborder + 2"
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-#
+associatedcommonfilename="../abccommon/abcmultinoise.dsp"
 for i in `seq 1 $Nch`
 do
 sortie="abc_multinoise$i.dsp"
@@ -33,7 +33,11 @@ sortie="abc_multinoise$i.dsp"
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_multinoise$i\";" >> $sortie
-#writes the process line
+#writes the associated common file
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$associatedcommonfilename"
 echo "//
-process = library(\"abc.lib\").abc_multinoise_obj($i);" >> $sortie
+process = multinoise($i);" >> $sortie
 done
