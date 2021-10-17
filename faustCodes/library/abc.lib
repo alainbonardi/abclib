@@ -1133,6 +1133,50 @@ abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
 };
 //
 //--------------------------------------------------------------------------------------//
+//BLOCKS TO BUILD REV4 REVERBERATION
+//--------------------------------------------------------------------------------------//
+//
+abc_rev4tap(del) = de.delay(65536, int(del * abc_millisec));
+//
+abc_rev4cascadblock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMinusBlock(25.796) : plusMinusBlock(19.391993) : plusMinusBlock(16.363997) : (_, abc_rev4tap(13.645))
+			with {
+					initBlock(del) = _ <: (_, abc_rev4tap(del)) <: (+, -);
+					plusMinusBlock(del) = (_, abc_rev4tap(del)) <: (+, -);
+			};
+//
+abc_rev4reinjblock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, abc_interlace2(2)) : (_, _, +, +);
+//
+abc_rev4permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
+//
+abc_doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
+//
+abc_rev4reinjblock2stereo(g) = (((_, _) <: ((-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (abc_doubler4to8, _, _) : (abc_rev4permutation, _, _) : (-, -, +, +, *(g), *(g));
+//
+abc_rev4reinjblock2quadri(g) = (((_, _) <: (_, _, (-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (_, _, abc_doubler4to8, _, _) : (_, _, abc_rev4permutation, _, _) : (*(g), *(g), -, -, +, +, *(g), *(g));
+//
+abc_reinjBlock3 = (abc_rev4tap(58.643494), abc_rev4tap(69.432503), abc_rev4tap(74.523392), abc_rev4tap(86.12439));
+//
+abc_rev4stereo(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2stereo(g)) ~ (abc_reinjBlock3, !, !) : (!, !, !, !, _, _);
+//
+abc_rev4stereo_obj = abc_rev4stereo(revDur, revGain)
+			with {
+				//2 controls: revDur which is the duration of the reverb (127 is infinite)
+				//revAmp is the amplitude of the output sound of the reverb
+				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
+				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
+};
+//
+abc_rev4quadri(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2quadri(g)) ~ (!, !, abc_reinjBlock3, !, !) : (_, _, !, !, !, !, _, _);
+//
+abc_rev4quadri_obj = abc_rev4quadri(revDur, revGain)
+			with {
+				//2 controls: revDur which is the duration of the reverb (127 is infinite)
+				//revAmp is the amplitude of the output sound of the reverb
+				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
+				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
+};
+//
+//--------------------------------------------------------------------------------------//
 //INTERLACE FUNCTIONS WITH 2 OR 3 SETS OF SIGNALS
 //--------------------------------------------------------------------------------------//
 //
