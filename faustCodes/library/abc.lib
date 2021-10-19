@@ -13,15 +13,20 @@ declare name "abclib";
 //
 import("stdfaust.lib");
 //
-//--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
 //
-//MAIN PROCESSES OF THE ABCLIB LIBRARY 
+//THE ABCLIB LIBRARY INCLUDES 2 TYPES OF FUNCTIONS
 //- WITH THEIR CONTROL INTERFACE: _obj suffix in the name of the function (to refer to the idea of an object as in Max or PureData)
 //- WITHOUT ANY CONTROL INTERFACE: no suffix in the name of the function
 //
+//
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
+//
+//					AMBISONIC BASIC FUNCTIONS AND PROCESSES (SYN, FX)
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
@@ -475,7 +480,7 @@ abc_2d_syn_ringmod_obj(n) = _ <: si.bus(n) : abc_2d_fx_ringmod_obj(n);
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
-//MULTICHANNEL FUNCTIONS
+//MULTICHANNEL FUNCTIONS - SYNTHESIS AND PROCESSES
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -740,13 +745,300 @@ abc_matrix_obj(n, m) = thismatrix
 				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
 //
-//--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
 //
-//UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS, WITH NO INTERFACE
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
+//
+//								MONO SYNTHESES OR PROCESSES
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//
+//
+//
+//--------------------------------------------------------------------------------------//
+//PEAKAMP ON N SAMPLES
+//--------------------------------------------------------------------------------------//
+//
+abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
+	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
+	resetMax = ba.pulse(n)@1;
+	getPeak = ba.pulse(n);
+};
+//
+abc_peakamp_obj = abc_peakamp(nsamp)
+		with {
+			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
+		};
+//
+//--------------------------------------------------------------------------------------//
+//SOUNDDETECTOR
+//--------------------------------------------------------------------------------------//
+//
+abc_impulse = _ <: _, mem : - : (_ > 0.0);
+abc_release(n) = + ~ (_ <: _, (_ > 0) / n : -);
+abc_trigger(n) = abc_impulse : abc_release(n) : _ > 0;
+abc_onetozero(n) = abc_impulse : abc_release(n) : min(1) : max(0);
+//
+abc_impulsedec = _ <: _, mem : - : (_ < 0.0);
+abc_triggerdec(n) = abc_impulsedec : abc_release(n) : _ > 0;
+abc_onetozerodec(n) = abc_impulsedec : abc_release(n) : min(1) : max(0);
+//
+abc_offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
+//
+abc_millisec = ma.SR / 1000.0;
+//
+abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
+	with {
+			
+			nsamp = int(measureDur*abc_millisec);
+			nsampNoteOn = int(noteDur*abc_millisec);
+			nsampOff = int(offDur*abc_millisec);
+			measuredLevel = x : abc_peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
+			previousMeasuredLevel = measuredLevel@(nsamp);
+			ascendingInput = measuredLevel >= previousMeasuredLevel;
+			//attack type = 0 or 1
+			//0 = attack is detected as soon as the measured level is higher than thresh//
+			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
+			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
+			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
+			noteOnPhase = max((attackTrig : abc_trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
+			noteOffPhase = releaseTrig : abc_trigger(nsampOff);
+	};
+//
+abc_sounddetector_obj(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
+		with {
+			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
+			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
+			noteOn = nentry("v:Detector/h:calibration_dB/noteOn [unit:dB]", -60, -120, 0, 1) : si.smoo;
+			attack = nentry("v:Detector/h:soundFollow/attack", 0, 0, 1, 1);
+			tSlice = nentry("v:Detector/h:soundFollow/tSlice", 10, 1, 100, 1);
+			noteDur = nentry("v:Detector/h:noteOnOff/noteDur [unit:msec]", 50, 1, 500, 1) : si.smoo;
+			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
+		};
+//
+abc_fullsounddetector_obj = _ <:(abc_offbeforeuse, abc_sounddetector_obj) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
+	with {
+		delta = 20 * abc_millisec; //20 msec impulsion for attack or release//
+	};
+//
+//--------------------------------------------------------------------------------------//
+//REV4 REVERBERATION
+//--------------------------------------------------------------------------------------//
+//
+abc_rev4tap(del) = de.delay(65536, int(del * abc_millisec));
+//
+abc_rev4cascadblock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMinusBlock(25.796) : plusMinusBlock(19.391993) : plusMinusBlock(16.363997) : (_, abc_rev4tap(13.645))
+			with {
+					initBlock(del) = _ <: (_, abc_rev4tap(del)) <: (+, -);
+					plusMinusBlock(del) = (_, abc_rev4tap(del)) <: (+, -);
+			};
+//
+abc_rev4reinjblock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, abc_interlace2(2)) : (_, _, +, +);
+//
+abc_rev4permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
+//
+abc_doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
+//
+abc_rev4reinjblock2stereo(g) = (((_, _) <: ((-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (abc_doubler4to8, _, _) : (abc_rev4permutation, _, _) : (-, -, +, +, *(g), *(g));
+//
+abc_rev4reinjblock2quadri(g) = (((_, _) <: (_, _, (-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (_, _, abc_doubler4to8, _, _) : (_, _, abc_rev4permutation, _, _) : (*(g), *(g), -, -, +, +, *(g), *(g));
+//
+abc_reinjBlock3 = (abc_rev4tap(58.643494), abc_rev4tap(69.432503), abc_rev4tap(74.523392), abc_rev4tap(86.12439));
+//
+abc_rev4stereo(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2stereo(g)) ~ (abc_reinjBlock3, !, !) : (!, !, !, !, _, _);
+//
+abc_rev4stereo_obj = abc_rev4stereo(revDur, revGain)
+			with {
+				//2 controls: revDur which is the duration of the reverb (127 is infinite)
+				//revAmp is the amplitude of the output sound of the reverb
+				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
+				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
+};
+//
+abc_rev4quadri(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2quadri(g)) ~ (!, !, abc_reinjBlock3, !, !) : (_, _, !, !, !, !, _, _);
+//
+abc_rev4quadri_obj = abc_rev4quadri(revDur, revGain)
+			with {
+				//2 controls: revDur which is the duration of the reverb (127 is infinite)
+				//revAmp is the amplitude of the output sound of the reverb
+				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
+				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
+};
+//
+//--------------------------------------------------------------------------------------//
+//RAINDROPS
+//--------------------------------------------------------------------------------------//
+//
+abc_raindrops(df, dthi, af, att, q, g) = (variableFrequency, exciter) : (_, reson) : envelope : * <: output with {
+	//
+	//df is the frequency of appearance of drops
+	//dthi is the thinness of the drops
+	//af is the average frequency for the randomization of frequencies
+	//att is the duration of the attack of the envelope
+	//rel is the duration of the release of the envelope
+	//
+	//constants for freq randomization
+	randomPeriodAmp = 2000; //in milliseconds
+	//
+	//reson filter gain
+	fg = 0.05;//
+	//
+	//constants for the drop envelope
+	releasedur = 0.1; //release duration, 100 milliseconds by default
+	//
+	//to calibrate the randomization of the frequency of the filter
+	randomizedFrequencyCalibration = +(1) : *(0.5) : *(af) : +(af);
+	//to calibrate the randomization of the duration between two successive frequency randomization
+	randomizedDurationCalibration = +(1) : *(0.5) : *(randomPeriodAmp) : *(0.1) : +(1) : /(1000) : *(ma.SR) : int;
+	//
+	permutation(a,b) = (b, a);
+	variablePulseAndDuration = ((ba.pulse <: (_, _), (no.noise : randomizedDurationCalibration)) : (_, ba.sAndH) : permutation) ~ (+(10)) : (!, _);
+	variableFrequency = ((variablePulseAndDuration <: (_, _)), (no.noise : randomizedFrequencyCalibration)) : (_, ba.sAndH);
+	reson(f) = fi.resonbp(f, q, 0.05);
+	exciter = os.phasor(1, df) : *(-dthi) : +(1) : abc_ampclip;
+	envelope = (en.ar(att, releasedur), _) : (+(1), _);
+	output = (co.limiter_1176_R4_mono, _) : (*(limiter), *(1-limiter)) : + : *(g);
+};
+//
+abc_raindrops_obj = abc_raindrops(dropfreq, dropthinness, avgfreq, attackdur, qf, gain)
+			with {
+				//period of the drops
+				dropperiod = hslider("v:drops/dropperiod", 1000, 1, 10000, 0.01);
+				dropfreq = 1000. / dropperiod;
+				//
+				//quality factor of the reson filter
+				qf = hslider("v:drops/qf", 50, 1, 1000, 1); //quality factor for the reson filter, 50 by default
+				//
+				//use of the limiter or not
+				limiter = nentry("v:drops/limiter", 1, 0, 1, 1) : si.smoo;
+				//
+				//average randomized frequency
+				avgfreq = hslider("v:drops/avgfreq", 1407, 50, 10000, 0.01);
+				//
+				//attack duration in milliseconds (then converted to seconds)
+				//
+				attackdur = hslider("v:drops/attackdur", 5, 1, 100, 1) / 1000 ; //attack duration, 5 milliseconds by default
+				//
+				//impulsion thinness
+				//
+				dropthinness = hslider("v:drops/dropthinness", 50, 0.01, 1000, 0.01); //must be > 0
+				//
+				gain = hslider("v:drops/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+};
+//
+//--------------------------------------------------------------------------------------//
+//GENERATOR - NOISE / SINUS / PHASOR
+//--------------------------------------------------------------------------------------//
+//
+abc_globalgenerator_obj = (noisegenerator, sinusgenerator, phasorgenerator) :> *(gain)
+			with {
+				gain = hslider("v:generator/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				//
+				//controls for the noise generator
+				//
+				noiseonoff = checkbox("v:generator/h:noise/noiseon") : si.smoo;
+				noisecutoff = hslider("v:generator/h:noise/noisecutoff [unit:Hz]", 1760, 20, 20000, 0.01);
+				noisepulserate = hslider("v:generator/h:noise/noisepulserate [unit:Hz]", 3, 0.01, 20, 0.01) * 0.5;
+				noisepulseratio = hslider("v:generator/h:noise/noisepulseratio", 1, 0, 10, 1);
+				//
+				//controls for the sinus generator
+				//
+				sinusonoff = checkbox("v:generator/h:sinus/sinuson") : si.smoo;
+				sinusfreq = hslider("v:generator/h:sinus/sinusfreq [unit:Hz]", 440, 20, 20000, 0.01);
+				sinuspulserate = hslider("v:generator/h:sinus/sinuspulserate [unit:Hz]", 3, 0.01, 20, 0.01) * 0.5;
+				sinuspulseratio = hslider("v:generator/h:sinus/sinuspulseratio", 1, 0, 10, 1);
+				//
+				//controls for the phasor generator
+				//
+				phasoronoff = checkbox("v:generator/h:phasor/phasoron") : si.smoo;
+				phasorfreq = hslider("v:generator/h:phasor/phasorfreq [unit:Hz]", 440, 20, 20000, 0.01);
+				phasorpulserate = hslider("v:generator/h:phasor/phasorpulserate [unit:Hz]", 3, 0.01, 20, 0.01) * 0.5;
+				phasorpulseratio = hslider("v:generator/h:phasor/phasorpulseratio", 1, 0, 10, 1);
+				//
+				//noise, sinus and phasor generators
+				noisegenerator = (no.noise, abc_pulsedenv(noisepulserate, noisepulseratio)) : * : *(noiseonoff) : fi.resonlp(noisecutoff, 5, 0.75);
+				sinusgenerator = (os.osccos(sinusfreq), abc_pulsedenv(sinuspulserate, sinuspulseratio)) : * : *(sinusonoff);
+				phasorgenerator = (os.phasor(1, phasorfreq), abc_pulsedenv(phasorpulserate, phasorpulseratio)) : * : *(phasoronoff);
+};
+//
+//--------------------------------------------------------------------------------------//
+//RISSET'S BELL
+//--------------------------------------------------------------------------------------//
+//
+abc_rissetsbell_obj = (_, gate) <: (bell1, bell2, bell3, bell4, bell5, bell6, bell7, bell8, bell9, bell10, bell11)
+			with {
+				//
+				//global parameters to control the features of the bell
+				//
+				dur = hslider("v:rissetbell/dur [unit:msec]", 5000, 10, 600000, 1) / 1000;//global duration in milliseconds
+				freq = hslider("v:rissetbell/freq [unit:Hz]", 440, 1, 10000, 0.01);
+				pfreq2 = hslider("v:rissetbell/pfreq2 [unit:Hz]", 1, 0, 10, 0.001) : si.smoo;
+				//
+				//global parameters to control the reson bandpass filters//
+				//
+				resq = nentry("resq", 1000., 0., 1000., 0.1);//reson quality factor//
+				resg = nentry("resg", 0.1, 0., 1., 0.01);//reson gain//
+				//
+				//global parameter between generation and filtering
+				//
+				osc2filter = nentry("osc2filter", 0., 0., 1., 0.01) : si.smoo;
+				//
+				//global amplitude of the bell
+				//
+				gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				//
+				//triggering of the bell
+				gate = button("gate");
+				//
+				bellEnveloppe(attack, rdur) = (0.005, bellDur, _) : en.ar : *(envamp) <:(_, _) : * <:(_, _) : *
+						with {
+							envamp = sqrt(sqrt(attack * 0.1));
+							bellDur = rdur * dur;
+				};
+				//
+				bellOscillator2(rfreq, detune) = (os.osccos(fr1), os.osccos(fr2)) : (*(a1), *(a2)) : +
+						with {
+							fr1 = rfreq*freq+detune;
+							fr2 = fr1 * pfreq2;	
+							test = (pfreq2 == 1.);
+							a1 = 0.5*(1+test);
+							a2 = 0.5*(1-test);
+				};
+				//
+				bellGenerator2(attack, rdur, rfreq, detune) = crossoscfilter : *(gain)
+						with {
+							fc = rfreq*freq+detune;
+							filter = fi.resonbp(fc, resq, resg);
+							crossoscfilter = (osc2filter*filter+(1-osc2filter)*bellOscillator2(rfreq, detune))*bellEnveloppe(attack, rdur);
+				};
+				//
+				bell1 = bellGenerator2(1, 1, 0.56, 0.);
+				bell2 = bellGenerator2(0.67, 0.9, 0.56, 1.);
+				bell3 = bellGenerator2(1, 0.65, 0.92, 0.);
+				bell4 = bellGenerator2(1.8, 0.55, 0.92, 1.7);
+				bell5 = bellGenerator2(2.67, 0.325, 1.19, 0.);
+				bell6 = bellGenerator2(1.67, 0.35, 1.7, 0.);
+				bell7 = bellGenerator2(1.46, 0.25, 2., 0.);
+				bell8 = bellGenerator2(1.33, 0.2, 2.74, 0.);
+				bell9 = bellGenerator2(1.33, 0.15, 3., 0.);
+				bell10 = bellGenerator2(1., 0.1, 3.76, 0.);
+				bell11 = bellGenerator2(1.33, 0.075, 4.07, 0.);
+};
+//
+//
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//					UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//
 //
 //--------------------------------------------------------------------------------------//
 //DOUBLE OVERLAPPED DELAY
@@ -971,71 +1263,6 @@ abc_linedrive_obj = (_, 30, 127, outputmax, expcurve, 30) : abc_pdlinedrive
 abc_mult2pi = *(2. * ma.PI);
 //
 //--------------------------------------------------------------------------------------//
-//PEAKAMP ON N SAMPLES
-//--------------------------------------------------------------------------------------//
-//
-abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
-	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
-	resetMax = ba.pulse(n)@1;
-	getPeak = ba.pulse(n);
-};
-//
-abc_peakamp_obj = abc_peakamp(nsamp)
-		with {
-			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
-		};
-//
-//--------------------------------------------------------------------------------------//
-//SOUNDDETECTOR
-//--------------------------------------------------------------------------------------//
-abc_impulse = _ <: _, mem : - : (_ > 0.0);
-abc_release(n) = + ~ (_ <: _, (_ > 0) / n : -);
-abc_trigger(n) = abc_impulse : abc_release(n) : _ > 0;
-abc_onetozero(n) = abc_impulse : abc_release(n) : min(1) : max(0);
-//
-abc_impulsedec = _ <: _, mem : - : (_ < 0.0);
-abc_triggerdec(n) = abc_impulsedec : abc_release(n) : _ > 0;
-abc_onetozerodec(n) = abc_impulsedec : abc_release(n) : min(1) : max(0);
-//
-abc_offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
-//
-abc_millisec = ma.SR / 1000.0;
-//
-abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
-	with {
-			
-			nsamp = int(measureDur*abc_millisec);
-			nsampNoteOn = int(noteDur*abc_millisec);
-			nsampOff = int(offDur*abc_millisec);
-			measuredLevel = x : abc_peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
-			previousMeasuredLevel = measuredLevel@(nsamp);
-			ascendingInput = measuredLevel >= previousMeasuredLevel;
-			//attack type = 0 or 1
-			//0 = attack is detected as soon as the measured level is higher than thresh//
-			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
-			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
-			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
-			noteOnPhase = max((attackTrig : abc_trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
-			noteOffPhase = releaseTrig : abc_trigger(nsampOff);
-	};
-//
-abc_sounddetector_obj(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
-		with {
-			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
-			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
-			noteOn = nentry("v:Detector/h:calibration_dB/noteOn [unit:dB]", -60, -120, 0, 1) : si.smoo;
-			attack = nentry("v:Detector/h:soundFollow/attack", 0, 0, 1, 1);
-			tSlice = nentry("v:Detector/h:soundFollow/tSlice", 10, 1, 100, 1);
-			noteDur = nentry("v:Detector/h:noteOnOff/noteDur [unit:msec]", 50, 1, 500, 1) : si.smoo;
-			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
-		};
-//
-abc_fullsounddetector_obj = _ <:(abc_offbeforeuse, abc_sounddetector_obj) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
-	with {
-		delta = 20 * abc_millisec; //20 msec impulsion for attack or release//
-	};
-//
-//--------------------------------------------------------------------------------------//
 //ENVELOPE FOLLOWER
 //--------------------------------------------------------------------------------------//
 //
@@ -1133,48 +1360,9 @@ abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
 };
 //
 //--------------------------------------------------------------------------------------//
-//BLOCKS TO BUILD REV4 REVERBERATION
+//PULSED ENVELOPE
 //--------------------------------------------------------------------------------------//
-//
-abc_rev4tap(del) = de.delay(65536, int(del * abc_millisec));
-//
-abc_rev4cascadblock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMinusBlock(25.796) : plusMinusBlock(19.391993) : plusMinusBlock(16.363997) : (_, abc_rev4tap(13.645))
-			with {
-					initBlock(del) = _ <: (_, abc_rev4tap(del)) <: (+, -);
-					plusMinusBlock(del) = (_, abc_rev4tap(del)) <: (+, -);
-			};
-//
-abc_rev4reinjblock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, abc_interlace2(2)) : (_, _, +, +);
-//
-abc_rev4permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
-//
-abc_doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
-//
-abc_rev4reinjblock2stereo(g) = (((_, _) <: ((-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (abc_doubler4to8, _, _) : (abc_rev4permutation, _, _) : (-, -, +, +, *(g), *(g));
-//
-abc_rev4reinjblock2quadri(g) = (((_, _) <: (_, _, (-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (_, _, abc_doubler4to8, _, _) : (_, _, abc_rev4permutation, _, _) : (*(g), *(g), -, -, +, +, *(g), *(g));
-//
-abc_reinjBlock3 = (abc_rev4tap(58.643494), abc_rev4tap(69.432503), abc_rev4tap(74.523392), abc_rev4tap(86.12439));
-//
-abc_rev4stereo(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2stereo(g)) ~ (abc_reinjBlock3, !, !) : (!, !, !, !, _, _);
-//
-abc_rev4stereo_obj = abc_rev4stereo(revDur, revGain)
-			with {
-				//2 controls: revDur which is the duration of the reverb (127 is infinite)
-				//revAmp is the amplitude of the output sound of the reverb
-				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
-				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
-};
-//
-abc_rev4quadri(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2quadri(g)) ~ (!, !, abc_reinjBlock3, !, !) : (_, _, !, !, !, !, _, _);
-//
-abc_rev4quadri_obj = abc_rev4quadri(revDur, revGain)
-			with {
-				//2 controls: revDur which is the duration of the reverb (127 is infinite)
-				//revAmp is the amplitude of the output sound of the reverb
-				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
-				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
-};
+abc_pulsedenv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : abc_ampclip;
 //
 //--------------------------------------------------------------------------------------//
 //INTERLACE FUNCTIONS WITH 2 OR 3 SETS OF SIGNALS
@@ -1214,15 +1402,29 @@ abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : p
 //--------------------------------------------------------------------------------------//
 //CLIP FUNCTION BETWEEN -1 AND 1
 //--------------------------------------------------------------------------------------//
-abc_clip(x) = (x < -1) * (-1) + (x > 1) + (x >= -1) * (x <= 1) * x;
+abc_generalclip(x, a, b) = b * suptest + a * inftest + x * rangetest
+			with {
+				//general clip between a and b
+				//outputs a if x < a, b if x > b, and x otherwise
+				inftest = (x < a);
+				suptest = (x > b);
+				rangetest = (1 - inftest) * (1 - suptest);
+};
+//usual clip between -1 and 1
+abc_clip = (_, -1, 1) : abc_generalclip;
+//clip as an amplitude between 0 and 1
+abc_ampclip = (_, 0, 1) : abc_generalclip;
+//
+//
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
-//CONSTANTS OF THE ABCLIB LIBRARY
+//								CONSTANTS OF THE ABCLIB LIBRARY
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
+//
 //
 //--------------------------------------------------------------------------------------//
 //Maximum number of samples for a common delay line
