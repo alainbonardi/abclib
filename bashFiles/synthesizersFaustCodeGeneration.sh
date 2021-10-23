@@ -21,17 +21,6 @@ then
 fi
 #
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename1a="../abccommon/abcsoundcoat.dsp"
-associatedcommonfilename1b="../abccommon/abcsoundgrain.dsp"
-utilityfilename1="../abccommon/abcutilities/abcdbcontrol.dsp"
-utilityfilename2="../abccommon/abcutilities/abcplayer.dsp"
-utilityfilename3="../abccommon/abcutilities/abcgranu.dsp"
-utilityfilename4="../abccommon/abcutilities/abcsinenv.dsp"
-associatedcommonfilename2="../abccommon/abcgenerator.dsp"
-associatedcommonfilename3="../abccommon/abcrissetsbell.dsp"
-associatedcommonfilename4="../abccommon/abcdrops.dsp"
-associatedcommonfilename5="../abccommon/abcaudiotester.dsp"
-associatedcommonfilename6="../abccommon/abcadditivefm.dsp"
 #
 #abc_soundcoat.dsp
 #
@@ -43,18 +32,9 @@ do
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_soundcoat\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-    echo "$line" >> $sortie
-done <"$associatedcommonfilename1a"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-    echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = soundcoat(16, f0, randfreq);" >> $sortie
+process = library(\"abc.lib\").abc_soundcoat_obj;" >> $sortie
 #
 #abc_soundgrain.dsp
 #
@@ -66,33 +46,9 @@ do
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_soundgrain\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-    echo "$line" >> $sortie
-done <"$associatedcommonfilename1b"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-    echo "$line" >> $sortie
-done <"$utilityfilename1"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename2"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename3"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename4"
+#writes the process line
 echo "//
-process = soundgrain(freqmult, origFreq, rainstickSamples, rainstickNsamp, gain);" >> $sortie
+process = library(\"abc.lib\").abc_soundgrain_obj;" >> $sortie
 #
 #abc_generator.dsp
 #
@@ -104,18 +60,9 @@ do
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_generator\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-    echo "$line" >> $sortie
-done <"$associatedcommonfilename2"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-    echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = globalgenerator;" >> $sortie
+process = library(\"abc.lib\").abc_globalgenerator_obj;" >> $sortie
 #
 #abc_rissetbell.dsp
 #
@@ -127,18 +74,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_rissetsbell\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename3"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = rissetsbell;" >> $sortie
+process = library(\"abc.lib\").abc_rissetsbell_obj;" >> $sortie
 #
 #abc_drops.dsp
 #
@@ -150,18 +88,9 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_drops\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename4"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = rainDrops(dropfreq, dropthinness, avgfreq, attackdur, qf, gain);" >> $sortie
+process = library(\"abc.lib\").abc_raindrops_obj;" >> $sortie
 #
 #abc_audiotester.dsp
 #
@@ -173,15 +102,6 @@ echo "$line" >> $sortie
 done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_audiotester\";" >> $sortie
-#writes the associated common file
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$associatedcommonfilename5"
-#writes the other common file (utility functions)
-while IFS= read -r line
-do
-echo "$line" >> $sortie
-done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = audiotester;" >> $sortie
+process = library(\"abc.lib\").abc_audiotester_obj;" >> $sortie
