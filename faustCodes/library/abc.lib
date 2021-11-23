@@ -276,9 +276,6 @@ abc_2d_squareAndZTrajectory_obj = abc_2d_squareZ(freq, size, crossfade)
 //THEREFORE DELAYS ARE PROGRESSIVELY REVEALED WHEN THE FACTOR INCREASES
 //WHEN THE FACTOR IS CLOSE TO 0, ONLY UPPER COMPONENTS ARE DELAYED
 //WHEN THE FACTOR INCREASES, MORE AND MORE COMPONENTS ARE DELAYED
-//FOR SYN DECORRELATION : 
-//WHEN THE FACTOR IS BETWEEN [0, 1 / P] UPPER HARMONICS ARE PROGRESSIVELY FADED AND THE LEVEL OF THE H0 COMPONENT IS COMPENSATED
-//TO AVOID SOURCE LOCALIZATION AND TO PRODUCE A LARGE MONO
 //
 //H					THRESHOLD			DELAY
 //0					1-1/P				0 OR DELAY*F(1/P)
@@ -299,7 +296,7 @@ abc_2d_squareAndZTrajectory_obj = abc_2d_squareZ(freq, size, crossfade)
 //--------------------------------------------------------------------------------------//
 //fx decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_2d_fx_decorrelation_obj(n) = abc_2d_fx_decorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
+abc_2d_fx_decorrelation_obj(n) = thisfxdecorrelator 
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
@@ -308,55 +305,25 @@ abc_2d_fx_decorrelation_obj(n) = abc_2d_fx_decorrelation(n, delay, winfreq, fact
 		fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.99, 0.001);
 		functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 21, 1);
 		//
-};
-//
-abc_2d_fx_decorrelation(n, d, f, fa, fd, tf) = par(i, n, gate(d, i, n, fa, tf, f, fd))
+		fxdecorrelation(n, d, f, fa, fd, tf) = par(i, n, abc_fdoverlappeddoubledelay(dur(d, i, n, fa, tf), 262144, f, fd))
 			with {
-                gate(d, i, n, fa, tf, f, fd) = _ <: abc_fdoverlappeddoubledelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
-                //
-                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-                env1c(fa, i, n) = 1 - env1(fa, i, n);
-                //
 				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
-				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x * fa
+				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x
 					with {
 							x = abc_th(ind, i, p);
 					};
-				//duration in samples computed as a sum of the 22 cases//
+					//duration in samples computed as a sum of the 22 cases//
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
+
+		};
+		thisfxdecorrelator = fxdecorrelation(n, delay, winfreq, factor, fdbk, functiontype);
 };
 //
 //--------------------------------------------------------------------------------------//
 //syn decorrelation process
 //--------------------------------------------------------------------------------------//
+abc_2d_syn_decorrelation_obj(n) = _ <: si.bus(n) : abc_2d_fx_decorrelation_obj(n);
 //
-abc_2d_syn_decorrelation_obj(n) = abc_2d_syn_decorrelation(n, delay, winfreq, factor, fdbk, functiontype)
-	with {
-		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
-		window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
-		winfreq = 1000. / window;
-		factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
-		fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.999, 0.001);
-		functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 21, 1);
-		//
-};
-//
-abc_2d_syn_decorrelation(n, d, f, fa, fd, tf) =  _ <: si.bus(n) : par(i, n, crossFade(d, i, n, fa, tf, f, fd))
-			with {
-				crossFade(d, i, n, fa, tf, f, fd) = _ <: abc_fdoverlappeddoubledelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
-                //
-                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-				env1c(fa, i, n) = 1 - env1(fa, i, n) ; 
-				env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
-                //
-				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
-				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * fa * d * x
-					with {
-							x = abc_th(ind, i, p);
-					};
-				//duration in samples computed as a sum of the 22 cases//
-				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
-};
 //
 //--------------------------------------------------------------------------------------//
 //SYN AND FX DELAY PROCESSES
@@ -468,21 +435,21 @@ abc_2d_syn_grain_obj(n) = thissyngrain
 //FOR EACH SPATIAL COMPONENT #i, THE RESULT IS EITHER THE ORIGINAL SIGNAL OR A RING MODULATED SIGNAL
 //ACCORDING TO A THRESHOLD WHICH IS i/P.
 //THE GENERAL PROCESS IS DRIVEN BY A FACTOR BETWEEN 0 AND 1 AND A MODULATION FREQUENCY F0
-//IF FACTOR IS GREATER THAN THRESHOLD (P-i-1)/P, THE ith RING MODULATOR IS ON WITH CARRIER OF F0*(i+1)/P
-//IN THE CONTRARY IT PROVIDES THE ORIGINAL SIGNAL
+//IF FACTOR IS UNDER THE THRESHOLD i/P, THE ith RING MODULATOR OUTPUTS 0 (TO LET THE ORIGINAL SIGNAL),
+//IN THE CONTRARY IT WORKS AS A REAL RING MODULATOR WITH A MODULATION FREQUENCY OF F0*i/P
 //THEREFORE RING MODULATORS ARE PROGRESSIVELY REVEALED WHEN THE FACTOR INCREASES
 //
-//H					THRESHOLD			    OUTPUT
-//0					(P-1)/P					ORIGINAL OR RING MODULATION BY F0*1/P
-//-1				(P-2)/P					ORIGINAL OR RING MODULATION BY F0*2/P
-//1					(P-3)/P			        ORIGINAL OR RING MODULATION BY F0*3/P
-//-2				(P-4)/P			        ORIGINAL OR RING MODULATION BY F0*4/P
-//2					(P-5)/P			        ORIGINAL OR RING MODULATION BY F0*5/P
+//H					THRESHOLD			OUTPUT
+//0					1/P					ORIGINAL OR RING MODULATION BY F0*1/P
+//-1				2/P					ORIGINAL OR RING MODULATION BY F0*2/P
+//1					3/P					ORIGINAL OR RING MODULATION BY F0*3/P
+//-2				4/P					ORIGINAL OR RING MODULATION BY F0*4/P
+//2					5/P					ORIGINAL OR RING MODULATION BY F0*5/P
 //...
-//-(N-1)			3/P				        ORIGINAL OR RING MODULATION BY F0*(P-3)/P
-//(N-1)				2/P				        ORIGINAL OR RING MODULATION BY F0*(P-2)/P
-//-N				1/P				        ORIGINAL OR RING MODULATION BY F0*(P-1)/P
-//N					0				        ORIGINAL OR RING MODULATION BY F0*P/P=F0
+//-(N-1)			(P-3)/P				ORIGINAL OR RING MODULATION BY F0*(P-3)/P
+//(N-1)				(P-2)/P				ORIGINAL OR RING MODULATION BY F0*(P-2)/P
+//-N				(P-1)/P				ORIGINAL OR RING MODULATION BY F0*(P-1)/P
+//N					P/P=1				ORIGINAL OR RING MODULATION BY F0*P/P=F0
 //
 //--------------------------------------------------------------------------------------//
 //
@@ -490,58 +457,25 @@ abc_2d_syn_grain_obj(n) = thissyngrain
 //fx ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_ringmod_obj(n) = abc_2d_fx_ringmod(f0, n, factor, functiontype)
+abc_2d_fx_ringmod_obj(n) = thisfxringmod
 	with {
 		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
-		functiontype = hslider("functiontype", 0, 0, 21, 1);
-};
-//
-abc_2d_fx_ringmod(f, n, fa, tf) = par(i, n, gate_ringmod(f, i, n, fa, tf))
-	with{
 		//
-		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-		env1c(fa, i, n) = 1 - env1(fa, i, n);
-		//
-		gate_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) : +	;
-		//
-		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
+		ambi_ringmod(f, i, n, fa) = _ <: (*(os.osccos(ringmodfreq(f, i, n))), _) : (*(c), *(1-c)) : +	
 			with {
-				x = abc_th(ind, i, n);
-				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
-			};
-			//
-		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
+				c = (fa >= ((i+1)/n)) : si.smooth(ba.tau2pole(0.005));
+				ringmodfreq(f, i, n) = f * (i+1) / n;
+		};
+		thisfxringmod = par(i, n, ambi_ringmod(f0, i, n, factor));
 };
 //
 //--------------------------------------------------------------------------------------//
 //syn ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_ringmod_obj(n) = abc_2d_syn_ringmod(f0, n, factor, functiontype)
-	with {
-		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
-		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
-		functiontype = hslider("functiontype", 0, 0, 21, 1);
-};
+abc_2d_syn_ringmod_obj(n) = _ <: si.bus(n) : abc_2d_fx_ringmod_obj(n);
 //
-abc_2d_syn_ringmod(f, n, fa, tf) = _ <: si.bus(n) : par(i, n, crossfade_ringmod(f, i, n, fa, tf))
-	with{
-		//
-		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-		env1c(fa, i, n) = 1 - env1(fa, i, n);
-		env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
-		//
-		crossfade_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);	
-		//
-		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
-			with {
-				x = abc_th(ind, i, n);
-				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
-			};
-			//
-		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
-};
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -1514,14 +1448,8 @@ abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : p
 //--------------------------------------------------------------------------------------//
 //CLIP FUNCTION BETWEEN -1 AND 1
 //--------------------------------------------------------------------------------------//
-abc_generalclip(x, a, b) = b * suptest + a * inftest + x * rangetest
-			with {
-				//general clip between a and b
-				//outputs a if x < a, b if x > b, and x otherwise
-				inftest = (x < a);
-				suptest = (x > b);
-				rangetest = (1 - inftest) * (1 - suptest);
-};
+abc_generalclip(x, a, b) = min(max(x, a), b);
+//
 //usual clip between -1 and 1
 abc_clip = (_, -1, 1) : abc_generalclip;
 //clip as an amplitude between 0 and 1
