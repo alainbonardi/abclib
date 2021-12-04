@@ -35,5 +35,5 @@ do
 echo "declare name \"abc_flanger$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multiflanger_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multiflanger_ui($i);" >> $sortie
 done

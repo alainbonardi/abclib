@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_harmo10";
 //
-process = library("abc.lib").abc_multiharmo_obj(10);
+process = library("abc.lib").abc_multiharmo_ui(10);

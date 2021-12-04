@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_multinoise5";
 //
-process = library("abc.lib").abc_multinoise_obj(5);
+process = library("abc.lib").abc_multinoise_ui(5);

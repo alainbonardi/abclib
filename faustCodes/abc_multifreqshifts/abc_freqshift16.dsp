@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_freqshift16";
 //
-process = library("abc.lib").abc_multifreqshift_obj(16);
+process = library("abc.lib").abc_multifreqshift_ui(16);

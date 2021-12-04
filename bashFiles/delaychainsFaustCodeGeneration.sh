@@ -36,5 +36,5 @@ do
     echo "declare name \"abc_delaychain$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_delaychain_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_delaychain_ui($i);" >> $sortie
 done

@@ -34,7 +34,7 @@ done <"$headerfilename"
 echo "declare name \"abc_soundcoat\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_soundcoat_obj;" >> $sortie
+process = library(\"abc.lib\").abc_soundcoat_ui;" >> $sortie
 #
 #abc_soundgrain.dsp
 #
@@ -48,7 +48,7 @@ done <"$headerfilename"
 echo "declare name \"abc_soundgrain\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_soundgrain_obj;" >> $sortie
+process = library(\"abc.lib\").abc_soundgrain_ui;" >> $sortie
 #
 #abc_generator.dsp
 #
@@ -62,7 +62,7 @@ done <"$headerfilename"
 echo "declare name \"abc_generator\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_globalgenerator_obj;" >> $sortie
+process = library(\"abc.lib\").abc_globalgenerator_ui;" >> $sortie
 #
 #abc_rissetbell.dsp
 #
@@ -76,7 +76,7 @@ done <"$headerfilename"
 echo "declare name \"abc_rissetsbell\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_rissetsbell_obj;" >> $sortie
+process = library(\"abc.lib\").abc_rissetsbell_ui;" >> $sortie
 #
 #abc_drops.dsp
 #
@@ -90,7 +90,7 @@ done <"$headerfilename"
 echo "declare name \"abc_drops\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_raindrops_obj;" >> $sortie
+process = library(\"abc.lib\").abc_raindrops_ui;" >> $sortie
 #
 #abc_audiotester.dsp
 #
@@ -104,4 +104,4 @@ done <"$headerfilename"
 echo "declare name \"abc_audiotester\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_audiotester_obj;" >> $sortie
+process = library(\"abc.lib\").abc_audiotester_ui;" >> $sortie

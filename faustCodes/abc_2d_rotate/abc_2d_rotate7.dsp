@@ -10,4 +10,4 @@
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 //
-process = library("abc.lib").abc_2d_rotate_obj(7);
+process = library("abc.lib").abc_2d_rotate_ui(7);

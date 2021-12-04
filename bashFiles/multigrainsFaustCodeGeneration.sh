@@ -36,5 +36,5 @@ do
 echo "declare name \"abc_grain$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multigrain_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multigrain_ui($i);" >> $sortie
 done

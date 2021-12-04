@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_decoder4";
 //
-process = library("abc.lib").abc_2d_decoder_obj(4, 10);
+process = library("abc.lib").abc_2d_decoder_ui(4, 10);

@@ -22,8 +22,6 @@ fi
 #number of channels
 let "Nch = 2 * $amborder + 2"
 headerfilename="../../bashFiles/faustCodeHeader.txt"
-associatedcommonfilename="../abccommon/abcsubstractsynth.dsp"
-utilityfilename1="../abccommon/abcutilities/abcdbcontrol.dsp"
 for i in `seq 1 $Nch`
 do
 sortie="abc_substractsynth$i.dsp"
@@ -34,16 +32,7 @@ sortie="abc_substractsynth$i.dsp"
     done <"$headerfilename"
 #writes the declared name
 echo "declare name \"abc_substractsynth$i\";" >> $sortie
-#writes the associated common file
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$associatedcommonfilename"
-#writes the other common file (utility functions)
-    while IFS= read -r line
-    do
-        echo "$line" >> $sortie
-    done <"$utilityfilename1"
+#writes the process line
 echo "//
-process = multisubstractsynth($i);" >> $sortie
+process = library(\"abc.lib\").abc_substractsynth_ui($i);" >> $sortie
 done

@@ -33,5 +33,5 @@ let "j = 2 * $i + 2"
 echo "declare name \"abc_2d_scope$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_scope_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_scope_ui($i);" >> $sortie
 done

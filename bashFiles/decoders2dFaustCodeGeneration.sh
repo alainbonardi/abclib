@@ -33,5 +33,5 @@ let "j = 2 * $i + 2"
 echo "declare name \"abc_2d_decoder$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_decoder_obj($i, $j);" >> $sortie
+process = library(\"abc.lib\").abc_2d_decoder_ui($i, $j);" >> $sortie
 done

@@ -31,5 +31,5 @@ do
     done <"$headerfilename"
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_rotate_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_rotate_ui($i);" >> $sortie
 done

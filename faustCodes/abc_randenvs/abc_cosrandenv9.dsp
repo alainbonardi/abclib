@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_cosrandenv9";
 //
-process = library("abc.lib").abc_multishorteningenv_obj(9);
+process = library("abc.lib").abc_multishorteningenv_ui(9);

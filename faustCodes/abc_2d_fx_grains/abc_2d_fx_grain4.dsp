@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_fx_grain4";
 //
-process = library("abc.lib").abc_2d_fx_grain_obj(4);
+process = library("abc.lib").abc_2d_fx_grain_ui(4);

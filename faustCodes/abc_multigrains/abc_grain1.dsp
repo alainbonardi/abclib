@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_grain1";
 //
-process = library("abc.lib").abc_multigrain_obj(1);
+process = library("abc.lib").abc_multigrain_ui(1);

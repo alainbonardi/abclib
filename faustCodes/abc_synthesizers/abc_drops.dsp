@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_drops";
 //
-process = library("abc.lib").abc_raindrops_obj;
+process = library("abc.lib").abc_raindrops_ui;

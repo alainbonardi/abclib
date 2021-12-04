@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_rev4quadri";
 //
-process = library("abc.lib").abc_rev4stereo_obj;
+process = library("abc.lib").abc_rev4stereo_ui;

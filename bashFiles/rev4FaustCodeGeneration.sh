@@ -20,7 +20,7 @@ done <"$headerfilename"
 echo "declare name \"abc_rev4quadri\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_rev4stereo_obj;" >> $sortie
+process = library(\"abc.lib\").abc_rev4stereo_ui;" >> $sortie
 #
 #abc_rev4stereo.dsp
 #
@@ -34,4 +34,4 @@ done <"$headerfilename"
 echo "declare name \"abc_rev4stereo\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_rev4quadri_obj;" >> $sortie
+process = library(\"abc.lib\").abc_rev4quadri_ui;" >> $sortie

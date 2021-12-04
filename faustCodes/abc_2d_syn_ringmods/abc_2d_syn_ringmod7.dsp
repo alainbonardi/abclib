@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_syn_ringmod7";
 //
-process = library("abc.lib").abc_2d_syn_ringmod_obj(7);
+process = library("abc.lib").abc_2d_syn_ringmod_ui(7);

@@ -10,4 +10,4 @@
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_chopan8";
-process = library("abc.lib").abc_chowningPan_obj(8);
+process = library("abc.lib").abc_chowningPan_ui(8);

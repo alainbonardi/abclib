@@ -34,5 +34,5 @@ do
 echo "declare name \"abc_gain$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multigain_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multigain_ui($i);" >> $sortie
 done

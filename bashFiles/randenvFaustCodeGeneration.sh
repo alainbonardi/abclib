@@ -35,7 +35,7 @@ do
 echo "declare name \"abc_cosrandenv$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multishorteningenv_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multishorteningenv_ui($i);" >> $sortie
 done
 #creates linear random envelopes
 headerfilename="../../bashFiles/faustCodeHeader.txt"
@@ -51,5 +51,5 @@ done <"$headerfilename"
 echo "declare name \"abc_linrandenv$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multilinrandenv_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multilinrandenv_ui($i);" >> $sortie
 done

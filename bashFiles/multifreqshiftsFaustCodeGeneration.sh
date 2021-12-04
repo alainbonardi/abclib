@@ -36,5 +36,5 @@ do
 echo "declare name \"abc_freqshift$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multifreqshift_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multifreqshift_ui($i);" >> $sortie
 done

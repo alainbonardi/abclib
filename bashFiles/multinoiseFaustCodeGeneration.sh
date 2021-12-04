@@ -35,5 +35,5 @@ sortie="abc_multinoise$i.dsp"
 echo "declare name \"abc_multinoise$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_multinoise_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_multinoise_ui($i);" >> $sortie
 done

@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_busselect10";
 //
-process = library("abc.lib").abc_busselect_obj(10);
+process = library("abc.lib").abc_busselect_ui(10);

@@ -32,5 +32,5 @@ done <"$headerfilename"
 echo "declare name \"abc_2d_map$i\";" >> $sortie
 #writes the process line
 echo "//
-process = (_, _, _) : library(\"abc.lib\").abc_2d_map_obj($i);" >> $sortie
+process = (_, _, _) : library(\"abc.lib\").abc_2d_map_ui($i);" >> $sortie
 done

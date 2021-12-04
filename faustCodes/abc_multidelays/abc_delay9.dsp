@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_delay9";
 //
-process = library("abc.lib").abc_pardelset_obj(9);
+process = library("abc.lib").abc_pardelset_ui(9);

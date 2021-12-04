@@ -33,5 +33,5 @@ do
 echo "declare name \"abc_2d_encoder$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_encoder_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_encoder_ui($i);" >> $sortie
 done

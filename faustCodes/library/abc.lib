@@ -15,7 +15,7 @@ import("stdfaust.lib");
 //
 //
 //THE ABCLIB LIBRARY INCLUDES 2 TYPES OF FUNCTIONS
-//- WITH THEIR CONTROL INTERFACE: _obj suffix in the name of the function (to refer to the idea of an object as in Max or PureData)
+//- WITH THEIR CONTROL INTERFACE: _ui suffix in the name of the function (to refer to the idea of an object as in Max or PureData)
 //- WITHOUT ANY CONTROL INTERFACE: no suffix in the name of the function
 //
 //
@@ -41,32 +41,41 @@ abc_2d_stereodecoder(n, d, g) = thisStereoDecoder
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 }; 
 
-abc_2d_stereodecoder_obj(n) = abc_2d_stereodecoder(n, direct, gain)
+abc_2d_stereodecoder_ui(n) = abc_2d_stereodecoder(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
 };
 
-abc_2d_decoder_obj(n, p) = thisDecoder
+abc_2d_decoder(n, la, d, s, g) = thisDecoder
 	with {
-			direct = 2 * nentry("v:decoder/directangles", 1, 0, 1, 1) - 1; 
-			offset = hslider("v:decoder/angularoffset [unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
-			gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
-			a(ind, nls) = (hslider("v:decoder/a%2ind [unit:deg]", ind * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
-			stereo = nentry("v:decoder/stereo", 0, 0, 1, 1) : si.smoo;
-			ambisonic = 1 - stereo;
+			//p is the number of outputs
+            p = outputs(la);
+			ambi = 1 - s;
 			//
 			//basic irregular decoder
-			//
-			basicIrregularDecoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, a(i,p)))
+			basicIrregularDecoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
 			with {
    					speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 			};
 			//
 			//for stereo decoding
-			basicStereoDecoder(n, p) = (abc_2d_stereodecoder(n, direct, gain), (0 <: si.bus(p-2)));
+			basicStereoDecoder(n, p) = (abc_2d_stereodecoder(n, d, g), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambisonic)), *(stereo), *(stereo), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, gain);
+			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(s), *(s), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, g);
+};
+
+abc_2d_decoder_ui(n, p) = abc_2d_decoder(n, la, direct, stereo, gain) 
+	with {
+			direct = 2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1; 
+			offset = hslider("h:decoder/v:general/[2]angularoffset[unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
+			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
+			stereo = nentry("h:decoder/v:general/[1]stereo", 0, 0, 1, 1) : si.smoo;
+			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
+			//and computed to radians for the decoder function (and adapted according to the clockwise direction, offset, and stereo choice)
+			a(i, nls) = (nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
+			//la = list of angles//
+ 			la = par(i, p, a(i, p));
 };
 
 //
@@ -74,7 +83,7 @@ abc_2d_decoder_obj(n, p) = thisDecoder
 //AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_encoder_obj(n) = thisEncoder
+abc_2d_encoder_ui(n) = thisEncoder
 	with {
 			rotfreq = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
 			rotphase = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
@@ -90,7 +99,7 @@ abc_2d_encoder_obj(n) = thisEncoder
 //2D MAPS
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_map_obj(n) = thisMap
+abc_2d_map_ui(n) = thisMap
 	with {
 		thisMap(sig, r, a) = ho.encoder(n, sig * volume(r), a) : ho.wider(n, ouverture(r))
 			with {
@@ -123,7 +132,7 @@ abc_2d_map_obj(n) = thisMap
 //0 => ORIGINAL + MIRROR SOUND FIELD
 //-1 => MIRROR SOUND FIELD
 //--------------------------------------------------------------------------------------//
-abc_2d_mirror_obj(n) = (*(1), par(i, n, (*(factor), *(1))))
+abc_2d_mirror_ui(n) = (*(1), par(i, n, (*(factor), *(1))))
 		with {
 			factor = hslider("factor", 1, -1, 1, 1) : si.smoo;
 };
@@ -147,7 +156,7 @@ abc_2d_mirror_obj(n) = (*(1), par(i, n, (*(factor), *(1))))
 //The inPhase Optimization optimize energy vector and put all loudspeakers signals 
 //in phase. It should be used for an auditory.
 //--------------------------------------------------------------------------------------//
-abc_2d_optim_obj(n) = thisoptimizer
+abc_2d_optim_ui(n) = thisoptimizer
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
 			thisoptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), (((optimtype == 0) <: si.bus(2*n+1)), ((optimtype ==1) <: si.bus(2*n+1)), ((optimtype == 2) <: si.bus(2*n+1)))) : abc_interlace2(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
@@ -157,7 +166,7 @@ abc_2d_optim_obj(n) = thisoptimizer
 //AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_rotate_obj(n) = thisrotate
+abc_2d_rotate_ui(n) = thisrotate
 		with {
 			rotfreq = hslider("v:rotate/speed [unit:s-1]", 0, -100, 100, 0.001);
 			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
@@ -170,7 +179,7 @@ abc_2d_rotate_obj(n) = thisrotate
 //AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_wider_obj(n) = ho.wider(n, width)
+abc_2d_wider_ui(n) = ho.wider(n, width)
 		with {
 			width = hslider("width", 0, 0, 1, 0.01) : si. smoo;
 };
@@ -179,7 +188,7 @@ abc_2d_wider_obj(n) = ho.wider(n, width)
 //SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_scope_obj(n) = thisscope
+abc_2d_scope_ui(n) = thisscope
 		with {
 			//Control parameter: number of complete cycles (complete drawings) per second
 			refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;//refresh time, default is 10 msec
@@ -207,7 +216,7 @@ abc_2d_scope_obj(n) = thisscope
 //
 abc_2d_square(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (abc_clip, abc_clip) : (*(s), *(s)) : (*(-1), *(1));
 //
-abc_2d_squareTrajectory_obj = abc_2d_square(freq, size)
+abc_2d_squareTrajectory_ui = abc_2d_square(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -223,7 +232,7 @@ abc_2d_z(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
 			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
 };
 //
-abc_2d_zTrajectory_obj = abc_2d_z(freq, size)
+abc_2d_zTrajectory_ui = abc_2d_z(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -243,7 +252,7 @@ abc_2d_random_xy(f, s) = thisRandomPos
 			p(a, b, c, d) = (a, c, b, d);
 			thisRandomPos = (no.multinoise(2), dt, dt) : (temporalFilter, temporalFilter, _, _) : (*(s), *(s), _, _) : p : (abc_line, abc_line);
 };
-abc_2d_randomTrajectory_obj = abc_2d_random_xy(freq, size)
+abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -255,7 +264,7 @@ abc_2d_randomTrajectory_obj = abc_2d_random_xy(freq, size)
 //
 abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : abc_interlace2(2) : (+, +);
 //
-abc_2d_squareAndZTrajectory_obj = abc_2d_squareZ(freq, size, crossfade)
+abc_2d_squareAndZTrajectory_ui = abc_2d_squareZ(freq, size, crossfade)
 			with {
 				freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 				size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -299,7 +308,7 @@ abc_2d_squareAndZTrajectory_obj = abc_2d_squareZ(freq, size, crossfade)
 //--------------------------------------------------------------------------------------//
 //fx decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_2d_fx_decorrelation_obj(n) = abc_2d_fx_decorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
+abc_2d_fx_decorrelation_ui(n) = abc_2d_fx_decorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
@@ -330,7 +339,7 @@ abc_2d_fx_decorrelation(n, d, f, fa, fd, tf) = par(i, n, gate(d, i, n, fa, tf, f
 //syn decorrelation process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_decorrelation_obj(n) = abc_2d_syn_decorrelation(n, delay, winfreq, factor, fdbk, functiontype)
+abc_2d_syn_decorrelation_ui(n) = abc_2d_syn_decorrelation(n, delay, winfreq, factor, fdbk, functiontype)
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
@@ -386,7 +395,7 @@ abc_2d_syn_decorrelation(n, d, f, fa, fd, tf) =  _ <: si.bus(n) : par(i, n, cros
 //fx delay process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_delay_obj(n) = thisfxdelay
+abc_2d_fx_delay_ui(n) = thisfxdelay
 	with {
 		window = hslider("v:synfxdelay/window [unit:msec]", 400, 10, 1000, 1);
 		winfreq = 1000. / window;
@@ -402,7 +411,7 @@ abc_2d_fx_delay_obj(n) = thisfxdelay
 //syn delay process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_delay_obj(n) = _ <: si.bus(n) : abc_2d_fx_delay_obj(n);
+abc_2d_syn_delay_ui(n) = _ <: si.bus(n) : abc_2d_fx_delay_ui(n);
 //
 //--------------------------------------------------------------------------------------//
 //SYN AND FX GRAIN PROCESSES
@@ -428,7 +437,7 @@ abc_2d_syn_delay_obj(n) = _ <: si.bus(n) : abc_2d_fx_delay_obj(n);
 //fx grain process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_grain_obj(n) = thisfxgrain
+abc_2d_fx_grain_ui(n) = thisfxgrain
 	with {
 		grainsize = hslider("v:synfxgrain/grainsize [unit:msec]", 400, 2, 3000, 1);
 		deltime = hslider("v:synfxgrain/deltime [unit:msec]", 100, 2, 5000, 0.01);
@@ -444,7 +453,7 @@ abc_2d_fx_grain_obj(n) = thisfxgrain
 //syn grain process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_grain_obj(n) = thissyngrain
+abc_2d_syn_grain_ui(n) = thissyngrain
 	with {
 		grainsize = hslider("v:synfxgrain/grainsize [unit:msec]", 400, 2, 3000, 1);
 		deltime = hslider("v:synfxgrain/deltime [unit:msec]", 100, 2, 5000, 0.01);
@@ -490,7 +499,7 @@ abc_2d_syn_grain_obj(n) = thissyngrain
 //fx ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_ringmod_obj(n) = abc_2d_fx_ringmod(f0, n, factor, functiontype)
+abc_2d_fx_ringmod_ui(n) = abc_2d_fx_ringmod(f0, n, factor, functiontype)
 	with {
 		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
@@ -518,7 +527,7 @@ abc_2d_fx_ringmod(f, n, fa, tf) = par(i, n, gate_ringmod(f, i, n, fa, tf))
 //syn ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_ringmod_obj(n) = abc_2d_syn_ringmod(f0, n, factor, functiontype)
+abc_2d_syn_ringmod_ui(n) = abc_2d_syn_ringmod(f0, n, factor, functiontype)
 	with {
 		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
@@ -557,7 +566,7 @@ abc_2d_syn_ringmod(f, n, fa, tf) = _ <: si.bus(n) : par(i, n, crossfade_ringmod(
 //ADDITIVE SYNTHESIS
 //--------------------------------------------------------------------------------------//
 //
-abc_addsynth_obj(n) = thisadditivesynth
+abc_addsynth_ui(n) = thisadditivesynth
 			with {
 				//fundamental frequency//
 				f0 = nentry("v:addsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
@@ -577,7 +586,7 @@ abc_addsynth_obj(n) = thisadditivesynth
 //AUDIOTESTER
 //--------------------------------------------------------------------------------------//
 //
-abc_audiotester_obj = thisaudiotester
+abc_audiotester_ui = thisaudiotester
 			with {
 				nmax = 64; //maximum number of loudspeakers
 				n = nentry("v:audiotester/n", 2, 1, nmax, 1); //number of loudspeakers used (from 1 to 64)
@@ -606,7 +615,7 @@ abc_audiotester_obj = thisaudiotester
 //BUS SELECTOR (BUSSELECT)
 //--------------------------------------------------------------------------------------//
 //
-abc_busselect_obj(n) = thisbusselect
+abc_busselect_ui(n) = thisbusselect
 			with {
 				ramp = nentry("v:busselect/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
 				leftOrRight = (nentry("v:busselect/leftOrRight", 0, 0, 1, 1), ramp) : abc_line; //selection between left and right buses
@@ -633,7 +642,7 @@ abc_chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 abc_multiChowningPan(n, ahp, amp) = par(i, n, (abc_chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
 
 //with one input source (exception for one source)
-abc_chowningPan1_obj = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
+abc_chowningPan1_ui = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
@@ -641,7 +650,7 @@ abc_chowningPan1_obj = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
 				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
-abc_chowningPan_obj(n) = abc_multiChowningPan(n, phi0, gain)
+abc_chowningPan_ui(n) = abc_multiChowningPan(n, phi0, gain)
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
@@ -654,7 +663,7 @@ abc_chowningPan_obj(n) = abc_multiChowningPan(n, phi0, gain)
 //PARALLEL DELAYS
 //--------------------------------------------------------------------------------------//
 //
-abc_pardelset_obj(n) = par(i, n, (pardel(i) : *(gain(i))))
+abc_pardelset_ui(n) = par(i, n, (pardel(i) : *(gain(i))))
 			with {
 					tempo = nentry("h:multidelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
 					dur(ind)=((hslider("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min;
@@ -670,13 +679,13 @@ abc_pardelset_obj(n) = par(i, n, (pardel(i) : *(gain(i))))
 //DELAY CHAINS
 //--------------------------------------------------------------------------------------//
 //
-abc_delaychain_obj(n) = thisdelaychain
+abc_delaychain_ui(n) = thisdelaychain
 			with {
 				updatefreq = hslider("h:chaindelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
 				fdbk = hslider("h:chaindelays/v:general/fdbk", 0, 0, 0.99999, 0.0001) : si.smoo;
 				tempo = nentry("h:chaindelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
 				//
-				dur(ind)=((hslider("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
+				dur(ind)=((nentry("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
 				gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : abc_dbtogain;
 				delseq(ind) = abc_overlappeddoubledelay(dur(ind-1), Ndelsamp, updatefreq);
 				//
@@ -703,7 +712,7 @@ abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
 				thismultipleflanger = _ <: par(i, n, flanger(i));
 };
 //
-abc_multiflanger_obj(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
+abc_multiflanger_ui(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
 			with {
 				rate = vslider("h:flanger/rate [unit:Hz]", 0.5, 0.01, 500, 0.001) : si.smoo;
 				depth = vslider("h:flanger/depth [unit:msec]", 40, 0, 1000, 0.001) : si.smoo;
@@ -716,7 +725,7 @@ abc_multiflanger_obj(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
 //MULTI FREQUENCY SHIFTERS
 //--------------------------------------------------------------------------------------//
 //
-abc_multifreqshift_obj(n) = par(i, n, (abc_fshiftp(fr(i)) : *(gain(i))))
+abc_multifreqshift_ui(n) = par(i, n, (abc_fshiftp(fr(i)) : *(gain(i))))
 			with {
 				//Shifting frequencies
 				fr(ind) = hslider("h:multifreqshifts/v:shiftingfreqs/fr%2ind [unit:Hz]", 0, -10000, 10000, 0.001);
@@ -731,7 +740,7 @@ abc_multifreqshift_obj(n) = par(i, n, (abc_fshiftp(fr(i)) : *(gain(i))))
 //
 abc_gainline(n, g) = par(i, n, *(g));
 //
-abc_multigain_obj(n) = abc_gainline(n, gain)
+abc_multigain_ui(n) = abc_gainline(n, gain)
 			with {
 				gain = hslider("v:gains/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 
@@ -741,7 +750,7 @@ abc_multigain_obj(n) = abc_gainline(n, gain)
 //MULTI GRANULATORS
 //--------------------------------------------------------------------------------------//
 //
-abc_multigrain_obj(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_interlace3(n) : par(i, n, abc_granulator(gs(i), dt(i), rrf(i)))) ~ (par(i, n, *(fdbk(i))))
+abc_multigrain_ui(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_interlace3(n) : par(i, n, abc_granulator(gs(i), dt(i), rrf(i)))) ~ (par(i, n, *(fdbk(i))))
 			with {
 				gs(ind) = hslider("h:multigrains/v:grainsizes/gs%2ind [unit:msec]", 400, 2, 3000, 1);
 				dt(ind) = hslider("h:multigrains/v:delsmax/dt%2ind [unit:msec]", 100, 2, 5000, 0.01);
@@ -753,7 +762,7 @@ abc_multigrain_obj(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : abc_
 //MULTI HARMONIZERS
 //--------------------------------------------------------------------------------------//
 //
-abc_multiharmo_obj(n) = par(ind, n, abc_harmonizer(trans(ind), winsize(ind), gain(ind)))
+abc_multiharmo_ui(n) = par(ind, n, abc_harmonizer(trans(ind), winsize(ind), gain(ind)))
 			with {
 				//amount of transposition (in midicents) of the harmonizer #i
 				trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.01);
@@ -767,7 +776,7 @@ abc_multiharmo_obj(n) = par(ind, n, abc_harmonizer(trans(ind), winsize(ind), gai
 //MULTI NOISES
 //--------------------------------------------------------------------------------------//
 //
-abc_multinoise_obj(n) = no.multinoise(n);
+abc_multinoise_ui(n) = no.multinoise(n);
 //
 //--------------------------------------------------------------------------------------//
 //MULTIPLE SHORTENING ENVELOPS
@@ -780,7 +789,7 @@ abc_multishorteningenv(n, f, s) = no.multinoise(n) : par(i, n, abc_shorteningenv
 //MULTIPLE SHORTENING ENVELOPS APPLIED TO N INPUT SIGNALS
 //--------------------------------------------------------------------------------------//
 //
-abc_multishorteningenv_obj(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction) : abc_interlace2(n) : par(i, n, *) 
+abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction) : abc_interlace2(n) : par(i, n, *) 
 			with {
 				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
 				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
@@ -792,7 +801,7 @@ abc_multishorteningenv_obj(n) = par(i, n, _), abc_multishorteningenv(n, freq, ra
 //
 abc_multilinrandenv(n, f, s) = (no.multinoise(n), si.bus(n)) : abc_interlace2(n) : par(i, n, abc_linrandenv(f,s));
 //
-abc_multilinrandenv_obj(n) = abc_multilinrandenv(n, freq, rarefaction)
+abc_multilinrandenv_ui(n) = abc_multilinrandenv(n, freq, rarefaction)
 			with {
 				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
 				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
@@ -803,7 +812,7 @@ abc_multilinrandenv_obj(n) = abc_multilinrandenv(n, freq, rarefaction)
 //MATRICES
 //--------------------------------------------------------------------------------------//
 //
-abc_matrix_obj(n, m) = thismatrix
+abc_matrix_ui(n, m) = thismatrix
 			with {
 				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
 				//
@@ -811,6 +820,29 @@ abc_matrix_obj(n, m) = thismatrix
 				mixer(n,out) 	= par(in, n, *(toggle(in, in+out*n)) ) :> _ ;
 				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
+//
+//--------------------------------------------------------------------------------------//
+//SUBSTRACTIVE SYNTHESIS
+//--------------------------------------------------------------------------------------//
+//
+abc_substractsynth_ui(n) = thissubstractivesynth
+			with {		
+				//fundamental frequency//
+				f0 = hslider("v:substractsynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
+				//general gain
+				gain = hslider("v:substractsynth/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				//filter quality
+				filterQ = hslider("v:substractsynth/filterQ", 50, 1, 500, 1);
+				//filter gain
+				filterG = hslider("v:substractsynth/filterG", 0.8, 0, 1, 0.01);
+				//amplitude of each partial
+				amp(ind) = hslider("v:substractsynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : abc_dbtogain;
+				//frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
+				fmult(ind) = nentry("v:substractsynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
+				//
+				thissubstractivesynth = par(i, n, fi.resonbp(f0 * fmult(i), filterQ, filterG) : *(amp(i)) : *(gain)) ;
+};
+//
 //
 //
 //
@@ -835,7 +867,7 @@ abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
 	getPeak = ba.pulse(n);
 };
 //
-abc_peakamp_obj = abc_peakamp(nsamp)
+abc_peakamp_ui = abc_peakamp(nsamp)
 		with {
 			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
 		};
@@ -875,7 +907,7 @@ abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (not
 			noteOffPhase = releaseTrig : abc_trigger(nsampOff);
 	};
 //
-abc_sounddetector_obj(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
+abc_sounddetector_ui(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
 		with {
 			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
 			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
@@ -886,7 +918,7 @@ abc_sounddetector_obj(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn,
 			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
 		};
 //
-abc_fullsounddetector_obj = _ <:(abc_offbeforeuse, abc_sounddetector_obj) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
+abc_fullsounddetector_ui = _ <:(abc_offbeforeuse, abc_sounddetector_ui) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
 	with {
 		delta = 20 * abc_millisec; //20 msec impulsion for attack or release//
 	};
@@ -917,7 +949,7 @@ abc_reinjBlock3 = (abc_rev4tap(58.643494), abc_rev4tap(69.432503), abc_rev4tap(7
 //
 abc_rev4stereo(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2stereo(g)) ~ (abc_reinjBlock3, !, !) : (!, !, !, !, _, _);
 //
-abc_rev4stereo_obj = abc_rev4stereo(revDur, revGain)
+abc_rev4stereo_ui = abc_rev4stereo(revDur, revGain)
 			with {
 				//2 controls: revDur which is the duration of the reverb (127 is infinite)
 				//revAmp is the amplitude of the output sound of the reverb
@@ -927,7 +959,7 @@ abc_rev4stereo_obj = abc_rev4stereo(revDur, revGain)
 //
 abc_rev4quadri(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2quadri(g)) ~ (!, !, abc_reinjBlock3, !, !) : (_, _, !, !, !, !, _, _);
 //
-abc_rev4quadri_obj = abc_rev4quadri(revDur, revGain)
+abc_rev4quadri_ui = abc_rev4quadri(revDur, revGain)
 			with {
 				//2 controls: revDur which is the duration of the reverb (127 is infinite)
 				//revAmp is the amplitude of the output sound of the reverb
@@ -970,7 +1002,7 @@ abc_raindrops(df, dthi, af, att, q, g, l) = (variableFrequency, exciter) : (_, r
 	output = (co.limiter_1176_R4_mono, _) : (*(l), *(1-l)) : + : *(g);
 };
 //
-abc_raindrops_obj = abc_raindrops(dropfreq, dropthinness, avgfreq, attackdur, qf, gain, limiter)
+abc_raindrops_ui = abc_raindrops(dropfreq, dropthinness, avgfreq, attackdur, qf, gain, limiter)
 			with {
 				//period of the drops
 				dropperiod = hslider("v:drops/dropperiod", 1000, 1, 10000, 0.01);
@@ -1000,7 +1032,7 @@ abc_raindrops_obj = abc_raindrops(dropfreq, dropthinness, avgfreq, attackdur, qf
 //GENERATOR - NOISE / SINUS / PHASOR
 //--------------------------------------------------------------------------------------//
 //
-abc_globalgenerator_obj = (noisegenerator, sinusgenerator, phasorgenerator) :> *(gain)
+abc_globalgenerator_ui = (noisegenerator, sinusgenerator, phasorgenerator) :> *(gain)
 			with {
 				gain = hslider("v:generator/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 				//
@@ -1035,7 +1067,7 @@ abc_globalgenerator_obj = (noisegenerator, sinusgenerator, phasorgenerator) :> *
 //RISSET'S BELL
 //--------------------------------------------------------------------------------------//
 //
-abc_rissetsbell_obj = (_, gate) <: (bell1, bell2, bell3, bell4, bell5, bell6, bell7, bell8, bell9, bell10, bell11)
+abc_rissetsbell_ui = (_, gate) <: (bell1, bell2, bell3, bell4, bell5, bell6, bell7, bell8, bell9, bell10, bell11)
 			with {
 				//
 				//global parameters to control the features of the bell
@@ -1112,7 +1144,7 @@ abc_elemfilter(fund, f, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, fi
 //
 abc_soundcoat(n, fund, f, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : abc_interlace2(n) : par(i, n, abc_elemfilter(fund, f, i+1, n)) :> _ : *(0.08) : *(g);
 //
-abc_soundcoat_obj = abc_soundcoat(16, f0, randfreq, gain)
+abc_soundcoat_ui = abc_soundcoat(16, f0, randfreq, gain)
 			with {
 				f0 = nentry("v:synthetizers/f0 [unit:Hz]", 100, 20, 10000, 0.01);
 				randwin= nentry("v:synthetizers/randwin [unit:msec]", 3000, 1, 20000, 1);
@@ -1132,7 +1164,7 @@ abc_soundgrain(fmult, ofreq, mySamp, numSamp, g) = abc_player((fmult*ofreq), myS
 				p(a, b, c) = (a, c, b);
 };
 //
-abc_soundgrain_obj = abc_soundgrain(freqmult, (ma.SR / rainstickNsamp), rainstickSamples, rainstickNsamp, gain)
+abc_soundgrain_ui = abc_soundgrain(freqmult, (ma.SR / rainstickNsamp), rainstickSamples, rainstickNsamp, gain)
 			with {
 				rainstickNsamp = 144408;
 				//
@@ -1364,7 +1396,7 @@ abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
 abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
 abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
 //
-abc_linedrive_obj = (_, 30, 127, outputmax, expcurve, 30) : abc_pdlinedrive
+abc_linedrive_ui = (_, 30, 127, outputmax, expcurve, 30) : abc_pdlinedrive
 		with {
 			outputmax = hslider("v:linedrive/outputmax", 1, 0, 100000, 0.01);
 			expcurve = hslider("v:linedrive/expcurve", 1.06, 0.00001, 2., 0.00001);
@@ -1379,7 +1411,7 @@ abc_mult2pi = *(2. * ma.PI);
 //ENVELOPE FOLLOWER
 //--------------------------------------------------------------------------------------//
 //
-abc_envfollower_obj = an.amp_follower_ar(attack, release)
+abc_envfollower_ui = an.amp_follower_ar(attack, release)
 		with {
 			attack = hslider("v:envfollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
 			release = hslider("v:envfollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
@@ -1390,7 +1422,7 @@ abc_envfollower_obj = an.amp_follower_ar(attack, release)
 //--------------------------------------------------------------------------------------//
 abc_phasor2pi(f) = os.phasor((2. * ma.PI), f);
 //
-abc_phasor2pi_obj = abc_phasor2pi(freq)
+abc_phasor2pi_ui = abc_phasor2pi(freq)
 		with {
 			freq = hslider("v:phasor2pi/freq [unit:s-1]", 0.1, 0, 20000, 0.00001);
 		};

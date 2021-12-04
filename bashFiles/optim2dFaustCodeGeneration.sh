@@ -32,5 +32,5 @@ sortie="abc_2d_optim$i.dsp"
 echo "declare name \"abc_2d_optim$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_optim_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_optim_ui($i);" >> $sortie
 done

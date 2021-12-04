@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_envfollower";
 //
-process = library("abc.lib").abc_envfollower_obj;
+process = library("abc.lib").abc_envfollower_ui;

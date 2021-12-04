@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_phasor2pi";
 //
-process = library("abc.lib").abc_phasor2pi_obj;
+process = library("abc.lib").abc_phasor2pi_ui;

@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_linrandenv10";
 //
-process = library("abc.lib").abc_multilinrandenv_obj(10);
+process = library("abc.lib").abc_multilinrandenv_ui(10);

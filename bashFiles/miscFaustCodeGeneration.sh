@@ -62,7 +62,7 @@ done <"$headerfilename"
 echo "declare name \"abc_phasor2pi\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_phasor2pi_obj;" >> $sortie
+process = library(\"abc.lib\").abc_phasor2pi_ui;" >> $sortie
 #
 #abc_linedrive.dsp
 #
@@ -76,7 +76,7 @@ done <"$headerfilename"
 echo "declare name \"abc_linedrive\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_linedrive_obj;" >> $sortie
+process = library(\"abc.lib\").abc_linedrive_ui;" >> $sortie
 #
 #abc_peakamp.dsp
 #
@@ -90,7 +90,7 @@ done <"$headerfilename"
 echo "declare name \"abc_peakamp\";" >> $sortie
 #writes the process file
 echo "//
-process = library(\"abc.lib\").abc_peakamp_obj;" >> $sortie
+process = library(\"abc.lib\").abc_peakamp_ui;" >> $sortie
 #
 #abc_sounddetector.dsp
 #
@@ -104,7 +104,7 @@ done <"$headerfilename"
 echo "declare name \"abc_sounddetector\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_fullsounddetector_obj;" >> $sortie
+process = library(\"abc.lib\").abc_fullsounddetector_ui;" >> $sortie
 #
 #abc_envfollower.dsp
 #
@@ -118,4 +118,4 @@ done <"$headerfilename"
 echo "declare name \"abc_envfollower\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_envfollower_obj;" >> $sortie
+process = library(\"abc.lib\").abc_envfollower_ui;" >> $sortie

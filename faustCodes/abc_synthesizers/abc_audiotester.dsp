@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_audiotester";
 //
-process = library("abc.lib").abc_audiotester_obj;
+process = library("abc.lib").abc_audiotester_ui;

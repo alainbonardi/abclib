@@ -33,7 +33,7 @@ do
     echo "declare name \"abc_2d_syn_delay$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_syn_delay_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_syn_delay_ui($i);" >> $sortie
 done
 #now moves to faustCodes directory to create the FX_DELAYS directory and files
 cd ../
@@ -55,5 +55,5 @@ do
     echo "declare name \"abc_2d_fx_delay$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_fx_delay_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_fx_delay_ui($i);" >> $sortie
 done

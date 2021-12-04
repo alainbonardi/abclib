@@ -32,5 +32,5 @@ do
     echo "declare name \"abc_2d_mirror$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_2d_mirror_obj($i);" >> $sortie
+process = library(\"abc.lib\").abc_2d_mirror_ui($i);" >> $sortie
 done
