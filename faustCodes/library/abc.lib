@@ -32,7 +32,25 @@ import("stdfaust.lib");
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_stereodecoder(n, d, g) = thisStereoDecoder
+//-------`(mm.)2dstereodecoder`----------
+// Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
+// either direct (clockwise) or not
+
+// `2dstereodecoder` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_,... : 2dstereodecoder(n,d,g) : _,_
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
+// * `d`: 1 for direct (clockwise) mode, 0 for the indirect (anticlockwise) mode
+// * `g`: global output gain between 0 and 1
+//-----------------------------
+2dstereodecoder(n, d, g) = thisStereoDecoder
 	with {
 			//d is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
@@ -41,11 +59,29 @@ abc_2d_stereodecoder(n, d, g) = thisStereoDecoder
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 }; 
 
-abc_2d_stereodecoder_ui(n) = abc_2d_stereodecoder(n, direct, gain)
+//-------`(mm.)2dstereodecoder_ui`----------
+// Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
+// either direct (clockwise) or not, with a GUI (to set the direction and the gain)
+
+// `2dstereodecoder_ui` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_,... : 2dstereodecoder_ui(n) : _,_
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
+//-----------------------------
+2dstereodecoder_ui(n) = 2dstereodecoder(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
 };
+
+abc_2d_stereodecoder_ui(n) = 2dstereodecoder(n);
 
 abc_2d_decoder(n, la, d, s, g) = thisDecoder
 	with {
