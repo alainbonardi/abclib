@@ -32,16 +32,16 @@ import("stdfaust.lib");
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-//-------`(mm.)2dstereodecoder`----------
+//-------`(mm.)sdecoder`----------
 // Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
 // either direct (clockwise) or not
 
-// `2dstereodecoder` is a standard Faust function.
+// `sdecoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : 2dstereodecoder(n,d,g) : _,_
+// _,_,... : sdecoder(n,d,g) : _,_
 // ```
 //
 // Where:
@@ -50,58 +50,73 @@ import("stdfaust.lib");
 // * `d`: 1 for direct (clockwise) mode, 0 for the indirect (anticlockwise) mode
 // * `g`: global output gain between 0 and 1
 //-----------------------------
-2dstereodecoder(n, d, g) = thisStereoDecoder
+sdecoder(n, d, g) = thisStereoDecoder
 	with {
 			//d is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
 			leftDispatcher = _<:(*(1-d), *(d));
 			rightDispatcher = _<:(*(d), *(1-d));
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
-}; 
+};
 
-//-------`(mm.)2dstereodecoder_ui`----------
+//-------`(mm.)ssdecoder_ui`----------
 // Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
 // either direct (clockwise) or not, with a GUI (to set the direction and the gain)
 
-// `2dstereodecoder_ui` is a standard Faust function.
+// `sdecoder_ui` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : 2dstereodecoder_ui(n) : _,_
+// _,_,... : sdecoder_ui(n) : _,_
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
 //-----------------------------
-2dstereodecoder_ui(n) = 2dstereodecoder(n, direct, gain)
+sdecoder_ui(n) = sdecoder(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
 };
 
-abc_2d_stereodecoder_ui(n) = 2dstereodecoder(n);
+abc_2d_stereodecoder_ui(n) = sdecoder_ui(n);
 
-abc_2d_decoder(n, la, d, s, g) = thisDecoder
+//-------`(mm.)2dIrregularDecoder`----------
+// Irregular decoder in 2D
+
+// `irregularDecoder` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_,... : irregularDecoder(n,d,g) : _,_,...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
+// * `la' : the list of angles, for instance (0, 85, 175, 275) for four loudspeakers
+//-----------------------------
+idecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
+	with {
+			p = outputs(la);
+   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
+};
+
+gdecoder(n, la, d, s, g) = thisDecoder
 	with {
 			//p is the number of outputs
             p = outputs(la);
 			ambi = 1 - s;
 			//
-			//basic irregular decoder
-			basicIrregularDecoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
-			with {
-   					speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
-			};
-			//
 			//for stereo decoding
-			basicStereoDecoder(n, p) = (abc_2d_stereodecoder(n, d, g), (0 <: si.bus(p-2)));
+			paddedStereoDecoder(n, p) = (sdecoder(n, d, g), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = abc_busduplicate(2*n+1) : (basicIrregularDecoder(n, p), basicStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(s), *(s), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, g);
+			thisDecoder = abc_busduplicate(2*n+1) : (idecoder(n, la), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(s), *(s), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, g);
 };
-
-abc_2d_decoder_ui(n, p) = abc_2d_decoder(n, la, direct, stereo, gain) 
+gdecoder_ui(n, p) = gdecoder(n, la, direct, stereo, gain) 
 	with {
 			direct = 2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1; 
 			offset = hslider("h:decoder/v:general/[2]angularoffset[unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
@@ -113,6 +128,8 @@ abc_2d_decoder_ui(n, p) = abc_2d_decoder(n, la, direct, stereo, gain)
 			//la = list of angles//
  			la = par(i, p, a(i, p));
 };
+
+abc_2d_decoder_ui(n, p) = gdecoder_ui(n, p);
 
 //
 //--------------------------------------------------------------------------------------//
