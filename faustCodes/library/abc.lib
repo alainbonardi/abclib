@@ -27,61 +27,13 @@ import("stdfaust.lib");
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
+abc_2d_stereodecoder_ui(n) = library(\"hoa2.lib\").decoderStereo2_ui(n);
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-//-------`(mm.)sdecoder`----------
-// Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
-// either direct (clockwise) or not
 
-// `sdecoder` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : sdecoder(n,d,g) : _,_
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
-// * `d`: 1 for direct (clockwise) mode, 0 for the indirect (anticlockwise) mode
-// * `g`: global output gain between 0 and 1
-//-----------------------------
-sdecoder(n, d, g) = thisStereoDecoder
-	with {
-			//d is direct mode (1) or indirect mode (-1)
-			//g is the absolute gain
-			leftDispatcher = _<:(*(1-d), *(d));
-			rightDispatcher = _<:(*(d), *(1-d));
-			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
-};
-
-//-------`(mm.)ssdecoder_ui`----------
-// Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
-// either direct (clockwise) or not, with a GUI (to set the direction and the gain)
-
-// `sdecoder_ui` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : sdecoder_ui(n) : _,_
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
-//-----------------------------
-sdecoder_ui(n) = sdecoder(n, direct, gain)
-	with {
-			direct = 2 * nentry("v:stereodecoder/directangles", 1, 0, 1, 1) - 1;
-			gain = hslider("v:stereodecoder/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
-};
-
-abc_2d_stereodecoder_ui(n) = sdecoder_ui(n);
 
 //-------`(mm.)2dIrregularDecoder`----------
 // Irregular decoder in 2D

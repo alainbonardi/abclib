@@ -1,0 +1,49 @@
+//-------`(ho.)decoderStereo2`----------
+// Ambisonic stereo decoder in 2D
+// with control of the direction of implementation of the 2 loudspeakers (either direct (clockwise) or not)
+// and output amplitude
+
+// `decoderStereo2` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_,... : decoderStereo2(n,d,g) : _,_
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2 function)
+// * `d`: 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
+// * `g`: global output gain between 0 and 1
+//-----------------------------
+decoderStereo2(n, d, g) = thisStereoDecoder
+	with {
+			//d is direct mode (1) or indirect mode (-1)
+			//g is the absolute gain
+			leftDispatcher = _<:(*(1-d), *(d));
+			rightDispatcher = _<:(*(d), *(1-d));
+			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
+};
+
+//-------`(ho.)decoderStereo2_ui`----------
+// Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
+// either direct (clockwise) or not, with a GUI (to set the direction and the gain)
+
+// `decoderStereo2_ui` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_,... : decoderStereo2_ui(n) : _,_
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2_ui function)
+//-----------------------------
+decoderStereo2_ui(n) = decoderStereo2(n, direct, gain)
+	with {
+			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
+			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+};
