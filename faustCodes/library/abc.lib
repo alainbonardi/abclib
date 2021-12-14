@@ -10,6 +10,7 @@
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abclib";
+declare copyright "2019-2021 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
 //
