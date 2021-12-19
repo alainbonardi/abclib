@@ -13,7 +13,7 @@ declare name "abclib";
 declare copyright "2019-2021 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
-//provisional import of functions in hoa2.lib that will be migrated later to the official ho.lib
+//provisional import of functions in hoa2.lib that will be migrated later to the official hoa.lib
 import("hoa2.lib");
 //
 //
@@ -128,11 +128,7 @@ abc_2d_encoder_ui(n) = encoder2_ui(n);
 //
 abc_2d_map_ui(n) = thisMap
 	with {
-		thisMap(sig, r, a) = ho.encoder(n, sig * volume(r), a) : ho.wider(n, ouverture(r))
-			with {
-				volume(r) = 1. / (r * r * (r > 1) + (r <= 1));
-				ouverture(r) = r * (r <= 1) + (r > 1);
-			};
+		thisMap(x, r, a) = ho.map(n, x, r, a);
 };
 //
 //--------------------------------------------------------------------------------------//
