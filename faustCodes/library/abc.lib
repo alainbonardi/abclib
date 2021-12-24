@@ -113,9 +113,9 @@ abc_2d_decoder_ui(n, p) = decoder2_ui(n, p);
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
 //-----------------------------
-encoder2_ui(n) = encoder2(n, rotfreq, angle, returntime)
+encoder2_ui(n) = encoder2(n, speed, angle, returntime)
 	with {
-			rotfreq = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
+			speed = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
 			angle = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 };
@@ -155,7 +155,7 @@ abc_2d_map_ui(n) = thisMap
 //0 => ORIGINAL + MIRROR SOUND FIELD
 //-1 => MIRROR SOUND FIELD
 //--------------------------------------------------------------------------------------//
-abc_2d_mirror_ui(n) = (*(1), par(i, n, (*(factor), *(1))))
+abc_2d_mirror_ui(n) = mirror(n, factor)
 		with {
 			factor = hslider("factor", 1, -1, 1, 1) : si.smoo;
 };
@@ -179,10 +179,9 @@ abc_2d_mirror_ui(n) = (*(1), par(i, n, (*(factor), *(1))))
 //The inPhase Optimization optimize energy vector and put all loudspeakers signals 
 //in phase. It should be used for an auditory.
 //--------------------------------------------------------------------------------------//
-abc_2d_optim_ui(n) = thisoptimizer
+abc_2d_optim_ui(n) = optim(n, optimtype)
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
-			thisoptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), (((optimtype == 0) <: si.bus(2*n+1)), ((optimtype ==1) <: si.bus(2*n+1)), ((optimtype == 2) <: si.bus(2*n+1)))) : abc_interlace2(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
 };
 //
 //--------------------------------------------------------------------------------------//

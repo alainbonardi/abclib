@@ -1,3 +1,35 @@
+//-------`(ho.)encoder2`----------
+// Ambisonic encoder in 2D
+// a mono signal is encoded at at certain ambisonic order
+// with two possible modes: either rotation with an angular speed, or static with a fixed angle.
+
+// `encoder2` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : encoder2(n, sp, a, it) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
+// * `sp': the speed expressed as angular speed (2PI/sec)
+// * `a`: the fixed angle when the rotation stops (sp = 0)
+// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
+//-----------------------------
+encoder2(n, sp, a, it) = thisEncoder
+	with {
+			basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
+				with {
+						rotationOrStaticAngle = (1-vn) * x + vn * a;
+						vn = (sp == 0) : si.smooth(ba.tau2pole(it));
+						//to manage the case where frequency is zero, smoothly switches from one mode to another//
+						x = (os.phasor(1, sp), a, 1) : (+, _) : fmod;
+				};
+};
+
 //-------`(ho.)decoderStereo2`----------
 // Ambisonic stereo decoder in 2D
 // with control of the direction of implementation of the 2 loudspeakers (either direct (clockwise) or not)
@@ -79,33 +111,55 @@ decoder2(n, la, cw, st, g) = thisDecoder
 			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (irregularAngleDecoder(n, la), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, g);
 };
 
-//-------`(ho.)encoder2`----------
-// Ambisonic encoder in 2D
-// with two modes: either rotation with an angular speed, or static with a fixed angle.
 
-// `encoder2` is a standard Faust function.
+//-------`(ho.)optim`----------
+// Ambisonic optimizer including the three elementary optimizers:
+// - (ho).optimBasic, (ho).optimMaxRe, (ho.)optimInPhase
+//----------------`optimBasic`-------------------------
+//The basic optimization has no effect and should be used for a perfect 
+//circle of loudspeakers with one listener at the perfect center loudspeakers 
+//array.
+//----------------`optimMaxRe`-------------------------
+//The maxRe optimization optimize energy vector. It should be used for an 
+//auditory confined in the center of the loudspeakers array.
+//----------------`optimInPhase`-------------------------
+//The inPhase Optimization optimize energy vector and put all loudspeakers signals 
+//in phase. It should be used for an auditory.
+
+// `optim` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _ : encoder2(n, sp, a, it) : _,_, ...
+// _,_, ... : optim(n, ot) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
-// * `sp': the speed expressed as angular speed (2PI/sec)
-// * `a`: the fixed angle when the rotation stops (sp = 0)
-// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
-//-----------------------------
-encoder2(n, sp, a, it) = thisEncoder
+// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the optim function)
+// * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
+optim(n, ot) = thisOptimizer
 	with {
-			basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
-			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
-				with {
-						rotationOrStaticAngle = (1-vn) * x + vn * a;
-						vn = (sp == 0) : si.smooth(ba.tau2pole(it));
-						//to manage the case where frequency is zero, smoothly switches from one mode to another//
-						x = (os.phasor(1, sp), a, 1) : (+, _) : fmod;
-				};
+			optb = (ot == 0) : si.smoo;
+			optm = (ot == 1) : si.smoo;
+			opti = (ot == 2) : si.smoo;
+			interlace(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
+			thisOptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), ((optb <: si.bus(2*n+1)), (optm <: si.bus(2*n+1)), (opti <: si.bus(2*n+1)))) : interlace(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
 };
+
+//-------`(ho.)mirror`----------
+// Mirroring effect on the sound field
+
+// `mirror` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : mirror(n, fa) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
+mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
