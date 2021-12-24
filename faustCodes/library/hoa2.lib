@@ -163,3 +163,72 @@ optim(n, ot) = thisOptimizer
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
+
+fxDecorrelation(n, d, f, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, f, fd))
+			with {
+                gate(d, i, n, fa, tf, f, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
+				//
+				fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
+                //
+                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
+                env1c(fa, i, n) = 1 - env1(fa, i, n);
+                //
+				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
+				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x * fa
+					with {
+							x = th(ind, i, p);
+					};
+				//duration in samples computed as a sum of the 22 cases//
+				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
+};
+
+synDecorrelation(n, d, f, fa, fd, tf) =  _ <: si.bus(2*n+1) : par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, f, fd))
+			with {
+				crossFade(d, i, n, fa, tf, f, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
+                //
+				fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
+				//
+                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
+				env1c(fa, i, n) = 1 - env1(fa, i, n) ; 
+				env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
+                //
+				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
+				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * fa * d * x
+					with {
+							x = th(ind, i, p);
+					};
+				//duration in samples computed as a sum of the 22 cases//
+				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
+};
+
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+//UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
+//(i+1)/p belongs to [0, 1] and its image by any function also belongs to the interval
+//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//
+th(0, i, p) = (i+1) / p;
+th(1, i, p) = ((i+1) / p)^2;
+th(2, i, p) = sin(ma.PI * 0.5 * (i+1) / p);
+th(3, i, p) = log10(1 + (i+1) / p) / log10(2);
+th(4, i, p) = sqrt((i+1) / p);
+th(5, i, p) = 1 - cos(ma.PI * 0.5 * (i+1) / p);
+th(6, i, p) = (1 - cos(ma.PI * (i+1) / p)) * 0.5;
+th(7, i, p) = 1 - (1 - (i+1) / p )^2;
+th(8, i, p) = ((i+1) / p < 0.5) * 2 * ((i+1) / p)^2 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^2 * 0.5) ;
+th(9, i, p) = ((i+1) / p)^3 ;
+th(10, i, p) = 1 - (1 - (i+1) / p)^3 ;
+th(11, i, p) = ((i+1) / p < 0.5) * 4 * ((i+1) / p)^3 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^3 * 0.5) ;
+th(12, i, p) = ((i+1) / p)^4 ; 
+th(13, i, p) = 1 - (1 - (i+1) / p)^4 ;
+th(14, i, p) = ((i+1) / p < 0.5) * 8 * ((i+1) / p)^4 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^4 * 0.5) ;
+th(15, i, p) = ((i+1) / p)^5 ; 
+th(16, i, p) = 1 - (1 - (i+1) / p)^5 ;
+th(17, i, p) = ((i+1) / p < 0.5) * 16 * ((i+1) / p)^5 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^5 * 0.5) ;
+th(18, i, p) = 2^(10 * (i+1) / p - 10) ;
+th(19, i, p) = ((i+1) / p < 1) * (1 - 2^(-10 * (i+1) / p)) + ((i+1) / p == 1) ;
+th(20, i, p) = 1 - sqrt(1 - ((i+1) / p)^2) ; 
+th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2) ;

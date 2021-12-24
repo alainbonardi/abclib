@@ -330,7 +330,7 @@ abc_2d_squareAndZTrajectory_ui = abc_2d_squareZ(freq, size, crossfade)
 //--------------------------------------------------------------------------------------//
 //fx decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_2d_fx_decorrelation_ui(n) = abc_2d_fx_decorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
+abc_2d_fx_decorrelation_ui(n) = fxDecorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
@@ -340,28 +340,13 @@ abc_2d_fx_decorrelation_ui(n) = abc_2d_fx_decorrelation(n, delay, winfreq, facto
 		functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 21, 1);
 		//
 };
-//
-abc_2d_fx_decorrelation(n, d, f, fa, fd, tf) = par(i, n, gate(d, i, n, fa, tf, f, fd))
-			with {
-                gate(d, i, n, fa, tf, f, fd) = _ <: abc_fdoverlappeddoubledelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
-                //
-                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-                env1c(fa, i, n) = 1 - env1(fa, i, n);
-                //
-				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
-				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x * fa
-					with {
-							x = abc_th(ind, i, p);
-					};
-				//duration in samples computed as a sum of the 22 cases//
-				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
-};
+
 //
 //--------------------------------------------------------------------------------------//
 //syn decorrelation process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_decorrelation_ui(n) = abc_2d_syn_decorrelation(n, delay, winfreq, factor, fdbk, functiontype)
+abc_2d_syn_decorrelation_ui(n) = synDecorrelation(n, delay, winfreq, factor, fdbk, functiontype)
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 100; //by default a window of 100 milliseconds for the interpolation of delays//
@@ -372,22 +357,7 @@ abc_2d_syn_decorrelation_ui(n) = abc_2d_syn_decorrelation(n, delay, winfreq, fac
 		//
 };
 //
-abc_2d_syn_decorrelation(n, d, f, fa, fd, tf) =  _ <: si.bus(n) : par(i, n, crossFade(d, i, n, fa, tf, f, fd))
-			with {
-				crossFade(d, i, n, fa, tf, f, fd) = _ <: abc_fdoverlappeddoubledelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
-                //
-                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-				env1c(fa, i, n) = 1 - env1(fa, i, n) ; 
-				env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
-                //
-				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
-				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * fa * d * x
-					with {
-							x = abc_th(ind, i, p);
-					};
-				//duration in samples computed as a sum of the 22 cases//
-				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
-};
+
 //
 //--------------------------------------------------------------------------------------//
 //SYN AND FX DELAY PROCESSES
@@ -1213,17 +1183,7 @@ abc_soundgrain_ui = abc_soundgrain(freqmult, (ma.SR / rainstickNsamp), rainstick
 //
 //A double overlapped delay without reinjection//
 //--------------------------------------------------------------------------------------//
-abc_overlappeddoubledelay(nsamp, nmax, freq) = thisdoubledelay
-	with {
-			pdPhasor(f) = os.phasor(1, f);
-			env1 = freq : pdPhasor : abc_sinusenvelop : *(0.5) : +(0.5);
-			env1c = 1 - env1;
-			th1 = (env1 > 0.001) * (env1@1 <= 0.001); //env1 threshold crossing
-			th2 = (env1c > 0.001) * (env1c@1 <= 0.001); //env1c threshold crossing
-			nsamp1 = nsamp : ba.sAndH(th1);
-			nsamp2 = nsamp : ba.sAndH(th2);
-			thisdoubledelay =	_ <: (de.delay(nmax, nsamp1), de.delay(nmax,nsamp2)) : (*(env1), *(env1c)) : + ;
-		};
+abc_overlappeddoubledelay(nsamp, nmax, freq) = de.sdelay(nmax, int(ma.SR / freq), nsamp);
 //
 //A double overlapped delay with reinjection//
 //--------------------------------------------------------------------------------------//
