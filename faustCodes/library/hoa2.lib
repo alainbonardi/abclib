@@ -164,9 +164,24 @@ optim(n, ot) = thisOptimizer
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
-fxDecorrelation(n, d, f, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, f, fd))
+//-------`(ho.).fxDecorrelation`----------
+// Spatial ambisonic decorrelation in syn mode
+
+// `fxDecorrelation` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxDecorrelation(n, d, wf, fa, fd, tf) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
+fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
-                gate(d, i, n, fa, tf, f, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
+                gate(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
 				//
 				fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
                 //
@@ -182,9 +197,9 @@ fxDecorrelation(n, d, f, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, f
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
 
-synDecorrelation(n, d, f, fa, fd, tf) =  _ <: si.bus(2*n+1) : par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, f, fd))
+synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
-				crossFade(d, i, n, fa, tf, f, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, f, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
+				crossFade(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
                 //
 				fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
 				//
@@ -204,8 +219,8 @@ synDecorrelation(n, d, f, fa, fd, tf) =  _ <: si.bus(2*n+1) : par(i, 2*n+1, cros
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
-//UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
-//(i+1)/p belongs to [0, 1] and its image by any function also belongs to the interval
+//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
+//(i+1)/p belongs to [0, 1] and its image by any function below also belongs to the interval
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
