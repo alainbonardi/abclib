@@ -491,58 +491,26 @@ abc_2d_syn_grain_ui(n) = thissyngrain
 //fx ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_ringmod_ui(n) = abc_2d_fx_ringmod(f0, n, factor, functiontype)
+abc_2d_fx_ringmod_ui(n) = fxRingmod(n, f0, factor, functiontype)
 	with {
-		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
-		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
+		f0 = hslider("v:fxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
+		factor = hslider("v:fxringmod/factor", 0, 0, 1, 0.001);
 		functiontype = hslider("functiontype", 0, 0, 21, 1);
 };
-//
-abc_2d_fx_ringmod(f, n, fa, tf) = par(i, n, gate_ringmod(f, i, n, fa, tf))
-	with{
-		//
-		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-		env1c(fa, i, n) = 1 - env1(fa, i, n);
-		//
-		gate_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) : +	;
-		//
-		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
-			with {
-				x = abc_th(ind, i, n);
-				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
-			};
-			//
-		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
-};
+
 //
 //--------------------------------------------------------------------------------------//
 //syn ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_ringmod_ui(n) = abc_2d_syn_ringmod(f0, n, factor, functiontype)
+abc_2d_syn_ringmod_ui(n) = synRingmod(n, f0, factor, functiontype)
 	with {
-		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
-		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
+		f0 = hslider("v:synringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
+		factor = hslider("v:synringmod/factor", 0, 0, 1, 0.001);
 		functiontype = hslider("functiontype", 0, 0, 21, 1);
 };
 //
-abc_2d_syn_ringmod(f, n, fa, tf) = _ <: si.bus(n) : par(i, n, crossfade_ringmod(f, i, n, fa, tf))
-	with{
-		//
-		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-		env1c(fa, i, n) = 1 - env1(fa, i, n);
-		env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
-		//
-		crossfade_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);	
-		//
-		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
-			with {
-				x = abc_th(ind, i, n);
-				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
-			};
-			//
-		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
-};
+
 //
 //
 //--------------------------------------------------------------------------------------//

@@ -165,7 +165,7 @@ optim(n, ot) = thisOptimizer
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
 //-------`(ho.).fxDecorrelation`----------
-// Spatial ambisonic decorrelation in syn mode
+// Spatial ambisonic decorrelation in fx mode
 
 // `fxDecorrelation` is a standard Faust function.
 //
@@ -214,6 +214,41 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 					};
 				//duration in samples computed as a sum of the 22 cases//
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
+};
+
+fxRingmod(n, f, fa, tf) = par(i, 2*n+1, gate_ringmod(f, i, 2*n+1, fa, tf))
+	with{
+		//
+		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
+		env1c(fa, i, n) = 1 - env1(fa, i, n);
+		//
+		gate_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) : +	;
+		//
+		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
+			with {
+				x = th(ind, i, n);
+				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
+			};
+			//
+		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
+};
+
+synRingmod(n, f, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f, i, 2*n+1, fa, tf))
+	with{
+		//
+		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
+		env1c(fa, i, n) = 1 - env1(fa, i, n);
+		env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
+		//
+		crossfade_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);	
+		//
+		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
+			with {
+				x = th(ind, i, n);
+				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
+			};
+			//
+		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
 };
 
 //--------------------------------------------------------------------------------------//
