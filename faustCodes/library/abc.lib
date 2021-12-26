@@ -491,7 +491,7 @@ abc_2d_syn_grain_ui(n) = thissyngrain
 //fx ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_ringmod_ui(n) = fxRingmod(n, f0, factor, functiontype)
+abc_2d_fx_ringmod_ui(n) = fxRingMod(n, f0, factor, functiontype)
 	with {
 		f0 = hslider("v:fxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:fxringmod/factor", 0, 0, 1, 0.001);
@@ -503,7 +503,7 @@ abc_2d_fx_ringmod_ui(n) = fxRingmod(n, f0, factor, functiontype)
 //syn ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_ringmod_ui(n) = synRingmod(n, f0, factor, functiontype)
+abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 	with {
 		f0 = hslider("v:synringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synringmod/factor", 0, 0, 1, 0.001);

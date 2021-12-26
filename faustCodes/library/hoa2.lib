@@ -216,7 +216,7 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
 
-fxRingmod(n, f, fa, tf) = par(i, 2*n+1, gate_ringmod(f, i, 2*n+1, fa, tf))
+fxRingMod(n, f, fa, tf) = par(i, 2*n+1, gate_ringmod(f, i, 2*n+1, fa, tf))
 	with{
 		//
 		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
@@ -233,7 +233,7 @@ fxRingmod(n, f, fa, tf) = par(i, 2*n+1, gate_ringmod(f, i, 2*n+1, fa, tf))
 		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
 };
 
-synRingmod(n, f, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f, i, 2*n+1, fa, tf))
+synRingMod(n, f, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f, i, 2*n+1, fa, tf))
 	with{
 		//
 		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
