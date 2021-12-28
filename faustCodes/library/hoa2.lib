@@ -169,6 +169,30 @@ mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
 // `fxDecorrelation` is a standard Faust function.
 //
+// fxDecorrelation applies decorrelations to spatial components already created.
+// The decorrelation is defined for each #i spatial component among P=2*n+1 at the ambisonic order n
+// as a delay of 0 if factor fa is under a certain value 1-(i+1)/P and d*F((i+1)/p) in the contrary case,
+// where d is the maximum delay applied (in samples) and F is a distribution function for durations.
+// The user can choose this delay time distribution among 22 different ones.
+// The delay increases according to the index of ambisonic components.
+// But it increases at each step and it is modulated by a threshold.
+// Therefore, delays are progressively revealed when the factor increases:
+// - when the factor is close to 0, only upper components are delayed ;
+// - when the factor increases, moire and more components are delayed.
+//
+//H					THRESHOLD			DELAY
+//0					1-1/P				0 OR DELAY*F(1/P)
+//-1				1-2/P				0 OR DELAY*F(2/P)
+//1					1-3/P				0 OR DELAY*F(3/P)
+//-2				1-4/P				0 OR DELAY*F(4/P)
+//2					1-5/P				0 OR DELAY*F(5/P)
+//...
+//-(N-1)			1-(P-3)/P			0 OR DELAY*F((P-3)/P)
+//(N-1)				1-(P-2)/P			0 OR DELAY*F((P-2)/P)
+//-N				1-(P-1)/P			0 OR DELAY*F((P-1)/P)
+//N					1-P/P				0 OR DELAY*F(P/P)
+//
+//
 // #### Usage
 //
 // ```
@@ -178,7 +202,12 @@ mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
-// * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
+// * 'd': the maximum delay applied (in samples)
+// * 'wf': window frequency (in Hz) for the overlapped delay
+// * 'fa': decorrelation factor (between 0 and 1)
+// * 'fd': feedback / level of reinjection (between 0 and 1)
+// * 'tf': type of function of delay distribution (integer, between 0 and 21)
+
 fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
                 gate(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
@@ -196,6 +225,52 @@ fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, 
 				//duration in samples computed as a sum of the 22 cases//
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
+
+//-------`(ho.).synDecorrelation`----------
+// Spatial ambisonic decorrelation in syn mode
+
+// `synDecorrelation` is a standard Faust function.
+//
+// synDecorrelation generates spatial decorrelated components in ambisonics from one mono signal.
+// The decorrelation is defined for each #i spatial component among P=2*n+1 at the ambisonic order n
+// as a delay of 0 if factor fa is under a certain value 1-(i+1)/P and d*F((i+1)/p) in the contrary case,
+// where d is the maximum delay applied (in samples) and F is a distribution function for durations.
+// The user can choose this delay time distribution among 22 different ones.
+// The delay increases according to the index of ambisonic components.
+// But it increases at each step and it is modulated by a threshold.
+// Therefore, delays are progressively revealed when the factor increases:
+// - when the factor is close to 0, only upper components are delayed ;
+// - when the factor increases, moire and more components are delayed.
+// When the factor is between [0; 1/P], upper harmonics are progressively faded and the level of the H0 component is compensated
+// to avoid source localization and to produce a large mono.
+//
+//H					THRESHOLD			DELAY
+//0					1-1/P				0 OR DELAY*F(1/P)
+//-1				1-2/P				0 OR DELAY*F(2/P)
+//1					1-3/P				0 OR DELAY*F(3/P)
+//-2				1-4/P				0 OR DELAY*F(4/P)
+//2					1-5/P				0 OR DELAY*F(5/P)
+//...
+//-(N-1)			1-(P-3)/P			0 OR DELAY*F((P-3)/P)
+//(N-1)				1-(P-2)/P			0 OR DELAY*F((P-2)/P)
+//-N				1-(P-1)/P			0 OR DELAY*F((P-1)/P)
+//N					1-P/P				0 OR DELAY*F(P/P)
+//
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxDecorrelation(n, d, wf, fa, fd, tf) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * 'd': the maximum delay applied (in samples)
+// * 'wf': window frequency (in Hz) for the overlapped delay
+// * 'fa': decorrelation factor (between 0 and 1)
+// * 'fd': feedback / level of reinjection (between 0 and 1)
+// * 'tf': type of function of delay distribution (integer, between 0 and 21)
 
 synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
@@ -216,7 +291,48 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 				dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
 
-fxRingMod(n, f, fa, tf) = par(i, 2*n+1, gate_ringmod(f, i, 2*n+1, fa, tf))
+//-------`(ho.).fxRingMod`----------
+// Spatial ring modulation in syn mode
+
+// `fxRingMod` is a standard Faust function.
+//
+//SYN RINGMOD GENERATES SPATIAL COMPONENTS IN AMBISONICS FROM ONE MONO SIGNAL THANKS TO RING MODULATION
+// fxRingMod applies ring modulation to spatial components already created.
+// The ring modulation is defined for each spatial component among P=2*n+1 at the abmisonic order n.
+// For each spatial component #i, the result is either the original signal or a ring modulated signal
+// according to a threshold that is i/P.
+// The general process is drive by a factor fa between 0 and 1 and a modulation frequency f0.
+// if fa is greater than theshold (P-i-1)/P, the ith ring modulator is on with carrier frequency of f0*(i+1)/P.
+// On the contrary, it provides the original signal.
+// Therefore ring modulators are progressively revealed when fa increases.
+//
+//H					THRESHOLD			    OUTPUT
+//0					(P-1)/P					ORIGINAL OR RING MODULATION BY F0*1/P
+//-1				(P-2)/P					ORIGINAL OR RING MODULATION BY F0*2/P
+//1					(P-3)/P			        ORIGINAL OR RING MODULATION BY F0*3/P
+//-2				(P-4)/P			        ORIGINAL OR RING MODULATION BY F0*4/P
+//2					(P-5)/P			        ORIGINAL OR RING MODULATION BY F0*5/P
+//...
+//-(N-1)			3/P				        ORIGINAL OR RING MODULATION BY F0*(P-3)/P
+//(N-1)				2/P				        ORIGINAL OR RING MODULATION BY F0*(P-2)/P
+//-N				1/P				        ORIGINAL OR RING MODULATION BY F0*(P-1)/P
+//N					0				        ORIGINAL OR RING MODULATION BY F0*P/P=F0
+//
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxRingMod(n, f0, fa, tf) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * 'f0': the maximum delay applied (in samples)
+// * 'fa': decorrelation factor (between 0 and 1)
+// * 'tf': type of function of delay distribution (integer, between 0 and 21)
+
+fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 	with{
 		//
 		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
@@ -233,7 +349,49 @@ fxRingMod(n, f, fa, tf) = par(i, 2*n+1, gate_ringmod(f, i, 2*n+1, fa, tf))
 		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
 };
 
-synRingMod(n, f, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f, i, 2*n+1, fa, tf))
+//-------`(ho.).synRingMod`----------
+// Spatial ring modulation in syn mode
+
+// `synRingMod` is a standard Faust function.
+//
+// synRingMod generates spatial components in amibsonics from one mono signal thanks to ring modulation.
+// The ring modulation is defined for each spatial component among P=2*n+1 at the abmisonic order n.
+// For each spatial component #i, the result is either the original signal or a ring modulated signal
+// according to a threshold that is i/P.
+// The general process is drive by a factor fa between 0 and 1 and a modulation frequency f0.
+// if fa is greater than theshold (P-i-1)/P, the ith ring modulator is on with carrier frequency of f0*(i+1)/P.
+// On the contrary, it provides the original signal.
+// Therefore ring modulators are progressively revealed when fa increases.
+// When the factor is between [0; 1/P], upper harmonics are progressively faded and the level of the H0 component is compensated
+// to avoid source localization and to produce a large mono.
+//
+//H					THRESHOLD			    OUTPUT
+//0					(P-1)/P					ORIGINAL OR RING MODULATION BY F0*1/P
+//-1				(P-2)/P					ORIGINAL OR RING MODULATION BY F0*2/P
+//1					(P-3)/P			        ORIGINAL OR RING MODULATION BY F0*3/P
+//-2				(P-4)/P			        ORIGINAL OR RING MODULATION BY F0*4/P
+//2					(P-5)/P			        ORIGINAL OR RING MODULATION BY F0*5/P
+//...
+//-(N-1)			3/P				        ORIGINAL OR RING MODULATION BY F0*(P-3)/P
+//(N-1)				2/P				        ORIGINAL OR RING MODULATION BY F0*(P-2)/P
+//-N				1/P				        ORIGINAL OR RING MODULATION BY F0*(P-1)/P
+//N					0				        ORIGINAL OR RING MODULATION BY F0*P/P=F0
+//
+//
+// #### Usage
+//
+// ```
+// _,_, ... : synRingMod(n, f0, fa, tf) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * 'f0': the maximum delay applied (in samples)
+// * 'fa': decorrelation factor (between 0 and 1)
+// * 'tf': type of function of delay distribution (integer, between 0 and 21)
+
+synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, fa, tf))
 	with{
 		//
 		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
@@ -255,7 +413,7 @@ synRingMod(n, f, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f, i, 2*n+1, fa,
 //--------------------------------------------------------------------------------------//
 //
 //TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
-//(i+1)/p belongs to [0, 1] and its image by any function below also belongs to the interval
+//(i+1)/p belongs to [0, 1] and its image by any function in the list also belongs to the interval
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
