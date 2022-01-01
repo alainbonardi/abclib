@@ -15,6 +15,8 @@ declare copyright "2019-2021 Bonardi, Goutmann CICM, U. Paris 8";
 import("stdfaust.lib");
 //provisional import of functions in hoa2.lib that will be migrated later to the official hoa.lib
 import("hoa2.lib");
+//provisional import of functions in mm.lib that will be later migrated to the official mm.lib
+import("mm.lib");
 //
 //
 //THE ABCLIB LIBRARY INCLUDES 2 TYPES OF FUNCTIONS
@@ -236,7 +238,7 @@ abc_2d_scope_ui(n) = thisscope
 //2D SQUARE TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_square(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (abc_clip, abc_clip) : (*(s), *(s)) : (*(-1), *(1));
+abc_2d_square(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (sigClip, sigClip) : (*(s), *(s)) : (*(-1), *(1));
 //
 abc_2d_squareTrajectory_ui = abc_2d_square(freq, size)
 		with {
@@ -270,9 +272,8 @@ abc_2d_random_xy(f, s) = thisRandomPos
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 			temporalFilter = ba.sAndH(th);
 			//computes the temporal interval taking into account the case when f=0 and when f<0
-			dt = (1000., ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
-			p(a, b, c, d) = (a, c, b, d);
-			thisRandomPos = (no.multinoise(2), dt, dt) : (temporalFilter, temporalFilter, _, _) : (*(s), *(s), _, _) : p : (abc_line, abc_line);
+			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
+			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (ba.line(dt), ba.line(dt));
 };
 abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
 		with {
@@ -577,8 +578,8 @@ abc_audiotester_ui = thisaudiotester
 //
 abc_busselect_ui(n) = thisbusselect
 			with {
-				ramp = nentry("v:busselect/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
-				leftOrRight = (nentry("v:busselect/leftOrRight", 0, 0, 1, 1), ramp) : abc_line; //selection between left and right buses
+				ramp = nentry("v:busselect/ramp [unit:msec]", 100, 0, 100000, 1) * ma.SR / 1000.0; //transition ramp duration in msec converted to samples//
+				leftOrRight = nentry("v:busselect/leftOrRight", 0, 0, 1, 1) : ba.line(ramp); //selection between left and right buses
 				thisbusselect = (par(i, n, *(1-leftOrRight)), par(i, n, *(leftOrRight))) :> si.bus(n);
 };
 //
@@ -774,9 +775,9 @@ abc_multilinrandenv_ui(n) = abc_multilinrandenv(n, freq, rarefaction)
 //
 abc_matrix_ui(n, m) = thismatrix
 			with {
-				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1); //transition ramp duration in msec//
+				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1) * ma.SR / 1000.; //transition ramp duration in msec converted to samples//
 				//
-				toggle(c, in) = (nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001), ramp) : abc_line;
+				toggle(c, in) = nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001) : ba.line(ramp);
 				mixer(n,out) 	= par(in, n, *(toggle(in, in+out*n)) ) :> _ ;
 				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
@@ -957,7 +958,7 @@ abc_raindrops(df, dthi, af, att, q, g, l) = (variableFrequency, exciter) : (_, r
 	variablePulseAndDuration = ((ba.pulse <: (_, _), (no.noise : randomizedDurationCalibration)) : (_, ba.sAndH) : permutation) ~ (+(10)) : (!, _);
 	variableFrequency = ((variablePulseAndDuration <: (_, _)), (no.noise : randomizedFrequencyCalibration)) : (_, ba.sAndH);
 	reson(f) = fi.resonbp(f, q, 0.05);
-	exciter = os.phasor(1, df) : *(-dthi) : +(1) : abc_ampclip;
+	exciter = os.phasor(1, df) : *(-dthi) : +(1) : ampClip;
 	envelope = (en.ar(att, releasedur), _) : (+(1), _);
 	output = (co.limiter_1176_R4_mono, _) : (*(l), *(1-l)) : + : *(g);
 };
@@ -1018,9 +1019,9 @@ abc_globalgenerator_ui = (noisegenerator, sinusgenerator, phasorgenerator) :> *(
 				phasorpulseratio = hslider("v:generator/h:phasor/phasorpulseratio", 1, 0, 10, 1);
 				//
 				//noise, sinus and phasor generators
-				noisegenerator = (no.noise, abc_pulsedenv(noisepulserate, noisepulseratio)) : * : *(noiseonoff) : fi.resonlp(noisecutoff, 5, 0.75);
-				sinusgenerator = (os.osccos(sinusfreq), abc_pulsedenv(sinuspulserate, sinuspulseratio)) : * : *(sinusonoff);
-				phasorgenerator = (os.phasor(1, phasorfreq), abc_pulsedenv(phasorpulserate, phasorpulseratio)) : * : *(phasoronoff);
+				noisegenerator = (no.noise, pulsedEnv(noisepulserate, noisepulseratio)) : * : *(noiseonoff) : fi.resonlp(noisecutoff, 5, 0.75);
+				sinusgenerator = (os.osccos(sinusfreq), pulsedEnv(sinuspulserate, sinuspulseratio)) : * : *(sinusonoff);
+				phasorgenerator = (os.phasor(1, phasorfreq), pulsedEnv(phasorpulserate, phasorpulseratio)) : * : *(phasoronoff);
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -1306,26 +1307,7 @@ with {
 //--------------------------------------------------------------------------------------//
 abc_rotationorstaticangle(f, p, dt) = abc_rotationorstaticphase(f, p, dt) * 2 * ma.PI;
 //
-//--------------------------------------------------------------------------------------//
-//LINES AND DRIVE LINES
-//--------------------------------------------------------------------------------------//
-//
-// Implementation of Max/MSP line~. Generate signal ramp or envelope 
-// USAGE : line(value, time)
-// 	value : the desired output value
-//	time  : the interpolation time to reach this value (in milliseconds)
-//
-// NOTE : the interpolation process is restarted every time the desired
-// output value changes. The interpolation time is sampled only then.
-//--------------------------------------------------------------------------------------//
-abc_line(value, time) = state~(_,_):!,_ 
-	with {
-		state (t, c) = nt, ba.if (nt <= 0, value, c+(value - c) / nt)
-		with {
-			nt = ba.if( value != value', samples, t-1);
-			samples = time*ma.SR/1000.0;
-		};
-	};
+
 //
 //Definition of a PureData like linedrive object
 //--------------------------------------------------------------------------------------//
@@ -1341,7 +1323,7 @@ abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
 			pre_val = ba.if (vol < r, vol, r);
 			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
 			pre_ti = ba.if (ti < 1.46, t, ti);
-			transitionLineDrive = abc_line(val, pre_ti);
+			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
 		};
 abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
 abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
@@ -1448,16 +1430,13 @@ abc_shorteningenv(f, s) = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor)
 //
 abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
 	with {
-			randVol = ((_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)), 1000./f) : abc_line;
+			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : ba.line(ma.SR / f);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 };
 //
-//--------------------------------------------------------------------------------------//
-//PULSED ENVELOPE
-//--------------------------------------------------------------------------------------//
-abc_pulsedenv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : abc_ampclip;
+
 //
 //--------------------------------------------------------------------------------------//
 //INTERLACE FUNCTIONS WITH 2 OR 3 SETS OF SIGNALS
@@ -1488,16 +1467,6 @@ abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : p
 			with {
 					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
 };
-//
-//--------------------------------------------------------------------------------------//
-//CLIP FUNCTION BETWEEN -1 AND 1
-//--------------------------------------------------------------------------------------//
-abc_generalclip(x, a, b) = min(max(x, a), b);
-//
-//usual clip between -1 and 1
-abc_clip = (_, -1, 1) : abc_generalclip;
-//clip as an amplitude between 0 and 1
-abc_ampclip = (_, 0, 1) : abc_generalclip;
 //
 //
 //
