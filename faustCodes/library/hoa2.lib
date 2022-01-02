@@ -409,6 +409,28 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
 };
 
+
+
+
+
+encoder3D2(n, azsp, elsp, az, el, it) = this3DEncoder
+with {
+		basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(n, sig, ang1, ang2);
+		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
+			with {
+				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod; 
+				vn1 = (azsp == 0) : si.smooth(ba.tau2pole(it));
+				rotationOrStaticAzim = (1-vn1) * x1 + vn1 * az;
+				x2 = (os.phasor(1, elsp), el, 1) : (+, _) : fmod; 
+				vn2 = (elsp == 0) : si.smooth(ba.tau2pole(it));
+				rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
+			};
+};
+
+
+
+
+
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
