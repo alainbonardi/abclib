@@ -39,39 +39,39 @@ import("mm.lib");
 //
 
 
-//-------`(ho.)decoderStereo2_ui`----------
+//-------`(ho.)gDecoderStereo_ui`----------
 // Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
 // either direct (clockwise) or not, with a GUI (to set the direction and the gain)
 
-// `decoderStereo2_ui` is a standard Faust function.
+// `gDecoderStereo_ui` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : decoderStereo2_ui(n) : _,_
+// _,_,... : gDecoderStereo_ui(n) : _,_
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2_ui function)
 //-----------------------------
-decoderStereo2_ui(n) = decoderStereo2(n, direct, gain)
+gDecoderStereo_ui(n) = gDecoderStereo(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
 
-abc_2d_stereodecoder_ui(n) = decoderStereo2_ui(n);
+abc_2d_stereodecoder_ui(n) = gDecoderStereo_ui(n);
 
-//-------`(ho.)decoder2_ui`----------
+//-------`(ho.)gdecoder_ui`----------
 // Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or a multi-loudspeaker configuration
 
-// `decoderStereo2_ui` is a standard Faust function.
+// `idecoder_ui` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : decoder2_ui(n) : _,_
+// _,_,... : idecoder_ui(n) : _,_
 // ```
 //
 // Where:
@@ -79,7 +79,7 @@ abc_2d_stereodecoder_ui(n) = decoderStereo2_ui(n);
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoder2_ui function)
 // * 'p' : the number of loudspeakers (there are p outputs to the decoder2_ui function)
 //-----------------------------
-decoder2_ui(n, p) = decoder2(n, la, direct, stereo, gain) 
+iDecoder_ui(n, p) = iDecoder(n, la, direct, stereo, gain) 
 	with {
 			direct = 2 * nentry("h:decoder/v:general/[0]clockwise", 1, 0, 1, 1) - 1; 
 			offset = hslider("h:decoder/v:general/[2]angularoffset[unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
@@ -92,37 +92,37 @@ decoder2_ui(n, p) = decoder2(n, la, direct, stereo, gain)
  			la = par(i, p, a(i, p));
 };
 
-abc_2d_decoder_ui(n, p) = decoder2_ui(n, p);
+abc_2d_decoder_ui(n, p) = iDecoder_ui(n, p);
 
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
-//-------`(ho.)encoder2_ui`----------
+//-------`(ho.)rencoder_ui`----------
 // Ambisonic encoder in 2D
 // with two modes: either rotation with an angular speed, or static with a fixed angle.
 
-// `encoder2_ui` is a standard Faust function.
+// `rEncoder_ui` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _ : encoder2_ui(n, sp, a, it) : _,_, ...
+// _ : rEncoder_ui(n, sp, a, it) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the rencoder function)
 //-----------------------------
-encoder2_ui(n) = encoder2(n, speed, angle, returntime)
+rEncoder_ui(n) = rEncoder(n, speed, angle, returntime)
 	with {
 			speed = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
-			angle = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
+			angle = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 ;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 };
 
-abc_2d_encoder_ui(n) = encoder2_ui(n);
+abc_2d_encoder_ui(n) = rEncoder_ui(n);
 //
 //--------------------------------------------------------------------------------------//
 //2D MAPS
@@ -190,13 +190,13 @@ abc_2d_optim_ui(n) = optim(n, optimtype)
 //AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_rotate_ui(n) = thisrotate
+abc_2d_rotate_ui(n) = thisRotate
 		with {
 			rotfreq = hslider("v:rotate/speed [unit:s-1]", 0, -100, 100, 0.001);
 			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			thisrotate =  ho.rotate(n, abc_rotationorstaticphase(rotfreq, rotphase, returntime));
+			thisRotate =  ho.rotate(n, abc_rotationorstaticphase(rotfreq, rotphase, returntime));
 };
 //
 //--------------------------------------------------------------------------------------//

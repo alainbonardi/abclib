@@ -1,46 +1,48 @@
-//-------`(ho.)encoder2`----------
-// Ambisonic encoder in 2D
+//-------`(ho.)rEncoder`----------
+// Ambisonic encoder in 2D including source rotation
 // a mono signal is encoded at at certain ambisonic order
 // with two possible modes: either rotation with an angular speed, or static with a fixed angle.
 
-// `encoder2` is a standard Faust function.
+// `rEncoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _ : encoder2(n, sp, a, it) : _,_, ...
+// _ : rEncoder(n, sp, a, it) : _,_, ...
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
 // * `sp': the speed expressed as angular speed (2PI/sec)
-// * `a`: the fixed angle when the rotation stops (sp = 0)
+// * `a`: the fixed angle when the rotation stops (sp = 0) in radians
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-encoder2(n, sp, a, it) = thisEncoder
+rEncoder(n, sp, a, it) = thisEncoder
 	with {
 			basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
 				with {
-						rotationOrStaticAngle = (1-vn) * x + vn * a;
+						//converting the angle from radians to [0; 1]
+						an = (a / (2 * ma.PI), 1) : fmod;
+						rotationOrStaticAngle = ((1-vn) * x + vn * an) * 2 * ma.PI;
 						vn = (sp == 0) : si.smooth(ba.tau2pole(it));
 						//to manage the case where frequency is zero, smoothly switches from one mode to another//
-						x = (os.phasor(1, sp), a, 1) : (+, _) : fmod;
+						x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
 				};
 };
 
-//-------`(ho.)decoderStereo2`----------
-// Ambisonic stereo decoder in 2D
+//-------`(ho.)gDecoderStereo`----------
+// Ambisonic general stereo decoder in 2D
 // with control of the direction of implementation of the 2 loudspeakers (either direct (clockwise) or not)
 // and output amplitude
 
-// `decoderStereo2` is a standard Faust function.
+// `gDecoderStereo` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : decoderStereo2(n,d,g) : _,_
+// _,_,... : gDecoderStereo(n,d,g) : _,_
 // ```
 //
 // Where:
@@ -49,7 +51,7 @@ encoder2(n, sp, a, it) = thisEncoder
 // * `cw`: 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
 // * `g`: global output gain between 0 and 1
 //-----------------------------
-decoderStereo2(n, cw, g) = thisStereoDecoder
+gDecoderStereo(n, cw, g) = thisStereoDecoder
 	with {
 			//d is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
@@ -58,57 +60,57 @@ decoderStereo2(n, cw, g) = thisStereoDecoder
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
-//-------`(mm.)2dIrregularDecoder`----------
-// Irregular decoder in 2D
+//-------`(mm.)imlsDecoder`----------
+// Irregular decoder in 2D for an irregular multi-loudspeaker configuration
 
-// `irregularDecoder` is a standard Faust function.
+// `imlsDecoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : irregularDecoder(n,d,g) : _,_,...
+// _,_,... : imlsDecoder(n,d,g) : _,_,...
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
-// * `la' : the list of angles, for instance (0, 85, 175, 275) for four loudspeakers
+// * `la' : the list of angles in radians, for instance (0, 1.5, 3, 4.71) for four loudspeakers
 //-----------------------------
-irregularAngleDecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
+imlsDecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
 	with {
 			p = outputs(la);
    			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 };
 
-//-------`(ho.)decoder2`----------
-// Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or a multi-loudspeaker configuration
+//-------`(ho.)iDecoder`----------
+// Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or an irregular multi-loudspeaker configuration
 
-// `decoderStereo2` is a standard Faust function.
+// `iDecoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : decoder2(n, la, cw, st, g) : _,_
+// _,_,... : iDecoder(n, la, cw, st, g) : _,_
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoder2_ui function)
-// * 'la': the list of angles
+// * 'la': the list of angles in radians
 // * 'cw': 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
 // * 'st': 1 for stereo, 0 for multi-loudspeaker configuration. When 1, stereo sounds goes through the first two channels
 // * 'g' : gain between 0 and 1
 //-----------------------------
-decoder2(n, la, cw, st, g) = thisDecoder
+iDecoder(n, la, cw, st, g) = thisDecoder
 	with {
 			//p is the number of outputs
             p = outputs(la);
 			ambi = 1 - st;
 			//
 			//for stereo decoding
-			paddedStereoDecoder(n, p) = (decoderStereo2(n, cw, g), (0 <: si.bus(p-2)));
+			paddedStereoDecoder(n, p) = (gDecoderStereo(n, cw, g), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (irregularAngleDecoder(n, la), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : abc_gainline(p, g);
+			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
 };
 
 
@@ -413,7 +415,7 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 
 
 
-encoder3D2(n, azsp, elsp, az, el, it) = this3DEncoder
+rencoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
 with {
 		basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(n, sig, ang1, ang2);
 		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
