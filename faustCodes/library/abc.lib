@@ -38,7 +38,6 @@ import("mm.lib");
 //--------------------------------------------------------------------------------------//
 //
 
-
 //-------`(ho.)gDecoderStereo_ui`----------
 // Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
 // either direct (clockwise) or not, with a GUI (to set the direction and the gain)
@@ -63,15 +62,15 @@ gDecoderStereo_ui(n) = gDecoderStereo(n, direct, gain)
 
 abc_2d_stereodecoder_ui(n) = gDecoderStereo_ui(n);
 
-//-------`(ho.)gdecoder_ui`----------
+//-------`(ho.)iDecoder_ui`----------
 // Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or a multi-loudspeaker configuration
 
-// `idecoder_ui` is a standard Faust function.
+// `iDecoder_ui` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : idecoder_ui(n) : _,_
+// _,_,... : iDecoder_ui(n, p) : _,_
 // ```
 //
 // Where:
@@ -99,7 +98,8 @@ abc_2d_decoder_ui(n, p) = iDecoder_ui(n, p);
 //AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
-//-------`(ho.)rencoder_ui`----------
+
+//-------`(ho.)rEncoder_ui`----------
 // Ambisonic encoder in 2D
 // with two modes: either rotation with an angular speed, or static with a fixed angle.
 
@@ -114,6 +114,9 @@ abc_2d_decoder_ui(n, p) = iDecoder_ui(n, p);
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the rencoder function)
+// * 'sp' : the rotation speed in turns per second (positive or negative, according to the direction of rotation)
+// * 'a' : the fixed angular position in radians when speed equals zero
+// * 'it' : duration of interpolation between rotation and fixed position in milliseconds
 //-----------------------------
 rEncoder_ui(n) = rEncoder(n, speed, angle, returntime)
 	with {

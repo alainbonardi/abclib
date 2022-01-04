@@ -49,12 +49,56 @@ declare copyright "2022- Bonardi, CICM / MUSIDANSE, U. Paris 8";
 //========================================================================================
 
 //--------------------------------------------------------------------------------------//
-//CLIP FUNCTION BETWEEN -1 AND 1
+//CLIP FUNCTIONS
 //--------------------------------------------------------------------------------------//
+//-------`(mm.)clip`----------
+// Clips the signal between a and b (a is the minimum value, b the maximum value, a <= b)
+
+// `clip` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : clip(x, a, b) : _
+// ```
+//
+// Where:
+//
+// * `x`: the incoming signal
+// * `a': the minimum value
+// * `b`: the maximum value
+//-----------------------------
+
 clip(x, a, b) = min(max(x, a), b);
-//usual signal clip between -1 and 1
+
+//-------`(mm.)sigClip`----------
+// Clips the signal between -1 and 1 (usual clip for signals)
+
+// `sigClip` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : sigClip : _
+// ```
+//
+//-----------------------------
+
 sigClip = (_, -1, 1) : clip;
-//clip as an amplitude between 0 and 1
+
+//-------`(mm.)ampClip`----------
+// Clips the signal between 0 and 1, as an amplitude
+
+// `ampClip` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : ampClip : _
+// ```
+//
+//-----------------------------
+
 ampClip = (_, 0, 1) : clip;
 
 //--------------------------------------------------------------------------------------//
@@ -74,6 +118,25 @@ scale(x, x1, x2, y1, y2) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 //
 //zmap same as scale but clips values to the [x1; x2] and [y1; y2] ranges
 zmap(x, x1, x2, y1, y2) = scale(clip(x, x1, x2), x1, x2, y1, y2);
+
+//
+//--------------------------------------------------------------------------------------//
+//starting with 2n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn
+//the result is the vector sigA1, sigB1, sigA2, sigB2, ..., sigAn, sigBn
+//--------------------------------------------------------------------------------------//
+interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
+//
+//--------------------------------------------------------------------------------------//
+//starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
+//the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
+//--------------------------------------------------------------------------------------//
+interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
+//
+//
+//--------------------------------------------------------------------------------------//
+//BUS INVERSION FOR A BUS OF N SIGNALS (1st input => N, 2nd => N-1, 3rd => N-2, etc)
+//--------------------------------------------------------------------------------------//
+invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 
 //--------------------------------------------------------------------------------------//
 //PULSED ENVELOPE
