@@ -102,12 +102,25 @@ sigClip = (_, -1, 1) : clip;
 ampClip = (_, 0, 1) : clip;
 
 //--------------------------------------------------------------------------------------//
-// SCALE FUNCTION
+// SCALE AND ZMAP FUNCTIONS
 //--------------------------------------------------------------------------------------//
+
+//-------`(mm.)scale`----------
 // Converts a signal x from scale [x1; x2] to scale [y1; y2]
 // x1 and x2 can be provided in any order
 // y1 and y2 can be provided in any order
 // if x1==x2, x is returned
+
+// `scale` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : scale(x, x1, x2, y1, y2) : _
+// ```
+//
+//-----------------------------
+
 scale(x, x1, x2, y1, y2) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1, x)
 	with {
 			a1 = min(x1, x2);
@@ -115,8 +128,23 @@ scale(x, x1, x2, y1, y2) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 			b1 = min(y1, y2);
 			b2 = max(y1, y2);
 	};
+
+//-------`(mm.)zmap`----------
+// zmap has the same behaviour as scale but clips values to the [x1; x2] and [y1; y2] ranges
+// x1 and x2 can be provided in any order
+// y1 and y2 can be provided in any order
+// if x1==x2, x is returned
+
+// `zmap` is a standard Faust function.
 //
-//zmap same as scale but clips values to the [x1; x2] and [y1; y2] ranges
+// #### Usage
+//
+// ```
+// _ : zmap(x, x1, x2, y1, y2) : _
+// ```
+//
+//-----------------------------
+
 zmap(x, x1, x2, y1, y2) = scale(clip(x, x1, x2), x1, x2, y1, y2);
 
 //
