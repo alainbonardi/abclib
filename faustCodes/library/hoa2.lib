@@ -430,6 +430,42 @@ with {
 };
 
 
+//-------`(ho.)optim3D`----------
+// Ambisonic optimizer including the three elementary optimizers:
+// - (ho).optimBasic3D, (ho).optimMaxRe3D, (ho.)optimInPhase3D
+//----------------`optimBasic3D`-------------------------
+//The basic optimization has no effect and should be used for a perfect 
+//circle of loudspeakers with one listener at the perfect center loudspeakers 
+//array.
+//----------------`optimMaxRe3D`-------------------------
+//The maxRe optimization optimize energy vector. It should be used for an 
+//auditory confined in the center of the loudspeakers array.
+//----------------`optimInPhase3D`-------------------------
+//The inPhase Optimization optimize energy vector and put all loudspeakers signals 
+//in phase. It should be used for an auditory.
+
+// `optim3D` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : optim3D(n, ot) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order in 3D (there are (n+1)*(n+1) inputs and outputs to the optim function)
+// * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
+
+optim3D(n, ot) = thisOptimizer
+	with {
+			optb = (ot == 0) : si.smoo;
+			optm = (ot == 1) : si.smoo;
+			opti = (ot == 2) : si.smoo;
+			bus3D = si.bus((n+1)*(n+1));
+			interlace(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
+			thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(n)), (bus3D:ho.optimMaxRe3D(n)), (bus3D:ho.optimInPhase(n)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : interlace(3*(n+1)*(n+1)) : par(i, 3*(n+1)*(n+1), *) :> bus3D;
+};
 
 
 
