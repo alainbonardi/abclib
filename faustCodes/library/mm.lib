@@ -202,7 +202,7 @@ interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n
 invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 
 //--------------------------------------------------------------------------------------//
-//PULSED ENVELOPE
+//ENVELOPES
 //--------------------------------------------------------------------------------------//
 
 //-------`(mm.)pulsedEnv`----------
@@ -218,5 +218,59 @@ invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 // ```
 //
 //-----------------------------
+
 pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
+
+
+//--------------------------------------------------------------------------------------//
+//SOUND SYNTHESES
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)puckettesPaf`----------
+// puckettesPaf generates a phased-aligned formant signal
+// using Miller Puckette's design exposed in the following article:
+// reference: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
+
+// `puckettesPaf` is a standard Faust function.
 //
+// #### Usage
+//
+// ```
+// puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) : _
+// ```
+//
+// Where:
+//
+// * `fund`: the fundamental frequency (Hz)
+// * `cfreq': the central frequency (Hz)
+// * `bwidth`: the band width (Hz)
+// * 'a' : the output amplitude between 0 and 1
+// * 'sgauss' : the standard deviation of the gauss function to be used
+// * 'acauchy' : the a coefficient of Cauchy function
+// * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
+//-----------------------------
+
+puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
+		with {
+				ratio = (cfreq / fund);
+				ph = os.phasor(1, fund);
+				th = ph <: (_, @(1)) : ((_ > 0.00001), (_ <= 0.00001)) : *;
+				//looking for k so that cf belongs to [kf0; (k+1)f0]
+				k = (ratio - ma.frac(ratio)) : ba.sAndH(th); //computation of k coefficient
+				q = ratio - k;
+				p = 1 - q;
+				//
+				carrier = ph <: (*(k * 2 * ma.PI), *((k +1) * 2 * ma.PI)) : (cos, cos) : +;
+				//index of modulation = b
+				//
+				b = bwidth / fund;
+				index = os.oscsin(fund / 2) : abs : *(b); 
+				//
+				//gaussian without dividing by sigma to avoid output amplitude variation
+				gaussian(x) = pow(2.71828, -0.5*pow(x/sgauss, 2.));
+				//cauchy
+				cauchy(x) = acauchy / (x * x + acauchy * acauchy);
+				clip0to10(x) = min(max(x, 0), 10);
+				//modulator
+				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip0to10;			
+};
