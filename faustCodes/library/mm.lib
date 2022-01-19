@@ -226,6 +226,9 @@ pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 //SOUND SYNTHESES
 //--------------------------------------------------------------------------------------//
 
+
+//[TO BE TESTED]
+
 //-------`(mm.)puckettesPaf`----------
 // puckettesPaf generates a phased-aligned formant signal
 // using Miller Puckette's design exposed in the following article:
@@ -273,4 +276,75 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 				clip0to10(x) = min(max(x, 0), 10);
 				//modulator
 				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip0to10;			
+};
+
+//[TO BE TESTED]
+
+//-------`(mm.)puckettesPaf2`----------
+// puckettesPaf2 generates a phased-aligned formant signal like puckettesPaf function
+// but it adds a phase modulator that enables the synthesis of inharmonic sounds
+// It uses Miller Puckette's design exposed in the following article:
+// reference: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
+
+// `puckettesPaf2` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) : _
+// ```
+//
+// Where:
+//
+// * `fund`: the fundamental frequency (Hz)
+// * `cfreq': the central frequency (Hz)
+// * `bwidth`: the band width (Hz)
+// * 'a' : the output amplitude between 0 and 1
+// * 'inharmoAmp' : the amplitude of inharmonic sound generated
+// * 'inharmoFreq' : the frequency of inharmonic sound generated
+// * 'sgauss' : the standard deviation of the gauss function to be used
+// * 'acauchy' : the a coefficient of Cauchy function
+// * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
+//-----------------------------
+puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
+		with {
+				ratio = (cfreq / fund);
+				ph = os.phasor(1, fund);
+				th = ph <: (_, @(1)) : ((_ > 0.00001), (_ <= 0.00001)) : *;
+				//looking for k so that cf belongs to [kf0; (k+1)f0]
+				k = (ratio - ma.frac(ratio)) : ba.sAndH(th); //computation of k coefficient
+				q = ratio - k;
+				p = 1 - q;
+				//
+				phaseModulator = os.osccos(inharmoFreq) : *(inharmoAmp);
+				//
+				carrier = ph : +(phaseModulator) <: (*(k * 2 * ma.PI), *((k +1) * 2 * ma.PI)) : (cos, cos) : +;
+				//index of modulation = b
+				//
+				b = bwidth / fund;
+				index = os.oscsin(fund / 2) : abs : *(b); 
+				//
+				//gaussian without dividing by sigma to avoid output amplitude variation
+				gaussian(x) = pow(2.71828, -0.5*pow(x/sgauss, 2.));
+				//cauchy
+				cauchy(x) = acauchy / (x * x + acauchy * acauchy );
+				clip0to10(x) = min(max(x, 0), 10);
+				//modulator
+				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip0to10;			
+};
+
+//[TO BE TESTED]
+//
+soundcoat(n, fund, f, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : interlace2(n) : par(i, n, elemfilter(fund, f, i+1, n)) :> _ : *(0.08) : *(g)
+			with {
+				emfilter(fund, f, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
+				//An elementary bandpass filter with randomized gain
+				//two inputs for abc_elemfilter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
+						with {	
+								filterQ = 120;
+								filterG = 1;
+								ramp = os.phasor(1, f) : +(i/n) : ma.decimal;		
+								th = (ramp > 0.001) * (ramp@1 <= 0.001);
+								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
+						};
 };
