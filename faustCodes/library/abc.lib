@@ -37,48 +37,13 @@ import("mm.lib");
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-
-//-------`(ho.)gDecoderStereo_ui`----------
-// Simple ambisonic stereo decoder in 2D adding the direction of implementation of the 2 loudspeakers,
-// either direct (clockwise) or not, with a GUI (to set the direction and the gain)
-
-// `gDecoderStereo_ui` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : gDecoderStereo_ui(n) : _,_
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2_ui function)
-//-----------------------------
-gDecoderStereo_ui(n) = gDecoderStereo(n, direct, gain)
+abc_2d_stereodecoder_ui(n) = gDecoderStereo(n, direct, gain)
 	with {
 			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
 
-abc_2d_stereodecoder_ui(n) = gDecoderStereo_ui(n);
-
-//-------`(ho.)iDecoder_ui`----------
-// Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or a multi-loudspeaker configuration
-
-// `iDecoder_ui` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : iDecoder_ui(n, p) : _,_
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the decoder2_ui function)
-// * 'p' : the number of loudspeakers (there are p outputs to the decoder2_ui function)
-//-----------------------------
-iDecoder_ui(n, p) = iDecoder(n, la, direct, stereo, gain) 
+abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, stereo, gain) 
 	with {
 			direct = 2 * nentry("h:decoder/v:general/[0]clockwise", 1, 0, 1, 1) - 1; 
 			offset = hslider("h:decoder/v:general/[2]angularoffset[unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
@@ -90,42 +55,19 @@ iDecoder_ui(n, p) = iDecoder(n, la, direct, stereo, gain)
 			//la = list of angles//
  			la = par(i, p, a(i, p));
 };
-
-abc_2d_decoder_ui(n, p) = iDecoder_ui(n, p);
-
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
 
-//-------`(ho.)rEncoder_ui`----------
-// Ambisonic encoder in 2D
-// with two modes: either rotation with an angular speed, or static with a fixed angle.
-
-// `rEncoder_ui` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _ : rEncoder_ui(n, sp, a, it) : _,_, ...
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the rencoder function)
-// * 'sp' : the rotation speed in turns per second (positive or negative, according to the direction of rotation)
-// * 'a' : the fixed angular position in radians when speed equals zero
-// * 'it' : duration of interpolation between rotation and fixed position in milliseconds
-//-----------------------------
-rEncoder_ui(n) = rEncoder(n, speed, angle, returntime)
+abc_2d_encoder_ui(n) = rEncoder(n, speed, angle, returntime)
 	with {
 			speed = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
 			angle = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 ;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 };
 
-abc_2d_encoder_ui(n) = rEncoder_ui(n);
 //
 //--------------------------------------------------------------------------------------//
 //2D MAPS
@@ -215,21 +157,13 @@ abc_2d_wider_ui(n) = ho.wider(n, width)
 //SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_scope_ui(n) = thisscope
+abc_2d_scope_ui(n) = scope(n, refresh)
 		with {
-			//Control parameter: number of complete cycles (complete drawings) per second
-			refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;//refresh time, default is 10 msec
-			//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
-			theta = os.phasor(1, 1/refresh) * 2 * ma.PI;
-			//we get the vector of harmonic functions thanks to the encoding function//
-			harmonicsVector = ho.encoder(n, 1, theta);
-			//building (2n+1) normalized vectors
-			inputVector = (*(0.5), par(i, (2*n), _)) : abc_normalizedvector(2*n+1);
-			normalizedHarmonics = harmonicsVector : abc_normalizedvector(2*n+1);
-			//
-			rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1);
-			thisscope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);
+			//refresh time, default is 10 msec
+			refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;
 };
+
+
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -288,7 +222,7 @@ abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
 //2D SQUARE AND Z TRAJECTORIES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : abc_interlace2(2) : (+, +);
+abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
 //
 abc_2d_squareAndZTrajectory_ui = abc_2d_squareZ(freq, size, crossfade)
 			with {
@@ -579,12 +513,13 @@ abc_audiotester_ui = thisaudiotester
 //BUS SELECTOR (BUSSELECT)
 //--------------------------------------------------------------------------------------//
 //
-abc_busselect_ui(n) = thisbusselect
+abc_busselect_ui(n) = busSelector(n, ramp, leftOrRight)
 			with {
 				ramp = nentry("v:busselect/ramp [unit:msec]", 100, 0, 100000, 1) * ma.SR / 1000.0; //transition ramp duration in msec converted to samples//
-				leftOrRight = nentry("v:busselect/leftOrRight", 0, 0, 1, 1) : ba.line(ramp); //selection between left and right buses
+				leftOrRight = nentry("v:busselect/leftOrRight", 0, 0, 1, 1); //selection between left and right buses
 				thisbusselect = (par(i, n, *(1-leftOrRight)), par(i, n, *(leftOrRight))) :> si.bus(n);
 };
+
 //
 //--------------------------------------------------------------------------------------//
 //CHOWNING PANNERS
@@ -660,7 +595,7 @@ abc_delaychain_ui(n) = thisdelaychain
 				delaychain(2) = delseq(1) <: (delseq(2), _);
 				delaychain(n) = delaychain(n-1) : ((_ <: (delseq(n), _)), si.bus(n-2));
 				//
-				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, abc_invbus(n));
+				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, invBus(n));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -753,7 +688,7 @@ abc_multishorteningenv(n, f, s) = no.multinoise(n) : par(i, n, abc_shorteningenv
 //MULTIPLE SHORTENING ENVELOPS APPLIED TO N INPUT SIGNALS
 //--------------------------------------------------------------------------------------//
 //
-abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction) : abc_interlace2(n) : par(i, n, *) 
+abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction) : interlace2(n) : par(i, n, *) 
 			with {
 				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
 				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
@@ -763,7 +698,7 @@ abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rar
 //MULTIPLE LINEAR RANDOM ENVELOPES
 //--------------------------------------------------------------------------------------//
 //
-abc_multilinrandenv(n, f, s) = (no.multinoise(n), si.bus(n)) : abc_interlace2(n) : par(i, n, abc_linrandenv(f,s));
+abc_multilinrandenv(n, f, s) = (no.multinoise(n), si.bus(n)) : interlace2(n) : par(i, n, abc_linrandenv(f,s));
 //
 abc_multilinrandenv_ui(n) = abc_multilinrandenv(n, freq, rarefaction)
 			with {
@@ -825,13 +760,9 @@ abc_substractsynth_ui(n) = thissubstractivesynth
 //PEAKAMP ON N SAMPLES
 //--------------------------------------------------------------------------------------//
 //
-abc_peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
-	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
-	resetMax = ba.pulse(n)@1;
-	getPeak = ba.pulse(n);
-};
+
 //
-abc_peakamp_ui = abc_peakamp(nsamp)
+abc_peakamp_ui = peakamp(nsamp)
 		with {
 			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
 		};
@@ -899,7 +830,7 @@ abc_rev4cascadblock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMin
 					plusMinusBlock(del) = (_, abc_rev4tap(del)) <: (+, -);
 			};
 //
-abc_rev4reinjblock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, abc_interlace2(2)) : (_, _, +, +);
+abc_rev4reinjblock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, interlace2(2)) : (_, _, +, +);
 //
 abc_rev4permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
 //
@@ -1031,14 +962,14 @@ abc_globalgenerator_ui = (noisegenerator, sinusgenerator, phasorgenerator) :> *(
 //RISSET'S BELL
 //--------------------------------------------------------------------------------------//
 //
-abc_rissetsbell_ui = (_, gate) <: (bell1, bell2, bell3, bell4, bell5, bell6, bell7, bell8, bell9, bell10, bell11)
+abc_rissetsbell_ui = (_, gate) : rissetsbell(dur, freq, pfreq2, resq, resg, osc2filter, gain)
 			with {
 				//
 				//global parameters to control the features of the bell
 				//
 				dur = hslider("v:rissetbell/dur [unit:msec]", 5000, 10, 600000, 1) / 1000;//global duration in milliseconds
 				freq = hslider("v:rissetbell/freq [unit:Hz]", 440, 1, 10000, 0.01);
-				pfreq2 = hslider("v:rissetbell/pfreq2 [unit:Hz]", 1, 0, 10, 0.001) : si.smoo;
+				pfreq2 = hslider("v:rissetbell/pfreq2", 1, 0, 10, 0.001) : si.smoo;
 				//
 				//global parameters to control the reson bandpass filters//
 				//
@@ -1056,69 +987,12 @@ abc_rissetsbell_ui = (_, gate) <: (bell1, bell2, bell3, bell4, bell5, bell6, bel
 				//triggering of the bell
 				gate = button("gate");
 				//
-				bellEnveloppe(attack, rdur) = (0.005, bellDur, _) : en.ar : *(envamp) <:(_, _) : * <:(_, _) : *
-						with {
-							envamp = sqrt(sqrt(attack * 0.1));
-							bellDur = rdur * dur;
-				};
-				//
-				bellOscillator2(rfreq, detune) = (os.osccos(fr1), os.osccos(fr2)) : (*(a1), *(a2)) : +
-						with {
-							fr1 = rfreq*freq+detune;
-							fr2 = fr1 * pfreq2;	
-							test = (pfreq2 == 1.);
-							a1 = 0.5*(1+test);
-							a2 = 0.5*(1-test);
-				};
-				//
-				bellGenerator2(attack, rdur, rfreq, detune) = crossoscfilter : *(gain)
-						with {
-							fc = rfreq*freq+detune;
-							filter = fi.resonbp(fc, resq, resg);
-							crossoscfilter = (osc2filter*filter+(1-osc2filter)*bellOscillator2(rfreq, detune))*bellEnveloppe(attack, rdur);
-				};
-				//
-				bell1 = bellGenerator2(1, 1, 0.56, 0.);
-				bell2 = bellGenerator2(0.67, 0.9, 0.56, 1.);
-				bell3 = bellGenerator2(1, 0.65, 0.92, 0.);
-				bell4 = bellGenerator2(1.8, 0.55, 0.92, 1.7);
-				bell5 = bellGenerator2(2.67, 0.325, 1.19, 0.);
-				bell6 = bellGenerator2(1.67, 0.35, 1.7, 0.);
-				bell7 = bellGenerator2(1.46, 0.25, 2., 0.);
-				bell8 = bellGenerator2(1.33, 0.2, 2.74, 0.);
-				bell9 = bellGenerator2(1.33, 0.15, 3., 0.);
-				bell10 = bellGenerator2(1., 0.1, 3.76, 0.);
-				bell11 = bellGenerator2(1.33, 0.075, 4.07, 0.);
 };
+
 //
 //--------------------------------------------------------------------------------------//
 //SOUND COAT
 //--------------------------------------------------------------------------------------//
-//
-//An elementary bandpass filter with randomized gain
-//two inputs for abc_elemfilter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
-abc_elemfilter(fund, f, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
-			with {	
-				filterQ = 120;
-				filterG = 1;
-				ramp = os.phasor(1, f) : +(i/n) : ma.decimal;		
-				th = (ramp > 0.001) * (ramp@1 <= 0.001);
-				randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
-};
-//
-soundcoat(n, fund, f, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : interlace2(n) : par(i, n, elemfilter(fund, f, i+1, n)) :> _ : *(0.08) : *(g)
-			with {
-				emfilter(fund, f, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
-				//An elementary bandpass filter with randomized gain
-				//two inputs for abc_elemfilter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
-						with {	
-								filterQ = 120;
-								filterG = 1;
-								ramp = os.phasor(1, f) : +(i/n) : ma.decimal;		
-								th = (ramp > 0.001) * (ramp@1 <= 0.001);
-								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
-						};
-};
 //
 abc_soundcoat_ui = soundcoat(16, f0, randfreq, gain)
 			with {
@@ -1491,37 +1365,8 @@ abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 };
 //
+//
 
-//
-//--------------------------------------------------------------------------------------//
-//INTERLACE FUNCTIONS WITH 2 OR 3 SETS OF SIGNALS
-//--------------------------------------------------------------------------------------//
-//
-//--------------------------------------------------------------------------------------//
-//starting with 2n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn
-//the result is the vector sigA1, sigB1, sigA2, sigB2, ..., sigAn, sigBn
-//--------------------------------------------------------------------------------------//
-abc_interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
-//
-//--------------------------------------------------------------------------------------//
-//starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
-//the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
-//--------------------------------------------------------------------------------------//
-abc_interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
-//
-//
-//--------------------------------------------------------------------------------------//
-//BUS INVERSION FOR A BUS OF N SIGNALS (1st input => N, 2nd => N-1, 3rd => N-2, etc)
-//--------------------------------------------------------------------------------------//
-abc_invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
-//
-//--------------------------------------------------------------------------------------//
-//NORMALIZES A VECTOR OF N COMPONENTS
-//--------------------------------------------------------------------------------------//
-abc_normalizedvector(n) = si.bus(n) <: (si.bus(n), norm) : abc_interlace2(n) : par(i, n, /)
-			with {
-					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
-};
 //
 //
 //

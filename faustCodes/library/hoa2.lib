@@ -166,6 +166,28 @@ optim(n, ot) = thisOptimizer
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
+
+
+scope(n, rt) = thisScope
+		with {
+				//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
+				theta = os.phasor(1, 1/rt) * 2 * ma.PI;
+				//we get the vector of harmonic functions thanks to the encoding function//
+				harmonicsVector = ho.encoder(n, 1, theta);
+				normalizedVector(n) = si.bus(n) <: (si.bus(n), norm) : interlace2(n) : par(i, n, /)
+				with {
+					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
+				};
+				//building (2n+1) normalized vectors
+				inputVector = (*(0.5), par(i, (2*n), _)) : normalizedVector(2*n+1);
+				normalizedHarmonics = harmonicsVector : normalizedVector(2*n+1);
+				//
+				rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1);
+				thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);	
+};
+
+
+
 //-------`(ho.).fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode
 

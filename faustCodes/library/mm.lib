@@ -169,7 +169,7 @@ zmap(x, x1, x2, y1, y2) = scale(clip(x, x1, x2), x1, x2, y1, y2);
 interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
 
 //-------`(mm.)interlace3`----------
-// interlace2 is a bus function that interleaves 3 buses of signals
+// interlace3 is a bus function that interleaves 3 buses of signals
 // starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
 // the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
 
@@ -199,7 +199,16 @@ interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n
 //
 //-----------------------------
 
-invbus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
+invBus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
+
+
+// number of channels, transition time in samples, left (0) or right (1)
+busSelector(n, dt, lor) = thisBusSelector
+			with {
+					sel = lor : ba.line(dt); 
+					thisBusSelector = (par(i, n, *(1-sel)), par(i, n, *(sel))) :> si.bus(n);
+};
+
 
 //--------------------------------------------------------------------------------------//
 //ENVELOPES
@@ -333,18 +342,86 @@ puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip0to10;			
 };
 
-//[TO BE TESTED]
+
+//-------`(mm.)soundcoat`----------
+// Synthesizes an harmonic sound using n bandpass filters centered on partials of a fundamental frequency applied to white noise signals
+// the gain of each filter is randomized
+
+// `soundcoat` is a standard Faust function.
 //
-soundcoat(n, fund, f, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : interlace2(n) : par(i, n, elemfilter(fund, f, i+1, n)) :> _ : *(0.08) : *(g)
+// #### Usage
+//
+// ```
+// soundcoat(n, fund, frand, g) : _
+// ```
+//
+// Where:
+//
+// * `n`: the number of bandpass filters
+// * `fund': the fundamental frequency (in Hz)
+// * `frand`: the update frequency of filter gains (randomization)
+// * 'g' : the output amplitude between 0 and 1
+//-----------------------------
+
+soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : interlace2(n) : par(i, n, elemFilter(fund, frand, i+1, n)) :> _ : *(0.08) : *(g)
 			with {
-				emfilter(fund, f, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
+				elemFilter(fund, frand, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
 				//An elementary bandpass filter with randomized gain
 				//two inputs for abc_elemfilter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
 						with {	
 								filterQ = 120;
 								filterG = 1;
-								ramp = os.phasor(1, f) : +(i/n) : ma.decimal;		
+								ramp = os.phasor(1, frand) : +(i/n) : ma.decimal;		
 								th = (ramp > 0.001) * (ramp@1 <= 0.001);
 								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
 						};
+};
+
+
+//2 inputs:
+// - left input is the possible signal to filter when the bell is used in substractive synthesis with filters//
+// - right input is the trigger command to trigger the bell (for instance a button in Faust)
+rissetsbell(d, fund, pf2, rq, rg, of, g) = (_, _) <: (bell1, bell2, bell3, bell4, bell5, bell6, bell7, bell8, bell9, bell10, bell11)
+			with {
+				//
+				bellEnveloppe(dur, attack, rdur) = (0.005, bellDur, _) : en.ar : *(envamp) <:(_, _) : * <:(_, _) : *
+						with {
+							envamp = sqrt(sqrt(attack * 0.1));
+							bellDur = rdur * dur;
+				};
+				//
+				bellOscillator2(freq, rfreq, detune, pfreq2) = (os.osccos(fr1), os.osccos(fr2)) : (*(a1), *(a2)) : +
+						with {
+							fr1 = rfreq*freq+detune;
+							fr2 = fr1 * pfreq2;	
+							test = (pfreq2 == 1.);
+							a1 = 0.5*(1+test);
+							a2 = 0.5*(1-test);
+				};
+				//
+				bellGenerator2(attack, rdur, rfreq, detune, dur, freq, pfreq2, resq, resg, osc2filter, gain) = crossoscfilter : *(gain)
+						with {
+							fc = rfreq*freq+detune;
+							filter = fi.resonbp(fc, resq, resg);
+							crossoscfilter = (osc2filter*filter+(1-osc2filter)*bellOscillator2(freq, rfreq, detune, pfreq2))*bellEnveloppe(dur, attack, rdur);
+				};
+				//
+				bell1 = bellGenerator2(1, 1, 0.56, 0., d, fund, pf2, rq, rg, of, g);
+				bell2 = bellGenerator2(0.67, 0.9, 0.56, 1., d, fund, pf2, rq, rg, of, g);
+				bell3 = bellGenerator2(1, 0.65, 0.92, 0., d, fund, pf2, rq, rg, of, g);
+				bell4 = bellGenerator2(1.8, 0.55, 0.92, 1.7, d, fund, pf2, rq, rg, of, g);
+				bell5 = bellGenerator2(2.67, 0.325, 1.19, 0., d, fund, pf2, rq, rg, of, g);
+				bell6 = bellGenerator2(1.67, 0.35, 1.7, 0., d, fund, pf2, rq, rg, of, g);
+				bell7 = bellGenerator2(1.46, 0.25, 2., 0., d, fund, pf2, rq, rg, of, g);
+				bell8 = bellGenerator2(1.33, 0.2, 2.74, 0., d, fund, pf2, rq, rg, of, g);
+				bell9 = bellGenerator2(1.33, 0.15, 3., 0., d, fund, pf2, rq, rg, of, g);
+				bell10 = bellGenerator2(1., 0.1, 3.76, 0., d, fund, pf2, rq, rg, of, g);
+				bell11 = bellGenerator2(1.33, 0.075, 4.07, 0., d, fund, pf2, rq, rg, of, g);
+};
+
+
+peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
+	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
+	resetMax = ba.pulse(n)@1;
+	getPeak = ba.pulse(n);
 };
