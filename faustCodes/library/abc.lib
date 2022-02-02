@@ -484,29 +484,12 @@ abc_addsynth_ui(n) = thisadditivesynth
 //AUDIOTESTER
 //--------------------------------------------------------------------------------------//
 //
-abc_audiotester_ui = thisaudiotester
+abc_audiotester_ui = audiotester(n, nhpmax, freq, gain)
 			with {
-				nmax = 64; //maximum number of loudspeakers
-				n = nentry("v:audiotester/n", 2, 1, nmax, 1); //number of loudspeakers used (from 1 to 64)
+				nhpmax = 64; //maximum number of loudspeakers
+				n = nentry("v:audiotester/n", 2, 1, nhpmax, 1); //number of loudspeakers used (from 1 to 64)
 				freq = hslider("v:audiotester/freq", 1, 0.01, 100, 0.01);//frequency of the envelopes
 				gain = hslider("v:audiotester/gain [unit:dB]", -20, -127, 18, 0.01) : abc_dbtogain;
-				//
-				dur = 1000 / freq; //duration in milliseconds between two envelopes//
-				globalfreq = freq / n;//global frequency of the whole cycle of loudspeakers
-				//
-				//we define an impulsion at the frequency freq
-				impulse = ba.pulse(int(dur * ma.SR / 1000));
-				//we define a counter from 0 to n-1
-				counter = (_, (os.phasor(n, globalfreq) : int)) : ba.sAndH;
-				//
-				//we define a pink noise generator with an ar envelope
-				generator = (((0.005, (dur * 0.5 / 1000), _) : en.ar), no.pink_noise) : * : *(gain);
-				//
-				//we define a selector to choose one output #x
-				selector(x) = _ <: par(i, nmax, *(x == i));
-				//
-				//the audiotester
-				thisaudiotester = impulse <: (counter, generator) : selector;
 };
 //
 //--------------------------------------------------------------------------------------//
