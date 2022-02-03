@@ -477,7 +477,7 @@ abc_addsynth_ui(n) = thisadditivesynth
 				//beats - second oscillator shifted of a few Hz (by default 0)
 				fbeat(ind) = nentry("v:addsynth/h:partials/v:fbeats/fbeat%2ind [unit:Hz]", 0, 0, 20, 0.01);
 				//
-				thisadditivesynth = par(i, n, abc_doubleoscillator(f0, fmult(i), fbeat(i)) : *(amp(i)) : *(gain));
+				thisadditivesynth = par(i, n, doubleOscillator(f0, fmult(i), fbeat(i)) : *(amp(i)) : *(gain));
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -504,27 +504,10 @@ abc_busselect_ui(n) = busSelector(n, ramp, leftOrRight)
 };
 
 //
-//--------------------------------------------------------------------------------------//
-//CHOWNING PANNERS
-//--------------------------------------------------------------------------------------//
-//defined as a multiple panner with regular progression of pan angle from phi0 to -phi0
-//--------------------------------------------------------------------------------------//
-abc_chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
-			with {
-			//as is the incident angle of the source//
-			//ahp is the angle of the left loudspeaker, the right loudspeaker being at -ahp//
-			//we chose clockwise convention
-			//
-			aseff = max(min(ahp, as), -ahp);//to force as to be between -ahp and ahp//
-			chowningLeftLevel = sqrt((ahp - aseff)/(2*ahp));
-			chowningRighLevel = sqrt((ahp + aseff)/(2*ahp));
- 	};
-//
-//with several input sources
-abc_multiChowningPan(n, ahp, amp) = par(i, n, (abc_chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
+
 
 //with one input source (exception for one source)
-abc_chowningPan1_ui = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
+abc_chowningPan1_ui = chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
@@ -532,7 +515,7 @@ abc_chowningPan1_ui = abc_chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
 				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
-abc_chowningPan_ui(n) = abc_multiChowningPan(n, phi0, gain)
+abc_chowningPan_ui(n) = multiChowningPanner(n, phi0, gain)
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
@@ -1130,13 +1113,7 @@ abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 abc_fshiftp(freq) = abc_fshift(freq) : (_, !);
 abc_fshiftn(freq) = abc_fshift(freq) : (!, _);
 //
-//--------------------------------------------------------------------------------------//
-//DOUBLE OSCILLATOR
-//--------------------------------------------------------------------------------------//
-//2 added oscillators as harmonics of a fundamental frequency and shifted//
-//f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
-//
-abc_doubleoscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
+
 //
 //--------------------------------------------------------------------------------------//
 //GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
