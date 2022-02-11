@@ -187,6 +187,30 @@ scope(n, rt) = thisScope
 };
 
 
+//-------`(ho.)stereoEncoding`----------
+// Encoding of a stereo pair of channels with symetric angles (a/2, -a/2)
+
+// `stereoEncoding` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_ : stereoEncoding(n, a) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
+// * 'a' : opening angle in degrees, left channel at a/2 angle, right channel at -a/2 angle
+
+stereoEncoding(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
+		with {
+				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+				radang = a / 2 * ma.PI / 180;
+				leftEncoder = (_, radang) : basicEncoder;
+				rightEncoder = (_, -radang) : basicEncoder;
+};
+
 
 //-------`(ho.).fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode
