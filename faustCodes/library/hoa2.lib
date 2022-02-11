@@ -164,6 +164,7 @@ optim(n, ot) = thisOptimizer
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
+
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
 
