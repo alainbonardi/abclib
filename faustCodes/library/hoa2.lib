@@ -211,6 +211,13 @@ stereoEncoding(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 				rightEncoder = (_, -radang) : basicEncoder;
 };
 
+//intprod(n, p) computes the product (p+1)(p+2)...(p+n)
+intprod(1, p) = p+1;
+intprod(n, p) = n * intprod(n-1, p);
+
+//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
+//enables factor simplification
+factquotient(n, p) = intprod(n-p, p);
 
 //-------`(ho.).fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode
