@@ -168,7 +168,6 @@ optim(n, ot) = thisOptimizer
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
 
-
 scope(n, rt) = thisScope
 		with {
 				//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
