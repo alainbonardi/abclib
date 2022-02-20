@@ -168,7 +168,8 @@ zmap(x, x1, x2, y1, y2) = scale(clip(x, x1, x2), x1, x2, y1, y2);
 
 interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
 
-//-------`(mm.)interlace3`----------
+//-------`(mm.)
+//----------
 // interlace3 is a bus function that interleaves 3 buses of signals
 // starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
 // the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
