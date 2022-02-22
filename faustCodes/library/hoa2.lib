@@ -201,14 +201,13 @@ scope(n, rt) = thisScope
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
-// * 'a' : opening angle in degrees, left channel at a/2 angle, right channel at -a/2 angle
+// * 'a' : opening angle in radians, left channel at a/2 angle, right channel at -a/2 angle
 
 stereoEncoding(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
-				radang = a / 2 * ma.PI / 180;
-				leftEncoder = (_, radang) : basicEncoder;
-				rightEncoder = (_, -radang) : basicEncoder;
+				leftEncoder = (_, a / 2) : basicEncoder;
+				rightEncoder = (_, -a / 2) : basicEncoder;
 };
 
 //intprod(n, p) computes the product (p+1)(p+2)...(p+n)

@@ -70,6 +70,18 @@ abc_2d_encoder_ui(n) = rEncoder(n, speed, angle, returntime)
 
 //
 //--------------------------------------------------------------------------------------//
+//AMBISONIC STEREO ENCODING WITH A CERTAIN OPENING IN DEGREES
+//--------------------------------------------------------------------------------------//
+//
+
+abc_2d_stereoencoder_ui(n) = stereoEncoding(n, angle)
+	with {
+			//angle expressed in degrees and converted to radians
+			angle = hslider("v:stereoencoder/angle [unit:deg]", 60, 0, 360, 0.01) * ma.PI / 180.0 ;		
+};
+
+//
+//--------------------------------------------------------------------------------------//
 //2D MAPS
 //--------------------------------------------------------------------------------------//
 //
