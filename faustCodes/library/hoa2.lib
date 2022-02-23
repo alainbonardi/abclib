@@ -14,8 +14,8 @@
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
-// * `sp': the speed expressed as angular speed (2PI/sec)
-// * `a`: the fixed angle when the rotation stops (sp = 0) in radians
+// * `sp': the azimuth speed expressed as angular speed (2PI/sec)
+// * `a`: the fixed azimuth when the rotation stops (sp = 0) in radians
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
 rEncoder(n, sp, a, it) = thisEncoder
@@ -140,6 +140,7 @@ iDecoder(n, la, cw, st, g) = thisDecoder
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the optim function)
 // * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
+//-----------------------------
 optim(n, ot) = thisOptimizer
 	with {
 			optb = (ot == 0) : si.smoo;
@@ -167,7 +168,22 @@ optim(n, ot) = thisOptimizer
 
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
+//-------`(ho.)scope`----------
+// Produces an XY pair of signals representing the ambisonic sound field
 
+// `scope` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : scope(n, rt) : _,_
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to the mirror function)
+// * 'rt' : refreshment time in milliseconds
+//-----------------------------
 scope(n, rt) = thisScope
 		with {
 				//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
@@ -202,21 +218,13 @@ scope(n, rt) = thisScope
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
 // * 'a' : opening angle in radians, left channel at a/2 angle, right channel at -a/2 angle
-
+//-----------------------------
 stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 				leftEncoder = (_, a / 2) : basicEncoder;
 				rightEncoder = (_, -a / 2) : basicEncoder;
 };
-
-//intprod(n, p) computes the product (p+1)(p+2)...(p+n)
-intProd(1, p) = p+1;
-intProd(n, p) = n * intProd(n-1, p);
-
-//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
-//enables factor simplification
-factQuotient(n, p) = intProd(n-p, p);
 
 //-------`(ho.).fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode
@@ -261,7 +269,7 @@ factQuotient(n, p) = intProd(n-p, p);
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'fd': feedback / level of reinjection (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
-
+//-----------------------------
 fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
                 gate(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
@@ -325,7 +333,7 @@ fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, 
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'fd': feedback / level of reinjection (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
-
+//-----------------------------
 synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
 				crossFade(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
@@ -385,7 +393,7 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 // * 'f0': the maximum delay applied (in samples)
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
-
+//-----------------------------
 fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 	with{
 		//
@@ -444,7 +452,7 @@ fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 // * 'f0': the maximum delay applied (in samples)
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
-
+//-----------------------------
 synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, fa, tf))
 	with{
 		//
@@ -464,10 +472,29 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 };
 
 
+//-------`(ho.)rEncoder3D`----------
+// Ambisonic encoder in 3D including source rotation
+// a mono signal is encoded at at certain ambisonic order
+// with two possible modes: either rotation with an angular speed, or static with a fixed angle.
 
-
-
-rencoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
+// `rEncoder3D` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : rEncoder3D(n, azsp, elsp, az, el, it) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
+// * `azsp': the azimuth speed expressed as angular speed (2PI/sec)
+// * `elsp': the elevation speed expressed as angular speed (2PI/sec)
+// * `az`: the fixed azimuth when the azimuth rotation stops (azsp = 0) in radians
+// * `el`: the fixed elevation when the elevation rotation stops (elsp = 0) in radians
+// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
+//-----------------------------
+rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
 with {
 		basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(n, sig, ang1, ang2);
 		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
@@ -508,7 +535,7 @@ with {
 //
 // * `n`: the ambisonic order in 3D (there are (n+1)*(n+1) inputs and outputs to the optim function)
 // * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
-
+//-----------------------------
 optim3D(n, ot) = thisOptimizer
 	with {
 			optb = (ot == 0) : si.smoo;
@@ -521,10 +548,79 @@ optim3D(n, ot) = thisOptimizer
 
 
 
+//factorial function
+fact(0) = 1;
+fact(n) = n * fact(n-1);
+
+//intprod(n, p) computes the product (p+1)(p+2)...(p+n)
+//to enable factorial quotient simplification
+intProd(1, p) = p+1;
+intProd(n, p) = n * intProd(n-1, p);
+
+//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
+//enables factor simplification
+factQuotient(n, p) = intProd(n-p, p);
+
+//encoder3D optimisé sur les calculs de factorielles//
+encoder3Dopt(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
+with {
+	// The degree l of the harmonic[l, m]	
+	degree(index) = int(sqrt(index));
+	// The order m of the harmonic[l, m]	
+	order(index) = int(index - int(degree(index) * int(degree(index) + 1)));
+
+	// The spherical harmonics
+	y(l, m, theta, phi) =  e(m, theta) * k(l, m) * p(l, m, cos(phi + ma.PI * 0.5))
+	with {	
+		// The associated Legendre polynomial
+		// If l = 0   => p = 1
+		// If l = m   => p = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi)
+		// If l = m+1 => p = phi * (2 * (l-1) + 1) * p(l-1, l-1, cphi)
+		// Else => p = (cphi * (2 * (l-1) + 1) * p(l-1, abs(m), cphi) - ((l-1) + abs(m)) * p(l-2, abs(m), cphi)) / ((l-1) - abs(m) + 1)
+		p(l, m, cphi) = pcalcul(((l != 0) & (l == abs(m))) + ((l != 0) & (l == abs(m)+1)) * 2 + ((l != 0) & (l != abs(m)) & (l != abs(m)+1)) * 3, l, m, cphi)
+		with {
+			pcalcul(0, l, m, cphi) = 1;
+			pcalcul(1, l, m, cphi) = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi);
+			pcalcul(2, l, m, cphi) = cphi * (2 * (l-1) + 1) * p(l-1, l-1, cphi);
+			pcalcul(s, l, m, cphi) = (cphi * (2 * (l-1) + 1) * p(l-1, abs(m), cphi) - ((l-1) + abs(m)) * p(l-2, abs(m), cphi)) / ((l-1) - abs(m) + 1);
+		};	
+
+		// The exponential imaginary
+		// If m > 0 => e^i*m*theta = cos(m * theta)
+		// If m < 0 => e^i*m*theta = sin(-m * theta)
+		// If m = 0 => e^i*m*theta = 1
+		e(m, theta) = ecalcul((m > 0) * 2 + (m < 0), m, theta)
+		with {
+			ecalcul(2, m, theta) = cos(m * theta);
+			ecalcul(1, m, theta) = sin(abs(m) * theta);
+			ecalcul(s, m, theta) = 1;
+		}; 
+		
+		// The normalization
+		// If m  = 0 => k(l, m) = 1
+		// If m != 0 => k(l, m) = sqrt((l - abs(m))! / l + abs(m))!) * sqrt(2)
+		k(l, m) = kcalcul((m != 0), l, m)
+		with {	
+			kcalcul(0, l, m) = 1;
+			kcalcul(1, l, m) = sqrt(2) / sqrt(factQuotien(l+abs(m), l-abs(m)));
+			//kcalcul(1, l, m) = sqrt(fact(l - abs(m)) / fact(l + abs(m))) * sqrt(2)
+			/*
+			with {
+				fact(0) = 1;
+				fact(n) = n * fact(n-1);
+			};
+			*/
+		};		
+	};
+};
+
+
+
+
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
-//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
+//TYPES OF DISTRIBUTIONS: 22 EASING FUNCTIONS FROM [0, 1] to [0,1]
 //(i+1)/p belongs to [0, 1] and its image by any function in the list also belongs to the interval
 //
 //--------------------------------------------------------------------------------------//
