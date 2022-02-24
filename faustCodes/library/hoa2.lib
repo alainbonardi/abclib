@@ -53,7 +53,7 @@ rEncoder(n, sp, a, it) = thisEncoder
 //-----------------------------
 gDecoderStereo(n, cw, g) = thisStereoDecoder
 	with {
-			//d is direct mode (1) or indirect mode (-1)
+			//cw is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
 			leftDispatcher = _<:(*(1-cw), *(cw));
 			rightDispatcher = _<:(*(cw), *(1-cw));
