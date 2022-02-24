@@ -496,13 +496,13 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 //-----------------------------
 rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
 with {
-		basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(n, sig, ang1, ang2);
+		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
 		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
 			with {
-				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod; 
+				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
 				vn1 = (azsp == 0) : si.smooth(ba.tau2pole(it));
 				rotationOrStaticAzim = (1-vn1) * x1 + vn1 * az;
-				x2 = (os.phasor(1, elsp), el, 1) : (+, _) : fmod; 
+				x2 = (os.phasor(1, elsp), el, 1) : (+, _) : fmod : *(2 * ma.PI); 
 				vn2 = (elsp == 0) : si.smooth(ba.tau2pole(it));
 				rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
 			};
@@ -547,7 +547,7 @@ optim3D(n, ot) = thisOptimizer
 };
 
 
-
+/*
 //factorial function
 fact(0) = 1;
 fact(n) = n * fact(n-1);
@@ -560,9 +560,12 @@ intProd(n, p) = n * intProd(n-1, p);
 //factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
 //enables factor simplification
 factQuotient(n, p) = intProd(n-p, p);
+*/
 
-//encoder3D optimisé sur les calculs de factorielles//
-encoder3Dopt(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
+
+//nouvel encoder3D optimisé sur les calculs de factorielles//
+//fonctionne jusqu'à l'ordre 8 en 3D//
+encoder3D(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index) = int(sqrt(index));
@@ -570,8 +573,11 @@ with {
 	order(index) = int(index - int(degree(index) * int(degree(index) + 1)));
 
 	// The spherical harmonics
-	y(l, m, theta, phi) =  e(m, theta) * k(l, m) * p(l, m, cos(phi + ma.PI * 0.5))
+	y(l, m, theta, phi) =  e(m, theta2) * k(l, m) * p(l, m, cos(phi + ma.PI * 0.5))
 	with {	
+		//signum to have a continuous movement on elevation
+		theta2 = theta + (1 - int(fmod(fmod(phi / ma.PI - 0.5, 2) + 2, 2))) * ma.PI;
+		//
 		// The associated Legendre polynomial
 		// If l = 0   => p = 1
 		// If l = m   => p = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi)
@@ -602,14 +608,18 @@ with {
 		k(l, m) = kcalcul((m != 0), l, m)
 		with {	
 			kcalcul(0, l, m) = 1;
-			kcalcul(1, l, m) = sqrt(2) / sqrt(factQuotien(l+abs(m), l-abs(m)));
-			//kcalcul(1, l, m) = sqrt(fact(l - abs(m)) / fact(l + abs(m))) * sqrt(2)
-			/*
-			with {
-				fact(0) = 1;
-				fact(n) = n * fact(n-1);
+			kcalcul(1, l, m) = sqrt(2) / sqrt(factQuotient(l+abs(m), l-abs(m)))
+				with {
+						//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
+						//enables factor simplification
+						factQuotient(n, p) = intProd(n-p, p)
+						with {
+								//intprod(n, p) computes the product (p+1)(p+2)...(p+n)
+								//to enable factorial quotient simplification
+								intProd(1, p) = p+1;
+								intProd(n, p) = (p+n) * intProd(n-1, p);
+						};
 			};
-			*/
 		};		
 	};
 };
