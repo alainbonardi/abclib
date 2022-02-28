@@ -52,24 +52,23 @@ declare copyright "2022- Bonardi, CICM / MUSIDANSE, U. Paris 8";
 //CLIP FUNCTIONS
 //--------------------------------------------------------------------------------------//
 //-------`(mm.)clip`----------
-// Clips the signal between a and b (a is the minimum value, b the maximum value, a <= b)
-
+// Clips the signal x between low and high (low is the minimum value, high the maximum value, with low <= high)
 // `clip` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _ : clip(x, a, b) : _
+// clip(low, high, x) : _
 // ```
 //
 // Where:
 //
+// * `low': the minimum value
+// * `high`: the maximum value
 // * `x`: the incoming signal
-// * `a': the minimum value
-// * `b`: the maximum value
 //-----------------------------
 
-clip(x, a, b) = min(max(x, a), b);
+clip(low, high, x) = min(max(x, low), high);
 
 //-------`(mm.)sigClip`----------
 // Clips the signal between -1 and 1 (usual clip for signals)
@@ -84,7 +83,7 @@ clip(x, a, b) = min(max(x, a), b);
 //
 //-----------------------------
 
-sigClip = (_, -1, 1) : clip;
+sigClip = clip(-1, 1);
 
 //-------`(mm.)ampClip`----------
 // Clips the signal between 0 and 1, as an amplitude
@@ -99,7 +98,7 @@ sigClip = (_, -1, 1) : clip;
 //
 //-----------------------------
 
-ampClip = (_, 0, 1) : clip;
+ampClip = clip(0,1);
 
 //--------------------------------------------------------------------------------------//
 // SCALE AND ZMAP FUNCTIONS
@@ -116,12 +115,19 @@ ampClip = (_, 0, 1) : clip;
 // #### Usage
 //
 // ```
-// _ : scale(x, x1, x2, y1, y2) : _
+// scale(x1, x2, y1, y2, x) : _
 // ```
 //
+// Where:
+//
+// * `x1': the minimum value of the initial scale
+// * `x2`: the maximum value of the initial scale
+// * `y1': the minimum value of the final scale
+// * `y2`: the maximum value of the final scale
+// * `x`: the incoming signal
 //-----------------------------
 
-scale(x, x1, x2, y1, y2) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1, x)
+scale(x1, x2, y1, y2, x) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1, x)
 	with {
 			a1 = min(x1, x2);
 			a2 = max(x1, x2);
@@ -140,12 +146,19 @@ scale(x, x1, x2, y1, y2) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 // #### Usage
 //
 // ```
-// _ : zmap(x, x1, x2, y1, y2) : _
+// zmap(x1, x2, y1, y2, x) : _
 // ```
 //
+// Where:
+//
+// * `x1': the minimum value of the initial scale
+// * `x2`: the maximum value of the initial scale
+// * `y1': the minimum value of the final scale
+// * `y2`: the maximum value of the final scale
+// * `x`: the incoming signal
 //-----------------------------
 
-zmap(x, x1, x2, y1, y2) = scale(clip(x, x1, x2), x1, x2, y1, y2);
+zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 
 //--------------------------------------------------------------------------------------//
 // BUS FUNCTIONS
@@ -313,9 +326,8 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 				gaussian(x) = pow(2.71828, -0.5*pow(x/sgauss, 2.));
 				//cauchy
 				cauchy(x) = acauchy / (x * x + acauchy * acauchy);
-				clip0to10(x) = min(max(x, 0), 10);
 				//modulator
-				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip0to10;			
+				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip(0, 10);			
 };
 
 //[TO BE TESTED]
@@ -368,9 +380,8 @@ puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 				gaussian(x) = pow(2.71828, -0.5*pow(x/sgauss, 2.));
 				//cauchy
 				cauchy(x) = acauchy / (x * x + acauchy * acauchy );
-				clip0to10(x) = min(max(x, 0), 10);
 				//modulator
-				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip0to10;			
+				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip(0, 10);			
 };
 
 
