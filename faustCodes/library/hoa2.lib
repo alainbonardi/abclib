@@ -582,7 +582,7 @@ factQuotient(n, p) = intProd(n-p, p);
 // * `a`: the angle
 // * `e`: the elevation
 //----------------------------------------------------------------
-encoder3D(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
+encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index) = int(sqrt(index));
