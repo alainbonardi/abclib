@@ -565,6 +565,23 @@ factQuotient(n, p) = intProd(n-p, p);
 
 //nouvel encoder3D optimisé sur les calculs de factorielles//
 //fonctionne jusqu'à l'ordre 8 en 3D//
+//----------------------`(ho.)encoder3D`---------------------------------
+// Ambisonic encoder. Encodes a signal in the circular harmonics domain
+// depending on an order of decomposition, an angle and an elevation.
+//
+// #### Usage
+//
+// ```
+// encoder3D(n, x, a, e) : _
+// ```
+//
+// Where:
+//
+// * `N`: the order (works with n <= 8)
+// * `x`: the signal
+// * `a`: the angle
+// * `e`: the elevation
+//----------------------------------------------------------------
 encoder3D(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
