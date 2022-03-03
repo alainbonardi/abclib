@@ -496,7 +496,7 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 //-----------------------------
 rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
 with {
-		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
+		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, ang1, ang2, sig);
 		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
 			with {
 				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
@@ -572,17 +572,17 @@ factQuotient(n, p) = intProd(n-p, p);
 // #### Usage
 //
 // ```
-// encoder3D(n, x, a, e) : _
+// encoder3D(n, a, e, x) : _
 // ```
 //
 // Where:
 //
-// * `N`: the order (works with n <= 8)
-// * `x`: the signal
+// * `n`: the order (works with n <= 8)
 // * `a`: the angle
 // * `e`: the elevation
+// * `x`: the signal
 //----------------------------------------------------------------
-encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
+encoder3D(n, theta, phi, x) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index) = int(sqrt(index));
