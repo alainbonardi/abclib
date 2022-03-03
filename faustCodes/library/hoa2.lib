@@ -20,7 +20,7 @@
 //-----------------------------
 rEncoder(n, sp, a, it) = thisEncoder
 	with {
-			basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+			basicEncoder(sig, angle) = ho.encoder(n, angle, sig);
 			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
 				with {
 						//converting the angle from radians to [0; 1]
@@ -79,7 +79,7 @@ gDecoderStereo(n, cw, g) = thisStereoDecoder
 imlsDecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
 	with {
 			p = outputs(la);
-   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
+   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,alpha,2/(2*n+1)) : si.dot(2*n+1);
 };
 
 //-------`(ho.)iDecoder`----------
@@ -189,7 +189,7 @@ scope(n, rt) = thisScope
 				//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
 				theta = os.phasor(1, 1/rt) * 2 * ma.PI;
 				//we get the vector of harmonic functions thanks to the encoding function//
-				harmonicsVector = ho.encoder(n, 1, theta);
+				harmonicsVector = ho.encoder(n, theta, 1);
 				normalizedVector(n) = si.bus(n) <: (si.bus(n), norm) : interlace2(n) : par(i, n, /)
 				with {
 					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
@@ -221,7 +221,7 @@ scope(n, rt) = thisScope
 //-----------------------------
 stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
-				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+				basicEncoder(sig, angle) = ho.encoder(n, angle, sig);
 				leftEncoder = (_, a / 2) : basicEncoder;
 				rightEncoder = (_, -a / 2) : basicEncoder;
 };
