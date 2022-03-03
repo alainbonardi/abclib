@@ -68,6 +68,15 @@ abc_2d_encoder_ui(n) = rEncoder(n, speed, angle, returntime)
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 };
 
+abc_3d_encoder_ui(n) = rEncoder3D(n, speedazim, speedelev, azim, elev, returntime)
+	with {
+			speedazim = hslider("v:encoder/speedazim [unit:s-1]", 0, -100, 100, 0.001);
+            speedelev = hslider("v:encoder/speedelev [unit:s-1]", 0, -100, 100, 0.001);
+			azim = hslider("v:encoder/azim [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 ;
+            elev = hslider("v:encoder/elev [unit:deg]", 0, 0, 180, 0.01) * ma.PI / 180.0 ;
+			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
+};
+
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC STEREO ENCODING WITH A CERTAIN OPENING IN DEGREES
