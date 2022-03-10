@@ -20,7 +20,7 @@
 //-----------------------------
 rEncoder(n, sp, a, it) = thisEncoder
 	with {
-			basicEncoder(sig, angle) = ho.encoder(n, angle, sig);
+            basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
 				with {
 						//converting the angle from radians to [0; 1]
@@ -79,7 +79,7 @@ gDecoderStereo(n, cw, g) = thisStereoDecoder
 imlsDecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
 	with {
 			p = outputs(la);
-   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,alpha,2/(2*n+1)) : si.dot(2*n+1);
+            speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 };
 
 //-------`(ho.)iDecoder`----------
@@ -189,7 +189,7 @@ scope(n, rt) = thisScope
 				//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
 				theta = os.phasor(1, 1/rt) * 2 * ma.PI;
 				//we get the vector of harmonic functions thanks to the encoding function//
-				harmonicsVector = ho.encoder(n, theta, 1);
+                harmonicsVector = ho.encoder(n, 1, theta);
 				normalizedVector(n) = si.bus(n) <: (si.bus(n), norm) : interlace2(n) : par(i, n, /)
 				with {
 					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
@@ -221,7 +221,7 @@ scope(n, rt) = thisScope
 //-----------------------------
 stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
-				basicEncoder(sig, angle) = ho.encoder(n, angle, sig);
+				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 				leftEncoder = (_, a / 2) : basicEncoder;
 				rightEncoder = (_, -a / 2) : basicEncoder;
 };
@@ -496,7 +496,7 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 //-----------------------------
 rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
 with {
-		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, ang1, ang2, sig);
+        basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
 		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
 			with {
 				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
@@ -572,17 +572,17 @@ factQuotient(n, p) = intProd(n-p, p);
 // #### Usage
 //
 // ```
-// encoder3D(n, a, e, x) : _
+// encoder3D(n, x, a, e) : _
 // ```
 //
 // Where:
 //
 // * `n`: the order (works with n <= 8)
+// * `x`: the signal
 // * `a`: the angle
 // * `e`: the elevation
-// * `x`: the signal
 //----------------------------------------------------------------
-encoder3D(n, theta, phi, x) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
+encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index) = int(sqrt(index));
