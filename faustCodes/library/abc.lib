@@ -50,8 +50,6 @@ abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, gain)
 			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
 			stereo = nentry("h:decoder/v:general/[1]stereo", 0, 0, 1, 1) : si.smoo;
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
-			//and adapted according to the clockwise direction, offset, and stereo choice
-			//a(i, nls) = (nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1)  - direct * offset) : *(direct) : si.smoo;
 			a(i, nls) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
 			//la = list of angles//
  			la = par(i, p, a(i, p));
@@ -80,14 +78,21 @@ abc_3d_encoder_ui(n) = rEncoder3D(n, speedazim, speedelev, azim, elev, returntim
 
 //
 //--------------------------------------------------------------------------------------//
-//AMBISONIC STEREO ENCODING WITH A CERTAIN OPENING IN DEGREES
+//MULTIPLE ENCODERS TO PLAY SEVERAL LOCALIZED SOURCES
 //--------------------------------------------------------------------------------------//
 //
 
-abc_2d_stereoencoder_ui(n) = stereoEncoder(n, angle)
+abc_2d_stereoEncoder_ui(n, angle) = stereoEncoder(n, angle)
 	with {
-			//angle expressed in degrees and converted to radians
-			angle = hslider("v:stereoencoder/angle [unit:deg]", 60, 0, 360, 0.01) * ma.PI / 180.0 ;		
+			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0;
+};
+
+abc_2d_multiEncoder_ui(n, ns) = multiEncoder(n, la)
+	with {
+			//the angle of the the ith source among p sources, expressed in degrees for the end-user
+			a(i, p) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / p, -360, 360, 0.01);
+			//la = list of angles//
+ 			la = par(i, p, a(i, ns));
 };
 
 //

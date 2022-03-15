@@ -263,14 +263,13 @@ scope(n, rt) = thisScope
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
-// * 'a' : opening angle in degrees, left channel at a/2 angle, right channel at -a/2 angle
+// * 'a' : opening angle in radians, left channel at a/2 angle, right channel at -a/2 angle
 //-----------------------------
 stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
-				radHalfAngle = a * ma.PI / 360; //half angle expressed in radians
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
-				leftEncoder = (_, radHalfAngle) : basicEncoder;
-				rightEncoder = (_, radHalfAngle * (-1)) : basicEncoder;
+				leftEncoder = (_, a / 2 : basicEncoder;
+				rightEncoder = (_, -a /2) : basicEncoder;
 };
 
 
@@ -288,9 +287,9 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
-// * 'la' : a list of angles in degrees on the unit circle to localize the sources (one angle per signal)
+// * 'la' : a list of angles in radians on the unit circle to localize the sources (one angle per signal)
 //-----------------------------
-multiEncoder(n, la) = par(i, p, ((_, (ba.take(i+1, la) * ma.PI / 180)) : basicEncoder)) :> si.bus(2*n+1)
+multiEncoder(n, la) = par(i, p, ((_, ba.take(i+1, la)) : basicEncoder)) :> si.bus(2*n+1)
 		with {
 				p = outputs(la);
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
