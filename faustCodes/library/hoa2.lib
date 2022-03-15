@@ -48,19 +48,61 @@ rEncoder(n, sp, a, it) = thisEncoder
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2 function)
-// * `cw`: 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
+// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `g`: global output gain between 0 and 1
 //-----------------------------
-gDecoderStereo(n, cw, g) = thisStereoDecoder
+gDecoderStereo(n, direct, g) = thisStereoDecoder
 	with {
-			//cw is direct mode (1) or indirect mode (-1)
+			//direct is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
-			leftDispatcher = _<:(*(1-cw), *(cw));
-			rightDispatcher = _<:(*(cw), *(1-cw));
+			leftDispatcher = _<:(*(1-direct), *(direct));
+			rightDispatcher = _<:(*(direct), *(1-direct));
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
-//-------`(mm.)imlsDecoder`----------
+//-------`(ho.)circularVBAP`----------
+// Circular VBAP with all loudspeakers and the virtual source on the unit-circle
+
+// `circularVBAP` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : circularVBAP(l, t) : _,_,...
+// ```
+//
+// Where:
+//
+// * `l' : the list of angles of the loudspeakers in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * 't' : the current angle of the virtual source in degrees
+//-----------------------------
+
+circularVBAP(l, t) = thisCircularVbap with {
+		//modulo indexes between 1 and the number of elements of the list
+		modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
+		//
+		//pick up the ith angle with a 360 degree modulo
+		getElt(i, l) = ma.modulo(ba.take(modIndex(i, l), l), 360);
+		//
+		//computation of the determinant for the inversion of the matrix (VBAP)
+		delta(i, l) = sin((getElt(i+1, l) - getElt(i, l)) * ma.PI / 180);
+		//
+		//computes the left and the right gains using the matrix inversion (VBAP)
+		leftGain(i, l, t) = sin((getElt(i+1, l) -t) * ma.PI / 180) / delta(i, l) ;
+		rightGain(i, l, t) = sin((t - getElt(i, l)) * ma.PI / 180) / delta(i, l) ;
+		activePair(i, l, t) = (leftGain(i, l, t) >= 0) * (rightGain(i, l, t) >= 0);
+		//
+		//computes the total gain for each loudspeaker
+		tVbapGain(i, l, t) = cumulatedGain((i == 0), i, l, t) with
+			{
+				cumulatedGain(0, i, l, t) = rightGain(i-1, l, t) * activePair(i-1, l, t) + leftGain(i, l, t) * activePair(i, l, t);
+				cumulatedGain(1, i, l, t) = rightGain(outputs(l)-1, l, t) * activePair(outputs(l)-1, l, t) + leftGain(0, l, t) * activePair(0, l, t);
+			};
+		//
+		thisCircularVbap = _ <: par(i, outputs(l), *(tVbapGain(i, l, t)));
+};
+
+//-------`(ho.)imlsDecoder`----------
 // Irregular decoder in 2D for an irregular multi-loudspeaker configuration
 
 // `imlsDecoder` is a standard Faust function.
@@ -74,43 +116,42 @@ gDecoderStereo(n, cw, g) = thisStereoDecoder
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
-// * `la' : the list of angles in radians, for instance (0, 1.5, 3, 4.71) for four loudspeakers
+// * `la' : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
+// * 'shift' : angular shift in degrees to easily adjust angles
 //-----------------------------
-imlsDecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
+imlsDecoder(n, la, direct, shift) = ho.decoder(n, p) : par(i, p, circularVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p)
 	with {
 			p = outputs(la);
-            speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 };
-
-//-------`(ho.)iDecoder`----------
-// Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or an irregular multi-loudspeaker configuration
 
 // `iDecoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : iDecoder(n, la, cw, st, g) : _,_
+// _,_,... : iDecoder(n, la, direct, st, g) : _,_
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoder2_ui function)
-// * 'la': the list of angles in radians
-// * 'cw': 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
+// * 'la': the list of angles in degrees
+// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
+// * 'shift' : angular shift in degrees to easily adjust angles
 // * 'st': 1 for stereo, 0 for multi-loudspeaker configuration. When 1, stereo sounds goes through the first two channels
 // * 'g' : gain between 0 and 1
 //-----------------------------
-iDecoder(n, la, cw, st, g) = thisDecoder
+iDecoder(n, la, direct, shift, st, g) = thisDecoder
 	with {
 			//p is the number of outputs
             p = outputs(la);
 			ambi = 1 - st;
 			//
 			//for stereo decoding
-			paddedStereoDecoder(n, p) = (gDecoderStereo(n, cw, g), (0 <: si.bus(p-2)));
+			paddedStereoDecoder(n, p) = (gDecoderStereo(n, direct, g), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
+			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la, direct, shift), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
 };
 
 
