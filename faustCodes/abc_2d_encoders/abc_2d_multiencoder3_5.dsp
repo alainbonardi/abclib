@@ -9,6 +9,6 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_2d_stereoencoder6";
+declare name "abc_2d_multiencoder3_5";
 //
-process = library("abc.lib").abc_2d_stereoencoder_ui(6);
+process = library("abc.lib").abc_2d_multiEncoder_ui(3, 5);

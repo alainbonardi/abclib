@@ -268,7 +268,7 @@ scope(n, rt) = thisScope
 stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
-				leftEncoder = (_, a / 2 : basicEncoder;
+				leftEncoder = (_, a / 2) : basicEncoder;
 				rightEncoder = (_, -a /2) : basicEncoder;
 };
 
