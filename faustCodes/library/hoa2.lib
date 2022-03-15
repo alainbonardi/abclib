@@ -534,44 +534,6 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
 };
 
-
-//-------`(ho.)rEncoder3D`----------
-// Ambisonic encoder in 3D including source rotation
-// a mono signal is encoded at at certain ambisonic order
-// with two possible modes: either rotation with an angular speed, or static with a fixed angle.
-
-// `rEncoder3D` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _ : rEncoder3D(n, azsp, elsp, az, el, it) : _,_, ...
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
-// * `azsp': the azimuth speed expressed as angular speed (2PI/sec)
-// * `elsp': the elevation speed expressed as angular speed (2PI/sec)
-// * `az`: the fixed azimuth when the azimuth rotation stops (azsp = 0) in radians
-// * `el`: the fixed elevation when the elevation rotation stops (elsp = 0) in radians
-// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
-//-----------------------------
-rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
-with {
-        basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
-		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
-			with {
-				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
-				vn1 = (azsp == 0) : si.smooth(ba.tau2pole(it));
-				rotationOrStaticAzim = (1-vn1) * x1 + vn1 * az;
-				x2 = (os.phasor(1, elsp), el, 1) : (+, _) : fmod : *(2 * ma.PI); 
-				vn2 = (elsp == 0) : si.smooth(ba.tau2pole(it));
-				rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
-			};
-};
-
-
 //-------`(ho.)optim3D`----------
 // Ambisonic optimizer including the three elementary optimizers:
 // - (ho).optimBasic3D, (ho).optimMaxRe3D, (ho.)optimInPhase3D
