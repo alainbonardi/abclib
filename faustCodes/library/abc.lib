@@ -10,7 +10,7 @@
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abclib";
-declare copyright "2019-2021 Bonardi, Goutmann CICM, U. Paris 8";
+declare copyright "2019-2022 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
 //provisional import of functions in hoa2.lib that will be migrated later to the official hoa.lib
@@ -82,7 +82,7 @@ abc_3d_encoder_ui(n) = rEncoder3D(n, speedazim, speedelev, azim, elev, returntim
 //--------------------------------------------------------------------------------------//
 //
 
-abc_2d_stereoEncoder_ui(n, angle) = stereoEncoder(n, angle)
+abc_2d_stereoEncoder_ui(n) = stereoEncoder(n, angle)
 	with {
 			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0;
 };
@@ -104,6 +104,8 @@ abc_2d_map_ui(n) = thisMap
 	with {
 		thisMap(x, r, a) = ho.map(n, x, r, a);
 };
+
+abc_2d_multiMap_ui(n, ns) = par(i, ns, abc_2d_map_ui(n));
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC MIRROR WITH FACTOR
