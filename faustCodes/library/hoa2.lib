@@ -85,22 +85,24 @@ circularVBAP(l, t) = thisCircularVbap with {
 		//pick up the ith angle with a 360 degree modulo
 		getElt(i, l) = ma.modulo(ba.take(modIndex(i, l), l), 360);
 		//
-		//computation of the determinant for the inversion of the matrix (VBAP)
-		delta(i, l) = sin((getElt(i+1, l) - getElt(i, l)) * ma.PI / 180);
+		//computation of the inverse of the determinant for the inversion of the matrix (VBAP)
+		//it is set to 0 in the case when the two angles are equal
+		//so that the listener notices there is a problem with this pair of LS
+		invDelta(i, l) = ba.if((getElt(i+1, l) != getElt(i, l)), 1 / sin((getElt(i+1, l) - getElt(i, l)) * ma.PI / 180), 0.);
 		//
 		//computes the left and the right gains using the matrix inversion (VBAP)
-		leftGain(i, l, t) = sin((getElt(i+1, l) -t) * ma.PI / 180) / delta(i, l) ;
-		rightGain(i, l, t) = sin((t - getElt(i, l)) * ma.PI / 180) / delta(i, l) ;
-		activePair(i, l, t) = (leftGain(i, l, t) >= 0) * (rightGain(i, l, t) >= 0);
+		leftGain(i, l, t) = sin((getElt(i+1, l) -t) * ma.PI / 180) * invDelta(i, l) ;
+		rightGain(i, l, t) = sin((t - getElt(i, l)) * ma.PI / 180) * invDelta(i, l) ;
+		//computation of boolean activePair that determines whether the pair of LS is active or not
+		//we have to distinguish leftGain >0 and rightGain >= 0
+		//if we put >=0 for both, two pairs will be simultaneously active when theta is one of the loudspeaker angles in the list
+		//if we put > 0 for both, all the pairs will be inactive when theta is one of the loudspeaker angles in the list
+		activePair(i, l, t) = (leftGain(i, l, t) > 0) * (rightGain(i, l, t) >= 0);
 		//
 		//computes the total gain for each loudspeaker
-		tVbapGain(i, l, t) = cumulatedGain((i == 0), i, l, t) with
-			{
-				cumulatedGain(0, i, l, t) = rightGain(i-1, l, t) * activePair(i-1, l, t) + leftGain(i, l, t) * activePair(i, l, t);
-				cumulatedGain(1, i, l, t) = rightGain(outputs(l)-1, l, t) * activePair(outputs(l)-1, l, t) + leftGain(0, l, t) * activePair(0, l, t);
-			};
+		cumulatedGain(i, l, t) = rightGain(outputs(l)+i-1, l, t) * activePair(outputs(l)+i-1, l, t) + leftGain(i, l, t) * activePair(i, l, t);
 		//
-		thisCircularVbap = _ <: par(i, outputs(l), *(tVbapGain(i, l, t)));
+		thisCircularVbap = _ <: par(i, outputs(l), *(cumulatedGain(i, l, t)));
 };
 
 
