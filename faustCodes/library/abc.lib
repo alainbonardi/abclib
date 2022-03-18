@@ -755,8 +755,6 @@ abc_substractsynth_ui(n) = thissubstractivesynth
 //PEAKAMP ON N SAMPLES
 //--------------------------------------------------------------------------------------//
 //
-
-//
 abc_peakamp_ui = peakamp(nsamp)
 		with {
 			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
@@ -766,38 +764,7 @@ abc_peakamp_ui = peakamp(nsamp)
 //SOUNDDETECTOR
 //--------------------------------------------------------------------------------------//
 //
-abc_impulse = _ <: _, mem : - : (_ > 0.0);
-abc_release(n) = + ~ (_ <: _, (_ > 0) / n : -);
-abc_trigger(n) = abc_impulse : abc_release(n) : _ > 0;
-abc_onetozero(n) = abc_impulse : abc_release(n) : min(1) : max(0);
-//
-abc_impulsedec = _ <: _, mem : - : (_ < 0.0);
-abc_triggerdec(n) = abc_impulsedec : abc_release(n) : _ > 0;
-abc_onetozerodec(n) = abc_impulsedec : abc_release(n) : min(1) : max(0);
-//
-abc_offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
-//
-abc_millisec = ma.SR / 1000.0;
-//
-abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
-	with {
-			
-			nsamp = int(measureDur*abc_millisec);
-			nsampNoteOn = int(noteDur*abc_millisec);
-			nsampOff = int(offDur*abc_millisec);
-			measuredLevel = x : abc_peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
-			previousMeasuredLevel = measuredLevel@(nsamp);
-			ascendingInput = measuredLevel >= previousMeasuredLevel;
-			//attack type = 0 or 1
-			//0 = attack is detected as soon as the measured level is higher than thresh//
-			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
-			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
-			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
-			noteOnPhase = max((attackTrig : abc_trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
-			noteOffPhase = releaseTrig : abc_trigger(nsampOff);
-	};
-//
-abc_sounddetector_ui(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
+abc_soundDetector_ui(x) = soundDetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
 		with {
 			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
 			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
@@ -808,9 +775,15 @@ abc_sounddetector_ui(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, 
 			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
 		};
 //
-abc_fullsounddetector_ui = _ <:(abc_offbeforeuse, abc_sounddetector_ui) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
+abc_fullSoundDetector_ui = _ <:(offbeforeuse, abc_soundDetector_ui) : * <: (_, onetozero(delta), onetozerodec(delta))
 	with {
-		delta = 20 * abc_millisec; //20 msec impulsion for attack or release//
+		offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
+		impulseinc = _ <: _, mem : - : (_ > 0.0);
+		impulsedec = _ <: _, mem : - : (_ < 0.0);
+		release(n) = + ~ (_ <: _, (_ > 0) / n : -);
+		onetozero(n) = impulseinc : release(n) : min(1) : max(0);
+		onetozerodec(n) = impulsedec : release(n) : min(1) : max(0);
+		delta = 20 * ma.SR / 1000.; //20 msec impulsion for attack or release//
 	};
 //
 //--------------------------------------------------------------------------------------//
@@ -1261,10 +1234,10 @@ abc_mult2pi = *(2. * ma.PI);
 //ENVELOPE FOLLOWER
 //--------------------------------------------------------------------------------------//
 //
-abc_envfollower_ui = an.amp_follower_ar(attack, release)
+abc_envFollower_ui = an.amp_follower_ar(attack, release)
 		with {
-			attack = hslider("v:envfollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
-			release = hslider("v:envfollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
+			attack = hslider("v:envFollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
+			release = hslider("v:envFollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
 		};
 //
 //--------------------------------------------------------------------------------------//
