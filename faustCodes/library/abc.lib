@@ -103,7 +103,7 @@ abc_2d_map_ui(n) = thisMap
 		thisMap(x, r, a) = ho.map(n, x, r, a);
 };
 
-abc_2d_multiMap_ui(n, ns) = par(i, ns, abc_2d_map_ui(n));
+abc_2d_multiMap_ui(n, ns) = par(i, ns, abc_2d_map_ui(n)) :> si.bus(2*n+1);
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC MIRROR WITH FACTOR
