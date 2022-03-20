@@ -1,0 +1,10 @@
+//Provisional implementation of line function
+//As soon as the ba.line function will be implemented and diffused, one should use ba.line
+line(n, x) = state ~ (_,_) : !,_
+		with {
+    			state(t, c) = nt,nc 
+    				    with {
+        						nt = ba.if(x != x', n, t-1);
+        						nc = ba.if(nt > 0, c + (x - c)/nt, x);
+    						};
+};

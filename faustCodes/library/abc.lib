@@ -17,6 +17,8 @@ import("stdfaust.lib");
 import("hoa2.lib");
 //provisional import of functions in mm.lib that will be later migrated to the official mm.lib
 import("mm.lib");
+//provisional use of functions that will be included in the future in official Faust libraries
+import("provisional.lib");
 //
 //
 //THE ABCLIB LIBRARY INCLUDES 2 TYPES OF FUNCTIONS
@@ -202,9 +204,7 @@ abc_2d_scope_ui(n) = scope(n, refresh)
 //2D SQUARE TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_square(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (sigClip, sigClip) : (*(s), *(s)) : (*(-1), *(1));
-//
-abc_2d_squareTrajectory_ui = abc_2d_square(freq, size)
+abc_2d_squareTrajectory_ui = xySquare(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -214,13 +214,7 @@ abc_2d_squareTrajectory_ui = abc_2d_square(freq, size)
 //2D Z TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_z(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
-		with {
-			x(t) = (t < 0.25) * (-1 + t * 8) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25)*8) + (t >= 0.5) * (t < 0.75) * (-1 + (t - 0.5) * 8) + (t >= 0.75) * (1 - (t - 0.75) * 8);
-			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
-};
-//
-abc_2d_zTrajectory_ui = abc_2d_z(freq, size)
+abc_2d_zTrajectory_ui = xyDoubleTriangle(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -230,16 +224,7 @@ abc_2d_zTrajectory_ui = abc_2d_z(freq, size)
 //2D RANDOM TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_random_xy(f, s) = thisRandomPos
-		with {
-			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-			temporalFilter = ba.sAndH(th);
-			//computes the temporal interval taking into account the case when f=0 and when f<0
-			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
-			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (ba.line(dt), ba.line(dt));
-};
-abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
+abc_2d_randomTrajectory_ui = xyRandom(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -249,9 +234,8 @@ abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
 //2D SQUARE AND Z TRAJECTORIES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
 //
-abc_2d_squareAndZTrajectory_ui = abc_2d_squareZ(freq, size, crossfade)
+abc_2d_squareAndZTrajectory_ui = xySquareDoubleTriangle(freq, size, crossfade)
 			with {
 				freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 				size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;

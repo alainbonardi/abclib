@@ -161,6 +161,99 @@ scale(x1, x2, y1, y2, x) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 
 //--------------------------------------------------------------------------------------//
+// TRAJECTORY GENERATORS
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)xySquare`----------
+// xySquare generates two signals (X and Y coordinates) corresponding to a square trejectory
+
+// `xySquare` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xySquare(f, s) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of the square trajectory
+// * `s`: the length of the side of the square
+//-----------------------------
+
+xySquare(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (sigClip, sigClip) : (*(s), *(s)) : (*(-1), *(1));
+
+//-------`(mm.)xyDoubleTriangle`----------
+// xyDoubleTriangle generates two signals (X and Y coordinates) corresponding to a double triangle trajectory through the center of the XY plane
+
+// `xyDoubleTriangle` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xyDoubleTriangle(f, s) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of the double triangle trajectory
+// * `s`: the height of the triangles of the double triangle trajectory
+//-----------------------------
+
+xyDoubleTriangle(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
+		with {
+			x(t) = (t < 0.25) * (-1 + t * 8) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25)*8) + (t >= 0.5) * (t < 0.75) * (-1 + (t - 0.5) * 8) + (t >= 0.75) * (1 - (t - 0.75) * 8);
+			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
+};
+
+//-------`(mm.)xyRandom`----------
+// xyRandom generates two signals (X and Y coordinates) corresponding to an interpolated random trajectory within a defined square
+// `xyRandom` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xyRandom(f, s) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of randomization of the new positions
+// * `s`: the side of the square containing the trajectory
+//-----------------------------
+
+xyRandom(f, s) = thisRandomPos
+		with {
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			temporalFilter = ba.sAndH(th);
+			//computes the temporal interval taking into account the case when f=0 and when f<0
+			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
+			//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
+			//in the future as soon as it is included and diffused in ba library 
+			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (line(dt), line(dt));
+};
+
+//-------`(mm.)xySquareDoubleTriangle`----------
+// xySquareDoubleTriangle generates two signals (X and Y coordinates) corresponding to an interpolated random trajectory within a defined square
+// `xySquareDoubleTriangle` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xySquareDoubleTriangle(f, s, cf) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of randomization of the new positions
+// * `s`: the side of the square containing the trajectory
+// * 'cf' : crossfade coefficient (0 => square; 1 => double triangle)
+//-----------------------------
+
+xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
+
+//--------------------------------------------------------------------------------------//
 // BUS FUNCTIONS
 //--------------------------------------------------------------------------------------//
 
