@@ -375,25 +375,47 @@ pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 // #### Usage
 //
 // ```
-// flanger(r, d, off, fdbk, delta, nsamp) : _
+// flanger(rate, depth, off, fdbk, delta, nsamp) : _
 // ```
 //
 // Where:
 //
-// * `r': the rate as the speed/frequency of the sinus modulating the delay
-// * `d`: the depth as the amplitude of the delay (max delay duration in milliseconds)
+// * `rate': the speed/frequency of the sinus modulating the delay
+// * `depth: the amplitude of the delay (max delay duration in milliseconds)
 // * `off`: the offset of the delay duration in milliseconds
 // * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
 // * `delta`: the extra phase of control of the sinusoidal modulation of delay (enables decorrelations between several flangers)
 // * `nsamp`: the maximal capacity of the delay line expressed in samples
 //-----------------------------
 
-flanger(r, d, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableDelayAsSamps), _) : (*(fdbk), _) : +
+flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableDelayAsSamps), _) : (*(fdbk), _) : +
 			with {
 				//variable delay in samples//
-				variableDelayAsSamps = os.phasor(1, r) : +(delta) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
+				variableDelayAsSamps = os.phasor(1, rate) : +(delta) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(depth) : +(off) : /(1000.) : *(ma.SR);
 };
 
+//-------`(mm.)decorrelatedFlangers`----------
+// decorrelatedFlangers function is a set of decorrelated flangers having the same rate, depth, offset and feedback control values
+// `decorrelatedFlangers` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) : _
+// ```
+//
+// Where:
+//
+// * `n': the number of flangers instanciated
+// * `rate': the speed/frequency of the sinus modulating the delay
+// * `depth: the amplitude of the delay (max delay duration in milliseconds)
+// * `off`: the offset of the delay duration in milliseconds
+// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
+// * `spread`: the factor of decorrelation of the flangers between 0 (no decorrelation) and 1 (maximum decorrelation)
+// * `nsamp`: the maximal capacity of the delay line expressed in samples
+//-----------------------------
+
+decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
 
 //--------------------------------------------------------------------------------------//
 //SOUND SYNTHESES
