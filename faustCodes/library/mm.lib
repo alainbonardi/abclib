@@ -310,6 +310,7 @@ invBus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 
 
 // number of channels, transition time in samples, left (0) or right (1)
+
 busSelector(n, dt, lor) = thisBusSelector
 			with {
 					sel = lor : ba.line(dt); 
@@ -324,6 +325,7 @@ busSelector(n, dt, lor) = thisBusSelector
 //--------------------------------------------------------------------------------------//
 //defined as a multiple panner with regular progression of pan angle from phi0 to -phi0
 //--------------------------------------------------------------------------------------//
+
 chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 			with {
 			//as is the incident angle of the source//
@@ -357,6 +359,40 @@ multiChowningPanner(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), 
 //
 //-----------------------------
 pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
+
+
+
+
+
+//--------------------------------------------------------------------------------------//
+//SOUND PROCESSES
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)flanger`----------
+// flanger function provides an elementary variable sinusoidal delay with possibility of phase control useful in case of multiple flanger decorrelation
+// `flanger` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// flanger(r, d, off, fdbk, delta, nsamp) : _
+// ```
+//
+// Where:
+//
+// * `r': the rate as the speed/frequency of the sinus modulating the delay
+// * `d`: the depth as the amplitude of the delay (max delay duration in milliseconds)
+// * `off`: the offset of the delay duration in milliseconds
+// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
+// * `delta`: the extra phase of control of the sinusoidal modulation of delay (enables decorrelations between several flangers)
+// * `nsamp`: the maximal capacity of the delay line expressed in samples
+//-----------------------------
+
+flanger(r, d, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableDelayAsSamps), _) : (*(fdbk), _) : +
+			with {
+				//variable delay in samples//
+				variableDelayAsSamps = os.phasor(1, r) : +(delta) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
+};
 
 
 //--------------------------------------------------------------------------------------//
@@ -450,6 +486,7 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 // * 'acauchy' : the a coefficient of Cauchy function
 // * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
+
 puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
 		with {
 				ratio = (cfreq / fund);
@@ -496,6 +533,7 @@ puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 // * `frand`: the update frequency of filter gains (randomization)
 // * 'g' : the output amplitude between 0 and 1
 //-----------------------------
+
 soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : interlace2(n) : par(i, n, elemFilter(fund, frand, i+1, n)) :> _ : *(0.08) : *(g)
 			with {
 				elemFilter(fund, frand, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *

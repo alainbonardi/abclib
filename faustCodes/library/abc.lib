@@ -459,8 +459,6 @@ abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 		functiontype = hslider("functiontype", 0, 0, 21, 1);
 };
 //
-
-//
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -577,14 +575,7 @@ abc_delaychain_ui(n) = thisdelaychain
 //MULTI FLANGERS
 //--------------------------------------------------------------------------------------//
 //
-abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
-			with {
-				//variable delay in samples//
-				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
-				//elementary flanger that mixes the original signal and the delayed one//
-				flanger(i) = _ <: (de.fdelay(Nflangersamp, variableDelaySampNumber(i)), _) : (*(f), _) : +; 
-				thismultipleflanger = _ <: par(i, n, flanger(i));
-};
+abc_flangerline(n, r, d, off, fdbk, s) =  _ <: par(i, n, flanger(r, d, off, fdbk, i * s / n, Nflangersamp));
 //
 abc_multiflanger_ui(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
 			with {
