@@ -515,8 +515,6 @@ abc_busselect_ui(n) = busSelector(n, ramp, leftOrRight)
 };
 
 //
-
-
 //with one input source (exception for one source)
 abc_chowningPan1_ui = chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 			with {
@@ -582,7 +580,7 @@ abc_delaychain_ui(n) = thisdelaychain
 abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
 			with {
 				//variable delay in samples//
-				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : ma.decimal : abc_sinusenvelop : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
+				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
 				//elementary flanger that mixes the original signal and the delayed one//
 				flanger(i) = _ <: (de.fdelay(Nflangersamp, variableDelaySampNumber(i)), _) : (*(f), _) : +; 
 				thismultipleflanger = _ <: par(i, n, flanger(i));
@@ -1087,7 +1085,7 @@ abc_hilbertfilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 	with {
 		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusenvelop;
+		osc1 = *(-1) : +(0.25) : *(2 * ma.PI) : os.oscp(0);
 		//permutation//
 		p1(a, b, c, d) = (a, c, b, d);
 		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
@@ -1117,7 +1115,7 @@ abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) 
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
-			env = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor);
+			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
 			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
 		};
 //		 
@@ -1140,7 +1138,7 @@ abc_transposer(moffset, tr, w, g) = dopplerDelay
 					trig_win = w : ba.sAndH(th_trigger);
 					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
 					variableDelay = de.fdelay(262144, delayInSgainles);
-					cosinusEnvelop = adjustedPhasor : *(0.5) : abc_sinusenvelop;
+					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
 					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
 				};
 //
@@ -1272,28 +1270,13 @@ abc_cartesian2polar = permutation <: (module, phase) with {
 	phase = atan2;
 };
 //
-//--------------------------------------------------------------------------------------//
-//SINUS ENVELOP
-//--------------------------------------------------------------------------------------//
-//
-abc_sinusenvelop(phase) = s1 + d * (s2 - s1)
-	with {
-			tablesize = 1 << 16;
-			sinustable = os.sinwaveform(tablesize);
-			zeroToOnePhase = phase : ma.decimal;
-			myIndex = zeroToOnePhase * float(tablesize);
-			i1 = int(myIndex);
-			d = ma.decimal(myIndex);
-			i2 = (i1+1) % int(tablesize);
-			s1 = rdtable(tablesize, sinustable, i1);
-			s2 = rdtable(tablesize, sinustable, i2);
-};
+
 //
 //--------------------------------------------------------------------------------------//
 //SHORTENING ENVELOP (COSINUS RANDOMIZED ENVELOP TO BE FED BY NOISE)
 //--------------------------------------------------------------------------------------//
 //
-abc_shorteningenv(f, s) = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor)
+abc_shorteningenv(f, s) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
 	with {
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f);
