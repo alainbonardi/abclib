@@ -418,6 +418,70 @@ flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableD
 decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
 
 //--------------------------------------------------------------------------------------//
+//FILTERS AS USED IN MAX AND PURE DATA SOFTWARES
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)maxLikeBiquad`----------
+//A biquad in direct form 1 as in Max software
+//y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
+//
+// #### Usage
+//
+// ```
+// maxLikeBiquad(n, rate, depth, off, fdbk, spread, nsamp) : _
+// ```
+//
+// Where:
+//
+// * `n': the number of flangers instanciated
+// * `rate': the speed/frequency of the sinus modulating the delay
+// * `depth: the amplitude of the delay (max delay duration in milliseconds)
+// * `off`: the offset of the delay duration in milliseconds
+// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
+// * `spread`: the factor of decorrelation of the flangers between 0 (no decorrelation) and 1 (maximum decorrelation)
+// * `nsamp`: the maximal capacity of the delay line expressed in samples
+//-----------------------------
+
+maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
+	with {
+		conv2(c0,c1,x) = c0*x+c1*x';
+		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
+	};
+
+
+
+//A biquad in direct form 2 as in PureData software
+//
+//--------------------------------------------------------------------------------------//
+
+pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = maxLikeBiquad(x, ff1, ff2, ff3, fb1, fb2) 
+	with {
+		//first, compute the stability of the biquad//	
+		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
+		condition1 = ((discriminant < 0) & (c_fb2 >= -1.0));
+		condition2 = ((discriminant >= 0) & (c_fb1 >= -2.0) & (c_fb1 <= 2.0) & (c_fb1+c_fb2 <= 1.0) & (c_fb1-c_fb2 >= -1.0));
+		stable = (condition1 | condition2);//stable is 0 (unstable) or 1 (stable)		
+		//second the final coefficients to apply to biquad that is defined in maxmsp.lib//
+		fb1 = c_fb1 : *(stable) : (*(-1.));
+		fb2 = c_fb2 : *(stable) : (*(-1.));
+		ff1 = c_ff1 : *(stable);	
+		ff2 = c_ff2 : *(stable);	
+		ff3 = c_ff3 : *(stable);
+	};
+
+
+//Hilbert filter
+//--------------------------------------------------------------------------------------//
+hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
+	with {
+			biquad1(x) = pdLikeBiquad(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
+			biquad2(x) = pdLikeBiquad(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
+			biquad3(x) = pdLikeNiquad(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
+			biquad4(x) = pdLikeBiquad(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
+	};
+//
+
+//--------------------------------------------------------------------------------------//
 //SOUND SYNTHESES
 //--------------------------------------------------------------------------------------//
 
@@ -429,6 +493,7 @@ decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n,
 //f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
 //
 doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
+
 
 //[TO BE TESTED]
 
