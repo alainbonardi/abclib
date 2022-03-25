@@ -282,7 +282,7 @@ abc_2d_squareAndZTrajectory_ui = xySquareDoubleTriangle(freq, size, crossfade)
 abc_2d_fx_decorrelation_ui(n) = fxDecorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
-		window = 10; //by default a window of 100 milliseconds for the interpolation of delays//
+		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
 		winfreq = 1000. / window;
 		factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 		fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.99, 0.001);
@@ -298,7 +298,7 @@ abc_2d_fx_decorrelation_ui(n) = fxDecorrelation(n, delay, winfreq, factor, fdbk,
 abc_2d_syn_decorrelation_ui(n) = synDecorrelation(n, delay, winfreq, factor, fdbk, functiontype)
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
-		window = 10; //by default a window of 100 milliseconds for the interpolation of delays//
+		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
 		winfreq = 1000. / window;
 		factor = hslider("v:synfxdecorrelation/factor", 0, 0, 1, 0.001);
 		fdbk = hslider("v:synfxdecorrelation/fdbk", 0, 0, 0.999, 0.001);
