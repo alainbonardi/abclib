@@ -161,6 +161,99 @@ scale(x1, x2, y1, y2, x) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 
 //--------------------------------------------------------------------------------------//
+// TRAJECTORY GENERATORS
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)xySquare`----------
+// xySquare generates two signals (X and Y coordinates) corresponding to a square trejectory
+
+// `xySquare` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xySquare(f, s) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of the square trajectory
+// * `s`: the length of the side of the square
+//-----------------------------
+
+xySquare(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (sigClip, sigClip) : (*(s), *(s)) : (*(-1), *(1));
+
+//-------`(mm.)xyDoubleTriangle`----------
+// xyDoubleTriangle generates two signals (X and Y coordinates) corresponding to a double triangle trajectory through the center of the XY plane
+
+// `xyDoubleTriangle` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xyDoubleTriangle(f, s) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of the double triangle trajectory
+// * `s`: the height of the triangles of the double triangle trajectory
+//-----------------------------
+
+xyDoubleTriangle(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
+		with {
+			x(t) = (t < 0.25) * (-1 + t * 8) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25)*8) + (t >= 0.5) * (t < 0.75) * (-1 + (t - 0.5) * 8) + (t >= 0.75) * (1 - (t - 0.75) * 8);
+			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
+};
+
+//-------`(mm.)xyRandom`----------
+// xyRandom generates two signals (X and Y coordinates) corresponding to an interpolated random trajectory within a defined square
+// `xyRandom` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xyRandom(f, s) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of randomization of the new positions
+// * `s`: the side of the square containing the trajectory
+//-----------------------------
+
+xyRandom(f, s) = thisRandomPos
+		with {
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			temporalFilter = ba.sAndH(th);
+			//computes the temporal interval taking into account the case when f=0 and when f<0
+			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
+			//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
+			//in the future as soon as it is included and diffused in ba library 
+			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (line(dt), line(dt));
+};
+
+//-------`(mm.)xySquareDoubleTriangle`----------
+// xySquareDoubleTriangle generates two signals (X and Y coordinates) corresponding to an interpolated random trajectory within a defined square
+// `xySquareDoubleTriangle` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// xySquareDoubleTriangle(f, s, cf) : _,_
+// ```
+//
+// Where:
+//
+// * `f': the frequency of randomization of the new positions
+// * `s`: the side of the square containing the trajectory
+// * 'cf' : crossfade coefficient (0 => square; 1 => double triangle)
+//-----------------------------
+
+xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
+
+//--------------------------------------------------------------------------------------//
 // BUS FUNCTIONS
 //--------------------------------------------------------------------------------------//
 
@@ -217,6 +310,7 @@ invBus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 
 
 // number of channels, transition time in samples, left (0) or right (1)
+
 busSelector(n, dt, lor) = thisBusSelector
 			with {
 					sel = lor : ba.line(dt); 
@@ -231,6 +325,7 @@ busSelector(n, dt, lor) = thisBusSelector
 //--------------------------------------------------------------------------------------//
 //defined as a multiple panner with regular progression of pan angle from phi0 to -phi0
 //--------------------------------------------------------------------------------------//
+
 chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 			with {
 			//as is the incident angle of the source//
@@ -263,9 +358,128 @@ multiChowningPanner(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), 
 // ```
 //
 //-----------------------------
-
 pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 
+
+
+
+
+//--------------------------------------------------------------------------------------//
+//SOUND PROCESSES
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)flanger`----------
+// flanger function provides an elementary variable sinusoidal delay with possibility of phase control useful in case of multiple flanger decorrelation
+// `flanger` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// flanger(rate, depth, off, fdbk, delta, nsamp) : _
+// ```
+//
+// Where:
+//
+// * `rate': the speed/frequency of the sinus modulating the delay
+// * `depth: the amplitude of the delay (max delay duration in milliseconds)
+// * `off`: the offset of the delay duration in milliseconds
+// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
+// * `delta`: the extra phase of control of the sinusoidal modulation of delay (enables decorrelations between several flangers)
+// * `nsamp`: the maximal capacity of the delay line expressed in samples
+//-----------------------------
+
+flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableDelayAsSamps), _) : (*(fdbk), _) : +
+			with {
+				//variable delay in samples//
+				variableDelayAsSamps = os.phasor(1, rate) : +(delta) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(depth) : +(off) : /(1000.) : *(ma.SR);
+};
+
+//-------`(mm.)decorrelatedFlangers`----------
+// decorrelatedFlangers function is a set of decorrelated flangers having the same rate, depth, offset and feedback control values
+// `decorrelatedFlangers` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) : _
+// ```
+//
+// Where:
+//
+// * `n': the number of flangers instanciated
+// * `rate': the speed/frequency of the sinus modulating the delay
+// * `depth: the amplitude of the delay (max delay duration in milliseconds)
+// * `off`: the offset of the delay duration in milliseconds
+// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
+// * `spread`: the factor of decorrelation of the flangers between 0 (no decorrelation) and 1 (maximum decorrelation)
+// * `nsamp`: the maximal capacity of the delay line expressed in samples
+//-----------------------------
+
+decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
+
+//--------------------------------------------------------------------------------------//
+//FILTERS AS USED IN MAX AND PURE DATA SOFTWARES
+//--------------------------------------------------------------------------------------//
+
+//-------`(mm.)maxLikeBiquad`----------
+//A biquad in direct form 1 as in Max software
+//y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
+//
+// #### Usage
+//
+// ```
+// maxLikeBiquad(n, rate, depth, off, fdbk, spread, nsamp) : _
+// ```
+//
+// Where:
+//
+// * `n': the number of flangers instanciated
+// * `rate': the speed/frequency of the sinus modulating the delay
+// * `depth: the amplitude of the delay (max delay duration in milliseconds)
+// * `off`: the offset of the delay duration in milliseconds
+// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
+// * `spread`: the factor of decorrelation of the flangers between 0 (no decorrelation) and 1 (maximum decorrelation)
+// * `nsamp`: the maximal capacity of the delay line expressed in samples
+//-----------------------------
+
+maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
+	with {
+		conv2(c0,c1,x) = c0*x+c1*x';
+		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
+	};
+
+
+
+//A biquad in direct form 2 as in PureData software
+//
+//--------------------------------------------------------------------------------------//
+
+pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = maxLikeBiquad(x, ff1, ff2, ff3, fb1, fb2) 
+	with {
+		//first, compute the stability of the biquad//	
+		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
+		condition1 = ((discriminant < 0) & (c_fb2 >= -1.0));
+		condition2 = ((discriminant >= 0) & (c_fb1 >= -2.0) & (c_fb1 <= 2.0) & (c_fb1+c_fb2 <= 1.0) & (c_fb1-c_fb2 >= -1.0));
+		stable = (condition1 | condition2);//stable is 0 (unstable) or 1 (stable)		
+		//second the final coefficients to apply to biquad that is defined in maxmsp.lib//
+		fb1 = c_fb1 : *(stable) : (*(-1.));
+		fb2 = c_fb2 : *(stable) : (*(-1.));
+		ff1 = c_ff1 : *(stable);	
+		ff2 = c_ff2 : *(stable);	
+		ff3 = c_ff3 : *(stable);
+	};
+
+
+//Hilbert filter
+//--------------------------------------------------------------------------------------//
+hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
+	with {
+			biquad1(x) = pdLikeBiquad(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
+			biquad2(x) = pdLikeBiquad(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
+			biquad3(x) = pdLikeNiquad(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
+			biquad4(x) = pdLikeBiquad(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
+	};
+//
 
 //--------------------------------------------------------------------------------------//
 //SOUND SYNTHESES
@@ -279,6 +493,7 @@ pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 //f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
 //
 doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
+
 
 //[TO BE TESTED]
 
@@ -358,6 +573,7 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 // * 'acauchy' : the a coefficient of Cauchy function
 // * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
+
 puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
 		with {
 				ratio = (cfreq / fund);
@@ -481,8 +697,68 @@ audiotester(n, nmax, f, g) = thisaudiotester
 				thisaudiotester = impulse <: (counter, generator) : selector;
 };
 
+//-------`(mm.)peakamp`----------
+// Measures the peak value of the signal during a window of n samples
+
+// `peakamp` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : peakamp(n) : _
+// ```
+//
+// Where:
+//
+// * `n`: the number of samples of the measuring window
+//-----------------------------
 peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
 	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
 	resetMax = ba.pulse(n)@1;
 	getPeak = ba.pulse(n);
 };
+
+//-------`(mm.)soundDetector`----------
+// On-off envelope of the incoming signal
+
+// `soundDetector` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : soundDectetor(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) : _
+// ```
+//
+// Where:
+//
+// * `measureDur`: the duration of the measure in milliseconds
+// * 'ofs' : offset in dB to enhance the incoming signal
+// * 'nf' : noise floor in dB to separation signal from noise
+// * 'thresh' : theshold for note on detection
+// * 'noteDur' : minimal duration to consider the input phenomenon as a note
+// * 'offDur' : minimal duration of silence between two notes
+// * 'attTy' : attack detected (0 => as soon as the sound level is higher than thresh, 1 => as soon as the sound level is higher than thresh and has finished increasing)
+// * 'x' : incoming signal
+//-----------------------------
+soundDetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
+	with {
+			millisec = ma.SR / 1000.;
+			nsamp = int(measureDur * millisec);
+			nsampNoteOn = int(noteDur * millisec);
+			nsampOff = int(offDur * millisec);
+			measuredLevel = x : peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
+			previousMeasuredLevel = measuredLevel@(nsamp);
+			ascendingInput = measuredLevel >= previousMeasuredLevel;
+			//attack type = 0 or 1
+			//0 = attack is detected as soon as the measured level is higher than thresh//
+			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
+			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
+			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
+			//
+			impulseinc = _ <: _, mem : - : (_ > 0.0);
+			release(n) = + ~ (_ <: _, (_ > 0) / n : -);
+			trigger(n) = impulseinc : release(n) : _ > 0;
+			noteOnPhase = max((attackTrig : trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
+			noteOffPhase = releaseTrig : trigger(nsampOff);
+};
+

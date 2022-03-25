@@ -23,14 +23,15 @@ rEncoder(n, sp, a, it) = thisEncoder
             basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
 				with {
-						//converting the angle from radians to [0; 1]
+						//converting the static angle from radians to [0; 1]
 						an = (a / (2 * ma.PI), 1) : fmod;
 						rotationOrStaticAngle = ((1-vn) * x + vn * an) * 2 * ma.PI;
-						vn = (sp == 0) : si.smooth(ba.tau2pole(it));
 						//to manage the case where frequency is zero, smoothly switches from one mode to another//
+						vn = (sp == 0) : si.smooth(ba.tau2pole(it));
 						x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
 				};
 };
+
 
 //-------`(ho.)gDecoderStereo`----------
 // Ambisonic general stereo decoder in 2D
@@ -48,19 +49,70 @@ rEncoder(n, sp, a, it) = thisEncoder
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2 function)
-// * `cw`: 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
+// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `g`: global output gain between 0 and 1
 //-----------------------------
-gDecoderStereo(n, cw, g) = thisStereoDecoder
+gDecoderStereo(n, direct, g) = thisStereoDecoder
 	with {
-			//cw is direct mode (1) or indirect mode (-1)
+			//direct is direct mode (1) or indirect mode (-1)
 			//g is the absolute gain
-			leftDispatcher = _<:(*(1-cw), *(cw));
-			rightDispatcher = _<:(*(cw), *(1-cw));
+			leftDispatcher = _<:(*(1-direct), *(direct));
+			rightDispatcher = _<:(*(direct), *(1-direct));
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
-//-------`(mm.)imlsDecoder`----------
+
+//-------`(ho.)circularScaledVBAP`----------
+// Circular scaled VBAP with all loudspeakers and the virtual source on the unit-circle
+
+// `circularScaledVBAP` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : circularScaledVBAP(l, t) : _,_,...
+// ```
+//
+// Where:
+//
+// * `l' : the list of angles of the loudspeakers in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * 't' : the current angle of the virtual source in degrees
+//-----------------------------
+circularScaledVBAP(l, t) = thisCircularVbap with {
+		//modulo indexes between 1 and the number of elements of the list
+		modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
+		//
+		//pick up the ith angle with a 360 degree modulo
+		getElt(i, l) = ma.modulo(ba.take(modIndex(i, l), l), 360);
+		//
+		//function to compute the sinus of the difference between angles expressed in degrees
+		diffSin(u, v) = sin((v - u) * ma.PI / 180.);
+		//
+		//permutations to be used to compute scaledVBAPGain
+		p1(a, b, c, d) = (b, c, d, a);
+		p2(a, b, c, d) = (a, c, b, d);
+		//
+		//computation of the scaled VBAP gain of a pair
+		scaledVBAPGain(t1, t2, t) = ((diffSin(t2, t) <:(_, _, _)), (ma.signum(diffSin(t2, t1)) <: (_, _)), (diffSin(t, t1) <:(_, _, _))) : (*, *, *, *) : p1 : (_, _, (+ : sqrt <: (_, _))) : p2 : (/, /);
+		sVBAPGain(i, l, t) = scaledVBAPGain(getElt(i, l), getElt(i+1, l), t);
+		//
+		//computes the left and the right gains using the matrix inversion (VBAP)
+		leftGain(i, l, t) = sVBAPGain(i, l, t) : (_, !);
+		rightGain(i, l, t) = sVBAPGain(i, l, t) : (!, _);
+		//computation of boolean activePair that determines whether the pair of LS is active or not
+		//we have to distinguish leftGain >0 and rightGain >= 0
+		//if we put >=0 for both, two pairs will be simultaneously active when theta is one of the loudspeaker angles in the list
+		//if we put > 0 for both, all the pairs will be inactive when theta is one of the loudspeaker angles in the list
+		activePair(i, l, t) = (leftGain(i, l, t) > 0) * (rightGain(i, l, t) >= 0);
+		//
+		//computes the total gain for each loudspeaker
+		cumulatedGain(i, l, t) = rightGain(outputs(l)+i-1, l, t) * activePair(outputs(l)+i-1, l, t) + leftGain(i, l, t) * activePair(i, l, t);
+		//
+		thisCircularVbap = _ <: par(i, outputs(l), *(cumulatedGain(i, l, t)));
+};
+
+
+//-------`(ho.)imlsDecoder`----------
 // Irregular decoder in 2D for an irregular multi-loudspeaker configuration
 
 // `imlsDecoder` is a standard Faust function.
@@ -74,43 +126,43 @@ gDecoderStereo(n, cw, g) = thisStereoDecoder
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
-// * `la' : the list of angles in radians, for instance (0, 1.5, 3, 4.71) for four loudspeakers
+// * `la' : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
+// * 'shift' : angular shift in degrees to easily adjust angles
 //-----------------------------
-imlsDecoder(n, la) = par(i, 2*n+1, _) <: par(i, p, speaker(n, ba.take(i+1, la)))
+imlsDecoder(n, la, direct, shift) = ho.decoder(n, p) : par(i, p, *((2*n+1) / (2*n+2))) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p)
 	with {
 			p = outputs(la);
-            speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 };
 
-//-------`(ho.)iDecoder`----------
-// Ambisonic irregular decoder (irregular angles) in 2D enabling to use either a stereo configuration or an irregular multi-loudspeaker configuration
 
 // `iDecoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : iDecoder(n, la, cw, st, g) : _,_
+// _,_,... : iDecoder(n, la, direct, st, g) : _,_
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the decoder2_ui function)
-// * 'la': the list of angles in radians
-// * 'cw': 1 for direct (clockwise) mode, -1 for the indirect (anticlockwise) mode
+// * 'la': the list of angles in degrees
+// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
+// * 'shift' : angular shift in degrees to easily adjust angles
 // * 'st': 1 for stereo, 0 for multi-loudspeaker configuration. When 1, stereo sounds goes through the first two channels
 // * 'g' : gain between 0 and 1
 //-----------------------------
-iDecoder(n, la, cw, st, g) = thisDecoder
+iDecoder(n, la, direct, shift, st, g) = thisDecoder
 	with {
 			//p is the number of outputs
             p = outputs(la);
 			ambi = 1 - st;
 			//
 			//for stereo decoding
-			paddedStereoDecoder(n, p) = (gDecoderStereo(n, cw, g), (0 <: si.bus(p-2)));
+			paddedStereoDecoder(n, p) = (gDecoderStereo(n, direct, g), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
+			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la, direct, shift), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
 };
 
 
@@ -150,6 +202,7 @@ optim(n, ot) = thisOptimizer
 			thisOptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), ((optb <: si.bus(2*n+1)), (optm <: si.bus(2*n+1)), (opti <: si.bus(2*n+1)))) : interlace(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
 };
 
+
 //-------`(ho.)mirror`----------
 // Mirroring effect on the sound field
 
@@ -165,8 +218,9 @@ optim(n, ot) = thisOptimizer
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
-
+//-----------------------------
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
+
 
 //-------`(ho.)scope`----------
 // Produces an XY pair of signals representing the ambisonic sound field
@@ -223,7 +277,30 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 				leftEncoder = (_, a / 2) : basicEncoder;
-				rightEncoder = (_, -a / 2) : basicEncoder;
+				rightEncoder = (_, -a /2) : basicEncoder;
+};
+
+
+//-------`(ho.)multiEncoder`----------
+// Encoding of a set of p signals distributed on the unit circle according to a list of p angles
+
+// `multiEncoder` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _,_,... : multiEncoder(n, la) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
+// * 'la' : a list of angles in radians on the unit circle to localize the sources (one angle per signal)
+//-----------------------------
+multiEncoder(n, la) = par(i, p, ((_, ba.take(i+1, la)) : basicEncoder)) :> si.bus(2*n+1)
+		with {
+				p = outputs(la);
+				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 };
 
 //-------`(ho.).fxDecorrelation`----------
@@ -471,44 +548,6 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
 };
 
-
-//-------`(ho.)rEncoder3D`----------
-// Ambisonic encoder in 3D including source rotation
-// a mono signal is encoded at at certain ambisonic order
-// with two possible modes: either rotation with an angular speed, or static with a fixed angle.
-
-// `rEncoder3D` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _ : rEncoder3D(n, azsp, elsp, az, el, it) : _,_, ...
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
-// * `azsp': the azimuth speed expressed as angular speed (2PI/sec)
-// * `elsp': the elevation speed expressed as angular speed (2PI/sec)
-// * `az`: the fixed azimuth when the azimuth rotation stops (azsp = 0) in radians
-// * `el`: the fixed elevation when the elevation rotation stops (elsp = 0) in radians
-// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
-//-----------------------------
-rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
-with {
-        basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
-		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
-			with {
-				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
-				vn1 = (azsp == 0) : si.smooth(ba.tau2pole(it));
-				rotationOrStaticAzim = (1-vn1) * x1 + vn1 * az;
-				x2 = (os.phasor(1, elsp), el, 1) : (+, _) : fmod : *(2 * ma.PI); 
-				vn2 = (elsp == 0) : si.smooth(ba.tau2pole(it));
-				rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
-			};
-};
-
-
 //-------`(ho.)optim3D`----------
 // Ambisonic optimizer including the three elementary optimizers:
 // - (ho).optimBasic3D, (ho).optimMaxRe3D, (ho.)optimInPhase3D
@@ -547,24 +586,9 @@ optim3D(n, ot) = thisOptimizer
 };
 
 
-/*
-//factorial function
-fact(0) = 1;
-fact(n) = n * fact(n-1);
-
-//intprod(n, p) computes the product (p+1)(p+2)...(p+n)
-//to enable factorial quotient simplification
-intProd(1, p) = p+1;
-intProd(n, p) = n * intProd(n-1, p);
-
-//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
-//enables factor simplification
-factQuotient(n, p) = intProd(n-p, p);
-*/
-
 
 //nouvel encoder3D optimisé sur les calculs de factorielles//
-//fonctionne jusqu'à l'ordre 8 en 3D//
+//
 //----------------------`(ho.)encoder3D`---------------------------------
 // Ambisonic encoder. Encodes a signal in the circular harmonics domain
 // depending on an order of decomposition, an angle and an elevation.
@@ -592,7 +616,7 @@ with {
 	// The spherical harmonics
 	y(l, m, theta, phi) =  e(m, theta2) * k(l, m) * p(l, m, cos(phi + ma.PI * 0.5))
 	with {	
-		//signum to have a continuous movement on elevation
+		//theta2 enables a continuous movement of elevation (when phi becomes greater than Pi/2)
 		theta2 = theta + (1 - int(fmod(fmod(phi / ma.PI - 0.5, 2) + 2, 2))) * ma.PI;
 		//
 		// The associated Legendre polynomial
@@ -625,23 +649,58 @@ with {
 		k(l, m) = kcalcul((m != 0), l, m)
 		with {	
 			kcalcul(0, l, m) = 1;
-			kcalcul(1, l, m) = sqrt(2) / sqrt(factQuotient(l+abs(m), l-abs(m)))
+			kcalcul(1, l, m) = sqrt(2) / sqrtFactQuotient(l+abs(m), l-abs(m))
 				with {
 						//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
 						//enables factor simplification
-						factQuotient(n, p) = intProd(n-p, p)
+						//and considering the square root of a product as a product of square roots
+						sqrtFactQuotient(n, p) = sqrtProd(n-p, p)
 						with {
-								//intprod(n, p) computes the product (p+1)(p+2)...(p+n)
+								//sqrtProd(n, p) computes the product sqrt(p+1) x sqrt(p+2) x ... x sqrt(n)
 								//to enable factorial quotient simplification
-								intProd(1, p) = p+1;
-								intProd(n, p) = (p+n) * intProd(n-1, p);
+								sqrtProd(1, p) = sqrt(p+1);
+								sqrtProd(n, p) = sqrt(p+n) * sqrtProd(n-1, p);
 						};
 			};
 		};		
 	};
 };
 
+//-------`(ho.)rEncoder3D`----------
+// Ambisonic encoder in 3D including source rotation
+// a mono signal is encoded at at certain ambisonic order
+// with two possible modes: either rotation with 2 angular speeds (azimuth and elevation), or static with a fixed pair of angles.
 
+// `rEncoder3D` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// _ : rEncoder3D(n, azsp, elsp, az, el, it) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
+// * `azsp': the azimuth speed expressed as angular speed (2PI/sec)
+// * `elsp': the elevation speed expressed as angular speed (2PI/sec)
+// * `az`: the fixed azimuth when the azimuth rotation stops (azsp = 0) in radians
+// * `el`: the fixed elevation when the elevation rotation stops (elsp = 0) in radians
+// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
+//-----------------------------
+rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
+with {
+		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
+		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
+			with {
+				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
+				vn1 = (azsp == 0) : si.smooth(ba.tau2pole(it));
+				rotationOrStaticAzim = (1-vn1) * x1 + vn1 * az;
+				x2 = (os.phasor(1, elsp), el, 1) : (+, _) : fmod : *(2 * ma.PI); 
+				vn2 = (elsp == 0) : si.smooth(ba.tau2pole(it));
+				rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
+			};
+};
 
 
 //--------------------------------------------------------------------------------------//

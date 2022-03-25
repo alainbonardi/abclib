@@ -10,13 +10,15 @@
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abclib";
-declare copyright "2019-2021 Bonardi, Goutmann CICM, U. Paris 8";
+declare copyright "2019-2022 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
 //provisional import of functions in hoa2.lib that will be migrated later to the official hoa.lib
 import("hoa2.lib");
 //provisional import of functions in mm.lib that will be later migrated to the official mm.lib
 import("mm.lib");
+//provisional use of functions that will be included in the future in official Faust libraries
+import("provisional.lib");
 //
 //
 //THE ABCLIB LIBRARY INCLUDES 2 TYPES OF FUNCTIONS
@@ -43,24 +45,22 @@ abc_2d_stereodecoder_ui(n) = gDecoderStereo(n, direct, gain)
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
 
-abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, stereo, gain) 
+abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, gain) 
 	with {
-			direct = 2 * nentry("h:decoder/v:general/[0]clockwise", 1, 0, 1, 1) - 1; 
-			offset = hslider("h:decoder/v:general/[2]angularoffset[unit:deg]", 0, -180, 180, 1) * ma.PI / 180;
+			direct = (2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1) : si.smoo; 
+			offset = hslider("h:decoder/v:general/[2]angularoffset[unit:deg]", 0, -180, 180, 1) : si.smoo;
 			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
 			stereo = nentry("h:decoder/v:general/[1]stereo", 0, 0, 1, 1) : si.smoo;
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
-			//and computed to radians for the decoder function (and adapted according to the clockwise direction, offset, and stereo choice)
-			a(i, nls) = (nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1) * ma.PI / 180. - direct * offset) : *(direct) : si.smoo;
+			a(i, nls) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
 			//la = list of angles//
  			la = par(i, p, a(i, p));
 };
 //
 //--------------------------------------------------------------------------------------//
-//AMBISONIC ENCODER WITH ROTATION OR STATIC MODES
+//AMBISONIC ENCODERS WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
-
 abc_2d_encoder_ui(n) = rEncoder(n, speed, angle, returntime)
 	with {
 			speed = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
@@ -79,25 +79,33 @@ abc_3d_encoder_ui(n) = rEncoder3D(n, speedazim, speedelev, azim, elev, returntim
 
 //
 //--------------------------------------------------------------------------------------//
-//AMBISONIC STEREO ENCODING WITH A CERTAIN OPENING IN DEGREES
+//MULTIPLE AMBISONIC ENCODERS TO PLAY SEVERAL LOCALIZED SOURCES (STATIC ANGLES)
 //--------------------------------------------------------------------------------------//
 //
-
-abc_2d_stereoencoder_ui(n) = stereoEncoder(n, angle)
+abc_2d_stereoEncoder_ui(n) = stereoEncoder(n, angle)
 	with {
-			//angle expressed in degrees and converted to radians
-			angle = hslider("v:stereoencoder/angle [unit:deg]", 60, 0, 360, 0.01) * ma.PI / 180.0 ;		
+			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0;
+};
+
+abc_2d_multiEncoder_ui(n, ns) = multiEncoder(n, la)
+	with {
+			//the angle of the the ith source among p sources, expressed in degrees for the end-user
+			a(i, p) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / p, -360, 360, 0.01);
+			//la = list of angles//
+ 			la = par(i, ns, a(i, ns));
 };
 
 //
 //--------------------------------------------------------------------------------------//
-//2D MAPS
+//2D MAPS : ONE SOURCE OR MULTISOURCE
 //--------------------------------------------------------------------------------------//
 //
 abc_2d_map_ui(n) = thisMap
 	with {
 		thisMap(x, r, a) = ho.map(n, x, r, a);
 };
+
+abc_2d_multiMap_ui(n, ns) = par(i, ns, abc_2d_map_ui(n)) :> si.bus(2*n+1);
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC MIRROR WITH FACTOR
@@ -196,9 +204,7 @@ abc_2d_scope_ui(n) = scope(n, refresh)
 //2D SQUARE TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_square(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (sigClip, sigClip) : (*(s), *(s)) : (*(-1), *(1));
-//
-abc_2d_squareTrajectory_ui = abc_2d_square(freq, size)
+abc_2d_squareTrajectory_ui = xySquare(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -208,13 +214,7 @@ abc_2d_squareTrajectory_ui = abc_2d_square(freq, size)
 //2D Z TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_z(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
-		with {
-			x(t) = (t < 0.25) * (-1 + t * 8) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25)*8) + (t >= 0.5) * (t < 0.75) * (-1 + (t - 0.5) * 8) + (t >= 0.75) * (1 - (t - 0.75) * 8);
-			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
-};
-//
-abc_2d_zTrajectory_ui = abc_2d_z(freq, size)
+abc_2d_zTrajectory_ui = xyDoubleTriangle(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -224,16 +224,7 @@ abc_2d_zTrajectory_ui = abc_2d_z(freq, size)
 //2D RANDOM TRAJECTORY
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_random_xy(f, s) = thisRandomPos
-		with {
-			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-			temporalFilter = ba.sAndH(th);
-			//computes the temporal interval taking into account the case when f=0 and when f<0
-			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
-			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (ba.line(dt), ba.line(dt));
-};
-abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
+abc_2d_randomTrajectory_ui = xyRandom(freq, size)
 		with {
 			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -243,9 +234,8 @@ abc_2d_randomTrajectory_ui = abc_2d_random_xy(freq, size)
 //2D SQUARE AND Z TRAJECTORIES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_squareZ(f, s, cf) = (abc_2d_square(f, s), abc_2d_z(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
 //
-abc_2d_squareAndZTrajectory_ui = abc_2d_squareZ(freq, size, crossfade)
+abc_2d_squareAndZTrajectory_ui = xySquareDoubleTriangle(freq, size, crossfade)
 			with {
 				freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
 				size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
@@ -469,8 +459,6 @@ abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 		functiontype = hslider("functiontype", 0, 0, 21, 1);
 };
 //
-
-//
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
@@ -525,8 +513,6 @@ abc_busselect_ui(n) = busSelector(n, ramp, leftOrRight)
 };
 
 //
-
-
 //with one input source (exception for one source)
 abc_chowningPan1_ui = chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 			with {
@@ -589,16 +575,8 @@ abc_delaychain_ui(n) = thisdelaychain
 //MULTI FLANGERS
 //--------------------------------------------------------------------------------------//
 //
-abc_flangerline(n, r, d, off, f, s) = thismultipleflanger
-			with {
-				//variable delay in samples//
-				variableDelaySampNumber(i) = os.phasor(1, r) : + (i * s / n) : ma.decimal : abc_sinusenvelop : +(1) : *(d) : +(off) : /(1000.) : *(ma.SR);
-				//elementary flanger that mixes the original signal and the delayed one//
-				flanger(i) = _ <: (de.fdelay(Nflangersamp, variableDelaySampNumber(i)), _) : (*(f), _) : +; 
-				thismultipleflanger = _ <: par(i, n, flanger(i));
-};
 //
-abc_multiflanger_ui(n) = abc_flangerline(n, rate, depth, offset, fdbk, spread)
+abc_multiflanger_ui(n) = decorrelatedFlangers(n, rate, depth, offset, fdbk, spread, Nflangersamp)
 			with {
 				rate = vslider("h:flanger/rate [unit:Hz]", 0.5, 0.01, 500, 0.001) : si.smoo;
 				depth = vslider("h:flanger/depth [unit:msec]", 40, 0, 1000, 0.001) : si.smoo;
@@ -702,7 +680,9 @@ abc_matrix_ui(n, m) = thismatrix
 			with {
 				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1) * ma.SR / 1000.; //transition ramp duration in msec converted to samples//
 				//
-				toggle(c, in) = nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001) : ba.line(ramp);
+				//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
+				//in the future as soon as it is included and diffused in ba library 
+				toggle(c, in) = nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001) : line(ramp);
 				mixer(n,out) 	= par(in, n, *(toggle(in, in+out*n)) ) :> _ ;
 				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
@@ -747,8 +727,6 @@ abc_substractsynth_ui(n) = thissubstractivesynth
 //PEAKAMP ON N SAMPLES
 //--------------------------------------------------------------------------------------//
 //
-
-//
 abc_peakamp_ui = peakamp(nsamp)
 		with {
 			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
@@ -758,38 +736,7 @@ abc_peakamp_ui = peakamp(nsamp)
 //SOUNDDETECTOR
 //--------------------------------------------------------------------------------------//
 //
-abc_impulse = _ <: _, mem : - : (_ > 0.0);
-abc_release(n) = + ~ (_ <: _, (_ > 0) / n : -);
-abc_trigger(n) = abc_impulse : abc_release(n) : _ > 0;
-abc_onetozero(n) = abc_impulse : abc_release(n) : min(1) : max(0);
-//
-abc_impulsedec = _ <: _, mem : - : (_ < 0.0);
-abc_triggerdec(n) = abc_impulsedec : abc_release(n) : _ > 0;
-abc_onetozerodec(n) = abc_impulsedec : abc_release(n) : min(1) : max(0);
-//
-abc_offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
-//
-abc_millisec = ma.SR / 1000.0;
-//
-abc_sounddetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
-	with {
-			
-			nsamp = int(measureDur*abc_millisec);
-			nsampNoteOn = int(noteDur*abc_millisec);
-			nsampOff = int(offDur*abc_millisec);
-			measuredLevel = x : abc_peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
-			previousMeasuredLevel = measuredLevel@(nsamp);
-			ascendingInput = measuredLevel >= previousMeasuredLevel;
-			//attack type = 0 or 1
-			//0 = attack is detected as soon as the measured level is higher than thresh//
-			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
-			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
-			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
-			noteOnPhase = max((attackTrig : abc_trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
-			noteOffPhase = releaseTrig : abc_trigger(nsampOff);
-	};
-//
-abc_sounddetector_ui(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
+abc_soundDetector_ui(x) = soundDetector(tSlice, offset, noiseFloor, noteOn, noteDur, offDur, attack, x)
 		with {
 			offset = nentry("v:Detector/h:calibration_dB/offset [unit:dB]", 10, -64, 64, 1) : si.smoo;
 			noiseFloor = nentry("v:Detector/h:calibration_dB/noiseFloor [unit:dB]", -50, -120, 0, 1) : si.smoo;
@@ -800,9 +747,15 @@ abc_sounddetector_ui(x) = abc_sounddetector(tSlice, offset, noiseFloor, noteOn, 
 			offDur = nentry("v:Detector/h:noteOnOff/offDur [unit:msec]", 25, 1, 500, 1) : si.smoo;
 		};
 //
-abc_fullsounddetector_ui = _ <:(abc_offbeforeuse, abc_sounddetector_ui) : * <: (_, abc_onetozero(delta), abc_onetozerodec(delta))
+abc_fullSoundDetector_ui = _ <:(offbeforeuse, abc_soundDetector_ui) : * <: (_, onetozero(delta), onetozerodec(delta))
 	with {
-		delta = 20 * abc_millisec; //20 msec impulsion for attack or release//
+		offbeforeuse = (_, abs) ~ (max) : (_, !) : (_ > 0);
+		impulseinc = _ <: _, mem : - : (_ > 0.0);
+		impulsedec = _ <: _, mem : - : (_ < 0.0);
+		release(n) = + ~ (_ <: _, (_ > 0) / n : -);
+		onetozero(n) = impulseinc : release(n) : min(1) : max(0);
+		onetozerodec(n) = impulsedec : release(n) : min(1) : max(0);
+		delta = 20 * ma.SR / 1000.; //20 msec impulsion for attack or release//
 	};
 //
 //--------------------------------------------------------------------------------------//
@@ -1122,7 +1075,7 @@ abc_hilbertfilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 	with {
 		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : ma.frac : abc_sinusenvelop;
+		osc1 = *(-1) : +(0.25) : *(2 * ma.PI) : os.oscp(0);
 		//permutation//
 		p1(a, b, c, d) = (a, c, b, d);
 		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
@@ -1152,7 +1105,7 @@ abc_granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) 
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
-			env = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor);
+			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
 			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
 		};
 //		 
@@ -1175,7 +1128,7 @@ abc_transposer(moffset, tr, w, g) = dopplerDelay
 					trig_win = w : ba.sAndH(th_trigger);
 					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
 					variableDelay = de.fdelay(262144, delayInSgainles);
-					cosinusEnvelop = adjustedPhasor : *(0.5) : abc_sinusenvelop;
+					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
 					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
 				};
 //
@@ -1233,7 +1186,9 @@ abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
 			pre_val = ba.if (vol < r, vol, r);
 			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
 			pre_ti = ba.if (ti < 1.46, t, ti);
-			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
+			//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
+			//in the future as soon as it is included and diffused in ba library 
+			transitionLineDrive = val : line(pre_ti * ma.SR / 1000.0);
 		};
 abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
 abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
@@ -1253,10 +1208,10 @@ abc_mult2pi = *(2. * ma.PI);
 //ENVELOPE FOLLOWER
 //--------------------------------------------------------------------------------------//
 //
-abc_envfollower_ui = an.amp_follower_ar(attack, release)
+abc_envFollower_ui = an.amp_follower_ar(attack, release)
 		with {
-			attack = hslider("v:envfollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
-			release = hslider("v:envfollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
+			attack = hslider("v:envFollower/attack [unit:sec]", 0.001, 0.0001, 1, 0.0001); //attack duration in seconds
+			release = hslider("v:envFollower/release [unit:sec]", 0.01, 0.0001, 1, 0.0001); //release duration in seconds
 		};
 //
 //--------------------------------------------------------------------------------------//
@@ -1305,28 +1260,13 @@ abc_cartesian2polar = permutation <: (module, phase) with {
 	phase = atan2;
 };
 //
-//--------------------------------------------------------------------------------------//
-//SINUS ENVELOP
-//--------------------------------------------------------------------------------------//
-//
-abc_sinusenvelop(phase) = s1 + d * (s2 - s1)
-	with {
-			tablesize = 1 << 16;
-			sinustable = os.sinwaveform(tablesize);
-			zeroToOnePhase = phase : ma.decimal;
-			myIndex = zeroToOnePhase * float(tablesize);
-			i1 = int(myIndex);
-			d = ma.decimal(myIndex);
-			i2 = (i1+1) % int(tablesize);
-			s1 = rdtable(tablesize, sinustable, i1);
-			s2 = rdtable(tablesize, sinustable, i2);
-};
+
 //
 //--------------------------------------------------------------------------------------//
 //SHORTENING ENVELOP (COSINUS RANDOMIZED ENVELOP TO BE FED BY NOISE)
 //--------------------------------------------------------------------------------------//
 //
-abc_shorteningenv(f, s) = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor)
+abc_shorteningenv(f, s) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
 	with {
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f);
@@ -1340,14 +1280,15 @@ abc_shorteningenv(f, s) = ((ramp : *(0.5) : abc_sinusenvelop), _) : *(factor)
 //
 abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
 	with {
-			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : ba.line(ma.SR / f);
+			//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
+			//in the future as soon as it is included and diffused in ba library 
+			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : line(ma.SR / f);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
 };
 //
 //
-
 //
 //
 //
@@ -1367,38 +1308,6 @@ Ndelsamp = 1048576;
 //
 //For flangers variable delays
 Nflangersamp = 262144;
-//
-//--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
-//
-//UTILITY FUNCTIONS USED IN SEVERAL OTHER FUNCTIONS//TYPES OF DISTRIBUTIONS: 22 FUNCTIONS FROM [0, 1] to [0,1]
-//(i+1)/p belongs to [0, 1] and its image by any function also belongs to the interval
-//
-//--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
-//
-abc_th(0, i, p) = (i+1) / p;
-abc_th(1, i, p) = ((i+1) / p)^2;
-abc_th(2, i, p) = sin(ma.PI * 0.5 * (i+1) / p);
-abc_th(3, i, p) = log10(1 + (i+1) / p) / log10(2);
-abc_th(4, i, p) = sqrt((i+1) / p);
-abc_th(5, i, p) = 1 - cos(ma.PI * 0.5 * (i+1) / p);
-abc_th(6, i, p) = (1 - cos(ma.PI * (i+1) / p)) * 0.5;
-abc_th(7, i, p) = 1 - (1 - (i+1) / p )^2;
-abc_th(8, i, p) = ((i+1) / p < 0.5) * 2 * ((i+1) / p)^2 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^2 * 0.5) ;
-abc_th(9, i, p) = ((i+1) / p)^3 ;
-abc_th(10, i, p) = 1 - (1 - (i+1) / p)^3 ;
-abc_th(11, i, p) = ((i+1) / p < 0.5) * 4 * ((i+1) / p)^3 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^3 * 0.5) ;
-abc_th(12, i, p) = ((i+1) / p)^4 ; 
-abc_th(13, i, p) = 1 - (1 - (i+1) / p)^4 ;
-abc_th(14, i, p) = ((i+1) / p < 0.5) * 8 * ((i+1) / p)^4 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^4 * 0.5) ;
-abc_th(15, i, p) = ((i+1) / p)^5 ; 
-abc_th(16, i, p) = 1 - (1 - (i+1) / p)^5 ;
-abc_th(17, i, p) = ((i+1) / p < 0.5) * 16 * ((i+1) / p)^5 + ((i+1) / p >= 0.5) * (1 - (-2 * (i+1) / p + 2)^5 * 0.5) ;
-abc_th(18, i, p) = 2^(10 * (i+1) / p - 10) ;
-abc_th(19, i, p) = ((i+1) / p < 1) * (1 - 2^(-10 * (i+1) / p)) + ((i+1) / p == 1) ;
-abc_th(20, i, p) = 1 - sqrt(1 - ((i+1) / p)^2) ; 
-abc_th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2) ;
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
