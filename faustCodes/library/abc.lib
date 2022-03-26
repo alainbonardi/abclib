@@ -17,8 +17,6 @@ import("stdfaust.lib");
 import("hoa2.lib");
 //provisional import of functions in mm.lib that will be later migrated to the official mm.lib
 import("mm.lib");
-//provisional use of functions that will be included in the future in official Faust libraries
-import("provisional.lib");
 //
 //
 //THE ABCLIB LIBRARY INCLUDES 2 TYPES OF FUNCTIONS
@@ -679,10 +677,7 @@ abc_multilinrandenv_ui(n) = abc_multilinrandenv(n, freq, rarefaction)
 abc_matrix_ui(n, m) = thismatrix
 			with {
 				ramp = nentry("h:matrix/ramp [unit:msec]", 100, 0, 100000, 1) * ma.SR / 1000.; //transition ramp duration in msec converted to samples//
-				//
-				//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
-				//in the future as soon as it is included and diffused in ba library 
-				toggle(c, in) = nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001) : line(ramp);
+				toggle(c, in) = nentry("h:matrix/v:Col%2c/m%3in", 0, -1, 1, 0.001) : ba.line(ramp);
 				mixer(n,out) 	= par(in, n, *(toggle(in, in+out*n)) ) :> _ ;
 				thismatrix = par(in, n, _) <: par(out, m, mixer(n, out));
 };
@@ -1186,9 +1181,7 @@ abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
 			pre_val = ba.if (vol < r, vol, r);
 			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
 			pre_ti = ba.if (ti < 1.46, t, ti);
-			//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
-			//in the future as soon as it is included and diffused in ba library 
-			transitionLineDrive = val : line(pre_ti * ma.SR / 1000.0);
+			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
 		};
 abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
 abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
@@ -1280,9 +1273,7 @@ abc_shorteningenv(f, s) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
 //
 abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
 	with {
-			//the code below provisionally uses line(n, x) function (in provisional.lib) and should use ba.line function
-			//in the future as soon as it is included and diffused in ba library 
-			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : line(ma.SR / f);
+			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : ba.line(ma.SR / f);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
