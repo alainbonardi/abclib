@@ -893,9 +893,9 @@ abc_globalgenerator_ui = (noisegenerator, sinusgenerator, phasorgenerator) :> *(
 				phasorpulseratio = hslider("v:generator/h:phasor/phasorpulseratio", 1, 0, 10, 1);
 				//
 				//noise, sinus and phasor generators
-				noisegenerator = (no.noise, pulsedEnv(noisepulserate, noisepulseratio)) : * : *(noiseonoff) : fi.resonlp(noisecutoff, 5, 0.75);
-				sinusgenerator = (os.osccos(sinusfreq), pulsedEnv(sinuspulserate, sinuspulseratio)) : * : *(sinusonoff);
-				phasorgenerator = (os.phasor(1, phasorfreq), pulsedEnv(phasorpulserate, phasorpulseratio)) : * : *(phasoronoff);
+				noisegenerator = (no.noise, pulsedEnv1(noisepulserate, noisepulseratio)) : * : *(noiseonoff) : fi.resonlp(noisecutoff, 5, 0.75);
+				sinusgenerator = (os.osccos(sinusfreq), pulsedEnv1(sinuspulserate, sinuspulseratio)) : * : *(sinusonoff);
+				phasorgenerator = (os.phasor(1, phasorfreq), pulsedEnv1(phasorpulserate, phasorpulseratio)) : * : *(phasoronoff);
 };
 //
 //--------------------------------------------------------------------------------------//

@@ -345,23 +345,46 @@ multiChowningPanner(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), 
 //ENVELOPES
 //--------------------------------------------------------------------------------------//
 
-//-------`(mm.)pulsedEnv`----------
-// pulsedEnv generates a pulsed envelope at a certain rate (frequency)
-// and a certain ratio (for instance 3 indicates that signal is on during 1/3 of the period)
+//-------`(mm.)pulsedEnv1`----------
+// pulsedEnv1 generates a sinusoidal pulsed envelope at a rate/frequency
+// and a silence/sound ratio (for instance a value of 3 indicates that signal is on during 1/3 of the period)
 
-// `pulsedEnv` is a standard Faust function.
+// `pulsedEnv1` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// pulsedEnv(rate, ratio) : _
+// pulsedEnv1(rate, ratio) : _
 // ```
 //
+// Where:
+//
+// * `rate`: the frequency of the envelope
+// * `ratio`: the silence/sound ratio
 //-----------------------------
-pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
+
+pulsedEnv1(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 
 
+//-------`(mm.)pulsedEnv2`----------
+// pulsedEnv2 generates a pulsed envelope at a rate/frequency based on a phasor
+// and a silence/sound ratio (for instance a value of 3 indicates that signal is on during 1/3 of the period)
 
+// `pulsedEnv2` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// pulsedEnv2(rate, ratio) : _
+// ```
+//
+// Where:
+//
+// * `rate`: the frequency of the envelope
+// * `ratio`: the silence/sound ratio
+//-----------------------------
+
+pulsedEnv2(rate, ratio) = os.phasor(ratio, rate) : -(ratio-1) : ampClip;
 
 
 //--------------------------------------------------------------------------------------//
@@ -380,8 +403,8 @@ pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 //
 // Where:
 //
-// * `rate': the speed/frequency of the sinus modulating the delay
-// * `depth: the amplitude of the delay (max delay duration in milliseconds)
+// * `rate`: the speed/frequency of the sinus modulating the delay
+// * `depth`: the amplitude of the delay (max delay duration in milliseconds)
 // * `off`: the offset of the delay duration in milliseconds
 // * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
 // * `delta`: the extra phase of control of the sinusoidal modulation of delay (enables decorrelations between several flangers)
