@@ -254,7 +254,7 @@ scope(n, rt) = thisScope
 				inputVector = (*(0.5), par(i, (2*n), _)) : normalizedVector(2*n+1);
 				normalizedHarmonics = harmonicsVector : normalizedVector(2*n+1);
 				//
-				rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1) : *(2); //adjusted to fit the unit circle
+				rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1) ;
 				thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);	
 };
 
