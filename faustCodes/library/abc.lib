@@ -587,7 +587,7 @@ abc_multiflanger_ui(n) = decorrelatedFlangers(n, rate, depth, offset, fdbk, spre
 //MULTI FREQUENCY SHIFTERS
 //--------------------------------------------------------------------------------------//
 //
-abc_multifreqshift_ui(n) = par(i, n, (abc_fshiftp(fr(i)) : *(gain(i))))
+abc_multifreqshift_ui(n) = par(i, n, (fshiftp(fr(i)) : *(gain(i))))
 			with {
 				//Shifting frequencies
 				fr(ind) = hslider("h:multifreqshifts/v:shiftingfreqs/fr%2ind [unit:Hz]", 0, -10000, 10000, 0.001);
@@ -1023,66 +1023,6 @@ abc_overlappeddoubledelay(nsamp, nmax, freq) = de.sdelay(nmax, int(ma.SR / freq)
 abc_fdoverlappeddoubledelay(nsamp, nmax, freq, fd) = (+ : abc_overlappeddoubledelay(nsamp, nmax, freq)) ~ (*(fd));
 //
 //
-//--------------------------------------------------------------------------------------//
-// MAX LIKE AND PUREDATA LIKE BIQUADS + HILBERT FILTER + FREQUENCY SHIFTERS
-//--------------------------------------------------------------------------------------//
-//
-//A max like biquad
-//y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
-//--------------------------------------------------------------------------------------//
-abc_maxlikebiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
-	with {
-		conv2(c0,c1,x) = c0*x+c1*x';
-		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
-	};
-//
-//A PureData like biquad
-//in direct form 2
-//--------------------------------------------------------------------------------------//
-abc_pdlikebiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = abc_maxlikebiquad(x, ff1, ff2, ff3, fb1, fb2) 
-	with {
-		//first, compute the stability of the biquad//	
-		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
-		condition1 = ((discriminant < 0) & (c_fb2 >= -1.0));
-		condition2 = ((discriminant >= 0) & (c_fb1 >= -2.0) & (c_fb1 <= 2.0) & (c_fb1+c_fb2 <= 1.0) & (c_fb1-c_fb2 >= -1.0));
-		stable = (condition1 | condition2);//stable is 0 (unstable) or 1 (stable)		
-		//second the final coefficients to apply to biquad that is defined in maxmsp.lib//
-		fb1 = c_fb1 : *(stable) : (*(-1.));
-		fb2 = c_fb2 : *(stable) : (*(-1.));
-		ff1 = c_ff1 : *(stable);	
-		ff2 = c_ff2 : *(stable);	
-		ff3 = c_ff3 : *(stable);
-	};
-//
-//Hilbert filter
-//--------------------------------------------------------------------------------------//
-abc_hilbertfilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
-	with {
-			biquad1(x) = abc_pdlikebiquad(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
-			biquad2(x) = abc_pdlikebiquad(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
-			biquad3(x) = abc_pdlikebiquad(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
-			biquad4(x) = abc_pdlikebiquad(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
-	};
-//
-//frequency shifter definition
-//1 inlet, 2 outlets : +f0 outlet and -f0 outlet
-//--------------------------------------------------------------------------------------//
-abc_fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
-	with {
-		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : *(2 * ma.PI) : os.oscp(0);
-		//permutation//
-		p1(a, b, c, d) = (a, c, b, d);
-		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
-		hilbertByCosAndMinusSin = (abc_hilbertfilter, cosAndMinusSin) : p1 : (*, *);
-};
-//
-//We define specific fshift with only pos or neg output//
-//--------------------------------------------------------------------------------------//
-abc_fshiftp(freq) = abc_fshift(freq) : (_, !);
-abc_fshiftn(freq) = abc_fshift(freq) : (!, _);
-//
-
 //
 //--------------------------------------------------------------------------------------//
 //GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION

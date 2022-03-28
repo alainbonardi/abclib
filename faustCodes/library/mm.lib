@@ -442,28 +442,22 @@ decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n,
 //FILTERS AS USED IN MAX AND PURE DATA SOFTWARES
 //--------------------------------------------------------------------------------------//
 
-//-------`(mm.)maxLikeBiquad`----------
+//-------`(mm.)maxBiquad`----------
 //A biquad in direct form 1 as in Max software
 //y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
 //
 // #### Usage
 //
 // ```
-// maxLikeBiquad(n, rate, depth, off, fdbk, spread, nsamp) : _
+// maxBiquad(n, rate, depth, off, fdbk, spread, nsamp) : _
 // ```
 //
 // Where:
 //
 // * `n': the number of flangers instanciated
-// * `rate': the speed/frequency of the sinus modulating the delay
-// * `depth: the amplitude of the delay (max delay duration in milliseconds)
-// * `off`: the offset of the delay duration in milliseconds
-// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
-// * `spread`: the factor of decorrelation of the flangers between 0 (no decorrelation) and 1 (maximum decorrelation)
-// * `nsamp`: the maximal capacity of the delay line expressed in samples
 //-----------------------------
 
-maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
+maxBiquad(a0,a1,a2,b1,b2, x)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
 	with {
 		conv2(c0,c1,x) = c0*x+c1*x';
 		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
@@ -475,7 +469,7 @@ maxLikeBiquad(x,a0,a1,a2,b1,b2)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1,
 //
 //--------------------------------------------------------------------------------------//
 
-pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = maxLikeBiquad(x, ff1, ff2, ff3, fb1, fb2) 
+puredataBiquad(c_fb1, c_fb2, c_ff1, c_ff2, c_ff3, x) = maxBiquad(ff1, ff2, ff3, fb1, fb2, x) 
 	with {
 		//first, compute the stability of the biquad//	
 		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
@@ -495,12 +489,25 @@ pdLikeBiquad(x, c_fb1, c_fb2, c_ff1, c_ff2, c_ff3) = maxLikeBiquad(x, ff1, ff2, 
 //--------------------------------------------------------------------------------------//
 hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 	with {
-			biquad1(x) = pdLikeBiquad(x, -0.02569, 0.260502, -0.260502, 0.02569, 1.);
-			biquad2(x) = pdLikeBiquad(x, 1.8685, -0.870686, 0.870686, -1.8685, 1.);
-			biquad3(x) = pdLikeNiquad(x, 1.94632, -0.94657, 0.94657, -1.94632, 1.);
-			biquad4(x) = pdLikeBiquad(x, 0.83774, -0.06338, 0.06338, -0.83774, 1.);
+			biquad1 = puredataBiquad(-0.02569, 0.260502, -0.260502, 0.02569, 1.);
+			biquad2 = puredataBiquad(1.8685, -0.870686, 0.870686, -1.8685, 1.);
+			biquad3 = puredataBiquad(1.94632, -0.94657, 0.94657, -1.94632, 1.);
+			biquad4 = puredataBiquad(0.83774, -0.06338, 0.06338, -0.83774, 1.);
 	};
 //
+
+fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
+	with {
+		//cosinus enveloppe//
+		osc1 = *(-1) : +(0.25) : *(2 * ma.PI) : os.oscp(0);
+		//permutation//
+		p1(a, b, c, d) = (a, c, b, d);
+		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
+		hilbertByCosAndMinusSin = (hilbertFilter, cosAndMinusSin) : p1 : (*, *);
+};
+
+fshiftp(freq) = fshift(freq) : (_, !);
+fshiftn(freq) = fshift(freq) : (!, _);
 
 //--------------------------------------------------------------------------------------//
 //SOUND SYNTHESES
