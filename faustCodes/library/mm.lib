@@ -438,6 +438,40 @@ flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableD
 
 decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
 
+
+//--------------------------------------------------------------------------------------//
+//DOUBLE OVERLAPPED DELAY
+//--------------------------------------------------------------------------------------//
+//
+//A double overlapped delay without reinjection//
+//--------------------------------------------------------------------------------------//
+overlappedDoubleDelay(nsamp, nmax, freq) = de.sdelay(nmax, int(ma.SR / freq), nsamp);
+//
+//A double overlapped delay with reinjection//
+//--------------------------------------------------------------------------------------//
+fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : overlappedDoubleDelay(nsamp, nmax, freq)) ~ (*(fd));
+
+//--------------------------------------------------------------------------------------//
+//GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
+//USES A COSINUS ENVELOP
+//--------------------------------------------------------------------------------------//
+
+granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
+	with {
+			//gs is the grain size in milliseconds//
+			//d is the max delay in milliseconds//
+			//s is the rarefaction between 0 and 1//
+			//the capacity of storage of the delay line is 262144 which is roughly 5,46 sec of delay at 48KHz
+			f = 1000. / gs; //f is the frequency of the grain
+			ramp = os.phasor(1, f);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			randTest = (_, (s : *(2) : -(1))) : >;
+			factor = randTest : ba.sAndH(th);
+			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
+			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
+		};
+
+
 //--------------------------------------------------------------------------------------//
 //FILTERS AS USED IN MAX AND PURE DATA SOFTWARES
 //--------------------------------------------------------------------------------------//
@@ -449,12 +483,13 @@ decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n,
 // #### Usage
 //
 // ```
-// maxBiquad(n, rate, depth, off, fdbk, spread, nsamp) : _
+// maxBiquad(a0, a1, a2, b1, b2, x) : _
 // ```
 //
 // Where:
 //
-// * `n': the number of flangers instanciated
+// * `a0, a1, a2, b1, b2': the coefficients of the biquad in direct form 1 as in Max software
+// * `x': the input signal
 //-----------------------------
 
 maxBiquad(a0,a1,a2,b1,b2, x)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
@@ -464,10 +499,20 @@ maxBiquad(a0,a1,a2,b1,b2, x)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2
 	};
 
 
-
+//-------`(mm.)puredataBiquad`----------
 //A biquad in direct form 2 as in PureData software
 //
-//--------------------------------------------------------------------------------------//
+// #### Usage
+//
+// ```
+// puredataBiquad(fb1, fb2, ff1, ff2, ff3, x) : _
+// ```
+//
+// Where:
+//
+// * `fb1, fb2, ff1, ff2, ff3': the coefficients of the biquad in direct form 2 as in PureData software
+// * `x': the input signal
+//-----------------------------
 
 puredataBiquad(c_fb1, c_fb2, c_ff1, c_ff2, c_ff3, x) = maxBiquad(ff1, ff2, ff3, fb1, fb2, x) 
 	with {
