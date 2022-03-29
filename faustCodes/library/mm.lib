@@ -438,7 +438,6 @@ flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableD
 
 decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
 
-
 //--------------------------------------------------------------------------------------//
 //DOUBLE OVERLAPPED DELAY
 //--------------------------------------------------------------------------------------//
@@ -530,8 +529,17 @@ puredataBiquad(c_fb1, c_fb2, c_ff1, c_ff2, c_ff3, x) = maxBiquad(ff1, ff2, ff3, 
 	};
 
 
-//Hilbert filter
-//--------------------------------------------------------------------------------------//
+//-------`(mm.)hilbertFilter`----------
+//A Hilbert filter composed of 4 biquad filters
+//
+// #### Usage
+//
+// ```
+// hilbertFilter : _, _
+// ```
+//
+//-----------------------------
+
 hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 	with {
 			biquad1 = puredataBiquad(-0.02569, 0.260502, -0.260502, 0.02569, 1.);
@@ -540,6 +548,21 @@ hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
 			biquad4 = puredataBiquad(0.83774, -0.06338, 0.06338, -0.83774, 1.);
 	};
 //
+
+//-------`(mm.)fshift`----------
+//A frequency shifter made with a Hilbert filter and cos/sin modulation
+//producing two outputs: original content shifted of +freq and original content shifted of -freq
+//
+// #### Usage
+//
+// ```
+// _ : fshift(freq) : _, _
+// ```
+//
+// Where:
+//
+// * `freq': the shifting frequency in Hz
+//-----------------------------
 
 fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 	with {
@@ -551,11 +574,47 @@ fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
 		hilbertByCosAndMinusSin = (hilbertFilter, cosAndMinusSin) : p1 : (*, *);
 };
 
+//-------`(mm.)fshiftp`----------
+//A frequency shifter made with a Hilbert filter and cos/sin modulation
+//producing only one output with the original content shifted of +freq
+//
+// #### Usage
+//
+// ```
+// _ : fshiftp(freq) : _
+// ```
+//
+// Where:
+//
+// * `freq': the shifting frequency in Hz
+//-----------------------------
+
 fshiftp(freq) = fshift(freq) : (_, !);
+
+
+//-------`(mm.)fshiftn`----------
+//A frequency shifter made with a Hilbert filter and cos/sin modulation
+//producing only one output with the original content shifted of -freq
+//
+// #### Usage
+//
+// ```
+// _ : fshiftn(freq) : _
+// ```
+//
+// Where:
+//
+// * `freq': the shifting frequency in Hz
+//-----------------------------
 fshiftn(freq) = fshift(freq) : (!, _);
 
+
 //--------------------------------------------------------------------------------------//
-//SOUND SYNTHESES
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+//									SOUND SYNTHESES
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 
 
@@ -591,7 +650,7 @@ doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : 
 // * 'a' : the output amplitude between 0 and 1
 // * 'sgauss' : the standard deviation of the gauss function to be used
 // * 'acauchy' : the a coefficient of Cauchy function
-// * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
+// * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
 
 puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
@@ -621,7 +680,7 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 //[TO BE TESTED]
 
 //-------`(mm.)puckettesPaf2`----------
-// puckettesPaf2 generates a phased-aligned formant signal like puckettesPaf function
+// puckettesPaf2 generates a phased-aligned formant signal as puckettesPaf function
 // but it adds a phase modulator that enables the synthesis of inharmonic sounds
 // It uses Miller Puckette's design exposed in the following article:
 // reference: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
@@ -640,11 +699,11 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 // * `cfreq': the central frequency (Hz)
 // * `bwidth`: the band width (Hz)
 // * 'a' : the output amplitude between 0 and 1
-// * 'inharmoAmp' : the amplitude of inharmonic sound generated
-// * 'inharmoFreq' : the frequency of inharmonic sound generated
+// * 'inharmoAmp' : the amplitude of the phase modulator
+// * 'inharmoFreq' : the frequency of the phase modulator
 // * 'sgauss' : the standard deviation of the gauss function to be used
 // * 'acauchy' : the a coefficient of Cauchy function
-// * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
+// * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
 
 puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
@@ -698,7 +757,7 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 			with {
 				elemFilter(fund, frand, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
 				//An elementary bandpass filter with randomized gain
-				//two inputs for abc_elemfilter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
+				//two inputs for this elementary filter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
 						with {	
 								filterQ = 120;
 								filterG = 1;
