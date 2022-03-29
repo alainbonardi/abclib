@@ -779,7 +779,7 @@ abc_reinjBlock3 = (abc_rev4tap(58.643494), abc_rev4tap(69.432503), abc_rev4tap(7
 //
 abc_rev4stereo(dur, g) = abc_rev4cascadblock : (abc_rev4reinjblock1(dur) : abc_rev4reinjblock2stereo(g)) ~ (abc_reinjBlock3, !, !) : (!, !, !, !, _, _);
 //
-abc_rev4stereo_ui = abc_rev4stereo(revDur, revGain)
+abc_rev4stereo_ui = rev4Stereo(revDur, revGain)
 			with {
 				//2 controls: revDur which is the duration of the reverb (127 is infinite)
 				//revAmp is the amplitude of the output sound of the reverb
