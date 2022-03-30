@@ -339,6 +339,24 @@ chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 multiChowningPanner(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
 
 
+//
+//Definition of a PureData like linedrive object
+//--------------------------------------------------------------------------------------//
+puredataLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
+	with {
+			//vol = current volume in Midi (0-127)
+			//ti = current time of evolution (in msec)
+			//r is the range, usually Midi range (127)
+			//f is the factor, usually 2
+			//b is the basis, usually 1.07177
+			//t is the ramp time usually 30 ms
+
+			pre_val = ba.if (vol < r, vol, r);
+			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
+			pre_ti = ba.if (ti < 1.46, t, ti);
+			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
+		};
+
 //--------------------------------------------------------------------------------------//
 //ENVELOPES
 //--------------------------------------------------------------------------------------//

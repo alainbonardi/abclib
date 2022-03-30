@@ -445,7 +445,7 @@ abc_2d_fx_ringmod_ui(n) = fxRingMod(n, f0, factor, functiontype)
 	with {
 		f0 = hslider("v:fxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:fxringmod/factor", 0, 0, 1, 0.001);
-		functiontype = hslider("functiontype", 0, 0, 21, 1);
+		functiontype = hslider("v:fxringmod/functiontype", 0, 0, 21, 1);
 };
 
 //
@@ -457,7 +457,7 @@ abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 	with {
 		f0 = hslider("v:synringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synringmod/factor", 0, 0, 1, 0.001);
-		functiontype = hslider("functiontype", 0, 0, 21, 1);
+		functiontype = hslider("v:fxringmod/functiontype", 0, 0, 21, 1);
 };
 
 //--------------------------------------------------------------------------------------//
@@ -467,10 +467,10 @@ abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 // theta  = angle of the virtual source (in degrees)
 abc_2d_vbap_ui(n) = circularScaledVBAP(la, theta)
 	with {
-		theta = hslider("v:vbap/theta [unit:deg]", 0, -360, 360, 0.01);
-		a(i, nls) = nentry("h:vbap/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
+		a(i, nls) = nentry("vbap/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
+		theta = nentry("vbap/theta [unit:deg]", 0, -360, 360, 0.01);
 		//la = list of angles//
- 		la = par(i, p, a(i, p));
+ 		la = par(i, n, a(i, n));
 	};
 //
 //
@@ -1063,27 +1063,10 @@ with {
 abc_rotationorstaticangle(f, p, dt) = abc_rotationorstaticphase(f, p, dt) * 2 * ma.PI;
 //
 
+abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : puredataLineDrive;
+abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : puredataLineDrive;
 //
-//Definition of a PureData like linedrive object
-//--------------------------------------------------------------------------------------//
-abc_pdlinedrive(vol, ti, r, f, b, t) = transitionLineDrive
-	with {
-			//vol = current volume in Midi (0-127)
-			//ti = current time of evolution (in msec)
-			//r is the range, usually Midi range (127)
-			//f is the factor, usually 2
-			//b is the basis, usually 1.07177
-			//t is the ramp time usually 30 ms
-
-			pre_val = ba.if (vol < r, vol, r);
-			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
-			pre_ti = ba.if (ti < 1.46, t, ti);
-			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
-		};
-abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : abc_pdlinedrive;
-abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : abc_pdlinedrive;
-//
-abc_linedrive_ui = (_, 30, 127, outputmax, expcurve, 30) : abc_pdlinedrive
+abc_linedrive_ui = (_, 30, 127, outputmax, expcurve, 30) : puredataLineDrive
 		with {
 			outputmax = hslider("v:linedrive/outputmax", 1, 0, 100000, 0.01);
 			expcurve = hslider("v:linedrive/expcurve", 1.06, 0.00001, 2., 0.00001);
