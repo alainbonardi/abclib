@@ -3,12 +3,12 @@
 //
 //-------------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC---------------------//
 //
-//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2021 ------------------//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2022 ------------------//
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_rev4quadri";
+declare name "abc_2d_vbap16";
 //
-process = library("abc.lib").abc_rev4quadri_ui;
+process = library("abc.lib").abc_2d_vbap_ui(16);

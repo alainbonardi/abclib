@@ -303,7 +303,6 @@ abc_2d_syn_decorrelation_ui(n) = synDecorrelation(n, delay, winfreq, factor, fdb
 		functiontype = hslider("v:synfxdecorrelation/functiontype", 0, 0, 21, 1);
 		//
 };
-//
 
 //
 //--------------------------------------------------------------------------------------//
@@ -345,12 +344,14 @@ abc_2d_fx_delay_ui(n) = thisfxdelay
 		//
 		thisfxdelay = par(i, n, abc_fdoverlappeddoubledelay(durToSamp(deltime, i, n), 524288, winfreq, feedback));
 };
+
 //
 //--------------------------------------------------------------------------------------//
 //syn delay process
 //--------------------------------------------------------------------------------------//
 //
 abc_2d_syn_delay_ui(n) = _ <: si.bus(n) : abc_2d_fx_delay_ui(n);
+
 //
 //--------------------------------------------------------------------------------------//
 //SYN AND FX GRAIN PROCESSES
@@ -387,6 +388,7 @@ abc_2d_fx_grain_ui(n) = thisfxgrain
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
 		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : interlace3(n) : par(i, n, granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
 };
+
 //
 //--------------------------------------------------------------------------------------//
 //syn grain process
@@ -403,6 +405,7 @@ abc_2d_syn_grain_ui(n) = thissyngrain
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
 		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : interlace3(n)  : par(i, n, granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
 };
+
 //
 //
 //--------------------------------------------------------------------------------------//
@@ -456,6 +459,19 @@ abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 		factor = hslider("v:synringmod/factor", 0, 0, 1, 0.001);
 		functiontype = hslider("functiontype", 0, 0, 21, 1);
 };
+
+//--------------------------------------------------------------------------------------//
+// VBAP spatialization
+//--------------------------------------------------------------------------------------//
+// la = list of angles of the loudspeakers (in degrees)
+// theta  = angle of the virtual source (in degrees)
+abc_2d_vbap_ui(n) = circularScaledVBAP(la, theta)
+	with {
+		theta = hslider("v:vbap/theta [unit:deg]", 0, -360, 360, 0.01);
+		a(i, nls) = nentry("h:vbap/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
+		//la = list of angles//
+ 		la = par(i, p, a(i, p));
+	};
 //
 //
 //--------------------------------------------------------------------------------------//

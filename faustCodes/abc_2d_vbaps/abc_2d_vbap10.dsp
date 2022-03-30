@@ -9,4 +9,6 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
+declare name "abc_2d_vbap10";
 //
+process = library("abc.lib").abc_2d_vbap_ui(10);
