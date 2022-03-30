@@ -606,9 +606,24 @@ fshiftp(freq) = fshift(freq) : (_, !);
 //
 // * `freq': the shifting frequency in Hz
 //-----------------------------
+
 fshiftn(freq) = fshift(freq) : (!, _);
 
-
+//-------`(mm.)rev4Stereo`----------
+//Classical rev4 reverberation implemented in stereo
+//rev4 is a classical reverberation that has been heavily used in Max software since the end of the 1980's
+//
+// #### Usage
+//
+// ```
+// _ : rev4Stereo(dur, g) : _, _
+// ```
+//
+// Where:
+//
+// * `dur': the duration of the reverberation (between 0 and 127). 127 means an infinite reverberation
+// * `g': the output level of the reverberation (between 0 and 127)
+//-----------------------------
 
 rev4Stereo(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Stereo(g)) ~ (reinjBlock3, !, !) : (!, !, !, !, _, _)
 	with {
@@ -623,6 +638,39 @@ rev4Stereo(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2St
 			with {
 					doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
 					rev4Permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
+			};
+		reinjBlock3 = (rev4Tap(58.643494), rev4Tap(69.432503), rev4Tap(74.523392), rev4Tap(86.12439));
+	};
+
+//-------`(mm.)rev4Quadri`----------
+//Classical rev4 reverberation implemented with 4 outputs (there are 4 delay lines in the rev4)
+//rev4 is a classical reverberation that has been heavily used in Max software since the end of the 1980's
+//
+// #### Usage
+//
+// ```
+// _ : rev4Quadri(dur, g) : _, _
+// ```
+//
+// Where:
+//
+// * `dur': the duration of the reverberation (between 0 and 127). 127 means an infinite reverberation
+// * `g': the output level of the reverberation (between 0 and 127)
+//-----------------------------
+
+rev4Quadri(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Quadri(g)) ~ (!, !, reinjBlock3, !, !) : (_, _, !, !, !, !, _, _)
+	with {
+		rev4Tap(del) = de.delay(65536, int(del * ma.SR / 1000.));
+		rev4CascadBlock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMinusBlock(25.796) : plusMinusBlock(19.391993) : plusMinusBlock(16.363997) : (_, rev4Tap(13.645))
+			with {
+				initBlock(del) = _ <: (_, rev4Tap(del)) <: (+, -);
+				plusMinusBlock(del) = (_, rev4Tap(del)) <: (+, -);
+			};
+		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, interlace2(2)) : (_, _, +, +);
+		rev4ReinjBlock2Quadri(g) = (((_, _) <: (_, _, (-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (_, _, doubler4to8, _, _) : (_, _, rev4Permutation, _, _) : (*(g), *(g), -, -, +, +, *(g), *(g))
+			with {
+				doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
+				rev4Permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
 			};
 		reinjBlock3 = (rev4Tap(58.643494), rev4Tap(69.432503), rev4Tap(74.523392), rev4Tap(86.12439));
 	};
