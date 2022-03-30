@@ -105,3 +105,31 @@ echo "declare name \"abc_audiotester\";" >> $sortie
 #writes the process line
 echo "//
 process = library(\"abc.lib\").abc_audiotester_ui;" >> $sortie
+#
+#abc_puckettespaf.dsp
+#
+sortie="abc_puckettespaf.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_puckettespaf\";" >> $sortie
+#writes the process line
+echo "//
+process = library(\"abc.lib\").abc_puckettesPaf_ui;" >> $sortie
+#
+#abc_puckettespaf2.dsp
+#
+sortie="abc_puckettespaf2.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_puckettespaf2\";" >> $sortie
+#writes the process line
+echo "//
+process = library(\"abc.lib\").abc_puckettesPaf2_ui;" >> $sortie

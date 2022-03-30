@@ -9,6 +9,6 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_soundcoat";
+declare name "abc_puckettespaf2";
 //
-process = library("abc.lib").abc_soundcoat_ui;
+process = library("abc.lib").abc_puckettesPaf2_ui;
