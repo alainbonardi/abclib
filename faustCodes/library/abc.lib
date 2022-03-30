@@ -675,7 +675,7 @@ abc_multigrain_ui(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : inter
 //MULTI HARMONIZERS
 //--------------------------------------------------------------------------------------//
 //
-abc_multiharmo_ui(n) = par(ind, n, abc_harmonizer(trans(ind), winsize(ind), gain(ind)))
+abc_multiharmo_ui(n) = par(ind, n, harmonizer(trans(ind), winsize(ind), gain(ind)))
 			with {
 				//amount of transposition (in midicents) of the harmonizer #i
 				trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.01);
@@ -1013,35 +1013,6 @@ abc_puckettesPaf2_ui = puckettesPaf2(f0, cf, bw, amp, iamp, ifreq, sigma, a, wf)
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
-//
-//		 
-//--------------------------------------------------------------------------------------//
-//DEFINITION OF AN ELEMENTARY TRANSPOSITION BLOCK
-//--------------------------------------------------------------------------------------//
-abc_transposer(moffset, tr, w, g) = dopplerDelay
-			with {
-					//moffset is the decimal offset of each module between 0 (no offset) and 0.999999 (nearly no offset)
-					//tr is is the transposition in midicents
-					//w is the width of the window
-					//g is the absolute gain
-
-					freq = tr : +(6000) : *(0.01) : ba.midikey2hz : -(261.625977) : *(-3.8224) /(float(w));
-					//shifted phasor//
-					pdPhasor(f) = os.phasor(1, f);
-					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
-					//threshold to input new control values//
-					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
-					trig_win = w : ba.sAndH(th_trigger);
-					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
-					variableDelay = de.fdelay(262144, delayInSgainles);
-					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
-					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
-				};
-//
-//--------------------------------------------------------------------------------------//
-//DEFINITION OF AN ELEMENTARY HARMONIZER AS TWO TRANSPOSITION BLOCKS OVERLAPPED
-//--------------------------------------------------------------------------------------//
-abc_harmonizer(tr, w, g) = _ <: (abc_transposer(0, tr, w, g), abc_transposer(0.5, tr, w, g)) : +;
 //
 //--------------------------------------------------------------------------------------//
 //AMPLITUDE CONTROL IN DB

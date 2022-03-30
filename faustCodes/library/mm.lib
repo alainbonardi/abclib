@@ -469,6 +469,54 @@ overlappedDoubleDelay(nsamp, nmax, freq) = de.sdelay(nmax, int(ma.SR / freq), ns
 fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : overlappedDoubleDelay(nsamp, nmax, freq)) ~ (*(fd));
 
 //--------------------------------------------------------------------------------------//
+//DEFINITION OF AN ELEMENTARY TRANSPOSITION BLOCK
+//--------------------------------------------------------------------------------------//
+abc_transposer(moffset, tr, w, g) = dopplerDelay
+			with {
+					//moffset is the decimal offset of each module between 0 (no offset) and 0.999999 (nearly no offset)
+					//tr is is the transposition in midicents
+					//w is the width of the window
+					//g is the absolute gain
+
+					freq = tr : +(6000) : *(0.01) : ba.midikey2hz : -(261.625977) : *(-3.8224) /(float(w));
+					//shifted phasor//
+					pdPhasor(f) = os.phasor(1, f);
+					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
+					//threshold to input new control values//
+					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
+					trig_win = w : ba.sAndH(th_trigger);
+					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
+					variableDelay = de.fdelay(262144, delayInSgainles);
+					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
+					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
+				};
+//
+//--------------------------------------------------------------------------------------//
+//DEFINITION OF AN ELEMENTARY HARMONIZER AS TWO TRANSPOSITION BLOCKS OVERLAPPED
+//--------------------------------------------------------------------------------------//
+harmonizer(tr, w, g) = _ <: (transposer(0, tr, w, g), transposer(0.5, tr, w, g)) : +
+	with {
+		transposer(moffset, tr, w, g) = dopplerDelay
+			with {
+					//moffset is the decimal offset of each module between 0 (no offset) and 0.999999 (nearly no offset)
+					//tr is is the transposition in midicents
+					//w is the width of the window
+					//g is the absolute gain
+					freq = tr : +(6000) : *(0.01) : ba.midikey2hz : -(261.625977) : *(-3.8224) /(float(w));
+					//shifted phasor//
+					pdPhasor(f) = os.phasor(1, f);
+					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
+					//threshold to input new control values//
+					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
+					trig_win = w : ba.sAndH(th_trigger);
+					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
+					variableDelay = de.fdelay(262144, delayInSgainles);
+					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
+					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
+			};
+	};
+
+//--------------------------------------------------------------------------------------//
 //GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
 //USES A COSINUS ENVELOP
 //--------------------------------------------------------------------------------------//
@@ -850,6 +898,7 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
 						};
 };
+
 
 
 //2 inputs:
