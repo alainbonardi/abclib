@@ -26,7 +26,7 @@ headerfilename="../../bashFiles/faustCodeHeader.txt"
 #
 #vbaps
 #
-for i in `seq 1 $Nch`
+for i in `seq 2 $Nch`
 do
     sortie="abc_2d_vbap$i.dsp"
 #writes the header

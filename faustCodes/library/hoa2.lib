@@ -18,6 +18,7 @@
 // * `a`: the fixed azimuth when the rotation stops (sp = 0) in radians
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
+
 rEncoder(n, sp, a, it) = thisEncoder
 	with {
             basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
@@ -52,6 +53,7 @@ rEncoder(n, sp, a, it) = thisEncoder
 // * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `g`: global output gain between 0 and 1
 //-----------------------------
+
 gDecoderStereo(n, direct, g) = thisStereoDecoder
 	with {
 			//direct is direct mode (1) or indirect mode (-1)
@@ -78,6 +80,7 @@ gDecoderStereo(n, direct, g) = thisStereoDecoder
 // * `l' : the list of angles of the loudspeakers in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * 't' : the current angle of the virtual source in degrees
 //-----------------------------
+
 circularScaledVBAP(l, t) = thisCircularVbap with {
 		//modulo indexes between 1 and the number of elements of the list
 		modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
@@ -114,7 +117,8 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 
 //-------`(ho.)imlsDecoder`----------
 // Irregular decoder in 2D for an irregular multi-loudspeaker configuration
-
+// using 2D VBAP for compensation
+//
 // `imlsDecoder` is a standard Faust function.
 //
 // #### Usage
@@ -130,6 +134,7 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * 'shift' : angular shift in degrees to easily adjust angles
 //-----------------------------
+
 imlsDecoder(n, la, direct, shift) = ho.decoder(n, p) : par(i, p, *((2*n+1) / (2*n+2))) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p)
 	with {
 			p = outputs(la);
@@ -153,6 +158,7 @@ imlsDecoder(n, la, direct, shift) = ho.decoder(n, p) : par(i, p, *((2*n+1) / (2*
 // * 'st': 1 for stereo, 0 for multi-loudspeaker configuration. When 1, stereo sounds goes through the first two channels
 // * 'g' : gain between 0 and 1
 //-----------------------------
+
 iDecoder(n, la, direct, shift, st, g) = thisDecoder
 	with {
 			//p is the number of outputs
@@ -193,6 +199,7 @@ iDecoder(n, la, direct, shift, st, g) = thisDecoder
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the optim function)
 // * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
 //-----------------------------
+
 optim(n, ot) = thisOptimizer
 	with {
 			optb = (ot == 0) : si.smoo;
@@ -275,6 +282,7 @@ scope(n, rt) = thisScope
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
 // * 'a' : opening angle in radians, left channel at a/2 angle, right channel at -a/2 angle
 //-----------------------------
+
 stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 		with {
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
@@ -299,6 +307,7 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
 // * 'la' : a list of angles in radians on the unit circle to localize the sources (one angle per signal)
 //-----------------------------
+
 multiEncoder(n, la) = par(i, p, ((_, ba.take(i+1, la)) : basicEncoder)) :> si.bus(2*n+1)
 		with {
 				p = outputs(la);
@@ -413,6 +422,7 @@ fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, 
 // * 'fd': feedback / level of reinjection (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
+
 synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
 				crossFade(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
@@ -473,6 +483,7 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
+
 fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 	with{
 		//
@@ -532,6 +543,7 @@ fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
+
 synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, fa, tf))
 	with{
 		//
@@ -577,6 +589,7 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 // * `n`: the ambisonic order in 3D (there are (n+1)*(n+1) inputs and outputs to the optim function)
 // * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
 //-----------------------------
+
 optim3D(n, ot) = thisOptimizer
 	with {
 			optb = (ot == 0) : si.smoo;
@@ -608,6 +621,7 @@ optim3D(n, ot) = thisOptimizer
 // * `a`: the angle
 // * `e`: the elevation
 //----------------------------------------------------------------
+
 encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
@@ -690,6 +704,7 @@ with {
 // * `el`: the fixed elevation when the elevation rotation stops (elsp = 0) in radians
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
+
 rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
 with {
 		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
@@ -714,6 +729,7 @@ with {
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
 //
+
 th(0, i, p) = (i+1) / p;
 th(1, i, p) = ((i+1) / p)^2;
 th(2, i, p) = sin(ma.PI * 0.5 * (i+1) / p);
