@@ -754,7 +754,7 @@ abc_matrix_ui(n, m) = thismatrix
 //
 abc_peakamp_ui = peakamp(nsamp)
 		with {
-			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * abc_millisec);
+			nsamp = int(hslider("v:peakamp/period [unit:msec]", 10, 1, 5000, 1) * ma.SR / 1000.);
 		};
 //
 //--------------------------------------------------------------------------------------//
