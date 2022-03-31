@@ -124,20 +124,33 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // #### Usage
 //
 // ```
-// _,_,... : imlsDecoder(n,d,g) : _,_,...
+// _,_,... : imlsDecoder(n,la, direct, shift) : _,_,...
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
-// * `la' : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
-// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
-// * 'shift' : angular shift in degrees to easily adjust angles
+// * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
+// * `shift` : angular shift in degrees to easily adjust angles
+// * `vb` : vbap compensation active or not (1 or 0)
 //-----------------------------
 
-imlsDecoder(n, la, direct, shift) = ho.decoder(n, p) : par(i, p, *((2*n+1) / (2*n+2))) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p)
+imlsDecoder(n, la, direct, shift, vb) = (iBasicDecoder, iVBAPDecoder) : (vbapon, vbapoff) 
 	with {
 			p = outputs(la);
+			attenuation = (2*n+1) / (2*n+2);
+			vbapon = par(i, p, *(vb));
+			vbapoff = par(i, p, *(1-vb));
+			//The basic decoder projects the incoming ambisonic situation to the LS situation whatever it is, without compensation
+			iBasicDecoder = par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i))) : par(i, p, *(attenuation))
+				with 
+					{
+						ang(i) = (ba.take(i+1, la)  - direct * shift) * direct * ma.PI / 180.;
+   						speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
+				};
+			//The VBAP decoder uses VBAP compensation: it balances the regular decoder output enabling to use irregular angular setyp.
+			iVBAPDecoder = ho.decoder(n, p) : par(i, p, *(attenuation)) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p);
 };
 
 
