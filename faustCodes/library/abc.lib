@@ -342,7 +342,7 @@ abc_2d_fx_delay_ui(n) = thisfxdelay
 		//
 		durToSamp(d, i, p) = d * 2 / (p+1) * (1 + int((i+1)/2)) * 0.001 * ma.SR;
 		//
-		thisfxdelay = par(i, n, abc_fdoverlappeddoubledelay(durToSamp(deltime, i, n), 524288, winfreq, feedback));
+		thisfxdelay = par(i, n, fdOverlappedDoubleDelay(durToSamp(deltime, i, n), 524288, winfreq, feedback));
 };
 
 //
@@ -592,7 +592,7 @@ abc_pardelset_ui(n) = par(i, n, (pardel(i) : *(gain(i))))
 					fdbk(ind) = hslider("h:multidelays/v:fdbks/fdbk%2ind", 0, 0, 0.99999, 0.0001) : si.smoo;
 					updatefreq = hslider("h:multidelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
 					//
-					pardel(ind) = abc_fdoverlappeddoubledelay(dur(ind), Ndelsamp, updatefreq, fdbk(ind));
+					pardel(ind) = fdOverlappedDoubleDelay(dur(ind), Ndelsamp, updatefreq, fdbk(ind));
 
 			};
 //
