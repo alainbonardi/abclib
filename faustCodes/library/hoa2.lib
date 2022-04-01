@@ -136,21 +136,21 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // * `vb` : vbap compensation active or not (1 or 0)
 //-----------------------------
 
-imlsDecoder(n, la, direct, shift, vb) = (iBasicDecoder, iVBAPDecoder) : (vbapon, vbapoff) 
+imlsDecoder(n, la, direct, shift, vb) = si.bus(2*n+1) <: (iBasicDecoder, iVBAPDecoder) : (vbapoff, vbapon) :> si.bus(p)
 	with {
 			p = outputs(la);
-			attenuation = (2*n+1) / (2*n+2);
+			attenuation(n, p) = par(i, p, *((2*n+1)/(2*n+2)));
 			vbapon = par(i, p, *(vb));
 			vbapoff = par(i, p, *(1-vb));
 			//The basic decoder projects the incoming ambisonic situation to the LS situation whatever it is, without compensation
-			iBasicDecoder = par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i))) : par(i, p, *(attenuation))
+			iBasicDecoder = (par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i)))) : attenuation(n, p)
 				with 
 					{
 						ang(i) = (ba.take(i+1, la)  - direct * shift) * direct * ma.PI / 180.;
    						speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 				};
 			//The VBAP decoder uses VBAP compensation: it balances the regular decoder output enabling to use irregular angular setyp.
-			iVBAPDecoder = ho.decoder(n, p) : par(i, p, *(attenuation)) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p);
+			iVBAPDecoder = ho.decoder(n, p) : attenuation(n, p) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p);
 };
 
 
@@ -159,7 +159,7 @@ imlsDecoder(n, la, direct, shift, vb) = (iBasicDecoder, iVBAPDecoder) : (vbapon,
 // #### Usage
 //
 // ```
-// _,_,... : iDecoder(n, la, direct, st, g) : _,_
+// _,_,... : iDecoder(n, la, direct, st, vb, g) : _,_
 // ```
 //
 // Where:
@@ -169,10 +169,11 @@ imlsDecoder(n, la, direct, shift, vb) = (iBasicDecoder, iVBAPDecoder) : (vbapon,
 // * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * 'shift' : angular shift in degrees to easily adjust angles
 // * 'st': 1 for stereo, 0 for multi-loudspeaker configuration. When 1, stereo sounds goes through the first two channels
+// * `vb` : vbap compensation active or not (1 or 0)
 // * 'g' : gain between 0 and 1
 //-----------------------------
 
-iDecoder(n, la, direct, shift, st, g) = thisDecoder
+iDecoder(n, la, direct, shift, st, vb, g) = thisDecoder
 	with {
 			//p is the number of outputs
             p = outputs(la);
@@ -181,7 +182,7 @@ iDecoder(n, la, direct, shift, st, g) = thisDecoder
 			//for stereo decoding
 			paddedStereoDecoder(n, p) = (gDecoderStereo(n, direct, g), (0 <: si.bus(p-2)));
 			//
-			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la, direct, shift), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
+			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la, direct, shift, vb), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
 };
 
 
