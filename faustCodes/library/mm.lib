@@ -756,8 +756,55 @@ rev4Quadri(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Qu
 //2 added oscillators as harmonics of a fundamental frequency and shifted//
 //f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
 //
+
 doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
 
+//-------`(mm.)harmoInharmonicOscBank`----------
+// generates a set of oscillators between harmonic and inharmonic spectrum
+// the model comes from Jupiter piece for flute and live electronics by Philippe Manoury
+// the frequencies are given by the formula k*freq, (k+1)*freq, (k+2)*freq, ..., (k+n-1)*freq
+// k is a constant between 0 (value to be avoided) and 1
+// if k is 1 we get an harmonic spectrum, on the contrary we get an inharmonic spectrum
+//
+// `harmoInharmonicOscBank` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// harmoInharmonicOscBank(n, freq, k) : _, _, ....
+// ```
+//
+// Where:
+//
+// * `n`: the number of oscillators
+// * `freq': the fundamental frequency (Hz)
+// * `k`: the constant between 0 and 1 modifying the inharmonic/harmonic result
+//-----------------------------
+
+harmoInharmonicOscBank(n, freq, k) = par(i, n, os.osci((k+i)*freq));
+
+//-------`(mm.)jupiterOscBank`----------
+// generates a set of 14 oscillators between harmonic and inharmonic spectrum
+// the model comes from Jupiter piece for flute and live electronics by Philippe Manoury
+// the frequencies are given by the formula k*freq, (k+1)*freq, (k+2)*freq, ..., (k+13)*freq
+// k is a constant between 0 (value to be avoided) and 1
+// if k is 1 we get an harmonic spectrum, on the contrary we get an inharmonic spectrum
+//
+// `jupiterOscBank` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// jupiterOscBank(freq, k) : _, _, ....
+// ```
+//
+// Where:
+//
+// * `freq': the fundamental frequency (Hz)
+// * `k`: the constant between 0 and 1 modifying the inharmonic/harmonic result
+//-----------------------------
+
+jupiterOscBank(freq, k) = harmoInharmonicOscBank(14, freq, k);
 
 //[TO BE TESTED]
 
@@ -765,7 +812,7 @@ doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : 
 // puckettesPaf generates a phased-aligned formant signal
 // using Miller Puckette's design exposed in the following article:
 // reference: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
-
+//
 // `puckettesPaf` is a standard Faust function.
 //
 // #### Usage
