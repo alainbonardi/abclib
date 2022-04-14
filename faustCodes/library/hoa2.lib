@@ -1,3 +1,31 @@
+//NEW VERSION OF THE REGULAR DECODER => TO UPDATE IN HOA.LIB
+//
+//--------------------------`(ho.)decoder`--------------------------------
+// Decodes an ambisonics sound field for a circular array of loudspeakers.
+//
+// #### Usage
+//
+// ```
+// _ : decoder(n, p) : _
+// ```
+//
+// Where:
+//
+// * `n`: the order
+// * `p`: the number of speakers
+//
+// #### Note
+//
+// Number of loudspeakers must be greater or equal to 2n+1. It's preferable
+// to use 2n+2 loudspeakers.
+//-------------------------------------------------------------------
+
+decoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, 2*ma.PI*i/p))
+with {
+   speaker(n,a)	= /(2), par(i, 2*n, _), encoder(n, 2/p, a) : si.dot(2*n+1);
+};
+
+
 //-------`(ho.)rEncoder`----------
 // Ambisonic encoder in 2D including source rotation
 // a mono signal is encoded at at certain ambisonic order
@@ -139,21 +167,23 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 imlsDecoder(n, la, direct, shift, vb) = si.bus(2*n+1) <: (iBasicDecoder, iVBAPDecoder) : (vbapoff, vbapon) :> si.bus(p)
 	with {
 			p = outputs(la);
-			attenuation(n, p) = par(i, p, *((2*n+1)/(2*n+2)));
 			vbapon = par(i, p, *(vb));
 			vbapoff = par(i, p, *(1-vb));
 			//The basic decoder projects the incoming ambisonic situation to the LS situation whatever it is, without compensation
-			iBasicDecoder = (par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i)))) : attenuation(n, p)
+			iBasicDecoder = (par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i))))
 				with 
 					{
 						ang(i) = (ba.take(i+1, la)  - direct * shift) * direct * ma.PI / 180.;
    						speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/(2*n+1),alpha) : si.dot(2*n+1);
 				};
 			//The VBAP decoder uses VBAP compensation: it balances the regular decoder output enabling to use irregular angular setyp.
-			iVBAPDecoder = ho.decoder(n, p) : attenuation(n, p) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p);
+			iVBAPDecoder = ho.decoder(n, p) : par(i, p, circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p);
 };
 
-
+//-------`(ho.)iDecoder`----------
+// General decoder in 2D enabling an irregular multi-loudspeaker configuration
+// and to switch between multi-channel and stereo
+//
 // `iDecoder` is a standard Faust function.
 //
 // #### Usage
