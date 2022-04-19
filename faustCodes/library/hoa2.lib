@@ -336,27 +336,46 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 
 
 //-------`(ho.)multiEncoder`----------
-// Encoding of a set of p signals distributed on the unit circle according to a list of p angles
+// Encoding of a set of p signals distributed on the unit circle according to a list of p speeds and p angles
 
 // `multiEncoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : multiEncoder(n, la) : _,_, ...
+// _,_,... : multiEncoder(n, ls, la, it) : _,_, ...
 // ```
 //
 // Where:
 //
 // * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
+// * 'ls' : a list of speeds in turns by second (one speed per signal)
 // * 'la' : a list of angles in radians on the unit circle to localize the sources (one angle per signal)
+// * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-
+/*
 multiEncoder(n, la) = par(i, p, ((_, ba.take(i+1, la)) : basicEncoder)) :> si.bus(2*n+1)
 		with {
 				p = outputs(la);
 				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
 };
+*/
+
+multiEncoder(n, lspeed, langle, it) = par(i, p, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*n+1)
+		with {
+				p = outputs(langle); //supposed to be the same as outputs(lspeed)
+				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+				thisEncoder(sp, a, it) = (_, rotationOrStaticAngle) : basicEncoder
+				with {
+						//converting the static angle from radians to [0; 1]
+						an = (a / (2 * ma.PI), 1) : fmod;
+						rotationOrStaticAngle = ((1-vn) * x + vn * an) * 2 * ma.PI;
+						//to manage the case where frequency is zero, smoothly switches from one mode to another//
+						vn = (sp == 0) : si.smooth(ba.tau2pole(it));
+						x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
+				};
+};
+
 
 //-------`(ho.).fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode

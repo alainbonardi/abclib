@@ -86,10 +86,16 @@ abc_2d_stereoEncoder_ui(n) = stereoEncoder(n, angle)
 			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0;
 };
 
-abc_2d_multiEncoder_ui(n, ns) = multiEncoder(n, la)
+abc_2d_multiEncoder_ui(n, ns) = multiEncoder(n, ls, la, returntime)
 	with {
-			//the angle of the the ith source among p sources, expressed in degrees for the end-user
-			a(i, p) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / p, -360, 360, 0.01);
+			//the speed of the ith source among p sources, expressed in turns by second for the end user
+			s(i, p) = nentry("h:encoder/v:speeds/s%2i [unit:s-1]", 0, -100, 100, 0.001);
+			//the angle of the ith source among p sources, expressed in degrees for the end-user
+			a(i, p) = nentry("h:encoder/v:angles/a%2i [unit:deg]", i * 360 / p, -360, 360, 0.01);
+			//the interpolation time between static position and rotation
+			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
+			//ls = list of speeds//
+			ls = par(i, ns, s(i, ns));
 			//la = list of angles//
  			la = par(i, ns, a(i, ns));
 };
