@@ -402,6 +402,18 @@ pulsedEnv1(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip
 
 pulsedEnv2(rate, ratio) = os.phasor(ratio, rate) : -(ratio-1) : ampClip;
 
+//
+//--------------------------------------------------------------------------------------//
+//SHORTENING ENVELOP (COSINUS RANDOMIZED ENVELOP TO BE FED BY NOISE)
+//--------------------------------------------------------------------------------------//
+//
+shorteningEnv(f, s, delta) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
+	with {
+			randTest = (_, (s : *(2) : -(1))) : >;
+			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			factor = randTest : ba.sAndH(th);
+	};
 
 //
 //--------------------------------------------------------------------------------------//

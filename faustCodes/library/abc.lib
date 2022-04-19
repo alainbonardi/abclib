@@ -702,17 +702,18 @@ abc_multinoise_ui(n) = no.multinoise(n);
 //MULTIPLE SHORTENING ENVELOPS
 //--------------------------------------------------------------------------------------//
 //
-abc_multishorteningenv(n, f, s) = no.multinoise(n) : par(i, n, abc_shorteningenv(f, s));
+abc_multishorteningenv(n, f, s, d) = no.multinoise(n) : par(i, n, shorteningEnv(f, s, d * i / n));
 //
 //
 //--------------------------------------------------------------------------------------//
 //MULTIPLE SHORTENING ENVELOPS APPLIED TO N INPUT SIGNALS
 //--------------------------------------------------------------------------------------//
 //
-abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction) : interlace2(n) : par(i, n, *) 
+abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction, spread) : interlace2(n) : par(i, n, *) 
 			with {
 				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
 				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
+				spread = hslider("v:randenv/spread", 0, 0, 1, 0.001) : si.smoo;
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -1127,30 +1128,6 @@ abc_cartesian2polar = permutation <: (module, phase) with {
 };
 //
 
-//
-//--------------------------------------------------------------------------------------//
-//SHORTENING ENVELOP (COSINUS RANDOMIZED ENVELOP TO BE FED BY NOISE)
-//--------------------------------------------------------------------------------------//
-//
-abc_shorteningenv(f, s) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
-	with {
-			randTest = (_, (s : *(2) : -(1))) : >;
-			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-			factor = randTest : ba.sAndH(th);
-	};
-//
-//--------------------------------------------------------------------------------------//
-//LINEAR RANDOM ENVELOPE
-//--------------------------------------------------------------------------------------//
-//
-abc_linrandenv(f, s) = (_, _) : (randVol, _) : *
-	with {
-			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : ba.line(ma.SR / f);
-			randTest = (_, (s : *(2) : -(1))) : >;
-			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-};
 //
 //
 //
