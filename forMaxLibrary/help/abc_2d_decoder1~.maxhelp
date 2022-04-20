@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 394.0, 412.0, 1298.0, 817.0 ],
+		"rect" : [ 331.0, 387.0, 1298.0, 817.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -169,7 +169,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0, 1.0, 1 ],
+					"args" : [ 0, 0.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -257,7 +257,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -341,7 +341,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 402.571441999999934, 253.0, 144.0, 47.0 ],
+					"patching_rect" : [ 285.0, 366.5, 144.0, 47.0 ],
 					"text" : "gain, angularoffsert and directangles for the abc_decoder1_4~ below"
 				}
 
@@ -709,8 +709,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 527.190480666666531, 6.0, 431.0, 248.0 ],
-					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+					"patching_rect" : [ 527.190480666666531, 6.0, 446.0, 248.0 ],
+					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 				}
 
 			}
