@@ -705,12 +705,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-24",
-					"linecount" : 16,
+					"linecount" : 18,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 527.190480666666531, 6.0, 431.0, 221.0 ],
-					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen (2n+1) and 16 at order n. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+					"patching_rect" : [ 527.190480666666531, 6.0, 431.0, 248.0 ],
+					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 				}
 
 			}

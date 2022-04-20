@@ -36,11 +36,10 @@ echo "declare name \"abc_2d_decoder$i\";" >> $sortie
 echo "//
 process = library(\"abc.lib\").abc_2d_decoder_ui($i, $j);" >> $sortie
 done
-#generates decoder with variable number of outputs from 2*i+1 to 16 (arbitrary choice)
+#generates decoder with variable number of outputs from 3 (above stereo) to 16 (arbitrary limitation)
 for i in `seq 1 $amborder`
 do
-    let "k = 2 * $i + 1"
-    for j in `seq $k 16`
+    for j in `seq 3 16`
     do
         sortie="abc_2d_decoder$i""_$j.dsp"
         #writes the header
