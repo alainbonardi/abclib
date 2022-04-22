@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 331.0, 387.0, 1298.0, 817.0 ],
+		"rect" : [ 274.0, 79.0, 1298.0, 817.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,43 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-62",
+					"maxclass" : "flonum",
+					"maximum" : 18.0,
+					"minimum" : -127.0,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 636.571441999999934, 379.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgcolor2" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color1" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
+					"id" : "obj-42",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 636.571441999999934, 416.0, 48.0, 22.0 ],
+					"text" : "gain $1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-59",
 					"linecount" : 4,
@@ -169,7 +206,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0, 0.0, 1 ],
+					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -190,7 +227,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0, 1.0, 1 ],
+					"args" : [ 0, 1.0, 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -329,7 +366,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 428.309519333333242, 481.5, 150.0, 33.0 ],
+					"patching_rect" : [ 428.309519333333242, 483.5, 150.0, 33.0 ],
 					"text" : "angles for the abc_decoder1_4~ below"
 				}
 
@@ -608,7 +645,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10 ],
+					"args" : [ -15.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -705,12 +742,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-24",
-					"linecount" : 18,
+					"linecount" : 19,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 527.190480666666531, 6.0, 446.0, 248.0 ],
-					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+					"patching_rect" : [ 527.190480666666531, 6.0, 446.0, 261.0 ],
+					"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic\n- vbap sets the use of vbap compensation : 1 for vbap, 0 for direct decoding"
 				}
 
 			}
@@ -822,7 +859,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 608.309519333333242, 310.0, 72.0, 22.0 ],
+					"patching_rect" : [ 605.309519333333242, 279.0, 72.0, 22.0 ],
 					"text" : "loadmess 1"
 				}
 
@@ -835,7 +872,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 608.309519333333242, 339.0, 24.0, 24.0 ]
+					"patching_rect" : [ 605.309519333333242, 308.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -856,7 +893,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 608.309519333333242, 376.0, 90.0, 22.0 ],
+					"patching_rect" : [ 605.309519333333242, 339.0, 90.0, 22.0 ],
 					"text" : "directangles $1"
 				}
 
@@ -1255,7 +1292,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
-					"midpoints" : [ 617.809519333333242, 412.75, 440.499999999999943, 412.75 ],
+					"midpoints" : [ 614.809519333333242, 412.75, 440.499999999999943, 412.75 ],
 					"source" : [ "obj-23", 0 ]
 				}
 
@@ -1473,6 +1510,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"midpoints" : [ 646.071441999999934, 441.75, 440.499999999999943, 441.75 ],
+					"source" : [ "obj-42", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-52", 0 ],
 					"source" : [ "obj-44", 0 ]
 				}
@@ -1571,6 +1616,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-56", 0 ],
 					"source" : [ "obj-58", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-42", 0 ],
+					"source" : [ "obj-62", 0 ]
 				}
 
 			}

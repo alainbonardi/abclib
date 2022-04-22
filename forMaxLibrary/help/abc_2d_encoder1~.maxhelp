@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 83.0, 200.0, 1240.0, 690.0 ],
+		"rect" : [ 220.0, 553.0, 1240.0, 690.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -346,7 +346,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20 ],
+					"args" : [ -15.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -848,7 +848,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 105.0, 478.0, 129.0, 22.0 ],
-					"text" : "abc_2d_decoder1~"
+					"text" : "abc_2d_decoder1_4~"
 				}
 
 			}
@@ -1496,7 +1496,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_2d_decoder1~.mxo",
+				"name" : "abc_2d_decoder1_4~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

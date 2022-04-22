@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 313.0, 193.0, 1914.0, 743.0 ],
+		"rect" : [ 235.0, 79.0, 1944.0, 739.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,76 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-66",
-					"linecount" : 9,
+					"id" : "obj-83",
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1612.0, 427.0, 150.0, 127.0 ],
-					"text" : "abc_2d_map1_1~, abc_2d_map1_2~, abc_2d_map1_3~ etc.\nare map objects to manipualte multple signal mapping. For instance, abc_2d_map3_4~ enables to handle 4 sources at order #3 of ambisonics."
+					"patching_rect" : [ 1718.0, 119.0, 138.0, 33.0 ],
+					"presentation_linecount" : 2,
+					"text" : "3rd source: granulator with spiral trajectory"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-82",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1509.5, 119.0, 138.0, 33.0 ],
+					"presentation_linecount" : 2,
+					"text" : "2nd source: sound coat with Z trajectory"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bufsize" : 32,
+					"fgcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
+					"id" : "obj-80",
+					"maxclass" : "scope~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1839.0, 328.0, 54.0, 52.0 ],
+					"range" : [ -5.0, 5.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-81",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 3,
+					"outlettype" : [ "signal", "signal", "list" ],
+					"patching_rect" : [ 1839.0, 285.0, 88.0, 22.0 ],
+					"text" : "abc_poltocar~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-65",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1163.0, 254.0, 150.0, 33.0 ],
+					"text" : "1st source: sound grain with square trajectory"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-66",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1192.0, 12.5, 481.0, 47.0 ],
+					"text" : "abc_2d_map1_1~, abc_2d_map1_2~, abc_2d_map1_3~ etc.\nare map objects to manipualte multple signal mapping.\nFor instance, abc_2d_map3_4~ enables to handle 4 sources at order #3 of ambisonics."
 				}
 
 			}
@@ -56,7 +119,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1478.0, 159.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1509.5, 89.0, 150.0, 20.0 ],
 					"text" : "map with 3 sources"
 				}
 
@@ -69,7 +132,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1323.0, 467.0, 24.0, 24.0 ]
+					"patching_rect" : [ 1336.0, 430.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -90,7 +153,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1323.0, 504.0, 90.0, 22.0 ],
+					"patching_rect" : [ 1336.0, 467.0, 90.0, 22.0 ],
 					"text" : "directangles $1"
 				}
 
@@ -170,7 +233,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1770.0, 291.0, 30.0, 22.0 ],
+					"patching_rect" : [ 1718.0, 256.0, 30.0, 22.0 ],
 					"text" : "*~ 2"
 				}
 
@@ -182,7 +245,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1770.0, 263.0, 33.0, 22.0 ],
+					"patching_rect" : [ 1718.0, 228.0, 33.0, 22.0 ],
 					"text" : "+~ 1"
 				}
 
@@ -194,7 +257,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1770.0, 232.0, 34.0, 22.0 ],
+					"patching_rect" : [ 1718.0, 197.0, 34.0, 22.0 ],
 					"text" : "cos~"
 				}
 
@@ -206,7 +269,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1811.0, 263.0, 37.0, 22.0 ],
+					"patching_rect" : [ 1759.0, 228.0, 37.0, 22.0 ],
 					"text" : "*~ 10"
 				}
 
@@ -218,7 +281,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 1811.0, 232.0, 80.0, 22.0 ],
+					"patching_rect" : [ 1759.0, 197.0, 80.0, 22.0 ],
 					"text" : "abc_mult2pi~"
 				}
 
@@ -230,14 +293,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1770.0, 191.0, 79.0, 22.0 ],
+					"patching_rect" : [ 1718.0, 156.0, 79.0, 22.0 ],
 					"text" : "phasor~ 0.03"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 125, 0.5, 0 ],
+					"args" : [ 125, 0.5, -5.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -252,7 +315,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1458.5, 320.0, 311.0, 32.0 ],
+					"patching_rect" : [ 1516.5, 285.0, 311.0, 32.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -273,7 +336,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 1469.5, 557.25, 93.0, 105.5 ],
+					"patching_rect" : [ 1520.0, 520.25, 93.0, 105.5 ],
 					"viewvisibility" : 1
 				}
 
@@ -285,7 +348,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 1469.5, 524.0, 130.0, 22.0 ],
+					"patching_rect" : [ 1520.0, 487.0, 130.0, 22.0 ],
 					"text" : "abc_2d_scope1~"
 				}
 
@@ -306,7 +369,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 1241.0, 626.0, 185.0, 32.0 ],
+					"patching_rect" : [ 1254.0, 589.0, 185.0, 32.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -319,7 +382,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1571.0, 255.0, 51.0, 52.0 ],
+					"patching_rect" : [ 1622.0, 218.0, 51.0, 52.0 ],
 					"range" : [ -5.0, 5.0 ]
 				}
 
@@ -331,7 +394,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 1458.5, 255.0, 108.0, 22.0 ],
+					"patching_rect" : [ 1509.5, 218.0, 108.0, 22.0 ],
 					"text" : "abc_cartopol~"
 				}
 
@@ -344,7 +407,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 1458.5, 191.0, 197.0, 35.0 ],
+					"patching_rect" : [ 1509.5, 154.0, 197.0, 35.0 ],
 					"text" : "abc_2d_ztrajectory~ @size 1.3 @freq 0.1"
 				}
 
@@ -357,7 +420,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1373.0, 255.0, 48.0, 52.0 ],
+					"patching_rect" : [ 1407.0, 218.0, 48.0, 52.0 ],
 					"range" : [ -5.0, 5.0 ]
 				}
 
@@ -369,7 +432,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 1275.0, 255.0, 96.0, 22.0 ],
+					"patching_rect" : [ 1297.0, 218.0, 108.0, 22.0 ],
 					"text" : "abc_cartopol~"
 				}
 
@@ -382,7 +445,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 1275.0, 191.0, 173.0, 35.0 ],
+					"patching_rect" : [ 1297.0, 154.0, 197.0, 35.0 ],
 					"text" : "abc_2d_squaretrajectory~ @size 0.7 @freq 0.5"
 				}
 
@@ -395,7 +458,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1262.0, 472.0, 24.0, 24.0 ]
+					"patching_rect" : [ 1275.0, 435.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -416,7 +479,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1262.0, 504.0, 59.0, 22.0 ],
+					"patching_rect" : [ 1275.0, 467.0, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -428,14 +491,14 @@
 					"numinlets" : 3,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 1241.0, 570.0, 212.333333333333258, 22.0 ],
+					"patching_rect" : [ 1254.0, 533.0, 252.333333333333258, 22.0 ],
 					"text" : "abc_2d_decoder1~"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10.0 ],
+					"args" : [ -15.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -450,7 +513,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1164.0, 453.0, 74.0, 72.0 ],
+					"patching_rect" : [ 1177.0, 416.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -462,7 +525,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 1241.0, 330.0, 101.0, 22.0 ],
+					"patching_rect" : [ 1254.0, 293.0, 101.0, 22.0 ],
 					"text" : "abc_soundgrain~"
 				}
 
@@ -474,19 +537,21 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 1349.75, 330.0, 97.0, 22.0 ],
+					"patching_rect" : [ 1385.25, 293.0, 97.0, 22.0 ],
 					"text" : "abc_soundcoat~"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 1,
+					"fontsize" : 14.0,
 					"id" : "obj-32",
 					"maxclass" : "newobj",
 					"numinlets" : 9,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 1241.0, 367.0, 309.0, 22.0 ],
+					"patching_rect" : [ 1254.0, 330.0, 369.0, 24.0 ],
 					"text" : "abc_2d_map1_3~"
 				}
 
@@ -1106,7 +1171,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 263.0, 581.833333333333485, 272.0, 87.0 ],
+					"patching_rect" : [ 263.0, 581.833333333333485, 278.0, 87.0 ],
 					"text" : "abc_2d_map1~ to abc_2d_map7~ objects receive three signals as inputs:\n- the source to be spatialized,\n- the radius of the position of the source (distance to the centre of the scene)\n- the angle of the position of the source in radians"
 				}
 
@@ -1135,7 +1200,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_2d_mapN~", "@obj-desc", "Ambisonic", "map", "of", "one", "source", "in", "polar", "coordinates" ],
+					"args" : [ "@obj-name", "abc_2d_mapN[_S]~", "@obj-desc", "Ambisonic", "map", "of", "sources", "in", "polar", "coordinates" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -1733,7 +1798,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
-					"midpoints" : [ 1332.5, 553.5, 1250.5, 553.5 ],
+					"midpoints" : [ 1345.5, 516.5, 1263.5, 516.5 ],
 					"source" : [ "obj-47", 0 ]
 				}
 
@@ -1762,7 +1827,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
-					"midpoints" : [ 1271.5, 553.75, 1250.5, 553.75 ],
+					"midpoints" : [ 1284.5, 516.75, 1263.5, 516.75 ],
 					"source" : [ "obj-50", 0 ]
 				}
 
@@ -1806,7 +1871,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-51", 0 ],
-					"midpoints" : [ 1173.5, 553.0, 1250.5, 553.0 ],
+					"midpoints" : [ 1186.5, 516.0, 1263.5, 516.0 ],
 					"source" : [ "obj-53", 0 ]
 				}
 
@@ -2070,7 +2135,17 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-32", 7 ],
-					"midpoints" : [ 1779.5, 362.5, 1504.25, 362.5 ],
+					"midpoints" : [ 1727.5, 325.5, 1569.75, 325.5 ],
+					"order" : 1,
+					"source" : [ "obj-74", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-81", 0 ],
+					"midpoints" : [ 1727.5, 280.0, 1848.5, 280.0 ],
+					"order" : 0,
 					"source" : [ "obj-74", 0 ]
 				}
 
@@ -2092,7 +2167,17 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-32", 8 ],
-					"midpoints" : [ 1820.5, 362.5, 1540.5, 362.5 ],
+					"midpoints" : [ 1768.5, 325.5, 1613.5, 325.5 ],
+					"order" : 1,
+					"source" : [ "obj-77", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-81", 1 ],
+					"midpoints" : [ 1768.5, 266.0, 1917.5, 266.0 ],
+					"order" : 0,
 					"source" : [ "obj-77", 0 ]
 				}
 
@@ -2115,7 +2200,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-78", 0 ],
-					"midpoints" : [ 1779.5, 222.0, 1820.5, 222.0 ],
+					"midpoints" : [ 1727.5, 187.0, 1768.5, 187.0 ],
 					"order" : 0,
 					"source" : [ "obj-79", 0 ]
 				}
@@ -2126,6 +2211,20 @@
 					"destination" : [ "obj-27", 0 ],
 					"midpoints" : [ 410.5, 474.0, 487.5, 474.0 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-80", 1 ],
+					"source" : [ "obj-81", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-80", 0 ],
+					"source" : [ "obj-81", 0 ]
 				}
 
 			}

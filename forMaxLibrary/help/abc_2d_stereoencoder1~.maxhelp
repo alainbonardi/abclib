@@ -633,7 +633,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -30 ],
+					"args" : [ -25.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
