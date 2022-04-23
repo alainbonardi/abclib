@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 311.0, 452.0, 1338.0, 498.0 ],
+		"rect" : [ 301.0, 239.0, 1349.0, 519.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-31",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1172.0, 271.0, 150.0, 87.0 ],
+					"text" : "abc_audiotester~ enables to test the audio configuration from 1 to 16 loudspeakers by sending a pink noise alternatively to them"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 615.0, 45.0, 219.0, 74.0 ],
+					"text" : "abc_soundgrain~ is a granulator on a rainstick sound which is looped at freqmult speed (default value 1, minimum 0.01, maximum 100)\n"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-16",
@@ -448,7 +472,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 65,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 935.0, 232.5, 230.0, 24.0 ],
+					"patching_rect" : [ 942.412499999999909, 232.5, 230.0, 24.0 ],
 					"text" : "abc_audiotester~"
 				}
 
@@ -470,7 +494,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 935.0, 131.0, 74.0, 72.0 ],
+					"patching_rect" : [ 942.412499999999909, 131.0, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -700,7 +724,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.0, 464.0, 548.0, 23.0 ],
+					"patching_rect" : [ 6.0, 486.0, 548.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 					"viewvisibility" : 1
@@ -710,12 +734,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-24",
-					"linecount" : 13,
+					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 301.571441999999934, 73.5, 271.0, 181.0 ],
-					"text" : "abc_soundcoat~ is a set of 16 bandpass filters receiving a noise sound as input. The output gains of the filters are slowly randomized. randwin is the duration of the cycle of randomization of the 16 outputs in milliseconds (3000 is the default value, 1 minimum, 20000 maximum).\nabc_soundgrain~ is a granulator on a rainstick sound which is looped at freqmult speed (default value 1, minimum 0.01, maximum 100)\nabc_audiotester~ enables to test the audio configuration from 1 to 16 loudspeakers by sending a pink noise alternatively to them"
+					"patching_rect" : [ 245.571441999999934, 151.0, 271.0, 114.0 ],
+					"text" : "abc_soundcoat~ is a set of 16 bandpass filters receiving a noise sound as input. The output gains of the filters are slowly randomized. randwin is the duration of the cycle of randomization of the 16 outputs in milliseconds (3000 is the default value, 1 minimum, 20000 maximum).\n"
 				}
 
 			}
@@ -1313,7 +1337,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
-					"midpoints" : [ 1224.5, 216.75, 944.5, 216.75 ],
+					"midpoints" : [ 1224.5, 216.75, 951.912499999999909, 216.75 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -1501,7 +1525,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
-					"midpoints" : [ 1040.5, 216.75, 944.5, 216.75 ],
+					"midpoints" : [ 1040.5, 216.75, 951.912499999999909, 216.75 ],
 					"source" : [ "obj-8", 0 ]
 				}
 

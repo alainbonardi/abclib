@@ -133,3 +133,17 @@ echo "declare name \"abc_puckettespaf2\";" >> $sortie
 #writes the process line
 echo "//
 process = library(\"abc.lib\").abc_puckettesPaf2_ui;" >> $sortie
+#
+#abc_jupiterbank.dsp
+#
+sortie="abc_jupiterbank.dsp"
+#writes the header
+while IFS= read -r line
+do
+echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_jupiterbank\";" >> $sortie
+#writes the process line
+echo "//
+process = library(\"abc.lib\").abc_jupiterbank_ui;" >> $sortie

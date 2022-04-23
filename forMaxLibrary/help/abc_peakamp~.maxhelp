@@ -403,12 +403,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"linecount" : 6,
+					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 396.592591881752014, 330.5, 145.0, 87.0 ],
-					"text" : "abc_computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds"
+					"patching_rect" : [ 396.592591881752014, 330.5, 145.0, 100.0 ],
+					"text" : "abc_peakamp~ computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds"
 				}
 
 			}

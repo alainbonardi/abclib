@@ -79,7 +79,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 12,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 344.0, 391.5, 134.5, 22.0 ],
+					"patching_rect" : [ 344.0, 391.5, 178.500000000000227, 22.0 ],
 					"text" : "abc_multinoise11~"
 				}
 
@@ -1061,11 +1061,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-70",
-					"linecount" : 17,
+					"linecount" : 15,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 887.5, 342.5, 227.0, 248.0 ],
+					"patching_rect" : [ 887.5, 342.5, 229.0, 221.0 ],
 					"text" : "abc_substractsynth1~, abc_substract2~, ... objects enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 				}
 
@@ -1088,7 +1088,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 486.0, 391.5, 34.0, 22.0 ],
+					"patching_rect" : [ 530.0, 391.5, 34.0, 22.0 ],
 					"text" : "r s11"
 				}
 
@@ -1110,11 +1110,12 @@
 					"fontface" : 1,
 					"fontsize" : 14.0,
 					"id" : "obj-49",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 11,
 					"numoutlets" : 12,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 344.0, 459.5, 238.0, 24.0 ],
+					"patching_rect" : [ 344.0, 459.5, 163.999999999999829, 40.0 ],
 					"text" : "abc_substractsynth11~ @gain -30.",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 				}
@@ -1553,7 +1554,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-49", 0 ],
-					"midpoints" : [ 495.5, 436.0, 353.5, 436.0 ],
+					"midpoints" : [ 539.5, 436.0, 353.5, 436.0 ],
 					"source" : [ "obj-52", 0 ]
 				}
 

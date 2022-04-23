@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 791.0, 308.0, 1356.0, 683.0 ],
+		"rect" : [ 236.0, 79.0, 1356.0, 683.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -95,7 +95,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1244.0, 25.5, 95.0, 47.0 ],
-					"presentation_linecount" : 3,
 					"text" : "spread (phase between channels)"
 				}
 

@@ -808,6 +808,8 @@ doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : 
 
 harmoInharmonicOscBank(n, freq, k) = par(i, n, os.osci((k+i)*freq));
 
+harmoInharmonicOscFilterBank(n, freq, k, of, rq, rg, g) = (harmoInharmonicOscBank(n, freq, k), (_ <: par(i, n, fi.resonbp((k+i)*freq, rq, rg)))) : (par(i, n, *(1-of)), par(i, n, *(of))) :> par(i, n, *(g));
+
 //-------`(mm.)jupiterOscBank`----------
 // generates a set of 14 oscillators between harmonic and inharmonic spectrum
 // the model comes from Jupiter piece for flute and live electronics by Philippe Manoury
@@ -830,6 +832,8 @@ harmoInharmonicOscBank(n, freq, k) = par(i, n, os.osci((k+i)*freq));
 //-----------------------------
 
 jupiterOscBank(freq, k) = harmoInharmonicOscBank(14, freq, k);
+
+jupiterOscFilterBank(freq, k, of, rq, rg, g) = harmoInharmonicOscFilterBank(14, freq, k, of, rq, rg, g);
 
 //[TO BE TESTED]
 
