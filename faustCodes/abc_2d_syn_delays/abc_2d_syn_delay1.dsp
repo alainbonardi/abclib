@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_2d_syn_delay1";
 //
-process = library("abc.lib").abc_2d_syn_delay_ui(1);
+process = library("abc.lib").abc_2d_syn_delay_ui(3);
