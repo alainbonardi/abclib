@@ -474,8 +474,8 @@ abc_2d_syn_ringmod_ui(n) = synRingMod(n, f0, factor, functiontype)
 // theta  = angle of the virtual source (in degrees)
 abc_2d_vbap_ui(n) = circularScaledVBAP(la, theta)
 	with {
-		a(i, nls) = nentry("vbap/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
-		theta = nentry("vbap/theta [unit:deg]", 0, -360, 360, 0.01);
+		a(i, nls) = nentry("v:vbap/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
+		theta = nentry("v:vbap/theta [unit:deg]", 0, -360, 360, 0.01);
 		//la = list of angles//
  		la = par(i, n, a(i, n));
 	};
