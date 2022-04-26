@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 596.0, 324.0, 687.0, 683.0 ],
+		"rect" : [ 1816.0, 252.0, 687.0, 683.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,17 +39,6 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
-				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 194.5, 511.0, 150.0, 20.0 ],
-					"text" : "or abc_2d_decoder3_8~"
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"id" : "obj-35",
 					"maxclass" : "newobj",
@@ -633,7 +622,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -30.0 ],
+					"args" : [ -30 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

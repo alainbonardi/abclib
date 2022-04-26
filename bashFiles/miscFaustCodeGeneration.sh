@@ -104,7 +104,7 @@ done <"$headerfilename"
 echo "declare name \"abc_sounddetector\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_fullSoundDetector_ui;" >> $sortie
+process = library(\"abc.lib\").abc_fullsounddetector_ui;" >> $sortie
 #
 #abc_envfollower.dsp
 #
@@ -118,4 +118,4 @@ done <"$headerfilename"
 echo "declare name \"abc_envfollower\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_envFollower_ui;" >> $sortie
+process = library(\"abc.lib\").abc_envfollower_ui;" >> $sortie

@@ -1,9 +1,9 @@
 #N canvas 118 60 533 835 10;
-#X obj 14 6 cnv 15 500 25 empty empty abclib_Library 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 14 6 cnv 15 500 25 empty empty abclib_Library 20 12 0 18 -99865
+-262144 0;
 #X obj 13 785 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty 20_years_of_research_teaching_and_creation_in_mixed_music_=>_Faust
-20 12 0 12 #606060 #fcfcfc 0;
+20 12 0 12 -99865 -262144 0;
 #X text 28 641 The abclib library also provides utility objects for
 mixed music: chowning-like panners \, matrices \, envelopes \, an attack
 and release detector \, synthesizers (additive \, substractive \, sound
@@ -15,6 +15,7 @@ academic studios or at home in simple stereo.;
 #X text 30 110 CICM (Centre de recherches Informatique et Création
 Musicale) - University Paris 8;
 #X text 29 135 http://cicm.mshparisnord.org/;
+#X text 29 149 Alain Bonardi & Paul Goutmann - 2019-2021;
 #X text 30 85 abclib library 20 years of research \, teaching and creation
 in mixed music using Faust language;
 #X text 32 213 - spatial sound processing and synthesis using ambisonic
@@ -51,4 +52,3 @@ for instance abc_2d_decoder3~ is an ambisonic decoder in 2D at order
 sound processors include flangers \, parallel and sequential delays
 \, frequency shifters \, harmonizers \, granulators \, reverberations.
 ;
-#X text 29 149 Alain Bonardi & Paul Goutmann - 2019-2022;

@@ -161,97 +161,6 @@ scale(x1, x2, y1, y2, x) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 
 //--------------------------------------------------------------------------------------//
-// TRAJECTORY GENERATORS
-//--------------------------------------------------------------------------------------//
-
-//-------`(mm.)xySquare`----------
-// xySquare generates two signals (X and Y coordinates) corresponding to a square trejectory
-
-// `xySquare` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// xySquare(f, s) : _,_
-// ```
-//
-// Where:
-//
-// * `f': the frequency of the square trajectory
-// * `s`: the length of the side of the square
-//-----------------------------
-
-xySquare(f, s) = os.phasor(1,f) : *(2 * ma.PI) <: (cos, sin) : (*(sqrt(2)), *(sqrt(2))) : (sigClip, sigClip) : (*(s), *(s)) : (*(-1), *(1));
-
-//-------`(mm.)xyDoubleTriangle`----------
-// xyDoubleTriangle generates two signals (X and Y coordinates) corresponding to a double triangle trajectory through the center of the XY plane
-
-// `xyDoubleTriangle` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// xyDoubleTriangle(f, s) : _,_
-// ```
-//
-// Where:
-//
-// * `f': the frequency of the double triangle trajectory
-// * `s`: the height of the triangles of the double triangle trajectory
-//-----------------------------
-
-xyDoubleTriangle(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
-		with {
-			x(t) = (t < 0.25) * (-1 + t * 8) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25)*8) + (t >= 0.5) * (t < 0.75) * (-1 + (t - 0.5) * 8) + (t >= 0.75) * (1 - (t - 0.75) * 8);
-			y(t) = (t < 0.25) * (1) + (t >= 0.25) * (t < 0.5) * (1 - (t - 0.25) * 8) + (t >= 0.5) * (t < 0.75) * (-1) + (t >= 0.75) * (-1 + (t - 0.75) * 8);
-};
-
-//-------`(mm.)xyRandom`----------
-// xyRandom generates two signals (X and Y coordinates) corresponding to an interpolated random trajectory within a defined square
-// `xyRandom` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// xyRandom(f, s) : _,_
-// ```
-//
-// Where:
-//
-// * `f': the frequency of randomization of the new positions
-// * `s`: the side of the square containing the trajectory
-//-----------------------------
-
-xyRandom(f, s) = thisRandomPos
-		with {
-			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-			temporalFilter = ba.sAndH(th);
-			//computes the temporal interval taking into account the case when f=0 and when f<0
-			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
-			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (ba.line(dt), ba.line(dt));
-};
-
-//-------`(mm.)xySquareDoubleTriangle`----------
-// xySquareDoubleTriangle generates two signals (X and Y coordinates) corresponding to an interpolated random trajectory within a defined square
-// `xySquareDoubleTriangle` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// xySquareDoubleTriangle(f, s, cf) : _,_
-// ```
-//
-// Where:
-//
-// * `f': the frequency of randomization of the new positions
-// * `s`: the side of the square containing the trajectory
-// * 'cf' : crossfade coefficient (0 => square; 1 => double triangle)
-//-----------------------------
-
-xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
-
-//--------------------------------------------------------------------------------------//
 // BUS FUNCTIONS
 //--------------------------------------------------------------------------------------//
 
@@ -308,7 +217,6 @@ invBus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
 
 
 // number of channels, transition time in samples, left (0) or right (1)
-
 busSelector(n, dt, lor) = thisBusSelector
 			with {
 					sel = lor : ba.line(dt); 
@@ -323,7 +231,6 @@ busSelector(n, dt, lor) = thisBusSelector
 //--------------------------------------------------------------------------------------//
 //defined as a multiple panner with regular progression of pan angle from phi0 to -phi0
 //--------------------------------------------------------------------------------------//
-
 chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 			with {
 			//as is the incident angle of the source//
@@ -339,439 +246,29 @@ chowningPanner(as, ahp) = _ <: (*(chowningLeftLevel), *(chowningRighLevel))
 multiChowningPanner(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), ahp))) :> (*(amp), *(amp));
 
 
-//
-//Definition of a PureData like linedrive object
-//--------------------------------------------------------------------------------------//
-puredataLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
-	with {
-			//vol = current volume in Midi (0-127)
-			//ti = current time of evolution (in msec)
-			//r is the range, usually Midi range (127)
-			//f is the factor, usually 2
-			//b is the basis, usually 1.07177
-			//t is the ramp time usually 30 ms
-
-			pre_val = ba.if (vol < r, vol, r);
-			val = ba.if (pre_val < 1, 0, f*pow(b, (pre_val - r)));
-			pre_ti = ba.if (ti < 1.46, t, ti);
-			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
-		};
-
 //--------------------------------------------------------------------------------------//
 //ENVELOPES
 //--------------------------------------------------------------------------------------//
 
-//-------`(mm.)pulsedEnv1`----------
-// pulsedEnv1 generates a sinusoidal pulsed envelope at a rate/frequency
-// and a silence/sound ratio (for instance a value of 3 indicates that signal is on during 1/3 of the period)
+//-------`(mm.)pulsedEnv`----------
+// pulsedEnv generates a pulsed envelope at a certain rate (frequency)
+// and a certain ratio (for instance 3 indicates that signal is on during 1/3 of the period)
 
-// `pulsedEnv1` is a standard Faust function.
+// `pulsedEnv` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// pulsedEnv1(rate, ratio) : _
-// ```
-//
-// Where:
-//
-// * `rate`: the frequency of the envelope
-// * `ratio`: the silence/sound ratio
-//-----------------------------
-
-pulsedEnv1(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
-
-
-//-------`(mm.)pulsedEnv2`----------
-// pulsedEnv2 generates a pulsed envelope at a rate/frequency based on a phasor
-// and a silence/sound ratio (for instance a value of 3 indicates that signal is on during 1/3 of the period)
-
-// `pulsedEnv2` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// pulsedEnv2(rate, ratio) : _
-// ```
-//
-// Where:
-//
-// * `rate`: the frequency of the envelope
-// * `ratio`: the silence/sound ratio
-//-----------------------------
-
-pulsedEnv2(rate, ratio) = os.phasor(ratio, rate) : -(ratio-1) : ampClip;
-
-//
-//--------------------------------------------------------------------------------------//
-//SHORTENING ENVELOP (COSINUS RANDOMIZED ENVELOP TO BE FED BY NOISE)
-//--------------------------------------------------------------------------------------//
-//
-shorteningEnv(f, s, delta) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
-	with {
-			randTest = (_, (s : *(2) : -(1))) : >;
-			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-			factor = randTest : ba.sAndH(th);
-	};
-
-//
-//--------------------------------------------------------------------------------------//
-//LINEAR RANDOM ENVELOPE
-//--------------------------------------------------------------------------------------//
-//
-linRandEnv(f, s, delta) = (_, _) : (randVol, _) : *
-	with {
-			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : ba.line(ma.SR / f);
-			randTest = (_, (s : *(2) : -(1))) : >;
-			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-};
-
-//--------------------------------------------------------------------------------------//
-//SOUND PROCESSES
-//--------------------------------------------------------------------------------------//
-
-//-------`(mm.)flanger`----------
-// flanger function provides an elementary variable sinusoidal delay with possibility of phase control useful in case of multiple flanger decorrelation
-// `flanger` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// flanger(rate, depth, off, fdbk, delta, nsamp) : _
-// ```
-//
-// Where:
-//
-// * `rate`: the speed/frequency of the sinus modulating the delay
-// * `depth`: the amplitude of the delay (max delay duration in milliseconds)
-// * `off`: the offset of the delay duration in milliseconds
-// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
-// * `delta`: the extra phase of control of the sinusoidal modulation of delay (enables decorrelations between several flangers)
-// * `nsamp`: the maximal capacity of the delay line expressed in samples
-//-----------------------------
-
-flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableDelayAsSamps), _) : (*(fdbk), _) : +
-			with {
-				//variable delay in samples//
-				variableDelayAsSamps = os.phasor(1, rate) : +(delta) : *(2 * ma.PI) : os.oscp(0) : +(1) : *(depth) : +(off) : /(1000.) : *(ma.SR);
-};
-
-//-------`(mm.)decorrelatedFlangers`----------
-// decorrelatedFlangers function is a set of decorrelated flangers having the same rate, depth, offset and feedback control values
-// `decorrelatedFlangers` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) : _
-// ```
-//
-// Where:
-//
-// * `n': the number of flangers instanciated
-// * `rate': the speed/frequency of the sinus modulating the delay
-// * `depth: the amplitude of the delay (max delay duration in milliseconds)
-// * `off`: the offset of the delay duration in milliseconds
-// * `fdbk`: the feedback as the amount (between 0 and 1) of delayed signal added to the original sound
-// * `spread`: the factor of decorrelation of the flangers between 0 (no decorrelation) and 1 (maximum decorrelation)
-// * `nsamp`: the maximal capacity of the delay line expressed in samples
-//-----------------------------
-
-decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
-
-//--------------------------------------------------------------------------------------//
-//DOUBLE OVERLAPPED DELAY
-//--------------------------------------------------------------------------------------//
-//
-//A double overlapped delay without reinjection//
-//--------------------------------------------------------------------------------------//
-overlappedDoubleDelay(nsamp, nmax, freq) = de.sdelay(nmax, int(ma.SR / freq), nsamp);
-//
-//A double overlapped delay with reinjection//
-//--------------------------------------------------------------------------------------//
-fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : overlappedDoubleDelay(nsamp, nmax, freq)) ~ (*(fd));
-
-//--------------------------------------------------------------------------------------//
-//DEFINITION OF AN ELEMENTARY TRANSPOSITION BLOCK
-//--------------------------------------------------------------------------------------//
-abc_transposer(moffset, tr, w, g) = dopplerDelay
-			with {
-					//moffset is the decimal offset of each module between 0 (no offset) and 0.999999 (nearly no offset)
-					//tr is is the transposition in midicents
-					//w is the width of the window
-					//g is the absolute gain
-
-					freq = tr : +(6000) : *(0.01) : ba.midikey2hz : -(261.625977) : *(-3.8224) /(float(w));
-					//shifted phasor//
-					pdPhasor(f) = os.phasor(1, f);
-					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
-					//threshold to input new control values//
-					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
-					trig_win = w : ba.sAndH(th_trigger);
-					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
-					variableDelay = de.fdelay(262144, delayInSgainles);
-					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
-					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
-				};
-//
-//--------------------------------------------------------------------------------------//
-//DEFINITION OF AN ELEMENTARY HARMONIZER AS TWO TRANSPOSITION BLOCKS OVERLAPPED
-//--------------------------------------------------------------------------------------//
-harmonizer(tr, w, g) = _ <: (transposer(0, tr, w, g), transposer(0.5, tr, w, g)) : +
-	with {
-		transposer(moffset, tr, w, g) = dopplerDelay
-			with {
-					//moffset is the decimal offset of each module between 0 (no offset) and 0.999999 (nearly no offset)
-					//tr is is the transposition in midicents
-					//w is the width of the window
-					//g is the absolute gain
-					freq = tr : +(6000) : *(0.01) : ba.midikey2hz : -(261.625977) : *(-3.8224) /(float(w));
-					//shifted phasor//
-					pdPhasor(f) = os.phasor(1, f);
-					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
-					//threshold to input new control values//
-					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
-					trig_win = w : ba.sAndH(th_trigger);
-					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
-					variableDelay = de.fdelay(262144, delayInSgainles);
-					cosinusEnvelop = adjustedPhasor : *(ma.PI) : os.oscp(0);
-					dopplerDelay = (variableDelay, cosinusEnvelop) : * : *(g);
-			};
-	};
-
-//--------------------------------------------------------------------------------------//
-//GRANULATOR ON DELAY LINE WITH GS GRAIN SIZE, D AS MAXIMUM DELAY, S AS RAREFACTION
-//USES A COSINUS ENVELOP
-//--------------------------------------------------------------------------------------//
-
-granulator(gs, d, s) = (_, _, _) : (env, _, del) : (_, de.delay(262144, _)) : *
-	with {
-			//gs is the grain size in milliseconds//
-			//d is the max delay in milliseconds//
-			//s is the rarefaction between 0 and 1//
-			//the capacity of storage of the delay line is 262144 which is roughly 5,46 sec of delay at 48KHz
-			f = 1000. / gs; //f is the frequency of the grain
-			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
-			randTest = (_, (s : *(2) : -(1))) : >;
-			factor = randTest : ba.sAndH(th);
-			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
-			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
-		};
-
-
-//--------------------------------------------------------------------------------------//
-//FILTERS AS USED IN MAX AND PURE DATA SOFTWARES
-//--------------------------------------------------------------------------------------//
-
-//-------`(mm.)maxBiquad`----------
-//A biquad in direct form 1 as in Max software
-//y[n] = a0 * x[n] + a1 * x[n-1] + a2 * x[n-2] - b1 * y[n-1] - b2 * y[n-2]
-//
-// #### Usage
-//
-// ```
-// maxBiquad(a0, a1, a2, b1, b2, x) : _
-// ```
-//
-// Where:
-//
-// * `a0, a1, a2, b1, b2': the coefficients of the biquad in direct form 1 as in Max software
-// * `x': the input signal
-//-----------------------------
-
-maxBiquad(a0,a1,a2,b1,b2, x)  =  x : + ~ ((-1)*conv2(b1, b2)) : conv3(a0, a1, a2) 
-	with {
-		conv2(c0,c1,x) = c0*x+c1*x';
-		conv3(c0,c1,c2,x) = c0*x+c1*x'+c2*x'';
-	};
-
-
-//-------`(mm.)puredataBiquad`----------
-//A biquad in direct form 2 as in PureData software
-//
-// #### Usage
-//
-// ```
-// puredataBiquad(fb1, fb2, ff1, ff2, ff3, x) : _
-// ```
-//
-// Where:
-//
-// * `fb1, fb2, ff1, ff2, ff3': the coefficients of the biquad in direct form 2 as in PureData software
-// * `x': the input signal
-//-----------------------------
-
-puredataBiquad(c_fb1, c_fb2, c_ff1, c_ff2, c_ff3, x) = maxBiquad(ff1, ff2, ff3, fb1, fb2, x) 
-	with {
-		//first, compute the stability of the biquad//	
-		discriminant = c_fb1*c_fb1 + 4 * c_fb2;
-		condition1 = ((discriminant < 0) & (c_fb2 >= -1.0));
-		condition2 = ((discriminant >= 0) & (c_fb1 >= -2.0) & (c_fb1 <= 2.0) & (c_fb1+c_fb2 <= 1.0) & (c_fb1-c_fb2 >= -1.0));
-		stable = (condition1 | condition2);//stable is 0 (unstable) or 1 (stable)		
-		//second the final coefficients to apply to biquad that is defined in maxmsp.lib//
-		fb1 = c_fb1 : *(stable) : (*(-1.));
-		fb2 = c_fb2 : *(stable) : (*(-1.));
-		ff1 = c_ff1 : *(stable);	
-		ff2 = c_ff2 : *(stable);	
-		ff3 = c_ff3 : *(stable);
-	};
-
-
-//-------`(mm.)hilbertFilter`----------
-//A Hilbert filter composed of 4 biquad filters
-//
-// #### Usage
-//
-// ```
-// hilbertFilter : _, _
+// pulsedEnv(rate, ratio) : _
 // ```
 //
 //-----------------------------
 
-hilbertFilter = _ <: (biquad1, biquad3) : (biquad2, biquad4)
-	with {
-			biquad1 = puredataBiquad(-0.02569, 0.260502, -0.260502, 0.02569, 1.);
-			biquad2 = puredataBiquad(1.8685, -0.870686, 0.870686, -1.8685, 1.);
-			biquad3 = puredataBiquad(1.94632, -0.94657, 0.94657, -1.94632, 1.);
-			biquad4 = puredataBiquad(0.83774, -0.06338, 0.06338, -0.83774, 1.);
-	};
-//
+pulsedEnv(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip;
 
-//-------`(mm.)fshift`----------
-//A frequency shifter made with a Hilbert filter and cos/sin modulation
-//producing two outputs: original content shifted of +freq and original content shifted of -freq
-//
-// #### Usage
-//
-// ```
-// _ : fshift(freq) : _, _
-// ```
-//
-// Where:
-//
-// * `freq': the shifting frequency in Hz
-//-----------------------------
-
-fshift(freq) = hilbertByCosAndMinusSin <: (+, -)
-	with {
-		//cosinus enveloppe//
-		osc1 = *(-1) : +(0.25) : *(2 * ma.PI) : os.oscp(0);
-		//permutation//
-		p1(a, b, c, d) = (a, c, b, d);
-		cosAndMinusSin = os.phasor(1, freq) <: (_, +(0.25)) : (osc1, osc1);
-		hilbertByCosAndMinusSin = (hilbertFilter, cosAndMinusSin) : p1 : (*, *);
-};
-
-//-------`(mm.)fshiftp`----------
-//A frequency shifter made with a Hilbert filter and cos/sin modulation
-//producing only one output with the original content shifted of +freq
-//
-// #### Usage
-//
-// ```
-// _ : fshiftp(freq) : _
-// ```
-//
-// Where:
-//
-// * `freq': the shifting frequency in Hz
-//-----------------------------
-
-fshiftp(freq) = fshift(freq) : (_, !);
-
-
-//-------`(mm.)fshiftn`----------
-//A frequency shifter made with a Hilbert filter and cos/sin modulation
-//producing only one output with the original content shifted of -freq
-//
-// #### Usage
-//
-// ```
-// _ : fshiftn(freq) : _
-// ```
-//
-// Where:
-//
-// * `freq': the shifting frequency in Hz
-//-----------------------------
-
-fshiftn(freq) = fshift(freq) : (!, _);
-
-//-------`(mm.)rev4Stereo`----------
-//Classical rev4 reverberation implemented in stereo
-//rev4 is a classical reverberation that has been heavily used in Max software since the end of the 1980's
-//
-// #### Usage
-//
-// ```
-// _ : rev4Stereo(dur, g) : _, _
-// ```
-//
-// Where:
-//
-// * `dur': the duration of the reverberation (between 0 and 127). 127 means an infinite reverberation
-// * `g': the output level of the reverberation (between 0 and 127)
-//-----------------------------
-
-rev4Stereo(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Stereo(g)) ~ (reinjBlock3, !, !) : (!, !, !, !, _, _)
-	with {
-		rev4Tap(del) = de.delay(65536, int(del * ma.SR / 1000.));
-		rev4CascadBlock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMinusBlock(25.796) : plusMinusBlock(19.391993) : plusMinusBlock(16.363997) : (_, rev4Tap(13.645))
-			with {
-				initBlock(del) = _ <: (_, rev4Tap(del)) <: (+, -);
-				plusMinusBlock(del) = (_, rev4Tap(del)) <: (+, -);
-			};
-		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, interlace2(2)) : (_, _, +, +);
-		rev4ReinjBlock2Stereo(g) = (((_, _) <: ((-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (doubler4to8, _, _) : (rev4Permutation, _, _) : (-, -, +, +, *(g), *(g))
-			with {
-					doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
-					rev4Permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
-			};
-		reinjBlock3 = (rev4Tap(58.643494), rev4Tap(69.432503), rev4Tap(74.523392), rev4Tap(86.12439));
-	};
-
-//-------`(mm.)rev4Quadri`----------
-//Classical rev4 reverberation implemented with 4 outputs (there are 4 delay lines in the rev4)
-//rev4 is a classical reverberation that has been heavily used in Max software since the end of the 1980's
-//
-// #### Usage
-//
-// ```
-// _ : rev4Quadri(dur, g) : _, _
-// ```
-//
-// Where:
-//
-// * `dur': the duration of the reverberation (between 0 and 127). 127 means an infinite reverberation
-// * `g': the output level of the reverberation (between 0 and 127)
-//-----------------------------
-
-rev4Quadri(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Quadri(g)) ~ (!, !, reinjBlock3, !, !) : (_, _, !, !, !, !, _, _)
-	with {
-		rev4Tap(del) = de.delay(65536, int(del * ma.SR / 1000.));
-		rev4CascadBlock = initBlock(75.254601) : plusMinusBlock(43.533688) : plusMinusBlock(25.796) : plusMinusBlock(19.391993) : plusMinusBlock(16.363997) : (_, rev4Tap(13.645))
-			with {
-				initBlock(del) = _ <: (_, rev4Tap(del)) <: (+, -);
-				plusMinusBlock(del) = (_, rev4Tap(del)) <: (+, -);
-			};
-		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, interlace2(2)) : (_, _, +, +);
-		rev4ReinjBlock2Quadri(g) = (((_, _) <: (_, _, (-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (_, _, doubler4to8, _, _) : (_, _, rev4Permutation, _, _) : (*(g), *(g), -, -, +, +, *(g), *(g))
-			with {
-				doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
-				rev4Permutation(a, b, c, d, e, f, g, h) = (e, a, g, c, f, b, h, d);
-			};
-		reinjBlock3 = (rev4Tap(58.643494), rev4Tap(69.432503), rev4Tap(74.523392), rev4Tap(86.12439));
-	};
 
 //--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
-//									SOUND SYNTHESES
-//--------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------//
+//SOUND SYNTHESES
 //--------------------------------------------------------------------------------------//
 
 
@@ -781,59 +278,7 @@ rev4Quadri(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Qu
 //2 added oscillators as harmonics of a fundamental frequency and shifted//
 //f is the fundamental, n the multiplier, deltaf the shift frequency to get a beat//
 //
-
 doubleOscillator(f, n, deltaf) = (f*n) <: (_, +(deltaf)) : (os.osci, os.osci) : + : *(0.5);
-
-//-------`(mm.)harmoInharmonicOscBank`----------
-// generates a set of oscillators between harmonic and inharmonic spectrum
-// the model comes from Jupiter piece for flute and live electronics by Philippe Manoury
-// the frequencies are given by the formula k*freq, (k+1)*freq, (k+2)*freq, ..., (k+n-1)*freq
-// k is a constant between 0 (value to be avoided) and 1
-// if k is 1 we get an harmonic spectrum, on the contrary we get an inharmonic spectrum
-//
-// `harmoInharmonicOscBank` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// harmoInharmonicOscBank(n, freq, k) : _, _, ....
-// ```
-//
-// Where:
-//
-// * `n`: the number of oscillators
-// * `freq': the fundamental frequency (Hz)
-// * `k`: the constant between 0 and 1 modifying the inharmonic/harmonic result
-//-----------------------------
-
-harmoInharmonicOscBank(n, freq, k) = par(i, n, os.osci((k+i)*freq));
-
-harmoInharmonicOscFilterBank(n, freq, k, of, rq, rg, g) = (harmoInharmonicOscBank(n, freq, k), (_ <: par(i, n, fi.resonbp((k+i)*freq, rq, rg)))) : (par(i, n, *(1-of)), par(i, n, *(of))) :> par(i, n, *(g));
-
-//-------`(mm.)jupiterOscBank`----------
-// generates a set of 14 oscillators between harmonic and inharmonic spectrum
-// the model comes from Jupiter piece for flute and live electronics by Philippe Manoury
-// the frequencies are given by the formula k*freq, (k+1)*freq, (k+2)*freq, ..., (k+13)*freq
-// k is a constant between 0 (value to be avoided) and 1
-// if k is 1 we get an harmonic spectrum, on the contrary we get an inharmonic spectrum
-//
-// `jupiterOscBank` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// jupiterOscBank(freq, k) : _, _, ....
-// ```
-//
-// Where:
-//
-// * `freq': the fundamental frequency (Hz)
-// * `k`: the constant between 0 and 1 modifying the inharmonic/harmonic result
-//-----------------------------
-
-jupiterOscBank(freq, k) = harmoInharmonicOscBank(14, freq, k);
-
-jupiterOscFilterBank(freq, k, of, rq, rg, g) = harmoInharmonicOscFilterBank(14, freq, k, of, rq, rg, g);
 
 //[TO BE TESTED]
 
@@ -841,7 +286,7 @@ jupiterOscFilterBank(freq, k, of, rq, rg, g) = harmoInharmonicOscFilterBank(14, 
 // puckettesPaf generates a phased-aligned formant signal
 // using Miller Puckette's design exposed in the following article:
 // reference: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
-//
+
 // `puckettesPaf` is a standard Faust function.
 //
 // #### Usage
@@ -858,7 +303,7 @@ jupiterOscFilterBank(freq, k, of, rq, rg, g) = harmoInharmonicOscFilterBank(14, 
 // * 'a' : the output amplitude between 0 and 1
 // * 'sgauss' : the standard deviation of the gauss function to be used
 // * 'acauchy' : the a coefficient of Cauchy function
-// * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
+// * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
 
 puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
@@ -888,7 +333,7 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 //[TO BE TESTED]
 
 //-------`(mm.)puckettesPaf2`----------
-// puckettesPaf2 generates a phased-aligned formant signal as puckettesPaf function
+// puckettesPaf2 generates a phased-aligned formant signal like puckettesPaf function
 // but it adds a phase modulator that enables the synthesis of inharmonic sounds
 // It uses Miller Puckette's design exposed in the following article:
 // reference: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
@@ -907,13 +352,12 @@ puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulat
 // * `cfreq': the central frequency (Hz)
 // * `bwidth`: the band width (Hz)
 // * 'a' : the output amplitude between 0 and 1
-// * 'inharmoAmp' : the amplitude of the phase modulator
-// * 'inharmoFreq' : the frequency of the phase modulator
+// * 'inharmoAmp' : the amplitude of inharmonic sound generated
+// * 'inharmoFreq' : the frequency of inharmonic sound generated
 // * 'sgauss' : the standard deviation of the gauss function to be used
 // * 'acauchy' : the a coefficient of Cauchy function
-// * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
+// * 'wfunc' : the chosen wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
-
 puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
 		with {
 				ratio = (cfreq / fund);
@@ -965,7 +409,7 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 			with {
 				elemFilter(fund, frand, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
 				//An elementary bandpass filter with randomized gain
-				//two inputs for this elementary filter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
+				//two inputs for the elemfilter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
 						with {	
 								filterQ = 120;
 								filterG = 1;
@@ -974,7 +418,6 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
 						};
 };
-
 
 
 //2 inputs:
@@ -1038,68 +481,8 @@ audiotester(n, nmax, f, g) = thisaudiotester
 				thisaudiotester = impulse <: (counter, generator) : selector;
 };
 
-//-------`(mm.)peakamp`----------
-// Measures the peak value of the signal during a window of n samples
-
-// `peakamp` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _ : peakamp(n) : _
-// ```
-//
-// Where:
-//
-// * `n`: the number of samples of the measuring window
-//-----------------------------
 peakamp(n) = maxVal(n) : ba.sAndH(getPeak) with {
 	maxVal(n) = (_, abs) ~ (max : *(1 - resetMax)) : (_, !);
 	resetMax = ba.pulse(n)@1;
 	getPeak = ba.pulse(n);
 };
-
-//-------`(mm.)soundDetector`----------
-// On-off envelope of the incoming signal
-
-// `soundDetector` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _ : soundDectetor(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) : _
-// ```
-//
-// Where:
-//
-// * `measureDur`: the duration of the measure in milliseconds
-// * 'ofs' : offset in dB to enhance the incoming signal
-// * 'nf' : noise floor in dB to separation signal from noise
-// * 'thresh' : theshold for note on detection
-// * 'noteDur' : minimal duration to consider the input phenomenon as a note
-// * 'offDur' : minimal duration of silence between two notes
-// * 'attTy' : attack detected (0 => as soon as the sound level is higher than thresh, 1 => as soon as the sound level is higher than thresh and has finished increasing)
-// * 'x' : incoming signal
-//-----------------------------
-soundDetector(measureDur, ofs, nf, thresh, noteDur, offDur, attTy, x) = (noteOnPhase + noteOffPhase) > 0
-	with {
-			millisec = ma.SR / 1000.;
-			nsamp = int(measureDur * millisec);
-			nsampNoteOn = int(noteDur * millisec);
-			nsampOff = int(offDur * millisec);
-			measuredLevel = x : peakamp(nsamp) : ba.linear2db : +(ofs) : min(0) : max(nf) : /(nf) : *(-120);
-			previousMeasuredLevel = measuredLevel@(nsamp);
-			ascendingInput = measuredLevel >= previousMeasuredLevel;
-			//attack type = 0 or 1
-			//0 = attack is detected as soon as the measured level is higher than thresh//
-			//1 = attack is detected as soon as the measured level is higher than thresh and has finished growing//
-			attackTrig = (measuredLevel > thresh) * ((1-attTy) + attTy * (ascendingInput == 0));
-			releaseTrig = (measuredLevel <= thresh) * (ascendingInput == 0); //descending and going under thresh//
-			//
-			impulseinc = _ <: _, mem : - : (_ > 0.0);
-			release(n) = + ~ (_ <: _, (_ > 0) / n : -);
-			trigger(n) = impulseinc : release(n) : _ > 0;
-			noteOnPhase = max((attackTrig : trigger(nsampNoteOn)), attackTrig*(1 - releaseTrig)) ;
-			noteOffPhase = releaseTrig : trigger(nsampOff);
-};
-

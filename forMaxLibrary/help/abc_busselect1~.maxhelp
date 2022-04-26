@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 1,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -147,7 +147,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0.0 ],
+					"args" : [ -10 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -155,7 +155,6 @@
 					"enablevscroll" : 0,
 					"id" : "obj-21",
 					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
@@ -310,7 +309,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 622.0, 115.0, 18.0, 34.0 ],
 					"size" : 2,
-					"value" : 0
+					"value" : 1
 				}
 
 			}
@@ -488,7 +487,6 @@
 					"enablevscroll" : 0,
 					"id" : "obj-134",
 					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -521,7 +519,6 @@
 					"enablevscroll" : 0,
 					"id" : "obj-42",
 					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
@@ -553,7 +550,7 @@
 					"numinlets" : 8,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 521.0, 265.5, 181.0, 35.0 ],
+					"patching_rect" : [ 521.0, 265.5, 178.000000000001137, 35.0 ],
 					"text" : "abc_substractsynth8~ @f0 220. @gain -10"
 				}
 
@@ -585,7 +582,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20.0 ],
+					"args" : [ -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -593,7 +590,6 @@
 					"enablevscroll" : 0,
 					"id" : "obj-26",
 					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -652,7 +648,6 @@
 					"enablevscroll" : 0,
 					"id" : "obj-5",
 					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpcredit.maxpat",
 					"numinlets" : 1,
@@ -675,7 +670,6 @@
 					"enablevscroll" : 0,
 					"id" : "obj-28",
 					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpheader.maxpat",
 					"numinlets" : 1,
@@ -1141,59 +1135,42 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc.helpheader.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_addsynth8~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_busselect1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_busselect8~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_chopan8~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_cosrandenv8~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_gain1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_multinoise8~.mxo",
+				"name" : "abc.helpcredit.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_stereoout~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_gaincontrol.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_busselect1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1205,14 +1182,31 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
+				"name" : "abc_busselect8~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_substractsynth8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_multinoise8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_chopan8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_addsynth8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_cosrandenv8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_gain1~.mxo",
 				"type" : "iLaX"
 			}
  ],
