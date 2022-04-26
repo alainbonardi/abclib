@@ -672,7 +672,7 @@ rev4Stereo(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2St
 				initBlock(del) = _ <: (_, rev4Tap(del)) <: (+, -);
 				plusMinusBlock(del) = (_, rev4Tap(del)) <: (+, -);
 			};
-		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, ro.intervleave(2,2)) : (_, _, +, +);
+		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, ro.interleave(2,2)) : (_, _, +, +);
 		rev4ReinjBlock2Stereo(g) = (((_, _) <: ((-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (doubler4to8, _, _) : (rev4Permutation, _, _) : (-, -, +, +, *(g), *(g))
 			with {
 					doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
