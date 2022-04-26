@@ -249,50 +249,14 @@ xyRandom(f, s) = thisRandomPos
 // * 'cf' : crossfade coefficient (0 => square; 1 => double triangle)
 //-----------------------------
 
-xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : interlace2(2) : (+, +);
+xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : ro.interleave(2,2) : (+, +);
 
 //--------------------------------------------------------------------------------------//
 // BUS FUNCTIONS
 //--------------------------------------------------------------------------------------//
 
-//-------`(mm.)interlace2`----------
-// interlace2 is a bus function that interleaves 2 buses of signals
-// starting with 2n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn
-// the result is the vector sigA1, sigB1, sigA2, sigB2, ..., sigAn, sigBn
-
-// `interlace2` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : interlace2 : _,_,...
-// ```
-//
-//-----------------------------
-
-interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
-
-//-------`(mm.)
-//----------
-// interlace3 is a bus function that interleaves 3 buses of signals
-// starting with 3n values sigA1, sigA2, ... sigAn, sigB1, sigB2, ... sigBn, sigC1, sigC2, ..., sigCn
-// the result is the vector sigA1, sigC1, sigB1, sigA2, sigC2, sigB2, ..., sigAn, sigCn, sigBn
-
-// `interlace3` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : interlace3 : _,_,...
-// ```
-//
-//-----------------------------
-
-interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
-
 
 // number of channels, transition time in samples, left (0) or right (1)
-
 busSelector(n, dt, lor) = thisBusSelector
 			with {
 					sel = lor : ba.line(dt); 
@@ -708,7 +672,7 @@ rev4Stereo(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2St
 				initBlock(del) = _ <: (_, rev4Tap(del)) <: (+, -);
 				plusMinusBlock(del) = (_, rev4Tap(del)) <: (+, -);
 			};
-		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, interlace2(2)) : (_, _, +, +);
+		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, ro.intervleave(2,2)) : (_, _, +, +);
 		rev4ReinjBlock2Stereo(g) = (((_, _) <: ((-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (doubler4to8, _, _) : (rev4Permutation, _, _) : (-, -, +, +, *(g), *(g))
 			with {
 					doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
@@ -741,7 +705,7 @@ rev4Quadri(dur, g) = rev4CascadBlock : (rev4ReinjBlock1(dur) : rev4ReinjBlock2Qu
 				initBlock(del) = _ <: (_, rev4Tap(del)) <: (+, -);
 				plusMinusBlock(del) = (_, rev4Tap(del)) <: (+, -);
 			};
-		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, interlace2(2)) : (_, _, +, +);
+		rev4ReinjBlock1(dur) = (*(dur), *(dur), *(dur), *(dur), _, _) : (_, _, ro.interleave(2, 2)) : (_, _, +, +);
 		rev4ReinjBlock2Quadri(g) = (((_, _) <: (_, _, (-:*(-1)), +)), ((_, _) <:((-:*(-1)), +, _, _))) : (_, _, doubler4to8, _, _) : (_, _, rev4Permutation, _, _) : (*(g), *(g), -, -, +, +, *(g), *(g))
 			with {
 				doubler4to8 = ((_<:(_, _)), (_<:(_, _)), (_<:(_, _)), (_<:(_, _)));
@@ -945,7 +909,7 @@ puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 // * 'g' : the output amplitude between 0 and 1
 //-----------------------------
 
-soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : interlace2(n) : par(i, n, elemFilter(fund, frand, i+1, n)) :> _ : *(0.08) : *(g)
+soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bus(n))) : ro.interleave(n, 2) : par(i, n, elemFilter(fund, frand, i+1, n)) :> _ : *(0.08) : *(g)
 			with {
 				elemFilter(fund, frand, i, n) = (_, _) : (_, randVol) : (fi.resonbp(fund * i, filterQ, filterG), _) : *
 				//An elementary bandpass filter with randomized gain

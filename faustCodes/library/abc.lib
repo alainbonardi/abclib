@@ -393,7 +393,7 @@ abc_2d_fx_grain_ui(n) = thisfxgrain
 		//
 		dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
-		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : interlace3(n) : par(i, n, granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
+		thisfxgrain = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : ro.interleave(n, 3) : par(i, n, granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, *(feedback)));
 };
 
 //
@@ -410,7 +410,7 @@ abc_2d_syn_grain_ui(n) = thissyngrain
 		//
 		dur(d, i, p) = d * 2 / (p+1) * (int((i+1)/2)); //max delays in milliseconds for each spatial component
 		gsize(gs, i, p) = gs - int((i+1) / 2) * gs * 2 / (p+1); //grain sizes in milliseconds for each spatial component
-		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : interlace3(n)  : par(i, n, granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
+		thissyngrain = ((no.multinoise(2*n), (((_, _) : +) <: si.bus(n))) : ro.interleave(n, 3)  : par(i, n, granulator(gsize(grainsize, i, n), dur(deltime, i, n), rarefaction))) ~ (par(i, n, _) :> *(feedback));
 };
 
 //
@@ -670,7 +670,7 @@ abc_multigain_ui(n) = abc_gainline(n, gain)
 //MULTI GRANULATORS
 //--------------------------------------------------------------------------------------//
 //
-abc_multigrain_ui(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : interlace3(n) : par(i, n, granulator(gs(i), dt(i), rrf(i)))) ~ (par(i, n, *(fdbk(i))))
+abc_multigrain_ui(n) = ((no.multinoise(2*n), (si.bus(2*n) :> si.bus(n))) : ro.interleave(n, 3) : par(i, n, granulator(gs(i), dt(i), rrf(i)))) ~ (par(i, n, *(fdbk(i))))
 			with {
 				gs(ind) = hslider("h:multigrains/v:grainsizes/gs%2ind [unit:msec]", 400, 2, 3000, 1);
 				dt(ind) = hslider("h:multigrains/v:delsmax/dt%2ind [unit:msec]", 100, 2, 5000, 0.01);
@@ -709,7 +709,7 @@ abc_multishorteningenv(n, f, s, d) = no.multinoise(n) : par(i, n, shorteningEnv(
 //MULTIPLE SHORTENING ENVELOPS APPLIED TO N INPUT SIGNALS
 //--------------------------------------------------------------------------------------//
 //
-abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction, spread) : interlace2(n) : par(i, n, *) 
+abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rarefaction, spread) : ro.interleave(n, 2) : par(i, n, *) 
 			with {
 				rarefaction = hslider("v:randenv/rarefaction", 0.5, 0, 1, 0.01) : si.smoo;
 				freq = nentry("v:randenv/freq [unit:Hz]", 10, 0.01, 100, 0.01) : si.smoo;
@@ -720,7 +720,7 @@ abc_multishorteningenv_ui(n) = par(i, n, _), abc_multishorteningenv(n, freq, rar
 //MULTIPLE LINEAR RANDOM ENVELOPES
 //--------------------------------------------------------------------------------------//
 //
-abc_multilinrandenv(n, f, s, d) = (no.multinoise(n), si.bus(n)) : interlace2(n) : par(i, n, linRandEnv(f,s, d * i / n));
+abc_multilinrandenv(n, f, s, d) = (no.multinoise(n), si.bus(n)) : ro.interleave(n, 2) : par(i, n, linRandEnv(f,s, d * i / n));
 //
 abc_multilinrandenv_ui(n) = abc_multilinrandenv(n, freq, rarefaction, spread)
 			with {
