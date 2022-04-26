@@ -290,22 +290,6 @@ interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 
 
 interlace3(n) = si.bus(3*n) <: par(i, n, (ba.selector(i, 3*n), ba.selector(i+2*n, 3*n), ba.selector(i+n, 3*n)));
 
-//-------`(mm.)invbus`----------
-// invbus is a bus function that inverts the order of the n signals of a bus
-// (1st input => N, 2nd => N-1, 3rd => N-2, etc)
-
-// `invbus` is a standard Faust function.
-//
-// #### Usage
-//
-// ```
-// _,_,... : invbus : _,_,...
-// ```
-//
-//-----------------------------
-
-invBus(n) = par(j, n, _ <: par(i, n, *(i==n-j-1))) :> si.bus(n);
-
 
 // number of channels, transition time in samples, left (0) or right (1)
 
@@ -496,7 +480,7 @@ fdOverlappedDoubleDelay(nsamp, nmax, freq, fd) = (+ : overlappedDoubleDelay(nsam
 //--------------------------------------------------------------------------------------//
 //DEFINITION OF AN ELEMENTARY TRANSPOSITION BLOCK
 //--------------------------------------------------------------------------------------//
-abc_transposer(moffset, tr, w, g) = dopplerDelay
+transposer(moffset, tr, w, g) = dopplerDelay
 			with {
 					//moffset is the decimal offset of each module between 0 (no offset) and 0.999999 (nearly no offset)
 					//tr is is the transposition in midicents

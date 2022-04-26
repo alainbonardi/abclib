@@ -624,7 +624,7 @@ abc_delaychain_ui(n) = thisdelaychain
 				delaychain(2) = delseq(1) <: (delseq(2), _);
 				delaychain(n) = delaychain(n-1) : ((_ <: (delseq(n), _)), si.bus(n-2));
 				//
-				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, invBus(n));
+				thisdelaychain = (+ <: (delaychain(n), _) : (_, par(i, n, *(gain(n-i-1))))) ~ (*(fdbk)) : (!, ro.cross(n));
 };
 //
 //--------------------------------------------------------------------------------------//
