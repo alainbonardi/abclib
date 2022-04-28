@@ -177,7 +177,8 @@ imlsDecoder(n, la, direct, shift, vb) = si.bus(2*n+1) <: (iBasicDecoder, iVBAPDe
    						speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/p,alpha) : si.dot(2*n+1);
 				};
 			//The VBAP decoder uses VBAP compensation: it balances the regular decoder output enabling to use irregular angular setup.
-			iVBAPDecoder = ho.decoder(n, max(2*n+2, p)) : par(i, max(2*n+2, p), circularScaledVBAP(la, (i * 360 / p - direct * shift) * direct)) :> si.bus(p);
+			q = max(2*n+2, p);
+			iVBAPDecoder = ho.decoder(n, q) : par(i, q, circularScaledVBAP(la, (i * 360 / q - direct * shift) * direct)) :> si.bus(p);
 };
 
 //-------`(ho.)iDecoder`----------
