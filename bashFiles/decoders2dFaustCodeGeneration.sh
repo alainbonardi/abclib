@@ -20,6 +20,7 @@ then
     amborder=7
 fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
+#generates decoder codes with 2*i+2 at order #i
 for i in `seq 1 $amborder`
 do
 let "j = 2 * $i + 2"
@@ -34,4 +35,22 @@ echo "declare name \"abc_2d_decoder$i\";" >> $sortie
 #writes the process line
 echo "//
 process = library(\"abc.lib\").abc_2d_decoder_ui($i, $j);" >> $sortie
+done
+#generates decoder with variable number of outputs from 3 (above stereo) to 16 (arbitrary limitation)
+for i in `seq 1 $amborder`
+do
+    for j in `seq 3 16`
+    do
+        sortie="abc_2d_decoder$i""_$j.dsp"
+        #writes the header
+        while IFS= read -r line
+        do
+            echo "$line" >> $sortie
+        done <"$headerfilename"
+        #writes the declared name
+        echo "declare name \"abc_2d_decoder$i""_$j\";" >> $sortie
+        #writes the process line
+        echo "//
+process = library(\"abc.lib\").abc_2d_decoder_ui($i, $j);" >> $sortie
+    done
 done

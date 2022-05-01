@@ -34,3 +34,21 @@ echo "declare name \"abc_2d_map$i\";" >> $sortie
 echo "//
 process = (_, _, _) : library(\"abc.lib\").abc_2d_map_ui($i);" >> $sortie
 done
+#generates multimaps with variable number of sources from 1 to 8 (arbitrary choice)
+for i in `seq 1 $amborder`
+do
+    for j in `seq 1 8`
+    do
+        sortie="abc_2d_map$i""_$j.dsp"
+        #writes the header
+        while IFS= read -r line
+        do
+            echo "$line" >> $sortie
+        done <"$headerfilename"
+        #writes the declared name
+        echo "declare name \"abc_2d_map$i""_$j\";" >> $sortie
+        #writes the process line
+        echo "//
+process = library(\"abc.lib\").abc_2d_multiMap_ui($i, $j);" >> $sortie
+    done
+done

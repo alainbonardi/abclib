@@ -22,7 +22,7 @@ fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 for i in `seq 1 $amborder`
 do
-let "j = 2 * $i + 2"
+#let "j = 2 * $i + 2"
 sortie="abc_2d_stereodecoder$i.dsp"
 #writes the header
     while IFS= read -r line

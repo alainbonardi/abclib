@@ -4,9 +4,9 @@
 #X text 197 7 X between -1 and 1;
 #X text 350 7 Y between -1 and 1;
 #X obj 18 4 loadbang;
-#X obj 56 152 vsl 15 128 0 5 0 0 empty empty size 0 -9 0 10 -262144
--1 -1 0 1;
-#X floatatom 56 287 5 0 0 0 - - -;
+#X obj 56 152 vsl 15 128 0 5 0 0 empty empty size 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 56 287 5 0 0 0 - - - 0;
 #X obj 172 604 scopeXYZ~ 1024;
 #X msg 169 287 draw point;
 #X msg 203 318 draw line;
@@ -35,20 +35,20 @@
 #X obj 739 542 * 0.75;
 #X obj 783 542 * 0.5;
 #X obj 827 542 * 0.25;
-#X obj 93 287 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 93 287 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
 #X msg 381 107 dimen 200 200;
 #X msg 302 107 color 1 1 1;
-#X obj 80 219 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
+#X obj 80 219 vradio 15 1 0 2 empty empty empty 0 -8 0 10 #fcfcfc #000000
+#000000 0;
 #X obj 169 264 select 0 1;
 #X text 96 218 points;
 #X text 96 234 lines;
 #X obj 93 415 gemhead 1;
 #X obj 568 494 gemhead 2;
 #X obj 516 362 gemhead 0;
-#X obj 80 199 tgl 15 0 empty empty display 17 7 0 10 -262144 -1 -1
-0 1;
+#X obj 80 199 tgl 15 0 empty empty display 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 18 47 t b b b b b b b;
 #X obj 252 50 *~;
 #X obj 377 27 inlet~;
@@ -58,7 +58,7 @@
 several windows on the same scene \, we prevent several creations by
 only activating the first one;
 #X obj 113 45 r gemwinnumber;
-#X floatatom 98 115 5 0 0 0 - - -;
+#X floatatom 98 115 5 0 0 0 - - - 0;
 #X obj 98 164 < 1;
 #X obj 98 187 select 1;
 #X obj 179 195 + 1;
@@ -68,10 +68,10 @@ only activating the first one;
 #X obj 98 94 f 0;
 #X obj 47 44 inlet;
 #X obj 126 330 outlet;
-#X obj 48 114 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X floatatom 164 273 5 0 0 0 - - -;
-#X floatatom 113 70 5 0 0 0 - - -;
+#X obj 48 114 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X floatatom 164 273 5 0 0 0 - - - 0;
+#X floatatom 113 70 5 0 0 0 - - - 0;
 #X obj 98 135 t f f;
 #X connect 1 0 14 0;
 #X connect 2 0 15 0;
@@ -99,7 +99,7 @@ only activating the first one;
 #X obj 72 87 f \$2;
 #X obj 32 86 f \$3;
 #X msg 471 107 title abc_scope;
-#X obj 381 200 gemwin;
+#X obj 381 200 gemglfw3window;
 #X connect 0 0 46 0;
 #X connect 3 0 50 0;
 #X connect 4 0 5 0;
