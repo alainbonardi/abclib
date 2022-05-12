@@ -43,11 +43,10 @@ abc_2d_stereodecoder_ui(n) = gDecoderStereo(n, direct, gain)
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
 
-abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, vbap, gain) 
+abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, gain) 
 	with {
 			direct = (2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1) : si.smoo; 
 			offset = hslider("h:decoder/v:general/[1]angularoffset[unit:deg]", 0, -180, 180, 1) : si.smoo;
-			vbap = nentry("h:decoder/v:general/[2]vbap", 1, 0, 1, 1) : si.smoo;
 			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : abc_dbcontrol;
 			stereo = nentry("h:decoder/v:general/[4]stereo", 0, 0, 1, 1) : si.smoo;
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
