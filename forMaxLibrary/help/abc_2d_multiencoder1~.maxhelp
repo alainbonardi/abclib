@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 292.0, 147.0, 1163.0, 686.0 ],
+		"rect" : [ 235.0, 79.0, 1163.0, 686.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -322,7 +322,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 230.0, 363.0, 100.0, 22.0 ],
+					"patching_rect" : [ 230.0, 363.0, 130.0, 22.0 ],
 					"text" : "abc_2d_scope3~"
 				}
 
@@ -585,8 +585,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -764,8 +764,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1624,8 +1624,8 @@
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
+				"patcherrelativepath" : "../../../../../Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1642,8 +1642,8 @@
 			}
 , 			{
 				"name" : "abc_scope.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
+				"patcherrelativepath" : "../../../../../Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
 				"type" : "JSON",
 				"implicit" : 1
 			}
