@@ -1,4 +1,5 @@
-//NEW VERSION OF THE REGULAR DECODER => TO UPDATE IN HOA.LIB
+
+//NEW VERSION OF THE REGULAR DECODER => TO UPDATE IN HOA.LIB ==>
 //
 //--------------------------`(ho.)decoder`--------------------------------
 // Decodes an ambisonics sound field for a circular array of loudspeakers.
@@ -6,7 +7,7 @@
 // #### Usage
 //
 // ```
-// _ : decoder(n, p) : _
+// _,_, ... : decoder(n, p) : _,_, ...
 // ```
 //
 // Where:
@@ -16,22 +17,23 @@
 //
 // #### Note
 //
-// Number of loudspeakers must be greater or equal to 2n+1. It's preferable
-// to use 2n+2 loudspeakers.
+// Number of loudspeakers must be greater or equal than 2n+1.
+// It's preferable to use 2n+2 loudspeakers.
 //-------------------------------------------------------------------
 
-decoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, 2*ma.PI*i/p))
+decoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, 2 * ma.PI*i/p))
 with {
    speaker(n,a)	= /(2), par(i, 2*n, _), encoder(n, 2/p, a) : si.dot(2*n+1);
 };
+//<==NEW VERSION OF THE REGULAR DECODER => TO UPDATE IN HOA.LIB
+
+
 
 
 //-------`(ho.)rEncoder`----------
 // Ambisonic encoder in 2D including source rotation
-// a mono signal is encoded at at certain ambisonic order
+// a mono signal is encoded at a certain ambisonic order
 // with two possible modes: either rotation with an angular speed, or static with a fixed angle.
-
-// `rEncoder` is a standard Faust function.
 //
 // #### Usage
 //
@@ -66,18 +68,16 @@ rEncoder(n, sp, a, it) = thisEncoder
 // Ambisonic general stereo decoder in 2D
 // with control of the direction of implementation of the 2 loudspeakers (either direct (clockwise) or not)
 // and output amplitude
-
-// `gDecoderStereo` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : gDecoderStereo(n,d,g) : _,_
+// _,_, ... : gDecoderStereo(n,d,g) : _,_
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the decoderStereo2 function)
+// * `n`: the ambisonic order (there are 2*n+1 inputs to this function)
 // * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `g`: global output gain between 0 and 1
 //-----------------------------
@@ -91,16 +91,39 @@ gDecoderStereo(n, direct, g) = thisStereoDecoder
 			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
-
-//-------`(ho.)circularScaledVBAP`----------
-// Circular scaled VBAP with all loudspeakers and the virtual source on the unit-circle
-
-// `circularScaledVBAP` is a standard Faust function.
+//-------`(ho.)iBasicDecoder`----------
+//The basic decoder is a simple decoder that projects the incoming ambisonic situation
+//to the LS situation whatever it is, without compensation.
+//When there is a strong irregularity, there can be some holes in the spatialization
 //
 // #### Usage
 //
 // ```
-// _ : circularScaledVBAP(l, t) : _,_,...
+// _,_,... : iBasicDecoder(n,la, direct, shift) : _,_,...
+// ```
+//
+// Where:
+//
+// * `n`: the ambisonic order (there are 2*n+1 inputs to this function)
+// * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
+// * `shift` : angular shift in degrees to easily adjust angles
+//-----------------------------
+
+iBasicDecoder(n, la, direct, shift) = (par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i))))
+	with {
+			ang(i) = (ba.take(i+1, la)  - direct * shift) * direct * ma.PI / 180.;
+   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/p,alpha) : si.dot(2*n+1);
+};
+
+
+//-------`(ho.)circularScaledVBAP`----------
+// Circular scaled VBAP with all loudspeakers and the virtual source on the unit-circle
+//
+// #### Usage
+//
+// ```
+// _ : circularScaledVBAP(l, t) : _,_, ...
 // ```
 //
 // Where:
@@ -147,17 +170,15 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // Irregular decoder in 2D for an irregular multi-loudspeaker configuration
 // using 2D VBAP for compensation
 //
-// `imlsDecoder` is a standard Faust function.
-//
 // #### Usage
 //
 // ```
-// _,_,... : imlsDecoder(n,la, direct, shift) : _,_,...
-// ```
+// _,_, ... : imlsDecoder(n,la, direct, shift) : _,_,...
+// ``` 
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the 2dstereodecoder function)
+// * `n`: the ambisonic order (there are 2*n+1 inputs to this function)
 // * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `shift` : angular shift in degrees to easily adjust angles
@@ -173,25 +194,16 @@ imlsDecoder(n, la, direct, shift) = si.bus(2*n+1) : iVBAPDecoder
 			iVBAPDecoder = ho.decoder(n, q) : par(i, q, circularScaledVBAP(la, (i * 360 / q - direct * shift) * direct)) :> si.bus(p);
 };
 
-//The basic decoder projects the incoming ambisonic situation to the LS situation whatever it is, without compensation
-/*
-iBasicDecoder = (par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i))))
-	with {
-			ang(i) = (ba.take(i+1, la)  - direct * shift) * direct * ma.PI / 180.;
-   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/p,alpha) : si.dot(2*n+1);
-};
-*/
+
 
 //-------`(ho.)iDecoder`----------
 // General decoder in 2D enabling an irregular multi-loudspeaker configuration
 // and to switch between multi-channel and stereo
 //
-// `iDecoder` is a standard Faust function.
-//
 // #### Usage
 //
 // ```
-// _,_,... : iDecoder(n, la, direct, st, g) : _,_
+// _,_, ... : iDecoder(n, la, direct, st, g) : _,_, ...
 // ```
 //
 // Where:
@@ -230,8 +242,6 @@ iDecoder(n, la, direct, shift, st, g) = thisDecoder
 //----------------`optimInPhase`-------------------------
 //The inPhase Optimization optimize energy vector and put all loudspeakers signals 
 //in phase. It should be used for an auditory.
-
-// `optim` is a standard Faust function.
 //
 // #### Usage
 //
@@ -276,8 +286,6 @@ mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
 //-------`(ho.)scope`----------
 // Produces an XY pair of signals representing the ambisonic sound field
-
-// `scope` is a standard Faust function.
 //
 // #### Usage
 //
@@ -338,13 +346,11 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 
 //-------`(ho.)multiEncoder`----------
 // Encoding of a set of p signals distributed on the unit circle according to a list of p speeds and p angles
-
-// `multiEncoder` is a standard Faust function.
 //
 // #### Usage
 //
 // ```
-// _,_,... : multiEncoder(n, ls, la, it) : _,_, ...
+// _,_, ... : multiEncoder(n, ls, la, it) : _,_, ...
 // ```
 //
 // Where:
@@ -354,13 +360,6 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 // * 'la' : a list of angles in radians on the unit circle to localize the sources (one angle per signal)
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-/*
-multiEncoder(n, la) = par(i, p, ((_, ba.take(i+1, la)) : basicEncoder)) :> si.bus(2*n+1)
-		with {
-				p = outputs(la);
-				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
-};
-*/
 
 multiEncoder(n, lspeed, langle, it) = par(i, p, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*n+1)
 		with {
@@ -380,8 +379,6 @@ multiEncoder(n, lspeed, langle, it) = par(i, p, thisEncoder(ba.take(i+1, lspeed)
 
 //-------`(ho.).fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode
-
-// `fxDecorrelation` is a standard Faust function.
 //
 // fxDecorrelation applies decorrelations to spatial components already created.
 // The decorrelation is defined for each #i spatial component among P=2*n+1 at the ambisonic order n
@@ -442,8 +439,6 @@ fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, 
 
 //-------`(ho.).synDecorrelation`----------
 // Spatial ambisonic decorrelation in syn mode
-
-// `synDecorrelation` is a standard Faust function.
 //
 // synDecorrelation generates spatial decorrelated components in ambisonics from one mono signal.
 // The decorrelation is defined for each #i spatial component among P=2*n+1 at the ambisonic order n
@@ -508,8 +503,6 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 
 //-------`(ho.).fxRingMod`----------
 // Spatial ring modulation in syn mode
-
-// `fxRingMod` is a standard Faust function.
 //
 //SYN RINGMOD GENERATES SPATIAL COMPONENTS IN AMBISONICS FROM ONE MONO SIGNAL THANKS TO RING MODULATION
 // fxRingMod applies ring modulation to spatial components already created.
@@ -567,8 +560,6 @@ fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 
 //-------`(ho.).synRingMod`----------
 // Spatial ring modulation in syn mode
-
-// `synRingMod` is a standard Faust function.
 //
 // synRingMod generates spatial components in amibsonics from one mono signal thanks to ring modulation.
 // The ring modulation is defined for each spatial component among P=2*n+1 at the abmisonic order n.
@@ -639,8 +630,6 @@ synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, f
 //----------------`optimInPhase3D`-------------------------
 //The inPhase Optimization optimize energy vector and put all loudspeakers signals 
 //in phase. It should be used for an auditory.
-
-// `optim3D` is a standard Faust function.
 //
 // #### Usage
 //
@@ -792,7 +781,6 @@ with {
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
-//
 
 th(0, i, p) = (i+1) / p;
 th(1, i, p) = ((i+1) / p)^2;
