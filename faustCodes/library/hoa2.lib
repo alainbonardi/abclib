@@ -1,4 +1,13 @@
 
+
+
+//ADDING NEW CONTRIBUTORS  TO HOA.LIB//
+declare author "Alain Bonardi";
+declare author "Paul Goutmann";
+
+
+
+
 //NEW VERSION OF THE REGULAR DECODER => TO UPDATE IN HOA.LIB ==>
 //
 //--------------------------`(ho.)decoder`--------------------------------
@@ -30,10 +39,107 @@ with {
 
 
 
+
+//NEW VERSION OF THE 3D ENCODER 
+//ADDING OPTIMIZATIONS ON FACTORIAL COMPUTATIONS
+//=> TO UPDATE IN HOA.LIB ==>
+//
+//----------------------`(ho.)encoder3D`---------------------------------
+// Ambisonic encoder. Encodes a signal in the circular harmonics domain
+// depending on an order of decomposition, an angle and an elevation.
+//
+// #### Usage
+//
+// ```
+// encoder3D(n, x, a, e) : _
+// ```
+//
+// Where:
+//
+// * `n`: the order (works with n <= 8)
+// * `x`: the signal
+// * `a`: the angle
+// * `e`: the elevation
+//----------------------------------------------------------------
+
+encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
+with {
+	// The degree l of the harmonic[l, m]	
+	degree(index) = int(sqrt(index));
+	// The order m of the harmonic[l, m]	
+	order(index) = int(index - int(degree(index) * int(degree(index) + 1)));
+
+	// The spherical harmonics
+	y(l, m, theta, phi) =  e(m, theta2) * k(l, m) * p(l, m, cos(phi + ma.PI * 0.5))
+	with {	
+		//theta2 enables a continuous movement of elevation (when phi becomes greater than Pi/2)
+		theta2 = theta + (1 - int(fmod(fmod(phi / ma.PI - 0.5, 2) + 2, 2))) * ma.PI;
+		//
+		// The associated Legendre polynomial
+		// If l = 0   => p = 1
+		// If l = m   => p = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi)
+		// If l = m+1 => p = phi * (2 * (l-1) + 1) * p(l-1, l-1, cphi)
+		// Else => p = (cphi * (2 * (l-1) + 1) * p(l-1, abs(m), cphi) - ((l-1) + abs(m)) * p(l-2, abs(m), cphi)) / ((l-1) - abs(m) + 1)
+		p(l, m, cphi) = pcalcul(((l != 0) & (l == abs(m))) + ((l != 0) & (l == abs(m)+1)) * 2 + ((l != 0) & (l != abs(m)) & (l != abs(m)+1)) * 3, l, m, cphi)
+		with {
+			pcalcul(0, l, m, cphi) = 1;
+			pcalcul(1, l, m, cphi) = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi);
+			pcalcul(2, l, m, cphi) = cphi * (2 * (l-1) + 1) * p(l-1, l-1, cphi);
+			pcalcul(s, l, m, cphi) = (cphi * (2 * (l-1) + 1) * p(l-1, abs(m), cphi) - ((l-1) + abs(m)) * p(l-2, abs(m), cphi)) / ((l-1) - abs(m) + 1);
+		};	
+
+		// The exponential imaginary
+		// If m > 0 => e^i*m*theta = cos(m * theta)
+		// If m < 0 => e^i*m*theta = sin(-m * theta)
+		// If m = 0 => e^i*m*theta = 1
+		e(m, theta) = ecalcul((m > 0) * 2 + (m < 0), m, theta)
+		with {
+			ecalcul(2, m, theta) = cos(m * theta);
+			ecalcul(1, m, theta) = sin(abs(m) * theta);
+			ecalcul(s, m, theta) = 1;
+		}; 
+		
+		// The normalization
+		// If m  = 0 => k(l, m) = 1
+		// If m != 0 => k(l, m) = sqrt((l - abs(m))! / l + abs(m))!) * sqrt(2)
+		k(l, m) = kcalcul((m != 0), l, m)
+		with {	
+			kcalcul(0, l, m) = 1;
+			kcalcul(1, l, m) = sqrt(2) / sqrtFactQuotient(l+abs(m), l-abs(m))
+				with {
+						//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
+						//enables factor simplification
+						//and considering the square root of a product as a product of square roots
+						sqrtFactQuotient(n, p) = sqrtProd(n-p, p)
+						with {
+								//sqrtProd(n, p) computes the product sqrt(p+1) x sqrt(p+2) x ... x sqrt(n)
+								//to enable factorial quotient simplification
+								sqrtProd(1, p) = sqrt(p+1);
+								sqrtProd(n, p) = sqrt(p+n) * sqrtProd(n-1, p);
+						};
+			};
+		};		
+	};
+};
+//<==NEW VERSION OF THE 3D ENCODER => TO UPDATE IN HOA.LIB
+
+
+
+
+
+
+//-----------------------BELOW, NEW FUNCTIONS TO ADD TO HOA.LIB-------------------------//
+//--------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------//
+
+
+
+
+
 //-------`(ho.)rEncoder`----------
 // Ambisonic encoder in 2D including source rotation
 // a mono signal is encoded at a certain ambisonic order
-// with two possible modes: either rotation with an angular speed, or static with a fixed angle.
+// with two possible modes: either rotation with an angular speed, or static with a fixed angle (when speed is zero).
 //
 // #### Usage
 //
@@ -64,42 +170,15 @@ rEncoder(n, sp, a, it) = thisEncoder
 };
 
 
-//-------`(ho.)gDecoderStereo`----------
-// Ambisonic general stereo decoder in 2D
-// with control of the direction of implementation of the 2 loudspeakers (either direct (clockwise) or not)
-// and output amplitude
-//
-// #### Usage
-//
-// ```
-// _,_, ... : gDecoderStereo(n,d,g) : _,_
-// ```
-//
-// Where:
-//
-// * `n`: the ambisonic order (there are 2*n+1 inputs to this function)
-// * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
-// * `g`: global output gain between 0 and 1
-//-----------------------------
-
-gDecoderStereo(n, direct, g) = thisStereoDecoder
-	with {
-			//direct is direct mode (1) or indirect mode (-1)
-			//g is the absolute gain
-			leftDispatcher = _<:(*(1-direct), *(direct));
-			rightDispatcher = _<:(*(direct), *(1-direct));
-			thisStereoDecoder =  ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
-};
-
 //-------`(ho.)iBasicDecoder`----------
-//The basic decoder is a simple decoder that projects the incoming ambisonic situation
-//to the LS situation whatever it is, without compensation.
-//When there is a strong irregularity, there can be some holes in the spatialization
+//The irregular basic decoder is a simple decoder that projects the incoming ambisonic situation
+//to the loudspeaker situation whatever it is, without compensation.
+//When there is a strong irregularity, there can be some discontinuity in the sound field.
 //
 // #### Usage
 //
 // ```
-// _,_,... : iBasicDecoder(n,la, direct, shift) : _,_,...
+// _,_, ... : iBasicDecoder(n,la, direct, shift) : _,_, ...
 // ```
 //
 // Where:
@@ -118,7 +197,7 @@ iBasicDecoder(n, la, direct, shift) = (par(i, 2*n+1, _) <: par(i, p, speaker(n, 
 
 
 //-------`(ho.)circularScaledVBAP`----------
-// Circular scaled VBAP with all loudspeakers and the virtual source on the unit-circle
+// the circularScaledVBAP function provides a circular scaled VBAP with all loudspeakers and the virtual source on the unit-circle
 //
 // #### Usage
 //
@@ -173,7 +252,7 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // #### Usage
 //
 // ```
-// _,_, ... : imlsDecoder(n,la, direct, shift) : _,_,...
+// _,_, ... : imlsDecoder(n,la, direct, shift) : _,_, ...
 // ``` 
 //
 // Where:
@@ -223,7 +302,12 @@ iDecoder(n, la, direct, shift, st, g) = thisDecoder
 			ambi = 1 - st;
 			//
 			//for stereo decoding
-			paddedStereoDecoder(n, p) = (gDecoderStereo(n, direct, g), (0 <: si.bus(p-2)));
+			paddedStereoDecoder(n, p) = (gDecoderStereo, (0 <: si.bus(p-2)))
+				with {
+						leftDispatcher = _<:(*(1-direct), *(direct));
+						rightDispatcher = _<:(*(direct), *(1-direct));
+						gDecoderStereo = ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
+				};
 			//
 			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la, direct, shift), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
 };
@@ -267,8 +351,6 @@ optim(n, ot) = thisOptimizer
 
 //-------`(ho.)mirror`----------
 // Mirroring effect on the sound field
-
-// `mirror` is a standard Faust function.
 //
 // #### Usage
 //
@@ -281,6 +363,7 @@ optim(n, ot) = thisOptimizer
 // * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
 //-----------------------------
+
 mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 
 
@@ -321,8 +404,6 @@ scope(n, rt) = thisScope
 
 //-------`(ho.)stereoEncoder`----------
 // Encoding of a stereo pair of channels with symetric angles (a/2, -a/2)
-
-// `stereoEncoder` is a standard Faust function.
 //
 // #### Usage
 //
@@ -332,7 +413,7 @@ scope(n, rt) = thisScope
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoder function)
 // * 'a' : opening angle in radians, left channel at a/2 angle, right channel at -a/2 angle
 //-----------------------------
 
@@ -350,14 +431,14 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 // #### Usage
 //
 // ```
-// _,_, ... : multiEncoder(n, ls, la, it) : _,_, ...
+// _,_, ... : multiEncoder(n, lspeed, langle, it) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoding function)
-// * 'ls' : a list of speeds in turns by second (one speed per signal)
-// * 'la' : a list of angles in radians on the unit circle to localize the sources (one angle per signal)
+// * `n`: the ambisonic order (there are 2*n+1 outputs to the multiEncoding function)
+// * 'lspeed' : a list of speeds in turns by second (one speed per input signal)
+// * 'langle' : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
 
@@ -419,6 +500,7 @@ multiEncoder(n, lspeed, langle, it) = par(i, p, thisEncoder(ba.take(i+1, lspeed)
 // * 'fd': feedback / level of reinjection (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
+
 fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, wf, fd))
 			with {
                 gate(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
@@ -655,86 +737,6 @@ optim3D(n, ot) = thisOptimizer
 
 
 
-//nouvel encoder3D optimisé sur les calculs de factorielles//
-//
-//----------------------`(ho.)encoder3D`---------------------------------
-// Ambisonic encoder. Encodes a signal in the circular harmonics domain
-// depending on an order of decomposition, an angle and an elevation.
-//
-// #### Usage
-//
-// ```
-// encoder3D(n, x, a, e) : _
-// ```
-//
-// Where:
-//
-// * `n`: the order (works with n <= 8)
-// * `x`: the signal
-// * `a`: the angle
-// * `e`: the elevation
-//----------------------------------------------------------------
-
-encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
-with {
-	// The degree l of the harmonic[l, m]	
-	degree(index) = int(sqrt(index));
-	// The order m of the harmonic[l, m]	
-	order(index) = int(index - int(degree(index) * int(degree(index) + 1)));
-
-	// The spherical harmonics
-	y(l, m, theta, phi) =  e(m, theta2) * k(l, m) * p(l, m, cos(phi + ma.PI * 0.5))
-	with {	
-		//theta2 enables a continuous movement of elevation (when phi becomes greater than Pi/2)
-		theta2 = theta + (1 - int(fmod(fmod(phi / ma.PI - 0.5, 2) + 2, 2))) * ma.PI;
-		//
-		// The associated Legendre polynomial
-		// If l = 0   => p = 1
-		// If l = m   => p = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi)
-		// If l = m+1 => p = phi * (2 * (l-1) + 1) * p(l-1, l-1, cphi)
-		// Else => p = (cphi * (2 * (l-1) + 1) * p(l-1, abs(m), cphi) - ((l-1) + abs(m)) * p(l-2, abs(m), cphi)) / ((l-1) - abs(m) + 1)
-		p(l, m, cphi) = pcalcul(((l != 0) & (l == abs(m))) + ((l != 0) & (l == abs(m)+1)) * 2 + ((l != 0) & (l != abs(m)) & (l != abs(m)+1)) * 3, l, m, cphi)
-		with {
-			pcalcul(0, l, m, cphi) = 1;
-			pcalcul(1, l, m, cphi) = -1 * (2 * (l-1) + 1) * sqrt(1 - cphi*cphi) * p(l-1, l-1, cphi);
-			pcalcul(2, l, m, cphi) = cphi * (2 * (l-1) + 1) * p(l-1, l-1, cphi);
-			pcalcul(s, l, m, cphi) = (cphi * (2 * (l-1) + 1) * p(l-1, abs(m), cphi) - ((l-1) + abs(m)) * p(l-2, abs(m), cphi)) / ((l-1) - abs(m) + 1);
-		};	
-
-		// The exponential imaginary
-		// If m > 0 => e^i*m*theta = cos(m * theta)
-		// If m < 0 => e^i*m*theta = sin(-m * theta)
-		// If m = 0 => e^i*m*theta = 1
-		e(m, theta) = ecalcul((m > 0) * 2 + (m < 0), m, theta)
-		with {
-			ecalcul(2, m, theta) = cos(m * theta);
-			ecalcul(1, m, theta) = sin(abs(m) * theta);
-			ecalcul(s, m, theta) = 1;
-		}; 
-		
-		// The normalization
-		// If m  = 0 => k(l, m) = 1
-		// If m != 0 => k(l, m) = sqrt((l - abs(m))! / l + abs(m))!) * sqrt(2)
-		k(l, m) = kcalcul((m != 0), l, m)
-		with {	
-			kcalcul(0, l, m) = 1;
-			kcalcul(1, l, m) = sqrt(2) / sqrtFactQuotient(l+abs(m), l-abs(m))
-				with {
-						//factorial quotient fq(n, p)=n! / p! = n(n-1)...(p+1) when n > p
-						//enables factor simplification
-						//and considering the square root of a product as a product of square roots
-						sqrtFactQuotient(n, p) = sqrtProd(n-p, p)
-						with {
-								//sqrtProd(n, p) computes the product sqrt(p+1) x sqrt(p+2) x ... x sqrt(n)
-								//to enable factorial quotient simplification
-								sqrtProd(1, p) = sqrt(p+1);
-								sqrtProd(n, p) = sqrt(p+n) * sqrtProd(n-1, p);
-						};
-			};
-		};		
-	};
-};
-
 //-------`(ho.)rEncoder3D`----------
 // Ambisonic encoder in 3D including source rotation
 // a mono signal is encoded at at certain ambisonic order
@@ -771,7 +773,6 @@ with {
 				rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
 			};
 };
-
 
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
