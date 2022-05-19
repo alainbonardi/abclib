@@ -925,7 +925,7 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 				//An elementary bandpass filter with randomized gain
 				//two inputs for this elementary filter: left is the signal to filter, right is a random noise (from a decorrelated vector of noise)
 						with {	
-								filterQ = 120;
+								filterQ = 200;
 								filterG = 1;
 								ramp = os.phasor(1, frand) : +(i/n) : ma.decimal;		
 								th = (ramp > 0.001) * (ramp@1 <= 0.001);
