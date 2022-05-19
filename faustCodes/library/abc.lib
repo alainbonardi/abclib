@@ -39,10 +39,14 @@ import("abcsounds.lib");
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_stereodecoder_ui(n) = gDecoderStereo(n, direct, gain)
+
+abc_2d_stereodecoder_ui(n) = thisStereoDecoder
 	with {
 			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+			leftDispatcher = _<:(*(1-direct), *(direct));
+			rightDispatcher = _<:(*(direct), *(1-direct));
+			thisStereoDecoder = ho.decoderStereo(n) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
 abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, gain) 
