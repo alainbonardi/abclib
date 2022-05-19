@@ -984,6 +984,23 @@ abc_jupiterbank_ui = jupiterOscFilterBank(f0, k, osc2filter, resq, resg, gain)
 				//global amplitude of the bell
 				gain = hslider("v:jupiterbank/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 };
+
+
+abc_jupiterbank2_ui = jupiterOscFilterBank2(f0, k, fa, osc2filter, resq, resg, gain)
+		with {
+				f0 = hslider("v:jupiterbank/f0 [unit:Hz]", 220, 20, 20000, 0.001);
+				k = hslider("v:jupiterbank/k", 1, 0.00001, 100, 0.00001);
+				fa = hslider("v:jupiterbank/fa", 1, 0.01, 100., 0.01) / 100.;
+				//global parameter between generation and filtering
+				osc2filter = nentry("v:jupiterbank/osc2filter", 0., 0., 1., 0.01) : si.smoo;
+				//global parameters to control the reson bandpass filters//
+				resq = nentry("v:jupiterbank/resq", 1000., 0., 1000., 0.1);//reson quality factor//
+				resg = nentry("v:jupiterbank/resg", 0.1, 0., 1., 0.01);//reson gain//
+				//global amplitude of the bell
+				gain = hslider("v:jupiterbank/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+};
+
+
 //
 //
 //--------------------------------------------------------------------------------------//
@@ -1025,6 +1042,7 @@ abc_puckettesPaf2_ui = puckettesPaf2(f0, cf, bw, amp, iamp, ifreq, sigma, a, wf)
 			//
 			wf = nentry("wf", 0, 0, 1, 1) : si.smoo; //0 for Gauss function, 1 for Cauchy function
 };
+
 //
 //
 //--------------------------------------------------------------------------------------//
