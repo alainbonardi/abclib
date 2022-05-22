@@ -60,17 +60,17 @@ declare copyright "2012-2013 Guillot, Paris, Colafrancesco, CICM labex art H2H, 
 // #### Usage
 //
 // ```
-// encoder(n, x, a) : _
+// encoder(N, x, a) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 // * `x`: the signal
 // * `a`: the angle
 //----------------------------------------------------------------
 encoder(0, x, a) = x;
-encoder(n, x, a) = encoder(n-1, x, a), x*sin(n*a), x*cos(n*a);
+encoder(N, x, a) = encoder(N-1, x, a), x*sin(N*a), x*cos(N*a);
 
 
 //-------`(ho.)rEncoder`----------
@@ -81,19 +81,19 @@ encoder(n, x, a) = encoder(n-1, x, a), x*sin(n*a), x*cos(n*a);
 // #### Usage
 //
 // ```
-// _ : rEncoder(n, sp, a, it) : _,_, ...
+// _ : rEncoder(N, sp, a, it) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * `sp': the azimuth speed expressed as angular speed (2PI/sec), positive or negative
 // * `a`: the fixed azimuth when the rotation stops (sp = 0) in radians
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-rEncoder(n, sp, a, it) = thisEncoder
+rEncoder(N, sp, a, it) = thisEncoder
 	with {
-            basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+            basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
 			thisEncoder = (_, rotationOrStaticAngle) : basicEncoder
 				with {
 						//converting the static angle from radians to [0; 1]
@@ -112,17 +112,17 @@ rEncoder(n, sp, a, it) = thisEncoder
 // #### Usage
 //
 // ```
-// _,_ : stereoEncoder(n, a) : _,_, ...
+// _,_ : stereoEncoder(N, a) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the stereoEncoder function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'a' : opening angle in radians, left channel at a/2 angle, right channel at -a/2 angle
 //-----------------------------
-stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
+stereoEncoder(N, a) = (leftEncoder, rightEncoder) :> si.bus(2*N+1)
 		with {
-				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+				basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
 				leftEncoder = (_, a / 2) : basicEncoder;
 				rightEncoder = (_, -a /2) : basicEncoder;
 };
@@ -134,20 +134,20 @@ stereoEncoder(n, a) = (leftEncoder, rightEncoder) :> si.bus(2*n+1)
 // #### Usage
 //
 // ```
-// _,_, ... : multiEncoder(n, lspeed, langle, it) : _,_, ...
+// _,_, ... : multiEncoder(N, lspeed, langle, it) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the multiEncoding function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'lspeed' : a list of speeds in turns by second (one speed per input signal, positive or negative)
 // * 'langle' : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-multiEncoder(n, lspeed, langle, it) = par(i, p, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*n+1)
+multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
 		with {
-				p = outputs(langle); //supposed to be the same as outputs(lspeed)
-				basicEncoder(sig, angle) = ho.encoder(n, sig, angle);
+				P = outputs(langle); //supposed to be the same as outputs(lspeed)
+				basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
 				thisEncoder(sp, a, it) = (_, rotationOrStaticAngle) : basicEncoder
 				with {
 						//converting the static angle from radians to [0; 1]
@@ -166,22 +166,22 @@ multiEncoder(n, lspeed, langle, it) = par(i, p, thisEncoder(ba.take(i+1, lspeed)
 // #### Usage
 //
 // ```
-// _ : decoder(n, p) : _
+// _ : decoder(N, P) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
-// * `p`: the number of speakers
+// * `N`: the ambisonic order (constant numerical expression)
+// * `P`: the number of speakers (constant numerical expression)
 //
 // #### Note
 //
-// Number of loudspeakers must be greater or equal to 2n+1. It's preferable
-// to use 2n+2 loudspeakers.
+// The number of loudspeakers must be greater or equal to 2n+1.
+// It's preferable to use 2n+2 loudspeakers.
 //-------------------------------------------------------------------
-decoder(n, p) = par(i, 2*n+1, _) <: par(i, p, speaker(n, 2 * ma.PI*i/p))
+decoder(N, P) = par(i, 2*N+1, _) <: par(i, P, speaker(n, 2 * ma.PI*i/P))
 with {
-   speaker(n,a)	= /(2), par(i, 2*n, _), encoder(n, 2/p, a) : si.dot(2*n+1);
+   speaker(N,a)	= /(2), par(i, 2*N, _), encoder(N, 2/P, a) : si.dot(2*N+1);
 };
 
 
@@ -193,17 +193,17 @@ with {
 // #### Usage
 //
 // ```
-// _ : decoderStereo(n) : _
+// _ : decoderStereo(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //--------------------------------------------------------------
-decoderStereo(n) = decoder(n, p) <: (par(i, 2*n+2, gainLeft(360 * i / p)) :> _),
-	(par(i, 2*n+2, gainRight(360 * i / p)) :> _)
+decoderStereo(N) = decoder(N, P) <: (par(i, 2*N+2, gainLeft(360 * i / P)) :> _),
+	(par(i, 2*N+2, gainRight(360 * i / P)) :> _)
 with {
-	p = 2*n+2;
+	P = 2*N+2;
 
    	gainLeft(a) = _ * sin(ratio_minus + ratio_cortex)
 	with {
@@ -227,20 +227,21 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : iBasicDecoder(n,la, direct, shift) : _,_, ...
+// _,_, ... : iBasicDecoder(N,la, direct, shift) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs to this function)
+// * `N`: the ambisonic order (there are 2*N+1 inputs to this function)
 // * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `shift` : angular shift in degrees to easily adjust angles
 //-----------------------------
-iBasicDecoder(n, la, direct, shift) = (par(i, 2*n+1, _) <: par(i, p, speaker(n, ang(i))))
+iBasicDecoder(N, la, direct, shift) = (par(i, 2*N+1, _) <: par(i, P, speaker(N, ang(i))))
 	with {
+			P = outputs(la);
 			ang(i) = (ba.take(i+1, la)  - direct * shift) * direct * ma.PI / 180.;
-   			speaker(n,alpha) = /(2), par(i, 2*n, _), ho.encoder(n,2/p,alpha) : si.dot(2*n+1);
+   			speaker(N,alpha) = /(2), par(i, 2*N, _), ho.encoder(N,2/P,alpha) : si.dot(2*N+1);
 };
 
 
@@ -299,24 +300,22 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // #### Usage
 //
 // ```
-// _,_, ... : imlsDecoder(n,la, direct, shift) : _,_, ...
+// _,_, ... : imlsDecoder(N,la, direct, shift) : _,_, ...
 // ``` 
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs to this function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `shift` : angular shift in degrees to easily adjust angles
 //-----------------------------
-imlsDecoder(n, la, direct, shift) = si.bus(2*n+1) : iVBAPDecoder
+imlsDecoder(N, la, direct, shift) = si.bus(2*N+1) : iVBAPDecoder
 	with {
-			p = outputs(la);
-			vbapon = par(i, p, *(vb));
-			vbapoff = par(i, p, *(1-vb));
+			P = outputs(la);
 			//The VBAP decoder uses VBAP compensation: it balances the regular decoder output enabling to use irregular angular setup.
-			q = max(2*n+2, p);
-			iVBAPDecoder = ho.decoder(n, q) : par(i, q, circularScaledVBAP(la, (i * 360 / q - direct * shift) * direct)) :> si.bus(p);
+			Q = max(2*N+2, P);
+			iVBAPDecoder = ho.decoder(N, Q) : par(i, Q, circularScaledVBAP(la, (i * 360 / Q - direct * shift) * direct)) :> si.bus(P);
 };
 
 
@@ -327,33 +326,33 @@ imlsDecoder(n, la, direct, shift) = si.bus(2*n+1) : iVBAPDecoder
 // #### Usage
 //
 // ```
-// _,_, ... : iDecoder(n, la, direct, st, g) : _,_, ...
+// _,_, ... : iDecoder(N, la, direct, st, g) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the decoder2_ui function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'la': the list of angles in degrees
 // * 'direct': 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * 'shift' : angular shift in degrees to easily adjust angles
 // * 'st': 1 for stereo, 0 for multi-loudspeaker configuration. When 1, stereo sounds goes through the first two channels
 // * 'g' : gain between 0 and 1
 //-----------------------------
-iDecoder(n, la, direct, shift, st, g) = thisDecoder
+iDecoder(N, la, direct, shift, st, g) = thisDecoder
 	with {
 			//p is the number of outputs
-            p = outputs(la);
+            P = outputs(la);
 			ambi = 1 - st;
 			//
 			//for stereo decoding
-			paddedStereoDecoder(n, p) = (gDecoderStereo, (0 <: si.bus(p-2)))
+			paddedStereoDecoder(N, P) = (gDecoderStereo, (0 <: si.bus(P-2)))
 				with {
 						leftDispatcher = _<:(*(1-direct), *(direct));
 						rightDispatcher = _<:(*(direct), *(1-direct));
 						gDecoderStereo = ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 				};
 			//
-			thisDecoder = si.bus(2*n+1) <: (si.bus(2*n+1), si.bus(2*n+1)) : (imlsDecoder(n, la, direct, shift), paddedStereoDecoder(n, p)) : (par(i, p, *(ambi)), *(st), *(st), si.bus(p-2))  :> si.bus(p) : par(i, p, *(g));
+			thisDecoder = si.bus(2*N+1) <: (si.bus(2*N+1), si.bus(2*N+1)) : (imlsDecoder(N, la, direct, shift), paddedStereoDecoder(N, P)) : (par(i, P, *(ambi)), *(st), *(st), si.bus(P-2))  :> si.bus(P) : par(i, P, *(g));
 };
 
 
@@ -372,14 +371,14 @@ iDecoder(n, la, direct, shift, st, g) = thisDecoder
 // #### Usage
 //
 // ```
-// _ : optimBasic(n) : _
+// _ : optimBasic(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //-----------------------------------------------------
-optimBasic(n) = par(i, 2*n+1, _);
+optimBasic(N) = par(i, 2*N+1, _);
 
 
 //----------------`(ho.)optimMaxRe`-------------------------
@@ -389,18 +388,18 @@ optimBasic(n) = par(i, 2*n+1, _);
 // #### Usage
 //
 // ```
-// _ : optimMaxRe(n) : _
+// _ : optimMaxRe(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //-----------------------------------------------------
-optimMaxRe(n) = par(i, 2*n+1, optim(i, n, _))
+optimMaxRe(N) = par(i, 2*N+1, optim(i, N, _))
  with {
-   	optim(i, n, _)= _ * cos(indexabs / (2*n+1) * ma.PI)
+   	optim(i, N, _)= _ * cos(indexabs / (2*N+1) * ma.PI)
 	with {
-		numberOfharmonics = 2 *n + 1;
+		numberOfharmonics = 2 * N + 1;
 		indexabs = (int)((i - 1) / 2 + 1);
 	};
 };
@@ -413,16 +412,16 @@ optimMaxRe(n) = par(i, 2*n+1, optim(i, n, _))
 // #### Usage
 //
 // ```
-// _ : optimInPhase(n) : _
+// _ : optimInPhase(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //-----------------------------------------------------
-optimInPhase(n)	= par(i, 2*n+1, optim(i, n, _))
+optimInPhase(N)	= par(i, 2*N+1, optim(i, N, _))
 with {
-   	optim(i, n, _)= _ * (fact(n)^2.) / (fact(n+indexabs) * fact(n-indexabs))
+   	optim(i, N, _)= _ * (fact(N)^2.) / (fact(N+indexabs) * fact(N-indexabs))
 	with {
 		indexabs = (int)((i - 1) / 2 + 1);
 		fact(0) = 1;
@@ -438,21 +437,20 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : optim(n, ot) : _,_, ...
+// _,_, ... : optim(N, ot) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the optim function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
 //-----------------------------
-optim(n, ot) = thisOptimizer
+optim(N, ot) = thisOptimizer
 	with {
 			optb = (ot == 0) : si.smoo;
 			optm = (ot == 1) : si.smoo;
 			opti = (ot == 2) : si.smoo;
-			interlace(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
-			thisOptimizer = ((si.bus(2*n+1)  <: ((si.bus(2*n+1):ho.optimBasic(n)), (si.bus(2*n+1):ho.optimMaxRe(n)), (si.bus(2*n+1):ho.optimInPhase(n)))), ((optb <: si.bus(2*n+1)), (optm <: si.bus(2*n+1)), (opti <: si.bus(2*n+1)))) : interlace(6*n+3) : par(i, 6*n+3, *) :> si.bus(2*n+1);
+			thisOptimizer = ((si.bus(2*N+1)  <: ((si.bus(2*N+1):ho.optimBasic(N)), (si.bus(2*N+1):ho.optimMaxRe(N)), (si.bus(2*N+1):ho.optimInPhase(N)))), ((optb <: si.bus(2*N+1)), (optm <: si.bus(2*N+1)), (opti <: si.bus(2*N+1)))) : ro.interleave(6*N+3, 2) : par(i, 6*N+3, *) :> si.bus(2*N+1);
 };
 
 
@@ -464,17 +462,17 @@ optim(n, ot) = thisOptimizer
 // #### Usage
 //
 // ```
-// _ : wider(n,w) : _
+// _ : wider(N,w) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 // * `w`: the width value between 0 - 1
 //-----------------------------------------------------
-wider(n, w)	= par(i, 2*n+1, perform(n, w, i, _))
+wider(N, w)	= par(i, 2*N+1, perform(N, w, i, _))
 with {
-	perform(n, w, i, _) = _ * (log(n+1) * (1 - w) + 1) * clipweight
+	perform(N, w, i, _) = _ * (log(N+1) * (1 - w) + 1) * clipweight
 	with {
 		clipweight = weighter(n, w, i) * (weighter(n, w, i) > 0) * (weighter(n, w, i) <= 1) + (weighter(n, w, i) > 1)
 		with {
@@ -494,15 +492,15 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : mirror(n, fa) : _,_, ...
+// _,_, ... : mirror(N, fa) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'fa' : mirroring type (1=original sound field; 0=original+mirrored sound field; -1=mirrored sound field)
 //-----------------------------
-mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
+mirror(N, fa) = (*(1), par(i, N, (*(fa), *(1))));
 
 
 //----------------`(ho.)map`-------------------------
@@ -512,17 +510,17 @@ mirror(n, fa) = (*(1), par(i, n, (*(fa), *(1))));
 // #### Usage
 //
 // ```
-// map(n, x, r, a)
+// map(N, x, r, a)
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 // * `x`: the signal
 // * `r`: the radius
 // * `a`: the angle in radian
 //-----------------------------------------------------
-map(n, x, r, a)	= encoder(n, x * volume(r), a) : wider(n, ouverture(r))
+map(N, x, r, a)	= encoder(N, x * volume(r), a) : wider(N, ouverture(r))
 with {
 	volume(r) = 1. / (r * r * (r > 1) + (r <= 1));
 	ouverture(r) = r * (r < 1) + (r >= 1);
@@ -535,15 +533,15 @@ with {
 // #### Usage
 //
 // ```
-// _ : rotate(n, a) : _
+// _ : rotate(N, a) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 // * `a`: the angle in radian
 //-----------------------------------------------------
-rotate(n, a) = par(i, 2*n+1, _) <: par(i, 2*n+1, rotation(i, a))
+rotate(N, a) = par(i, 2*N+1, _) <: par(i, 2*N+1, rotation(i, a))
 with {
 	rotation(i, a) = (par(j, 2*n+1, gain1(i, j, a)), par(j, 2*n+1, gain2(i, j, a)), par(j, 2*n+1, gain3(i, j, a)) :> _)
 	with {
@@ -561,31 +559,30 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : scope(n, rt) : _,_
+// _,_, ... : scope(N, rt) : _,_
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs to the mirror function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'rt' : refreshment time in milliseconds
 //-----------------------------
-scope(n, rt) = thisScope
+scope(N, rt) = thisScope
 		with {
 				//Angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
 				theta = os.phasor(1, 1/rt) * 2 * ma.PI;
 				//we get the vector of harmonic functions thanks to the encoding function//
-                harmonicsVector = ho.encoder(n, 1, theta);
+                harmonicsVector = ho.encoder(N, 1, theta);
 				//
-				normalizedVector(n) = si.bus(n) <: (si.bus(n), norm) : interlace2(n) : par(i, n, /)
+				normalizedVector(n) = si.bus(N) <: (si.bus(N), norm) : ro.interleave(N, 2) : par(i, N, /)
 				with {
-					norm = par(i, n, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(n);
-					interlace2(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
+					norm = par(i, N, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(N);
 				};
-				//building (2n+1) normalized vectors
-				inputVector = (*(0.5), par(i, (2*n), _)) : normalizedVector(2*n+1);
-				normalizedHarmonics = harmonicsVector : normalizedVector(2*n+1);
+				//building (2N+1) normalized vectors
+				inputVector = (*(0.5), par(i, (2*N), _)) : normalizedVector(2*N+1);
+				normalizedHarmonics = harmonicsVector : normalizedVector(2*N+1);
 				//
-				rho = (inputVector, normalizedHarmonics) : si.dot(2*n+1) ;
+				rho = (inputVector, normalizedHarmonics) : si.dot(2*N+1) ;
 				thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_, _)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _, _);	
 };
 
@@ -601,7 +598,7 @@ scope(n, rt) = thisScope
 // Spatial ambisonic decorrelation in fx mode
 //
 // fxDecorrelation applies decorrelations to spatial components already created.
-// The decorrelation is defined for each #i spatial component among P=2*n+1 at the ambisonic order n
+// The decorrelation is defined for each #i spatial component among P=2*N+1 at the ambisonic order N
 // as a delay of 0 if factor fa is under a certain value 1-(i+1)/P and d*F((i+1)/p) in the contrary case,
 // where d is the maximum delay applied (in samples) and F is a distribution function for durations.
 // The user can choose this delay time distribution among 22 different ones.
@@ -627,19 +624,19 @@ scope(n, rt) = thisScope
 // #### Usage
 //
 // ```
-// _,_, ... : fxDecorrelation(n, d, wf, fa, fd, tf) : _,_, ...
+// _,_, ... : fxDecorrelation(N, d, wf, fa, fd, tf) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'd': the maximum delay applied (in samples)
 // * 'wf': window frequency (in Hz) for the overlapped delay
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'fd': feedback / level of reinjection (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
-fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, wf, fd))
+fxDecorrelation(N, d, wf, fa, fd, tf) = par(i, 2*N+1, gate(d, i, 2*N+1, fa, tf, wf, fd))
 			with {
                 gate(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
 				//
@@ -661,7 +658,7 @@ fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, 
 // Spatial ambisonic decorrelation in syn mode
 //
 // synDecorrelation generates spatial decorrelated components in ambisonics from one mono signal.
-// The decorrelation is defined for each #i spatial component among P=2*n+1 at the ambisonic order n
+// The decorrelation is defined for each #i spatial component among P=2*N+1 at the ambisonic order N
 // as a delay of 0 if factor fa is under a certain value 1-(i+1)/P and d*F((i+1)/p) in the contrary case,
 // where d is the maximum delay applied (in samples) and F is a distribution function for durations.
 // The user can choose this delay time distribution among 22 different ones.
@@ -689,19 +686,19 @@ fxDecorrelation(n, d, wf, fa, fd, tf) = par(i, 2*n+1, gate(d, i, 2*n+1, fa, tf, 
 // #### Usage
 //
 // ```
-// _,_, ... : fxDecorrelation(n, d, wf, fa, fd, tf) : _,_, ...
+// _,_, ... : fxDecorrelation(N, d, wf, fa, fd, tf) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'd': the maximum delay applied (in samples)
 // * 'wf': window frequency (in Hz) for the overlapped delay
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'fd': feedback / level of reinjection (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
-synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n+1, fa, tf, wf, fd))
+synDecorrelation(N, d, wf, fa, fd, tf) =  _ <: par(i, 2*N+1, crossFade(d, i, 2*N+1, fa, tf, wf, fd))
 			with {
 				crossFade(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
                 //
@@ -749,17 +746,17 @@ synDecorrelation(n, d, wf, fa, fd, tf) =  _ <: par(i, 2*n+1, crossFade(d, i, 2*n
 // #### Usage
 //
 // ```
-// _,_, ... : fxRingMod(n, f0, fa, tf) : _,_, ...
+// _,_, ... : fxRingMod(N, f0, fa, tf) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'f0': the maximum delay applied (in samples)
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
-fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
+fxRingMod(N, f0, fa, tf) = par(i, 2*N+1, gate_ringmod(f0, i, 2*N+1, fa, tf))
 	with{
 		//
 		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
@@ -806,17 +803,17 @@ fxRingMod(n, f0, fa, tf) = par(i, 2*n+1, gate_ringmod(f0, i, 2*n+1, fa, tf))
 // #### Usage
 //
 // ```
-// _,_, ... : synRingMod(n, f0, fa, tf) : _,_, ...
+// _,_, ... : synRingMod(N, f0, fa, tf) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 inputs and outputs to the mirror function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'f0': the maximum delay applied (in samples)
 // * 'fa': decorrelation factor (between 0 and 1)
 // * 'tf': type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
-synRingMod(n, f0, fa, tf) = _ <: par(i, 2*n+1, crossfade_ringmod(f0, i, 2*n+1, fa, tf))
+synRingMod(N, f0, fa, tf) = _ <: par(i, 2*N+1, crossfade_ringmod(f0, i, 2*N+1, fa, tf))
 	with{
 		//
 		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
@@ -878,18 +875,18 @@ th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2) ;
 // #### Usage
 //
 // ```
-// encoder3D(n, x, a, e) : _
+// encoder3D(N, x, a, e) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 // * `x`: the signal
 // * `a`: the angle
 // * `e`: the elevation
 //----------------------------------------------------------------
 
-encoder3D(n, x, theta, phi) = par(i, (n+1) * (n+1), x * y(degree(i), order(i), theta, phi))
+encoder3D(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index) = int(sqrt(index));
@@ -960,21 +957,21 @@ with {
 // #### Usage
 //
 // ```
-// _ : rEncoder3D(n, azsp, elsp, az, el, it) : _,_, ...
+// _ : rEncoder3D(N, azsp, elsp, az, el, it) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order (there are 2*n+1 outputs to the encoder2 function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * `azsp': the azimuth speed expressed as angular speed (2PI/sec), positive or negative
 // * `elsp': the elevation speed expressed as angular speed (2PI/sec), positive or negative
 // * `az`: the fixed azimuth when the azimuth rotation stops (azsp = 0) in radians
 // * `el`: the fixed elevation when the elevation rotation stops (elsp = 0) in radians
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-rEncoder3D(n, azsp, elsp, az, el, it) = this3DEncoder
+rEncoder3D(N, azsp, elsp, az, el, it) = this3DEncoder
 with {
-		basic3DEncoder(sig, ang1, ang2) = encoder3D(n, sig, ang1, ang2);
+		basic3DEncoder(sig, ang1, ang2) = encoder3D(N, sig, ang1, ang2);
 		this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
 			with {
 				x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI); 
@@ -995,12 +992,12 @@ with {
 // #### Usage
 //
 // ```
-// _ : optimBasic3D(n) : _
+// _ : optimBasic3D(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //-----------------------------------------------------
 optimBasic3D(N) = par(i, (N+1) * (N+1), _);
 
@@ -1012,12 +1009,12 @@ optimBasic3D(N) = par(i, (N+1) * (N+1), _);
 // #### Usage
 //
 // ```
-// _ : optimMaxRe3D(n) : _
+// _ : optimMaxRe3D(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //-----------------------------------------------------
 optimMaxRe3D(N) = par(i, (N+1) * (N+1), MaxRe(N, degree(i), _))
 with {
@@ -1034,18 +1031,18 @@ with {
 // #### Usage
 //
 // ```
-// _ : optimInPhase3D(n) : _
+// _ : optimInPhase3D(N) : _
 // ```
 //
 // Where:
 //
-// * `n`: the order
+// * `N`: the ambisonic order (constant numerical expression)
 //-----------------------------------------------------
 optimInPhase3D(N) = par(i, (N+1) * (N+1), InPhase(N, degree(i), _))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index)  = int(sqrt(index));
-   	InPhase(N, l, _)= _ * (fact(N) * fact(N)) / (fact(N - l) * fact(N + l))
+   	InPhase(n, l, _)= _ * (fact(n) * fact(n)) / (fact(n - l) * fact(n + l))
 	with {
 		fact(0) = 1;
 		fact(n) = n * fact(n-1);
@@ -1060,20 +1057,19 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : optim3D(n, ot) : _,_, ...
+// _,_, ... : optim3D(N, ot) : _,_, ...
 // ```
 //
 // Where:
 //
-// * `n`: the ambisonic order in 3D (there are (n+1)*(n+1) inputs and outputs to the optim function)
+// * `N`: the ambisonic order (constant numerical expression)
 // * 'ot' : optimization type (0 for optimBasic, 1 for optimMaxRe, 2 for optimInPhase)
 //-----------------------------
-optim3D(n, ot) = thisOptimizer
+optim3D(N, ot) = thisOptimizer
 	with {
 			optb = (ot == 0) : si.smoo;
 			optm = (ot == 1) : si.smoo;
 			opti = (ot == 2) : si.smoo;
-			bus3D = si.bus((n+1)*(n+1));
-			interlace(n) = si.bus(2*n) <: par(i, n, (ba.selector(i, 2*n), ba.selector(i+n, 2*n)));
-			thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(n)), (bus3D:ho.optimMaxRe3D(n)), (bus3D:ho.optimInPhase(n)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : interlace(3*(n+1)*(n+1)) : par(i, 3*(n+1)*(n+1), *) :> bus3D;
+			bus3D = si.bus((N+1)*(N+1));
+			thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(N)), (bus3D:ho.optimMaxRe3D(N)), (bus3D:ho.optimInPhase(N)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : ro.interleave(3*(N+1)*(N+1), 2) : par(i, 3*(N+1)*(N+1), *) :> bus3D;
 };
