@@ -783,17 +783,16 @@ jupiterOscBank(freq, k) = harmoInharmonicOscBank(14, freq, k);
 
 jupiterOscFilterBank(freq, k, of, rq, rg, g) = harmoInharmonicOscFilterBank(14, freq, k, of, rq, rg, g);
 
-jupiterAmplitudes(freq, k, fa) = thisSetOfAmplitudes
+jupiterAmplitudes(freq, k, fa, dt) = thisSetOfAmplitudes
 	with {
 			amps = waveform{126, 119, 113, 108, 99, 93, 84, 78, 73, 63, 58, 52, 43, 37, 32, 23, 17, 30, 42, 56, 70, 56, 42, 30, 17, 3, 2, 2, 2, 2, 2, 2, 2, 2, 4, 7, 10, 12, 15, 18, 15, 12, 10, 7, 4, 2, 1, 1, 1, 1, 1, 1, 1, 2, 3, 5, 6, 8, 10, 8, 6, 4, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 3, 4, 6, 8, 10, 8, 6, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 6, 8, 6, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 			getAmp(freq, k, fa, i) = (amps, min(int(freq * (k+i) * fa), 127)) : rdtable : /(127.0);
-			thisSetOfAmplitudes = par(i, 14, getAmp(freq, k, fa, i):si.smoo);
+			thisSetOfAmplitudes = par(i, 14, getAmp(freq, k, fa, i): ba.line(dt));
 };
 
-jupiterOscBank2(freq, k, fa) = (harmoInharmonicOscBank(14, freq, k), jupiterAmplitudes(freq, k, fa)) : ro.interleave(14, 2) : par(i, 14, *);
-jupiterOscFilterBank2(freq, k, fa, of, rq, rg, g) = (harmoInharmonicOscFilterBank(14, freq, k, of, rq, rg, g), jupiterAmplitudes(freq, k, fa)) : ro.interleave(14, 2) : par(i, 14, *);
+jupiterOscBank2(freq, k, fa, dt) = (harmoInharmonicOscBank(14, freq, k), jupiterAmplitudes(freq, k, fa), dt) : ro.interleave(14, 2) : par(i, 14, *);
 
-//[TO BE TESTED]
+jupiterOscFilterBank2(freq, k, fa, dt, of, rq, rg, g) = (harmoInharmonicOscFilterBank(14, freq, k, of, rq, rg, g), jupiterAmplitudes(freq, k, fa, dt)) : ro.interleave(14, 2) : par(i, 14, *);
 
 //-------`(mm.)puckettesPaf`----------
 // puckettesPaf generates a phased-aligned formant signal

@@ -986,11 +986,12 @@ abc_jupiterbank_ui = jupiterOscFilterBank(f0, k, osc2filter, resq, resg, gain)
 };
 
 
-abc_jupiterbank2_ui = jupiterOscFilterBank2(f0, k, fa, osc2filter, resq, resg, gain)
+abc_jupiterbank2_ui = jupiterOscFilterBank2(f0, k, fa, dt, osc2filter, resq, resg, gain)
 		with {
-				f0 = hslider("v:jupiterbank/f0 [unit:Hz]", 220, 20, 20000, 0.001);
-				k = hslider("v:jupiterbank/k", 1, 0.00001, 100, 0.00001);
-				fa = hslider("v:jupiterbank/fa", 1, 0.001, 10., 0.001) / 100.;
+				f0 = hslider("v:jupiterbank/f0 [unit:Hz]", 440, 20, 20000, 0.001);
+				k = hslider("v:jupiterbank/k", 1.004, 0.00001, 100, 0.00001);
+				fa = hslider("v:jupiterbank/fa", 1, 0.01, 100., 0.01) / 100.;
+				dt = int(hslider("v:jupiterbank/dt [unit:msec]", 100, 1, 10000, 1) * ma.SR / 1000.);
 				//global parameter between generation and filtering
 				osc2filter = nentry("v:jupiterbank/osc2filter", 0., 0., 1., 0.01) : si.smoo;
 				//global parameters to control the reson bandpass filters//
