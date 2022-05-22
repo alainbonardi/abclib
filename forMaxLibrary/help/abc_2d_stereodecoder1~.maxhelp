@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -71,8 +71,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -380,8 +380,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -844,8 +844,8 @@
 					"numinlets" : 15,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 478.0, 498.0, 204.0, 24.0 ],
-					"text" : "abc_stereodecoder7~"
+					"patching_rect" : [ 478.0, 498.0, 177.0, 24.0 ],
+					"text" : "abc_2d_stereodecoder7~"
 				}
 
 			}
@@ -1023,8 +1023,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 30.0, 498.0, 157.0, 24.0 ],
-					"text" : "abc_stereodecoder1~",
+					"patching_rect" : [ 30.0, 498.0, 177.0, 24.0 ],
+					"text" : "abc_2d_stereodecoder1~",
 					"varname" : "faustgen-3857d0"
 				}
 
@@ -1285,7 +1285,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-26", 1 ],
-					"midpoints" : [ 108.5, 548.5, 205.5, 548.5 ],
+					"midpoints" : [ 118.5, 548.5, 205.5, 548.5 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -1300,7 +1300,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 1 ],
-					"midpoints" : [ 580.0, 546.5, 653.5, 546.5 ],
+					"midpoints" : [ 566.5, 546.5, 653.5, 546.5 ],
 					"source" : [ "obj-20", 1 ]
 				}
 
@@ -1589,6 +1589,14 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "abc_2d_stereodecoder1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_stereodecoder7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_addsynth16~.mxo",
 				"type" : "iLaX"
 			}
@@ -1624,14 +1632,6 @@
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_stereodecoder1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_stereodecoder7~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",

@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 79.0, 1944.0, 739.0 ],
+		"rect" : [ 235.0, 87.0, 1944.0, 739.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1718.0, 119.0, 138.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "3rd source: granulator with spiral trajectory"
 				}
 
@@ -59,7 +58,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1509.5, 119.0, 138.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "2nd source: sound coat with Z trajectory"
 				}
 
@@ -976,8 +974,8 @@
 					"numinlets" : 15,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 478.0, 498.0, 166.0, 22.0 ],
-					"text" : "abc_stereodecoder7~"
+					"patching_rect" : [ 478.000000000000114, 504.5, 187.0, 22.0 ],
+					"text" : "abc_2d_stereodecoder7~"
 				}
 
 			}
@@ -1050,7 +1048,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 16,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 478.0, 341.0, 176.5, 24.0 ],
+					"patching_rect" : [ 478.0, 341.0, 199.000000000000114, 24.0 ],
 					"text" : "abc_2d_map7~"
 				}
 
@@ -1075,7 +1073,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 557.0, 146.0, 150.0, 33.0 ],
+					"patching_rect" : [ 568.0, 154.0, 150.0, 33.0 ],
 					"text" : "generates a square trajectory in cartesian"
 				}
 
@@ -1087,7 +1085,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 557.0, 258.0, 108.0, 22.0 ],
+					"patching_rect" : [ 568.0, 258.0, 108.0, 22.0 ],
 					"text" : "abc_cartopol~"
 				}
 
@@ -1100,7 +1098,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 557.0, 184.0, 197.0, 35.0 ],
+					"patching_rect" : [ 568.0, 184.0, 197.0, 35.0 ],
 					"text" : "abc_2d_squaretrajectory~ @size 1.2 @freq 0.2"
 				}
 
@@ -1306,7 +1304,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 2 ],
-					"midpoints" : [ 611.0, 323.0, 645.0, 323.0 ],
+					"midpoints" : [ 622.0, 323.0, 667.500000000000114, 323.0 ],
 					"source" : [ "obj-16", 1 ]
 				}
 
@@ -1601,7 +1599,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
-					"midpoints" : [ 561.0, 532.5, 653.5, 532.5 ],
+					"midpoints" : [ 571.500000000000114, 532.5, 653.5, 532.5 ],
 					"source" : [ "obj-27", 1 ]
 				}
 
@@ -2209,7 +2207,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-27", 0 ],
-					"midpoints" : [ 410.5, 474.0, 487.5, 474.0 ],
+					"midpoints" : [ 410.5, 465.0, 487.500000000000114, 465.0 ],
 					"source" : [ "obj-8", 0 ]
 				}
 
@@ -2280,6 +2278,10 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "abc_2d_stereodecoder7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_2d_ztrajectory~.mxo",
 				"type" : "iLaX"
 			}
@@ -2343,10 +2345,6 @@
 			}
 , 			{
 				"name" : "abc_soundgrain~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_stereodecoder7~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
