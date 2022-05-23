@@ -129,7 +129,7 @@ stereoEncoder(N, a) = (leftEncoder, rightEncoder) :> si.bus(2*N+1)
 
 
 //-------`(ho.)multiEncoder`----------
-// Encoding of a set of p signals distributed on the unit circle according to a list of p speeds and p angles
+// Encoding of a set of P signals distributed on the unit circle according to a list of P speeds and P angles
 //
 // #### Usage
 //
@@ -140,8 +140,8 @@ stereoEncoder(N, a) = (leftEncoder, rightEncoder) :> si.bus(2*N+1)
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * 'lspeed' : a list of speeds in turns by second (one speed per input signal, positive or negative)
-// * 'langle' : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
+// * 'lspeed' : a list of P speeds in turns by second (one speed per input signal, positive or negative)
+// * 'langle' : a list of P angles in radians on the unit circle to localize the sources (one angle per input signal)
 // * 'it' : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
 multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
@@ -179,7 +179,7 @@ multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed)
 // The number of loudspeakers must be greater or equal to 2n+1.
 // It's preferable to use 2n+2 loudspeakers.
 //-------------------------------------------------------------------
-decoder(N, P) = par(i, 2*N+1, _) <: par(i, P, speaker(n, 2 * ma.PI*i/P))
+decoder(N, P) = par(i, 2*N+1, _) <: par(i, P, speaker(N, 2 * ma.PI*i/P))
 with {
    speaker(N,a)	= /(2), par(i, 2*N, _), encoder(N, 2/P, a) : si.dot(2*N+1);
 };
@@ -220,9 +220,9 @@ with {
 
 
 //-------`(ho.)iBasicDecoder`----------
-//The irregular basic decoder is a simple decoder that projects the incoming ambisonic situation
-//to the loudspeaker situation whatever it is, without compensation.
-//When there is a strong irregularity, there can be some discontinuity in the sound field.
+// The irregular basic decoder is a simple decoder that projects the incoming ambisonic situation
+// to the loudspeaker situation (P loudspeakers) whatever it is, without compensation.
+// When there is a strong irregularity, there can be some discontinuity in the sound field.
 //
 // #### Usage
 //
@@ -233,7 +233,7 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (there are 2*N+1 inputs to this function)
-// * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * `la` : the list of P angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `shift` : angular shift in degrees to easily adjust angles
 //-----------------------------
@@ -294,7 +294,7 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 
 
 //-------`(ho.)imlsDecoder`----------
-// Irregular decoder in 2D for an irregular multi-loudspeaker configuration
+// Irregular decoder in 2D for an irregular configuration of P loudspeakers
 // using 2D VBAP for compensation
 //
 // #### Usage
@@ -306,7 +306,7 @@ circularScaledVBAP(l, t) = thisCircularVbap with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * `la` : the list of P angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `shift` : angular shift in degrees to easily adjust angles
 //-----------------------------
@@ -474,10 +474,10 @@ wider(N, w)	= par(i, 2*N+1, perform(N, w, i, _))
 with {
 	perform(N, w, i, _) = _ * (log(N+1) * (1 - w) + 1) * clipweight
 	with {
-		clipweight = weighter(n, w, i) * (weighter(n, w, i) > 0) * (weighter(n, w, i) <= 1) + (weighter(n, w, i) > 1)
+		clipweight = weighter(N, w, i) * (weighter(N, w, i) > 0) * (weighter(N, w, i) <= 1) + (weighter(N, w, i) > 1)
 		with {
-			weighter(n, w, 0) = 1.;
-			weighter(n, w, i) = (((w * log(n+1)) - log(indexabs)) / (log(indexabs+1) - log(indexabs)))
+			weighter(N, w, 0) = 1.;
+			weighter(N, w, i) = (((w * log(N+1)) - log(indexabs)) / (log(indexabs+1) - log(indexabs)))
 			with {
 				indexabs = (int)((i - 1) / 2 + 1);
 			};
@@ -543,7 +543,7 @@ with {
 //-----------------------------------------------------
 rotate(N, a) = par(i, 2*N+1, _) <: par(i, 2*N+1, rotation(i, a))
 with {
-	rotation(i, a) = (par(j, 2*n+1, gain1(i, j, a)), par(j, 2*n+1, gain2(i, j, a)), par(j, 2*n+1, gain3(i, j, a)) :> _)
+	rotation(i, a) = (par(j, 2*N+1, gain1(i, j, a)), par(j, 2*N+1, gain2(i, j, a)), par(j, 2*N+1, gain3(i, j, a)) :> _)
 	with {
 		indexabs = (int)((i - 1) / 2 + 1);
 		gain1(i, j, a) = _ * cos(a * indexabs) * (j == i);
@@ -638,12 +638,12 @@ scope(N, rt) = thisScope
 //-----------------------------
 fxDecorrelation(N, d, wf, fa, fd, tf) = par(i, 2*N+1, gate(d, i, 2*N+1, fa, tf, wf, fd))
 			with {
-                gate(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) : + ;
+                gate(d, i, N, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, N, fa, tf), 262144, wf, fd) * env1(fa, i, N), _ * env1c(fa, i, N) : + ;
 				//
 				fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
                 //
-                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-                env1c(fa, i, n) = 1 - env1(fa, i, n);
+                env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
+                env1c(fa, i, N) = 1 - env1(fa, i, N);
                 //
 				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
 				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x * fa
@@ -700,13 +700,13 @@ fxDecorrelation(N, d, wf, fa, fd, tf) = par(i, 2*N+1, gate(d, i, 2*N+1, fa, tf, 
 //-----------------------------
 synDecorrelation(N, d, wf, fa, fd, tf) =  _ <: par(i, 2*N+1, crossFade(d, i, 2*N+1, fa, tf, wf, fd))
 			with {
-				crossFade(d, i, n, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, n, fa, tf), 262144, wf, fd) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);
+				crossFade(d, i, N, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, N, fa, tf), 262144, wf, fd) * env1(fa, i, N), _ * env1c(fa, i, N) :> _ * env2(fa, i, N);
                 //
 				fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
 				//
-                env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-				env1c(fa, i, n) = 1 - env1(fa, i, n) ; 
-				env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
+                env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
+				env1c(fa, i, N) = 1 - env1(fa, i, N) ; 
+				env2(fa, i, N) = ((i > 0) * N * min(fa, 1/N)) + ((i == 0) * (sqrt(N) * (1 - (N - sqrt(N)) * min(fa, 1/N)))) : si.smooth(ba.tau2pole(0.005));
                 //
 				//computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
 				elemdur(d, i, p, fa, tf, ind) = (tf == ind) * fa * d * x
@@ -759,18 +759,18 @@ synDecorrelation(N, d, wf, fa, fd, tf) =  _ <: par(i, 2*N+1, crossFade(d, i, 2*N
 fxRingMod(N, f0, fa, tf) = par(i, 2*N+1, gate_ringmod(f0, i, 2*N+1, fa, tf))
 	with{
 		//
-		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-		env1c(fa, i, n) = 1 - env1(fa, i, n);
+		env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
+		env1c(fa, i, N) = 1 - env1(fa, i, N);
 		//
-		gate_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) : +	;
+		gate_ringmod(f, i, N, fa, tf) = _ <: _ * os.osccos(freq(f, i, N, tf)) * env1(fa, i, N), _ * env1c(fa, i, N) : +	;
 		//
-		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
+		ringmodfreq(f, i, N, tf, ind) = (tf == ind) * f * x * coef
 			with {
-				x = th(ind, i, n);
-				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
+				x = th(ind, i, N);
+				coef = min(1, max(n * (fa - (N - i - 1) / N), 0)); 		
 			};
 			//
-		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
+		freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int ; 
 };
 
 //-------`(ho.).synRingMod`----------
@@ -816,19 +816,19 @@ fxRingMod(N, f0, fa, tf) = par(i, 2*N+1, gate_ringmod(f0, i, 2*N+1, fa, tf))
 synRingMod(N, f0, fa, tf) = _ <: par(i, 2*N+1, crossfade_ringmod(f0, i, 2*N+1, fa, tf))
 	with{
 		//
-		env1(fa, i, n) = (fa > ((n-i-1)/n)) : si.smooth(ba.tau2pole(0.005));
-		env1c(fa, i, n) = 1 - env1(fa, i, n);
-		env2(fa, i, n) = ((i > 0) * n * min(fa, 1/n)) + ((i == 0) * (sqrt(n) * (1 - (n - sqrt(n)) * min(fa, 1/n)))) : si.smooth(ba.tau2pole(0.005));
+		env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
+		env1c(fa, i, N) = 1 - env1(fa, i, N);
+		env2(fa, i, N) = ((i > 0) * N * min(fa, 1/n)) + ((i == 0) * (sqrt(N) * (1 - (N - sqrt(N)) * min(fa, 1/N)))) : si.smooth(ba.tau2pole(0.005));
 		//
-		crossfade_ringmod(f, i, n, fa, tf) = _ <: _ * os.osccos(freq(f, i, n, tf)) * env1(fa, i, n), _ * env1c(fa, i, n) :> _ * env2(fa, i, n);	
+		crossfade_ringmod(f, i, N, fa, tf) = _ <: _ * os.osccos(freq(f, i, N, tf)) * env1(fa, i, N), _ * env1c(fa, i, N) :> _ * env2(fa, i, N);	
 		//
-		ringmodfreq(f, i, n, tf, ind) = (tf == ind) * f * x * coef
+		ringmodfreq(f, i, N, tf, ind) = (tf == ind) * f * x * coef
 			with {
-				x = th(ind, i, n);
-				coef = min(1, max(n * (fa - (n - i - 1) / n), 0)); 		
+				x = th(ind, i, N);
+				coef = min(1, max(N * (fa - (N - i - 1) / N), 0)); 		
 			};
 			//
-		freq(f, i, n, tf) = sum(ind, 22, ringmodfreq(f, i, n, tf, ind)) : int ; 
+		freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int ; 
 };
 
 
@@ -1042,7 +1042,7 @@ optimInPhase3D(N) = par(i, (N+1) * (N+1), InPhase(N, degree(i), _))
 with {
 	// The degree l of the harmonic[l, m]	
 	degree(index)  = int(sqrt(index));
-   	InPhase(n, l, _)= _ * (fact(n) * fact(n)) / (fact(n - l) * fact(n + l))
+   	InPhase(N, l, _)= _ * (fact(N) * fact(N)) / (fact(N - l) * fact(N + l))
 	with {
 		fact(0) = 1;
 		fact(n) = n * fact(n-1);
