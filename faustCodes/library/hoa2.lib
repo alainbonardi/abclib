@@ -349,7 +349,7 @@ iDecoder(N, la, direct, shift, st, g) = thisDecoder
 				with {
 						leftDispatcher = _<:(*(1-direct), *(direct));
 						rightDispatcher = _<:(*(direct), *(1-direct));
-						gDecoderStereo = ho.decoderStereo(n) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
+						gDecoderStereo = ho.decoderStereo(N) : (*(g), *(g)) : (leftDispatcher, rightDispatcher) :> (_, _);
 				};
 			//
 			thisDecoder = si.bus(2*N+1) <: (si.bus(2*N+1), si.bus(2*N+1)) : (imlsDecoder(N, la, direct, shift), paddedStereoDecoder(N, P)) : (par(i, P, *(ambi)), *(st), *(st), si.bus(P-2))  :> si.bus(P) : par(i, P, *(g));
@@ -574,7 +574,7 @@ scope(N, rt) = thisScope
 				//we get the vector of harmonic functions thanks to the encoding function//
                 harmonicsVector = ho.encoder(N, 1, theta);
 				//
-				normalizedVector(n) = si.bus(N) <: (si.bus(N), norm) : ro.interleave(N, 2) : par(i, N, /)
+				normalizedVector(N) = si.bus(N) <: (si.bus(N), norm) : ro.interleave(N, 2) : par(i, N, /)
 				with {
 					norm = par(i, N, _ <:(_,_) : *) :> _ : sqrt <: ((_ == 0), (_ > 0), _) : (_, *) : + <: si.bus(N);
 				};
@@ -767,7 +767,7 @@ fxRingMod(N, f0, fa, tf) = par(i, 2*N+1, gate_ringmod(f0, i, 2*N+1, fa, tf))
 		ringmodfreq(f, i, N, tf, ind) = (tf == ind) * f * x * coef
 			with {
 				x = th(ind, i, N);
-				coef = min(1, max(n * (fa - (N - i - 1) / N), 0)); 		
+				coef = min(1, max(N * (fa - (N - i - 1) / N), 0)); 		
 			};
 			//
 		freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int ; 
@@ -818,7 +818,7 @@ synRingMod(N, f0, fa, tf) = _ <: par(i, 2*N+1, crossfade_ringmod(f0, i, 2*N+1, f
 		//
 		env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
 		env1c(fa, i, N) = 1 - env1(fa, i, N);
-		env2(fa, i, N) = ((i > 0) * N * min(fa, 1/n)) + ((i == 0) * (sqrt(N) * (1 - (N - sqrt(N)) * min(fa, 1/N)))) : si.smooth(ba.tau2pole(0.005));
+		env2(fa, i, N) = ((i > 0) * N * min(fa, 1/N)) + ((i == 0) * (sqrt(N) * (1 - (N - sqrt(N)) * min(fa, 1/N)))) : si.smooth(ba.tau2pole(0.005));
 		//
 		crossfade_ringmod(f, i, N, fa, tf) = _ <: _ * os.osccos(freq(f, i, N, tf)) * env1(fa, i, N), _ * env1c(fa, i, N) :> _ * env2(fa, i, N);	
 		//
@@ -1071,5 +1071,5 @@ optim3D(N, ot) = thisOptimizer
 			optm = (ot == 1) : si.smoo;
 			opti = (ot == 2) : si.smoo;
 			bus3D = si.bus((N+1)*(N+1));
-			thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(N)), (bus3D:ho.optimMaxRe3D(N)), (bus3D:ho.optimInPhase(N)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : ro.interleave(3*(N+1)*(N+1), 2) : par(i, 3*(N+1)*(N+1), *) :> bus3D;
+			thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(N)), (bus3D:ho.optimMaxRe3D(N)), (bus3D:ho.optimInPhase3D(N)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : ro.interleave(3*(N+1)*(N+1), 2) : par(i, 3*(N+1)*(N+1), *) :> bus3D;
 };
