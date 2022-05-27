@@ -812,13 +812,13 @@ jupiterOscFilterBank2(freq, k, fa, dt, of, rq, rg, g) = (harmoInharmonicOscFilte
 // * `fund`: the fundamental frequency (Hz)
 // * `cfreq': the central frequency (Hz)
 // * `bwidth`: the band width (Hz)
-// * 'a' : the output amplitude between 0 and 1
+// * 'g' : the output gain between 0 and 1
 // * 'sgauss' : the standard deviation of the gauss function to be used
 // * 'acauchy' : the a coefficient of Cauchy function
 // * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
 
-puckettesPaf(fund, cfreq, bwidth, amp, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(amp)  
+puckettesPaf(fund, cfreq, bwidth, g, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(g)  
 		with {
 				ratio = (cfreq / fund);
 				ph = os.phasor(1, fund);
@@ -863,7 +863,7 @@ puckettesPaf(fund, cfreq, bwidth, amp, sgauss, acauchy, wfunc) = (carrier, modul
 // * `fund`: the fundamental frequency (Hz)
 // * `cfreq': the central frequency (Hz)
 // * `bwidth`: the band width (Hz)
-// * 'a' : the output amplitude between 0 and 1
+// * 'g' : the output gain between 0 and 1
 // * 'inharmoAmp' : the amplitude of the phase modulator
 // * 'inharmoFreq' : the frequency of the phase modulator
 // * 'sgauss' : the standard deviation of the gauss function to be used
@@ -871,7 +871,7 @@ puckettesPaf(fund, cfreq, bwidth, amp, sgauss, acauchy, wfunc) = (carrier, modul
 // * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
 
-puckettesPaf2(fund, cfreq, bwidth, a, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
+puckettesPaf2(fund, cfreq, bwidth, g, inharmoAmp, inharmoFreq, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(g)  
 		with {
 				ratio = (cfreq / fund);
 				ph = os.phasor(1, fund);

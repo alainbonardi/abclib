@@ -1010,12 +1010,12 @@ abc_jupiterbank2_ui = jupiterOscFilterBank2(f0, k, fa, dt, osc2filter, resq, res
 // and Philippe Manoury's use in En Echo for soprano and live electronics
 //--------------------------------------------------------------------------------------//
 //
-abc_puckettesPaf_ui = puckettesPaf(f0, cf, bw, amp, sigma, a, wf)
+abc_puckettesPaf_ui = puckettesPaf(f0, cf, bw, gain, sigma, a, wf)
 		with {
 				f0 = hslider("f0 [unit:Hz]",220, 20, 20000, 0.001);
 				cf = hslider("cf [unit:Hz]",500, 20, 20000, 0.001);
 				bw = hslider("bw [unit:Hz]", 50, 0.001, 5000, 0.001);
-				amp = hslider("amp [unit:dB]", 0, -127., 18., 0.01) : abc_dbtogain;
+				gain = hslider("gain [unit:dB]", 0, -127., 18., 0.01) : abc_dbtogain;
 				wf = nentry("wf", 0, 0, 1, 1) : si.smoo; //0 for Gauss function, 1 for Cauchy function
 				//
 				//sigma for the gaussian function
@@ -1025,12 +1025,12 @@ abc_puckettesPaf_ui = puckettesPaf(f0, cf, bw, amp, sigma, a, wf)
 				a = hslider("a", 1, 0.001, 100, 0.001);	
 };
 
-abc_puckettesPaf2_ui = puckettesPaf2(f0, cf, bw, amp, iamp, ifreq, sigma, a, wf)
+abc_puckettesPaf2_ui = puckettesPaf2(f0, cf, bw, gain, iamp, ifreq, sigma, a, wf)
 	with {
 			f0 = hslider("f0 [unit:Hz]", 220, 20, 20000, 0.001);
 			cf = hslider("cf [unit:Hz]", 500, 20, 20000, 0.001);
 			bw = hslider("bw [unit:Hz]", 50, 0.001, 5000, 0.001);
-			amp = hslider("amp [unit:dB]", 0, -127., 18., 0.01) : abc_dbtogain;
+			gain = hslider("gain [unit:dB]", 0, -127., 18., 0.01) : abc_dbtogain;
 			//
 			ifreq = hslider("ifreq [unit:Hz]", 0.1, 0, 1000, 0.001);
 			iamp = hslider("iamp", 0, 0, 1, 0.001) : si.smoo;
