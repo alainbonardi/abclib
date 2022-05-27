@@ -818,7 +818,7 @@ jupiterOscFilterBank2(freq, k, fa, dt, of, rq, rg, g) = (harmoInharmonicOscFilte
 // * 'wfunc' : the choice of wave function in the modulator (0 stands for Gauss, 1 for Cauchy)
 //-----------------------------
 
-puckettesPaf(fund, cfreq, bwidth, a, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(a)  
+puckettesPaf(fund, cfreq, bwidth, amp, sgauss, acauchy, wfunc) = (carrier, modulator) : * : *(amp)  
 		with {
 				ratio = (cfreq / fund);
 				ph = os.phasor(1, fund);
