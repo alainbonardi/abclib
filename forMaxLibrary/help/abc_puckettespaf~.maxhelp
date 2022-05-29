@@ -41,13 +41,12 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-78",
-					"linecount" : 9,
+					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 884.0, 816.0, 482.0, 127.0 ],
-					"presentation_linecount" : 9,
-					"text" : "It consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator.\nThe central frequency cf is bordered by two successive multiples of the fundamental frequency f0. The bandwith parameter (bw, in Hz) controls the width of the central peak in the spectrum of the PAF generator.\nTwo waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters.\n\nPAF synthesis is a basis to generate variable spectra on a pair of harmonics to build formants that enable to create sound close to sung vowels thanks to formants."
+					"patching_rect" : [ 884.0, 789.0, 482.0, 181.0 ],
+					"text" : "It consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator.\nThe central frequency cf (Hz) is bordered by two successive multiples of the fundamental frequency f0 (Hz). The bandwith parameter (bw, in Hz) controls the width of the central peak in the spectrum of the PAF generator.\nTwo waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters.\n\nPAF synthesis is a basis to generate variable spectra on a pair of harmonics to build formants that enable to create sound close to sung vowels thanks to formants.\n\nabc_puckettespaf2~ object adds the possibility of inharmonic generation by adding a variable phase to the driving phasor controlled by two parameters: ifreq (Hz) and iamp (between 0 and 1)."
 				}
 
 			}
@@ -9094,7 +9093,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1449.0, 808.0, 114.0, 30.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rmax launchbrowser $1"
 				}
 
@@ -9753,9 +9751,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -9863,7 +9861,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 32.0, 412.0, 21.0 ],
-									"text" : "A Phase-Aligned Formant (PAF) synthetizer",
+									"text" : "A Phase-Aligned Formant (PAF) generator",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_digest[1]"
 								}
@@ -9910,7 +9908,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 33.0, 401.0, 21.0 ],
-									"text" : "A Phase-Aligned Formant (PAF) synthetizer",
+									"text" : "A Phase-Aligned Formant (PAF) generator",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_digest[4]"
 								}
@@ -10125,7 +10123,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-58", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 893.5, 802.5, 1458.5, 802.5 ],
+					"midpoints" : [ 893.5, 784.5, 1458.5, 784.5 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
