@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
-			"revision" : 1,
+			"minor" : 2,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -336,7 +336,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 8,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 38.0, 283.5, 184.0, 24.0 ],
+					"patching_rect" : [ 38.0, 283.5, 211.500000000000028, 24.0 ],
 					"text" : "abc_2d_multiencoder3_4~"
 				}
 
@@ -348,7 +348,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 203.0, 250.0, 97.0, 22.0 ],
+					"patching_rect" : [ 231.0, 250.0, 97.0, 22.0 ],
 					"text" : "abc_soundcoat~"
 				}
 
@@ -370,7 +370,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 148.0, 213.0, 310.0, 30.0 ],
+					"patching_rect" : [ 166.0, 213.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -585,8 +585,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 2,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -741,7 +741,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 148.0, 109.0, 53.0, 22.0 ],
+					"patching_rect" : [ 166.333333333333343, 109.0, 53.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -764,8 +764,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 2,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -935,12 +935,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-17",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 38.0, 156.5, 129.0, 49.0 ],
+					"patching_rect" : [ 38.0, 156.5, 147.333333333333343, 35.0 ],
 					"text" : "abc_linrandenv2~ @freq 16 @rarefaction 0.5"
 				}
 
@@ -951,7 +951,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 611.0, 142.75, 22.0 ],
+					"patching_rect" : [ 38.0, 611.0, 163.375000000000057, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -1009,7 +1009,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 38.0, 548.0, 160.428571428571416, 22.0 ],
+					"patching_rect" : [ 38.0, 548.0, 184.000000000000028, 22.0 ],
 					"text" : "abc_2d_decoder3~"
 				}
 
@@ -1624,8 +1624,8 @@
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
-				"patcherrelativepath" : "../../../../../Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1642,8 +1642,8 @@
 			}
 , 			{
 				"name" : "abc_scope.maxpat",
-				"bootpath" : "~/Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
-				"patcherrelativepath" : "../../../../../Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

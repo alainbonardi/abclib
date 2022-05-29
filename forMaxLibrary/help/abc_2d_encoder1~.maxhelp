@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 220.0, 553.0, 1240.0, 690.0 ],
+		"rect" : [ 166.0, 174.0, 1240.0, 690.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -136,7 +136,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 743.535714285714334, 560.0, 115.0, 22.0 ],
+					"patching_rect" : [ 743.535714285714334, 560.0, 129.267006802720971, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -393,8 +393,8 @@
 					"id" : "obj-57",
 					"maxclass" : "newobj",
 					"numinlets" : 7,
-					"numoutlets" : 9,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
+					"numoutlets" : 8,
+					"outlettype" : [ "", "", "", "", "", "", "", "" ],
 					"patching_rect" : [ 744.0, 478.0, 128.183673469387827, 22.0 ],
 					"text" : "abc_2d_decoder3_8~"
 				}
@@ -845,8 +845,8 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
-					"numoutlets" : 5,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 105.0, 478.0, 129.0, 22.0 ],
 					"text" : "abc_2d_decoder1_4~"
 				}
@@ -1494,14 +1494,6 @@
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_2d_decoder1_4~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_2d_decoder3_8~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_2d_encoder1~.mxo",
