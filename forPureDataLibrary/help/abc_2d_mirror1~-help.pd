@@ -1,31 +1,31 @@
-#N canvas 328 298 1440 788 10;
+#N canvas 793 288 1440 788 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_mirrorN~  20 12 0 18
--99865 -262144 0;
+#606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_mirrors_of_spatial_components_at_orders_1_2_3...
-20 12 0 12 -99865 -262144 0;
+20 12 0 12 #606060 #fcfcfc 0;
 #X obj 64 225 abc_2d_encoder1~;
-#X obj 599 372 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 599 372 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 599 396 stereo \$1;
 #X obj 1112 562 abc_2d_decoder7~ ------------;
 #X obj 1112 700 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
 #X obj 722 472 abc_2d_scope7~ ------------;
 #X obj 37 305 abc_2d_scope1~;
-#X obj 574 674 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+#X obj 574 674 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 574 704 \; pd dsp \$1 \;;
 #X obj 1378 596 abc_meter;
 #X obj 415 535 abc_meter;
 #X obj 75 106 abc_soundcoat~;
 #X obj 64 137 loadbang;
 #X msg 64 158 -0.2;
-#X floatatom 64 179 5 0 0 0 - - -;
+#X floatatom 64 179 5 0 0 0 - - - 0;
 #X msg 64 199 speed \$1;
-#X obj 206 137 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
+#X obj 206 137 vradio 15 1 0 3 empty empty empty 0 -8 0 10 #fcfcfc
+#000000 #000000 0;
 #X obj 206 187 expr 1-$f1;
-#X floatatom 206 208 5 0 0 0 - - -;
+#X floatatom 206 208 5 0 0 0 - - - 0;
 #X msg 206 111 0;
 #X obj 206 82 loadbang;
 #X msg 206 228 factor \$1;
@@ -34,16 +34,16 @@
 #X obj 853 142 abc_addsynth5~;
 #X obj 848 181 abc_cosrandenv5~;
 #X obj 716 167 loadbang;
-#X floatatom 716 209 5 0 0 0 - - -;
+#X floatatom 716 209 5 0 0 0 - - - 0;
 #X msg 716 229 speed \$1;
 #X msg 716 188 0.1;
 #X obj 716 271 abc_2d_encoder7~ ------------;
 #X obj 431 473 abc_2d_decoder1~;
 #X obj 505 231 abc_gain -127;
-#X obj 1041 272 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
+#X obj 1041 272 vradio 15 1 0 3 empty empty empty 0 -8 0 10 #fcfcfc
+#000000 #000000 0;
 #X obj 1041 322 expr 1-$f1;
-#X floatatom 1041 343 5 0 0 0 - - -;
+#X floatatom 1041 343 5 0 0 0 - - - 0;
 #X obj 1041 217 loadbang;
 #X msg 1041 363 factor \$1;
 #X obj 201 442 abc_scope 0 0 2.5;
@@ -51,8 +51,8 @@
 #X obj 917 473 abc_2d_mirror7~ ---------------;
 #X obj 918 518 abc_2d_scope7~ ------------;
 #X obj 976 563 abc_scope 1 0 2.5;
-#X obj 1328 442 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+#X obj 1328 442 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 1328 466 stereo \$1;
 #X obj 773 565 abc_scope 0 0 2.5;
 #X msg 1041 246 1;
@@ -80,6 +80,12 @@ the mirror sound field);
 #X obj 887 225 *~ 0.3;
 #X obj 1244 301 abc_gain -15;
 #X obj 157 187 *~ 0.5;
+#X obj 601 418 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 601 442 directangles \$1;
+#X obj 1330 487 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 1330 511 directangles \$1;
 #X connect 3 1 9 1;
 #X connect 3 1 25 1;
 #X connect 3 2 9 2;
@@ -226,3 +232,7 @@ the mirror sound field);
 #X connect 66 0 33 1;
 #X connect 67 0 6 0;
 #X connect 68 0 3 1;
+#X connect 69 0 70 0;
+#X connect 70 0 34 0;
+#X connect 71 0 72 0;
+#X connect 72 0 6 0;

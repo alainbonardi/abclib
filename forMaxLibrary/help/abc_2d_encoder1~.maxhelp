@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -393,8 +393,8 @@
 					"id" : "obj-57",
 					"maxclass" : "newobj",
 					"numinlets" : 7,
-					"numoutlets" : 8,
-					"outlettype" : [ "", "", "", "", "", "", "", "" ],
+					"numoutlets" : 9,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 744.0, 478.0, 128.183673469387827, 22.0 ],
 					"text" : "abc_2d_decoder3_8~"
 				}
@@ -845,8 +845,8 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 105.0, 478.0, 129.0, 22.0 ],
 					"text" : "abc_2d_decoder1_4~"
 				}
@@ -1494,6 +1494,14 @@
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_2d_decoder1_4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_decoder3_8~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_2d_encoder1~.mxo",
