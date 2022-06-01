@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 79.0, 1163.0, 686.0 ],
+		"rect" : [ 91.0, 513.0, 1326.0, 686.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,77 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-54",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1105.0, 191.0, 188.0, 20.0 ],
+					"text" : "return time in milliseconds"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-52",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1105.0, 282.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
+					"id" : "obj-42",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1105.0, 396.0, 79.0, 22.0 ],
+					"presentation_linecount" : 2,
+					"text" : "returntime $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"id" : "obj-34",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1105.0, 441.0, 50.0, 22.0 ],
+					"text" : "s multi1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1105.0, 213.0, 83.0, 22.0 ],
+					"text" : "loadmess 100"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-45",
 					"maxclass" : "comment",
@@ -771,7 +842,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 104.0, 176.0, 322.0 ],
+						"rect" : [ 201.0, 550.0, 176.0, 322.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1027,12 +1098,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-7",
-					"linecount" : 6,
+					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 601.0, 15.0, 406.0, 87.0 ],
-					"text" : "abc_multiencoderN_S~ objects gather multiple encoders within a single object.\nN is the ambisonic order and S is the number of sources. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, abc_2d_multiencoder3_4~ enables to encode 4 monophonic sources."
+					"patching_rect" : [ 601.0, 15.0, 406.0, 127.0 ],
+					"text" : "abc_multiencoderN_S~ objects gather multiple encoders within a single object.\nN is the ambisonic order and S is the number of sources. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, abc_2d_multiencoder3_4~ enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
 				}
 
 			}
@@ -1426,6 +1497,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-52", 0 ],
+					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"source" : [ "obj-30", 0 ]
 				}
@@ -1484,6 +1562,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-34", 0 ],
+					"source" : [ "obj-42", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-47", 0 ],
 					"source" : [ "obj-46", 0 ]
 				}
@@ -1531,6 +1616,13 @@
 					"destination" : [ "obj-41", 0 ],
 					"midpoints" : [ 776.071441999999934, 423.75, 610.5, 423.75 ],
 					"source" : [ "obj-51", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-42", 0 ],
+					"source" : [ "obj-52", 0 ]
 				}
 
 			}
