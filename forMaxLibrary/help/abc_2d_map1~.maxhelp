@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 87.0, 1944.0, 739.0 ],
+		"rect" : [ 207.0, 79.0, 1944.0, 739.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,28 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-84",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1543.0, 265.0, 70.0, 20.0 ],
+					"text" : "source #3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-61",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1385.25, 271.0, 70.0, 20.0 ],
+					"text" : "source #2"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-83",
 					"linecount" : 2,
@@ -90,24 +112,23 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-65",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1163.0, 254.0, 150.0, 33.0 ],
-					"text" : "1st source: sound grain with square trajectory"
+					"patching_rect" : [ 1248.0, 271.0, 70.0, 20.0 ],
+					"text" : "source #1"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-66",
-					"linecount" : 3,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1192.0, 12.5, 481.0, 47.0 ],
-					"text" : "abc_2d_map1_1~, abc_2d_map1_2~, abc_2d_map1_3~ etc.\nare map objects to manipualte multple signal mapping.\nFor instance, abc_2d_map3_4~ enables to handle 4 sources at order #3 of ambisonics."
+					"patching_rect" : [ 504.0, 6.0, 481.0, 74.0 ],
+					"text" : "abc_2d_map1_1~, abc_2d_map1_2~, abc_2d_map1_3~ etc.\nare map objects to manipualte multple signal mapping.\nFor instance, abc_2d_map3_4~ enables to handle 4 sources at order #3 of ambisonics.\nWhen there is only one source abc_2_mapN_1~ and abc_2d_mapN~ objects are equivalent, for instance abc_2d_map3_1~ and abc_2d_map3~"
 				}
 
 			}
@@ -1169,8 +1190,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 263.0, 581.833333333333485, 278.0, 87.0 ],
-					"text" : "abc_2d_map1~ to abc_2d_map7~ objects receive three signals as inputs:\n- the source to be spatialized,\n- the radius of the position of the source (distance to the centre of the scene)\n- the angle of the position of the source in radians"
+					"patching_rect" : [ 500.5, 599.416666666666515, 278.0, 87.0 ],
+					"text" : "abc_2d_map1_1~ to abc_2d_map7_8~ objects receive three signals as inputs:\n- the source to be spatialized,\n- the radius of the position of the source (distance to the centre of the scene)\n- the angle of the position of the source in radians"
 				}
 
 			}

@@ -1,25 +1,25 @@
-#N canvas 634 275 1320 783 10;
+#N canvas 1066 278 1320 783 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_encoderN~  20 12 0 18
--99865 -262144 0;
+#606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_encoders_at_orders_1_2_3...
-20 12 0 12 -99865 -262144 0;
+20 12 0 12 #606060 #fcfcfc 0;
 #X obj 80 98 loadbang;
-#X floatatom 80 160 5 0 0 0 - - -;
+#X floatatom 80 160 5 0 0 0 - - - 0;
 #X msg 80 183 speed \$1;
 #X obj 17 350 abc_gain -127;
 #X obj 304 404 abc_2d_scope1~;
-#X obj 509 591 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+#X obj 509 591 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 509 619 \; pd dsp \$1 \;;
 #X msg 80 136 -0.2;
 #X msg 44 137 0;
 #X obj 80 227 abc_2d_encoder1;
 #X obj 140 549 abc_2d_decoder1~;
-#X floatatom 153 161 5 0 0 0 - - -;
+#X floatatom 153 161 5 0 0 0 - - - 0;
 #X msg 153 137 -45;
 #X msg 153 184 angle \$1;
-#X floatatom 218 161 5 0 0 0 - - -;
+#X floatatom 218 161 5 0 0 0 - - - 0;
 #X msg 218 137 20;
 #X msg 218 184 returntime \$1;
 #X text 113 161 t.s-1;
@@ -27,12 +27,12 @@
 #X text 252 161 msec;
 #X obj 991 211 abc_cosrandenv5~;
 #X obj 785 197 loadbang;
-#X floatatom 785 259 5 0 0 0 - - -;
+#X floatatom 785 259 5 0 0 0 - - - 0;
 #X msg 785 282 speed \$1;
 #X msg 749 236 0;
-#X floatatom 858 260 5 0 0 0 - - -;
+#X floatatom 858 260 5 0 0 0 - - - 0;
 #X msg 858 283 angle \$1;
-#X floatatom 923 260 5 0 0 0 - - -;
+#X floatatom 923 260 5 0 0 0 - - - 0;
 #X msg 923 236 20;
 #X msg 923 283 returntime \$1;
 #X text 818 260 t.s-1;
@@ -42,9 +42,9 @@
 #X msg 858 236 90;
 #X msg 785 235 0.1;
 #X obj 785 436 abc_2d_decoder7~ --------------;
-#X obj 593 354 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X msg 593 378 stereo \$1;
+#X obj 553 382 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 553 406 stereo \$1;
 #X obj 744 618 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
 #X obj 990 508 abc_2d_scope7~ --------------;
 #X text 919 25 - speed is the rotation speed in turns by second;
@@ -68,9 +68,15 @@ circle.;
 #X obj 1021 300 *~ 0.3;
 #X obj 662 215 abc_gain -20;
 #X obj 129 601 abc_quadriout -15;
-#X obj 105 489 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 105 489 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 105 513 stereo \$1;
+#X obj 105 439 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 105 463 directangles \$1;
+#X obj 552 334 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 552 358 directangles \$1;
 #X connect 3 0 10 0;
 #X connect 3 0 15 0;
 #X connect 3 0 18 0;
@@ -180,3 +186,7 @@ circle.;
 #X connect 57 0 39 0;
 #X connect 59 0 60 0;
 #X connect 60 0 13 0;
+#X connect 61 0 62 0;
+#X connect 62 0 13 0;
+#X connect 63 0 64 0;
+#X connect 64 0 39 0;

@@ -1,4 +1,4 @@
-#N canvas 1092 493 2034 784 10;
+#N canvas 251 428 2144 784 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_mapN[_S]~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
@@ -8,9 +8,9 @@
 #X obj 706 635 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X msg 706 665 \; pd dsp \$1 \;;
-#X obj 905 404 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 880 372 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 905 426 stereo \$1;
+#X msg 880 394 stereo \$1;
 #X obj 187 184 cos~;
 #X obj 187 205 +~ 1;
 #X obj 8 521 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
@@ -30,7 +30,6 @@
 #X obj 1248 480 abc_2d_scope3~ --------------;
 #X obj 570 266 r sqtraj;
 #X obj 722 186 loadbang;
-#X msg 722 207 \; sqtraj size 1.2 \; sqtraj freq 0.2 \;;
 #X obj 571 359 abc_cartopol~;
 #X obj 496 421 abc_2d_map7~ -------------;
 #X obj 785 317 sig~ 0;
@@ -43,51 +42,96 @@
 #X obj 1320 521 abc_scope 0 0 2.5;
 #X obj 685 349 abc_scope 1 0 2.5;
 #X text 542 6 DESCRIPTION;
-#X text 921 7 CONTROLS;
-#X text 542 26 abc_map1~ to abc_map7~ objects receive three signals
-as inputs: the source to be spatialized \, the radius of the position
-of the source (distance to the centre of the scene) and the angle of
-the position of the source in radians;
-#X text 922 26 there are no specific control parameters;
+#X text 1286 4 CONTROLS;
+#X text 1287 22 there are no specific control parameters;
 #X obj 440 218 abc_gain -127;
 #X obj 28 590 abc_meter;
 #X obj 544 115 abc_env_noise 125 0.5 0;
 #X obj 46 98 abc_env_noise 200 0.3 0;
 #X obj 1080 342 *~ 0.5;
-#X obj 899 197 abc_gain -15;
-#X obj 392 422 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 918 186 abc_gain -15;
+#X obj 385 388 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 392 444 stereo \$1;
+#X msg 385 410 stereo \$1;
 #X obj 553 527 abc_stereoout -15;
 #X obj 112 629 abc_quadriout -15;
 #X obj 97 570 abc_2d_decoder1_4~;
-#X connect 3 0 52 0;
+#X text 914 22 abc_2d_map1_1~ to abc_2d_map7_8~ objects receive three
+signals as inputs: - the source to be spatialized \, - the radius of
+the position of the source (distance to the centre of the scene) -
+the angle of the position of the source in radians;
+#X text 542 23 abc_2d_map1_1~ \, abc_2d_map1_2~ \, abc_2d_map1_3~ etc.
+are map objects to manipualte multple signal mapping. For instance
+\, abc_2d_map3_4~ enables to handle 4 sources at order #3 of ambisonics.
+When there is only one source abc_2_mapN_1~ and abc_2d_mapN~ objects
+are equivalent \, for instance abc_2d_map3_1~ and abc_2d_map3~.;
+#X obj 1496 157 abc_2d_squaretrajectory~;
+#X obj 1529 190 abc_cartopol~;
+#X obj 1496 133 r sqtraj2;
+#X msg 722 207 \; sqtraj size 1.2 \; sqtraj freq 0.2 \; sqtraj2 size
+0.7 \; sqtraj2 freq 0.5 \;;
+#X obj 1542 230 abc_soundgrain~;
+#X obj 1681 229 abc_soundcoat~;
+#X obj 1687 149 abc_2d_squaretrajectory~;
+#X obj 1720 182 abc_cartopol~;
+#X obj 1542 268 abc_2d_map1_3~ ---------~----------------------------
+;
+#X obj 1687 125 r ztraj;
+#X obj 1786 88 abc_env_noise 125 0.5 -5;
+#X obj 1834 184 cos~;
+#X obj 1834 205 +~ 1;
+#X obj 1883 190 abc_mult2pi~;
+#X obj 1870 151 phasor~ 0.03;
+#X obj 1884 227 *~ 10;
+#X obj 1834 226 *~ 0.9;
+#X obj 1839 436 abc_scope 0 0 2.5;
+#X obj 1767 395 abc_2d_scope1~ --------------;
+#X obj 838 405 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 838 427 directangles \$1;
+#X obj 1540 313 abc_gain -127;
+#X obj 1523 504 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 1523 528 stereo \$1;
+#X obj 1562 599 abc_meter;
+#X obj 1629 623 abc_quadriout -15;
+#X obj 1614 564 abc_2d_decoder1_4~;
+#X obj 88 513 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 88 535 directangles \$1;
+#X obj 359 417 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 359 439 directangles \$1;
+#X obj 1489 528 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 1489 550 directangles \$1;
+#X connect 3 0 50 0;
 #X connect 4 0 5 0;
 #X connect 6 0 7 0;
 #X connect 7 0 20 0;
 #X connect 8 0 9 0;
 #X connect 9 0 19 0;
 #X connect 10 0 11 0;
-#X connect 11 0 52 0;
-#X connect 12 1 27 1;
-#X connect 12 1 37 0;
-#X connect 12 2 27 2;
-#X connect 12 2 37 1;
-#X connect 13 1 52 1;
-#X connect 13 2 52 2;
-#X connect 13 3 52 3;
+#X connect 11 0 50 0;
+#X connect 12 1 26 1;
+#X connect 12 1 36 0;
+#X connect 12 2 26 2;
+#X connect 12 2 36 1;
+#X connect 13 1 50 1;
+#X connect 13 2 50 2;
+#X connect 13 3 50 3;
 #X connect 14 1 18 0;
-#X connect 15 1 35 0;
-#X connect 15 2 35 1;
+#X connect 15 1 34 0;
+#X connect 15 2 34 1;
 #X connect 16 0 8 0;
 #X connect 16 0 14 1;
-#X connect 17 0 35 2;
-#X connect 18 0 13 3;
+#X connect 17 0 34 2;
 #X connect 18 0 15 2;
-#X connect 19 0 13 2;
+#X connect 18 0 13 3;
 #X connect 19 0 15 1;
+#X connect 19 0 13 2;
 #X connect 20 1 21 0;
-#X connect 20 1 34 0;
+#X connect 20 1 33 0;
 #X connect 20 2 21 1;
 #X connect 20 3 21 2;
 #X connect 20 4 21 3;
@@ -109,45 +153,90 @@ the position of the source in radians;
 #X connect 22 6 23 6;
 #X connect 22 7 20 7;
 #X connect 22 7 23 7;
-#X connect 23 1 36 0;
-#X connect 23 2 36 1;
-#X connect 23 3 36 2;
+#X connect 23 1 35 0;
+#X connect 23 2 35 1;
+#X connect 23 3 35 2;
 #X connect 24 0 12 0;
-#X connect 25 0 26 0;
-#X connect 27 1 28 2;
-#X connect 27 2 28 3;
-#X connect 28 1 30 1;
-#X connect 28 2 30 2;
-#X connect 28 3 30 3;
-#X connect 28 4 30 4;
-#X connect 28 5 30 5;
-#X connect 28 6 30 6;
-#X connect 28 7 30 7;
-#X connect 28 8 30 8;
-#X connect 28 9 30 9;
-#X connect 28 10 30 10;
-#X connect 28 11 30 11;
-#X connect 28 12 30 12;
-#X connect 28 13 30 13;
-#X connect 28 14 30 14;
-#X connect 28 15 30 15;
-#X connect 29 0 37 2;
-#X connect 30 1 31 0;
-#X connect 30 1 50 0;
-#X connect 30 2 31 0;
-#X connect 30 2 50 1;
-#X connect 32 1 46 0;
-#X connect 33 0 22 2;
-#X connect 33 1 22 3;
-#X connect 42 0 30 0;
-#X connect 44 0 28 1;
-#X connect 45 0 13 1;
-#X connect 46 0 22 1;
-#X connect 47 0 20 0;
-#X connect 48 0 49 0;
-#X connect 49 0 30 0;
-#X connect 52 1 43 0;
-#X connect 52 1 51 0;
-#X connect 52 2 51 1;
-#X connect 52 3 51 2;
-#X connect 52 4 51 3;
+#X connect 25 0 56 0;
+#X connect 26 1 27 2;
+#X connect 26 2 27 3;
+#X connect 27 1 29 1;
+#X connect 27 2 29 2;
+#X connect 27 3 29 3;
+#X connect 27 4 29 4;
+#X connect 27 5 29 5;
+#X connect 27 6 29 6;
+#X connect 27 7 29 7;
+#X connect 27 8 29 8;
+#X connect 27 9 29 9;
+#X connect 27 10 29 10;
+#X connect 27 11 29 11;
+#X connect 27 12 29 12;
+#X connect 27 13 29 13;
+#X connect 27 14 29 14;
+#X connect 27 15 29 15;
+#X connect 28 0 36 2;
+#X connect 29 1 30 0;
+#X connect 29 1 48 0;
+#X connect 29 2 30 0;
+#X connect 29 2 48 1;
+#X connect 31 1 44 0;
+#X connect 32 0 22 2;
+#X connect 32 1 22 3;
+#X connect 40 0 29 0;
+#X connect 42 0 27 1;
+#X connect 43 0 13 1;
+#X connect 44 0 22 1;
+#X connect 45 0 20 0;
+#X connect 46 0 47 0;
+#X connect 47 0 29 0;
+#X connect 50 1 41 0;
+#X connect 50 1 49 0;
+#X connect 50 2 49 1;
+#X connect 50 3 49 2;
+#X connect 50 4 49 3;
+#X connect 53 1 54 1;
+#X connect 53 2 54 2;
+#X connect 54 1 61 2;
+#X connect 54 2 61 3;
+#X connect 55 0 53 0;
+#X connect 57 0 61 1;
+#X connect 58 0 61 4;
+#X connect 59 1 60 1;
+#X connect 59 2 60 2;
+#X connect 60 1 61 5;
+#X connect 60 2 61 6;
+#X connect 61 1 71 1;
+#X connect 61 1 79 1;
+#X connect 61 2 71 2;
+#X connect 61 2 79 2;
+#X connect 61 3 71 3;
+#X connect 61 3 79 3;
+#X connect 62 0 59 0;
+#X connect 63 0 61 7;
+#X connect 64 0 65 0;
+#X connect 65 0 69 0;
+#X connect 66 1 68 0;
+#X connect 67 0 64 0;
+#X connect 67 0 66 1;
+#X connect 68 0 61 9;
+#X connect 69 0 61 8;
+#X connect 71 1 70 0;
+#X connect 71 2 70 1;
+#X connect 71 3 70 2;
+#X connect 72 0 73 0;
+#X connect 73 0 20 0;
+#X connect 74 0 79 0;
+#X connect 75 0 76 0;
+#X connect 76 0 79 0;
+#X connect 79 1 77 0;
+#X connect 79 1 78 0;
+#X connect 79 2 78 1;
+#X connect 79 3 78 2;
+#X connect 79 4 78 3;
+#X connect 80 0 81 0;
+#X connect 81 0 50 0;
+#X connect 82 0 83 0;
+#X connect 83 0 29 0;
+#X connect 84 0 85 0;
+#X connect 85 0 79 0;
