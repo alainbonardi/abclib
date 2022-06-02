@@ -84,6 +84,7 @@ enables to encode 4 monophonic sources.;
 per second and the fixed angles (a00 \, a01 \, ...) in degrees (when
 the speeds equal 0) \, as well as the return time (it) in milliseconds
 are the control parameters.;
+#X msg 651 258 0 0 0 0;
 #X connect 3 0 4 0;
 #X connect 9 0 15 3;
 #X connect 10 0 11 0;
@@ -155,3 +156,4 @@ are the control parameters.;
 #X connect 50 0 23 0;
 #X connect 50 0 45 0;
 #X connect 50 0 46 0;
+#X connect 53 0 24 0;
