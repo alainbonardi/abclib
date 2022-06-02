@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 79.0, 561.0, 540.0 ],
+		"rect" : [ 235.0, 79.0, 714.0, 544.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,11 +40,45 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 23.0, 254.5, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color1" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
+					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
+					"id" : "obj-21",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 23.0, 286.5, 90.0, 22.0 ],
+					"text" : "directangles $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 426.5, 452.75, 45.0, 45.0 ]
+					"patching_rect" : [ 515.5, 449.75, 45.0, 45.0 ]
 				}
 
 			}
@@ -55,7 +89,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 321.5, 139.0, 150.0, 100.0 ],
+					"patching_rect" : [ 410.5, 136.0, 150.0, 100.0 ],
 					"text" : "abc_pict2map is an abstraction inside a bpatcher that enables to graphically control the abc_2d_map objects. There are no default values"
 				}
 
@@ -76,7 +110,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 278.5, 392.25, 93.0, 105.5 ],
+					"patching_rect" : [ 367.5, 389.25, 93.0, 105.5 ],
 					"viewvisibility" : 1
 				}
 
@@ -88,7 +122,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 278.5, 359.0, 130.0, 22.0 ],
+					"patching_rect" : [ 367.5, 356.0, 130.0, 22.0 ],
 					"text" : "abc_2d_scope3~"
 				}
 
@@ -101,7 +135,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 29.0, 257.5, 24.0, 24.0 ]
+					"patching_rect" : [ 118.0, 254.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -122,7 +156,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 289.5, 59.0, 22.0 ],
+					"patching_rect" : [ 118.0, 286.5, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -133,7 +167,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 95.5, 379.5, 115.0, 22.0 ],
+					"patching_rect" : [ 184.5, 376.5, 115.0, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -145,7 +179,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 95.5, 339.5, 128.714285714285779, 22.0 ],
+					"patching_rect" : [ 184.5, 336.5, 128.714285714285779, 22.0 ],
 					"text" : "abc_2d_decoder3~"
 				}
 
@@ -167,7 +201,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 327.5, 249.5, 74.0, 72.0 ],
+					"patching_rect" : [ 416.5, 246.5, 74.0, 72.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -179,7 +213,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 8,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 95.5, 289.5, 146.999999999999773, 22.0 ],
+					"patching_rect" : [ 184.5, 286.5, 146.999999999999773, 22.0 ],
 					"text" : "abc_2d_map3~"
 				}
 
@@ -190,7 +224,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 321.5, 91.0, 22.0, 20.0 ],
+					"patching_rect" : [ 410.5, 88.0, 22.0, 20.0 ],
 					"text" : "y"
 				}
 
@@ -201,7 +235,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 240.5, 91.0, 22.0, 20.0 ],
+					"patching_rect" : [ 329.5, 88.0, 22.0, 20.0 ],
 					"text" : "x"
 				}
 
@@ -217,7 +251,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 339.5, 91.0, 50.0, 22.0 ]
+					"patching_rect" : [ 428.5, 88.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -232,7 +266,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 257.5, 91.0, 50.0, 22.0 ]
+					"patching_rect" : [ 346.5, 88.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -243,7 +277,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 199.0, 91.0, 35.0, 22.0 ],
+					"patching_rect" : [ 288.0, 88.0, 35.0, 22.0 ],
 					"text" : "reset"
 				}
 
@@ -264,7 +298,7 @@
 					"numoutlets" : 2,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 199.0, 139.0, 103.0, 126.0 ],
+					"patching_rect" : [ 288.0, 136.0, 103.0, 126.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -276,7 +310,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 95.5, 243.0, 97.0, 22.0 ],
+					"patching_rect" : [ 184.5, 240.0, 97.0, 22.0 ],
 					"text" : "abc_soundcoat~"
 				}
 
@@ -325,8 +359,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 2,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -365,9 +399,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -693,8 +727,16 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"midpoints" : [ 32.5, 332.0, 194.0, 332.0 ],
+					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-42", 1 ],
-					"midpoints" : [ 349.0, 125.5, 292.5, 125.5 ],
+					"midpoints" : [ 438.0, 122.5, 381.5, 122.5 ],
 					"source" : [ "obj-27", 0 ]
 				}
 
@@ -821,7 +863,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-32", 0 ],
-					"midpoints" : [ 337.0, 334.25, 105.0, 334.25 ],
+					"midpoints" : [ 426.0, 331.25, 194.0, 331.25 ],
 					"source" : [ "obj-31", 0 ]
 				}
 
@@ -884,6 +926,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-21", 0 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-30", 2 ],
 					"source" : [ "obj-42", 1 ]
 				}
@@ -906,7 +955,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-32", 0 ],
-					"midpoints" : [ 38.5, 335.0, 105.0, 335.0 ],
+					"midpoints" : [ 127.5, 332.0, 194.0, 332.0 ],
 					"source" : [ "obj-44", 0 ]
 				}
 
@@ -942,7 +991,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-42", 0 ],
-					"midpoints" : [ 267.0, 125.5, 208.5, 125.5 ],
+					"midpoints" : [ 356.0, 122.5, 297.5, 122.5 ],
 					"source" : [ "obj-52", 0 ]
 				}
 

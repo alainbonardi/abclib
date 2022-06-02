@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 152.0, 87.0, 798.0, 676.0 ],
+		"rect" : [ 1146.0, 231.0, 798.0, 676.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -721,7 +721,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 17,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 30.0, 112.0, 187.0, 22.0 ],
+					"patching_rect" : [ 30.0, 112.0, 198.200000000000017, 22.0 ],
 					"text" : "abc_addsynth16~ @gain -10"
 				}
 
@@ -844,7 +844,7 @@
 					"numinlets" : 15,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 478.0, 498.0, 177.0, 24.0 ],
+					"patching_rect" : [ 478.0, 498.0, 204.000000000000341, 24.0 ],
 					"text" : "abc_2d_stereodecoder7~"
 				}
 
@@ -1300,7 +1300,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 1 ],
-					"midpoints" : [ 566.5, 546.5, 653.5, 546.5 ],
+					"midpoints" : [ 580.000000000000227, 546.5, 653.5, 546.5 ],
 					"source" : [ "obj-20", 1 ]
 				}
 
