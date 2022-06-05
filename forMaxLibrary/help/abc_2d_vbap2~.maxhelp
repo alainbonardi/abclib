@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 54.0, 235.0, 1131.0, 544.0 ],
+		"rect" : [ 374.0, 346.0, 1131.0, 544.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 681.0, 266.0, 446.0, 33.0 ],
-					"text" : "Angles are given by parameters a00, a01, a02... angles (in degrees).\nthetat is the angle of the virtual source (in degrees)."
+					"text" : "Angles are given by parameters a00, a01, a02... angles (in degrees).\ntheta is the angle of the virtual source (in degrees)."
 				}
 
 			}
@@ -377,7 +377,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 434.309519333333242, 110.0, 147.0, 22.0 ],
-					"text" : "loadmess 0. 90. 180. 270."
+					"text" : "loadmess 0. 84. 182. 278."
 				}
 
 			}
@@ -458,13 +458,13 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 681.0, 176.0, 446.0, 47.0 ],
-					"text" : "abc_vbap2~, abc_vbap3~, ...objects provide implementatoins of VBAP algorithm  by Ville Pulkki for various number of loudspeakers dispatched on a circle with angles that can be irregular."
+					"text" : "abc_vbap2~, abc_vbap3~, ...objects provide implementations of VBAP algorithm  by Ville Pulkki for various number of loudspeakers dispatched on a circle with angles that can be irregular."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_vbapN~", "@obj-desc", "A", "circular", "VBAP", "spatialization", "with", "irregular", "angles" ],
+					"args" : [ "@obj-name", "abc_2d_vbapN~", "@obj-desc", "A", "circular", "VBAP", "spatialization", "with", "irregular", "angles" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -523,9 +523,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -649,7 +649,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 4.0, 398.0, 27.0 ],
-									"text" : "abc_vbapN~",
+									"text" : "abc_2d_vbapN~",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_title[1]"
 								}
@@ -665,7 +665,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 5.0, 401.0, 27.0 ],
-									"text" : "abc_vbapN~",
+									"text" : "abc_2d_vbapN~",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_title[2]"
 								}

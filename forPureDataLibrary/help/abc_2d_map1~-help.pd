@@ -1,4 +1,4 @@
-#N canvas 251 428 2144 784 10;
+#N canvas 84 25 1440 784 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_mapN[_S]~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
@@ -70,11 +70,11 @@ are equivalent \, for instance abc_2d_map3_1~ and abc_2d_map3~.;
 #X obj 1496 133 r sqtraj2;
 #X obj 1489 233 abc_soundgrain~;
 #X obj 1640 232 abc_soundcoat~;
-#X obj 1687 149 abc_2d_squaretrajectory~;
-#X obj 1720 182 abc_cartopol~;
+#X obj 1687 155 abc_2d_squaretrajectory~;
+#X obj 1720 188 abc_cartopol~;
 #X obj 1542 268 abc_2d_map1_3~ ---------~----------------------------
 ;
-#X obj 1687 125 r ztraj;
+#X obj 1687 131 r ztraj;
 #X obj 1786 88 abc_env_noise 125 0.5 -5;
 #X obj 1834 184 cos~;
 #X obj 1834 205 +~ 1;

@@ -1,48 +1,48 @@
-#N canvas 557 88 2001 811 10;
+#N canvas 0 25 1440 811 10;
 #X obj 11 28 cnv 15 500 25 empty empty abc_2d_syn_delayN~ &_fx 20
-12 0 18 -99865 -262144 0;
+12 0 18 #606060 #fcfcfc 0;
 #X obj 10 780 abc_helpcredit;
 #X obj 11 54 cnv 15 500 25 empty empty Delay_processes_to_generate_or_process_spatial_components
-20 12 0 12 -99865 -262144 0;
-#X obj 924 682 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 924 682 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 924 710 \; pd dsp \$1 \;;
 #X text 932 26 CONTROLS;
 #X text 539 28 DESCRIPTION;
-#X obj 152 547 abc_2d_decoder1~;
-#X obj 34 497 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X msg 34 519 stereo \$1;
-#X obj 60 307 abc_gain -127;
-#X obj 452 496 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X msg 452 516 stereo \$1;
-#X obj 555 553 abc_2d_decoder3~;
-#X obj 547 622 dac~ 1 2 3 4 5 6 7 8;
+#X obj 152 561 abc_2d_decoder1~;
+#X obj 24 456 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 24 478 stereo \$1;
+#X obj 60 269 abc_gain -127;
+#X obj 442 483 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 442 503 stereo \$1;
+#X obj 555 571 abc_2d_decoder3~;
+#X obj 547 640 dac~ 1 2 3 4 5 6 7 8;
 #X obj 1229 276 abc_soundgrain~;
 #X obj 1163 326 abc_2d_encoder1~;
-#X obj 1127 465 abc_2d_decoder1~;
-#X obj 1030 417 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+#X obj 1127 521 abc_2d_decoder1~;
+#X obj 1030 417 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 1030 437 stereo \$1;
 #X obj 1070 207 abc_gain -127;
-#X obj 1667 366 abc_2d_randomtrajectory~;
-#X obj 1690 402 abc_cartopol~;
-#X msg 1667 342 freq \$1;
-#X obj 1667 278 loadbang;
-#X msg 1667 299 2;
-#X floatatom 1667 320 5 0 0 0 - - -;
-#X obj 1593 433 abc_2d_map7~ -------- ----- ---;
-#X obj 1238 464 abc_2d_scope1~;
-#X obj 1477 467 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
-#X msg 1477 487 stereo \$1;
-#X obj 1411 283 abc_gain -127;
-#X obj 1508 637 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
-#X obj 1540 570 abc_2d_decoder7~ ---------------;
-#X obj 1242 523 abc_scope 0 0 2.5;
-#X obj 1808 609 abc_scope 0 0 2.5;
-#X obj 1748 568 abc_2d_scope7~ --------------;
+#X obj 1688 359 abc_2d_randomtrajectory~;
+#X obj 1711 395 abc_cartopol~;
+#X msg 1688 335 freq \$1;
+#X obj 1688 271 loadbang;
+#X msg 1688 292 2;
+#X floatatom 1688 313 5 0 0 0 - - - 0;
+#X obj 1614 426 abc_2d_map7~ -------- ----- ---;
+#X obj 1238 520 abc_2d_scope1~;
+#X obj 1498 460 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 1498 480 stereo \$1;
+#X obj 1441 267 abc_gain -127;
+#X obj 1529 630 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 1561 563 abc_2d_decoder7~ ---------------;
+#X obj 1242 579 abc_scope 0 0 2.5;
+#X obj 1829 602 abc_scope 0 0 2.5;
+#X obj 1769 561 abc_2d_scope7~ --------------;
 #X obj 253 384 abc_simplefmburst;
 #X obj 253 338 loadbang;
 #X obj 253 359 del 1000;
@@ -51,11 +51,11 @@
 #X text 206 103 SYN DELAYS;
 #X obj 220 128 loadbang;
 #X msg 149 164 400;
-#X floatatom 149 185 5 0 0 0 - - -;
+#X floatatom 149 185 5 0 0 0 - - - 0;
 #X msg 149 205 window \$1;
-#X floatatom 220 185 5 0 0 0 - - -;
+#X floatatom 220 185 5 0 0 0 - - - 0;
 #X msg 220 164 300;
-#X floatatom 296 184 5 0 0 0 - - -;
+#X floatatom 296 184 5 0 0 0 - - - 0;
 #X msg 296 163 0.2;
 #X msg 220 205 deltime \$1;
 #X msg 296 204 feedback \$1;
@@ -82,11 +82,11 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X obj 1160 396 abc_2d_fx_delay1~;
 #X obj 1495 107 loadbang;
 #X msg 1424 143 400;
-#X floatatom 1424 164 5 0 0 0 - - -;
+#X floatatom 1424 164 5 0 0 0 - - - 0;
 #X msg 1424 184 window \$1;
-#X floatatom 1495 164 5 0 0 0 - - -;
+#X floatatom 1495 164 5 0 0 0 - - - 0;
 #X msg 1495 143 300;
-#X floatatom 1571 163 5 0 0 0 - - -;
+#X floatatom 1571 163 5 0 0 0 - - - 0;
 #X msg 1495 184 deltime \$1;
 #X msg 1571 183 feedback \$1;
 #X text 1481 82 FX DELAYS;
@@ -94,21 +94,33 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X obj 1495 225 s fx_delay;
 #X obj 1163 213 loadbang;
 #X msg 1163 234 0.1;
-#X floatatom 1163 255 5 0 0 0 - - -;
+#X floatatom 1163 255 5 0 0 0 - - - 0;
 #X msg 1163 275 speed \$1;
-#X obj 1544 486 abc_2d_fx_delay7~ ------------;
-#X obj 1545 412 r fx_delay;
-#X obj 79 582 abc_meter;
-#X obj 474 581 abc_meter;
-#X obj 1053 526 abc_meter;
-#X obj 1439 607 abc_meter;
-#X obj 1654 228 abc_env_noise 90 0.3 0;
-#X obj 450 294 abc_gain -20;
+#X obj 1565 479 abc_2d_fx_delay7~ ------------;
+#X obj 1566 405 r fx_delay;
+#X obj 79 596 abc_meter;
+#X obj 474 599 abc_meter;
+#X obj 1053 582 abc_meter;
+#X obj 1460 600 abc_meter;
+#X obj 1675 221 abc_env_noise 90 0.3 0;
+#X obj 462 273 abc_gain -20;
 #X obj 656 418 abc_env_noise 30 0.85 0;
-#X obj 155 608 abc_quadriout -15;
+#X obj 155 622 abc_quadriout -15;
 #X obj 253 434 *~ 0.3;
 #X obj 1316 300 *~ 0.5;
-#X obj 1121 525 abc_quadriout -15;
+#X obj 1121 581 abc_quadriout -15;
+#X obj 24 501 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 24 523 directangles \$1;
+#X obj 408 506 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 408 528 directangles \$1;
+#X obj 991 463 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 991 485 directangles \$1;
+#X obj 1420 494 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 1420 516 directangles \$1;
 #X connect 3 0 4 0;
 #X connect 7 1 80 0;
 #X connect 7 1 87 0;
@@ -276,4 +288,12 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 86 0 58 1;
 #X connect 88 0 40 1;
 #X connect 89 0 16 1;
+#X connect 91 0 92 0;
+#X connect 92 0 7 0;
+#X connect 93 0 94 0;
+#X connect 94 0 13 0;
+#X connect 95 0 96 0;
+#X connect 96 0 17 0;
+#X connect 97 0 98 0;
+#X connect 98 0 33 0;
 #X coords 0 811 1 810 85 60 0;

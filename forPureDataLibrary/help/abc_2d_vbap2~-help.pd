@@ -1,0 +1,82 @@
+#N canvas 92 25 931 651 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_2d_vbapN~  20 12 0 18 #606060
+#fcfcfc 0;
+#X obj 13 610 abc_helpcredit;
+#X obj 14 32 cnv 15 500 25 empty empty A_circular_VBAP_spatialization_with_irregular_angles
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 411 477 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 411 505 \; pd dsp \$1 \;;
+#X obj 44 432 abc_meter;
+#X text 547 110 CONTROLS;
+#X text 542 6 DESCRIPTION;
+#X obj 576 258 loadbang;
+#X obj 576 303 unpack 0 0 0 0;
+#X floatatom 576 330 5 -360 360 0 - - - 0;
+#X floatatom 631 330 5 -360 360 0 - - - 0;
+#X floatatom 687 330 5 -360 360 0 - - - 0;
+#X floatatom 741 330 5 -360 360 0 - - - 0;
+#X msg 576 350 a-0 \$1;
+#X msg 631 350 a-1 \$1;
+#X msg 687 350 a-2 \$1;
+#X msg 742 350 a-3 \$1;
+#X text 543 26 abc_vbap2~ \, abc_vbap3~ \, ...objects provide implementations
+of VBAP algorithm by Ville Pulkki for various number of loudspeakers
+dispatched on a circle with angles that can be irregular. http://lib.tkk.fi/Diss/2001/isbn9512255324/article1.pdf
+;
+#X text 550 128 - Angles of the loudspeakers are given by parameters
+a-0 \, a-1 \, a-2... angles (in degrees).;
+#X text 549 156 - theta is the angle of the virtual source (in degrees).
+;
+#X obj 576 420 s vbap4;
+#X obj 79 203 abc_soundcoat~;
+#X obj 85 260 abc_2d_vbap4~;
+#X obj 425 261 tgl 15 0 empty empty rotation_or_static 17 7 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 270 234 phasor~ 0.1;
+#X msg 576 282 0 84 182 278;
+#X obj 108 432 abc_quadriout -10;
+#X obj 270 255 *~ 360;
+#X obj 270 284 snapshot~;
+#X obj 353 217 loadbang;
+#X msg 353 238 1;
+#X obj 353 260 metro 20;
+#X obj 270 335 spigot;
+#X floatatom 270 308 5 0 0 0 - - - 0;
+#X floatatom 270 365 5 0 0 0 - - - 0;
+#X msg 270 385 theta \$1;
+#X obj 270 412 s vbap4;
+#X obj 85 233 r vbap4;
+#X connect 3 0 4 0;
+#X connect 8 0 26 0;
+#X connect 9 0 10 0;
+#X connect 9 1 11 0;
+#X connect 9 2 12 0;
+#X connect 9 3 13 0;
+#X connect 10 0 14 0;
+#X connect 11 0 15 0;
+#X connect 12 0 16 0;
+#X connect 13 0 17 0;
+#X connect 14 0 21 0;
+#X connect 15 0 21 0;
+#X connect 16 0 21 0;
+#X connect 17 0 21 0;
+#X connect 22 1 23 1;
+#X connect 23 1 27 0;
+#X connect 23 1 5 0;
+#X connect 23 2 27 1;
+#X connect 23 3 27 2;
+#X connect 23 4 27 3;
+#X connect 24 0 33 1;
+#X connect 25 0 28 0;
+#X connect 26 0 9 0;
+#X connect 28 0 29 0;
+#X connect 29 0 34 0;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 32 0 29 0;
+#X connect 33 0 35 0;
+#X connect 34 0 33 0;
+#X connect 35 0 36 0;
+#X connect 36 0 37 0;
+#X connect 38 0 23 0;

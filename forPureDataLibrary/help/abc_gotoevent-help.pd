@@ -1,0 +1,58 @@
+#N canvas 49 80 704 506 12;
+#X obj 11 8 cnv 15 500 25 empty empty abc_gotoevent 20 12 0 18 #606060
+#fcfcfc 0;
+#X obj 11 34 cnv 15 500 25 empty empty Targeted_event_counter_useful_in_mixed_music
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 11 443 cnv 15 480 25 empty empty abclibrary|Alain_Bonardi_&_Paul_Goutmann_2019-2021_CICM|University_Paris_8
+20 12 0 10 #606060 #fcfcfc 0;
+#X obj 442 334 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 442 362 \; pd dsp \$1 \;;
+#X obj 67 132 abc_gotoevent;
+#X text 919 25 - Angles of the loudspeakers are given by parameters
+a-0 \, a-1 \, a-2... angles (in degrees). thetat is the angle of the
+virtual source (in degrees).;
+#X text 250 104 The abc_gotoevent abstraction enables to resume a mixed
+music piece at a certain event. Left input is the target as an event
+number \, right input is the bang that triggers the counter from 0
+to that event. It first switches off the dsp if it is on \, and at
+the end restores its status as it was.;
+#X floatatom 67 100 5 0 0 2 Target - - 0;
+#X obj 180 98 bng 20 250 50 0 empty empty go 5 10 0 10 #fcfcfc #000000
+#000000;
+#X floatatom 67 205 5 0 0 0 - - - 0;
+#X obj 67 254 sel 1 2 3 4 5 6 7 8 9 10;
+#X msg 67 312 \; sl1 32 \;;
+#X msg 134 312 \; sl1 64 \;;
+#X msg 202 312 \; sl1 16 \;;
+#X msg 269 312 \; sl1 127 \;;
+#X msg 342 312 \; sl1 8 \;;
+#X msg 83 362 \; sl2 100 \;;
+#X msg 155 362 \; sl2 10 \;;
+#X msg 223 362 \; sl2 50 \;;
+#X msg 290 362 \; sl2 25 \;;
+#X msg 359 363 \; sl2 120 \;;
+#X obj 588 264 vsl 15 128 0 127 0 0 empty sl1 empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 618 264 vsl 15 128 0 127 0 0 empty sl2 empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X msg 599 228 0;
+#X obj 599 202 loadbang;
+#X connect 3 0 4 0;
+#X connect 5 0 10 0;
+#X connect 8 0 5 0;
+#X connect 9 0 5 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 11 1 17 0;
+#X connect 11 2 13 0;
+#X connect 11 3 18 0;
+#X connect 11 4 14 0;
+#X connect 11 5 19 0;
+#X connect 11 6 15 0;
+#X connect 11 7 20 0;
+#X connect 11 8 16 0;
+#X connect 11 9 21 0;
+#X connect 24 0 22 0;
+#X connect 24 0 23 0;
+#X connect 25 0 24 0;

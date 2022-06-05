@@ -1,4 +1,4 @@
-#N canvas 485 296 1537 781 10;
+#N canvas -1 25 1440 781 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_decoderN[_P]~  20 12
 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
@@ -10,43 +10,43 @@
 #X floatatom 64 160 5 0 0 0 - - - 0;
 #X msg 64 183 speed \$1;
 #X obj 19 337 r dec1;
-#X obj 451 228 abc_gain -127;
-#X obj 451 447 s dec1;
-#X obj 558 317 loadbang;
-#X floatatom 558 365 5 0 0 0 - - - 0;
-#X msg 558 341 0;
-#X msg 558 388 angularoffset \$1;
-#X obj 684 316 loadbang;
-#X msg 684 340 1;
-#X obj 684 364 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 474 228 abc_gain -127;
+#X obj 474 447 s dec1;
+#X obj 581 317 loadbang;
+#X floatatom 581 365 5 0 0 0 - - - 0;
+#X msg 581 341 0;
+#X msg 581 388 angularoffset \$1;
+#X obj 707 316 loadbang;
+#X msg 707 340 1;
+#X obj 707 364 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 684 388 directangles \$1;
-#X text 450 199 gain \, angularoffsert and directangles for the abc_decoder1~
+#X msg 707 388 directangles \$1;
+#X text 473 199 gain \, angularoffsert and directangles for the abc_decoder1~
 below;
-#X obj 474 518 loadbang;
-#X msg 474 542 0 90 180 270;
-#X obj 474 563 unpack 0 0 0 0;
-#X floatatom 474 590 5 -360 360 0 - - - 0;
-#X floatatom 529 590 5 -360 360 0 - - - 0;
-#X floatatom 585 590 5 -360 360 0 - - - 0;
-#X floatatom 639 590 5 -360 360 0 - - - 0;
-#X obj 474 680 s dec1;
-#X obj 401 620 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 515 518 loadbang;
+#X msg 515 542 0 90 180 270;
+#X obj 515 563 unpack 0 0 0 0;
+#X floatatom 515 590 5 -360 360 0 - - - 0;
+#X floatatom 570 590 5 -360 360 0 - - - 0;
+#X floatatom 626 590 5 -360 360 0 - - - 0;
+#X floatatom 680 590 5 -360 360 0 - - - 0;
+#X obj 515 680 s dec1;
+#X obj 442 620 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 401 644 stereo \$1;
-#X text 431 494 angles for the abc_decoder1~ below;
-#X msg 474 610 a-0 \$1;
-#X msg 529 610 a-1 \$1;
-#X msg 585 610 a-2 \$1;
-#X msg 640 610 a-3 \$1;
+#X msg 442 644 stereo \$1;
+#X text 512 496 angles for the abc_decoder1~ below;
+#X msg 515 610 a-0 \$1;
+#X msg 570 610 a-1 \$1;
+#X msg 626 610 a-2 \$1;
+#X msg 681 610 a-3 \$1;
 #X obj 1130 242 noise~;
 #X obj 914 440 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X msg 914 464 stereo \$1;
 #X obj 292 302 abc_2d_scope1~;
-#X obj 755 613 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#X obj 796 613 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 755 643 \; pd dsp \$1 \;;
+#X msg 796 643 \; pd dsp \$1 \;;
 #X obj 943 564 abc_meter;
 #X obj 273 591 abc_meter;
 #X text 907 26 - gain is the output gain in dB that can directly be
@@ -79,12 +79,12 @@ and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with
 8 LS) \, abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore
 abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.
 ;
-#X text 906 156 - it is possible to decode in stereo when setting stereo
-to 1 \; 0 is for ambisonic decoding;
 #X obj 1054 397 abc_cosrandenv7~ -----------;
 #X obj 1047 536 abc_2d_decoder3_10~ ------------;
 #X obj 1075 693 dac~ 1 2 3 4 5 6 7 8 9 10;
 #X obj 1257 480 abc_2d_scope3~ ------------;
+#X text 906 156 - it is possible to decode in stereo when setting stereo
+to 1 \; 0 is for ambisonic decoding;
 #X connect 3 1 38 1;
 #X connect 3 1 56 1;
 #X connect 3 2 38 2;
@@ -123,50 +123,50 @@ to 1 \; 0 is for ambisonic decoding;
 #X connect 34 0 27 0;
 #X connect 35 0 55 0;
 #X connect 36 0 37 0;
-#X connect 37 0 61 0;
+#X connect 37 0 60 0;
 #X connect 38 1 47 0;
 #X connect 38 2 47 1;
 #X connect 38 3 47 2;
 #X connect 39 0 40 0;
 #X connect 52 0 3 1;
-#X connect 53 0 61 0;
-#X connect 55 0 60 1;
-#X connect 55 0 60 2;
-#X connect 55 0 60 3;
-#X connect 55 0 60 4;
-#X connect 55 0 60 5;
-#X connect 55 0 60 6;
-#X connect 55 0 60 7;
+#X connect 53 0 60 0;
+#X connect 55 0 59 1;
+#X connect 55 0 59 2;
+#X connect 55 0 59 3;
+#X connect 55 0 59 4;
+#X connect 55 0 59 5;
+#X connect 55 0 59 6;
+#X connect 55 0 59 7;
 #X connect 56 1 42 0;
 #X connect 56 1 54 0;
 #X connect 56 2 54 1;
 #X connect 56 3 54 2;
 #X connect 56 4 54 3;
-#X connect 60 1 61 1;
-#X connect 60 1 63 1;
-#X connect 60 2 61 2;
-#X connect 60 2 63 2;
-#X connect 60 3 61 3;
-#X connect 60 3 63 3;
-#X connect 60 4 61 4;
-#X connect 60 4 63 4;
-#X connect 60 5 61 5;
-#X connect 60 5 63 5;
-#X connect 60 6 61 6;
-#X connect 60 6 63 6;
-#X connect 60 7 61 7;
-#X connect 60 7 63 7;
-#X connect 61 1 41 0;
-#X connect 61 1 62 0;
-#X connect 61 2 62 1;
-#X connect 61 3 62 2;
-#X connect 61 4 62 3;
-#X connect 61 5 62 4;
-#X connect 61 6 62 5;
-#X connect 61 7 62 6;
-#X connect 61 8 62 7;
-#X connect 61 9 62 8;
-#X connect 61 10 62 9;
-#X connect 63 1 48 0;
-#X connect 63 2 48 1;
-#X connect 63 3 48 2;
+#X connect 59 1 60 1;
+#X connect 59 1 62 1;
+#X connect 59 2 60 2;
+#X connect 59 2 62 2;
+#X connect 59 3 60 3;
+#X connect 59 3 62 3;
+#X connect 59 4 60 4;
+#X connect 59 4 62 4;
+#X connect 59 5 60 5;
+#X connect 59 5 62 5;
+#X connect 59 6 60 6;
+#X connect 59 6 62 6;
+#X connect 59 7 60 7;
+#X connect 59 7 62 7;
+#X connect 60 1 41 0;
+#X connect 60 1 61 0;
+#X connect 60 2 61 1;
+#X connect 60 3 61 2;
+#X connect 60 4 61 3;
+#X connect 60 5 61 4;
+#X connect 60 6 61 5;
+#X connect 60 7 61 6;
+#X connect 60 8 61 7;
+#X connect 60 9 61 8;
+#X connect 60 10 61 9;
+#X connect 62 1 48 0;
+#X connect 62 2 48 1;
+#X connect 62 3 48 2;

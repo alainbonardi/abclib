@@ -1,40 +1,40 @@
-#N canvas 304 250 1781 781 10;
+#N canvas 85 25 1440 781 10;
 #X obj 11 10 cnv 15 500 25 empty empty abc_2d_syn_ringmodN~ &_fx 20
-12 0 18 -99865 -262144 0;
+12 0 18 #606060 #fcfcfc 0;
 #X obj 10 738 abc_helpcredit;
 #X obj 11 36 cnv 15 500 25 empty empty Ring_modulation_to_generate_or_process_spatial_components
-20 12 0 12 -99865 -262144 0;
-#X obj 625 642 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 625 642 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 625 670 \; pd dsp \$1 \;;
 #X text 936 8 CONTROLS;
 #X text 539 10 DESCRIPTION;
 #X obj 627 259 s factor;
 #X obj 131 305 r factor;
-#X obj 134 462 abc_2d_decoder1~;
-#X obj 32 412 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 134 504 abc_2d_decoder1~;
+#X obj 32 412 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 32 434 stereo \$1;
 #X obj 32 203 abc_gain -127;
 #X obj 627 192 abc_upanddown;
 #X obj 438 353 r factor;
-#X obj 345 429 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X msg 345 449 stereo \$1;
-#X obj 448 486 abc_2d_decoder3~;
-#X obj 440 555 dac~ 1 2 3 4 5 6 7 8;
+#X obj 341 422 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 341 442 stereo \$1;
+#X obj 448 501 abc_2d_decoder3~;
+#X obj 440 570 dac~ 1 2 3 4 5 6 7 8;
 #X obj 948 237 abc_soundgrain~;
 #X obj 942 304 abc_2d_encoder1~;
 #X obj 890 338 r factor;
-#X obj 897 462 abc_2d_decoder1~;
-#X obj 796 411 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 897 501 abc_2d_decoder1~;
+#X obj 796 411 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 796 431 stereo \$1;
 #X obj 801 212 abc_gain -127;
 #X obj 1358 362 r factor;
 #X obj 1017 442 abc_2d_scope1~;
-#X obj 1289 394 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+#X obj 1289 394 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 1289 414 stereo \$1;
 #X obj 1230 200 abc_gain -127;
 #X obj 1321 587 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
@@ -46,7 +46,7 @@
 #X obj 37 37 inlet;
 #X obj 106 73 route factor;
 #X obj 106 94 expr $f1*220+220;
-#X floatatom 106 115 5 0 0 0 - - -;
+#X floatatom 106 115 5 0 0 0 - - - 0;
 #X obj 106 135 osc~ 440;
 #X obj 106 156 *~ 0.2;
 #X obj 38 232 outlet;
@@ -80,30 +80,42 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X obj 890 376 abc_2d_fx_ringmod1~;
 #X obj 903 195 loadbang;
 #X msg 903 216 0.1;
-#X floatatom 903 237 5 0 0 0 - - -;
+#X floatatom 903 237 5 0 0 0 - - - 0;
 #X msg 903 257 speed \$1;
 #X obj 462 233 loadbang;
-#X floatatom 462 275 5 0 0 0 - - -;
+#X floatatom 462 275 5 0 0 0 - - - 0;
 #X msg 462 254 10;
 #X msg 462 295 f0 \$1;
 #X obj 1357 436 abc_2d_fx_ringmod7~ ------------;
 #X obj 1392 223 loadbang;
-#X floatatom 1392 309 5 0 0 0 - - -;
+#X floatatom 1392 309 5 0 0 0 - - - 0;
 #X msg 1392 329 f0 \$1;
 #X msg 1392 288 220;
 #X obj 1446 362 abc_cosrandenv15~ ------------;
 #X obj 1454 268 abc_addsynth15~ ------------;
 #X msg 627 237 factor \$1;
-#X obj 71 521 abc_meter;
-#X obj 369 526 abc_meter;
-#X obj 837 503 abc_meter;
+#X obj 71 563 abc_meter;
+#X obj 369 541 abc_meter;
+#X obj 837 542 abc_meter;
 #X obj 1257 557 abc_meter;
 #X obj 356 228 abc_gain -20;
 #X msg 1454 247 gain -10;
 #X obj 555 355 *~ 0.5;
-#X obj 137 523 abc_quadriout -15;
-#X obj 900 503 abc_quadriout -15;
+#X obj 137 565 abc_quadriout -15;
+#X obj 900 542 abc_quadriout -15;
 #X obj 1035 270 *~ 0.5;
+#X obj 12 450 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 12 472 directangles \$1;
+#X obj 297 450 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 297 472 directangles \$1;
+#X obj 733 442 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 733 464 directangles \$1;
+#X obj 1207 446 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 1207 468 directangles \$1;
 #X connect 3 0 4 0;
 #X connect 8 0 36 0;
 #X connect 9 1 60 0;
@@ -264,4 +276,12 @@ ring modulators (defautl value 10 \, minimum 10 \, maximum 10000).
 #X connect 65 0 58 0;
 #X connect 66 0 39 1;
 #X connect 69 0 20 1;
+#X connect 70 0 71 0;
+#X connect 71 0 9 0;
+#X connect 72 0 73 0;
+#X connect 73 0 17 0;
+#X connect 74 0 75 0;
+#X connect 75 0 22 0;
+#X connect 76 0 77 0;
+#X connect 77 0 32 0;
 #X coords 0 781 1 780 85 60 0;
