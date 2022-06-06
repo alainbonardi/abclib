@@ -1,4 +1,4 @@
-#N canvas 30 87 915 615 10;
+#N canvas 610 83 638 613 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_scopeN~  20 12 0 18 #606060
 #fcfcfc 0;
 #X obj 13 580 abc_helpcredit;
@@ -13,31 +13,31 @@
 #X msg 219 502 \; pd dsp \$1 \;;
 #X msg 48 136 -0.2;
 #X msg 12 137 0;
-#X obj 326 97 loadbang;
-#X floatatom 326 159 5 0 0 0 - - - 0;
-#X msg 326 182 speed \$1;
-#X msg 290 136 0;
-#X text 359 160 t.s-1;
-#X obj 326 234 abc_2d_encoder7~ --------------;
-#X msg 326 135 0.1;
-#X obj 328 298 abc_2d_scope7~ --------------;
+#X obj 415 97 loadbang;
+#X floatatom 415 159 5 0 0 0 - - - 0;
+#X msg 415 182 speed \$1;
+#X msg 379 136 0;
+#X text 448 160 t.s-1;
+#X obj 415 234 abc_2d_encoder7~ --------------;
+#X msg 415 135 0.1;
+#X obj 417 298 abc_2d_scope7~ --------------;
 #X obj 59 348 abc_scope 0 0 2.5;
-#X obj 394 343 abc_scope 1 0 2.5;
-#X text 541 111 CONTROLS;
-#X text 538 19 DESCRIPTION;
+#X obj 483 343 abc_scope 1 0 2.5;
+#X text 189 407 CONTROLS;
+#X text 186 315 DESCRIPTION;
 #X obj 48 227 abc_2d_encoder1~;
 #X text 81 161 t.s-1;
-#X obj 192 164 sig~ 1;
-#X text 541 135 The only control is the refresh time in milliseconds.
-;
-#X obj 193 199 loadbang;
-#X msg 193 220 10;
-#X msg 193 266 refresh \$1;
-#X floatatom 193 241 5 0 0 0 - - - 0;
-#X text 539 39 abc_scope1~ \, abc_scope~2 \, ... objects enable the
+#X obj 244 154 sig~ 1;
+#X text 189 431 The only control is the refresh time in milliseconds.
+, f 47;
+#X obj 245 189 loadbang;
+#X msg 245 210 10;
+#X msg 245 256 refresh \$1;
+#X floatatom 245 231 5 0 0 0 - - - 0;
+#X text 187 335 abc_scope1~ \, abc_scope~2 \, ... objects enable the
 visualization of the ambisonic field in a scope~ Max graphical object.
 The abc_scope abstraction within a enables to graphically render the
-ambisonic field using GEM library;
+ambisonic field using GEM library, f 47;
 #X connect 3 0 9 0;
 #X connect 4 0 5 0;
 #X connect 5 0 23 0;

@@ -1,20 +1,20 @@
-#N canvas 394 99 921 611 10;
+#N canvas 394 99 672 711 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_stereoencoderN~  20 12 0
 18 #606060 #fcfcfc 0;
-#X obj 13 698 abc_helpcredit;
+#X obj 14 671 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Stereo_encoders_at_orders_1_2_3_..._to_diffuse_stereo_in_ambisonics
 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 408 407 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#X obj 243 468 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 408 437 \; pd dsp \$1 \;;
-#X obj 36 425 abc_meter;
-#X text 533 111 CONTROLS;
-#X text 532 7 DESCRIPTION;
-#X obj 318 282 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 243 498 \; pd dsp \$1 \;;
+#X obj 26 481 abc_meter;
+#X text 415 78 CONTROLS;
+#X text 17 78 DESCRIPTION;
+#X obj 308 338 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 318 304 directangles \$1;
-#X obj 432 160 abc_gain -15;
-#X text 532 27 abc_stereoencoder1~ \, abc_stereoencoder2~ \, etc. objects
+#X msg 308 360 directangles \$1;
+#X obj 422 216 abc_gain -15;
+#X text 17 98 abc_stereoencoder1~ \, abc_stereoencoder2~ \, etc. objects
 enable to diffuse a stereo source in ambisonics using two encoders
 with an opening angle in degrees (initialized to 60 degrees);
 #N canvas 323 117 123 164 voice1 0;
@@ -27,7 +27,7 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X restore 288 123 pd voice1;
+#X restore 278 179 pd voice1;
 #N canvas 323 117 123 164 voice2 0;
 #X obj 28 77 osc~;
 #X obj 28 109 outlet~;
@@ -38,24 +38,24 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 0 0;
-#X restore 361 123 pd voice2;
-#X obj 251 182 abc_linrandenv2~;
-#X obj 96 185 hsl 128 15 0 360 0 0 empty empty Opening\\\ angle -2
+#X restore 351 179 pd voice2;
+#X obj 241 238 abc_linrandenv2~;
+#X obj 86 241 hsl 128 15 0 360 0 0 empty empty Opening\\\ angle -2
 -8 0 10 #fcfcfc #000000 #000000 0 1;
-#X floatatom 93 205 5 0 0 0 - - - 0;
-#X obj 93 126 loadbang;
-#X msg 93 147 60;
-#X obj 235 122 r envs;
-#X obj 382 508 loadbang;
-#X msg 382 529 \; envs freq 16 \; envs rarefaction 0.5 \;;
-#X msg 93 225 angle \$1;
-#X text 535 129 - angle is the opening angle in degrees;
-#X obj 93 270 abc_2d_stereoencoder3~;
-#X obj 105 368 abc_2d_decoder3~;
-#X obj 318 236 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X floatatom 83 261 5 0 0 0 - - - 0;
+#X obj 83 182 loadbang;
+#X msg 83 203 60;
+#X obj 225 178 r envs;
+#X obj 243 564 loadbang;
+#X msg 243 585 \; envs freq 16 \; envs rarefaction 0.5 \;;
+#X msg 83 281 angle \$1;
+#X text 417 96 - angle is the opening angle in degrees;
+#X obj 83 326 abc_2d_stereoencoder3~;
+#X obj 95 424 abc_2d_decoder3~;
+#X obj 308 292 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 318 258 stereo \$1;
-#X obj 98 425 dac~ 1 2 3 4 5 6 7 8;
+#X msg 308 314 stereo \$1;
+#X obj 88 481 dac~ 1 2 3 4 5 6 7 8;
 #X connect 3 0 4 0;
 #X connect 8 0 9 0;
 #X connect 9 0 25 0;

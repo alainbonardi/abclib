@@ -1,29 +1,29 @@
-#N canvas 2 25 1440 812 10;
+#N canvas 528 64 1472 850 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_rotateN~  20 12 0 18
 #606060 #fcfcfc 0;
-#X obj 13 825 abc_helpcredit;
+#X obj 12 806 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Rotation_of_the_ambisonic_sound_field
 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 46 111 loadbang;
-#X floatatom 46 173 5 0 0 0 - - - 0;
-#X msg 46 196 speed \$1;
-#X obj 17 384 abc_gain -127;
-#X obj 360 327 abc_2d_scope1~;
+#X obj 46 119 loadbang;
+#X floatatom 46 181 5 0 0 0 - - - 0;
+#X msg 46 204 speed \$1;
+#X obj 17 392 abc_gain -127;
+#X obj 360 335 abc_2d_scope1~;
 #X obj 509 625 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X msg 509 653 \; pd dsp \$1 \;;
-#X msg 46 149 -0.2;
-#X msg 10 150 0;
-#X obj 140 583 abc_2d_decoder1~;
-#X floatatom 119 174 5 0 0 0 - - - 0;
-#X msg 119 150 -45;
-#X msg 119 197 angle \$1;
-#X floatatom 184 174 5 0 0 0 - - - 0;
-#X msg 184 150 20;
-#X msg 184 197 returntime \$1;
-#X text 79 174 t.s-1;
-#X text 152 174 deg.;
-#X text 218 174 msec;
+#X msg 46 157 -0.2;
+#X msg 10 158 0;
+#X obj 140 591 abc_2d_decoder1~;
+#X floatatom 119 182 5 0 0 0 - - - 0;
+#X msg 119 158 -45;
+#X msg 119 205 angle \$1;
+#X floatatom 184 182 5 0 0 0 - - - 0;
+#X msg 184 158 20;
+#X msg 184 205 returntime \$1;
+#X text 79 182 t.s-1;
+#X text 152 182 deg.;
+#X text 218 182 msec;
 #X obj 1211 321 loadbang;
 #X floatatom 1211 383 5 0 0 0 - - - 0;
 #X msg 1211 406 speed \$1;
@@ -45,19 +45,19 @@ the speed is zero;
 #X text 921 68 - returntime is the transition time (in msec) between
 the fixed angle position and the position on the circle when the speed
 is more than 0;
-#X obj 54 613 abc_meter;
+#X obj 54 621 abc_meter;
 #X obj 665 526 abc_meter;
-#X obj 364 392 abc_scope 0 0 2.5;
+#X obj 364 400 abc_scope 0 0 2.5;
 #X obj 1065 560 abc_scope 1 0 2.5;
 #X text 921 7 CONTROLS;
 #X text 542 6 DESCRIPTION;
-#X obj 80 261 abc_2d_rotate1;
-#X obj 106 523 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 80 269 abc_2d_rotate1;
+#X obj 106 531 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 106 547 stereo \$1;
+#X msg 106 555 stereo \$1;
 #X msg 1175 360 0.4;
 #X msg 1211 359 0;
-#X obj 1322 691 abc_scope 1 0 2.5;
+#X obj 1322 638 abc_scope 1 0 2.5;
 #X obj 753 164 abc_soundgrain~;
 #X obj 860 196 abc_2d_randomtrajectory~;
 #X obj 883 248 abc_cartopol~;
@@ -65,13 +65,13 @@ is more than 0;
 #X floatatom 757 313 5 0 0 0 - - - 0;
 #X msg 757 289 0.5;
 #X msg 757 336 factor \$1;
-#X obj 308 169 abc_env_noise 100 0.25 0;
+#X obj 308 177 abc_env_noise 100 0.25 0;
 #X obj 665 208 abc_gain -15;
 #X obj 841 222 *~ 0.5;
-#X obj 129 635 abc_quadriout -15;
-#X obj 181 522 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 129 643 abc_quadriout -15;
+#X obj 181 530 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 181 546 directangles \$1;
+#X msg 181 554 directangles \$1;
 #X obj 550 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X msg 550 419 directangles \$1;
@@ -81,7 +81,7 @@ is more than 0;
 #X obj 804 663 dac~ 1 2 3 4 5 6 7 8;
 #X obj 1002 524 abc_2d_scope3~ --------------;
 #X obj 1254 525 abc_2d_rotate3~ --------------;
-#X obj 1258 656 abc_2d_scope3~ --------------;
+#X obj 1258 603 abc_2d_scope3~ --------------;
 #X text 543 24 abc_2d_rotate1~ \, abc_2d_rotate2~ \, ... objects enable
 the rotation of the ambisonic sound field. It can be either a continuous
 rotation at a certain speed in tours by second (with speed parameter)

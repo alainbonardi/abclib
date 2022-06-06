@@ -1,52 +1,52 @@
-#N canvas 61 112 1440 812 10;
-#X obj 11 29 cnv 15 500 25 empty empty abc_2d_syn_grainN~ &_fx 20
+#N canvas 418 124 2017 822 10;
+#X obj 11 39 cnv 15 500 25 empty empty abc_2d_syn_grainN~ &_fx 20
 12 0 18 #606060 #fcfcfc 0;
-#X obj 10 782 abc_helpcredit;
-#X obj 11 55 cnv 15 500 25 empty empty Granular_processes_to_generate_or_process_spatial_components
+#X obj 10 792 abc_helpcredit;
+#X obj 11 65 cnv 15 500 25 empty empty Granular_processes_to_generate_or_process_spatial_components
 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 924 683 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#X obj 924 693 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 924 711 \; pd dsp \$1 \;;
-#X text 932 27 CONTROLS;
-#X text 539 29 DESCRIPTION;
-#X obj 151 559 abc_2d_decoder1~;
-#X obj 24 452 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 924 721 \; pd dsp \$1 \;;
+#X text 932 37 CONTROLS;
+#X text 539 39 DESCRIPTION;
+#X obj 151 569 abc_2d_decoder1~;
+#X obj 24 462 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 24 474 stereo \$1;
-#X obj 409 463 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 24 484 stereo \$1;
+#X obj 409 473 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 409 483 stereo \$1;
-#X obj 529 554 abc_2d_decoder3~;
-#X obj 521 623 dac~ 1 2 3 4 5 6 7 8;
-#X obj 1015 445 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 409 493 stereo \$1;
+#X obj 529 564 abc_2d_decoder3~;
+#X obj 521 633 dac~ 1 2 3 4 5 6 7 8;
+#X obj 1015 455 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 1015 465 stereo \$1;
-#X obj 1055 235 abc_gain -127;
-#X obj 1667 367 abc_2d_randomtrajectory~;
-#X obj 1690 403 abc_cartopol~;
-#X msg 1667 343 freq \$1;
-#X obj 1667 279 loadbang;
-#X msg 1667 300 2;
-#X floatatom 1667 321 5 0 0 0 - - - 0;
-#X obj 1593 434 abc_2d_map7~ -------- ----- ---;
-#X obj 1477 468 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 1015 475 stereo \$1;
+#X obj 1055 245 abc_gain -127;
+#X obj 1667 377 abc_2d_randomtrajectory~;
+#X obj 1690 413 abc_cartopol~;
+#X msg 1667 353 freq \$1;
+#X obj 1667 289 loadbang;
+#X msg 1667 310 2;
+#X floatatom 1667 331 5 0 0 0 - - - 0;
+#X obj 1593 444 abc_2d_map7~ -------- ----- ---;
+#X obj 1477 478 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 1477 488 stereo \$1;
-#X obj 1411 284 abc_gain -127;
-#X obj 1508 638 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
-#X obj 1540 571 abc_2d_decoder7~ ---------------;
-#X obj 1808 610 abc_scope 0 0 2.5;
-#X obj 1748 569 abc_2d_scope7~ --------------;
-#X obj 232 130 loadbang;
-#X floatatom 99 188 5 0 0 0 - - - 0;
-#X floatatom 186 188 5 0 0 0 - - - 0;
-#X floatatom 262 187 5 0 0 0 - - - 0;
-#X msg 262 166 0.2;
-#X msg 186 208 deltime \$1;
-#X msg 262 207 feedback \$1;
-#X obj 525 473 abc_2d_syn_delay3~;
-#X obj 1544 487 abc_2d_fx_delay7~ ------------;
-#X text 540 49 abc_2d_syn_grain1~ \, abc_2d_syn_grain2~ \, ... objects
+#X msg 1477 498 stereo \$1;
+#X obj 1411 294 abc_gain -127;
+#X obj 1508 648 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 1540 581 abc_2d_decoder7~ ---------------;
+#X obj 1808 620 abc_scope 0 0 2.5;
+#X obj 1748 579 abc_2d_scope7~ --------------;
+#X obj 232 140 loadbang;
+#X floatatom 99 198 5 0 0 0 - - - 0;
+#X floatatom 186 198 5 0 0 0 - - - 0;
+#X floatatom 262 197 5 0 0 0 - - - 0;
+#X msg 262 176 0.2;
+#X msg 186 218 deltime \$1;
+#X msg 262 217 feedback \$1;
+#X obj 525 483 abc_2d_syn_delay3~;
+#X obj 1544 497 abc_2d_fx_delay7~ ------------;
+#X text 540 59 abc_2d_syn_grain1~ \, abc_2d_syn_grain2~ \, ... objects
 generate spatial granular components in ambisonic from one mono signal.
 abc_2d_fx_grain1~ \, abc_2d_fx_grain2~ \, ... objects apply granulators
 to spatial components already created by encoders or maps for instance.
@@ -56,69 +56,69 @@ are equally spread. The grain sizes are decreasing from GS (H0) to
 GS/(N+1) (H-N & HN) through GS*N/(N+1) (H-1 & H1) \, etc. The maximum
 delays (maximum of the randomization) are increasing from 0 (H0) to
 D*N/(N+1) (H-N & HN) through D/(N+1) (H-1 & H1).;
-#X msg 186 167 1000;
-#X msg 99 208 grainsize \$1;
-#X msg 99 167 200;
-#X floatatom 348 187 5 0 0 0 - - - 0;
-#X msg 348 207 rarefaction \$1;
-#X msg 348 166 0.5;
-#X obj 230 251 s syn_grain;
-#X text 206 104 SYN GRANULATORS;
-#X obj 148 436 r syn_grain;
-#X obj 148 472 abc_2d_syn_grain1~;
-#X obj 253 424 noise~;
-#X text 936 48 The grain size GS (grain size) is expressed in milliseconds
+#X msg 186 177 1000;
+#X msg 99 218 grainsize \$1;
+#X msg 99 177 200;
+#X floatatom 348 197 5 0 0 0 - - - 0;
+#X msg 348 217 rarefaction \$1;
+#X msg 348 176 0.5;
+#X obj 230 261 s syn_grain;
+#X text 206 114 SYN GRANULATORS;
+#X obj 148 446 r syn_grain;
+#X obj 148 482 abc_2d_syn_grain1~;
+#X obj 253 434 noise~;
+#X text 936 58 The grain size GS (grain size) is expressed in milliseconds
 (default value 400 \, minimum 2 \, maximum 3000).;
-#X text 935 79 The delay D (deltime) is expressed in milliseconds (default
+#X text 935 89 The delay D (deltime) is expressed in milliseconds (default
 value is 100 \, minimum 2 \, maximum 5000).;
-#X obj 432 267 abc_gain -127;
-#X obj 525 437 r syn_grain;
-#X text 935 114 The feedback (between 0 and 1) provides a possibiity
+#X obj 432 277 abc_gain -127;
+#X obj 525 447 r syn_grain;
+#X text 935 124 The feedback (between 0 and 1) provides a possibiity
 of reinjection on the P delay lines.;
-#X obj 1114 545 abc_2d_decoder3~;
-#X obj 1176 393 abc_addsynth7~;
-#X obj 1101 436 r fx_grain;
-#X obj 1142 493 abc_2d_fx_grain3~;
-#X obj 1102 617 dac~ 1 2 3 4 5 6 7 8;
-#X text 1481 83 FX GRANULATORS;
-#X obj 1545 413 r fx_grain;
-#X obj 1500 112 loadbang;
-#X floatatom 1367 170 5 0 0 0 - - - 0;
-#X floatatom 1454 170 5 0 0 0 - - - 0;
-#X floatatom 1530 169 5 0 0 0 - - - 0;
-#X msg 1454 190 deltime \$1;
-#X msg 1530 189 feedback \$1;
-#X msg 1367 190 grainsize \$1;
-#X floatatom 1616 169 5 0 0 0 - - - 0;
-#X msg 1616 189 rarefaction \$1;
-#X msg 1616 148 0.5;
-#X msg 1367 149 400;
-#X msg 1454 149 300;
-#X msg 1530 148 0.4;
-#X obj 1498 233 s fx_grain;
-#X obj 81 588 abc_meter;
-#X obj 443 585 abc_meter;
-#X obj 1037 577 abc_meter;
-#X obj 1441 608 abc_meter;
-#X obj 1176 334 loadbang;
-#X obj 253 445 *~ 0.1;
-#X obj 630 419 abc_env_noise 550 0.6 0;
-#X msg 1176 361 gain -10;
-#X obj 1654 229 abc_env_noise 700 0.35 0;
-#X obj 155 609 abc_quadriout -15;
-#X obj 67 270 abc_gain -10;
-#X obj 24 497 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 1114 555 abc_2d_decoder3~;
+#X obj 1176 403 abc_addsynth7~;
+#X obj 1101 446 r fx_grain;
+#X obj 1142 503 abc_2d_fx_grain3~;
+#X obj 1102 627 dac~ 1 2 3 4 5 6 7 8;
+#X text 1481 93 FX GRANULATORS;
+#X obj 1545 423 r fx_grain;
+#X obj 1500 122 loadbang;
+#X floatatom 1367 180 5 0 0 0 - - - 0;
+#X floatatom 1454 180 5 0 0 0 - - - 0;
+#X floatatom 1530 179 5 0 0 0 - - - 0;
+#X msg 1454 200 deltime \$1;
+#X msg 1530 199 feedback \$1;
+#X msg 1367 200 grainsize \$1;
+#X floatatom 1616 179 5 0 0 0 - - - 0;
+#X msg 1616 199 rarefaction \$1;
+#X msg 1616 158 0.5;
+#X msg 1367 159 400;
+#X msg 1454 159 300;
+#X msg 1530 158 0.4;
+#X obj 1498 243 s fx_grain;
+#X obj 81 598 abc_meter;
+#X obj 443 595 abc_meter;
+#X obj 1037 587 abc_meter;
+#X obj 1441 618 abc_meter;
+#X obj 1176 344 loadbang;
+#X obj 253 455 *~ 0.1;
+#X obj 630 429 abc_env_noise 550 0.6 0;
+#X msg 1176 371 gain -10;
+#X obj 1654 239 abc_env_noise 700 0.35 0;
+#X obj 155 619 abc_quadriout -15;
+#X obj 67 280 abc_gain -10;
+#X obj 24 507 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 24 519 directangles \$1;
-#X obj 354 498 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 24 529 directangles \$1;
+#X obj 354 508 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 354 520 directangles \$1;
-#X obj 954 484 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 354 530 directangles \$1;
+#X obj 954 494 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 954 506 directangles \$1;
-#X obj 1378 498 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 954 516 directangles \$1;
+#X obj 1378 508 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 1378 520 directangles \$1;
+#X msg 1378 530 directangles \$1;
 #X connect 3 0 4 0;
 #X connect 7 1 78 0;
 #X connect 7 1 87 0;
@@ -302,4 +302,4 @@ of reinjection on the P delay lines.;
 #X connect 94 0 57 0;
 #X connect 95 0 96 0;
 #X connect 96 0 28 0;
-#X coords 0 812 1 811 85 60 0;
+#X coords 0 822 1 821 85 60 0;
