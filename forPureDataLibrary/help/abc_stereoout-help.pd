@@ -1,30 +1,30 @@
 #N canvas 708 39 532 740 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_stereoout 20 12 0 18 -99865
--262144 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_stereoout 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 13 698 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty 2_channel_output_with_amplitude_control_in_dB
-20 12 0 12 -99865 -262144 0;
-#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 362 628 \; pd dsp \$1 \;;
 #X obj 133 439 abc_meter;
 #X text 91 74 DESCRIPTION;
-#X text 93 97 abc_quadriout is an abstraction that enables 2 channel
-output (dac~ 1 to 4) with a control of the global gain in dB. This
-global gain can be set as default value.;
 #X obj 157 185 abc_multinoise2~ ----------------;
 #X obj 138 248 abc_substractsynth2~ ----------------;
 #X obj 155 311 abc_cosrandenv2~ ----------------;
 #X obj 137 206 loadbang;
 #X obj 250 438 abc_stereoout -15;
 #X msg 137 227 gain -15;
+#X text 93 97 abc_stereoout is an abstraction that enables 2 channel
+output (dac~ 1 & 2) with a control of the global gain in dB. This global
+gain can be set as default value.;
 #X connect 3 0 4 0;
+#X connect 7 1 8 1;
+#X connect 7 2 8 2;
 #X connect 8 1 9 1;
 #X connect 8 2 9 2;
-#X connect 9 1 10 1;
-#X connect 9 2 10 2;
-#X connect 10 1 5 0;
-#X connect 10 1 12 0;
-#X connect 10 2 12 1;
-#X connect 11 0 13 0;
-#X connect 13 0 9 0;
+#X connect 9 1 5 0;
+#X connect 9 1 11 0;
+#X connect 9 2 11 1;
+#X connect 10 0 12 0;
+#X connect 12 0 8 0;

@@ -1,83 +1,82 @@
-#N canvas 208 74 1779 827 10;
-#X obj 11 56 cnv 15 500 25 empty empty abc_substractsynthN~ 20 12 0
-18 -99865 -262144 0;
-#X obj 10 784 abc_helpcredit;
-#X obj 11 82 cnv 15 500 25 empty empty Additive_synthesis_generators
-20 12 0 12 -99865 -262144 0;
-#X obj 644 724 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
-#X msg 644 752 \; pd dsp \$1 \;;
-#X text 935 54 CONTROLS;
-#X text 539 56 DESCRIPTION;
-#X obj 250 459 abc_meter;
-#X obj 759 564 abc_meter;
-#X obj 570 251 abc_gain -127;
-#X obj 877 270 loadbang;
-#X floatatom 680 381 5 0 0 0 - - -;
-#X msg 680 401 f0 \$1;
-#X floatatom 724 381 5 0 0 0 - - -;
-#X msg 724 360 1;
-#X msg 724 401 fmult-0 \$1;
-#X msg 680 360 330;
-#X floatatom 800 381 5 0 0 0 - - -;
-#X msg 800 360 2;
-#X msg 800 401 fmult-1 \$1;
-#X floatatom 876 381 5 0 0 0 - - -;
-#X floatatom 952 381 5 0 0 0 - - -;
-#X msg 876 401 amp-0 \$1;
-#X msg 952 401 amp-1 \$1;
-#X msg 876 360 0;
-#X msg 952 360 -6;
-#X obj 168 118 loadbang;
-#X msg 42 175 gain -127;
-#X obj 1337 105 r s11;
-#X obj 1210 590 loadbang;
-#X obj 1397 649 abc_cosrandenv11~ -------------;
-#X obj 1407 688 abc_chopan11~ -------------;
-#X obj 1390 715 abc_meter;
-#X obj 61 207 abc_substractsynth1;
-#X msg 107 174 fmult-0 1;
-#X obj 784 514 abc_substractsynth2~;
-#X msg 175 174 filterQ \$1;
-#X msg 273 175 filterG \$1;
-#X msg 175 150 50;
-#X msg 205 150 200;
-#X msg 234 150 10;
-#X msg 275 150 0.8;
-#X msg 305 150 0;
-#X msg 334 150 1;
-#X msg 1019 401 filterQ \$1;
-#X msg 1117 402 filterG \$1;
-#X msg 1019 377 50;
-#X msg 1049 377 200;
-#X msg 1078 377 10;
-#X msg 1119 377 0.8;
-#X msg 1149 377 0;
-#X msg 1178 377 1;
-#X obj 963 468 noise~;
-#X obj 1337 133 abc_substractsynth11;
-#X obj 1414 78 abc_multinoise11~ -----------;
-#X text 540 76 abc_substractsynth1~ \, abc_substract2~ \, ... objects
+#N canvas 208 74 1691 876 10;
+#X obj 14 -16 cnv 15 500 25 empty empty abc_substractsynthN~ 20 12
+0 18 #606060 #fcfcfc 0;
+#X obj 13 797 abc_helpcredit;
+#X obj 14 10 cnv 15 500 25 empty empty Additive_synthesis_generators
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 647 652 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 647 680 \; pd dsp \$1 \;;
+#X text 938 -18 CONTROLS;
+#X text 542 -16 DESCRIPTION;
+#X obj 253 387 abc_meter;
+#X obj 762 492 abc_meter;
+#X obj 573 179 abc_gain -127;
+#X obj 880 198 loadbang;
+#X floatatom 683 309 5 0 0 0 - - - 0;
+#X msg 683 329 f0 \$1;
+#X floatatom 727 309 5 0 0 0 - - - 0;
+#X msg 727 288 1;
+#X msg 727 329 fmult-0 \$1;
+#X msg 683 288 330;
+#X floatatom 803 309 5 0 0 0 - - - 0;
+#X msg 803 288 2;
+#X msg 803 329 fmult-1 \$1;
+#X floatatom 879 309 5 0 0 0 - - - 0;
+#X floatatom 955 309 5 0 0 0 - - - 0;
+#X msg 879 329 amp-0 \$1;
+#X msg 955 329 amp-1 \$1;
+#X msg 879 288 0;
+#X msg 955 288 -6;
+#X obj 171 46 loadbang;
+#X msg 45 103 gain -127;
+#X obj 1340 33 r s11;
+#X obj 1213 518 loadbang;
+#X obj 1400 577 abc_cosrandenv11~ -------------;
+#X obj 1410 616 abc_chopan11~ -------------;
+#X obj 1393 643 abc_meter;
+#X obj 64 135 abc_substractsynth1;
+#X msg 110 102 fmult-0 1;
+#X obj 787 442 abc_substractsynth2~;
+#X msg 178 102 filterQ \$1;
+#X msg 276 103 filterG \$1;
+#X msg 178 78 50;
+#X msg 208 78 200;
+#X msg 237 78 10;
+#X msg 278 78 0.8;
+#X msg 308 78 0;
+#X msg 337 78 1;
+#X msg 1022 329 filterQ \$1;
+#X msg 1120 330 filterG \$1;
+#X msg 1022 305 50;
+#X msg 1052 305 200;
+#X msg 1081 305 10;
+#X msg 1122 305 0.8;
+#X msg 1152 305 0;
+#X msg 1181 305 1;
+#X obj 966 396 noise~;
+#X obj 1340 61 abc_substractsynth11;
+#X obj 1417 6 abc_multinoise11~ -----------;
+#X text 543 4 abc_substractsynth1~ \, abc_substract2~ \, ... objects
 enable substractive synthesis by instantiating banks of band pass filters
 on incoming sounds either white \, pink \, decorrelated etc. sounds
 (having filterQ as quality factor \, and filterG as filter gain).;
-#X text 935 74 f0 is the general fundamental frequency. fmult00 \,
-fmult01 \, etc. are the multipliers of f0 to get the frequencies of
-the partials. For an harmonic spectrum \, one can use fmult00 = 1 \,
-fmult01 = 2 \, fmult02 = 3 etc. The amplitudes of the partials (in
-dB) can also be set individually thanks to amp00 \, amp01 \, etc. messages.
-gain (in dB) is the general control of the amplitude.;
-#X text 935 127 comment;
-#X text 935 166 filterQ is the quality factor \, and filterG is the
+#X text 937 4 f0 is the general fundamental frequency. fmult00 \, fmult01
+\, etc. are the multipliers of f0 to get the frequencies of the partials.
+For an harmonic spectrum \, one can use fmult00 = 1 \, fmult01 = 2
+\, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also
+be set individually thanks to amp00 \, amp01 \, etc. messages. gain
+(in dB) is the general control of the amplitude.;
+#X text 937 86 filterQ is the quality factor \, and filterG is the
 filter gain);
-#X obj 319 459 abc_stereoout -15;
-#X obj 824 564 abc_stereoout -15;
-#X msg 1209 615 \; s11 gain -10 \; s11 f0 440 \; s11 fmult-0 0.56 \;
+#X obj 322 387 abc_stereoout -15;
+#X obj 827 492 abc_stereoout -15;
+#X msg 1212 543 \; s11 gain -10 \; s11 f0 440 \; s11 fmult-0 0.56 \;
 s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
 1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
 fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
 \;;
-#X obj 1472 733 abc_stereoout -25;
+#X obj 1475 661 abc_stereoout -25;
 #X connect 3 0 4 0;
 #X connect 9 0 35 0;
 #X connect 10 0 16 0;
@@ -108,7 +107,7 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
 #X connect 26 0 41 0;
 #X connect 27 0 33 0;
 #X connect 28 0 53 0;
-#X connect 29 0 61 0;
+#X connect 29 0 60 0;
 #X connect 30 1 31 1;
 #X connect 30 2 31 2;
 #X connect 30 3 31 3;
@@ -121,15 +120,15 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
 #X connect 30 10 31 10;
 #X connect 30 11 31 11;
 #X connect 31 1 32 0;
-#X connect 31 1 62 0;
-#X connect 31 2 62 1;
+#X connect 31 1 61 0;
+#X connect 31 2 61 1;
 #X connect 33 1 7 0;
-#X connect 33 1 59 0;
-#X connect 33 1 59 1;
+#X connect 33 1 58 0;
+#X connect 33 1 58 1;
 #X connect 34 0 33 0;
 #X connect 35 1 8 0;
-#X connect 35 1 60 0;
-#X connect 35 2 60 1;
+#X connect 35 1 59 0;
+#X connect 35 2 59 1;
 #X connect 36 0 33 0;
 #X connect 37 0 33 0;
 #X connect 38 0 36 0;
@@ -170,4 +169,4 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
 #X connect 54 9 53 9;
 #X connect 54 10 53 10;
 #X connect 54 11 53 11;
-#X coords 0 827 1 826 85 60 0;
+#X coords 0 876 1 875 85 60 0;
