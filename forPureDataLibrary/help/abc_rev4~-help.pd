@@ -1,11 +1,11 @@
 #N canvas 147 25 1064 784 10;
-#X obj 9 13 cnv 15 500 25 empty empty abc_rev4~ 20 12 0 18 -99865 -262144
-0;
+#X obj 9 13 cnv 15 500 25 empty empty abc_rev4~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 8 741 abc_helpcredit;
 #X obj 9 39 cnv 15 500 25 empty empty Rev4~_reverberation 20 12 0 12
--99865 -262144 0;
-#X obj 492 600 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+#606060 #fcfcfc 0;
+#X obj 492 600 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 492 628 \; pd dsp \$1 \;;
 #X text 404 71 CONTROLS;
 #X text 10 72 DESCRIPTION;
@@ -15,16 +15,15 @@ a cascade of delay lines with reinjection \, it is proposed in two
 versions: a stereo one \, abc_rev4sterero~ \, and a quadriphonic one
 \, abc_rev4quadri~ that splits the outputs of the delay lines to the
 4 outputs.;
-#X obj 198 497 abc_stereodecoder1~;
 #X obj 247 176 loadbang;
 #X msg 247 212 110;
-#X obj 247 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11000 1;
-#X floatatom 247 378 5 0 0 0 - - -;
+#X obj 247 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 247 378 5 0 0 0 - - - 0;
 #X msg 247 398 revDur \$1;
-#X obj 317 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8500 1;
-#X floatatom 317 378 5 0 0 0 - - -;
+#X obj 317 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 317 378 5 0 0 0 - - - 0;
 #X msg 317 212 85;
 #X msg 317 398 revGain \$1;
 #X text 405 92 2 controls (with values between 0 and 127): the duration
@@ -37,13 +36,13 @@ versions: a stereo one \, abc_rev4sterero~ \, and a quadriphonic one
 #X obj 710 553 abc_meter;
 #X obj 821 175 loadbang;
 #X msg 821 211 110;
-#X obj 821 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11000 1;
-#X floatatom 821 377 5 0 0 0 - - -;
+#X obj 821 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 821 377 5 0 0 0 - - - 0;
 #X msg 821 397 revDur \$1;
-#X obj 891 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8500 1;
-#X floatatom 891 377 5 0 0 0 - - -;
+#X obj 891 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 891 377 5 0 0 0 - - - 0;
 #X msg 891 211 85;
 #X msg 891 397 revGain \$1;
 #X obj 693 351 abc_simplefmburst;
@@ -51,51 +50,52 @@ versions: a stereo one \, abc_rev4sterero~ \, and a quadriphonic one
 #X text 680 240 rev4 duration 0 to 127;
 #X obj 594 296 abc_gain -127;
 #X obj 821 450 abc_rev4quadri~;
-#X obj 772 496 abc_stereodecoder2~;
 #X obj 20 297 abc_gain -10;
 #X obj 693 391 *~ 0.15;
 #X obj 202 554 abc_stereoout -15;
 #X obj 119 392 *~ 0.3;
 #X obj 776 553 abc_stereoout -15;
+#X obj 198 497 abc_2d_stereodecoder1~;
+#X obj 772 496 abc_2d_stereodecoder2~;
 #X connect 3 0 4 0;
-#X connect 9 1 7 0;
-#X connect 9 1 42 0;
-#X connect 9 2 42 1;
+#X connect 9 0 10 0;
+#X connect 9 0 16 0;
 #X connect 10 0 11 0;
-#X connect 10 0 17 0;
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 14 0 20 0;
-#X connect 15 0 16 0;
-#X connect 16 0 18 0;
-#X connect 17 0 15 0;
-#X connect 18 0 20 0;
-#X connect 20 1 9 2;
-#X connect 20 2 9 3;
-#X connect 21 0 43 0;
+#X connect 13 0 19 0;
+#X connect 14 0 15 0;
+#X connect 15 0 17 0;
+#X connect 16 0 14 0;
+#X connect 17 0 19 0;
+#X connect 19 1 43 2;
+#X connect 19 2 43 3;
+#X connect 20 0 41 0;
+#X connect 24 0 25 0;
+#X connect 24 0 31 0;
 #X connect 25 0 26 0;
-#X connect 25 0 32 0;
 #X connect 26 0 27 0;
 #X connect 27 0 28 0;
-#X connect 28 0 29 0;
-#X connect 29 0 38 0;
-#X connect 30 0 31 0;
-#X connect 31 0 33 0;
-#X connect 32 0 30 0;
-#X connect 33 0 38 0;
-#X connect 34 0 41 0;
-#X connect 37 0 39 0;
-#X connect 38 1 39 2;
-#X connect 38 2 39 3;
-#X connect 38 3 39 4;
-#X connect 38 4 39 5;
-#X connect 39 1 24 0;
-#X connect 39 1 44 0;
-#X connect 39 2 44 1;
-#X connect 40 0 9 0;
-#X connect 41 0 38 1;
-#X connect 41 0 39 1;
-#X connect 43 0 20 1;
-#X connect 43 0 9 1;
+#X connect 28 0 37 0;
+#X connect 29 0 30 0;
+#X connect 30 0 32 0;
+#X connect 31 0 29 0;
+#X connect 32 0 37 0;
+#X connect 33 0 39 0;
+#X connect 36 0 44 0;
+#X connect 37 1 44 2;
+#X connect 37 2 44 3;
+#X connect 37 3 44 4;
+#X connect 37 4 44 5;
+#X connect 38 0 43 0;
+#X connect 39 0 37 1;
+#X connect 39 0 44 1;
+#X connect 41 0 19 1;
+#X connect 41 0 43 1;
+#X connect 43 1 7 0;
+#X connect 43 1 40 0;
+#X connect 43 2 40 1;
+#X connect 44 1 23 0;
+#X connect 44 1 42 0;
+#X connect 44 2 42 1;
 #X coords 0 784 1 783 85 60 0;
