@@ -88,7 +88,7 @@ abc_3d_encoder_ui(n) = rEncoder3D(n, speedazim, speedelev, azim, elev, returntim
 //
 abc_2d_stereoEncoder_ui(n) = stereoEncoder(n, angle)
 	with {
-			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0;
+			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 : si.smoo;
 };
 
 abc_2d_multiEncoder_ui(n, ns) = multiEncoder(n, ls, la, returntime)
