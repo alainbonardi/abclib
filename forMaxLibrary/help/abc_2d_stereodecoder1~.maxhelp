@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1146.0, 231.0, 798.0, 676.0 ],
+		"rect" : [ 404.0, 87.0, 798.0, 676.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -936,7 +936,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_stereodecoderN~", "@obj-desc", "Ambisonic", "stereo", "decoders", "at", "orders", "1,", "2,", "3,", "..." ],
+					"args" : [ "@obj-name", "abc_2d_stereodecoderN~", "@obj-desc", "Ambisonic", "stereo", "decoders", "at", "orders", "1,", "2,", "3,", "..." ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,

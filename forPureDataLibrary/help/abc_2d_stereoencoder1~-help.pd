@@ -1,12 +1,12 @@
-#N canvas 394 99 672 711 10;
+#N canvas 397 25 678 811 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_stereoencoderN~  20 12 0
 18 #606060 #fcfcfc 0;
-#X obj 14 671 abc_helpcredit;
+#X obj 14 777 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Stereo_encoders_at_orders_1_2_3_..._to_diffuse_stereo_in_ambisonics
 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 243 468 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#X obj 422 437 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 243 498 \; pd dsp \$1 \;;
+#X msg 422 467 \; pd dsp \$1 \;;
 #X obj 26 481 abc_meter;
 #X text 415 78 CONTROLS;
 #X text 17 78 DESCRIPTION;
@@ -46,16 +46,18 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X obj 83 182 loadbang;
 #X msg 83 203 60;
 #X obj 225 178 r envs;
-#X obj 243 564 loadbang;
-#X msg 243 585 \; envs freq 16 \; envs rarefaction 0.5 \;;
+#X obj 118 678 loadbang;
+#X msg 118 699 \; envs freq 16 \; envs rarefaction 0.5 \;;
 #X msg 83 281 angle \$1;
 #X text 417 96 - angle is the opening angle in degrees;
 #X obj 83 326 abc_2d_stereoencoder3~;
-#X obj 95 424 abc_2d_decoder3~;
+#X obj 95 438 abc_2d_decoder3~;
 #X obj 308 292 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X msg 308 314 stereo \$1;
-#X obj 88 481 dac~ 1 2 3 4 5 6 7 8;
+#X obj 88 538 dac~ 1 2 3 4 5 6 7 8;
+#X obj 269 476 abc_scope 1 0 2.5;
+#X obj 211 439 abc_2d_scope3~ ------------;
 #X connect 3 0 4 0;
 #X connect 8 0 9 0;
 #X connect 9 0 25 0;
@@ -72,12 +74,19 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X connect 20 0 21 0;
 #X connect 22 0 24 0;
 #X connect 24 1 25 1;
+#X connect 24 1 30 1;
 #X connect 24 2 25 2;
+#X connect 24 2 30 2;
 #X connect 24 3 25 3;
+#X connect 24 3 30 3;
 #X connect 24 4 25 4;
+#X connect 24 4 30 4;
 #X connect 24 5 25 5;
+#X connect 24 5 30 5;
 #X connect 24 6 25 6;
+#X connect 24 6 30 6;
 #X connect 24 7 25 7;
+#X connect 24 7 30 7;
 #X connect 25 1 5 0;
 #X connect 25 1 28 0;
 #X connect 25 2 28 1;
@@ -89,3 +98,6 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X connect 25 8 28 7;
 #X connect 26 0 27 0;
 #X connect 27 0 25 0;
+#X connect 30 1 29 0;
+#X connect 30 2 29 1;
+#X connect 30 3 29 2;
