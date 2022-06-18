@@ -99,7 +99,7 @@ only activating the first one;
 #X obj 72 87 f \$2;
 #X obj 32 86 f \$3;
 #X msg 471 107 title abc_scope;
-#X obj 381 200 gemglfw3window;
+#X obj 381 200 gemglutwindow;
 #X connect 0 0 46 0;
 #X connect 3 0 50 0;
 #X connect 4 0 5 0;
