@@ -275,7 +275,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1330.0, 380.0, 74.0, 72.0 ],
+					"patching_rect" : [ 1330.0, 339.5, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -699,7 +699,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 558.0, 356.0, 74.0, 72.0 ],
+					"patching_rect" : [ 558.0, 356.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 

@@ -250,7 +250,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 575.0, 515.5, 105.999999999999886, 35.0 ],
+					"patching_rect" : [ 575.0, 515.5, 108.0, 35.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -367,7 +367,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 483.75, 291.0, 74.0, 72.0 ],
+					"patching_rect" : [ 491.0, 272.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -690,7 +690,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-54", 0 ],
-					"midpoints" : [ 493.25, 412.75, 584.5, 412.75 ],
+					"midpoints" : [ 500.5, 412.75, 584.5, 412.75 ],
 					"source" : [ "obj-57", 0 ]
 				}
 

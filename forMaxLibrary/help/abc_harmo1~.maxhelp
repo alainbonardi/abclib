@@ -46,7 +46,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 686.0, 384.5, 24.0, 24.0 ]
+					"patching_rect" : [ 713.0, 387.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -67,7 +67,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 686.0, 416.5, 90.0, 22.0 ],
+					"patching_rect" : [ 713.0, 419.0, 90.0, 22.0 ],
 					"text" : "directangles $1"
 				}
 
@@ -779,7 +779,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 778.571441999999934, 384.5, 24.0, 24.0 ]
+					"patching_rect" : [ 805.571441999999934, 387.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -800,7 +800,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 778.571441999999934, 416.5, 59.0, 22.0 ],
+					"patching_rect" : [ 805.571441999999934, 419.0, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -822,7 +822,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 853.07144199999982, 363.0, 74.0, 72.0 ],
+					"patching_rect" : [ 874.071442000000047, 331.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1225,7 +1225,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
-					"midpoints" : [ 695.5, 459.5, 960.666666666666515, 459.5 ],
+					"midpoints" : [ 722.5, 459.5, 960.666666666666515, 459.5 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -1636,7 +1636,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
-					"midpoints" : [ 788.071441999999934, 459.75, 960.666666666666515, 459.75 ],
+					"midpoints" : [ 815.071441999999934, 459.75, 960.666666666666515, 459.75 ],
 					"source" : [ "obj-52", 0 ]
 				}
 
@@ -1662,7 +1662,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
-					"midpoints" : [ 862.57144199999982, 445.75, 960.666666666666515, 445.75 ],
+					"midpoints" : [ 883.571442000000047, 445.75, 960.666666666666515, 445.75 ],
 					"source" : [ "obj-55", 0 ]
 				}
 

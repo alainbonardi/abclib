@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -245,7 +245,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 15.5, 178.5, 74.0, 72.0 ],
+					"patching_rect" : [ 17.5, 147.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -858,7 +858,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
-					"midpoints" : [ 25.0, 270.75, 103.999999999999986, 270.75 ],
+					"midpoints" : [ 27.0, 270.75, 103.999999999999986, 270.75 ],
 					"source" : [ "obj-55", 0 ]
 				}
 

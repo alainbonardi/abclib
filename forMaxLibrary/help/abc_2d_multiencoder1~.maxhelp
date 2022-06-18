@@ -80,7 +80,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1105.0, 396.0, 79.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "returntime $1"
 				}
 
@@ -1124,7 +1123,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 340.5, 425.0, 74.0, 72.0 ],
+					"patching_rect" : [ 338.5, 400.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1629,7 +1628,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 350.0, 531.0, 47.5, 531.0 ],
+					"midpoints" : [ 348.0, 531.0, 47.5, 531.0 ],
 					"source" : [ "obj-55", 0 ]
 				}
 

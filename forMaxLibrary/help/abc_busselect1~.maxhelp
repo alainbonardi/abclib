@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -162,7 +162,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 358.0, 74.0, 72.0 ],
+					"patching_rect" : [ 10.0, 293.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -186,7 +186,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 30.0, 317.0, 68.0, 33.0 ],
+					"patching_rect" : [ 141.0, 320.5, 68.0, 33.0 ],
 					"text" : "left 1 signal bus"
 				}
 
@@ -494,7 +494,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 622.0, 509.0, 185.0, 26.0 ],
+					"patching_rect" : [ 622.0, 526.0, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -506,7 +506,7 @@
 					"numinlets" : 8,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 622.0, 453.0, 156.812499999999659, 22.0 ],
+					"patching_rect" : [ 622.000000000000341, 495.0, 156.812499999999659, 22.0 ],
 					"text" : "abc_chopan8~"
 				}
 
@@ -528,7 +528,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 546.0, 363.0, 74.0, 72.0 ],
+					"patching_rect" : [ 546.0, 363.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -865,7 +865,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-134", 1 ],
-					"midpoints" : [ 700.406249999999773, 497.5, 797.5, 497.5 ],
+					"midpoints" : [ 700.406250000000227, 521.5, 797.5, 521.5 ],
 					"source" : [ "obj-133", 1 ]
 				}
 
@@ -896,7 +896,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-37", 0 ],
-					"midpoints" : [ 29.5, 437.0, 109.5, 437.0 ],
+					"midpoints" : [ 19.5, 437.0, 109.5, 437.0 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -1050,7 +1050,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-133", 0 ],
-					"midpoints" : [ 555.5, 443.5, 631.5, 443.5 ],
+					"midpoints" : [ 555.5, 485.5, 631.500000000000341, 485.5 ],
 					"source" : [ "obj-42", 0 ]
 				}
 

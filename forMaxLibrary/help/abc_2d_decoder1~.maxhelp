@@ -161,7 +161,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 841.571441999999934, 314.0, 89.0, 60.0 ],
+					"patching_rect" : [ 842.571441999999934, 298.5, 89.0, 60.0 ],
 					"text" : "stereo decoding\n(0 means ambisonic)"
 				}
 
@@ -174,7 +174,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 841.571441999999934, 375.0, 24.0, 24.0 ]
+					"patching_rect" : [ 842.571441999999934, 359.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -195,7 +195,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 841.571441999999934, 407.0, 59.0, 22.0 ],
+					"patching_rect" : [ 842.571441999999934, 391.5, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -568,7 +568,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 862.571442000000047, 438.0, 74.0, 72.0 ],
+					"patching_rect" : [ 863.571442000000047, 420.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -590,7 +590,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 430.999999999999943, 302.0, 74.0, 72.0 ],
+					"patching_rect" : [ 431.0, 294.25, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -897,7 +897,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
-					"midpoints" : [ 872.071442000000047, 537.25, 963.188155807406929, 537.25 ],
+					"midpoints" : [ 873.071442000000047, 537.25, 963.188155807406929, 537.25 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -1243,7 +1243,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
-					"midpoints" : [ 851.071441999999934, 537.25, 963.188155807406929, 537.25 ],
+					"midpoints" : [ 852.071441999999934, 537.25, 963.188155807406929, 537.25 ],
 					"source" : [ "obj-32", 0 ]
 				}
 
@@ -1556,8 +1556,8 @@
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
-				"patcherrelativepath" : "../../../../../Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1577,8 +1577,8 @@
 			}
 , 			{
 				"name" : "abc_scope.maxpat",
-				"bootpath" : "~/Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
-				"patcherrelativepath" : "../../../../../Desktop/2021_2022/ProjetsMOUT2/JANSE_Sarah/avancee_projet_090522/sous_patch",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

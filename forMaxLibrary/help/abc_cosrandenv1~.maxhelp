@@ -757,7 +757,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.571441999999998, 328.0, 74.0, 72.0 ],
+					"patching_rect" : [ 32.571441999999998, 298.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -960,7 +960,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 857.571441999999934, 259.0, 73.0, 72.0 ],
+					"patching_rect" : [ 853.571442000000047, 227.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1013,7 +1013,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 498.571441999999934, 83.0, 363.0, 194.0 ],
+					"patching_rect" : [ 476.571441999999934, 83.0, 366.0, 194.0 ],
 					"text" : "abc_cosrandenv1~, abc_cosrandenv2~, ... objects provide multichannel envelopes based on the cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.\n- If the rarefaction is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the rarefaction is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum rarefaction).\n- freq parameter is the frequency of the envelope generated.\n- spread parameter controls the phase between the envelopes of the various channels: 0 means no dephasing, 1 means maximum dephasing (for instance half a period when there are 2 channels)."
 				}
 
@@ -1049,7 +1049,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 113.5, 302.5, 178.000000000000114, 24.0 ],
+					"patching_rect" : [ 113.5, 298.0, 178.000000000000114, 24.0 ],
 					"text" : "abc_cosrandenv3~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
 					"varname" : "faustgen-3857d0"
@@ -1070,7 +1070,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-35", 0 ],
-					"midpoints" : [ 867.071441999999934, 457.75, 942.071441999999024, 457.75 ],
+					"midpoints" : [ 863.071442000000047, 457.75, 942.071441999999024, 457.75 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -1362,7 +1362,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-27", 0 ],
-					"midpoints" : [ 147.5, 414.75, 123.0, 414.75 ],
+					"midpoints" : [ 147.5, 418.75, 123.0, 418.75 ],
 					"source" : [ "obj-23", 0 ]
 				}
 
@@ -1720,7 +1720,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-27", 0 ],
-					"midpoints" : [ 40.071441999999998, 413.5, 123.0, 413.5 ],
+					"midpoints" : [ 42.071441999999998, 418.5, 123.0, 418.5 ],
 					"source" : [ "obj-63", 0 ]
 				}
 
@@ -1728,7 +1728,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-27", 0 ],
-					"midpoints" : [ 210.5, 414.75, 123.0, 414.75 ],
+					"midpoints" : [ 210.5, 419.75, 123.0, 419.75 ],
 					"source" : [ "obj-64", 0 ]
 				}
 

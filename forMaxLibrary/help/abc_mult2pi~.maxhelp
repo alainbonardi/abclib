@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 2,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 256.0, 79.0, 604.0, 706.0 ],
+		"rect" : [ 256.0, 87.0, 621.0, 706.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -121,7 +121,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 425.5, 74.0, 72.0 ],
+					"patching_rect" : [ 49.0, 395.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -133,8 +133,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 149.0, 531.0, 125.0, 22.0 ],
-					"text" : "abc_stereodecoder1~"
+					"patching_rect" : [ 149.0, 531.0, 145.0, 22.0 ],
+					"text" : "abc_2d_stereodecoder1~"
 				}
 
 			}
@@ -145,7 +145,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 149.0, 445.0, 178.0, 22.0 ],
+					"patching_rect" : [ 149.0, 445.0, 208.000000000000057, 22.0 ],
 					"text" : "abc_2d_map1~"
 				}
 
@@ -167,7 +167,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 1.0, 365.0, 310.0, 32.0 ],
+					"patching_rect" : [ 24.0, 340.0, 310.0, 32.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -183,7 +183,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 337.0, 198.0, 92.0, 35.0 ],
+					"patching_rect" : [ 367.0, 198.0, 92.0, 35.0 ],
 					"sig" : 0.0
 				}
 
@@ -195,7 +195,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 308.0, 85.0, 66.0, 22.0 ],
+					"patching_rect" : [ 338.0, 85.0, 66.0, 22.0 ],
 					"text" : "phasor~ 1."
 				}
 
@@ -206,7 +206,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 437.0, 150.5, 130.0, 130.0 ],
+					"patching_rect" : [ 467.0, 150.5, 130.0, 130.0 ],
 					"range" : [ 0.0, 1.0 ]
 				}
 
@@ -222,7 +222,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 339.0, 379.0, 92.0, 35.0 ],
+					"patching_rect" : [ 369.0, 379.0, 92.0, 35.0 ],
 					"sig" : 0.0
 				}
 
@@ -267,7 +267,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 437.0, 285.0, 143.0, 87.0 ],
+					"patching_rect" : [ 467.0, 285.0, 143.0, 87.0 ],
 					"text" : "abc_mult2pi~ multiplies the incoming signal by 2*PI. Therefore a phasor~ between 0 and 1 becomes an angle between 0 and 2*Pi"
 				}
 
@@ -281,7 +281,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 308.0, 292.5, 98.0, 24.0 ],
+					"patching_rect" : [ 338.0, 292.5, 98.0, 24.0 ],
 					"text" : "abc_mult2pi~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 				}
@@ -320,7 +320,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 317.5, 127.0, 346.5, 127.0 ],
+					"midpoints" : [ 347.5, 127.0, 376.5, 127.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -329,7 +329,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-40", 0 ],
-					"midpoints" : [ 317.5, 128.25, 446.5, 128.25 ],
+					"midpoints" : [ 347.5, 128.25, 476.5, 128.25 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -354,7 +354,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 10.5, 414.0, 158.5, 414.0 ],
+					"midpoints" : [ 33.5, 381.0, 158.5, 381.0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -362,7 +362,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-23", 1 ],
-					"midpoints" : [ 211.5, 564.75, 324.5, 564.75 ],
+					"midpoints" : [ 221.5, 564.75, 324.5, 564.75 ],
 					"source" : [ "obj-13", 1 ]
 				}
 
@@ -453,7 +453,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
-					"midpoints" : [ 62.5, 516.75, 158.5, 516.75 ],
+					"midpoints" : [ 58.5, 522.75, 158.5, 522.75 ],
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -479,6 +479,10 @@
 			}
 , 			{
 				"name" : "abc_2d_scope1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_stereodecoder1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -512,10 +516,6 @@
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_stereodecoder1~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_stereoout~.maxpat",
