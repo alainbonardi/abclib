@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 3,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 939.0, 443.0, 640.0, 480.0 ],
+		"rect" : [ 939.0, 443.0, 147.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-4",
@@ -45,7 +46,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 50.0, 48.0, 20.0, 20.0 ]
+					"patching_rect" : [ 47.0, 48.0, 20.0, 20.0 ]
 				}
 
 			}
@@ -82,7 +83,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 26.0, 4.0, 49.0, 18.0 ],
+					"patching_rect" : [ 23.0, 7.0, 49.0, 18.0 ],
 					"text" : "gain [dB]"
 				}
 
@@ -97,7 +98,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 26.0, 21.0, 44.0, 20.0 ]
+					"patching_rect" : [ 23.0, 24.0, 44.0, 20.0 ]
 				}
 
 			}
@@ -145,7 +146,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 3.0, 4.0, 21.0, 64.0 ],
+					"patching_rect" : [ 3.0, 4.0, 18.0, 101.0 ],
 					"size" : 146.0
 				}
 
@@ -155,7 +156,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 59.5, 78.0, 89.0, 78.0, 89.0, -62.0, 12.5, -62.0 ],
+					"midpoints" : [ 56.5, 78.0, 89.0, 78.0, 89.0, -62.0, 12.5, -62.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -172,7 +173,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 12.5, 165.0, 24.0, 165.0, 24.0, 14.0, 35.5, 14.0 ],
+					"midpoints" : [ 12.5, 165.0, 24.0, 165.0, 24.0, 14.0, 32.5, 14.0 ],
 					"order" : 0,
 					"source" : [ "obj-46", 0 ]
 				}
