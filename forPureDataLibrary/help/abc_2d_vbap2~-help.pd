@@ -10,16 +10,16 @@
 #X obj 48 382 abc_meter;
 #X text 547 110 CONTROLS;
 #X text 542 6 DESCRIPTION;
-#X obj 580 208 loadbang;
-#X obj 580 253 unpack 0 0 0 0;
-#X floatatom 580 280 5 -360 360 0 - - - 0;
-#X floatatom 635 280 5 -360 360 0 - - - 0;
-#X floatatom 691 280 5 -360 360 0 - - - 0;
-#X floatatom 745 280 5 -360 360 0 - - - 0;
-#X msg 580 300 a-0 \$1;
-#X msg 635 300 a-1 \$1;
-#X msg 691 300 a-2 \$1;
-#X msg 746 300 a-3 \$1;
+#X obj 637 210 loadbang;
+#X obj 637 255 unpack 0 0 0 0;
+#X floatatom 637 282 5 -360 360 0 - - - 0;
+#X floatatom 692 282 5 -360 360 0 - - - 0;
+#X floatatom 748 282 5 -360 360 0 - - - 0;
+#X floatatom 802 282 5 -360 360 0 - - - 0;
+#X msg 637 302 a-0 \$1;
+#X msg 692 302 a-1 \$1;
+#X msg 748 302 a-2 \$1;
+#X msg 803 302 a-3 \$1;
 #X text 543 26 abc_vbap2~ \, abc_vbap3~ \, ...objects provide implementations
 of VBAP algorithm by Ville Pulkki for various number of loudspeakers
 dispatched on a circle with angles that can be irregular. http://lib.tkk.fi/Diss/2001/isbn9512255324/article1.pdf
@@ -28,13 +28,13 @@ dispatched on a circle with angles that can be irregular. http://lib.tkk.fi/Diss
 a-0 \, a-1 \, a-2... angles (in degrees).;
 #X text 549 156 - theta is the angle of the virtual source (in degrees).
 ;
-#X obj 580 370 s vbap4;
+#X obj 637 372 s vbap4;
 #X obj 83 153 abc_soundcoat~;
 #X obj 89 210 abc_2d_vbap4~;
-#X obj 429 211 tgl 15 0 empty empty rotation_or_static 17 7 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 429 211 tgl 15 0 empty empty rotation_(1)_or_static_(0) 17 7
+0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 274 184 phasor~ 0.1;
-#X msg 580 232 0 84 182 278;
+#X msg 637 234 0 84 182 278;
 #X obj 112 382 abc_quadriout -10;
 #X obj 274 205 *~ 360;
 #X obj 274 234 snapshot~;

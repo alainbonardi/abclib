@@ -1,26 +1,26 @@
-#N canvas 84 25 1440 733 10;
-#X obj 14 9 cnv 15 500 25 empty empty abc_2d_squaretrajectory~ &_al.
+#N canvas 84 25 1621 732 10;
+#X obj 14 8 cnv 15 500 25 empty empty abc_2d_squaretrajectory~ &_al.
 20 12 0 18 #606060 #fcfcfc 0;
-#X obj 13 697 abc_helpcredit;
-#X obj 14 35 cnv 15 500 25 empty empty 2D_trajectory_generators 20
+#X obj 13 696 abc_helpcredit;
+#X obj 14 34 cnv 15 500 25 empty empty 2D_trajectory_generators 20
 12 0 12 #606060 #fcfcfc 0;
-#X obj 48 167 loadbang;
-#X floatatom 48 229 5 0 0 0 - - - 0;
-#X obj 699 652 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#X obj 48 166 loadbang;
+#X floatatom 48 228 5 0 0 0 - - - 0;
+#X obj 699 651 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 699 680 \; pd dsp \$1 \;;
-#X text 939 7 CONTROLS;
-#X text 542 9 DESCRIPTION;
-#X obj 48 295 abc_2d_squaretrajectory~;
-#X msg 48 252 freq \$1;
-#X floatatom 114 228 5 0 0 0 - - - 0;
-#X msg 114 251 size \$1;
-#X obj 45 404 abc_scope 1 0 2.5;
-#X obj 27 341 sig~ 1;
-#X obj 191 407 abc_cartopol~;
-#X obj 210 486 abc_2d_map1~;
-#X obj 309 391 receive~ s1;
-#X obj 344 446 abc_meter;
+#X msg 699 679 \; pd dsp \$1 \;;
+#X text 939 6 CONTROLS;
+#X text 542 8 DESCRIPTION;
+#X obj 48 294 abc_2d_squaretrajectory~;
+#X msg 48 251 freq \$1;
+#X floatatom 114 227 5 0 0 0 - - - 0;
+#X msg 114 250 size \$1;
+#X obj 45 403 abc_scope 1 0 2.5;
+#X obj 27 340 sig~ 1;
+#X obj 191 406 abc_cartopol~;
+#X obj 210 485 abc_2d_map1~;
+#X obj 309 390 receive~ s1;
+#X obj 344 445 abc_meter;
 #N canvas 410 970 321 239 4harmonics 0;
 #X obj 79 76 abc_addsynth4~;
 #X obj 74 143 abc_cosrandenv4~;
@@ -40,80 +40,80 @@
 #X connect 1 4 5 0;
 #X connect 6 0 7 0;
 #X connect 7 0 0 0;
-#X restore 427 75 pd 4harmonics;
-#X obj 467 166 loadbang;
-#X floatatom 467 228 5 0 0 0 - - - 0;
-#X msg 467 251 freq \$1;
-#X floatatom 533 227 5 0 0 0 - - - 0;
-#X msg 533 250 size \$1;
-#X obj 610 406 abc_cartopol~;
-#X obj 763 445 abc_meter;
-#X obj 467 294 abc_2d_ztrajectory~;
-#X obj 629 485 abc_2d_map3~;
-#X obj 728 390 receive~ s2;
-#X obj 872 167 loadbang;
-#X floatatom 872 229 5 0 0 0 - - - 0;
-#X msg 872 252 freq \$1;
-#X floatatom 938 228 5 0 0 0 - - - 0;
-#X msg 938 251 size \$1;
-#X obj 1015 407 abc_cartopol~;
-#X obj 1168 446 abc_meter;
-#X obj 1034 486 abc_2d_map3~;
-#X obj 851 341 sig~ 0;
-#X obj 872 295 abc_2d_squareandztrajectory~;
-#X floatatom 999 228 5 0 0 0 - - - 0;
-#X msg 999 205 0.22;
-#X msg 999 251 crossfade \$1;
-#X obj 1133 391 receive~ s3;
-#X msg 114 204 1.2;
-#X obj 464 405 abc_scope 1 0 2.5;
-#X obj 447 339 sig~ 0;
-#X msg 938 205 1.5;
-#X obj 886 407 abc_scope 1 0 2.5;
-#X msg 48 205 -0.2;
-#X msg 467 204 0.4;
-#X msg 533 204 1;
-#X obj 1247 166 loadbang;
-#X floatatom 1247 228 5 0 0 0 - - - 0;
-#X msg 1247 251 freq \$1;
-#X floatatom 1313 227 5 0 0 0 - - - 0;
-#X msg 1313 250 size \$1;
-#X obj 1390 406 abc_cartopol~;
-#X obj 1543 445 abc_meter;
-#X obj 1261 406 abc_scope 1 0 2.5;
-#X obj 1247 294 abc_2d_randomtrajectory~;
-#X obj 1508 390 receive~ s4;
-#X obj 1406 476 abc_2d_map5~ -----;
-#X obj 1226 340 sig~ 1;
-#X msg 1247 204 0.6;
-#X msg 872 205 0.5;
-#X text 543 29 abc_2d_squaretrajectory~ \, abc_2d_ztrajectory~ \, abc_2d_squareandztrajectory~
+#X restore 427 74 pd 4harmonics;
+#X obj 467 165 loadbang;
+#X floatatom 467 227 5 0 0 0 - - - 0;
+#X msg 467 250 freq \$1;
+#X floatatom 533 226 5 0 0 0 - - - 0;
+#X msg 533 249 size \$1;
+#X obj 610 405 abc_cartopol~;
+#X obj 763 444 abc_meter;
+#X obj 467 293 abc_2d_ztrajectory~;
+#X obj 629 484 abc_2d_map3~;
+#X obj 728 389 receive~ s2;
+#X obj 872 166 loadbang;
+#X floatatom 872 228 5 0 0 0 - - - 0;
+#X msg 872 251 freq \$1;
+#X floatatom 938 227 5 0 0 0 - - - 0;
+#X msg 938 250 size \$1;
+#X obj 1015 406 abc_cartopol~;
+#X obj 1168 445 abc_meter;
+#X obj 1034 485 abc_2d_map3~;
+#X obj 851 340 sig~ 0;
+#X obj 872 294 abc_2d_squareandztrajectory~;
+#X floatatom 999 227 5 0 0 0 - - - 0;
+#X msg 999 204 0.22;
+#X msg 999 250 crossfade \$1;
+#X obj 1133 390 receive~ s3;
+#X msg 114 203 1.2;
+#X obj 464 404 abc_scope 1 0 2.5;
+#X obj 447 338 sig~ 0;
+#X msg 938 204 1.5;
+#X obj 886 406 abc_scope 1 0 2.5;
+#X msg 48 204 -0.2;
+#X msg 467 203 0.4;
+#X msg 533 203 1;
+#X obj 1247 165 loadbang;
+#X floatatom 1247 227 5 0 0 0 - - - 0;
+#X msg 1247 250 freq \$1;
+#X floatatom 1313 226 5 0 0 0 - - - 0;
+#X msg 1313 249 size \$1;
+#X obj 1390 405 abc_cartopol~;
+#X obj 1543 444 abc_meter;
+#X obj 1261 405 abc_scope 1 0 2.5;
+#X obj 1247 293 abc_2d_randomtrajectory~;
+#X obj 1508 389 receive~ s4;
+#X obj 1406 475 abc_2d_map5~ -----;
+#X obj 1226 339 sig~ 1;
+#X msg 1247 203 0.6;
+#X msg 872 204 0.5;
+#X text 543 28 abc_2d_squaretrajectory~ \, abc_2d_ztrajectory~ \, abc_2d_squareandztrajectory~
 \, abc_2d_randomtrajectory~objects generate 2D trajectories in cartesian
 coordinates. abc_2d_squaretrajectory~ stands for a square \, abc_2d_ztrajectory~
 for a Z \, abc_2d_squareandztrajectory~ for an interpolation between
 a square and a Z \, abc_2d_randomtrajectory~ for a random trajectory.
 All of them have in common two controllers: freq (frequency of the
 shape in s-1) \, and size.;
-#X msg 1313 204 1.3;
-#X obj 632 548 abc_stereoout -15;
-#X obj 213 549 abc_stereoout -15;
-#X obj 1037 549 abc_stereoout -15;
-#X obj 1412 548 abc_stereoout -15;
-#X obj 1476 168 abc_gain -15;
-#X obj 1101 169 abc_gain -15;
-#X obj 646 166 abc_gain -15;
-#X obj 221 167 abc_gain -15;
-#X text 23 324 red;
-#X text 444 321 blue;
-#X text 938 26 These trajectory generators have common controls: -
+#X msg 1313 203 1.3;
+#X obj 632 547 abc_stereoout -15;
+#X obj 213 548 abc_stereoout -15;
+#X obj 1037 548 abc_stereoout -15;
+#X obj 1412 547 abc_stereoout -15;
+#X obj 1476 167 abc_gain -15;
+#X obj 1101 168 abc_gain -15;
+#X obj 646 165 abc_gain -15;
+#X obj 221 166 abc_gain -15;
+#X text 23 323 red;
+#X text 444 320 blue;
+#X text 938 25 These trajectory generators have common controls: -
 freq is the frequency of the trajectory in period per second - size
 is the size of the square that marks out the trajectory For the abc_2d_squareandztrajectory~
 object \, there is an extra parameter \, crossfade that enables the
 interpolate between z and square trajectories;
-#X obj 180 519 abc_2d_stereodecoder1~;
-#X obj 599 518 abc_2d_stereodecoder3~;
-#X obj 1004 519 abc_2d_stereodecoder3~;
-#X obj 1379 518 abc_2d_stereodecoder5~ ----;
+#X obj 180 518 abc_2d_stereodecoder1~;
+#X obj 599 517 abc_2d_stereodecoder3~;
+#X obj 1004 518 abc_2d_stereodecoder3~;
+#X obj 1379 517 abc_2d_stereodecoder5~ ----;
 #X connect 3 0 49 0;
 #X connect 3 0 44 0;
 #X connect 4 0 10 0;
@@ -227,4 +227,4 @@ interpolate between z and square trajectories;
 #X connect 81 2 70 1;
 #X connect 82 1 71 0;
 #X connect 82 2 71 1;
-#X coords 0 733 1 732 85 60 0;
+#X coords 0 732 1 731 85 60 0;
