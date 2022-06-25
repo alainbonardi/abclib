@@ -1,4 +1,4 @@
-#N canvas 50 25 1403 812 10;
+#N canvas 50 25 1403 989 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_puckettespaf~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 948 abc_helpcredit;
@@ -1087,7 +1087,7 @@ amp 0 3000 \; paf8 amp 0 3000;
 #X connect 23 0 24 0;
 #X connect 24 0 10 0;
 #X restore 60 537 pd meaLuxControl;
-#X text 1131 595;
+#X text 1131 595 comment;
 #X text 748 605 DESCRIPTION AND CONTROLS;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;

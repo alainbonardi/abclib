@@ -1,11 +1,11 @@
 #N canvas 555 35 1346 776 10;
-#X obj 11 5 cnv 15 500 25 empty empty abc_flangerN~ 20 12 0 18 -99865
--262144 0;
+#X obj 11 5 cnv 15 500 25 empty empty abc_flangerN~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Multichannel_flangers 20 12
-0 12 -99865 -262144 0;
-#X obj 644 673 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+0 12 #606060 #fcfcfc 0;
+#X obj 644 673 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 644 701 \; pd dsp \$1 \;;
 #X text 560 7 CONTROLS;
 #X text 202 75 DESCRIPTION;
@@ -14,18 +14,18 @@
 #X obj 327 331 abc_upanddown;
 #X msg 327 376 spread \$1;
 #X obj 51 330 r rate;
-#X floatatom 51 351 5 0 0 0 - - -;
+#X floatatom 51 351 5 0 0 0 - - - 0;
 #X msg 51 371 rate \$1;
 #X obj 139 430 abc_flanger2~;
-#X floatatom 105 351 5 0 0 0 - - -;
+#X floatatom 105 351 5 0 0 0 - - - 0;
 #X obj 105 330 r depth;
 #X msg 105 371 depth \$1;
 #X obj 447 379 abc_soundcoat~;
 #X obj 447 193 abc_gain -127;
-#X floatatom 166 351 5 0 0 0 - - -;
+#X floatatom 166 351 5 0 0 0 - - - 0;
 #X obj 166 330 r offset;
 #X msg 166 371 offset \$1;
-#X floatatom 233 351 5 0 0 0 - - -;
+#X floatatom 233 351 5 0 0 0 - - - 0;
 #X obj 233 330 r fdbk;
 #X msg 233 371 fdbk \$1;
 #X msg 315 543 \; rate 0.5 \; depth 40 \; offset 10 \; fdbk 1 \;;
@@ -37,19 +37,19 @@
 #X obj 1099 337 loadbang;
 #X msg 1099 358 f0 50;
 #X obj 1099 379 abc_soundcoat~;
-#X floatatom 852 359 5 0 0 0 - - -;
+#X floatatom 852 359 5 0 0 0 - - - 0;
 #X msg 852 379 rate \$1;
-#X floatatom 906 359 5 0 0 0 - - -;
+#X floatatom 906 359 5 0 0 0 - - - 0;
 #X msg 906 379 depth \$1;
-#X floatatom 967 359 5 0 0 0 - - -;
+#X floatatom 967 359 5 0 0 0 - - - 0;
 #X msg 967 379 offset \$1;
-#X floatatom 1034 359 5 0 0 0 - - -;
+#X floatatom 1034 359 5 0 0 0 - - - 0;
 #X msg 1034 379 fdbk \$1;
 #X obj 949 455 abc_flanger7~;
 #X obj 907 516 abc_2d_decoder3~ ---------;
 #X obj 934 583 dac~ 1 2 3 4 5 6 7 8;
-#X obj 767 360 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 767 360 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 767 380 stereo \$1;
 #X obj 852 338 r rate2;
 #X obj 906 338 r depth2;
@@ -58,8 +58,7 @@
 #X obj 1238 511 loadbang;
 #X msg 1238 538 \; rate2 100 \; depth2 10 \; offset2 5 \; fdbk2 0.6
 \;;
-#X obj 1079 518 abc_2d_scope3~ ------;
-#X obj 1112 565 abc_scope 1 0 2.5;
+#X obj 1076 516 abc_2d_scope3~ ------;
 #X text 203 95 abc_flanger1~ \, abc_flanger2~ \, ... \, provide classic
 multichannel flangers with sinusoidal delay;
 #X text 559 27 rate is the frequency of the sinusoid varying the delay
@@ -75,6 +74,9 @@ outputs identical 1 => maximum spatial split. For abc_flanger2~ it
 means a maximum stereo effect.;
 #X obj 152 508 abc_stereoout -15;
 #X obj 684 216 abc_gain -10;
+#X obj 1092 589 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
+232 74 79 77 96 98 102 0 empty;
+#X text 1111 722 cyclone/scope~;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;
 #X connect 10 0 14 0;
@@ -83,8 +85,8 @@ means a maximum stereo effect.;
 #X connect 12 0 13 0;
 #X connect 13 0 14 0;
 #X connect 14 1 7 0;
-#X connect 14 1 61 0;
-#X connect 14 2 61 1;
+#X connect 14 1 60 0;
+#X connect 14 2 60 1;
 #X connect 15 0 17 0;
 #X connect 16 0 15 0;
 #X connect 17 0 14 0;
@@ -138,8 +140,7 @@ means a maximum stereo effect.;
 #X connect 49 0 38 0;
 #X connect 50 0 40 0;
 #X connect 51 0 52 0;
-#X connect 53 1 54 0;
-#X connect 53 2 54 1;
-#X connect 53 3 54 2;
-#X connect 62 0 43 0;
+#X connect 53 1 62 0;
+#X connect 53 2 62 1;
+#X connect 61 0 43 0;
 #X coords 0 776 1 775 85 60 0;

@@ -1,32 +1,32 @@
 #N canvas 359 43 1462 867 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_drops~ 20 12 0 18 -99865
--262144 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_drops~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 14 828 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Rain_drop_synthetizer 20 12
-0 12 -99865 -262144 0;
-#X obj 606 611 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+0 12 #606060 #fcfcfc 0;
+#X obj 606 611 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 606 641 \; pd dsp \$1 \;;
 #X text 22 64 DESCRIPTION;
 #X obj 205 652 abc_meter;
 #X obj 335 219 loadbang;
-#X floatatom 163 329 5 0 0 0 - - -;
+#X floatatom 163 329 5 0 0 0 - - - 0;
 #X msg 163 308 1000;
 #X msg 163 349 dropperiod \$1;
-#X floatatom 256 328 5 0 0 0 - - -;
+#X floatatom 256 328 5 0 0 0 - - - 0;
 #X msg 256 348 dropthinness \$1;
 #X msg 256 307 50;
-#X floatatom 360 328 5 0 0 0 - - -;
+#X floatatom 360 328 5 0 0 0 - - - 0;
 #X msg 360 307 50;
 #X msg 360 348 qf \$1;
 #X msg 407 349 limiter \$1;
-#X obj 407 329 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 407 329 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 407 307 1;
-#X floatatom 479 329 5 0 0 0 - - -;
+#X floatatom 479 329 5 0 0 0 - - - 0;
 #X msg 479 308 1000;
 #X msg 479 349 avgfreq \$1;
-#X floatatom 552 329 5 0 0 0 - - -;
+#X floatatom 552 329 5 0 0 0 - - - 0;
 #X msg 552 308 5;
 #X msg 552 349 attackdur \$1;
 #X text 22 85 abc_drops~ simulates raindrops with a periodic exciter
@@ -40,40 +40,40 @@ of the reason filter: qf - the use of the limiter at the output or
 not: limiter 1 or 0 - the average frequency of the randomization of
 drop frequencies: avgfreq in Hz - the duration of the attack of the
 envelope: attackdur in milliseconds;
-#X obj 1076 125 loadbang;
-#X msg 970 185 1.618;
-#X msg 1178 185 700;
-#X obj 977 367 expr 1000 / $f1;
-#X floatatom 977 388 5 0 0 0 - - -;
-#X msg 977 408 dropperiod \$1;
+#X obj 1006 136 loadbang;
+#X msg 900 196 1.618;
+#X msg 1108 196 700;
+#X obj 907 378 expr 1000 / $f1;
+#X floatatom 907 399 5 0 0 0 - - - 0;
+#X msg 907 419 dropperiod \$1;
 #X obj 44 397 abc_drops;
-#X msg 915 429 speed \$1;
-#X msg 1241 184 1.1;
-#X floatatom 1241 205 5 0 0 1 frequency_ratio - -;
-#X floatatom 970 206 5 0 0 0 rotation_speed_of_drop_1 - -;
-#X floatatom 1178 206 5 0 0 0 average_frequency_of_drop_1 - -;
-#X obj 1178 288 *;
-#X obj 1241 226 t b f f;
-#X obj 1280 252 t b f;
-#X obj 1288 296 *;
-#X floatatom 1288 317 5 0 0 0 - - -;
-#X floatatom 1178 318 5 0 0 0 - - -;
-#X obj 1289 366 expr 1000 / $f1;
-#X floatatom 1289 387 5 0 0 0 - - -;
-#X msg 1289 407 dropperiod \$1;
-#X msg 1390 416 speed \$1;
-#X msg 1069 408 avgfreq \$1;
-#X msg 1178 407 avgfreq \$1;
-#X obj 1083 601 abc_2d_decoder1~;
-#X obj 892 520 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X msg 892 544 stereo \$1;
-#X obj 1087 700 abc_quadriout 0;
-#X obj 805 379 abc_gain -127;
-#X obj 1044 453 abc_drops~;
-#X obj 1178 453 abc_drops~;
-#X obj 1008 498 abc_2d_encoder1~;
-#X obj 1142 499 abc_2d_encoder1~;
+#X msg 845 440 speed \$1;
+#X msg 1171 195 1.1;
+#X floatatom 1171 216 5 0 0 1 frequency_ratio - - 0;
+#X floatatom 900 217 5 0 0 0 rotation_speed_of_drop_1 - - 0;
+#X floatatom 1108 217 5 0 0 0 average_frequency_of_drop_1 - - 0;
+#X obj 1108 299 *;
+#X obj 1171 237 t b f f;
+#X obj 1210 263 t b f;
+#X obj 1218 307 *;
+#X floatatom 1218 328 5 0 0 0 - - - 0;
+#X floatatom 1108 329 5 0 0 0 - - - 0;
+#X obj 1219 377 expr 1000 / $f1;
+#X floatatom 1219 398 5 0 0 0 - - - 0;
+#X msg 1219 418 dropperiod \$1;
+#X msg 1315 419 speed \$1;
+#X msg 999 419 avgfreq \$1;
+#X msg 1108 418 avgfreq \$1;
+#X obj 1013 612 abc_2d_decoder1~;
+#X obj 822 531 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 822 555 stereo \$1;
+#X obj 1017 711 abc_quadriout 0;
+#X obj 735 390 abc_gain -127;
+#X obj 974 464 abc_drops~;
+#X obj 1108 464 abc_drops~;
+#X obj 938 509 abc_2d_encoder1~;
+#X obj 1072 510 abc_2d_encoder1~;
 #X obj 44 185 abc_gain 0;
 #X obj 272 652 abc_stereoout -15;
 #X connect 3 0 4 0;
