@@ -1,6 +1,6 @@
-#N struct 1196-template-master float x float x2 float color float colort
+#N struct 1013-template-master float x float x2 float color float colort
 float xs float ys symbol sym;
-#N canvas 860 490 1224 640 10;
+#N canvas 1262 530 1224 640 10;
 #X obj 15 6 cnv 15 500 25 empty empty abc_jupiterbank2~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 610 abc_helpcredit;
@@ -61,26 +61,6 @@ float xs float ys symbol sym;
 #X msg 416 195 fa \$1;
 #X floatatom 599 173 5 0 0 0 - - - 0;
 #X msg 599 193 osc2filter \$1;
-#X text 835 33 abc_jupiterbank2~ is inspired by the bank of 14 oscillators
-used by Philippe Manoury in Jupiter for flute and live electronics.
-It enables to generate spectra that can evoluate from harmonic to inharmonic
-content. The 14 frequencies (i from 0 to 13) are given by the formula:
-f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental'
-frequency. The distance between the frequencies is always f0. When
-k is 1 \, the spectrem is harmonic and results in f0 \, 2*f0 \, ...
-\, 14*f0. When k is diffrent from integers \, the spectrum is inharmonic.
-We added to these 14 oscillators 14 resonant filters tuned at the same
-frequencies. Crossfading between oscillators and filters is controlled
-by osc2filter.;
-#X text 838 220 - k is the constant that determines the harmonic/inharmonic
-behaviour of the generator - f0 is the 'fundamental' frequency of the
-generator - osc2filter provides a crossfade between the 14 oscillators
-and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg
-is the gain of the filters - resq is the quality factor of the filters
-Compared to abc_jupiterbank~ synthesis \, this one adds the control
-of the amplitudes of the 14 oscillators thanks to a factor fa and to
-a transfer function that maps each frequency multiplied by fa to a
-level between 0 and 127;
 #X obj 397 312 abc_spectrogram;
 #X obj 177 253 abc_jupiterbank2~ -------------;
 #N canvas 150 175 495 311 spectrum 0;
@@ -115,19 +95,39 @@ level between 0 and 127;
 #X connect 11 0 13 0;
 #X restore 736 283 pd spectrum;
 #X obj 268 532 abc_stereoout -25;
+#X text 835 33 abc_jupiterbank2~ is inspired by the bank of 14 oscillators
+used by Philippe Manoury in Jupiter for flute and live electronics.
+It enables to generate spectra that can evoluate from harmonic to inharmonic
+content. Each partial has a separate output in the object. The 14 frequencies
+(i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is
+a constant and f0 a kind of 'fundamental' frequency. The distance between
+the frequencies is always f0. When k is 1 \, the spectrem is harmonic
+and results in f0 \, 2*f0 \, ... \, 14*f0. When k is diffrent from
+integers \, the spectrum is inharmonic. We added to these 14 oscillators
+14 resonant filters tuned at the same frequencies. Crossfading between
+oscillators and filters is controlled by osc2filter.;
+#X text 838 220 - k is the constant that determines the harmonic/inharmonic
+behaviour of the generator - f0 is the 'fundamental' frequency of the
+generator - osc2filter provides a crossfade between the 14 oscillators
+and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg
+is the gain of the filters - resq is the quality factor of the filters
+Compared to abc_jupiterbank~ synthesis \, this one adds the control
+of the amplitudes of the 14 oscillators thanks to a factor fa and to
+a transfer function that maps each frequency multiplied by fa to a
+level between 0 and 127;
 #X connect 3 0 4 0;
 #X connect 7 0 22 0;
 #X connect 7 0 19 0;
 #X connect 7 0 16 0;
 #X connect 7 0 17 0;
 #X connect 8 0 9 0;
-#X connect 9 0 31 0;
+#X connect 9 0 29 0;
 #X connect 10 0 11 0;
-#X connect 11 0 31 0;
+#X connect 11 0 29 0;
 #X connect 12 0 14 0;
 #X connect 13 0 15 0;
-#X connect 14 0 31 0;
-#X connect 15 0 31 0;
+#X connect 14 0 29 0;
+#X connect 15 0 29 0;
 #X connect 16 0 12 0;
 #X connect 17 0 13 0;
 #X connect 18 1 20 1;
@@ -145,42 +145,42 @@ level between 0 and 127;
 #X connect 18 13 20 13;
 #X connect 18 14 20 14;
 #X connect 19 0 10 0;
-#X connect 20 1 33 0;
-#X connect 20 2 33 1;
-#X connect 21 0 31 0;
+#X connect 20 1 31 0;
+#X connect 20 2 31 1;
+#X connect 21 0 29 0;
 #X connect 22 0 8 0;
 #X connect 23 0 24 0;
 #X connect 23 1 26 0;
 #X connect 24 0 25 0;
-#X connect 25 0 31 0;
+#X connect 25 0 29 0;
 #X connect 26 0 27 0;
-#X connect 27 0 31 0;
-#X connect 31 1 18 1;
-#X connect 31 1 30 0;
-#X connect 31 2 18 2;
-#X connect 31 2 30 0;
-#X connect 31 3 18 3;
-#X connect 31 3 30 0;
-#X connect 31 4 18 4;
-#X connect 31 4 30 0;
-#X connect 31 5 18 5;
-#X connect 31 5 30 0;
-#X connect 31 6 18 6;
-#X connect 31 6 30 0;
-#X connect 31 7 18 7;
-#X connect 31 7 30 0;
-#X connect 31 8 18 8;
-#X connect 31 8 30 0;
-#X connect 31 9 18 9;
-#X connect 31 9 30 0;
-#X connect 31 10 18 10;
-#X connect 31 10 30 0;
-#X connect 31 11 18 11;
-#X connect 31 11 30 0;
-#X connect 31 12 18 12;
-#X connect 31 12 30 0;
-#X connect 31 13 18 13;
-#X connect 31 13 30 0;
-#X connect 31 14 18 14;
-#X connect 31 14 30 0;
-#X connect 32 0 30 1;
+#X connect 27 0 29 0;
+#X connect 29 1 18 1;
+#X connect 29 1 28 0;
+#X connect 29 2 18 2;
+#X connect 29 2 28 0;
+#X connect 29 3 18 3;
+#X connect 29 3 28 0;
+#X connect 29 4 18 4;
+#X connect 29 4 28 0;
+#X connect 29 5 18 5;
+#X connect 29 5 28 0;
+#X connect 29 6 18 6;
+#X connect 29 6 28 0;
+#X connect 29 7 18 7;
+#X connect 29 7 28 0;
+#X connect 29 8 18 8;
+#X connect 29 8 28 0;
+#X connect 29 9 18 9;
+#X connect 29 9 28 0;
+#X connect 29 10 18 10;
+#X connect 29 10 28 0;
+#X connect 29 11 18 11;
+#X connect 29 11 28 0;
+#X connect 29 12 18 12;
+#X connect 29 12 28 0;
+#X connect 29 13 18 13;
+#X connect 29 13 28 0;
+#X connect 29 14 18 14;
+#X connect 29 14 28 0;
+#X connect 30 0 28 1;
