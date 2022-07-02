@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 11,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -329,7 +329,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1937.0, 411.5, 150.0, 20.0 ],
+					"patching_rect" : [ 1947.0, 411.5, 150.0, 20.0 ],
 					"text" : "REV4 REVERBERATION"
 				}
 
@@ -344,13 +344,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-76",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2138.0, 660.0, 74.0, 72.0 ],
+					"patching_rect" : [ 2114.0, 611.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -362,7 +363,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2026.0, 451.0, 77.0, 22.0 ],
+					"patching_rect" : [ 2036.0, 451.0, 77.0, 22.0 ],
 					"text" : "loadmess 85"
 				}
 
@@ -374,7 +375,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1923.0, 451.0, 82.0, 22.0 ],
+					"patching_rect" : [ 1933.0, 451.0, 82.0, 22.0 ],
 					"text" : "loadmess 110"
 				}
 
@@ -388,6 +389,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-140",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_simplefmburst~.maxpat",
 					"numinlets" : 1,
@@ -409,6 +411,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-141",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -426,8 +429,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 1870.0, 796.0, 125.0, 22.0 ],
-					"text" : "abc_stereodecoder1~"
+					"patching_rect" : [ 1870.0, 796.0, 145.0, 22.0 ],
+					"text" : "abc_2d_stereodecoder1~"
 				}
 
 			}
@@ -438,7 +441,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2048.0, 494.5, 74.0, 33.0 ],
+					"patching_rect" : [ 2058.0, 494.5, 74.0, 33.0 ],
 					"text" : "rev4 gain\n0 to 127"
 				}
 
@@ -450,7 +453,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1860.0, 494.5, 74.0, 47.0 ],
+					"patching_rect" : [ 1870.0, 494.5, 74.0, 47.0 ],
 					"text" : "rev4 duration\n0 to 127"
 				}
 
@@ -463,7 +466,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2026.0, 655.0, 50.0, 22.0 ]
+					"patching_rect" : [ 2036.0, 655.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -475,7 +478,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1923.0, 655.0, 50.0, 22.0 ]
+					"patching_rect" : [ 1933.0, 655.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -487,7 +490,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 2026.0, 503.0, 20.0, 140.0 ]
+					"patching_rect" : [ 2036.0, 503.0, 20.0, 140.0 ]
 				}
 
 			}
@@ -508,7 +511,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 2026.0, 697.0, 67.0, 22.0 ],
+					"patching_rect" : [ 2036.0, 697.0, 67.0, 22.0 ],
 					"text" : "revGain $1"
 				}
 
@@ -521,7 +524,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1923.0, 503.0, 20.0, 140.0 ]
+					"patching_rect" : [ 1933.0, 503.0, 20.0, 140.0 ]
 				}
 
 			}
@@ -542,7 +545,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1923.0, 697.0, 61.0, 22.0 ],
+					"patching_rect" : [ 1933.0, 697.0, 61.0, 22.0 ],
 					"text" : "revDur $1"
 				}
 
@@ -557,7 +560,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 1923.0, 738.5, 125.0, 24.0 ],
+					"patching_rect" : [ 1933.0, 738.5, 145.0, 24.0 ],
 					"text" : "abc_rev4stereo~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
 					"varname" : "faustgen-3857d0"
@@ -574,13 +577,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-139",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1184.583333333333485, 902.0, 74.0, 72.0 ],
+					"patching_rect" : [ 1207.071441999999934, 858.5, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -866,6 +870,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-135",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -885,6 +890,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-136",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_simplefmburst~.maxpat",
 					"numinlets" : 1,
@@ -1061,13 +1067,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-111",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 647.583333333333485, 780.0, 74.0, 72.0 ],
+					"patching_rect" : [ 661.0, 800.5, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1266,8 +1273,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 11,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1620,7 +1627,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1213.571441999999934, 379.5, 24.0, 24.0 ]
+					"patching_rect" : [ 1238.571441999999934, 379.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -1641,7 +1648,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1213.571441999999934, 411.5, 59.0, 22.0 ],
+					"patching_rect" : [ 1238.571441999999934, 411.5, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -1656,13 +1663,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-90",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1288.071441999999934, 358.0, 74.0, 72.0 ],
+					"patching_rect" : [ 1299.988108666666449, 325.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1716,13 +1724,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-63",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 608.0, 404.0, 74.0, 72.0 ],
+					"patching_rect" : [ 596.0, 403.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1852,6 +1861,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-17",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_musdur.maxpat",
 					"numinlets" : 0,
@@ -1917,6 +1927,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-33",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_musdur.maxpat",
 					"numinlets" : 0,
@@ -1996,6 +2007,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-36",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_musdur.maxpat",
 					"numinlets" : 0,
@@ -2119,6 +2131,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-50",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -2138,6 +2151,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-59",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_simplefmburst~.maxpat",
 					"numinlets" : 1,
@@ -2173,13 +2187,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-13",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 363.988108666666449, 412.0, 74.0, 72.0 ],
+					"patching_rect" : [ 363.988108666666449, 388.5, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -2239,7 +2254,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 190.0, 142.5, 90.0, 35.0 ],
-					"text" : "f0 220"
+					"text" : "f0 660"
 				}
 
 			}
@@ -2254,8 +2269,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 11,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2646,6 +2661,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-10",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -2729,13 +2745,14 @@
 					"enablevscroll" : 0,
 					"id" : "obj-24",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 285.535830179850223, 815.0, 74.0, 72.0 ],
+					"patching_rect" : [ 275.535829999999976, 771.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -2914,6 +2931,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-11",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpcredit.maxpat",
 					"numinlets" : 1,
@@ -2948,6 +2966,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-3",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpheader.maxpat",
 					"numinlets" : 1,
@@ -3113,7 +3132,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-110", 0 ],
-					"midpoints" : [ 657.083333333333485, 901.75, 748.333333333333485, 901.75 ],
+					"midpoints" : [ 670.5, 941.75, 748.333333333333485, 941.75 ],
 					"source" : [ "obj-111", 0 ]
 				}
 
@@ -3298,7 +3317,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 373.488108666666449, 499.5, 133.166666666666629, 499.5 ],
+					"midpoints" : [ 373.488108666666449, 509.5, 133.166666666666629, 509.5 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -3389,7 +3408,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-131", 0 ],
-					"midpoints" : [ 1194.083333333333485, 1001.0, 1295.488108666666449, 1001.0 ],
+					"midpoints" : [ 1216.571441999999934, 1001.0, 1295.488108666666449, 1001.0 ],
 					"source" : [ "obj-139", 0 ]
 				}
 
@@ -3404,7 +3423,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-141", 1 ],
-					"midpoints" : [ 1932.5, 827.0, 2045.5, 827.0 ],
+					"midpoints" : [ 1942.5, 827.0, 2045.5, 827.0 ],
 					"source" : [ "obj-142", 1 ]
 				}
 
@@ -3440,7 +3459,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-151", 0 ],
-					"midpoints" : [ 2035.5, 728.25, 1932.5, 728.25 ],
+					"midpoints" : [ 2045.5, 728.25, 1942.5, 728.25 ],
 					"source" : [ "obj-148", 0 ]
 				}
 
@@ -3611,7 +3630,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-151", 0 ],
-					"midpoints" : [ 1814.5, 731.75, 1932.5, 731.75 ],
+					"midpoints" : [ 1814.5, 731.75, 1942.5, 731.75 ],
 					"order" : 0,
 					"source" : [ "obj-172", 0 ]
 				}
@@ -3650,7 +3669,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-42", 0 ],
-					"midpoints" : [ 295.035830179850223, 898.0, 133.166666666666401, 898.0 ],
+					"midpoints" : [ 285.035829999999976, 898.0, 133.166666666666401, 898.0 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -4074,7 +4093,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-32", 0 ],
-					"midpoints" : [ 617.5, 522.75, 682.5, 522.75 ],
+					"midpoints" : [ 605.5, 522.75, 682.5, 522.75 ],
 					"source" : [ "obj-63", 0 ]
 				}
 
@@ -4213,7 +4232,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-142", 0 ],
-					"midpoints" : [ 2147.5, 788.5, 1879.5, 788.5 ],
+					"midpoints" : [ 2123.5, 788.5, 1879.5, 788.5 ],
 					"source" : [ "obj-76", 0 ]
 				}
 
@@ -4310,7 +4329,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-91", 0 ],
-					"midpoints" : [ 1223.071441999999934, 454.75, 1395.666666666666515, 454.75 ],
+					"midpoints" : [ 1248.071441999999934, 454.75, 1395.666666666666515, 454.75 ],
 					"source" : [ "obj-89", 0 ]
 				}
 
@@ -4318,7 +4337,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-91", 0 ],
-					"midpoints" : [ 1297.571441999999934, 440.75, 1395.666666666666515, 440.75 ],
+					"midpoints" : [ 1309.488108666666449, 440.75, 1395.666666666666515, 440.75 ],
 					"source" : [ "obj-90", 0 ]
 				}
 
@@ -4550,51 +4569,112 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "PNG",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc.helpcredit.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.helpheader.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_2d_decoder3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_stereodecoder1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_addsynth4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_addsynth7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_chopan3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_chopan4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_chopan8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_cosrandenv4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_delay4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_delaychain3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_delaychain4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_delaychain6~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_flanger7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_freqshift6~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
+				"name" : "abc_grain7~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_simplefmburst~.maxpat",
+				"name" : "abc_harmo3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_help_icon.png",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_musdur.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_rev4stereo~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_simplefmburst~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -4603,72 +4683,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_flanger7~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_2d_decoder3~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_delay4~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_addsynth4~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_cosrandenv4~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_chopan8~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_delaychain3~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_chopan3~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_freqshift6~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_delaychain6~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_grain7~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_addsynth7~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_harmo3~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_chopan4~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_delaychain4~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_rev4stereo~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_stereodecoder1~.mxo",
-				"type" : "iLaX"
+				"name" : "abc_stereoout~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
 			}
  ],
 		"autosave" : 0,
