@@ -1,4 +1,4 @@
-#N canvas 622 39 1440 781 10;
+#N canvas 72 39 1440 781 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_decoderN[_P]~  20 12
 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
