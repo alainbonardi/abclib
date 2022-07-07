@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 924.0, 273.0, 729.0, 900.0 ],
+		"rect" : [ 709.0, 100.0, 729.0, 900.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -164,7 +164,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 272.0, 172.0, 101.0, 22.0 ],
+					"patching_rect" : [ 318.5, 172.0, 101.0, 22.0 ],
 					"text" : "abc_soundgrain~"
 				}
 
@@ -422,7 +422,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 398.0, 108.5, 290.0, 154.0 ],
+					"patching_rect" : [ 434.0, 108.5, 290.0, 154.0 ],
 					"text" : "abc_2d_optim1~, abc_2d_optim2~, etc. objects enable to apply optimizations to the sound field with 3 levels (depending on optimtype value). It provides solutions when having an audience that cannot be considered as staying in the center of the ambisonic circle.\n-basic (0) has no effect;\n-maxRe (1) optimization is used when the audience is confined to the center of the circle;\n-inPhase (2) optimization is used when the audience covers all the circle."
 				}
 
@@ -930,7 +930,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 1 ],
-					"midpoints" : [ 281.5, 213.0, 328.5, 213.0 ],
+					"midpoints" : [ 328.0, 213.0, 328.5, 213.0 ],
 					"source" : [ "obj-8", 0 ]
 				}
 
