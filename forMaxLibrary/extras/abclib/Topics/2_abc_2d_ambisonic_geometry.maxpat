@@ -40,6 +40,29 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-116",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 2088.0, 352.5, 150.0, 20.0 ],
+					"text" : "cartesian coordinates"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-114",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 260.0, 400.5, 150.0, 47.0 ],
+					"text" : "polar coordinates as signals: r and theta (in radians) in map objects"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-109",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -89,7 +112,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 233.5, 638.583333333333485, 130.0, 22.0 ],
+					"patching_rect" : [ 233.5, 638.5, 130.0, 22.0 ],
 					"text" : "abc_2d_scope3~"
 				}
 
@@ -291,8 +314,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 8,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 98.0, 435.5, 145.950000000000045, 24.0 ],
-					"text" : "abc_2d_map3~"
+					"patching_rect" : [ 98.0, 435.5, 145.425000000000068, 24.0 ],
+					"text" : "abc_2d_map3_1~"
 				}
 
 			}
@@ -1573,8 +1596,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1106.178558000000066, 162.0, 150.0, 20.0 ],
-					"text" : "2D ROTATIONS"
+					"patching_rect" : [ 1106.178558000000066, 162.0, 236.0, 20.0 ],
+					"text" : "2D ROTATIONS OF THE SOUND FIELD"
 				}
 
 			}
@@ -3122,7 +3145,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_map3~.mxo",
+				"name" : "abc_2d_map3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

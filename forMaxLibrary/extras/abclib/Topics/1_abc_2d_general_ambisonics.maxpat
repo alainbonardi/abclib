@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 352.0, 356.0, 2174.0, 885.0 ],
+		"rect" : [ 232.0, 567.0, 2174.0, 885.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-74",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 967.0, 627.5, 150.0, 47.0 ],
+					"text" : "decoder at order #3 of ambisonics for 8 loudspeakers"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-72",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 678.5, 623.0, 113.0, 33.0 ],
+					"text" : "or abc_2d_decoder3~"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-59",
 					"maxclass" : "newobj",
@@ -552,7 +576,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 976.0, 546.0, 93.0, 103.5 ],
+					"patching_rect" : [ 977.0, 500.0, 93.0, 103.5 ],
 					"viewvisibility" : 1
 				}
 
@@ -992,7 +1016,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 8,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 803.571442000000047, 338.0, 154.0, 22.0 ],
+					"patching_rect" : [ 803.571442000000047, 338.0, 172.999999999999886, 22.0 ],
 					"text" : "abc_cosrandenv7~"
 				}
 
@@ -1026,7 +1050,7 @@
 					"numinlets" : 7,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 976.0, 496.0, 130.0, 22.0 ],
+					"patching_rect" : [ 977.0, 450.0, 130.0, 22.0 ],
 					"text" : "abc_2d_scope3~"
 				}
 
@@ -1037,7 +1061,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 802.880961333333289, 737.0, 121.305560777777714, 22.0 ],
+					"patching_rect" : [ 802.880961333333289, 737.0, 136.916682333333029, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -1052,8 +1076,8 @@
 					"numinlets" : 7,
 					"numoutlets" : 9,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 803.571441999999934, 627.5, 135.0, 24.0 ],
-					"text" : "abc_2d_decoder3~",
+					"patching_rect" : [ 803.571441999999934, 627.5, 151.0, 24.0 ],
+					"text" : "abc_2d_decoder3_8~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
 					"varname" : "faustgen-3857d0[1]"
 				}
@@ -2426,6 +2450,10 @@
 				"patcherrelativepath" : "../../../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_2d_decoder3_8~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_2d_decoder3~.mxo",
