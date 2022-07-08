@@ -830,7 +830,7 @@ puckettesPaf(fund, cfreq, bwidth, g, sgauss, acauchy, wfunc) = (carrier, modulat
 				q = ratio - k;
 				p = 1 - q;
 				//
-				carrier = ph <: (*(k * 2 * ma.PI), *((k +1) * 2 * ma.PI)) : (cos, cos) : +;
+				carrier = ph <: (*(k * 2 * ma.PI), *((k +1) * 2 * ma.PI)) : (cos, cos) : + : *(0.5);
 				//index of modulation = b
 				//
 				b = bwidth / fund;
@@ -841,7 +841,7 @@ puckettesPaf(fund, cfreq, bwidth, g, sgauss, acauchy, wfunc) = (carrier, modulat
 				//cauchy
 				cauchy(x) = acauchy / (x * x + acauchy * acauchy);
 				//modulator
-				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip(0, 10);			
+				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip(0, 10) : *(0.1);			
 };
 
 //[TO BE TESTED]
@@ -885,7 +885,7 @@ puckettesPaf2(fund, cfreq, bwidth, g, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 				//
 				phaseModulator = os.osccos(inharmoFreq) : *(inharmoAmp);
 				//
-				carrier = ph : +(phaseModulator) <: (*(k * 2 * ma.PI), *((k +1) * 2 * ma.PI)) : (cos, cos) : +;
+				carrier = ph : +(phaseModulator) <: (*(k * 2 * ma.PI), *((k +1) * 2 * ma.PI)) : (cos, cos) : + : *(0.5);
 				//index of modulation = b
 				//
 				b = bwidth / fund;
@@ -896,7 +896,7 @@ puckettesPaf2(fund, cfreq, bwidth, g, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 				//cauchy
 				cauchy(x) = acauchy / (x * x + acauchy * acauchy );
 				//modulator
-				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip(0, 10);			
+				modulator = index <: (gaussian, cauchy) : (*(1 - wfunc), *(wfunc)) : + : clip(0, 10) : *(0.1);			
 };
 
 
