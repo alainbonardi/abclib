@@ -1,4 +1,4 @@
-#N canvas 555 35 1346 776 10;
+#N canvas 1067 25 1346 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_flangerN~ 20 12 0 18 #606060
 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
@@ -73,10 +73,10 @@ original;
 outputs identical 1 => maximum spatial split. For abc_flanger2~ it
 means a maximum stereo effect.;
 #X obj 152 508 abc_stereoout -15;
-#X obj 684 216 abc_gain -10;
 #X obj 1092 589 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
 #X text 1111 722 cyclone/scope~;
+#X obj 684 216 abc_gain -15;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;
 #X connect 10 0 14 0;
@@ -140,7 +140,7 @@ means a maximum stereo effect.;
 #X connect 49 0 38 0;
 #X connect 50 0 40 0;
 #X connect 51 0 52 0;
-#X connect 53 1 62 0;
-#X connect 53 2 62 1;
-#X connect 61 0 43 0;
+#X connect 53 1 61 0;
+#X connect 53 2 61 1;
+#X connect 63 0 43 0;
 #X coords 0 776 1 775 85 60 0;

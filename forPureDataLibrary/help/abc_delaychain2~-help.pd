@@ -1,11 +1,11 @@
 #N canvas 610 180 1331 697 10;
-#X obj 9 9 cnv 15 500 25 empty empty abc_delaychainN~ 20 12 0 18 -99865
--262144 0;
+#X obj 9 9 cnv 15 500 25 empty empty abc_delaychainN~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 8 663 abc_helpcredit;
 #X obj 9 35 cnv 15 500 25 empty empty Sequential_double_overlapped_delays_without_reinjection
-20 12 0 12 -99865 -262144 0;
-#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 533 494 \; pd dsp \$1 \;;
 #X text 935 15 CONTROLS;
 #X text 534 17 DESCRIPTION;
@@ -14,31 +14,31 @@
 #X obj 59 309 abc_simplefmburst;
 #X text 8 372 original;
 #X msg 291 374 dur-0 \$1;
-#X obj 230 219 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
--1 -1 7900 1;
+#X obj 230 219 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 230 161 loadbang;
 #X msg 230 183 80;
-#X floatatom 230 355 5 0 0 0 - - -;
+#X floatatom 230 355 5 0 0 0 - - - 0;
 #X msg 230 375 tempo \$1;
 #X obj 291 205 abc_musdur 3;
-#X floatatom 291 354 5 0 0 0 - - -;
+#X floatatom 291 354 5 0 0 0 - - - 0;
 #X obj 405 493 loadbang;
 #X msg 405 515 1;
-#X obj 405 539 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 405 539 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 405 561 metro 20000;
 #X obj 405 584 s top;
 #X obj 77 281 r top;
 #X obj 730 280 loadbang;
 #X msg 730 302 30;
-#X floatatom 730 323 5 0 0 0 - - -;
+#X floatatom 730 323 5 0 0 0 - - - 0;
 #X msg 730 343 updatefreq \$1;
 #X obj 902 414 r dels;
 #X obj 1149 388 loadbang;
-#X obj 953 258 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
--1 -1 9900 1;
+#X obj 953 258 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 953 200 loadbang;
-#X floatatom 953 394 5 0 0 0 - - -;
+#X floatatom 953 394 5 0 0 0 - - - 0;
 #X msg 953 414 tempo \$1;
 #X text 936 36 Durations are parameters dur-0 \, dur-1 \, dur-2 \,
 etc.These musical durations are automatically converted to milliseconds
@@ -48,15 +48,15 @@ thanks to the tempo parameter expressed in bpm.;
 #X obj 138 443 abc_delaychain3~;
 #X text 243 445 echoes 1 to 3;
 #X text 289 186 echo 1;
-#X floatatom 407 354 5 0 0 0 - - -;
+#X floatatom 407 354 5 0 0 0 - - - 0;
 #X msg 407 374 dur-1 \$1;
 #X obj 407 205 abc_musdur 2;
-#X floatatom 524 355 5 0 0 0 - - -;
+#X floatatom 524 355 5 0 0 0 - - - 0;
 #X msg 524 375 dur-2 \$1;
 #X obj 1067 347 r top;
 #X obj 1067 370 del 5000;
-#X obj 1067 392 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 1067 392 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
 #N canvas 1116 82 249 299 noisenv 0;
 #X obj 140 23 inlet;
 #X obj 140 44 t b b;
@@ -84,8 +84,8 @@ thanks to the tempo parameter expressed in bpm.;
 #X msg 953 222 100;
 #X obj 899 492 abc_2d_decoder3~ ---------;
 #X obj 926 559 dac~ 1 2 3 4 5 6 7 8;
-#X obj 735 442 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 735 442 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 735 462 stereo \$1;
 #X obj 735 396 loadbang;
 #X msg 735 418 1;
@@ -95,10 +95,10 @@ object.;
 #X text 521 187 echo 3;
 #X obj 69 503 abc_meter;
 #X obj 853 519 abc_meter;
-#X obj 171 219 vsl 15 128 0 0.999 0 0 empty empty fdbk 0 -9 0 10 -262144
--1 -1 3178 1;
+#X obj 171 219 vsl 15 128 0 0.999 0 0 empty empty fdbk 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 171 161 loadbang;
-#X floatatom 171 355 5 0 0 0 - - -;
+#X floatatom 171 355 5 0 0 0 - - - 0;
 #X msg 171 375 fdbk \$1;
 #X msg 171 183 0.25;
 #X text 939 140 A feedback parameter (fdbk) enables to loop the rhythmic

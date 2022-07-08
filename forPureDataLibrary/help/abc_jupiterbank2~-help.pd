@@ -1,4 +1,4 @@
-#N struct 1013-template-master float x float x2 float color float colort
+#N struct 1092-template-master float x float x2 float color float colort
 float xs float ys symbol sym;
 #N canvas 1262 530 1224 640 10;
 #X obj 15 6 cnv 15 500 25 empty empty abc_jupiterbank2~  20 12 0 18
@@ -22,9 +22,7 @@ float xs float ys symbol sym;
 #X msg 312 167 resq \$1;
 #X msg 258 117 10;
 #X msg 312 117 60;
-#X obj 178 406 abc_cosrandenv14~ -------------;
 #X msg 196 117 220;
-#X obj 183 486 abc_chopan14~ -----------------;
 #X obj 47 77 abc_gain -10;
 #X msg 139 117 1.004;
 #N canvas 1687 256 321 298 factorAndOscFilterGeneration 0;
@@ -94,7 +92,6 @@ float xs float ys symbol sym;
 #X connect 10 0 4 0;
 #X connect 11 0 13 0;
 #X restore 736 283 pd spectrum;
-#X obj 268 532 abc_stereoout -25;
 #X text 835 33 abc_jupiterbank2~ is inspired by the bank of 14 oscillators
 used by Philippe Manoury in Jupiter for flute and live electronics.
 It enables to generate spectra that can evoluate from harmonic to inharmonic
@@ -106,81 +103,70 @@ and results in f0 \, 2*f0 \, ... \, 14*f0. When k is diffrent from
 integers \, the spectrum is inharmonic. We added to these 14 oscillators
 14 resonant filters tuned at the same frequencies. Crossfading between
 oscillators and filters is controlled by osc2filter.;
+#X obj 189 432 abc_chopan14~ -------------;
 #X text 838 220 - k is the constant that determines the harmonic/inharmonic
 behaviour of the generator - f0 is the 'fundamental' frequency of the
 generator - osc2filter provides a crossfade between the 14 oscillators
 and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg
 is the gain of the filters - resq is the quality factor of the filters
-Compared to abc_jupiterbank~ synthesis \, this one adds the control
-of the amplitudes of the 14 oscillators thanks to a factor fa and to
-a transfer function that maps each frequency multiplied by fa to a
-level between 0 and 127;
+;
+#X text 837 317 Compared to abc_jupiterbank~ synthesis \, this one
+adds the control of the amplitudes of the 14 oscillators thanks to
+a factor fa and to a transfer function that maps each frequency multiplied
+by fa to a level between 0 and 127;
+#X obj 261 532 abc_stereoout -30;
 #X connect 3 0 4 0;
-#X connect 7 0 22 0;
-#X connect 7 0 19 0;
+#X connect 7 0 20 0;
+#X connect 7 0 18 0;
 #X connect 7 0 16 0;
 #X connect 7 0 17 0;
 #X connect 8 0 9 0;
-#X connect 9 0 29 0;
+#X connect 9 0 27 0;
 #X connect 10 0 11 0;
-#X connect 11 0 29 0;
+#X connect 11 0 27 0;
 #X connect 12 0 14 0;
 #X connect 13 0 15 0;
-#X connect 14 0 29 0;
-#X connect 15 0 29 0;
+#X connect 14 0 27 0;
+#X connect 15 0 27 0;
 #X connect 16 0 12 0;
 #X connect 17 0 13 0;
-#X connect 18 1 20 1;
-#X connect 18 2 20 2;
-#X connect 18 3 20 3;
-#X connect 18 4 20 4;
-#X connect 18 5 20 5;
-#X connect 18 6 20 6;
-#X connect 18 7 20 7;
-#X connect 18 8 20 8;
-#X connect 18 9 20 9;
-#X connect 18 10 20 10;
-#X connect 18 11 20 11;
-#X connect 18 12 20 12;
-#X connect 18 13 20 13;
-#X connect 18 14 20 14;
-#X connect 19 0 10 0;
-#X connect 20 1 31 0;
-#X connect 20 2 31 1;
-#X connect 21 0 29 0;
-#X connect 22 0 8 0;
-#X connect 23 0 24 0;
-#X connect 23 1 26 0;
+#X connect 18 0 10 0;
+#X connect 19 0 27 0;
+#X connect 20 0 8 0;
+#X connect 21 0 22 0;
+#X connect 21 1 24 0;
+#X connect 22 0 23 0;
+#X connect 23 0 27 0;
 #X connect 24 0 25 0;
-#X connect 25 0 29 0;
-#X connect 26 0 27 0;
-#X connect 27 0 29 0;
-#X connect 29 1 18 1;
-#X connect 29 1 28 0;
-#X connect 29 2 18 2;
-#X connect 29 2 28 0;
-#X connect 29 3 18 3;
-#X connect 29 3 28 0;
-#X connect 29 4 18 4;
-#X connect 29 4 28 0;
-#X connect 29 5 18 5;
-#X connect 29 5 28 0;
-#X connect 29 6 18 6;
-#X connect 29 6 28 0;
-#X connect 29 7 18 7;
-#X connect 29 7 28 0;
-#X connect 29 8 18 8;
-#X connect 29 8 28 0;
-#X connect 29 9 18 9;
-#X connect 29 9 28 0;
-#X connect 29 10 18 10;
-#X connect 29 10 28 0;
-#X connect 29 11 18 11;
-#X connect 29 11 28 0;
-#X connect 29 12 18 12;
-#X connect 29 12 28 0;
-#X connect 29 13 18 13;
-#X connect 29 13 28 0;
-#X connect 29 14 18 14;
-#X connect 29 14 28 0;
-#X connect 30 0 28 1;
+#X connect 25 0 27 0;
+#X connect 27 1 26 0;
+#X connect 27 1 30 1;
+#X connect 27 2 26 0;
+#X connect 27 2 30 2;
+#X connect 27 3 26 0;
+#X connect 27 3 30 3;
+#X connect 27 4 26 0;
+#X connect 27 4 30 4;
+#X connect 27 5 26 0;
+#X connect 27 5 30 5;
+#X connect 27 6 26 0;
+#X connect 27 6 30 6;
+#X connect 27 7 26 0;
+#X connect 27 7 30 7;
+#X connect 27 8 26 0;
+#X connect 27 8 30 8;
+#X connect 27 9 26 0;
+#X connect 27 9 30 9;
+#X connect 27 10 26 0;
+#X connect 27 10 30 10;
+#X connect 27 11 26 0;
+#X connect 27 11 30 11;
+#X connect 27 12 26 0;
+#X connect 27 12 30 12;
+#X connect 27 13 26 0;
+#X connect 27 13 30 13;
+#X connect 27 14 26 0;
+#X connect 27 14 30 14;
+#X connect 28 0 26 1;
+#X connect 30 1 33 0;
+#X connect 30 2 33 1;

@@ -1,23 +1,23 @@
 #N canvas 301 182 1342 776 10;
-#X obj 11 5 cnv 15 500 25 empty empty abc_chopanN~ 20 12 0 18 -99865
--262144 0;
+#X obj 11 5 cnv 15 500 25 empty empty abc_chopanN~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Chowning_panners 20 12 0 12
--99865 -262144 0;
-#X obj 544 584 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+#606060 #fcfcfc 0;
+#X obj 544 584 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 544 612 \; pd dsp \$1 \;;
 #X text 962 26 CONTROLS;
 #X text 536 28 DESCRIPTION;
 #X obj 129 476 abc_meter;
 #X obj 47 152 hsl 128 20 -90 90 0 0 empty empty incidental_angle_in_deg
--2 -8 0 10 -262144 -1 -1 0 1;
-#X floatatom 44 177 5 0 0 0 - - -;
+-2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 44 177 5 0 0 0 - - - 0;
 #X msg 44 197 incAngle \$1;
-#X text -5 221 (available only in the case of one source);
+#X text -1 221 (available only in the case of one source);
 #X obj 283 142 loadbang;
 #X msg 283 163 30;
-#X floatatom 283 184 5 0 90 0 - - -;
+#X floatatom 283 184 5 0 90 0 - - - 0;
 #X msg 283 204 phi0 \$1;
 #X obj 86 334 abc_chopan1;
 #X obj 1007 262 abc_addsynth16~ --------------;
@@ -25,7 +25,7 @@
 #X obj 1019 462 abc_chopan16~ ------------;
 #X obj 776 310 loadbang;
 #X msg 776 331 30;
-#X floatatom 776 352 5 0 90 0 - - -;
+#X floatatom 776 352 5 0 90 0 - - - 0;
 #X msg 776 372 phi0 \$1;
 #X obj 998 510 abc_meter;
 #X text 658 287 Half angle of the stereophony (in degrees);
@@ -40,7 +40,7 @@ and avoiding feeling a loss in the center of the scene (contrary to
 linear panning). The first source is panned to the left \, the last
 one to the right \, and the other ones are progressively spread from
 the left to the right.;
-#X floatatom 342 184 5 0 0 0 - - -;
+#X floatatom 342 184 5 0 0 0 - - - 0;
 #X msg 342 163 -127;
 #X msg 342 204 gain \$1;
 #X obj 1007 214 loadbang;

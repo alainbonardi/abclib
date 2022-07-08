@@ -1,11 +1,11 @@
-#N canvas 85 25 1224 812 10;
-#X obj 10 -21 cnv 15 500 25 empty empty abc_peakamp~ 20 12 0 18 -99865
--262144 0;
+#N canvas 1241 127 1224 812 10;
+#X obj 10 -21 cnv 15 500 25 empty empty abc_peakamp~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 9 755 abc_helpcredit;
 #X obj 10 5 cnv 15 500 25 empty empty Peak_amplitude_measurement 20
-12 0 12 -99865 -262144 0;
-#X obj 422 577 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+12 0 12 #606060 #fcfcfc 0;
+#X obj 422 577 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 422 605 \; pd dsp \$1 \;;
 #X text 538 59 CONTROLS;
 #X text 536 -22 DESCRIPTION;
@@ -16,29 +16,28 @@ signal on a duration defined by period attribute in milliseconds;
 #X msg 194 165 1;
 #X obj 194 204 metro 50;
 #X obj 194 237 snapshot~;
-#X obj 194 184 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X floatatom 194 258 5 0 0 0 - - -;
+#X obj 194 184 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X floatatom 194 258 5 0 0 0 - - - 0;
 #X msg 117 164 20;
-#X floatatom 117 185 5 0 0 0 - - -;
+#X floatatom 117 185 5 0 0 0 - - - 0;
 #X msg 117 205 period \$1;
 #X obj 117 305 abc_peakamp;
 #X obj 345 370 snapshot~;
-#X floatatom 345 391 5 0 0 0 - - -;
-#X obj 197 280 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7924 1;
-#X obj 348 416 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7852 1;
+#X floatatom 345 391 5 0 0 0 - - - 0;
+#X obj 197 280 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 348 416 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 345 204 osc~ 0.2;
 #X text 538 79 period control enables to set the window of measurement
 of the peak on the absolute signal;
-#X obj 628 357 abc_soundgrain~;
 #X obj 730 181 loadbang;
-#X floatatom 730 223 5 0 0 0 - - -;
+#X floatatom 730 223 5 0 0 0 - - - 0;
 #X msg 730 202 0.1;
 #X msg 730 243 freqmult \$1;
 #X obj 730 264 abc_soundgrain~;
-#X floatatom 830 244 5 0 0 0 - - -;
+#X floatatom 830 244 5 0 0 0 - - - 0;
 #X msg 830 264 period \$1;
 #X msg 830 223 50;
 #X obj 748 381 abc_peakamp~;
@@ -51,18 +50,19 @@ of the peak on the absolute signal;
 #X obj 817 550 vd~ soundgrain;
 #X obj 541 436 delwrite~ soundgrain 500;
 #X obj 751 411 snapshot~;
-#X floatatom 751 432 5 0 0 0 - - -;
+#X floatatom 751 432 5 0 0 0 - - - 0;
 #X text 829 372 a simple flanger with a rate controlled by the amplitude
 given by abc_peakamp~;
-#X obj 714 587 abc_stereoout -15;
-#X obj 628 167 abc_gain -10;
+#X obj 759 588 +~;
+#X obj 713 630 abc_stereoout 0;
+#X obj 628 167 abc_gain -30;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;
 #X connect 9 0 15 0;
 #X connect 10 0 13 0;
 #X connect 11 0 12 0;
 #X connect 11 0 19 0;
-#X connect 11 0 43 0;
+#X connect 11 0 42 0;
 #X connect 12 0 14 0;
 #X connect 13 0 11 0;
 #X connect 14 0 21 0;
@@ -74,28 +74,29 @@ given by abc_peakamp~;
 #X connect 20 0 22 0;
 #X connect 23 0 12 0;
 #X connect 23 0 18 1;
-#X connect 25 1 34 0;
-#X connect 25 1 42 0;
-#X connect 25 1 46 0;
+#X connect 25 0 27 0;
+#X connect 25 0 32 0;
 #X connect 26 0 28 0;
-#X connect 26 0 33 0;
-#X connect 27 0 29 0;
-#X connect 28 0 27 0;
-#X connect 29 0 30 0;
-#X connect 30 1 34 1;
-#X connect 31 0 32 0;
-#X connect 32 0 34 0;
-#X connect 33 0 31 0;
-#X connect 34 1 35 0;
-#X connect 34 1 43 0;
+#X connect 27 0 26 0;
+#X connect 28 0 29 0;
+#X connect 29 1 33 1;
+#X connect 29 1 41 0;
+#X connect 29 1 45 0;
+#X connect 30 0 31 0;
+#X connect 31 0 33 0;
+#X connect 32 0 30 0;
+#X connect 33 1 34 0;
+#X connect 33 1 42 0;
+#X connect 34 0 35 0;
 #X connect 35 0 36 0;
 #X connect 36 0 37 0;
 #X connect 37 0 38 0;
 #X connect 38 0 39 0;
 #X connect 39 0 40 0;
-#X connect 40 0 41 0;
-#X connect 41 0 7 0;
-#X connect 41 0 46 1;
-#X connect 43 0 44 0;
-#X connect 47 0 25 0;
+#X connect 40 0 7 0;
+#X connect 40 0 45 1;
+#X connect 42 0 43 0;
+#X connect 45 0 46 0;
+#X connect 45 0 46 1;
+#X connect 47 0 29 0;
 #X coords 0 812 1 811 85 60 0;

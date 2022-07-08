@@ -1,4 +1,4 @@
-#N canvas 453 307 818 612 10;
+#N canvas 1052 288 818 612 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_scopeN~  20 12 0 18 #606060
 #fcfcfc 0;
 #X obj 13 580 abc_helpcredit;
@@ -46,6 +46,8 @@ function., f 47;
 64 64 64 96 98 102 0 empty;
 #X text 655 570 cyclone/scope~;
 #X obj 415 234 abc_2d_encoder7~ --------------;
+#X text 516 421 Positive;
+#X text 662 421 Negative;
 #X connect 3 0 9 0;
 #X connect 4 0 5 0;
 #X connect 5 0 14 0;

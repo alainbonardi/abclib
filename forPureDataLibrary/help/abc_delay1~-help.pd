@@ -1,11 +1,11 @@
 #N canvas 622 190 1331 697 10;
-#X obj 9 9 cnv 15 500 25 empty empty abc_delayN~ 20 12 0 18 -99865
--262144 0;
+#X obj 9 9 cnv 15 500 25 empty empty abc_delayN~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 8 657 abc_helpcredit;
 #X obj 9 35 cnv 15 500 25 empty empty Parallel_double_overlapped_delays_with_reinjection
-20 12 0 12 -99865 -262144 0;
-#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 533 494 \; pd dsp \$1 \;;
 #X text 935 30 CONTROLS;
 #X text 534 32 DESCRIPTION;
@@ -15,29 +15,29 @@
 #X text 95 489 original;
 #X obj 128 449 abc_delay1~;
 #X msg 282 346 dur-0 \$1;
-#X obj 221 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
--1 -1 7900 1;
+#X obj 221 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 221 133 loadbang;
 #X msg 221 155 80;
-#X floatatom 221 327 5 0 0 0 - - -;
+#X floatatom 221 327 5 0 0 0 - - - 0;
 #X msg 221 347 tempo \$1;
 #X obj 282 177 abc_musdur 3;
-#X obj 403 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 -262144
--1 -1 0 1;
-#X floatatom 282 326 5 0 0 0 - - -;
-#X floatatom 403 325 5 0 0 0 - - -;
+#X obj 403 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 282 326 5 0 0 0 - - - 0;
+#X floatatom 403 325 5 0 0 0 - - - 0;
 #X msg 403 345 fdbk-0 \$1;
 #X obj 429 465 loadbang;
 #X msg 429 487 1;
-#X obj 429 511 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 429 511 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 429 533 metro 20000;
 #X obj 429 556 s top;
 #X obj 105 253 r top;
 #X text 199 491 echo;
 #X obj 495 281 loadbang;
 #X msg 495 303 30;
-#X floatatom 495 324 5 0 0 0 - - -;
+#X floatatom 495 324 5 0 0 0 - - - 0;
 #X msg 495 344 updatefreq \$1;
 #X obj 802 446 abc_delay4~;
 #X obj 879 255 r top;
@@ -46,7 +46,7 @@
 #X obj 30 39 random 8;
 #X obj 30 60 + 1;
 #X obj 30 81 * 110;
-#X floatatom 30 109 5 0 0 0 - - -;
+#X floatatom 30 109 5 0 0 0 - - - 0;
 #X msg 30 153 f0 \$1;
 #X obj 30 174 outlet;
 #X obj 79 174 outlet;
@@ -58,13 +58,13 @@
 #X connect 4 0 7 0;
 #X connect 5 0 6 0;
 #X restore 879 283 pd aleafreq;
-#X floatatom 942 311 5 0 0 0 - - -;
+#X floatatom 942 311 5 0 0 0 - - - 0;
 #X text 919 311 f0;
 #X obj 879 337 abc_addsynth4~;
 #X obj 872 374 abc_cosrandenv4~;
 #X obj 715 221 loadbang;
-#X floatatom 715 317 5 0 0 0 - - -;
-#X floatatom 777 317 5 0 0 0 - - -;
+#X floatatom 715 317 5 0 0 0 - - - 0;
+#X floatatom 777 317 5 0 0 0 - - - 0;
 #X msg 715 337 freq \$1;
 #X msg 777 337 rarefaction \$1;
 #X msg 715 296 4;
@@ -76,10 +76,10 @@
 \; dels dur-1 1.5 \; dels fdbk-1 0.4 \; dels gain-1 -3 \; dels dur-2
 2 \; dels fdbk-2 0.6 \; dels gain-2 -6 \; dels dur-3 2.5 \; dels fdbk-3
 0.8 \; dels gain-3 -9 \;;
-#X obj 993 251 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
--1 -1 5900 1;
+#X obj 993 251 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 993 193 loadbang;
-#X floatatom 993 387 5 0 0 0 - - -;
+#X floatatom 993 387 5 0 0 0 - - - 0;
 #X msg 993 407 tempo \$1;
 #X msg 993 215 60;
 #X text 535 53 abc_delay1~ \, abc_delay2~ \, ... objects provide multiple

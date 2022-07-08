@@ -85,7 +85,7 @@ norm) and 0 for clockwise;
 #X obj 655 163 abc_gain -127;
 #X obj 75 90 loadbang;
 #X obj 756 480 abc_stereoout -15;
-#X obj 747 152 abc_env_noise 125 0.5 0;
+#X obj 747 163 abc_env_noise 125 0.5 0;
 #X obj 171 458 abc_stereoout -15;
 #X msg 75 111 gain -10;
 #X obj 353 174 abc_gain -15;
