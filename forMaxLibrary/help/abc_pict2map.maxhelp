@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 87.0, 714.0, 544.0 ],
+		"rect" : [ 235.0, 87.0, 623.0, 544.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 410.5, 263.0, 150.0, 47.0 ],
+					"text" : "it generates the polar coordinates of the source\nr and theta (in radians)"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "toggle",
@@ -399,9 +411,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_caption" : "hoa.2d.scope~",
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
 									}
 ,
 									"maxclass" : "fpic",

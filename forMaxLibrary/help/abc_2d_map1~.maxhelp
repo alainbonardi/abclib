@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -405.0, 100.0, 1944.0, 739.0 ],
+		"rect" : [ 34.0, 100.0, 1944.0, 739.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,40 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-89",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 995.5, 265.0, 89.0, 47.0 ],
+					"text" : "generates polar coordinates"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-87",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 472.5, 259.0, 105.0, 20.0 ],
+					"text" : "converts to polar"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-85",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 167.0, 265.0, 131.0, 20.0 ],
+					"text" : "r and theta (in radians)"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-84",
 					"maxclass" : "comment",
@@ -1749,6 +1783,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-18", 2 ],
+					"midpoints" : [ 1075.0, 315.5, 1014.450000000000045, 315.5 ],
 					"source" : [ "obj-42", 1 ]
 				}
 
@@ -1756,6 +1791,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-18", 1 ],
+					"midpoints" : [ 991.0, 303.5, 950.975000000000023, 303.5 ],
 					"source" : [ "obj-42", 0 ]
 				}
 

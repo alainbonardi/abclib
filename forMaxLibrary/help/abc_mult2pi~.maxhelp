@@ -40,6 +40,28 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 237.500000000000028, 395.0, 73.0, 20.0 ],
+					"text" : "constant r"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 369.0, 415.0, 150.0, 20.0 ],
+					"text" : "theta (in radians)"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"args" : [ 0, 1.0, 1 ],
 					"bgmode" : 0,
 					"border" : 1,
@@ -78,7 +100,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 228.5, 413.0, 41.0, 22.0 ],
+					"patching_rect" : [ 243.500000000000028, 413.0, 41.0, 22.0 ],
 					"text" : "sig~ 1"
 				}
 

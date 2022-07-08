@@ -92,7 +92,7 @@
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 529.0, 428.0, 226.500000000000227, 22.0 ],
-					"text" : "abc_addsynth5~ @f0 415. @gain -10."
+					"text" : "abc_addsynth5~ @f0 415. @gain 0."
 				}
 
 			}
@@ -189,7 +189,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15 ],
+					"args" : [ -25 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -228,7 +228,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 939.0, 296.0, 80.0, 22.0 ],
-					"text" : "m046 1."
+					"text" : "m053 0."
 				}
 
 			}

@@ -161,7 +161,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10 ],
+					"args" : [ -20 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -395,12 +395,14 @@
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 1,
+					"fontsize" : 14.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 104.25, 362.5, 240.0, 22.0 ],
+					"patching_rect" : [ 104.25, 362.5, 240.0, 24.0 ],
 					"text" : "abc_2d_vbap4~"
 				}
 
@@ -523,9 +525,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_caption" : "hoa.2d.scope~",
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
 									}
 ,
 									"maxclass" : "fpic",

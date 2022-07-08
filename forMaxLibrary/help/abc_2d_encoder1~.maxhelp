@@ -346,7 +346,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "-10.." ],
+					"args" : [ -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

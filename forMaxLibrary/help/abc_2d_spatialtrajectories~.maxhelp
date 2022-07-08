@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -298.0, 100.0, 1720.0, 698.0 ],
+		"rect" : [ 34.0, 100.0, 1688.0, 699.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -496,7 +496,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 661.0, 168.0, 266.0, 299.0 ],
+						"rect" : [ 1604.0, 280.0, 266.0, 299.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -588,7 +588,7 @@
 									"numoutlets" : 5,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
 									"patching_rect" : [ 57.0, 41.0, 156.0, 22.0 ],
-									"text" : "abc_addsynth4~ @gain -10"
+									"text" : "abc_addsynth4~"
 								}
 
 							}

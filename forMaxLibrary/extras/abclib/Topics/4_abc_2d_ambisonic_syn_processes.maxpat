@@ -1262,7 +1262,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25 ],
+					"args" : [ -20 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

@@ -40,6 +40,40 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"args" : [ -30.0 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-16",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "abc_gaincontrol.maxpat",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 689.652472257614136, 61.629629969596863, 72.0, 110.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "list" ],
+					"patching_rect" : [ 598.130836486816406, 551.0, 71.0, 22.0 ],
+					"text" : "abc_gain1~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-2",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -170,7 +204,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 692.130836486816406, 101.629629969596863, 50.0, 22.0 ]
+					"patching_rect" : [ 598.130836486816406, 120.629629969596863, 50.0, 22.0 ]
 				}
 
 			}
@@ -181,7 +215,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 692.130836486816406, 71.629629969596863, 80.0, 22.0 ],
+					"patching_rect" : [ 598.130836486816406, 90.629629969596863, 80.0, 22.0 ],
 					"text" : "loadmess 0.1"
 				}
 
@@ -203,7 +237,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 692.130836486816406, 130.629629969596863, 69.0, 22.0 ],
+					"patching_rect" : [ 598.130836486816406, 149.629629969596863, 69.0, 22.0 ],
 					"text" : "freqmult $1"
 				}
 
@@ -222,7 +256,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20.0 ],
+					"args" : [ -10.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -237,7 +271,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 598.130836486816406, 42.629629969596863, 72.0, 110.0 ],
+					"patching_rect" : [ 521.130836486816406, 430.691584765911102, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -373,7 +407,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 588.111113011837006, 579.296297609806061, 45.0, 45.0 ]
+					"patching_rect" : [ 589.498964130878448, 590.296297609806061, 45.0, 45.0 ]
 				}
 
 			}
@@ -407,7 +441,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 396.592591881752014, 330.5, 145.0, 100.0 ],
+					"patching_rect" : [ 379.592591881752014, 147.0, 145.0, 100.0 ],
 					"text" : "abc_peakamp~ computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds"
 				}
 
@@ -436,8 +470,24 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 607.630836486816406, 169.379629969596863, 607.630836486816406, 169.379629969596863 ],
+					"destination" : [ "obj-9", 1 ],
+					"order" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"order" : 1,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 530.630836486816406, 546.379629969596863, 607.630836486816406, 546.379629969596863 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -487,6 +537,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"midpoints" : [ 699.152472257614136, 176.879629969596863, 607.630836486816406, 176.879629969596863 ],
+					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
 					"source" : [ "obj-17", 0 ]
 				}
@@ -523,7 +581,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 701.630836486816406, 167.379629969596863, 607.630836486816406, 167.379629969596863 ],
+					"midpoints" : [ 607.630836486816406, 167.379629969596863, 607.630836486816406, 167.379629969596863 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -587,16 +645,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-9", 1 ],
-					"order" : 0,
-					"source" : [ "obj-49", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-49", 0 ]
 				}
 
@@ -641,6 +690,10 @@
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_gain1~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",

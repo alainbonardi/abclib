@@ -829,7 +829,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ -20 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

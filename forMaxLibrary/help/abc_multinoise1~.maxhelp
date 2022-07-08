@@ -493,8 +493,8 @@
 					"numinlets" : 11,
 					"numoutlets" : 12,
 					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 111.0, 222.5, 190.0, 22.0 ],
-					"text" : "abc_substractsynth11~ @gain -10",
+					"patching_rect" : [ 111.0, 222.5, 152.63636363636391, 22.0 ],
+					"text" : "abc_substractsynth11~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 				}
 
