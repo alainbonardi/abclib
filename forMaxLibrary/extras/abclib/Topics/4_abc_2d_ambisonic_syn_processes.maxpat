@@ -58,7 +58,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 533.571441999999934, 345.0, 150.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "AMBISONIC MULTIPLE DELAYS"
 				}
 
@@ -71,7 +70,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 946.451573873016059, 345.0, 160.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "AMBISONIC MULTIPLE GRANULATORS"
 				}
 
@@ -84,7 +82,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 1293.671441999999843, 139.0, 160.0, 33.0 ],
-					"presentation_linecount" : 2,
 					"text" : "AMBISONIC MULTIPLE RING MODULATORS"
 				}
 
@@ -1235,7 +1232,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 197.592883999999913, 428.0, 40.0, 22.0 ],
-					"text" : "*~ 0.3"
+					"text" : "*~ 0.2"
 				}
 
 			}
@@ -1265,7 +1262,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -30 ],
+					"args" : [ -25 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1524,7 +1521,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 54.249999999999943, 345.0, 137.0, 33.0 ],
+					"patching_rect" : [ 54.249999999999943, 345.0, 140.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE DECORRELATORS"
 				}
 
