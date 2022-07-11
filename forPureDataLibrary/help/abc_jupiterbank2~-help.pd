@@ -1,6 +1,6 @@
-#N struct 1092-template-master float x float x2 float color float colort
+#N struct 1027-template-master float x float x2 float color float colort
 float xs float ys symbol sym;
-#N canvas 1262 530 1224 640 10;
+#N canvas 1287 712 1224 640 10;
 #X obj 15 6 cnv 15 500 25 empty empty abc_jupiterbank2~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 610 abc_helpcredit;
@@ -9,7 +9,7 @@ float xs float ys symbol sym;
 #X obj 64 374 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X msg 64 402 \; pd dsp \$1 \;;
-#X text 836 201 CONTROLS;
+#X text 836 230 CONTROLS;
 #X text 834 13 DESCRIPTION;
 #X obj 229 74 loadbang;
 #X floatatom 139 138 5 0 0 0 - - - 0;
@@ -104,17 +104,19 @@ integers \, the spectrum is inharmonic. We added to these 14 oscillators
 14 resonant filters tuned at the same frequencies. Crossfading between
 oscillators and filters is controlled by osc2filter.;
 #X obj 189 432 abc_chopan14~ -------------;
-#X text 838 220 - k is the constant that determines the harmonic/inharmonic
+#X text 838 249 - k is the constant that determines the harmonic/inharmonic
 behaviour of the generator - f0 is the 'fundamental' frequency of the
 generator - osc2filter provides a crossfade between the 14 oscillators
 and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg
 is the gain of the filters - resq is the quality factor of the filters
 ;
-#X text 837 317 Compared to abc_jupiterbank~ synthesis \, this one
+#X text 837 343 Compared to abc_jupiterbank~ synthesis \, this one
 adds the control of the amplitudes of the 14 oscillators thanks to
 a factor fa and to a transfer function that maps each frequency multiplied
 by fa to a level between 0 and 127;
 #X obj 261 532 abc_stereoout -30;
+#X text 835 183 The Faust implementation is largely inspired by Maxence
+Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
 #X connect 3 0 4 0;
 #X connect 7 0 20 0;
 #X connect 7 0 18 0;

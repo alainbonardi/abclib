@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 340.0, 291.0, 1380.0, 596.0 ],
+		"rect" : [ 37.0, 87.0, 1380.0, 596.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,44 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgcolor" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
+					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_color" : [ 0.2, 0.2, 0.2, 1 ],
+					"bgfillcolor_color1" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
+					"bgfillcolor_color2" : [ 0.07451, 0.027451, 1.0, 1.0 ],
+					"bgfillcolor_type" : "gradient",
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"gradient" : 0,
+					"id" : "obj-17",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 871.0, 557.0, 246.0, 22.0 ],
+					"text" : "https://hal.archives-ouvertes.fr/hal-02135597",
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Verdana",
+					"fontsize" : 9.0,
+					"hidden" : 1,
+					"id" : "obj-29",
+					"linecount" : 2,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 871.0, 603.0, 114.0, 30.0 ],
+					"text" : ";\rmax launchbrowser $1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
 					"bgcolor2" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
@@ -1807,12 +1845,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-24",
-					"linecount" : 19,
+					"linecount" : 20,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 871.0, 298.0, 446.0, 275.0 ],
-					"text" : "abc_jupiterbank~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics.\nIt enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object.\nThe 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1, the spectrem is harmonic and results in f0, 2*f0, ..., 14*f0. When k is diffrent from integers, the spectrum is inharmonic.\nWe added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.\n\n- k is the constant that determines the harmonic/inharmonic behaviour of the generator\n- f0 is the kind of 'fundamental' frequency of the generator\n- osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters)\n- resg is the gain of the filters\n- resq is the quality factor of the filters\n\n"
+					"patching_rect" : [ 871.0, 280.0, 446.0, 275.0 ],
+					"text" : "abc_jupiterbank~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics.\nIt enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object.\nThe 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1, the spectrem is harmonic and results in f0, 2*f0, ..., 14*f0. When k is diffrent from integers, the spectrum is inharmonic.\nWe added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.\n\n- k is the constant that determines the harmonic/inharmonic behaviour of the generator\n- f0 is the kind of 'fundamental' frequency of the generator\n- osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters)\n- resg is the gain of the filters\n- resq is the quality factor of the filters\n\nThe Faust implementation is largely inspired by Maxence Larrieu's article:"
 				}
 
 			}
@@ -1877,9 +1915,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_action" : "hoa.2d.scope~",
 										"palette_caption" : "hoa.2d.scope~",
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -2237,6 +2275,15 @@
 					"destination" : [ "obj-27", 0 ],
 					"midpoints" : [ 1160.5, 217.25, 740.5, 217.25 ],
 					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"hidden" : 1,
+					"midpoints" : [ 880.5, 580.5, 880.5, 580.5 ],
+					"source" : [ "obj-17", 0 ]
 				}
 
 			}

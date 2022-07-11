@@ -8683,7 +8683,7 @@
 								"box" : 								{
 									"id" : "obj-57",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 445.463894248008728, 35.154638886451721, 97.0, 22.0 ],
@@ -9332,8 +9332,8 @@
 			}
 , 			{
 				"box" : 				{
-					"fontface" : 1,
-					"fontsize" : 14.0,
+					"fontface" : 0,
+					"fontsize" : 12.0,
 					"id" : "obj-76",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -9489,7 +9489,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 673.0, 178.0, 103.0, 24.0 ],
+					"patching_rect" : [ 673.0, 178.0, 83.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -10995,8 +10995,8 @@
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

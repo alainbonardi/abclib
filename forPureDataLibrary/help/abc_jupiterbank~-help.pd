@@ -1,4 +1,4 @@
-#N canvas 1250 643 1225 639 10;
+#N canvas 194 476 1161 647 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_jupiterbank~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 610 abc_helpcredit;
@@ -8,7 +8,7 @@
 #000000 0 1;
 #X msg 701 434 \; pd dsp \$1 \;;
 #X obj 44 432 abc_meter;
-#X text 767 238 CONTROLS;
+#X text 766 271 CONTROLS;
 #X text 765 50 DESCRIPTION;
 #X obj 236 79 loadbang;
 #X obj 405 118 abc_upanddown;
@@ -119,7 +119,7 @@
 #X restore 184 387 pd envs;
 #X obj 416 237 *~ 0.3;
 #X obj 371 554 abc_stereoout -40;
-#X text 768 259 - k is the constant that determines the harmonic/inharmonic
+#X text 767 292 - k is the constant that determines the harmonic/inharmonic
 behaviour of the generator - f0 is the 'fundamental' frequency of the
 generator - osc2filter provides a crossfade between the 14 oscillators
 and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg
@@ -136,6 +136,8 @@ and results in f0 \, 2*f0 \, ... \, 14*f0. When k is diffrent from
 integers \, the spectrum is inharmonic. We added to these 14 oscillators
 14 resonant filters tuned at the same frequencies. Crossfading between
 oscillators and filters is controlled by osc2filter.;
+#X text 767 223 The Faust implementation is largely inspired by Maxence
+Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
 #X connect 3 0 4 0;
 #X connect 8 0 14 0;
 #X connect 8 0 42 0;
