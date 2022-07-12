@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 188.0, 100.0, 1474.0, 1021.0 ],
+		"rect" : [ 57.0, 87.0, 1474.0, 1021.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -9325,7 +9325,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1449.0, 808.0, 114.0, 30.0 ],
+					"patching_rect" : [ 1391.0, 801.0, 114.0, 30.0 ],
 					"text" : ";\rmax launchbrowser $1"
 				}
 
@@ -10296,7 +10296,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-58", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 893.5, 784.5, 1458.5, 784.5 ],
+					"midpoints" : [ 893.5, 784.5, 1400.5, 784.5 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -10995,8 +10995,8 @@
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
