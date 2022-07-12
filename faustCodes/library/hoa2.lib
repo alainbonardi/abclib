@@ -40,6 +40,9 @@ closed source license or any other license if you decide so.
 
 ma = library("maths.lib");
 si = library("signals.lib");
+ba = library("basics.lib");
+os = library("oscillators.lib");
+ho = library("hoa.lib");
 
 declare name "High Order Ambisonics library";
 declare author "Pierre Guillot";
