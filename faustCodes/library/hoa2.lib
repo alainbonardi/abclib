@@ -609,7 +609,7 @@ scope(N, rt) = thisScope
 // But it increases at each step and it is modulated by a threshold.
 // Therefore, delays are progressively revealed when the factor increases:
 // - when the factor is close to 0, only upper components are delayed ;
-// - when the factor increases, moire and more components are delayed.
+// - when the factor increases, more and more components are delayed.
 //
 //H					THRESHOLD			DELAY
 //0					1-1/P				0 OR DELAY*F(1/P)
