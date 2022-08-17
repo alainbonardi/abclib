@@ -1,4 +1,4 @@
-#N canvas 194 476 1161 647 10;
+#N canvas 194 270 1161 647 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_jupiterbank~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 610 abc_helpcredit;
@@ -138,6 +138,8 @@ integers \, the spectrum is inharmonic. We added to these 14 oscillators
 oscillators and filters is controlled by osc2filter.;
 #X text 767 223 The Faust implementation is largely inspired by Maxence
 Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
+#X obj 405 90 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1 1;
 #X connect 3 0 4 0;
 #X connect 8 0 14 0;
 #X connect 8 0 42 0;
@@ -240,3 +242,4 @@ Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
 #X connect 47 0 26 0;
 #X connect 48 0 11 1;
 #X connect 48 0 27 1;
+#X connect 53 0 9 0;

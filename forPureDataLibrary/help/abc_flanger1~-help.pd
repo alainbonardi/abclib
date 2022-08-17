@@ -1,4 +1,4 @@
-#N canvas 1067 25 1346 776 10;
+#N canvas 166 38 1346 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_flangerN~ 20 12 0 18 #606060
 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
@@ -77,6 +77,8 @@ means a maximum stereo effect.;
 232 74 79 77 96 98 102 0 empty;
 #X text 1111 722 cyclone/scope~;
 #X obj 684 216 abc_gain -15;
+#X obj 327 302 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 1 1;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;
 #X connect 10 0 14 0;
@@ -143,4 +145,5 @@ means a maximum stereo effect.;
 #X connect 53 1 61 0;
 #X connect 53 2 61 1;
 #X connect 63 0 43 0;
+#X connect 64 0 9 0;
 #X coords 0 776 1 775 85 60 0;

@@ -1,4 +1,4 @@
-#N canvas 899 271 1242 989 10;
+#N canvas -34 648 1278 879 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_puckettespaf~  20 12 0 18
 #606060 #fcfcfc 0;
 #X obj 13 948 abc_helpcredit;
@@ -69,6 +69,8 @@
 #X obj 146 28 osc~ 0.09;
 #X obj 308 28 osc~ 0.11;
 #X obj 445 76 metro 20;
+#X obj 572 90 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X connect 0 0 1 1;
 #X connect 0 0 2 1;
 #X connect 0 0 3 1;
@@ -96,8 +98,9 @@
 #X connect 28 0 17 0;
 #X connect 29 0 20 0;
 #X connect 29 0 10 0;
+#X connect 30 0 23 0;
 #X restore 770 113 pd pafControl1;
-#N canvas 1380 82 655 612 pafControl2 0;
+#N canvas 857 82 655 612 pafControl2 0;
 #X obj 27 27 inlet;
 #X obj 100 251 spigot;
 #X obj 308 248 spigot;
@@ -241,7 +244,7 @@ and iamp (between 0 and 1).;
 #X connect 6 0 13 0;
 #X connect 7 0 11 0;
 #X restore 297 749 pd mix ---------;
-#N canvas 1403 121 870 589 convert 0;
+#N canvas 642 121 870 589 convert 0;
 #X obj 49 14 inlet;
 #X obj 49 35 route pitch vamp vfreq amp cf bw;
 #X obj 49 215 line 6000;
@@ -972,7 +975,7 @@ and iamp (between 0 and 1).;
 #X obj 995 436 r paf8;
 #X obj 60 480 r evt;
 #X floatatom 60 501 5 0 0 0 - - - 24;
-#N canvas 1181 61 1400 1087 meaLuxControl 0;
+#N canvas 112 38 1400 879 meaLuxControl 0;
 #X msg 1147 185 \; paf1 pitch 5100 1000 \; paf1 vamp 0 \; paf1 vfreq
 0 \; paf1 amp 0 \; paf1 cf 75 \; paf1 bw 56 \; paf2 pitch 5900 1000
 \; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 0 \; paf2 cf 80 \; paf2
