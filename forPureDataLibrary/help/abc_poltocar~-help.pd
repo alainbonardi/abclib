@@ -1,4 +1,4 @@
-#N canvas 1281 25 550 776 10;
+#N canvas 962 38 550 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_poltocar~ 20 12 0 18 #606060
 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
@@ -9,7 +9,7 @@
 #X msg 338 682 \; pd dsp \$1 \;;
 #X text 382 67 CONTROLS;
 #X text 17 68 DESCRIPTION;
-#X obj 104 543 abc_meter;
+#X obj 59 543 abc_meter;
 #X text 382 87 no specific control;
 #X obj 138 401 abc_2d_map1~;
 #X obj 128 468 abc_2d_decoder1~;
@@ -30,7 +30,7 @@ coordinates (both as signals) The angle is in radians;
 #X obj 293 390 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
 #X text 312 523 cyclone/scope~;
-#X obj 169 543 abc_quadriout -20;
+#X obj 124 543 abc_quadriout -20 1 2 3 4;
 #X connect 3 0 4 0;
 #X connect 9 1 10 1;
 #X connect 9 2 10 2;

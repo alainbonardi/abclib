@@ -1,4 +1,4 @@
-#N canvas 796 97 865 776 10;
+#N canvas 647 97 865 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_mult2pi~ 20 12 0 18 #606060
 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
@@ -9,7 +9,7 @@
 #X msg 499 671 \; pd dsp \$1 \;;
 #X text 494 154 CONTROLS;
 #X text 492 73 DESCRIPTION;
-#X obj 96 543 abc_meter;
+#X obj 49 546 abc_meter;
 #X text 494 174 no specific control;
 #X obj 129 374 abc_2d_map1~;
 #X obj 120 468 abc_2d_decoder1~;
@@ -32,7 +32,6 @@
 Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
 2*Pi;
 #X obj 316 439 abc_2d_scope1~;
-#X obj 161 543 abc_quadriout -15;
 #X obj 150 121 abc_env_noise 200 0.3 0;
 #X obj 15 228 abc_gain -20;
 #X obj 292 490 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
@@ -40,6 +39,7 @@ Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
 #X text 311 623 cyclone/scope~;
 #X text 155 257 constant r;
 #X text 234 357 theta in radians;
+#X obj 114 546 abc_quadriout -15 1 2 3 4;
 #X connect 3 0 4 0;
 #X connect 9 1 10 1;
 #X connect 9 1 25 1;
@@ -48,10 +48,10 @@ Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
 #X connect 9 3 10 3;
 #X connect 9 3 25 3;
 #X connect 10 1 7 0;
-#X connect 10 1 26 0;
-#X connect 10 2 26 1;
-#X connect 10 3 26 2;
-#X connect 10 4 26 3;
+#X connect 10 1 32 0;
+#X connect 10 2 32 1;
+#X connect 10 3 32 2;
+#X connect 10 4 32 3;
 #X connect 11 0 12 0;
 #X connect 12 0 10 0;
 #X connect 13 0 9 2;
@@ -66,8 +66,8 @@ Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
 #X connect 19 0 21 0;
 #X connect 20 0 18 0;
 #X connect 22 0 23 0;
-#X connect 25 1 29 0;
-#X connect 25 2 29 1;
-#X connect 27 0 9 1;
-#X connect 28 0 10 0;
+#X connect 25 1 28 0;
+#X connect 25 2 28 1;
+#X connect 26 0 9 1;
+#X connect 27 0 10 0;
 #X coords 0 776 1 775 85 60 0;
