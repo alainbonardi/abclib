@@ -109,6 +109,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-86",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -121,6 +122,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-87",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -133,6 +135,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-85",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -145,6 +148,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -662,6 +666,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-46",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -674,6 +679,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-43",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1060,18 +1066,20 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-70",
 					"linecount" : 15,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 887.5, 342.5, 233.0, 221.0 ],
+					"patching_rect" : [ 887.5, 342.5, 235.0, 221.0 ],
 					"text" : "abc_substractsynth1~, abc_substract2~, ... objects enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-68",
 					"maxclass" : "comment",
 					"numinlets" : 1,

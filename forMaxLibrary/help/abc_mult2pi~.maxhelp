@@ -51,11 +51,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-6",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 369.0, 415.0, 150.0, 20.0 ],
+					"patching_rect" : [ 369.0, 415.0, 104.0, 20.0 ],
 					"text" : "theta (in radians)"
 				}
 
@@ -284,6 +285,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-3",
 					"linecount" : 6,
 					"maxclass" : "comment",

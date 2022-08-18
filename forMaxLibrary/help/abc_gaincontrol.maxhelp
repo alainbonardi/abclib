@@ -71,12 +71,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-10",
 					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 49.0, 267.5, 193.0, 127.0 ],
+					"patching_rect" : [ 40.0, 267.5, 193.0, 127.0 ],
 					"text" : "abc_gaincontrol is an abstraction that outputs a message 'gain' followed by an amplitude value in dB (from -127 to +18 dB).\nIt enables to control abc_gain and abc_decoder objects.\nAs a bpatcher, it includes one default value that is the gain value in dB when launching the patch"
 				}
 
@@ -178,12 +179,13 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 152.0, 221.0, 68.0, 22.0 ],
-					"text" : "gain -127"
+					"text" : "gain -127."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-2",
 					"maxclass" : "comment",
 					"numinlets" : 1,

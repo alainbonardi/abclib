@@ -275,12 +275,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-3",
-					"linecount" : 6,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 231.0, 214.0, 98.0, 87.0 ],
+					"patching_rect" : [ 231.0, 214.0, 121.0, 60.0 ],
 					"text" : "abc_gain1~, abc_gain2~, ... provide multichannel gain controls in dB"
 				}
 

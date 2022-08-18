@@ -1384,6 +1384,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-3",
 					"linecount" : 11,
 					"maxclass" : "comment",

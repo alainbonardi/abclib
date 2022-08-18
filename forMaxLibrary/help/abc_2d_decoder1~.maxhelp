@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 95.0, 465.0, 1298.0, 817.0 ],
+		"rect" : [ 185.0, 316.0, 1298.0, 817.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -91,6 +91,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -156,18 +157,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-34",
-					"linecount" : 4,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 842.571441999999934, 298.5, 89.0, 60.0 ],
-					"text" : "stereo decoding\n(0 means ambisonic)"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-31",
 					"maxclass" : "toggle",
 					"numinlets" : 1,
@@ -202,7 +191,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -10 ],
+					"args" : [ -10, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -223,6 +212,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-57",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -269,6 +259,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-55",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -281,12 +272,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-54",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 285.0, 366.5, 144.0, 47.0 ],
+					"patching_rect" : [ 285.5, 357.25, 144.0, 47.0 ],
 					"text" : "gain, angularoffsert and directangles for the abc_decoder1_4~ below"
 				}
 
@@ -649,6 +641,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-24",
 					"linecount" : 18,
 					"maxclass" : "comment",

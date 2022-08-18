@@ -74,6 +74,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-2",
 					"linecount" : 6,
 					"maxclass" : "comment",
@@ -672,6 +673,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-94",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -684,11 +686,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-92",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 662.0, 406.0, 150.0, 20.0 ],
+					"patching_rect" : [ 662.0, 406.0, 104.0, 20.0 ],
 					"text" : "3 sinus as inputs"
 				}
 
@@ -1679,6 +1682,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-41",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -1868,11 +1872,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-22",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 144.0, 469.0, 150.0, 20.0 ],
+					"patching_rect" : [ 144.0, 469.0, 115.0, 20.0 ],
 					"text" : "2 sounds as inputs"
 				}
 

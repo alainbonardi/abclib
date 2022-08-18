@@ -117,6 +117,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-21",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -236,6 +237,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-18",
 					"linecount" : 6,
 					"maxclass" : "comment",
@@ -283,6 +285,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-12",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -342,6 +345,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-70",
 					"linecount" : 12,
 					"maxclass" : "comment",

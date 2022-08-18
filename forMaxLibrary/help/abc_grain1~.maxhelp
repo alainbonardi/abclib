@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1291.0, 166.0, 952.0, 635.0 ],
+		"rect" : [ 459.0, 129.0, 952.0, 635.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -128,6 +128,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -294,13 +295,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
-					"linecount" : 12,
+					"linecount" : 11,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 569.0, 6.0, 367.0, 181.0 ],
-					"text" : "abc_grain1~, abc_grain2~, ... objects are parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) \n \n"
+					"patching_rect" : [ 569.0, 6.0, 367.0, 154.0 ],
+					"text" : "abc_grain1~, abc_grain2~, ... objects are parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
 				}
 
 			}

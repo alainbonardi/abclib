@@ -118,7 +118,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20.0 ],
+					"args" : [ -20.0, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -268,6 +268,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-2",
 					"linecount" : 7,
 					"maxclass" : "comment",

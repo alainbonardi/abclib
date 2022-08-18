@@ -87,18 +87,20 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-12",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 57.5, 108.5, 58.0, 33.0 ],
+					"patching_rect" : [ 57.5, 106.0, 58.0, 33.0 ],
 					"text" : "Bus selection"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-20",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -110,6 +112,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-19",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -164,7 +167,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 318.5, 172.0, 101.0, 22.0 ],
+					"patching_rect" : [ 317.5, 198.0, 101.0, 22.0 ],
 					"text" : "abc_soundgrain~"
 				}
 
@@ -331,7 +334,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 167.0, 172.0, 97.0, 22.0 ],
+					"patching_rect" : [ 166.0, 198.0, 97.0, 22.0 ],
 					"text" : "abc_soundcoat~"
 				}
 
@@ -417,6 +420,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-11",
 					"linecount" : 11,
 					"maxclass" : "comment",
@@ -930,7 +934,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 1 ],
-					"midpoints" : [ 328.0, 213.0, 328.5, 213.0 ],
+					"midpoints" : [ 327.0, 213.0, 328.5, 213.0 ],
 					"source" : [ "obj-8", 0 ]
 				}
 

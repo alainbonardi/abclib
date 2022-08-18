@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 11,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 253.0, 329.0, 1132.0, 561.0 ],
+		"rect" : [ 629.0, 317.0, 1132.0, 561.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -147,6 +147,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 6,
 					"maxclass" : "comment",
@@ -322,6 +323,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-37",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -333,6 +335,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-36",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -394,6 +397,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-30",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -478,6 +482,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-68",
 					"linecount" : 7,
 					"maxclass" : "comment",
@@ -498,6 +503,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-66",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_stereoout~.maxpat",
 					"numinlets" : 2,
@@ -517,6 +523,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-61",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_simplefmburst~.maxpat",
 					"numinlets" : 1,
@@ -538,6 +545,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-1",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpcredit.maxpat",
 					"numinlets" : 1,
@@ -561,6 +569,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-3",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpheader.maxpat",
 					"numinlets" : 1,
@@ -570,8 +579,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 11,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -610,9 +619,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -700,7 +709,14 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 65.28125, 8.0, 5.0, 38.0 ]
+									"patching_rect" : [ 65.28125, 8.0, 5.0, 38.0 ],
+									"saved_attribute_attributes" : 									{
+										"linecolor" : 										{
+											"expression" : ""
+										}
+
+									}
+
 								}
 
 							}
@@ -1173,30 +1189,23 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "abc_help_icon.png",
+				"name" : "abc.helpcredit.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "PNG",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.helpcredit.maxpat",
+				"name" : "abc_help_icon.png",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1207,6 +1216,13 @@
 , 			{
 				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_stereoout~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
 			}
  ],
 		"autosave" : 0,
@@ -1231,8 +1247,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",

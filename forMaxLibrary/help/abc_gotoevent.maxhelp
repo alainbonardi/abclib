@@ -47,7 +47,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 244.199999999999989, 400.5, 51.0, 49.0 ],
-					"presentation_linecount" : 3,
 					"text" : ";\rsl2 120;\r"
 				}
 
@@ -61,7 +60,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 194.199999999999989, 400.5, 44.0, 49.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rsl2 25;\r"
 				}
 
@@ -75,7 +73,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 144.199999999999989, 400.5, 44.0, 49.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rsl2 50;\r"
 				}
 
@@ -89,7 +86,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 94.199999999999989, 400.5, 44.0, 49.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rsl2 10;\r"
 				}
 
@@ -103,7 +99,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 38.199999999999989, 400.5, 51.0, 49.0 ],
-					"presentation_linecount" : 3,
 					"text" : ";\rsl2 100;\r"
 				}
 
@@ -117,7 +112,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 234.0, 336.5, 37.0, 49.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rsl1 8;\r"
 				}
 
@@ -131,7 +125,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 177.0, 336.5, 51.0, 49.0 ],
-					"presentation_linecount" : 3,
 					"text" : ";\rsl1 127;\r"
 				}
 
@@ -145,7 +138,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 127.0, 336.5, 44.0, 49.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rsl1 16;\r"
 				}
 
@@ -159,7 +151,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 77.0, 336.5, 44.0, 49.0 ],
-					"presentation_linecount" : 2,
 					"text" : ";\rsl1 64;\r"
 				}
 
@@ -324,6 +315,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-6",
 					"linecount" : 6,
 					"maxclass" : "comment",
@@ -428,9 +420,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -892,8 +884,8 @@
 			}
 , 			{
 				"name" : "abc_gotoevent.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

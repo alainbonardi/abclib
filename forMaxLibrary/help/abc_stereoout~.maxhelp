@@ -71,6 +71,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-69",
 					"linecount" : 8,
 					"maxclass" : "comment",

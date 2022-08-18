@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1084.0, 192.0, 1218.0, 676.0 ],
+		"rect" : [ 313.0, 154.0, 1218.0, 676.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"bgcolor" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
+					"bgcolor2" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
+					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
+					"bgfillcolor_color1" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
+					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
+					"bgfillcolor_proportion" : 0.5,
+					"bgfillcolor_type" : "color",
+					"gradient" : 1,
+					"id" : "obj-13",
+					"linecount" : 8,
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 633.0, 212.5, 95.0, 129.0 ],
+					"text" : ";\rdels dur00 0.5;\rdels dur01 1.;\rdels dur02 0.5;\rdels dur03 1.;\rdels dur04 0.5;\rdels dur05 0.25;\rdels tempo 200;\r",
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-9",
 					"maxclass" : "toggle",
@@ -350,6 +374,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-74",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -405,6 +430,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-29",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -888,30 +914,6 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
-					"bgcolor2" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
-					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.0,
-					"bgfillcolor_color" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-					"bgfillcolor_color1" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
-					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
-					"bgfillcolor_proportion" : 0.5,
-					"bgfillcolor_type" : "color",
-					"gradient" : 1,
-					"id" : "obj-53",
-					"linecount" : 8,
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 627.0, 212.5, 95.0, 129.0 ],
-					"text" : ";\rdels dur00 0.5;\rdels dur01 1.;\rdels dur02 0.5;\rdels dur03 1.;\rdels dur04 0.5;\rdels dur05 0.25;\rdels tempo 200;\r",
-					"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"bgcolor" : [ 0.301961, 0.301961, 0.301961, 1.0 ],
 					"id" : "obj-51",
 					"maxclass" : "newobj",
@@ -952,6 +954,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-24",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -988,6 +991,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-18",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -999,6 +1003,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1031,6 +1036,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
 					"linecount" : 7,
 					"maxclass" : "comment",
@@ -1643,8 +1649,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-53", 0 ],
-					"midpoints" : [ 498.654775333332964, 193.5, 636.5, 193.5 ],
+					"destination" : [ "obj-13", 0 ],
+					"midpoints" : [ 498.654775333332964, 193.5, 642.5, 193.5 ],
 					"order" : 0,
 					"source" : [ "obj-54", 0 ]
 				}

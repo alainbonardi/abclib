@@ -84,7 +84,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25.0 ],
+					"args" : [ -25.0, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -174,6 +174,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-3",
 					"linecount" : 9,
 					"maxclass" : "comment",
@@ -221,6 +222,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-29",
 					"linecount" : 2,
 					"maxclass" : "comment",

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 847.0, 133.0, 1218.0, 676.0 ],
+		"rect" : [ 1190.0, 360.0, 1218.0, 676.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -350,6 +350,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-74",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -405,6 +406,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-29",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -892,7 +894,7 @@
 					"bgcolor2" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
 					"bgfillcolor_autogradient" : 0.0,
-					"bgfillcolor_color" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+					"bgfillcolor_color" : [ 0.498039215686275, 0.498039215686275, 0.498039215686275, 1.0 ],
 					"bgfillcolor_color1" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
 					"bgfillcolor_color2" : [ 0.2, 0.2, 0.2, 1.0 ],
 					"bgfillcolor_proportion" : 0.5,
@@ -906,7 +908,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 666.0, 237.0, 95.0, 129.0 ],
 					"text" : ";\rdels dur00 0.5;\rdels dur01 1.;\rdels dur02 0.5;\rdels dur03 1.;\rdels dur04 0.5;\rdels dur05 0.25;\rdels tempo 200;\r",
-					"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
 			}
@@ -952,6 +954,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-24",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -988,6 +991,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-18",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -999,6 +1003,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1031,6 +1036,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
 					"linecount" : 6,
 					"maxclass" : "comment",

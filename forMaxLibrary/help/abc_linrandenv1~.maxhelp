@@ -123,6 +123,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-62",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -184,6 +185,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-53",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -650,6 +652,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-37",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -745,6 +748,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-11",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -757,6 +761,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-12",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -791,6 +796,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-61",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -803,6 +809,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-60",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1023,6 +1030,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-24",
 					"linecount" : 14,
 					"maxclass" : "comment",

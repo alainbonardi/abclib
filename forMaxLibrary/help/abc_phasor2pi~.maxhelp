@@ -129,7 +129,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25.0 ],
+					"args" : [ -25.0, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -320,7 +320,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 99.0, 221.0, 45.0, 45.0 ]
+					"patching_rect" : [ 72.0, 213.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -349,13 +349,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-3",
 					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 166.5, 184.5, 143.0, 74.0 ],
-					"text" : "abc_phasor2pi~ is a phasor going from 0 to 2*PI instead of 1. It directly expresses an angle in radian"
+					"patching_rect" : [ 170.0, 156.0, 143.0, 74.0 ],
+					"text" : "abc_phasor2pi~ is a phasor going from 0 to 2*PI instead of 1. It directly expresses an angle in radians"
 				}
 
 			}

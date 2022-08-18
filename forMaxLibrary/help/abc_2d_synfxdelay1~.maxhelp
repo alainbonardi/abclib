@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 688.0, 501.0, 1672.0, 717.0 ],
+		"rect" : [ 136.0, 359.0, 1672.0, 717.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -265,6 +265,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
 					"linecount" : 17,
 					"maxclass" : "comment",
@@ -577,7 +578,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15 ],
+					"args" : [ -15, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -677,7 +678,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15 ],
+					"args" : [ -15, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

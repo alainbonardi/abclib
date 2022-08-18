@@ -50,6 +50,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-7",
 					"linecount" : 8,
 					"maxclass" : "comment",
@@ -357,7 +358,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 159.0, 318.0, 69.0, 22.0 ],
+					"patching_rect" : [ 165.0, 318.0, 69.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -878,6 +879,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-24",
 					"linecount" : 2,
 					"maxclass" : "comment",

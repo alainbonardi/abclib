@@ -371,7 +371,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 8,
 					"numoutlets" : 0,
-					"patching_rect" : [ 407.821428571428612, 583.0, 115.0, 22.0 ],
+					"patching_rect" : [ 398.500000000000114, 583.0, 136.749999999999886, 22.0 ],
 					"text" : "dac~ 1 2 3 4 5 6 7 8"
 				}
 
@@ -409,18 +409,20 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-80",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1586.0, 262.0, 70.0, 60.0 ],
+					"patching_rect" : [ 1586.0, 273.0, 70.0, 60.0 ],
 					"text" : "generates a random trajectory in cartesian"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-79",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -695,12 +697,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-68",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 579.0, 273.0, 70.0, 60.0 ],
+					"patching_rect" : [ 583.0, 273.0, 70.0, 60.0 ],
 					"text" : "generates a Z trajectory in cartesian"
 				}
 
@@ -1455,12 +1458,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-29",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 274.0, 273.0, 70.0, 60.0 ],
+					"patching_rect" : [ 277.0, 273.0, 70.0, 60.0 ],
 					"text" : "generates a square trajectory in cartesian"
 				}
 
@@ -1519,6 +1523,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-4",
 					"linecount" : 14,
 					"maxclass" : "comment",

@@ -40,6 +40,7 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-6",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -96,6 +97,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-50",
 					"linecount" : 7,
 					"maxclass" : "comment",
@@ -411,9 +413,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~",
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",

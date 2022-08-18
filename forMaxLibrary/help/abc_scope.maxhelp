@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 10,
+			"minor" : 3,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -50,12 +50,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-14",
 					"linecount" : 14,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 186.25, 312.0, 194.0 ],
+					"patching_rect" : [ 233.0, 186.25, 314.0, 194.0 ],
 					"text" : "abc_scope is an abstraction to be used within a bpatcher in association with abc_2d_scopeN~ objects to visualize X-Y signals for instance ambisonic components at the order N. There are 3 signal inputs: X signal, Y signal and a binary signal (1/0) to tell the drawing corresponds to positive (red) values or negative (blue) ones\nThree parameters can be set:\n- the type of drawing: points or lines\n- the size of the drawing (1 by default)\n- display on/off the floating window with the visualization.\nThe three default values can be set thanks to the bpatcher inspector.\nA unique 4 digit number is attributed to each instance and each visualization window"
 				}
 
@@ -106,6 +107,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-35",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_scope.maxpat",
 					"numinlets" : 3,
@@ -126,6 +128,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-1",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpcredit.maxpat",
 					"numinlets" : 1,
@@ -149,6 +152,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-3",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc.helpheader.maxpat",
 					"numinlets" : 1,
@@ -158,8 +162,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 10,
+							"minor" : 3,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -288,7 +292,14 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 65.28125, 8.0, 5.0, 38.0 ]
+									"patching_rect" : [ 65.28125, 8.0, 5.0, 38.0 ],
+									"saved_attribute_attributes" : 									{
+										"linecolor" : 										{
+											"expression" : ""
+										}
+
+									}
+
 								}
 
 							}
@@ -638,36 +649,36 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "abc.helpcredit.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_2d_scope3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_scope.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_substractsynth7~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_multinoise7~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_scope3~.mxo",
+				"name" : "abc_scope.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_substractsynth7~.mxo",
 				"type" : "iLaX"
 			}
  ],
