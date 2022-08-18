@@ -957,10 +957,7 @@ abc_soundcoat_ui = soundcoat(16, f0, randfreq, gain)
 //SOUNDGRAIN GENERATES A GRANULAR PROCESS ON A RAINSTICK SOUND (ENCLOSED IN THE ABCSOUNDS.LIB FAUST CODE)
 //--------------------------------------------------------------------------------------//
 //
-abc_soundgrain(fmult, mySamp, g) = abc_player(fmult, mySamp) : (((no.multinoise(2), ((_, _) : +)) : p : granulator(20, 5000, 0)) ~ (*(1.))) : *(g)
-			with {
-				p(a, b, c) = (a, c, b);
-};
+abc_soundgrain(fmult, mySamp, g) = abc_player(fmult, mySamp) : (((no.multinoise(2), ((_, _) : +)) : granulator(20, 5000, 0, 0)) ~ (*(1.))) : *(g);
 //
 abc_soundgrain_ui = abc_soundgrain(freqmult, rainstickSamples, gain)
 			with {
