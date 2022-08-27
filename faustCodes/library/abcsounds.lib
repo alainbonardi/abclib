@@ -1,3 +1,60 @@
+//--------------------------------------------------------------------------------------//
+//----------------------------------abcsoundslib----------------------------------------//
+//
+//------------------FAUST CODE AND UTILITIES FOR MIXED MUSIC FROM SAMPLES---------------//
+//
+//-----------------------BY ALAIN BONARDI & PAUL GOUTMANN - 2019-2022 ------------------//
+//---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
+//--------------------------------------------------------------------------------------//
+//
+declare author "Alain Bonardi & Paul Goutmann";
+declare licence "LGPLv3";
+declare name "abclib";
+declare copyright "2019-2022 Bonardi, Goutmann CICM, U. Paris 8";
+//
+import("stdfaust.lib");
+//
+//--------------------------------------------------------------------------------------//
+//PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION
+//--------------------------------------------------------------------------------------//
+abc_player(freqmult, mySamp) = thisPlayer with {
+	//mySamp the array of samples using waveform function
+	//mySampNum is the number of samples
+	mySampNum = mySamp : (_, !);
+	//ofreq is the original playing frequency
+	ofreq = ma.SR / mySampNum;
+	//freqmult is the multiplier of the original playing frequency ofreq
+	//rfreq is the real frequency
+	rfreq = freqmult * ofreq;
+	zeroToOnePhase =  os.phasor(1, rfreq) : ma.decimal; 
+	myIndex = zeroToOnePhase * float(mySampNum); 
+	i1 = int(myIndex);
+	i2 = (i1+1) % int(mySampNum);
+	d = ma.decimal(myIndex);
+	s1 = (mySamp, i1) : (+(1), _, _) : rdtable;
+	s2 = (mySamp, i2) : (+(1), _, _) : rdtable;
+	thisPlayer = s1 + d * (s2 - s1);
+};
+
+//
+//--------------------------------------------------------------------------------------//
+//SOUND GRAIN
+//INSPIRED BY HOA SYNTHETIZERS BY PIERRE GUILLOT, ELIOTT PARIS AND JULIEN COLAFRANCESCO
+//CICM
+//SOUNDGRAIN GENERATES A GRANULAR PROCESS ON A RAINSTICK SOUND
+//--------------------------------------------------------------------------------------//
+//
+abc_soundgrain(fmult, mySamp, g) = abc_player(fmult, mySamp) : (((no.multinoise(2), ((_, _) : +)) : granulator(20, 5000, 0, 0)) ~ (*(1.))) : *(g);
+//
+abc_soundgrain_ui = abc_soundgrain(freqmult, rainstickSamples, gain)
+			with {
+				//rainstickNsamp = 144408;
+				//
+				freqmult = hslider("v:synthetizers/freqmult", 1, 0.001, 5, 0.01);
+				//
+				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+};		
+
 //
 //--------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------//
