@@ -13,6 +13,7 @@ declare name "abclib";
 declare copyright "2019-2022 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
+import("abc.lib");
 //
 //--------------------------------------------------------------------------------------//
 //PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION

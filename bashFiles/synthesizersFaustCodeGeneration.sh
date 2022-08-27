@@ -48,7 +48,7 @@ done <"$headerfilename"
 echo "declare name \"abc_soundgrain\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_soundgrain_ui;" >> $sortie
+process = library(\"abcsounds.lib\").abc_soundgrain_ui;" >> $sortie
 #
 #abc_generator.dsp
 #

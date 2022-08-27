@@ -11,4 +11,4 @@ declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abc_soundgrain";
 //
-process = library("abc.lib").abc_soundgrain_ui;
+process = library("abcsounds.lib").abc_soundgrain_ui;
