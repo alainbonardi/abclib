@@ -692,7 +692,7 @@ abc_multiharmo_ui(n) = par(ind, n, harmonizer(trans(ind), winsize(ind), gain(ind
 				//gain in dB of the harmonizer #i
 				gain(ind) = hslider("h:multiharmo/v:gains/gain%2ind [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
 				//window size of the harmonizer #i
-				winsize(ind) = hslider("h:multiharmo/v:windowsizes/winsize%2ind", 50, 0, 127, 0.01) : abc_pdlinedrive4096;
+				winsize(ind) = hslider("h:multiharmo/v:windowsizes/winsize%2ind", 50, 0, 127, 0.01) : pdLineDrive4096;
 			};
 //
 //--------------------------------------------------------------------------------------//
@@ -804,7 +804,7 @@ abc_rev4stereo_ui = rev4Stereo(revDur, revGain)
 				//2 controls: revDur which is the duration of the reverb (127 is infinite)
 				//revAmp is the amplitude of the output sound of the reverb
 				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
-				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
+				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : basicLineDrive;
 };
 //
 abc_rev4quadri_ui = rev4Quadri(revDur, revGain)
@@ -812,7 +812,7 @@ abc_rev4quadri_ui = rev4Quadri(revDur, revGain)
 				//2 controls: revDur which is the duration of the reverb (127 is infinite)
 				//revAmp is the amplitude of the output sound of the reverb
 				revDur = hslider("v:rev4/revDur [unit:midiscale]", 120, 0, 127, 1) : /(254.) : si.smoo;
-				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : abc_basiclinedrive;
+				revGain = hslider("v:rev4/revGain [unit:midiscale]", 100, 0, 127, 1) : basicLineDrive;
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -1063,10 +1063,6 @@ with {
 //The corresponding generator as an angle in radians
 //--------------------------------------------------------------------------------------//
 abc_rotationorstaticangle(f, p, dt) = abc_rotationorstaticphase(f, p, dt) * 2 * ma.PI;
-//
-
-abc_basiclinedrive = (_, 30, 127, 1, 1.06, 30) : puredataLineDrive;
-abc_pdlinedrive4096 = (_, 30, 127, 4096, 1.07177, 30) : puredataLineDrive;
 //
 abc_linedrive_ui = (_, 30, 127, outputmax, expcurve, 30) : puredataLineDrive
 		with {

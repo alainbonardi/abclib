@@ -288,7 +288,7 @@ multiChowningPanner(n, ahp, amp) = par(i, n, (chowningPanner(ahp*(2*i/(n-1)-1), 
 
 
 //
-//Definition of a PureData like linedrive object
+//Definition of a PureData like linedrive object and specialized linedrives
 //--------------------------------------------------------------------------------------//
 puredataLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
 	with {
@@ -304,6 +304,9 @@ puredataLineDrive(vol, ti, r, f, b, t) = transitionLineDrive
 			pre_ti = ba.if (ti < 1.46, t, ti);
 			transitionLineDrive = val : ba.line(pre_ti * ma.SR / 1000.0);
 		};
+
+basicLineDrive = (_, 30, 127, 1, 1.06, 30) : puredataLineDrive;
+pdLineDrive4096 = (_, 30, 127, 4096, 1.07177, 30) : puredataLineDrive;
 
 //--------------------------------------------------------------------------------------//
 //ENVELOPES
