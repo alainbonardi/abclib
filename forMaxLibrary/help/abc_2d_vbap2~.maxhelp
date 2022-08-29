@@ -46,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 681.0, 266.0, 446.0, 33.0 ],
+					"patching_rect" : [ 681.0, 266.0, 439.0, 33.0 ],
 					"text" : "Angles are given by parameters a00, a01, a02... angles (in degrees).\ntheta is the angle of the virtual source (in degrees)."
 				}
 
@@ -56,7 +56,7 @@
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgcolor2" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_autogradient" : 0.0,
 					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgfillcolor_color1" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgfillcolor_color2" : [ 0.07451, 0.027451, 1.0, 1.0 ],
@@ -465,7 +465,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 681.0, 176.0, 446.0, 47.0 ],
+					"patching_rect" : [ 681.0, 176.0, 439.0, 47.0 ],
 					"text" : "abc_vbap2~, abc_vbap3~, ...objects provide implementations of VBAP algorithm  by Ville Pulkki for various number of loudspeakers dispatched on a circle with angles that can be irregular."
 				}
 

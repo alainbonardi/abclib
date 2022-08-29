@@ -444,7 +444,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 533.071441999999934, 592.0, 156.0, 33.0 ],
+					"patching_rect" : [ 524.071441999999934, 596.0, 136.0, 33.0 ],
 					"text" : "shapes of the 2 cosinus random envelopes"
 				}
 
