@@ -204,33 +204,36 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-86",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1323.150000000000091, 328.5, 150.0, 20.0 ],
+					"patching_rect" : [ 1323.150000000000091, 328.5, 123.0, 20.0 ],
 					"text" : "cartesian coordinates"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-84",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 832.928558000000066, 333.5, 150.0, 20.0 ],
+					"patching_rect" : [ 832.928558000000066, 333.5, 124.071441999999934, 20.0 ],
 					"text" : "cartesian coordinates"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-82",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 408.0, 333.5, 150.0, 20.0 ],
+					"patching_rect" : [ 408.0, 333.5, 123.0, 20.0 ],
 					"text" : "cartesian coordinates"
 				}
 
@@ -363,7 +366,7 @@
 				"box" : 				{
 					"id" : "obj-67",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 274.178558000000066, 91.0, 97.0, 22.0 ],
@@ -410,6 +413,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-81",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -571,6 +575,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-50",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -660,6 +665,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-98",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -676,7 +682,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 1513.0, 425.0, 40.0, 22.0 ],
+					"patching_rect" : [ 1505.0, 425.0, 40.0, 22.0 ],
 					"text" : "* 127."
 				}
 
@@ -689,7 +695,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1513.0, 453.0, 54.0, 11.0 ]
+					"patching_rect" : [ 1505.0, 453.0, 54.0, 11.0 ]
 				}
 
 			}
@@ -697,10 +703,10 @@
 				"box" : 				{
 					"id" : "obj-14",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1562.0, 348.5, 97.0, 22.0 ],
+					"patching_rect" : [ 1554.0, 348.5, 97.0, 22.0 ],
 					"text" : "abc_upanddown"
 				}
 
@@ -841,12 +847,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-16",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1569.0, 435.0, 70.0, 47.0 ],
+					"patching_rect" : [ 1567.0, 436.0, 70.0, 47.0 ],
 					"text" : "Ring modulation\nfactor"
 				}
 
@@ -868,7 +875,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1562.0, 411.75, 55.0, 22.0 ],
+					"patching_rect" : [ 1554.0, 411.75, 55.0, 22.0 ],
 					"text" : "factor $1"
 				}
 
@@ -884,7 +891,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1562.0, 380.25, 50.0, 22.0 ]
+					"patching_rect" : [ 1554.0, 380.25, 50.0, 22.0 ]
 				}
 
 			}
@@ -1529,6 +1536,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-91",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1770,30 +1778,33 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-113",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1657.0, 284.0, 150.0, 33.0 ],
-					"text" : "AMBISONIC MULTIPLE RING MODULATORS"
+					"patching_rect" : [ 1679.0, 328.5, 154.178558000000066, 33.0 ],
+					"text" : "AMBISONIC RING MULTIPLE MODULATORS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-99",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1423.828558000000157, 144.0, 160.0, 33.0 ],
+					"patching_rect" : [ 1423.828558000000157, 144.0, 140.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE GRANULATORS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-88",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1842,13 +1853,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 499.0, 6.0, 270.0, 87.0 ],
-					"text" : "We here provide 2D FX processes on ambisonic components:\n- 2D FX decorrelators\n- 2D FX delays\n- 2D FX granulators\n- 2D FX ring modulators"
+					"text" : "We provide 2D FX processes on ambisonic components:\n- 2D FX decorrelators\n- 2D FX delays\n- 2D FX granulators\n- 2D FX ring modulators"
 				}
 
 			}
@@ -2325,7 +2337,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
-					"midpoints" : [ 1571.5, 485.5, 1647.5, 485.5 ],
+					"midpoints" : [ 1563.5, 490.5, 1647.5, 490.5 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -2341,7 +2353,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
-					"midpoints" : [ 1571.5, 408.125, 1522.5, 408.125 ],
+					"midpoints" : [ 1563.5, 408.125, 1514.5, 408.125 ],
 					"order" : 1,
 					"source" : [ "obj-18", 0 ]
 				}

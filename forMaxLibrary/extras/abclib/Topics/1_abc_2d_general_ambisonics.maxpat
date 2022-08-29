@@ -108,18 +108,20 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-74",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 967.0, 627.5, 150.0, 47.0 ],
+					"patching_rect" : [ 967.0, 623.0, 150.0, 47.0 ],
 					"text" : "decoder at order #3 of ambisonics for 8 loudspeakers"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-72",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -349,6 +351,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -374,6 +377,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-23",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -419,6 +423,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-46",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -543,12 +548,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-44",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1982.0, 572.75, 100.0, 33.0 ],
+					"patching_rect" : [ 1981.5, 570.5, 75.0, 33.0 ],
 					"text" : "abc_scope\nabstraction"
 				}
 
@@ -717,6 +723,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-6",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1009,6 +1016,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-39",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -1141,17 +1149,19 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-113",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1863.0, 133.5, 150.0, 20.0 ],
+					"patching_rect" : [ 1863.0, 133.5, 130.0, 20.0 ],
 					"text" : "AMBISONIC SCOPES"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-99",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1163,22 +1173,24 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-89",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 702.5, 140.0, 150.0, 20.0 ],
+					"patching_rect" : [ 702.5, 140.0, 79.0, 20.0 ],
 					"text" : "DECODERS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-88",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 90.0, 140.0, 150.0, 20.0 ],
+					"patching_rect" : [ 99.0, 140.0, 77.0, 20.0 ],
 					"text" : "ENCODERS"
 				}
 
@@ -1221,13 +1233,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 499.0, 6.0, 319.0, 74.0 ],
-					"text" : "We here provide 2D general ambisonic objects:\n- 2D encoders\n- 2D decoders\n- 2D ambisonic optimizers\n- 2D ambisonic scopes"
+					"text" : "We provide 2D general ambisonic objects:\n- 2D encoders, stereoencoders or multiencoders\n- 2D decoders\n- 2D ambisonic optimizers\n- 2D ambisonic scopes"
 				}
 
 			}

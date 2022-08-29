@@ -85,6 +85,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-85",
 					"linecount" : 10,
 					"maxclass" : "comment",
@@ -217,6 +218,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-159",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -228,11 +230,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-82",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1852.5, 170.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1862.0, 170.0, 89.0, 20.0 ],
 					"text" : "abc_adcinput~"
 				}
 
@@ -333,12 +336,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-78",
 					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1997.5, 124.0, 250.0, 127.0 ],
+					"patching_rect" : [ 1977.0, 124.0, 241.0, 127.0 ],
 					"text" : "The abc_adcinput~ abstraction is a mono adc~ input with possible dc filtering. The bpatcher can accept three default values as arguments\n-argument 1 is the number of the channel (adc)\n-argument 2 is the amplitude in dB\n-argument 3 is the enabling (1/0) of the dc filtering"
 				}
 
@@ -411,11 +415,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-70",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1459.0, 536.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1459.0, 536.0, 86.0, 20.0 ],
 					"text" : "abc_stereoout"
 				}
 
@@ -458,6 +463,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-68",
 					"linecount" : 9,
 					"maxclass" : "comment",
@@ -491,11 +497,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-65",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1513.0, 170.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1513.0, 170.0, 110.0, 20.0 ],
 					"text" : "abc_simplefmburst"
 				}
 
@@ -523,6 +530,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-58",
 					"linecount" : 8,
 					"maxclass" : "comment",
@@ -535,11 +543,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-56",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 998.0, 536.0, 150.0, 20.0 ],
+					"patching_rect" : [ 998.0, 536.0, 86.0, 20.0 ],
 					"text" : "abc_quadriout"
 				}
 
@@ -603,12 +612,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-50",
 					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1264.5, 124.0, 150.0, 100.0 ],
+					"patching_rect" : [ 1301.5, 108.5, 140.0, 100.0 ],
 					"text" : "abc_pict2map is an abstraction inside a bpatcher that enables to graphically control the abc_2d_map objects. There are no default values"
 				}
 
@@ -760,11 +770,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-28",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 984.0, 170.0, 150.0, 20.0 ],
+					"patching_rect" : [ 984.0, 170.0, 89.0, 20.0 ],
 					"text" : "abc_pict2map"
 				}
 
@@ -880,6 +891,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-25",
 					"linecount" : 11,
 					"maxclass" : "comment",
@@ -959,11 +971,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-12",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 559.0, 536.0, 150.0, 20.0 ],
+					"patching_rect" : [ 559.0, 536.0, 77.0, 20.0 ],
 					"text" : "abc_musdur"
 				}
 
@@ -1035,12 +1048,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-10",
 					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 483.0, 336.5, 193.0, 127.0 ],
+					"patching_rect" : [ 470.0, 336.5, 193.0, 127.0 ],
 					"text" : "abc_gaincontrol is an abstraction that outputs a message 'gain' followed by an amplitude value in dB (from -127 to +18 dB).\nIt enables to control abc_gain and abc_decoder objects.\nAs a bpatcher, it includes one default value that is the gain value in dB when launching the patch"
 				}
 
@@ -1142,17 +1156,18 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 586.0, 290.0, 68.0, 22.0 ],
-					"text" : "gain -127"
+					"text" : "gain -127."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-2",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 449.0, 232.0, 150.0, 20.0 ],
+					"patching_rect" : [ 449.0, 232.0, 96.0, 20.0 ],
 					"text" : "abc_gaincontrol"
 				}
 
@@ -1181,6 +1196,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-14",
 					"linecount" : 15,
 					"maxclass" : "comment",
@@ -1250,11 +1266,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-33",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 67.0, 536.0, 150.0, 20.0 ],
+					"patching_rect" : [ 67.0, 536.0, 70.0, 20.0 ],
 					"text" : "abc_scope"
 				}
 
@@ -1282,6 +1299,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-34",
 					"linecount" : 7,
 					"maxclass" : "comment",
@@ -1316,11 +1334,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-88",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 67.0, 170.0, 150.0, 20.0 ],
+					"patching_rect" : [ 67.0, 170.0, 97.0, 20.0 ],
 					"text" : "abc_env_noise~"
 				}
 
@@ -1363,13 +1382,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 499.0, 6.0, 192.0, 141.0 ],
-					"text" : "We here provide abc abstractions:\n- abc_env_noise~\n- abc_ambiscope\n- abc_gaincontrol\n- abc_musdur\n- abc_pict2map\n- abc_quadriout\n- abc_simplefmburst\n- abc_stereoout\n- abc_adcinput~"
+					"patching_rect" : [ 499.0, 6.0, 171.0, 141.0 ],
+					"text" : "We provide abc abstractions:\n- abc_env_noise~\n- abc_ambiscope\n- abc_gaincontrol\n- abc_musdur\n- abc_pict2map\n- abc_quadriout\n- abc_simplefmburst\n- abc_stereoout\n- abc_adcinput~"
 				}
 
 			}

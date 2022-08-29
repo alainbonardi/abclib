@@ -225,6 +225,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-166",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -314,6 +315,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-159",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -325,6 +327,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-153",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -436,6 +439,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-143",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -448,12 +452,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-144",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1870.0, 494.5, 74.0, 47.0 ],
+					"patching_rect" : [ 1870.0, 494.5, 59.0, 47.0 ],
 					"text" : "rev4 duration\n0 to 127"
 				}
 
@@ -591,11 +596,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-138",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1269.0, 680.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1285.988108666666449, 680.0, 100.863108666666676, 20.0 ],
 					"text" : "HARMONIZERS"
 				}
 
@@ -773,6 +779,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-126",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -840,6 +847,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-133",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -851,6 +859,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-134",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -918,11 +927,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-114",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 741.0, 680.0, 150.0, 20.0 ],
+					"patching_rect" : [ 738.833333333333485, 680.0, 100.0, 20.0 ],
 					"text" : "GRANULATORS"
 				}
 
@@ -941,6 +951,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-103",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1108,6 +1119,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-101",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1191,12 +1203,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-95",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1412.0, 82.0, 71.0, 47.0 ],
+					"patching_rect" : [ 1412.0, 88.0, 71.0, 47.0 ],
 					"text" : "\ntop every 5 seconds"
 				}
 
@@ -1220,7 +1233,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 1386.0, 134.5, 69.0, 22.0 ],
+					"patching_rect" : [ 1386.0, 139.0, 69.0, 22.0 ],
 					"text" : "metro 5000"
 				}
 
@@ -1252,6 +1265,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-68",
 					"linecount" : 4,
 					"maxclass" : "comment",
@@ -1751,12 +1765,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-60",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 699.0, 184.0, 71.0, 47.0 ],
+					"patching_rect" : [ 699.0, 190.0, 71.0, 47.0 ],
 					"text" : "\ntop every 5 seconds"
 				}
 
@@ -1787,17 +1802,19 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-56",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 867.833333333333371, 105.0, 150.0, 20.0 ],
+					"patching_rect" : [ 867.833333333333599, 105.0, 150.0, 20.0 ],
 					"text" : "DELAYS (SEQUENTIAL)"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-74",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1842,6 +1859,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-15",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1897,6 +1915,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-40",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1908,6 +1927,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-19",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1975,6 +1995,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-65",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -2021,6 +2042,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-30",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -2056,6 +2078,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-35",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -2236,6 +2259,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-12",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -2254,7 +2278,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 190.0, 142.5, 90.0, 35.0 ],
-					"text" : "f0 110"
+					"text" : "f0 550"
 				}
 
 			}
@@ -2540,6 +2564,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-39",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -2552,6 +2577,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-37",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -2899,11 +2925,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-88",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 123.666666666666629, 680.0, 150.0, 20.0 ],
+					"patching_rect" : [ 123.666666666666629, 680.0, 74.0, 20.0 ],
 					"text" : "FLANGERS"
 				}
 
@@ -2946,13 +2973,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 499.0, 6.0, 236.0, 114.0 ],
-					"text" : "We here provide multichannel processes:\n- delays (parallel)\n- delays (sequential)\n- flangers\n- frequency shifters\n- granulators\n- harmonizers\n- reverberation"
+					"patching_rect" : [ 499.0, 6.0, 205.0, 114.0 ],
+					"text" : "We provide multichannel processes:\n- delays (parallel)\n- delays (sequential)\n- flangers\n- frequency shifters\n- granulators\n- harmonizers\n- reverberation"
 				}
 
 			}

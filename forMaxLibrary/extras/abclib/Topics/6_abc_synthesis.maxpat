@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -303.0, 100.0, 1792.0, 880.0 ],
+		"rect" : [ 34.0, 100.0, 1792.0, 880.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -69,18 +69,18 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1516.083333333333485, 441.5, 74.0, 116.0 ],
-					"presentation_linecount" : 7,
 					"text" : ";\rp1 f0 350.;\rp1 cf 500.;\rp1 bw 150.;\rp1 wf 1;\rp1 sigma 1.;\rp1 a 0.2;\r"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-95",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1484.660999615987294, 574.0, 202.0, 20.0 ],
+					"patching_rect" : [ 1484.660999615987294, 574.0, 176.0, 20.0 ],
 					"text" : "PHASE ALIGNED FORMANTS"
 				}
 
@@ -285,7 +285,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
 					"patching_rect" : [ 1601.583333333333485, 646.0, 135.0, 24.0 ],
-					"presentation_linecount" : 2,
 					"text" : "abc_puckettespaf~"
 				}
 
@@ -345,18 +344,18 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "list" ],
 					"patching_rect" : [ 1435.660999615987294, 646.0, 135.0, 24.0 ],
-					"presentation_linecount" : 2,
 					"text" : "abc_puckettespaf~"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-92",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 974.0, 581.0, 202.0, 20.0 ],
+					"patching_rect" : [ 974.0, 574.0, 202.0, 20.0 ],
 					"text" : "JUPITER BANK OF OSCILLATORS"
 				}
 
@@ -584,11 +583,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-68",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 558.0, 581.0, 252.0, 20.0 ],
+					"patching_rect" : [ 557.0, 574.0, 123.0, 20.0 ],
 					"text" : "DROP GENERATOR"
 				}
 
@@ -869,6 +869,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-166",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -958,6 +959,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-159",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -982,44 +984,48 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-62",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 294.5, 581.0, 252.0, 20.0 ],
+					"patching_rect" : [ 294.0, 574.0, 169.5, 20.0 ],
 					"text" : "SOUNDGRAIN GENERATOR"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-61",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 40.0, 581.0, 252.0, 20.0 ],
+					"patching_rect" : [ 40.0, 574.0, 162.0, 20.0 ],
 					"text" : "SOUNDCOAT GENERATOR"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-60",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 963.5, 127.0, 252.0, 20.0 ],
+					"patching_rect" : [ 963.5, 127.0, 98.833333333333485, 20.0 ],
 					"text" : "RISSET'S BELL"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-51",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 533.0, 127.0, 252.0, 20.0 ],
+					"patching_rect" : [ 533.0, 127.0, 183.0, 20.0 ],
 					"text" : "DECORRELATED MULTINOISE"
 				}
 
@@ -1060,12 +1066,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-39",
 					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1248.0, 296.5, 68.0, 60.0 ],
+					"patching_rect" : [ 1248.0, 296.5, 64.0, 60.0 ],
 					"text" : "basic frequency\nof the model"
 				}
 
@@ -1169,6 +1176,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-52",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1538,6 +1546,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-2",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1550,22 +1559,24 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-5",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 60.0, 252.5, 79.0, 20.0 ],
+					"patching_rect" : [ 60.0, 252.5, 74.0, 20.0 ],
 					"text" : "substractive"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-7",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 60.0, 234.5, 79.0, 20.0 ],
+					"patching_rect" : [ 60.0, 234.5, 74.0, 20.0 ],
 					"text" : "additive"
 				}
 
@@ -1622,6 +1633,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-25",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1792,13 +1804,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 499.5, 6.0, 319.0, 87.0 ],
-					"text" : "We here provide objects for multi-channel synthesis:\n- classical additive synthesis\n- classical substractive synthesis\n- Risset's bell synthesis on 11 partials\n- multiple decorrelated noise\n- soundcoat and soundgrain generators"
+					"patching_rect" : [ 499.5, 6.0, 263.5, 87.0 ],
+					"text" : "We provide objects for multi-channel synthesis:\n- classical additive synthesis\n- classical substractive synthesis\n- Risset's bell synthesis on 11 partials\n- multiple decorrelated noise\n- soundcoat and soundgrain generators"
 				}
 
 			}

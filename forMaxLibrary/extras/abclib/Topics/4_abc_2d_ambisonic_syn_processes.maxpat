@@ -52,36 +52,39 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-86",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 533.571441999999934, 345.0, 150.0, 33.0 ],
+					"patching_rect" : [ 533.571441999999934, 345.0, 139.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE DELAYS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-38",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 946.451573873016059, 345.0, 160.0, 33.0 ],
+					"patching_rect" : [ 946.451573873016059, 345.0, 141.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE GRANULATORS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-36",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1293.671441999999843, 139.0, 160.0, 33.0 ],
+					"patching_rect" : [ 1293.671441999999843, 135.0, 138.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE RING MODULATORS"
 				}
 
@@ -275,7 +278,7 @@
 				"box" : 				{
 					"id" : "obj-70",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 274.178558000000066, 91.0, 97.0, 22.0 ],
@@ -322,12 +325,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-81",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 285.678558000000066, 177.5, 85.0, 33.0 ],
+					"patching_rect" : [ 285.678558000000066, 177.5, 82.0, 33.0 ],
 					"text" : "Decorrelation\nfactor"
 				}
 
@@ -530,6 +534,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-66",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -619,6 +624,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-5",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -692,7 +698,7 @@
 				"box" : 				{
 					"id" : "obj-54",
 					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1388.0, 374.5, 97.0, 22.0 ],
@@ -739,6 +745,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-57",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1423,12 +1430,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-91",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 522.571441999999934, 139.0, 150.0, 33.0 ],
+					"patching_rect" : [ 522.571441999999934, 135.0, 138.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE DELAYS"
 				}
 
@@ -1492,30 +1500,33 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-113",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1422.0, 337.0, 150.0, 33.0 ],
+					"patching_rect" : [ 1422.0, 337.0, 140.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE RING MODULATORS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-99",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 880.428558000000066, 139.0, 160.0, 33.0 ],
+					"patching_rect" : [ 878.428558000000066, 135.0, 137.0, 33.0 ],
 					"text" : "AMBISONIC MULTIPLE GRANULATORS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-88",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1564,13 +1575,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 499.0, 6.0, 285.75, 87.0 ],
-					"text" : "We here provide 2D SYN processes on ambisonic components:\n- 2D SYN decorrelators\n- 2D SYN delays\n- 2D SYN granulators\n- 2D SYN ring modulators"
+					"text" : "We provide 2D SYN processes on ambisonic components:\n- 2D SYN decorrelators\n- 2D SYN delays\n- 2D SYN granulators\n- 2D SYN ring modulators"
 				}
 
 			}

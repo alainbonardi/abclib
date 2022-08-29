@@ -53,6 +53,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-179",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -64,6 +65,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-178",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -88,11 +90,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-175",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2224.0, 78.5, 150.0, 20.0 ],
+					"patching_rect" : [ 2204.0, 78.5, 98.0, 20.0 ],
 					"text" : "AUDIOTESTER"
 				}
 
@@ -610,6 +613,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-114",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -833,6 +837,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-166",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -922,6 +927,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-159",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -933,11 +939,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-147",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 2132.0, 452.0, 150.0, 20.0 ],
+					"patching_rect" : [ 2136.0, 459.0, 144.0, 20.0 ],
 					"text" : "POLAR TO CARTESIAN"
 				}
 
@@ -1016,6 +1023,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-144",
 					"linecount" : 7,
 					"maxclass" : "comment",
@@ -1055,11 +1063,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-135",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1751.0, 459.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1751.0, 459.0, 142.0, 20.0 ],
 					"text" : "CARTESIAN TO POLAR"
 				}
 
@@ -1174,12 +1183,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-115",
 					"linecount" : 9,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1968.0, 667.5, 98.0, 127.0 ],
+					"patching_rect" : [ 1967.0, 651.0, 98.0, 127.0 ],
 					"text" : "abc_cartopol~ converts cartesian coordinates to polar coordinates (both as signals)\nThe angle is in radians"
 				}
 
@@ -1199,6 +1209,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-116",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1238,11 +1249,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-113",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1478.0, 459.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1478.0, 459.0, 125.0, 20.0 ],
 					"text" : "EXPONENTIAL LINE"
 				}
 
@@ -1343,6 +1355,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-107",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -1422,56 +1435,61 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-99",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1478.0, 78.5, 150.0, 33.0 ],
+					"patching_rect" : [ 1478.0, 78.5, 125.0, 33.0 ],
 					"text" : "PHASOR BETWEEN\n0 AND 2*PI"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-96",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1066.0, 501.0, 150.0, 20.0 ],
+					"patching_rect" : [ 1066.0, 501.0, 108.0, 20.0 ],
 					"text" : "MULTIPLE GAINS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-95",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1014.0, 78.5, 150.0, 20.0 ],
+					"patching_rect" : [ 1014.0, 78.5, 138.0, 20.0 ],
 					"text" : "CHOWNING PANNERS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-89",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 461.0, 125.0, 150.0, 20.0 ],
+					"patching_rect" : [ 461.0, 125.0, 111.0, 20.0 ],
 					"text" : "BUS SELECTORS"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-88",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 129.0, 124.0, 150.0, 20.0 ],
+					"patching_rect" : [ 129.0, 124.0, 72.0, 20.0 ],
 					"text" : "MATRICES"
 				}
 
@@ -1637,12 +1655,13 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-50",
 					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1010.0, 377.5, 151.0, 74.0 ],
+					"patching_rect" : [ 1014.0, 366.0, 151.0, 74.0 ],
 					"text" : "the 16 sources are spread from left to right using Chowning panning model to have a constant acoustic energy "
 				}
 
@@ -1682,6 +1701,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-43",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -1802,18 +1822,20 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-32",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 499.333333333333485, 482.0, 68.0, 33.0 ],
+					"patching_rect" : [ 499.333333333333485, 482.0, 54.666666666666515, 33.0 ],
 					"text" : "8 signal bus"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-19",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1826,6 +1848,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-20",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1838,6 +1861,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-21",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1874,6 +1898,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-29",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -2065,6 +2090,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-16",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -2121,6 +2147,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-94",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -2133,11 +2160,12 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-92",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 253.0, 440.5, 150.0, 20.0 ],
+					"patching_rect" : [ 253.0, 440.5, 102.500000000000227, 20.0 ],
 					"text" : "3 sinus as inputs"
 				}
 
@@ -3183,6 +3211,7 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-6",
 					"linecount" : 6,
 					"maxclass" : "comment",
@@ -3335,13 +3364,14 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 7,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 499.0, 6.0, 319.0, 100.0 ],
-					"text" : "We here provide utility objects:\n- matrices and bus selectors\n- Chowning panners\n- multiple gains\n- phasor between 0 and 2*PI, multiplicator by 2*PI\n- linedrive\n- cartesian to polar, polar to cartesian"
+					"patching_rect" : [ 499.0, 6.0, 278.0, 100.0 ],
+					"text" : "We provide utility objects:\n- matrices and bus selectors\n- Chowning panners\n- multiple gains\n- phasor between 0 and 2*PI, multiplicator by 2*PI\n- linedrive\n- cartesian to polar, polar to cartesian"
 				}
 
 			}
