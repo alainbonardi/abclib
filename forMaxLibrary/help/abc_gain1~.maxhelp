@@ -137,7 +137,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25.0 ],
+					"args" : [ -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -281,7 +281,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 231.0, 214.0, 121.0, 60.0 ],
+					"patching_rect" : [ 231.0, 214.0, 122.0, 60.0 ],
 					"text" : "abc_gain1~, abc_gain2~, ... provide multichannel gain controls in dB"
 				}
 

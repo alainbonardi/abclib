@@ -43,7 +43,7 @@
 					"bgcolor" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
 					"bgcolor2" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_autogradient" : 0.0,
 					"bgfillcolor_color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgfillcolor_color1" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
 					"bgfillcolor_color2" : [ 0.07451, 0.027451, 1.0, 1.0 ],
@@ -694,7 +694,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -30 ],
+					"args" : [ -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

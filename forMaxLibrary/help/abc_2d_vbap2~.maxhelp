@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 374.0, 346.0, 1131.0, 544.0 ],
+		"rect" : [ 347.0, 346.0, 1131.0, 544.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -166,7 +166,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20, 1, 2, 3, 4 ],
+					"args" : [ -127, 1, 2, 3, 4 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -465,7 +465,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 681.0, 176.0, 439.0, 47.0 ],
+					"patching_rect" : [ 681.0, 176.0, 443.0, 47.0 ],
 					"text" : "abc_vbap2~, abc_vbap3~, ...objects provide implementations of VBAP algorithm  by Ville Pulkki for various number of loudspeakers dispatched on a circle with angles that can be irregular."
 				}
 

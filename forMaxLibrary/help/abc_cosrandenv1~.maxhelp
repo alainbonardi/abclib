@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 995.0, 440.0, 1359.0, 682.0 ],
+		"rect" : [ 92.0, 100.0, 1359.0, 682.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -444,7 +444,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 524.071441999999934, 596.0, 136.0, 33.0 ],
+					"patching_rect" : [ 524.071441999999934, 596.0, 138.0, 33.0 ],
 					"text" : "shapes of the 2 cosinus random envelopes"
 				}
 
@@ -747,7 +747,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0.0 ],
+					"args" : [ -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

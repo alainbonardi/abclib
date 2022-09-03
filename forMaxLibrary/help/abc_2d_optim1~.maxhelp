@@ -398,7 +398,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15.0 ],
+					"args" : [ -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -482,7 +482,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 509.0, 806.0, 45.0, 45.0 ]
+					"patching_rect" : [ 509.0, 767.0, 45.0, 45.0 ]
 				}
 
 			}
