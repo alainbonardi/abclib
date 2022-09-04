@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 708.0, 707.0 ],
+						"rect" : [ 440.0, 196.0, 708.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -94,7 +94,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 246.5, 429.0, 24.0, 24.0 ]
+									"patching_rect" : [ 266.0, 434.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -115,7 +115,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 246.5, 461.0, 90.0, 22.0 ],
+									"patching_rect" : [ 266.0, 466.0, 90.0, 22.0 ],
 									"text" : "directangles $1"
 								}
 
@@ -275,7 +275,7 @@
 									"numinlets" : 7,
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 342.0, 505.0, 100.0, 22.0 ],
+									"patching_rect" : [ 342.0, 505.0, 130.0, 22.0 ],
 									"text" : "abc_2d_scope3~"
 								}
 
@@ -309,7 +309,7 @@
 									"numinlets" : 7,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 122.0, 505.0, 128.183673469387827, 22.0 ],
+									"patching_rect" : [ 122.0, 505.0, 144.090864917395493, 22.0 ],
 									"text" : "abc_2d_decoder3_8~"
 								}
 
@@ -505,7 +505,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 8,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 122.0, 285.0, 146.380952380952522, 24.0 ],
+									"patching_rect" : [ 122.0, 285.0, 164.939342403628075, 24.0 ],
 									"text" : "abc_2d_encoder3~",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
@@ -694,7 +694,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-57", 0 ],
-									"midpoints" : [ 256.0, 493.5, 131.5, 493.5 ],
+									"midpoints" : [ 275.5, 493.5, 131.5, 493.5 ],
 									"source" : [ "obj-38", 0 ]
 								}
 
@@ -974,7 +974,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 440.0, 196.0, 708.0, 707.0 ],
+						"rect" : [ 0.0, 26.0, 708.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,

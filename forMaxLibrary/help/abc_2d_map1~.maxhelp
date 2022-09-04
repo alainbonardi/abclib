@@ -793,14 +793,12 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-21",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
+									"id" : "obj-3",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 167.0, 621.0, 137.0, 33.0 ],
-									"text" : "Output gain in dB in the inspector menu"
+									"patching_rect" : [ 119.000000000000114, 597.0, 103.0, 22.0 ],
+									"text" : "dac~"
 								}
 
 							}
@@ -872,27 +870,6 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-13",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc_stereoout~.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 119.0, 593.0, 185.0, 26.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"args" : [ -127 ],
 									"bgmode" : 0,
 									"border" : 1,
@@ -920,7 +897,7 @@
 									"numinlets" : 15,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 119.000000000000114, 553.5, 187.0, 22.0 ],
+									"patching_rect" : [ 119.000000000000114, 554.5, 187.0, 22.0 ],
 									"text" : "abc_2d_stereodecoder7~"
 								}
 
@@ -1082,15 +1059,15 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-13", 1 ],
-									"midpoints" : [ 212.500000000000114, 581.5, 294.5, 581.5 ],
+									"destination" : [ "obj-3", 1 ],
+									"midpoints" : [ 212.500000000000114, 586.25, 212.500000000000114, 586.25 ],
 									"source" : [ "obj-27", 1 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-13", 0 ],
+									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -1346,7 +1323,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 148.5, 423.5, 24.0, 24.0 ]
+									"patching_rect" : [ 148.5, 418.5, 24.0, 24.0 ]
 								}
 
 							}
@@ -2364,7 +2341,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 503.0, 6.0, 481.0, 74.0 ],
+									"patching_rect" : [ 504.0, 414.5, 481.0, 74.0 ],
 									"text" : "abc_2d_map1_1~, abc_2d_map1_2~, abc_2d_map1_3~ etc.\nare map objects to manipualte multple signal mapping.\nFor instance, abc_2d_map3_4~ enables to handle 4 sources at order #3 of ambisonics.\nWhen there is only one source abc_2_mapN_1~ and abc_2d_mapN~ objects are equivalent, for instance abc_2d_map3_1~ and abc_2d_map3~"
 								}
 
@@ -2934,13 +2911,6 @@
 , 			{
 				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
 			}
  ],
 		"autosave" : 0,

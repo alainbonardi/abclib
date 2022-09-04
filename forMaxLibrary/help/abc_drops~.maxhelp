@@ -768,9 +768,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -1498,14 +1498,12 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-4",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 270.5, 306.5, 137.0, 33.0 ],
-									"text" : "Output gain in dB in the inspector menu"
+									"patching_rect" : [ 77.0, 317.5, 35.0, 22.0 ],
+									"text" : "dac~"
 								}
 
 							}
@@ -1600,27 +1598,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 440.0, 264.0, 328.0, 154.0 ],
 									"text" : "the control parameters are:\n- the period of the drop: dropperiod in milliseconds\n- the thinness of the drop: dropthinness is the thinness of the impulsion to enter the reason filter (the higher the thinner)\n- the quality factor of the reason filter: qf\n- the use of the limiter at the output or not: limiter 1 or 0\n- the average frequency of the randomization of drop frequencies: avgfreq in Hz\n- the duration of the attack of the envelope: attackdur in milliseconds"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-16",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc_stereoout~.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 84.0, 306.5, 185.0, 26.0 ],
-									"viewvisibility" : 1
 								}
 
 							}
@@ -2057,9 +2034,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -2422,8 +2399,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-16", 1 ],
-									"midpoints" : [ 93.5, 293.0, 259.5, 293.0 ],
+									"destination" : [ "obj-6", 1 ],
 									"order" : 0,
 									"source" : [ "obj-7", 0 ]
 								}
@@ -2431,7 +2407,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-16", 0 ],
+									"destination" : [ "obj-6", 0 ],
 									"order" : 1,
 									"source" : [ "obj-7", 0 ]
 								}
@@ -2646,9 +2622,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -3008,13 +2984,6 @@
 			}
 , 			{
 				"name" : "abc_quadriout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",

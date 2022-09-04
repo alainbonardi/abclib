@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 260.0, 154.0, 1218.0, 676.0 ],
+		"rect" : [ 102.0, 300.0, 1218.0, 676.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,17 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 535.0, 257.0, 78.0, 20.0 ],
+					"text" : "general gain"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgcolor" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
 					"bgcolor2" : [ 0.03921568627451, 0.12156862745098, 0.568627450980392, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
@@ -56,7 +67,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 633.0, 212.5, 95.0, 129.0 ],
+					"patching_rect" : [ 837.41666666666697, 174.833332717418671, 95.0, 129.0 ],
 					"text" : ";\rdels dur00 0.5;\rdels dur01 1.;\rdels dur02 0.5;\rdels dur03 1.;\rdels dur04 0.5;\rdels dur05 0.25;\rdels tempo 200;\r",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
@@ -103,8 +114,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 79.0, 344.0, 40.0, 22.0 ],
-					"text" : "*~ 0.3"
+					"patching_rect" : [ 79.0, 344.0, 47.0, 22.0 ],
+					"text" : "*~ 0.15"
 				}
 
 			}
@@ -147,7 +158,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 489.154775333332964, 212.5, 123.0, 196.0 ],
+					"patching_rect" : [ 706.571441999999934, 174.833332717418671, 123.0, 196.0 ],
 					"text" : ";\rharmos trans00 100;\rharmos gain00 0;\rharmos trans01 -200;\rharmos gain01 2;\rharmos trans02 300;\rharmos gain02 4;\rharmos trans03 -400;\rharmos gain03 6;\rharmos trans04 500;\rharmos gain04 8;\rharmos trans05 -600;\rharmos gain05 10;\r"
 				}
 
@@ -494,7 +505,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 91.0, 301.0, 29.5, 22.0 ],
+									"patching_rect" : [ 21.0, 295.0, 29.5, 22.0 ],
 									"text" : "*~"
 								}
 
@@ -519,7 +530,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 51.0, 384.0, 30.0, 30.0 ]
+									"patching_rect" : [ 21.0, 398.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -567,7 +578,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 21.0, 160.0, 40.0, 22.0 ],
-									"text" : "*~ 0.2"
+									"text" : "*~ 0.5"
 								}
 
 							}
@@ -833,7 +844,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0 ],
+					"args" : [ -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -848,7 +859,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 874.071442000000047, 331.0, 72.0, 110.0 ],
+					"patching_rect" : [ 535.0, 281.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -907,7 +918,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 489.154775333332964, 153.5, 58.0, 22.0 ],
+					"patching_rect" : [ 706.571441999999934, 124.833332717418671, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -996,7 +1007,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 335.0, 469.5, 84.0, 20.0 ],
+					"patching_rect" : [ 349.0, 438.5, 84.0, 20.0 ],
 					"text" : "echoes 1 to 3"
 				}
 
@@ -1015,7 +1026,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -1038,12 +1049,12 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
-					"linecount" : 7,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 535.0, 6.0, 357.0, 100.0 ],
-					"text" : "abc_harmo1~, abc_harmo2~, ... provide parallel multiple harmonizers. Each line is an overlapped harmonizer by Doppler effect.\nEach harmonizer has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18) and a transposition coefficient: trans00, trans01, etc. in midicents (100 for an upper semiton, 200 for an upper ton, -400 for a lower major third, ...) "
+					"patching_rect" : [ 518.0, 6.0, 357.0, 114.0 ],
+					"text" : "abc_harmo1~, abc_harmo2~, ... provide parallel multiple harmonizers. Each line is an overlapped harmonizer by Doppler effect.\n\nEach harmonizer has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18) and a transposition coefficient: trans00, trans01, etc. in midicents (100 for an upper semiton, 200 for an upper ton, -400 for a lower major third, ...) "
 				}
 
 			}
@@ -1650,7 +1661,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
-					"midpoints" : [ 498.654775333332964, 193.5, 642.5, 193.5 ],
+					"midpoints" : [ 716.071441999999934, 155.833332717418671, 846.91666666666697, 155.833332717418671 ],
 					"order" : 0,
 					"source" : [ "obj-54", 0 ]
 				}
@@ -1659,7 +1670,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 498.654775333332964, 185.75, 498.654775333332964, 185.75 ],
+					"midpoints" : [ 716.071441999999934, 148.083332717418671, 716.071441999999934, 148.083332717418671 ],
 					"order" : 1,
 					"source" : [ "obj-54", 0 ]
 				}
@@ -1667,8 +1678,18 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"midpoints" : [ 544.5, 471.5, 88.5, 471.5 ],
+					"order" : 1,
+					"source" : [ "obj-55", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
-					"midpoints" : [ 883.571442000000047, 445.75, 960.666666666666515, 445.75 ],
+					"midpoints" : [ 544.5, 459.75, 960.666666666666515, 459.75 ],
+					"order" : 0,
 					"source" : [ "obj-55", 0 ]
 				}
 

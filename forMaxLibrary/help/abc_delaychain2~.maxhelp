@@ -40,14 +40,12 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-					"id" : "obj-41",
-					"linecount" : 2,
-					"maxclass" : "comment",
-					"numinlets" : 1,
+					"id" : "obj-23",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 79.0, 602.5, 137.0, 33.0 ],
-					"text" : "Output gain in dB in the inspector menu"
+					"patching_rect" : [ 79.0, 584.0, 53.5, 22.0 ],
+					"text" : "dac~"
 				}
 
 			}
@@ -140,8 +138,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 79.0, 350.0, 40.0, 22.0 ],
-					"text" : "*~ 0.3"
+					"patching_rect" : [ 79.0, 350.0, 47.0, 22.0 ],
+					"text" : "*~ 0.15"
 				}
 
 			}
@@ -233,7 +231,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 640.0, 297.0, 50.0, 22.0 ]
+					"patching_rect" : [ 671.500000000000227, 293.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -244,7 +242,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 640.0, 270.0, 77.0, 22.0 ],
+					"patching_rect" : [ 671.500000000000227, 266.0, 77.0, 22.0 ],
 					"text" : "loadmess 30"
 				}
 
@@ -266,7 +264,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 640.0, 322.0, 83.0, 22.0 ],
+					"patching_rect" : [ 671.500000000000227, 318.0, 83.0, 22.0 ],
 					"text" : "updatefreq $1"
 				}
 
@@ -411,7 +409,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 21.0, 160.0, 40.0, 22.0 ],
-									"text" : "*~ 0.1"
+									"text" : "*~ 0.2"
 								}
 
 							}
@@ -743,7 +741,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 855.499999999999886, 354.5, 72.0, 110.0 ],
+					"patching_rect" : [ 592.000000000000114, 249.0, 72.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -1223,34 +1221,13 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-23",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout~.maxpat",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 79.0, 574.0, 185.0, 26.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
-					"linecount" : 18,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 570.5, 6.0, 357.0, 248.0 ],
+					"patching_rect" : [ 537.5, 6.0, 395.0, 234.0 ],
 					"text" : "abc_delaychain2~, abc_delaychain3~, ... objects provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nSince it is a chain of delays, there is no abc-delaychain1~ object.\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\nA feedback parameter (fdbk) enables to loop the rhythmic structure."
 				}
 
@@ -1538,7 +1515,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-23", 1 ],
-					"midpoints" : [ 123.0, 561.0, 254.5, 561.0 ],
 					"source" : [ "obj-32", 1 ]
 				}
 
@@ -1585,7 +1561,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
-					"midpoints" : [ 649.5, 428.75, 254.5, 428.75 ],
+					"midpoints" : [ 681.000000000000227, 428.75, 254.5, 428.75 ],
 					"order" : 1,
 					"source" : [ "obj-37", 0 ]
 				}
@@ -1594,7 +1570,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
-					"midpoints" : [ 649.5, 349.25, 1059.654775333332964, 349.25 ],
+					"midpoints" : [ 681.000000000000227, 349.25, 1059.654775333332964, 349.25 ],
 					"order" : 0,
 					"source" : [ "obj-37", 0 ]
 				}
@@ -1867,8 +1843,18 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"midpoints" : [ 601.500000000000114, 472.25, 88.5, 472.25 ],
+					"order" : 1,
+					"source" : [ "obj-55", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-50", 0 ],
-					"midpoints" : [ 864.999999999999886, 472.75, 960.666666666666515, 472.75 ],
+					"midpoints" : [ 601.500000000000114, 472.75, 960.666666666666515, 472.75 ],
+					"order" : 0,
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -1989,13 +1975,6 @@
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",

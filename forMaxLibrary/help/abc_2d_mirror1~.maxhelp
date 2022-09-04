@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 752.0, 748.0 ],
+						"rect" : [ 121.0, 234.0, 752.0, 748.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -225,7 +225,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 8,
 									"numoutlets" : 0,
-									"patching_rect" : [ 522.73214285714289, 592.5, 115.0, 22.0 ],
+									"patching_rect" : [ 529.0, 592.5, 115.0, 22.0 ],
 									"text" : "dac~ 1 2 3 4 5 6 7 8"
 								}
 
@@ -301,7 +301,7 @@
 									"numinlets" : 7,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 529.0, 530.5, 112.0, 22.0 ],
+									"patching_rect" : [ 529.0, 530.5, 128.714285714285666, 22.0 ],
 									"text" : "abc_2d_decoder3~"
 								}
 
@@ -1125,7 +1125,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 121.0, 234.0, 752.0, 748.0 ],
+						"rect" : [ 0.0, 26.0, 752.0, 748.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,

@@ -101,7 +101,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -25.0 ],
+									"args" : [ 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -438,7 +438,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 0 ],
-									"midpoints" : [ 333.0, 231.5, 32.5, 231.5 ],
+									"midpoints" : [ 333.0, 232.5, 32.5, 232.5 ],
 									"source" : [ "obj-24", 0 ]
 								}
 
@@ -647,14 +647,14 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 196.0, 324.0, 137.0, 33.0 ],
+									"patching_rect" : [ 200.0, 324.0, 137.0, 33.0 ],
 									"text" : "Output gain in dB in the inspector menu"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -15 ],
+									"args" : [ 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -668,7 +668,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 7.0, 324.0, 185.0, 26.0 ],
+									"patching_rect" : [ 11.0, 324.0, 185.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -681,7 +681,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 233.5, 166.0, 50.0, 22.0 ]
+									"patching_rect" : [ 237.5, 166.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -694,7 +694,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 233.5, 133.5, 123.0, 27.0 ],
+									"patching_rect" : [ 237.5, 133.5, 123.0, 27.0 ],
 									"size" : 181.0
 								}
 
@@ -716,7 +716,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 7.0, 88.5, 311.5, 31.0 ],
+									"patching_rect" : [ 11.0, 88.5, 311.5, 31.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -729,7 +729,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 358.5, 133.5, 96.0, 87.0 ],
+									"patching_rect" : [ 362.5, 133.5, 96.0, 87.0 ],
 									"text" : "Incidental angle of the source in degrees (available only in the case of one source)"
 								}
 
@@ -742,7 +742,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 358.5, 93.5, 80.0, 22.0 ],
+									"patching_rect" : [ 362.5, 93.5, 80.0, 22.0 ],
 									"text" : "loadmess 90."
 								}
 
@@ -764,7 +764,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 233.5, 196.5, 71.0, 22.0 ],
+									"patching_rect" : [ 237.5, 196.5, 71.0, 22.0 ],
 									"text" : "incAngle $1"
 								}
 
@@ -777,7 +777,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 548.5, 133.5, 99.0, 47.0 ],
+									"patching_rect" : [ 552.5, 133.5, 99.0, 47.0 ],
 									"text" : "Half angle of the stereophony (in degrees)"
 								}
 
@@ -791,7 +791,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 459.5, 162.5, 50.0, 22.0 ]
+									"patching_rect" : [ 463.5, 162.5, 50.0, 22.0 ]
 								}
 
 							}
@@ -802,7 +802,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 459.5, 133.5, 80.0, 22.0 ],
+									"patching_rect" : [ 463.5, 133.5, 80.0, 22.0 ],
 									"text" : "loadmess 30."
 								}
 
@@ -824,7 +824,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 459.5, 196.5, 48.0, 22.0 ],
+									"patching_rect" : [ 463.5, 196.5, 48.0, 22.0 ],
 									"text" : "phi0 $1"
 								}
 
@@ -837,7 +837,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 379.5, 265.0, 292.0, 181.0 ],
+									"patching_rect" : [ 378.5, 266.0, 292.0, 181.0 ],
 									"text" : "abc_chopan1~, abc_chopan2~, ... objects enable multichannel stereo panning using Chowning model to have a constant acoustic energy and avoiding feeling a loss in the center of the scene (contrary to linear panning). The first source is panned to the left, the last one to the right, and the other ones are progressively spread from the left to the right.\n- phi0 angle is a parameter to set the opening angle of the stereo in degrees\n- for abc_chopan1~ only, there is an incAngle parameter that controls the incident angle (in degrees) of the incoming sound\n"
 								}
 
@@ -859,7 +859,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.0, 130.0, 72.0, 110.0 ],
+									"patching_rect" : [ 108.0, 130.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -873,7 +873,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 7.0, 278.0, 106.0, 24.0 ],
+									"patching_rect" : [ 11.0, 278.0, 106.0, 24.0 ],
 									"text" : "abc_chopan1~",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
@@ -908,7 +908,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 45.0, 390.0, 45.0, 45.0 ]
+									"patching_rect" : [ 49.0, 390.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -937,7 +937,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 1 ],
-									"midpoints" : [ 60.0, 312.5, 182.5, 312.5 ],
+									"midpoints" : [ 64.0, 312.5, 186.5, 312.5 ],
 									"source" : [ "obj-10", 1 ]
 								}
 
@@ -959,7 +959,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 243.0, 247.75, 16.5, 247.75 ],
+									"midpoints" : [ 247.0, 247.75, 20.5, 247.75 ],
 									"source" : [ "obj-14", 0 ]
 								}
 
@@ -968,7 +968,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 368.0, 126.5, 243.0, 126.5 ],
+									"midpoints" : [ 372.0, 126.5, 247.0, 126.5 ],
 									"source" : [ "obj-16", 0 ]
 								}
 
@@ -976,7 +976,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 469.0, 247.75, 16.5, 247.75 ],
+									"midpoints" : [ 473.0, 247.75, 20.5, 247.75 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -991,7 +991,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 113.5, 247.25, 16.5, 247.25 ],
+									"midpoints" : [ 117.5, 247.25, 20.5, 247.25 ],
 									"source" : [ "obj-55", 0 ]
 								}
 

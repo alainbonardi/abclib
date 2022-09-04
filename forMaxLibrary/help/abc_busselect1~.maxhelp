@@ -88,14 +88,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 0,
+									"patching_rect" : [ 147.000000000000341, 537.0, 87.906249999999829, 22.0 ],
+									"text" : "dac~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-33",
 									"linecount" : 11,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 422.5, 235.0, 218.0, 154.0 ],
-									"presentation_linecount" : 11,
+									"patching_rect" : [ 422.5, 219.0, 218.0, 154.0 ],
 									"text" : "abc_busselect1~, abc_busselect2~, ... objects enable to implement multichannel bus selections (from 1 signal to 15 signals). Two buses are connected to the object, the left one and the right one.\n- the leftOrRight parameter enables to select between the left or the right bus. \n- the ramp parameter enables to set a crossfade duration when switching between the two buses"
 								}
 
@@ -106,21 +116,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 509.0, 473.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-36",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 338.000000000000455, 538.5, 137.0, 33.0 ],
-									"presentation_linecount" : 2,
-									"text" : "Output gain in dB in the inspector menu"
+									"patching_rect" : [ 509.0, 457.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -132,7 +128,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 147.0, 72.0, 70.0, 22.0 ],
+									"patching_rect" : [ 147.0, 80.0, 70.0, 22.0 ],
 									"text" : "loadmess 0"
 								}
 
@@ -145,8 +141,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 299.0, 420.5, 68.0, 33.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 299.0, 404.5, 68.0, 33.0 ],
 									"text" : "8 signal bus"
 								}
 
@@ -159,8 +154,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 338.000000000000455, 342.5, 68.0, 33.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 338.000000000000455, 326.5, 68.0, 33.0 ],
 									"text" : "right 8 signal bus"
 								}
 
@@ -173,8 +167,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 37.0, 342.5, 68.0, 33.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 37.0, 326.5, 68.0, 33.0 ],
 									"text" : "left 8 signal bus"
 								}
 
@@ -187,8 +180,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 299.0, 146.5, 91.0, 33.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 299.0, 130.5, 91.0, 33.0 ],
 									"text" : "crossfade time\nin milliseconds"
 								}
 
@@ -200,7 +192,7 @@
 									"numinlets" : 8,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 280.0, 281.5, 112.625000000000227, 22.0 ],
+									"patching_rect" : [ 280.0, 265.5, 112.625000000000227, 22.0 ],
 									"text" : "abc_cosrandenv8~"
 								}
 
@@ -213,8 +205,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 280.0, 235.0, 126.000000000000341, 35.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 280.0, 219.0, 126.000000000000341, 35.0 ],
 									"text" : "abc_addsynth8~ @f0 330 @gain -10"
 								}
 
@@ -227,8 +218,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 127.0, 96.0, 58.0, 33.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 127.0, 80.0, 58.0, 33.0 ],
 									"text" : "Bus Selection"
 								}
 
@@ -250,7 +240,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 147.0, 186.0, 83.0, 22.0 ],
+									"patching_rect" : [ 147.0, 170.0, 83.0, 22.0 ],
 									"text" : "leftOrRight $1"
 								}
 
@@ -265,7 +255,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 147.0, 131.0, 18.0, 34.0 ],
+									"patching_rect" : [ 147.0, 115.0, 18.0, 34.0 ],
 									"size" : 2,
 									"value" : 0
 								}
@@ -279,7 +269,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 249.0, 152.0, 50.0, 22.0 ]
+									"patching_rect" : [ 249.0, 136.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -290,7 +280,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 249.0, 117.0, 90.0, 22.0 ],
+									"patching_rect" : [ 249.0, 101.0, 90.0, 22.0 ],
 									"text" : "loadmess 1000"
 								}
 
@@ -312,29 +302,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 249.0, 186.0, 53.0, 22.0 ],
+									"patching_rect" : [ 249.0, 170.0, 53.0, 22.0 ],
 									"text" : "ramp $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-134",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc_stereoout~.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 147.0, 542.0, 185.0, 26.0 ],
-									"viewvisibility" : 1
 								}
 
 							}
@@ -345,7 +314,7 @@
 									"numinlets" : 8,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 147.000000000000341, 511.0, 156.812499999999659, 22.0 ],
+									"patching_rect" : [ 147.000000000000341, 495.0, 156.812499999999659, 22.0 ],
 									"text" : "abc_chopan8~"
 								}
 
@@ -367,7 +336,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 71.0, 379.0, 72.0, 110.0 ],
+									"patching_rect" : [ 71.0, 363.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -379,7 +348,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 46.0, 235.0, 200.714285714287143, 22.0 ],
+									"patching_rect" : [ 46.0, 219.0, 200.714285714287143, 22.0 ],
 									"text" : "abc_multinoise8~"
 								}
 
@@ -392,8 +361,7 @@
 									"numinlets" : 8,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 46.0, 281.5, 181.0, 35.0 ],
-									"presentation_linecount" : 2,
+									"patching_rect" : [ 46.0, 265.5, 181.0, 35.0 ],
 									"text" : "abc_substractsynth8~ @f0 220. @gain -10"
 								}
 
@@ -407,7 +375,7 @@
 									"numinlets" : 16,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 147.0, 379.0, 176.5, 24.0 ],
+									"patching_rect" : [ 147.0, 363.0, 176.5, 24.0 ],
 									"text" : "abc_busselect8~"
 								}
 
@@ -627,15 +595,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-134", 1 ],
-									"midpoints" : [ 225.406250000000171, 537.5, 322.5, 537.5 ],
+									"destination" : [ "obj-3", 1 ],
 									"source" : [ "obj-133", 1 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-134", 0 ],
+									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-133", 0 ]
 								}
 
@@ -657,7 +624,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-97", 0 ],
-									"midpoints" : [ 258.5, 359.5, 156.5, 359.5 ],
+									"midpoints" : [ 258.5, 343.5, 156.5, 343.5 ],
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -743,7 +710,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-133", 0 ],
-									"midpoints" : [ 80.5, 501.5, 156.500000000000341, 501.5 ],
+									"midpoints" : [ 80.5, 485.5, 156.500000000000341, 485.5 ],
 									"source" : [ "obj-42", 0 ]
 								}
 
@@ -867,15 +834,12 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-35",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 157.5, 500.0, 137.0, 33.0 ],
-									"presentation_linecount" : 2,
-									"text" : "Output gain in dB in the inspector menu"
+									"patching_rect" : [ 105.0, 529.0, 35.0, 22.0 ],
+									"text" : "dac~"
 								}
 
 							}
@@ -923,7 +887,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 307.0, 397.0, 218.0, 154.0 ],
-									"presentation_linecount" : 11,
 									"text" : "abc_busselect1~, abc_busselect2~, ... objects enable to implement multichannel bus selections (from 1 signal to 15 signals). Two buses are connected to the object, the left one and the right one.\n- the leftOrRight parameter enables to select between the left or the right bus. \n- the ramp parameter enables to set a crossfade duration when switching between the two buses"
 								}
 
@@ -971,7 +934,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 254.0, 318.5, 68.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "right 1 signal bus"
 								}
 
@@ -985,7 +947,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 151.0, 318.5, 68.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "left 1 signal bus"
 								}
 
@@ -999,7 +960,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 392.0, 246.5, 91.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "crossfade time\nin milliseconds"
 								}
 
@@ -1013,7 +973,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 137.0, 58.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "Bus selection"
 								}
 
@@ -1076,7 +1035,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 98.0, 174.0, 18.0, 34.0 ],
 									"size" : 2,
-									"value" : 0
+									"value" : 1
 								}
 
 							}
@@ -1135,27 +1094,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 151.0, 264.5, 150.0, 20.0 ],
 									"text" : "2 sounds as inputs"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-26",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc_stereoout~.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 110.0, 472.0, 185.0, 26.0 ],
-									"viewvisibility" : 1
 								}
 
 							}
@@ -1282,8 +1220,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-26", 1 ],
-									"midpoints" : [ 119.5, 465.0, 285.5, 465.0 ],
+									"destination" : [ "obj-1", 1 ],
 									"order" : 0,
 									"source" : [ "obj-37", 0 ]
 								}
@@ -1291,7 +1228,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-26", 0 ],
+									"destination" : [ "obj-1", 0 ],
 									"order" : 1,
 									"source" : [ "obj-37", 0 ]
 								}
@@ -1457,13 +1394,6 @@
 , 			{
 				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_stereoout~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_substractsynth8~.mxo",

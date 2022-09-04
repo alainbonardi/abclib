@@ -40,6 +40,17 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 498.0, 430.0, 97.75, 22.0 ],
+					"text" : "dac~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 2,
@@ -80,8 +91,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 388.0, 178.5, 73.0, 22.0 ],
-					"text" : "loadmess 0."
+					"patching_rect" : [ 388.0, 178.5, 91.0, 22.0 ],
+					"text" : "loadmess -127."
 				}
 
 			}
@@ -145,27 +156,6 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 473.0, 105.0, 43.0, 22.0 ],
 					"text" : "freq 7."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ -127 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-23",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout~.maxpat",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 498.0, 430.0, 185.0, 26.0 ],
-					"viewvisibility" : 1
 				}
 
 			}
@@ -856,15 +846,14 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 1 ],
-					"midpoints" : [ 586.25, 416.5, 673.5, 416.5 ],
+					"destination" : [ "obj-13", 1 ],
 					"source" : [ "obj-5", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
+					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
