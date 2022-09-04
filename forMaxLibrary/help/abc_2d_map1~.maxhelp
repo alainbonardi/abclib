@@ -793,6 +793,19 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"id" : "obj-21",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 167.0, 621.0, 137.0, 33.0 ],
+									"text" : "Output gain in dB in the inspector menu"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
@@ -1227,7 +1240,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 998.0, 745.0 ],
+						"rect" : [ 234.0, 500.0, 998.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1257,6 +1270,19 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"id" : "obj-21",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 172.0, 599.0, 137.0, 47.0 ],
+									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "ezdac~",
@@ -1803,7 +1829,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 234.0, 500.0, 998.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 998.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1834,6 +1860,19 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"id" : "obj-21",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 161.666666666666629, 640.0, 137.0, 47.0 ],
+									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-2",
 									"linecount" : 2,
@@ -1841,7 +1880,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 98.0, 135.0, 138.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "1st source: sound grain with square trajectory"
 								}
 
@@ -2117,7 +2155,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -10, 1, 2, 3, 4 ],
+									"args" : [ 0, 1, 2, 3, 4 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,

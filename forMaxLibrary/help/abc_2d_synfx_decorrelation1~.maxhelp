@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 79.0, 87.0, 805.0, 725.0 ],
+		"rect" : [ 79.0, 87.0, 806.0, 686.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 79.0, 113.0, 805.0, 699.0 ],
+						"rect" : [ 79.0, 113.0, 806.0, 660.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -513,7 +513,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 296.0, 188.0, 50.0, 22.0 ],
-													"text" : "796."
+													"text" : "758."
 												}
 
 											}
@@ -3342,7 +3342,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 71.0, 520.0, 60.0 ],
-									"text" : "The 'functiontype' parameter gives the possibility to choose how the delays are spread between the spatial components with 22 types. This example shows the delay time applyied to each component of the third order (2D) for the first six distribution types when the user controls the factor and the delay parameter. "
+									"text" : "The 'functiontype' parameter gives the possibility to choose how the delays are spread between the spatial components with 22 types. This example shows the delay time applyied to each component at the third order (2D) for the first six distribution types when the user controls the factor and the delay parameter. "
 								}
 
 							}
@@ -3668,7 +3668,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 805.0, 699.0 ],
+						"rect" : [ 0.0, 26.0, 806.0, 660.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3732,8 +3732,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 403.738108666666562, 560.0, 171.0, 20.0 ],
-									"text" : "Display graphic representation"
+									"patching_rect" : [ 403.738108666666562, 562.0, 184.0, 20.0 ],
+									"text" : "Displays graphic representation"
 								}
 
 							}
@@ -3747,7 +3747,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 403.738108666666562, 560.0, 171.0, 20.0 ],
+									"patching_rect" : [ 403.738108666666562, 560.0, 179.0, 22.0 ],
 									"proportion" : 0.5,
 									"rounded" : 10
 								}
@@ -3893,7 +3893,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 427.738108666666562, 316.0, 378.0, 60.0 ],
-									"text" : "@delay [10, 262144] set the maximum delay duration in samples \n@factor [0., 1.] set the initial decorrelation factor \n@functiontype [0, 21] set the distribution used to spread delay time \n@fdbk [0., 0.99] set the initial feedback amount of each delay line"
+									"text" : "@delay [10, 262144] sets the maximum delay duration in samples \n@factor [0., 1.] sets the initial decorrelation factor \n@functiontype [0, 21] sets the distribution used to spread delay time \n@fdbk [0., 0.99] sets the initial feedback amount of each delay line"
 								}
 
 							}
@@ -4694,7 +4694,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 805.0, 699.0 ],
+						"rect" : [ 0.0, 26.0, 806.0, 660.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4725,29 +4725,15 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-14",
-									"linecount" : 2,
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"id" : "obj-21",
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 287.592883999999913, 559.5, 137.0, 33.0 ],
-									"text" : "Numbers of the outputs in the inspector menu"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-33",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 287.592883999999913, 559.5, 137.0, 33.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
+									"patching_rect" : [ 283.571441999999934, 559.5, 137.0, 47.0 ],
+									"presentation_linecount" : 3,
+									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
 								}
 
 							}
@@ -4948,7 +4934,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 427.738108666666562, 317.0, 378.0, 60.0 ],
-									"text" : "@delay [10, 262144] set the maximum delay duration in samples \n@factor [0., 1.] set the initial decorrelation factor \n@functiontype [0, 21] set the distribution used to spread delay time \n@fdbk [0., 0.99] set the initial feedback amount of each delay line"
+									"text" : "@delay [10, 262144] sets the maximum delay duration in samples \n@factor [0., 1.] sets the initial decorrelation factor \n@functiontype [0, 21] sets the distribution used to spread delay time \n@fdbk [0., 0.99] sets the initial feedback amount of each delay line"
 								}
 
 							}
@@ -5235,7 +5221,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -15, 1, 2, 3, 4 ],
+									"args" : [ 0, 1, 2, 3, 4 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -6302,14 +6288,14 @@
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpcredit.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -6348,42 +6334,42 @@
 , 			{
 				"name" : "abc_env_noise~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/clippings/AudioOut",
-				"patcherrelativepath" : "../../../Documents/Max 8/Packages/abclib/clippings/AudioOut",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_quadriout~.maxpat",
-				"bootpath" : "~/Downloads/abcHelp/Max",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_scope.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Downloads/abcHelp/Max",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}

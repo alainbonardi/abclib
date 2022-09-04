@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 217.0, 314.0, 932.0, 740.0 ],
+		"rect" : [ 204.0, 212.0, 949.0, 742.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 217.0, 340.0, 932.0, 714.0 ],
+						"rect" : [ 204.0, 238.0, 949.0, 716.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +87,59 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"id" : "obj-5",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 130.821441999999934, 631.0, 137.0, 47.0 ],
+									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"fontface" : 2,
+									"id" : "obj-4",
+									"linecount" : 6,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 568.178558000000066, 612.0, 358.0, 87.0 ],
+									"text" : "If we are at order N in ambisonics, the number of spatial components is P = 2*N+1.\n\nThe P delays are equally spread between deltime/N and deltime which the maximum delay in milliseconds (H0 => deltime/N, H-1 & H1 => 2*deltime/N, etc., H-N & HN => deltime)."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
+									"id" : "obj-95",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 117.738108666666562, 127.0, 412.0, 60.0 ],
+									"text" : "@deltime [2., 10000.] sets the maximum delay in milliseconds \n@feedback [0., 0.999] sets the feedback of the delays\n@window [10., 1000.] sets the duration of interpolation in milliseconds for changing delays "
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
+									"id" : "obj-2",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 6.0, 69.0, 392.0, 33.0 ],
+									"text" : "abc_2d_fx_delay1~, abc_2d_fx_delay2~, ... objects apply delays to spatial components already created by encoders or maps for instance."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"args" : [ "@size", 0 ],
 									"bgmode" : 0,
@@ -138,7 +191,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 803.678558000000066, 467.0, 24.0, 24.0 ]
+									"patching_rect" : [ 792.678558000000066, 455.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -159,7 +212,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 803.678558000000066, 499.0, 90.0, 22.0 ],
+									"patching_rect" : [ 792.678558000000066, 487.0, 90.0, 22.0 ],
 									"text" : "directangles $1"
 								}
 
@@ -172,7 +225,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 327.678558000000066, 461.0, 24.0, 24.0 ]
+									"patching_rect" : [ 327.678558000000066, 457.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -193,7 +246,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 327.678558000000066, 493.0, 90.0, 22.0 ],
+									"patching_rect" : [ 327.678558000000066, 489.0, 90.0, 22.0 ],
 									"text" : "directangles $1"
 								}
 
@@ -205,7 +258,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 131.0, 305.5, 40.0, 22.0 ],
+									"patching_rect" : [ 131.0, 301.5, 40.0, 22.0 ],
 									"text" : "*~ 0.5"
 								}
 
@@ -217,7 +270,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 555.357116000000133, 568.0, 5.0, 100.0 ]
+									"patching_rect" : [ 544.357116000000133, 556.0, 5.0, 100.0 ]
 								}
 
 							}
@@ -227,7 +280,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 840.0, 589.0, 45.0, 45.0 ]
+									"patching_rect" : [ 835.0, 556.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -247,7 +300,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 327.678558000000066, 571.25, 93.0, 103.5 ],
+									"patching_rect" : [ 327.678558000000066, 567.25, 93.0, 103.5 ],
 									"viewvisibility" : 1
 								}
 
@@ -259,21 +312,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "list" ],
-									"patching_rect" : [ 131.0, 277.0, 101.0, 22.0 ],
+									"patching_rect" : [ 131.0, 273.0, 101.0, 22.0 ],
 									"text" : "abc_soundgrain~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-84",
-									"linecount" : 17,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 533.0, 16.0, 358.0, 234.0 ],
-									"text" : "abc_2d_syn_delay1~, abc_2d_syn_delay2~, ... objects generate spatial delayed components in ambisonic from one mono signal.\nabc_2d_fx_delay1~, abc_2d_fx_delay2~, ... objects apply delays to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delays are equally spread between deltime/N and deltime which the maximum delay in milliseconds (H0 => deltime/N, H-1 & H1 => 2*deltime/N, etc., H-N & HN => deltime).\ndeltime is the maximum delay in milliseconds of the upper spatial component (defaut value 100, minimum 2, maximum 10000)\nWindow is the duration in milliseconds of the interpolation between two values of delay without any click (default value 400, minimum 10, maximum 1000).\nThe feedback (between 0 and 1) provides a possibiity of reinjection on the P delay lines."
 								}
 
 							}
@@ -287,7 +327,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 897.0, 244.5, 50.0, 22.0 ]
+									"patching_rect" : [ 886.0, 232.5, 50.0, 22.0 ]
 								}
 
 							}
@@ -299,7 +339,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 897.0, 215.5, 73.0, 22.0 ],
+									"patching_rect" : [ 886.0, 203.5, 73.0, 22.0 ],
 									"text" : "loadmess 2."
 								}
 
@@ -312,7 +352,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 897.0, 274.5, 46.0, 22.0 ],
+									"patching_rect" : [ 886.0, 262.5, 46.0, 22.0 ],
 									"text" : "freq $1"
 								}
 
@@ -325,7 +365,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 740.571441999999934, 471.0, 24.0, 24.0 ]
+									"patching_rect" : [ 729.571441999999934, 459.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -346,7 +386,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 740.571441999999934, 499.5, 59.0, 22.0 ],
+									"patching_rect" : [ 729.571441999999934, 487.5, 59.0, 22.0 ],
 									"text" : "stereo $1"
 								}
 
@@ -368,7 +408,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 499.678558000000066, 331.0, 72.0, 110.0 ],
+									"patching_rect" : [ 488.678558000000066, 319.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -379,7 +419,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 8,
 									"numoutlets" : 0,
-									"patching_rect" : [ 579.178558000000066, 600.5, 115.0, 22.0 ],
+									"patching_rect" : [ 568.178558000000066, 583.5, 115.0, 22.0 ],
 									"text" : "dac~ 1 2 3 4 5 6 7 8"
 								}
 
@@ -391,7 +431,7 @@
 									"numinlets" : 7,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 578.678558000000066, 533.0, 129.285714285714221, 22.0 ],
+									"patching_rect" : [ 567.678558000000066, 521.0, 129.285714285714221, 22.0 ],
 									"text" : "abc_2d_decoder3~"
 								}
 
@@ -405,7 +445,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 516.357116000000133, 445.5, 61.0, 22.0 ],
+									"patching_rect" : [ 505.357116000000133, 433.5, 61.0, 22.0 ],
 									"text" : "r fx_delay",
 									"textcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ]
 								}
@@ -420,7 +460,7 @@
 									"numinlets" : 7,
 									"numoutlets" : 8,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 578.678558000000066, 477.5, 147.666666666666742, 24.0 ],
+									"patching_rect" : [ 567.678558000000066, 465.5, 147.666666666666742, 24.0 ],
 									"text" : "abc_2d_fx_delay3~"
 								}
 
@@ -434,7 +474,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 8,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 578.678558000000066, 412.0, 169.111111111111313, 22.0 ],
+									"patching_rect" : [ 567.678558000000066, 400.0, 169.111111111111313, 22.0 ],
 									"text" : "abc_2d_map3~"
 								}
 
@@ -447,7 +487,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 783.178558000000066, 371.0, 54.5, 57.5 ]
+									"patching_rect" : [ 772.178558000000066, 359.0, 54.5, 57.5 ]
 								}
 
 							}
@@ -458,7 +498,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 652.803558000000066, 371.0, 102.0, 22.0 ],
+									"patching_rect" : [ 641.803558000000066, 359.0, 102.0, 22.0 ],
 									"text" : "abc_cartopol~"
 								}
 
@@ -470,7 +510,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 652.803558000000066, 326.0, 185.0, 22.0 ],
+									"patching_rect" : [ 641.803558000000066, 314.0, 185.0, 22.0 ],
 									"text" : "abc_2d_randomtrajectory~"
 								}
 
@@ -492,7 +532,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 578.678558000000066, 270.0, 312.321441999999934, 32.0 ],
+									"patching_rect" : [ 567.678558000000066, 258.0, 312.321441999999934, 32.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -504,7 +544,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 327.678558000000066, 538.5, 130.0, 22.0 ],
+									"patching_rect" : [ 327.678558000000066, 534.5, 130.0, 22.0 ],
 									"text" : "abc_2d_scope1~"
 								}
 
@@ -517,7 +557,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 265.5, 461.0, 24.0, 24.0 ]
+									"patching_rect" : [ 265.5, 457.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -538,7 +578,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 265.5, 493.0, 59.0, 22.0 ],
+									"patching_rect" : [ 265.5, 489.0, 59.0, 22.0 ],
 									"text" : "stereo $1"
 								}
 
@@ -559,7 +599,7 @@
 									"numinlets" : 4,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 130.821441999999934, 601.0, 185.0, 32.0 ],
+									"patching_rect" : [ 130.821441999999934, 597.0, 185.0, 32.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -571,7 +611,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 5,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 131.0, 538.5, 112.0, 22.0 ],
+									"patching_rect" : [ 131.0, 534.5, 112.0, 22.0 ],
 									"text" : "abc_2d_decoder1~"
 								}
 
@@ -593,7 +633,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 38.75, 338.0, 72.0, 110.0 ],
+									"patching_rect" : [ 38.75, 334.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -607,7 +647,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 153.5, 395.5, 61.0, 22.0 ],
+									"patching_rect" : [ 153.5, 391.5, 61.0, 22.0 ],
 									"text" : "r fx_delay",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
@@ -622,7 +662,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 131.0, 429.5, 158.5, 24.0 ],
+									"patching_rect" : [ 131.0, 425.5, 158.5, 24.0 ],
 									"text" : "abc_2d_fx_delay1~"
 								}
 
@@ -635,7 +675,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 346.321441999999934, 251.5, 80.0, 22.0 ],
+									"patching_rect" : [ 357.321441999999934, 262.5, 80.0, 22.0 ],
 									"text" : "loadmess 0.1"
 								}
 
@@ -652,7 +692,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 346.321441999999934, 279.5, 50.0, 22.0 ]
+									"patching_rect" : [ 357.321441999999934, 290.5, 50.0, 22.0 ]
 								}
 
 							}
@@ -664,7 +704,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 346.321441999999934, 305.5, 58.0, 22.0 ],
+									"patching_rect" : [ 357.321441999999934, 316.5, 58.0, 22.0 ],
 									"text" : "speed $1"
 								}
 
@@ -676,7 +716,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 131.0, 361.5, 228.25, 22.0 ],
+									"patching_rect" : [ 131.0, 357.5, 228.25, 22.0 ],
 									"text" : "abc_2d_encoder1~"
 								}
 
@@ -687,7 +727,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 262.678558000000066, 71.0, 89.0, 20.0 ],
+									"patching_rect" : [ 636.678558000000066, 47.0, 89.0, 20.0 ],
 									"text" : "FX DELAYS"
 								}
 
@@ -700,7 +740,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 262.678558000000066, 214.5, 63.0, 22.0 ],
+									"patching_rect" : [ 636.678558000000066, 190.5, 63.0, 22.0 ],
 									"text" : "s fx_delay",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
@@ -717,7 +757,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 355.0, 129.0, 50.0, 22.0 ]
+									"patching_rect" : [ 729.0, 105.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -728,7 +768,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 98.0, 80.0, 22.0 ],
+									"patching_rect" : [ 729.0, 74.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.1"
 								}
 
@@ -750,7 +790,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 160.0, 74.0, 22.0 ],
+									"patching_rect" : [ 729.0, 136.0, 74.0, 22.0 ],
 									"text" : "feedback $1"
 								}
 
@@ -762,7 +802,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 262.678558000000066, 98.0, 83.0, 22.0 ],
+									"patching_rect" : [ 636.678558000000066, 74.0, 83.0, 22.0 ],
 									"text" : "loadmess 300"
 								}
 
@@ -777,7 +817,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 262.678558000000066, 129.0, 50.0, 22.0 ]
+									"patching_rect" : [ 636.678558000000066, 105.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -798,7 +838,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 262.678558000000066, 160.0, 64.0, 22.0 ],
+									"patching_rect" : [ 636.678558000000066, 136.0, 64.0, 22.0 ],
 									"text" : "deltime $1"
 								}
 
@@ -810,7 +850,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 168.0, 98.0, 83.0, 22.0 ],
+									"patching_rect" : [ 542.0, 74.0, 83.0, 22.0 ],
 									"text" : "loadmess 400"
 								}
 
@@ -825,7 +865,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 168.0, 129.0, 50.0, 22.0 ]
+									"patching_rect" : [ 542.0, 105.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -846,7 +886,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 168.0, 160.0, 65.0, 22.0 ],
+									"patching_rect" : [ 542.0, 136.0, 65.0, 22.0 ],
 									"text" : "window $1"
 								}
 
@@ -884,7 +924,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-31", 0 ],
-									"midpoints" : [ 364.5, 204.5, 272.178558000000066, 204.5 ],
+									"midpoints" : [ 738.5, 180.5, 646.178558000000066, 180.5 ],
 									"source" : [ "obj-34", 0 ]
 								}
 
@@ -906,7 +946,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-31", 0 ],
-									"midpoints" : [ 272.178558000000066, 204.5, 272.178558000000066, 204.5 ],
+									"midpoints" : [ 646.178558000000066, 180.5, 646.178558000000066, 180.5 ],
 									"source" : [ "obj-37", 0 ]
 								}
 
@@ -928,7 +968,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-31", 0 ],
-									"midpoints" : [ 177.5, 204.5, 272.178558000000066, 204.5 ],
+									"midpoints" : [ 551.5, 180.5, 646.178558000000066, 180.5 ],
 									"source" : [ "obj-40", 0 ]
 								}
 
@@ -984,7 +1024,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 0 ],
-									"midpoints" : [ 163.0, 423.0, 140.5, 423.0 ],
+									"midpoints" : [ 163.0, 419.0, 140.5, 419.0 ],
 									"source" : [ "obj-45", 0 ]
 								}
 
@@ -999,7 +1039,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 0 ],
-									"midpoints" : [ 275.0, 530.25, 140.5, 530.25 ],
+									"midpoints" : [ 275.0, 526.25, 140.5, 526.25 ],
 									"source" : [ "obj-48", 0 ]
 								}
 
@@ -1024,7 +1064,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-42", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 355.821441999999934, 352.0, 140.5, 352.0 ],
+									"midpoints" : [ 366.821441999999934, 348.0, 140.5, 348.0 ],
 									"source" : [ "obj-52", 0 ]
 								}
 
@@ -1060,7 +1100,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 0 ],
-									"midpoints" : [ 48.25, 487.75, 140.5, 487.75 ],
+									"midpoints" : [ 48.25, 483.75, 140.5, 483.75 ],
 									"source" : [ "obj-57", 0 ]
 								}
 
@@ -1145,7 +1185,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 0 ],
-									"midpoints" : [ 337.178558000000066, 530.25, 140.5, 530.25 ],
+									"midpoints" : [ 337.178558000000066, 526.25, 140.5, 526.25 ],
 									"source" : [ "obj-67", 0 ]
 								}
 
@@ -1153,7 +1193,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-65", 2 ],
-									"midpoints" : [ 703.803558000000066, 405.5, 738.28966911111138, 405.5 ],
+									"midpoints" : [ 692.803558000000066, 393.5, 727.28966911111138, 393.5 ],
 									"source" : [ "obj-68", 1 ]
 								}
 
@@ -1161,7 +1201,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-65", 1 ],
-									"midpoints" : [ 662.303558000000066, 402.0, 663.234113555555723, 402.0 ],
+									"midpoints" : [ 651.303558000000066, 390.0, 652.234113555555723, 390.0 ],
 									"source" : [ "obj-68", 0 ]
 								}
 
@@ -1169,7 +1209,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-66", 1 ],
-									"midpoints" : [ 745.303558000000066, 358.5, 828.178558000000066, 358.5 ],
+									"midpoints" : [ 734.303558000000066, 346.5, 817.178558000000066, 346.5 ],
 									"order" : 0,
 									"source" : [ "obj-69", 1 ]
 								}
@@ -1178,7 +1218,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-66", 0 ],
-									"midpoints" : [ 662.303558000000066, 364.5, 792.678558000000066, 364.5 ],
+									"midpoints" : [ 651.303558000000066, 352.5, 781.678558000000066, 352.5 ],
 									"order" : 0,
 									"source" : [ "obj-69", 0 ]
 								}
@@ -1210,7 +1250,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-72", 0 ],
-									"midpoints" : [ 525.857116000000133, 471.75, 588.178558000000066, 471.75 ],
+									"midpoints" : [ 514.857116000000133, 459.75, 577.178558000000066, 459.75 ],
 									"source" : [ "obj-71", 0 ]
 								}
 
@@ -1339,7 +1379,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-76", 0 ],
-									"midpoints" : [ 509.178558000000066, 506.5, 588.178558000000066, 506.5 ],
+									"midpoints" : [ 498.178558000000066, 494.5, 577.178558000000066, 494.5 ],
 									"source" : [ "obj-78", 0 ]
 								}
 
@@ -1354,7 +1394,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-76", 0 ],
-									"midpoints" : [ 750.071441999999934, 528.75, 588.178558000000066, 528.75 ],
+									"midpoints" : [ 739.071441999999934, 516.75, 577.178558000000066, 516.75 ],
 									"source" : [ "obj-80", 0 ]
 								}
 
@@ -1371,7 +1411,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-69", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 906.5, 315.5, 662.303558000000066, 315.5 ],
+									"midpoints" : [ 895.5, 303.5, 651.303558000000066, 303.5 ],
 									"source" : [ "obj-82", 0 ]
 								}
 
@@ -1379,7 +1419,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-76", 0 ],
-									"midpoints" : [ 813.178558000000066, 528.5, 588.178558000000066, 528.5 ],
+									"midpoints" : [ 802.178558000000066, 516.5, 577.178558000000066, 516.5 ],
 									"source" : [ "obj-83", 0 ]
 								}
 
@@ -1423,7 +1463,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 932.0, 714.0 ],
+						"rect" : [ 0.0, 26.0, 949.0, 716.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1453,6 +1493,45 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"id" : "obj-21",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 324.392883999999924, 611.5, 137.0, 47.0 ],
+									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
+									"id" : "obj-95",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 525.75, 112.0, 412.0, 60.0 ],
+									"text" : "@deltime [2., 10000.] sets the maximum delay in milliseconds \n@feedback [0., 0.999] sets the feedback of the delays\n@window [10., 1000.] sets the duration of interpolation in milliseconds for changing delays "
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
+									"id" : "obj-19",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 6.0, 69.0, 378.0, 33.0 ],
+									"text" : "abc_2d_syn_delay1~, abc_2d_syn_delay2~, ... objects generate spatial delayed components in ambisonic from one mono signal."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-61",
 									"maxclass" : "toggle",
@@ -1540,7 +1619,7 @@
 									"numoutlets" : 2,
 									"orientation" : 1,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 445.25, 601.0, 100.0, 5.0 ]
+									"patching_rect" : [ 445.25, 599.0, 100.0, 5.0 ]
 								}
 
 							}
@@ -1557,13 +1636,14 @@
 , 							{
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"fontface" : 2,
 									"id" : "obj-2",
-									"linecount" : 17,
+									"linecount" : 6,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 535.75, 15.0, 358.0, 234.0 ],
-									"text" : "abc_2d_syn_delay1~, abc_2d_syn_delay2~, ... objects generate spatial delayed components in ambisonic from one mono signal.\nabc_2d_fx_delay1~, abc_2d_fx_delay2~, ... objects apply delays to spatial components already created by encoders or maps for instance.\nIf we are at order N in ambisonics, the number of spatial components is P = 2*N+1. The P delays are equally spread between deltime/N and deltime which the maximum delay in milliseconds (H0 => deltime/N, H-1 & H1 => 2*deltime/N, etc., H-N & HN => deltime).\ndeltime is the maximum delay in milliseconds of the upper spatial component (defaut value 100, minimum 2, maximum 10000)\nWindow is the duration in milliseconds of the interpolation between two values of delay without any click (default value 400, minimum 10, maximum 1000).\nThe feedback (between 0 and 1) provides a possibiity of reinjection on the P delay lines."
+									"patching_rect" : [ 525.75, 195.0, 358.0, 87.0 ],
+									"text" : "If we are at order N in ambisonics, the number of spatial components is P = 2*N+1.\n\nThe P delays are equally spread between deltime/N and deltime which the maximum delay in milliseconds (H0 => deltime/N, H-1 & H1 => 2*deltime/N, etc., H-N & HN => deltime)."
 								}
 
 							}
@@ -1673,7 +1753,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 333.25, 90.0, 150.0, 20.0 ],
+									"patching_rect" : [ 345.25, 112.0, 150.0, 20.0 ],
 									"text" : "SYN DELAYS"
 								}
 
@@ -1732,7 +1812,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 333.25, 245.5, 72.0, 22.0 ],
+									"patching_rect" : [ 345.25, 267.5, 72.0, 22.0 ],
 									"text" : "s syn_delay"
 								}
 
@@ -1811,7 +1891,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 424.571441999999934, 160.0, 50.0, 22.0 ]
+									"patching_rect" : [ 436.571441999999934, 182.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -1822,7 +1902,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 424.571441999999934, 129.0, 80.0, 22.0 ],
+									"patching_rect" : [ 436.571441999999934, 151.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.2"
 								}
 
@@ -1844,7 +1924,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 424.571441999999934, 191.0, 74.0, 22.0 ],
+									"patching_rect" : [ 436.571441999999934, 213.0, 74.0, 22.0 ],
 									"text" : "feedback $1"
 								}
 
@@ -1856,7 +1936,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 333.25, 129.0, 83.0, 22.0 ],
+									"patching_rect" : [ 345.25, 151.0, 83.0, 22.0 ],
 									"text" : "loadmess 300"
 								}
 
@@ -1871,7 +1951,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 333.25, 160.0, 50.0, 22.0 ]
+									"patching_rect" : [ 345.25, 182.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -1892,7 +1972,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 333.25, 191.0, 64.0, 22.0 ],
+									"patching_rect" : [ 345.25, 213.0, 64.0, 22.0 ],
 									"text" : "deltime $1"
 								}
 
@@ -1904,7 +1984,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 239.392883999999924, 129.0, 83.0, 22.0 ],
+									"patching_rect" : [ 251.392883999999924, 151.0, 83.0, 22.0 ],
 									"text" : "loadmess 400"
 								}
 
@@ -1919,7 +1999,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 239.392883999999924, 160.0, 50.0, 22.0 ]
+									"patching_rect" : [ 251.392883999999924, 182.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -1940,7 +2020,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 239.392883999999924, 191.0, 65.0, 22.0 ],
+									"patching_rect" : [ 251.392883999999924, 213.0, 65.0, 22.0 ],
 									"text" : "window $1"
 								}
 
@@ -2039,7 +2119,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@obj-name", "abc_2d_syn_delayN~", "&", "abc_2d_fx_delayN~", "@obj-desc", "Delay", "processes", "to", "generate", "or", "process", "spatial", "components" ],
+									"args" : [ "@obj-name", "abc_2d_syn_delayN~", "@obj-desc", "Delay", "processes", "to", "generate", "or", "process", "spatial", "components" ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -2090,7 +2170,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 248.892883999999924, 235.5, 342.75, 235.5 ],
+									"midpoints" : [ 260.892883999999924, 257.5, 354.75, 257.5 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -2106,7 +2186,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 342.75, 235.5, 342.75, 235.5 ],
+									"midpoints" : [ 354.75, 257.5, 354.75, 257.5 ],
 									"source" : [ "obj-15", 0 ]
 								}
 
@@ -2135,7 +2215,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 434.071441999999934, 235.5, 342.75, 235.5 ],
+									"midpoints" : [ 446.071441999999934, 257.5, 354.75, 257.5 ],
 									"source" : [ "obj-22", 0 ]
 								}
 
