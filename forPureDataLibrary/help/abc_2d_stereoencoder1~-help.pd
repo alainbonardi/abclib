@@ -59,7 +59,7 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X obj 237 494 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
 #X text 256 627 cyclone/scope~;
-#X obj 423 216 abc_gain -30;
+#X obj 423 216 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 8 0 9 0;
 #X connect 9 0 24 0;

@@ -55,7 +55,7 @@ of the peak on the absolute signal;
 given by abc_peakamp~;
 #X obj 759 588 +~;
 #X obj 713 630 abc_stereoout 0;
-#X obj 628 167 abc_gain -30;
+#X obj 628 167 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 9 0 10 0;
 #X connect 9 0 15 0;

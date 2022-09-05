@@ -104,24 +104,24 @@
 #X connect 35 0 37 0;
 #X connect 36 0 38 0;
 #X connect 37 0 36 0;
-#X restore 469 158 pd randomcells;
-#X text 239 517 here a 2x2 matrix with coefficients m-0 \, m-1 \, m-2
+#X restore 466 125 pd randomcells;
+#X text 30 119 here a 2x2 matrix with coefficients m-0 \, m-1 \, m-2
 \, m-3;
 #X obj 505 340 abc_matrix3;
-#X msg 450 221 m-0 \$1;
-#X msg 497 221 m-1 \$1;
-#X msg 544 221 m-2 \$1;
-#X msg 450 248 m-3 \$1;
-#X msg 497 248 m-4 \$1;
-#X msg 544 248 m-5 \$1;
-#X msg 450 273 m-6 \$1;
-#X msg 497 273 m-7 \$1;
-#X msg 544 273 m-8 \$1;
+#X msg 447 188 m-0 \$1;
+#X msg 494 188 m-1 \$1;
+#X msg 541 188 m-2 \$1;
+#X msg 447 215 m-3 \$1;
+#X msg 494 215 m-4 \$1;
+#X msg 541 215 m-5 \$1;
+#X msg 447 240 m-6 \$1;
+#X msg 494 240 m-7 \$1;
+#X msg 541 240 m-8 \$1;
 #X obj 653 303 abc_addsynth5~;
-#X obj 673 115 loadbang;
-#X msg 629 208 10000;
-#X floatatom 629 229 5 0 0 0 - - - 0;
-#X msg 629 249 ramp \$1;
+#X obj 744 146 loadbang;
+#X msg 708 185 10000;
+#X floatatom 708 206 5 0 0 0 - - - 0;
+#X msg 708 226 ramp \$1;
 #X obj 642 512 abc_chopan3~;
 #X text 540 26 abc_matrix2~ \, abc_matrix3~ \, etc. objects (there
 is no abc_matrix1~) provide signal matrices with coefficients from
@@ -143,20 +143,20 @@ m-8 0.1 \; mat m-9 0.25 \; mat m-17 0.2 \; mat m-18 0.1 \; mat m-24
 #X msg 1243 157 \; mat m-0 0 \; mat m-1 0 \; mat m-4 0 \; mat m-8 0
 \; mat m-9 0 \; mat m-17 0 \; mat m-18 0 \; mat m-24 0 \; mat m-25
 0 \; mat m-35 0 \;;
-#X floatatom 697 229 5 0 0 0 - - - 0;
-#X msg 697 208 415;
-#X msg 697 250 f0 \$1;
+#X floatatom 776 206 5 0 0 0 - - - 0;
+#X msg 776 185 415;
+#X msg 776 227 f0 \$1;
 #X obj 237 294 *~ 0.1;
 #X obj 351 294 *~ 0.1;
-#X obj 239 446 abc_stereoout -15;
-#X obj 1084 598 abc_stereoout -15;
-#X obj 641 557 abc_stereoout -25;
-#X msg 746 250 gain 0;
 #X obj 995 97 abc_gain -127;
+#X obj 239 446 abc_stereoout 0;
+#X obj 681 565 dac~;
+#X obj 602 78 abc_gain -127;
+#X obj 1095 599 abc_stereoout 0;
 #X connect 3 0 4 0;
 #X connect 8 1 7 0;
-#X connect 8 1 55 0;
-#X connect 8 2 55 1;
+#X connect 8 1 56 0;
+#X connect 8 2 56 1;
 #X connect 9 0 10 0;
 #X connect 10 0 8 0;
 #X connect 11 0 12 0;
@@ -195,7 +195,6 @@ m-8 0.1 \; mat m-9 0.25 \; mat m-17 0.2 \; mat m-18 0.1 \; mat m-24
 #X connect 32 5 22 3;
 #X connect 33 0 34 0;
 #X connect 33 0 51 0;
-#X connect 33 0 58 0;
 #X connect 34 0 35 0;
 #X connect 35 0 36 0;
 #X connect 36 0 22 0;
@@ -222,8 +221,8 @@ m-8 0.1 \; mat m-9 0.25 \; mat m-17 0.2 \; mat m-18 0.1 \; mat m-24
 #X connect 42 5 43 5;
 #X connect 42 6 43 6;
 #X connect 43 1 45 0;
-#X connect 43 1 56 0;
-#X connect 43 2 56 1;
+#X connect 43 1 59 0;
+#X connect 43 2 59 1;
 #X connect 46 0 42 0;
 #X connect 48 0 47 0;
 #X connect 50 0 52 0;
@@ -231,6 +230,6 @@ m-8 0.1 \; mat m-9 0.25 \; mat m-17 0.2 \; mat m-18 0.1 \; mat m-24
 #X connect 52 0 32 0;
 #X connect 53 0 8 1;
 #X connect 54 0 8 2;
+#X connect 55 0 41 0;
 #X connect 58 0 32 0;
-#X connect 59 0 41 0;
 #X coords 0 776 1 775 85 60 0;

@@ -1,15 +1,15 @@
 #N canvas 490 39 1308 811 10;
 #X obj 11 21 cnv 15 500 25 empty empty abc_sounddetector~ 20 12 0 18
--99865 -262144 0;
-#X obj 11 47 cnv 15 500 25 empty empty Sound_detector 20 12 0 12 -99865
--262144 0;
-#X obj 1015 621 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+#606060 #fcfcfc 0;
+#X obj 11 47 cnv 15 500 25 empty empty Sound_detector 20 12 0 12 #606060
+#fcfcfc 0;
+#X obj 1015 621 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 1015 649 \; pd dsp \$1 \;;
 #X text 932 19 CONTROLS;
 #X text 539 21 DESCRIPTION;
 #X obj 14 768 cnv 15 480 25 empty empty abclibrary|Alain_Bonardi_&_Paul_Goutmann_2019-2021_CICM|University_Paris_8
-20 12 0 10 -99865 -262144 0;
+20 12 0 10 #606060 #fcfcfc 0;
 #X text 540 41 abc_sounddetector~ provides the detection of attacks
 and releases of incoming sound Its first outlet is an on-off envelope
 The second outlet provides a binary signal of detection of the attack
@@ -25,48 +25,49 @@ is the threshold in dB of detection of the attack (60 by default);
 #X obj 374 385 abc_sounddetector~;
 #X obj 174 204 loadbang;
 #X msg 101 254 10;
-#X floatatom 101 275 5 0 0 0 - - -;
+#X floatatom 101 275 5 0 0 0 - - - 0;
 #X msg 101 295 offset \$1;
-#X floatatom 171 275 5 0 0 0 - - -;
+#X floatatom 171 275 5 0 0 0 - - - 0;
 #X msg 171 295 noiseFloor \$1;
 #X msg 171 254 -50;
-#X floatatom 265 274 5 0 0 0 - - -;
+#X floatatom 265 274 5 0 0 0 - - - 0;
 #X msg 265 253 60;
 #X msg 265 294 noteOn \$1;
 #X obj 604 468 snapshot~;
-#X floatatom 604 489 5 0 0 0 - - -;
+#X floatatom 604 489 5 0 0 0 - - - 0;
 #X obj 710 469 snapshot~;
-#X floatatom 710 490 5 0 0 0 - - -;
+#X floatatom 710 490 5 0 0 0 - - - 0;
 #X obj 742 281 loadbang;
 #X msg 742 307 1;
-#X obj 742 326 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
+#X obj 742 326 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 249 431 abc_meter;
 #X obj 604 509 > 0;
 #X obj 710 510 > 0;
 #X obj 604 530 select 1;
 #X obj 710 531 select 1;
-#X obj 604 568 bng 50 100 50 0 empty empty empty 17 7 0 10 -4034 -1
--1;
-#X obj 710 567 bng 50 100 50 0 empty empty empty 17 7 0 10 -258113
--1 -1;
+#X obj 604 568 bng 50 100 50 0 empty empty empty 17 7 0 10 #00fc04
+#000000 #000000;
+#X obj 710 567 bng 50 100 50 0 empty empty empty 17 7 0 10 #fc0400
+#000000 #000000;
 #X obj 386 433 abc_peakamp~;
 #X obj 455 467 snapshot~;
-#X floatatom 455 488 5 0 0 0 - - -;
+#X floatatom 455 488 5 0 0 0 - - - 0;
 #X obj 742 346 metro 10;
-#X floatatom 334 275 5 0 0 0 - - -;
+#X floatatom 334 275 5 0 0 0 - - - 0;
 #X msg 334 254 5;
 #X msg 334 295 period \$1;
 #X obj 899 517 dac~;
-#X obj 455 529 vsl 15 128 0 1 0 0 empty empty amplitude 0 -9 0 10 -262144
--1 -1 0 1;
+#X obj 455 529 vsl 15 128 0 1 0 0 empty empty amplitude 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X obj 551 180 abc_env_noise 200 0.9 0;
-#X obj 910 465 *~ 0.04;
+#X obj 910 465 abc_gain1~;
+#X obj 909 256 abc_gain -127;
 #X connect 2 0 3 0;
 #X connect 9 0 10 0;
 #X connect 10 0 29 0;
 #X connect 10 0 11 1;
-#X connect 10 0 46 0;
+#X connect 10 0 46 1;
 #X connect 11 1 36 1;
 #X connect 11 2 22 0;
 #X connect 11 3 24 0;
@@ -106,4 +107,5 @@ is the threshold in dB of detection of the attack (60 by default);
 #X connect 45 0 10 1;
 #X connect 46 0 43 0;
 #X connect 46 0 43 1;
+#X connect 47 0 46 0;
 #X coords 0 811 1 810 85 60 0;

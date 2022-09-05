@@ -1,11 +1,11 @@
 #N canvas 462 53 809 783 10;
-#X obj 11 12 cnv 15 500 25 empty empty abc_gainN~ 20 12 0 18 -99865
--262144 0;
+#X obj 11 12 cnv 15 500 25 empty empty abc_gainN~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 10 744 abc_helpcredit;
 #X obj 11 38 cnv 15 500 25 empty empty Multichannel_gains 20 12 0 12
--99865 -262144 0;
-#X obj 331 575 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+#606060 #fcfcfc 0;
+#X obj 331 575 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 331 603 \; pd dsp \$1 \;;
 #X text 414 105 CONTROLS;
 #X text 23 105 DESCRIPTION;
@@ -19,7 +19,7 @@ gain controls in dB;
 #X obj 521 420 abc_gain16~ -----------------;
 #X obj 515 505 abc_chopan16~ -----------------;
 #X obj 420 315 loadbang;
-#X floatatom 420 357 5 0 0 0 - - -;
+#X floatatom 420 357 5 0 0 0 - - - 0;
 #X msg 420 377 gain \$1;
 #X msg 22 256 gain -127;
 #X obj 22 225 loadbang;
@@ -27,15 +27,15 @@ gain controls in dB;
 #X text 414 125 gain message followed by the value of the gain in dB
 ;
 #X obj 471 186 loadbang;
-#X obj 187 410 abc_stereoout -15;
-#X obj 599 559 abc_stereoout -15;
 #X msg 471 211 gain -10;
-#X msg 421 336 -15;
 #X obj 114 255 abc_env_noise 200 0.3 0;
+#X obj 636 563 dac~;
+#X msg 421 336 -127;
+#X obj 238 411 ~;
 #X connect 3 0 4 0;
 #X connect 9 1 7 0;
-#X connect 9 1 23 0;
-#X connect 9 1 23 1;
+#X connect 9 1 27 0;
+#X connect 9 1 27 1;
 #X connect 10 1 11 1;
 #X connect 10 2 11 2;
 #X connect 10 3 11 3;
@@ -101,15 +101,15 @@ gain controls in dB;
 #X connect 13 15 14 15;
 #X connect 13 16 14 16;
 #X connect 14 1 20 0;
-#X connect 14 1 24 0;
-#X connect 14 2 24 1;
+#X connect 14 1 25 0;
+#X connect 14 2 25 1;
 #X connect 15 0 26 0;
 #X connect 16 0 17 0;
 #X connect 17 0 13 0;
 #X connect 18 0 9 0;
 #X connect 19 0 18 0;
-#X connect 22 0 25 0;
-#X connect 25 0 11 0;
+#X connect 22 0 23 0;
+#X connect 23 0 11 0;
+#X connect 24 0 9 1;
 #X connect 26 0 16 0;
-#X connect 27 0 9 1;
 #X coords 0 783 1 782 85 60 0;

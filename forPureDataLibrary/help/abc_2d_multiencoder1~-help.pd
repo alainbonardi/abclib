@@ -86,7 +86,7 @@ are the control parameters.;
 #X obj 399 538 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
 #X text 418 671 cyclone/scope~;
-#X obj 25 339 abc_gain -25;
+#X obj 25 339 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 8 0 14 3;
 #X connect 9 0 10 0;

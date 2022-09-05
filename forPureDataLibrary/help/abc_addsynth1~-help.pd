@@ -1,11 +1,11 @@
 #N canvas 0 41 1822 796 10;
-#X obj 11 25 cnv 15 500 25 empty empty abc_addsynthN~ 20 12 0 18 -99865
--262144 0;
+#X obj 11 25 cnv 15 500 25 empty empty abc_addsynthN~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 10 753 abc_helpcredit;
 #X obj 11 51 cnv 15 500 25 empty empty Additive_synthesis_generators
-20 12 0 12 -99865 -262144 0;
-#X obj 644 693 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 644 693 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 644 721 \; pd dsp \$1 \;;
 #X text 935 23 CONTROLS;
 #X text 539 25 DESCRIPTION;
@@ -13,11 +13,11 @@
 #X obj 714 499 abc_meter;
 #X obj 570 220 abc_gain -127;
 #X obj 746 253 loadbang;
-#X floatatom 680 350 5 0 0 0 - - -;
+#X floatatom 680 350 5 0 0 0 - - - 0;
 #X msg 680 370 f0 \$1;
-#X floatatom 724 350 5 0 0 0 - - -;
+#X floatatom 724 350 5 0 0 0 - - - 0;
 #X msg 724 329 1;
-#X floatatom 982 350 5 0 0 0 - - -;
+#X floatatom 982 350 5 0 0 0 - - - 0;
 #X msg 982 329 10;
 #X msg 1012 329 15;
 #X msg 1044 329 0;
@@ -26,17 +26,17 @@
 #X obj 436 420 *~ 0.15;
 #X obj 777 450 abc_addsynth2~;
 #X msg 680 329 330;
-#X floatatom 800 350 5 0 0 0 - - -;
+#X floatatom 800 350 5 0 0 0 - - - 0;
 #X msg 800 329 2;
 #X msg 800 370 fmult-1 \$1;
-#X floatatom 884 350 5 0 0 0 - - -;
+#X floatatom 884 350 5 0 0 0 - - - 0;
 #X msg 884 329 10;
 #X msg 914 329 15;
 #X msg 946 329 0;
 #X msg 884 370 fbeat-0 \$1;
 #X msg 982 370 fbeat-1 \$1;
-#X floatatom 1085 350 5 0 0 0 - - -;
-#X floatatom 1161 350 5 0 0 0 - - -;
+#X floatatom 1085 350 5 0 0 0 - - - 0;
+#X floatatom 1161 350 5 0 0 0 - - - 0;
 #X msg 1085 370 amp-0 \$1;
 #X msg 1161 370 amp-1 \$1;
 #X msg 1085 329 0;
@@ -63,7 +63,6 @@ fmult01 = 2 \, fmult02 = 3 etc.;
 #X text 936 185 gain (in dB) is the general control of the amplitude.
 ;
 #X obj 1421 613 abc_meter;
-#X obj 1503 631 abc_stereoout -30;
 #X msg 1238 559 \; s11 gain -10 \; s11 f0 440 \; s11 fmult-0 0.56 \;
 s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
 1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
@@ -71,6 +70,7 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
 \; s11 fbeat-3 1.7 \;;
 #X obj 779 499 abc_stereoout -15;
 #X obj 391 475 abc_stereoout -15;
+#X obj 1503 631 abc_stereoout -127;
 #X connect 3 0 4 0;
 #X connect 9 0 22 0;
 #X connect 10 0 23 0;
@@ -89,11 +89,11 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
 #X connect 19 1 21 0;
 #X connect 20 0 22 0;
 #X connect 21 0 7 0;
-#X connect 21 0 56 0;
-#X connect 21 0 56 1;
+#X connect 21 0 55 0;
+#X connect 21 0 55 1;
 #X connect 22 1 8 0;
-#X connect 22 1 55 0;
-#X connect 22 2 55 1;
+#X connect 22 1 54 0;
+#X connect 22 2 54 1;
 #X connect 23 0 11 0;
 #X connect 24 0 26 0;
 #X connect 25 0 24 0;
@@ -125,7 +125,7 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
 #X connect 41 10 44 10;
 #X connect 41 11 44 11;
 #X connect 42 0 41 0;
-#X connect 43 0 54 0;
+#X connect 43 0 53 0;
 #X connect 44 1 45 1;
 #X connect 44 2 45 2;
 #X connect 44 3 45 3;
@@ -138,7 +138,7 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
 #X connect 44 10 45 10;
 #X connect 44 11 45 11;
 #X connect 45 1 52 0;
-#X connect 45 1 53 0;
-#X connect 45 2 53 1;
+#X connect 45 1 56 0;
+#X connect 45 2 56 1;
 #X connect 46 0 19 0;
 #X coords 0 796 1 795 85 60 0;

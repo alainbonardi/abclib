@@ -46,7 +46,7 @@ a-0 \, a-1 \, a-2... angles (in degrees).;
 #X msg 274 335 theta \$1;
 #X obj 274 362 s vbap4;
 #X obj 89 183 r vbap4;
-#X obj 96 382 abc_quadriout -20 1 2 3 4;
+#X obj 96 382 abc_quadriout -127 1 2 3 4;
 #X connect 3 0 4 0;
 #X connect 8 0 26 0;
 #X connect 9 0 10 0;

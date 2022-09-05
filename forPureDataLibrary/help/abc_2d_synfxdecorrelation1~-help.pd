@@ -112,7 +112,7 @@ delay is 0;
 (by default it is 48000 \, minimum is 10 maximum 262144 \, that is
 roughly 5 \, 46 sec at 48KHz);
 #X obj 1664 177 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#000000 1 1;
 #X obj 1664 158 loadbang;
 #X msg 537 266 angle \$1;
 #X floatatom 537 245 5 -360 360 0 - - - 0;
@@ -125,7 +125,7 @@ roughly 5 \, 46 sec at 48KHz);
 used to spread delay time between the spatial components;
 #X text 941 130 fdbk set the amount of feedback of each delay line
 ;
-#X obj 19 193 abc_gain -15;
+#X obj 19 193 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 7 1 8 1;
 #X connect 7 2 8 2;

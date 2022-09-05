@@ -33,13 +33,13 @@ Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
 2*Pi;
 #X obj 316 439 abc_2d_scope1~;
 #X obj 150 121 abc_env_noise 200 0.3 0;
-#X obj 15 228 abc_gain -20;
 #X obj 292 490 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
 #X text 311 623 cyclone/scope~;
 #X text 155 257 constant r;
 #X text 234 357 theta in radians;
-#X obj 114 546 abc_quadriout -15 1 2 3 4;
+#X obj 15 228 abc_gain -127;
+#X obj 115 546 abc_quadriout 0 1 2 3 4;
 #X connect 3 0 4 0;
 #X connect 9 1 10 1;
 #X connect 9 1 25 1;
@@ -66,8 +66,8 @@ Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
 #X connect 19 0 21 0;
 #X connect 20 0 18 0;
 #X connect 22 0 23 0;
-#X connect 25 1 28 0;
-#X connect 25 2 28 1;
+#X connect 25 1 27 0;
+#X connect 25 2 27 1;
 #X connect 26 0 9 1;
-#X connect 27 0 10 0;
+#X connect 31 0 10 0;
 #X coords 0 776 1 775 85 60 0;

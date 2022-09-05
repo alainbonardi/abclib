@@ -1,58 +1,60 @@
 #N canvas 40 25 840 697 10;
-#X obj 9 9 cnv 15 500 25 empty empty abc_musdur 20 12 0 18 -99865 -262144
-0;
+#X obj 9 9 cnv 15 500 25 empty empty abc_musdur 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 8 657 abc_helpcredit;
 #X obj 9 35 cnv 15 500 25 empty empty Abstraction_to_provide_a_selection_of_musical_durations
-20 12 0 12 -99865 -262144 0;
-#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 0 1;
-#X msg 533 494 \; pd dsp \$1 \;;
-#X text 468 133 DESCRIPTION;
-#X obj 87 211 loadbang;
-#X obj 87 232 del 1000;
-#X obj 87 281 abc_simplefmburst;
-#X text 95 489 original;
-#X obj 128 449 abc_delay1~;
-#X msg 282 346 dur-0 \$1;
-#X obj 221 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 -262144
--1 -1 7900 1;
-#X obj 221 133 loadbang;
-#X msg 221 155 80;
-#X floatatom 221 327 5 0 0 0 - - -;
-#X msg 221 347 tempo \$1;
-#X obj 282 177 abc_musdur 3;
-#X obj 403 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 -262144
--1 -1 0 1;
-#X floatatom 282 326 5 0 0 0 - - -;
-#X floatatom 403 325 5 0 0 0 - - -;
-#X msg 403 345 fdbk-0 \$1;
-#X obj 429 465 loadbang;
-#X msg 429 487 1;
-#X obj 429 511 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 429 556 s top;
-#X obj 105 253 r top;
-#X text 199 491 echo;
-#X obj 495 281 loadbang;
-#X msg 495 303 30;
-#X floatatom 495 324 5 0 0 0 - - -;
-#X msg 495 344 updatefreq \$1;
-#X obj 18 476 abc_meter;
-#X obj 234 479 abc_meter;
-#X text 18 630 original;
-#X text 241 633 echo;
-#X obj 429 533 metro 10000;
-#X text 469 154 abc_musdur is an abstraction that provides a selection
+20 12 0 12 #606060 #fcfcfc 0;
+#X obj 572 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X msg 572 494 \; pd dsp \$1 \;;
+#X text 468 71 DESCRIPTION;
+#X obj 145 215 loadbang;
+#X obj 145 236 del 1000;
+#X obj 145 285 abc_simplefmburst;
+#X text 134 489 original;
+#X obj 167 449 abc_delay1~;
+#X msg 321 346 dur-0 \$1;
+#X obj 260 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 260 133 loadbang;
+#X msg 260 155 80;
+#X floatatom 260 327 5 0 0 0 - - - 0;
+#X msg 260 347 tempo \$1;
+#X obj 321 177 abc_musdur 3;
+#X obj 442 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 321 326 5 0 0 0 - - - 0;
+#X floatatom 442 325 5 0 0 0 - - - 0;
+#X msg 442 345 fdbk-0 \$1;
+#X obj 468 465 loadbang;
+#X msg 468 487 1;
+#X obj 468 511 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 468 556 s top;
+#X obj 163 257 r top;
+#X text 238 491 echo;
+#X obj 534 281 loadbang;
+#X msg 534 303 30;
+#X floatatom 534 324 5 0 0 0 - - - 0;
+#X msg 534 344 updatefreq \$1;
+#X obj 57 476 abc_meter;
+#X obj 273 479 abc_meter;
+#X text 57 630 original;
+#X text 280 633 echo;
+#X obj 468 533 metro 10000;
+#X text 469 92 abc_musdur is an abstraction that provides a selection
 of musical durations. - whole = 4 - half = 2 - quarter = 1 - 8th =
 0.5 - 16th = 0.25 - 32nd = 0.125 - triplet = 0.333;
-#X obj 88 512 abc_stereoout -15;
-#X obj 87 321 *~ 0.3;
+#X obj 145 325 *~ 0.3;
+#X obj 162 516 abc_gain2~;
+#X obj 46 164 abc_gain -127;
+#X obj 191 584 dac~;
 #X connect 3 0 4 0;
 #X connect 6 0 7 0;
 #X connect 7 0 8 0;
-#X connect 8 0 39 0;
+#X connect 8 0 38 0;
 #X connect 10 1 33 0;
-#X connect 10 1 38 1;
+#X connect 10 1 39 2;
 #X connect 11 0 10 0;
 #X connect 12 0 15 0;
 #X connect 13 0 14 0;
@@ -73,7 +75,10 @@ of musical durations. - whole = 4 - half = 2 - quarter = 1 - 8th =
 #X connect 30 0 31 0;
 #X connect 31 0 10 0;
 #X connect 36 0 25 0;
-#X connect 39 0 10 1;
-#X connect 39 0 32 0;
-#X connect 39 0 38 0;
+#X connect 38 0 10 1;
+#X connect 38 0 32 0;
+#X connect 38 0 39 1;
+#X connect 39 1 41 0;
+#X connect 39 2 41 1;
+#X connect 40 0 39 0;
 #X coords 0 697 1 696 85 60 0;

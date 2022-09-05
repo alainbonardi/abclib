@@ -147,8 +147,8 @@ modulation is applied \, else the direct sound is output.;
 used to spread delay time between the spatial components;
 #X text 1030 29 f0 (in Hz) is the maximum modulation frequency of the
 ring modulators (defautl value 10 \, minimum 0 \, maximum 10000).;
-#X obj 19 233 abc_gain -15;
 #X obj 439 228 abc_gain -127;
+#X obj 19 233 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 7 1 49 0;
 #X connect 7 1 97 0;
@@ -318,6 +318,6 @@ ring modulators (defautl value 10 \, minimum 0 \, maximum 10000).;
 #X connect 99 0 10 0;
 #X connect 101 0 66 0;
 #X connect 102 0 101 0;
-#X connect 106 0 7 0;
-#X connect 107 0 13 0;
+#X connect 106 0 13 0;
+#X connect 107 0 7 0;
 #X coords 0 773 1 772 85 60 0;

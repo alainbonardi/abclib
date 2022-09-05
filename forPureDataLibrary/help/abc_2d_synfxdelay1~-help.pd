@@ -1,72 +1,72 @@
-#N canvas 0 38 1512 845 10;
-#X obj 11 62 cnv 15 500 25 empty empty abc_2d_syn_delayN~ &_fx 20
+#N canvas 0 38 2044 845 10;
+#X obj 11 13 cnv 15 500 25 empty empty abc_2d_syn_delayN~ &_fx 20
 12 0 18 #606060 #fcfcfc 0;
-#X obj 10 814 abc_helpcredit;
-#X obj 11 88 cnv 15 500 25 empty empty Delay_processes_to_generate_or_process_spatial_components
+#X obj 10 765 abc_helpcredit;
+#X obj 11 39 cnv 15 500 25 empty empty Delay_processes_to_generate_or_process_spatial_components
 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 924 716 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#X obj 924 667 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 924 744 \; pd dsp \$1 \;;
-#X text 932 60 CONTROLS;
-#X text 539 62 DESCRIPTION;
-#X obj 152 595 abc_2d_decoder1~;
-#X obj 24 490 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 924 695 \; pd dsp \$1 \;;
+#X text 932 11 CONTROLS;
+#X text 539 13 DESCRIPTION;
+#X obj 152 546 abc_2d_decoder1~;
+#X obj 24 441 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 24 512 stereo \$1;
-#X obj 60 303 abc_gain -127;
-#X obj 442 517 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 24 463 stereo \$1;
+#X obj 60 254 abc_gain -127;
+#X obj 442 468 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 442 537 stereo \$1;
-#X obj 555 605 abc_2d_decoder3~;
-#X obj 547 674 dac~ 1 2 3 4 5 6 7 8;
-#X obj 1229 310 abc_soundgrain~;
-#X obj 1163 360 abc_2d_encoder1~;
-#X obj 1127 555 abc_2d_decoder1~;
-#X obj 1030 451 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 442 488 stereo \$1;
+#X obj 555 556 abc_2d_decoder3~;
+#X obj 547 625 dac~ 1 2 3 4 5 6 7 8;
+#X obj 1229 261 abc_soundgrain~;
+#X obj 1163 311 abc_2d_encoder1~;
+#X obj 1127 506 abc_2d_decoder1~;
+#X obj 1030 402 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 1030 471 stereo \$1;
-#X obj 1070 241 abc_gain -127;
-#X obj 1688 393 abc_2d_randomtrajectory~;
-#X obj 1711 429 abc_cartopol~;
-#X msg 1688 369 freq \$1;
-#X obj 1688 305 loadbang;
-#X msg 1688 326 2;
-#X floatatom 1688 347 5 0 0 0 - - - 0;
-#X obj 1614 460 abc_2d_map7~ -------- ----- ---;
-#X obj 1266 554 abc_2d_scope1~;
-#X obj 1498 494 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 1030 422 stereo \$1;
+#X obj 1070 192 abc_gain -127;
+#X obj 1688 344 abc_2d_randomtrajectory~;
+#X obj 1711 380 abc_cartopol~;
+#X msg 1688 320 freq \$1;
+#X obj 1688 256 loadbang;
+#X msg 1688 277 2;
+#X floatatom 1688 298 5 0 0 0 - - - 0;
+#X obj 1614 411 abc_2d_map7~ -------- ----- ---;
+#X obj 1266 505 abc_2d_scope1~;
+#X obj 1498 445 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 1498 514 stereo \$1;
-#X obj 1441 301 abc_gain -127;
-#X obj 1529 664 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
-#X obj 1561 597 abc_2d_decoder7~ ---------------;
-#X obj 1769 595 abc_2d_scope7~ --------------;
-#X obj 253 418 abc_simplefmburst;
-#X obj 253 372 loadbang;
-#X obj 253 393 del 1000;
-#X obj 148 505 abc_2d_syn_delay1~;
-#X obj 148 469 r syn_delay;
-#X text 206 137 SYN DELAYS;
-#X obj 220 162 loadbang;
-#X msg 149 198 400;
-#X floatatom 149 219 5 0 0 0 - - - 0;
-#X msg 149 239 window \$1;
-#X floatatom 220 219 5 0 0 0 - - - 0;
-#X msg 220 198 300;
-#X floatatom 296 218 5 0 0 0 - - - 0;
-#X msg 296 197 0.2;
-#X msg 220 239 deltime \$1;
-#X msg 296 238 feedback \$1;
-#X obj 220 280 s syn_delay;
-#X text 936 81 deltime is the maximum delay in milliseconds of the
+#X msg 1498 465 stereo \$1;
+#X obj 1441 252 abc_gain -127;
+#X obj 1529 615 dac~ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 1561 548 abc_2d_decoder7~ ---------------;
+#X obj 1769 546 abc_2d_scope7~ --------------;
+#X obj 253 369 abc_simplefmburst;
+#X obj 253 323 loadbang;
+#X obj 253 344 del 1000;
+#X obj 148 456 abc_2d_syn_delay1~;
+#X obj 148 420 r syn_delay;
+#X text 206 88 SYN DELAYS;
+#X obj 220 113 loadbang;
+#X msg 149 149 400;
+#X floatatom 149 170 5 0 0 0 - - - 0;
+#X msg 149 190 window \$1;
+#X floatatom 220 170 5 0 0 0 - - - 0;
+#X msg 220 149 300;
+#X floatatom 296 169 5 0 0 0 - - - 0;
+#X msg 296 148 0.2;
+#X msg 220 190 deltime \$1;
+#X msg 296 189 feedback \$1;
+#X obj 220 231 s syn_delay;
+#X text 936 32 deltime is the maximum delay in milliseconds of the
 upper spatial component (defaut value 100 \, minimum 2 \, maximum 10000)
 ;
-#X text 935 121 window is the duration in milliseconds of the interpolation
+#X text 935 72 window is the duration in milliseconds of the interpolation
 between two values of delay without any click (default value 400 \,
 minimum 10 \, maximum 1000);
-#X text 935 167 feedback (between 0 and 1) provides a possibiity of
+#X text 935 118 feedback (between 0 and 1) provides a possibiity of
 reinjection on the P delay lines.;
-#X text 540 82 abc_2d_syn_delay1~ \, abc_2d_syn_delay2~ \, ... objects
+#X text 540 33 abc_2d_syn_delay1~ \, abc_2d_syn_delay2~ \, ... objects
 generate spatial delayed components in ambisonic from one mono signal.
 abc_2d_fx_delay1~ \, abc_2d_fx_delay2~ \, ... objects apply delays
 to spatial components already created by encoders or maps for instance.
@@ -74,62 +74,62 @@ If we are at order N in ambisonics \, the number of spatial components
 is P = 2*N+1. The P delays are equally spread between deltime/N and
 deltime which the maximum delay in milliseconds (H0 => deltime/N \,
 H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
-#X obj 551 506 abc_2d_syn_delay3~;
-#X obj 551 470 r syn_delay;
-#X obj 1160 404 r fx_delay;
-#X obj 1160 430 abc_2d_fx_delay1~;
-#X obj 1495 141 loadbang;
-#X msg 1424 177 400;
-#X floatatom 1424 198 5 0 0 0 - - - 0;
-#X msg 1424 218 window \$1;
-#X floatatom 1495 198 5 0 0 0 - - - 0;
-#X msg 1495 177 300;
-#X floatatom 1571 197 5 0 0 0 - - - 0;
-#X msg 1495 218 deltime \$1;
-#X msg 1571 217 feedback \$1;
-#X text 1481 116 FX DELAYS;
-#X msg 1571 176 0.1;
-#X obj 1495 259 s fx_delay;
-#X obj 1163 247 loadbang;
-#X msg 1163 268 0.1;
-#X floatatom 1163 289 5 0 0 0 - - - 0;
-#X msg 1163 309 speed \$1;
-#X obj 1565 513 abc_2d_fx_delay7~ ------------;
-#X obj 1566 439 r fx_delay;
-#X obj 79 630 abc_meter;
-#X obj 474 633 abc_meter;
-#X obj 1033 615 abc_meter;
-#X obj 1460 634 abc_meter;
-#X obj 1675 255 abc_env_noise 90 0.3 0;
-#X obj 462 307 abc_gain -20;
-#X obj 656 452 abc_env_noise 30 0.85 0;
-#X obj 253 468 *~ 0.3;
-#X obj 24 535 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 551 457 abc_2d_syn_delay3~;
+#X obj 551 421 r syn_delay;
+#X obj 1160 355 r fx_delay;
+#X obj 1160 381 abc_2d_fx_delay1~;
+#X obj 1495 92 loadbang;
+#X msg 1424 128 400;
+#X floatatom 1424 149 5 0 0 0 - - - 0;
+#X msg 1424 169 window \$1;
+#X floatatom 1495 149 5 0 0 0 - - - 0;
+#X msg 1495 128 300;
+#X floatatom 1571 148 5 0 0 0 - - - 0;
+#X msg 1495 169 deltime \$1;
+#X msg 1571 168 feedback \$1;
+#X text 1481 67 FX DELAYS;
+#X msg 1571 127 0.1;
+#X obj 1495 210 s fx_delay;
+#X obj 1163 198 loadbang;
+#X msg 1163 219 0.1;
+#X floatatom 1163 240 5 0 0 0 - - - 0;
+#X msg 1163 260 speed \$1;
+#X obj 1565 464 abc_2d_fx_delay7~ ------------;
+#X obj 1566 390 r fx_delay;
+#X obj 79 581 abc_meter;
+#X obj 474 584 abc_meter;
+#X obj 1033 566 abc_meter;
+#X obj 1460 585 abc_meter;
+#X obj 1675 206 abc_env_noise 90 0.3 0;
+#X obj 656 403 abc_env_noise 30 0.85 0;
+#X obj 253 419 *~ 0.3;
+#X obj 24 486 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 24 557 directangles \$1;
-#X obj 408 540 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 24 508 directangles \$1;
+#X obj 408 491 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 408 562 directangles \$1;
-#X obj 991 497 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 408 513 directangles \$1;
+#X obj 991 448 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 991 519 directangles \$1;
-#X obj 1420 528 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X msg 991 470 directangles \$1;
+#X obj 1420 479 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X msg 1420 550 directangles \$1;
-#X obj 1272 617 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
+#X msg 1420 501 directangles \$1;
+#X obj 1272 568 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
-#X text 1291 750 cyclone/scope~;
-#X obj 1814 634 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
+#X text 1291 701 cyclone/scope~;
+#X obj 1814 585 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
 232 74 79 77 96 98 102 0 empty;
-#X text 1833 767 cyclone/scope~;
-#X obj 144 656 abc_quadriout -15 1 2 3 4;
-#X obj 1101 615 abc_quadriout -15 1 2 3 4;
+#X text 1833 718 cyclone/scope~;
+#X obj 144 607 abc_quadriout -15 1 2 3 4;
+#X obj 1101 566 abc_quadriout -15 1 2 3 4;
+#X obj 462 258 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 7 1 78 0;
-#X connect 7 1 98 0;
-#X connect 7 2 98 1;
-#X connect 7 3 98 2;
-#X connect 7 4 98 3;
+#X connect 7 1 97 0;
+#X connect 7 2 97 1;
+#X connect 7 3 97 2;
+#X connect 7 4 97 3;
 #X connect 8 0 9 0;
 #X connect 9 0 7 0;
 #X connect 10 0 7 0;
@@ -149,10 +149,10 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 16 2 59 2;
 #X connect 16 3 59 3;
 #X connect 17 1 80 0;
-#X connect 17 1 99 0;
-#X connect 17 2 99 1;
-#X connect 17 3 99 2;
-#X connect 17 4 99 3;
+#X connect 17 1 98 0;
+#X connect 17 2 98 1;
+#X connect 17 3 98 2;
+#X connect 17 4 98 3;
 #X connect 18 0 19 0;
 #X connect 19 0 17 0;
 #X connect 20 0 17 0;
@@ -179,8 +179,8 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 27 13 76 13;
 #X connect 27 14 76 14;
 #X connect 27 15 76 15;
-#X connect 28 1 94 0;
-#X connect 28 2 94 1;
+#X connect 28 1 93 0;
+#X connect 28 2 93 1;
 #X connect 29 0 30 0;
 #X connect 30 0 33 0;
 #X connect 31 0 33 0;
@@ -201,9 +201,9 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 33 14 32 13;
 #X connect 33 15 32 14;
 #X connect 33 16 32 15;
-#X connect 34 1 96 0;
-#X connect 34 2 96 1;
-#X connect 35 0 85 0;
+#X connect 34 1 95 0;
+#X connect 34 2 95 1;
+#X connect 35 0 84 0;
 #X connect 36 0 37 0;
 #X connect 37 0 35 0;
 #X connect 38 1 7 1;
@@ -285,15 +285,15 @@ H-1 & H1 => 2*deltime/N \, etc. \, H-N & HN => deltime).;
 #X connect 76 15 34 15;
 #X connect 77 0 76 0;
 #X connect 82 0 27 1;
-#X connect 83 0 13 0;
-#X connect 84 0 56 1;
-#X connect 85 0 38 1;
-#X connect 86 0 87 0;
-#X connect 87 0 7 0;
-#X connect 88 0 89 0;
-#X connect 89 0 13 0;
-#X connect 90 0 91 0;
-#X connect 91 0 17 0;
-#X connect 92 0 93 0;
-#X connect 93 0 33 0;
+#X connect 83 0 56 1;
+#X connect 84 0 38 1;
+#X connect 85 0 86 0;
+#X connect 86 0 7 0;
+#X connect 87 0 88 0;
+#X connect 88 0 13 0;
+#X connect 89 0 90 0;
+#X connect 90 0 17 0;
+#X connect 91 0 92 0;
+#X connect 92 0 33 0;
+#X connect 99 0 13 0;
 #X coords 0 845 1 844 85 60 0;

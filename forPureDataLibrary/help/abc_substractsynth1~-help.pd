@@ -69,14 +69,14 @@ dB) can also be set individually thanks to amp00 \, amp01 \, etc. messages.
 gain (in dB) is the general control of the amplitude.;
 #X text 937 67 filterQ is the quality factor \, and filterG is the
 filter gain);
-#X obj 322 393 abc_stereoout -15;
 #X obj 827 473 abc_stereoout -15;
-#X msg 1212 524 \; s11 gain -10 \; s11 f0 440 \; s11 fmult-0 0.56 \;
-s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
-1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
-fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
-\;;
 #X obj 1475 642 abc_stereoout -25;
+#X obj 358 412 ~;
+#X msg 1212 524 \; s11 gain -127 \; s11 f0 440 \; s11 fmult-0 0.56
+\; s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11
+fmult-4 1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74
+\; s11 fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ
+70 \;;
 #X connect 3 0 4 0;
 #X connect 9 0 35 0;
 #X connect 10 0 16 0;
@@ -107,7 +107,7 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
 #X connect 26 0 41 0;
 #X connect 27 0 33 0;
 #X connect 28 0 53 0;
-#X connect 29 0 60 0;
+#X connect 29 0 61 0;
 #X connect 30 1 31 1;
 #X connect 30 2 31 2;
 #X connect 30 3 31 3;
@@ -120,15 +120,15 @@ fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 filterQ 70
 #X connect 30 10 31 10;
 #X connect 30 11 31 11;
 #X connect 31 1 32 0;
-#X connect 31 1 61 0;
-#X connect 31 2 61 1;
+#X connect 31 1 59 0;
+#X connect 31 2 59 1;
 #X connect 33 1 7 0;
-#X connect 33 1 58 0;
-#X connect 33 1 58 1;
+#X connect 33 1 60 0;
+#X connect 33 1 60 1;
 #X connect 34 0 33 0;
 #X connect 35 1 8 0;
-#X connect 35 1 59 0;
-#X connect 35 2 59 1;
+#X connect 35 1 58 0;
+#X connect 35 2 58 1;
 #X connect 36 0 33 0;
 #X connect 37 0 33 0;
 #X connect 38 0 36 0;
