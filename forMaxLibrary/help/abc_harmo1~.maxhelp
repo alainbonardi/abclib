@@ -125,7 +125,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 528.154775333332964, 561.0, 45.0, 45.0 ]
+					"patching_rect" : [ 79.0, 568.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -1026,27 +1026,6 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-23",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc_stereoout~.maxpat",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 79.0, 574.0, 185.0, 26.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-84",
 					"linecount" : 8,
@@ -1334,15 +1313,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 1 ],
-					"midpoints" : [ 123.0, 561.0, 254.5, 561.0 ],
+					"destination" : [ "obj-7", 1 ],
+					"midpoints" : [ 123.0, 558.0, 114.5, 558.0 ],
 					"source" : [ "obj-32", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
+					"destination" : [ "obj-7", 0 ],
 					"source" : [ "obj-32", 0 ]
 				}
 
@@ -1818,13 +1797,6 @@
 			}
 , 			{
 				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_stereoout~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",

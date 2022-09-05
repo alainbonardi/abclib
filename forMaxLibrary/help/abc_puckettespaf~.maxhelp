@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 113.0, 1191.0, 884.0 ],
+						"rect" : [ 0.0, 26.0, 1191.0, 884.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,16 +88,6 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 503.5, 575.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-71",
 									"linecount" : 4,
@@ -105,7 +95,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 141.0, 321.0, 60.0 ],
-									"presentation_linecount" : 2,
 									"text" : "Example of chord generation using PAF based on the beginning of Mea Lux, the fourth piece of En Echo (1992-93) for soprano and live electronics by Philippe Manoury"
 								}
 
@@ -7669,11 +7658,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-41",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 158.499999999999972, 598.0, 58.444165706634521, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 158.499999999999972, 598.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -8669,7 +8657,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1191.0, 884.0 ],
+						"rect" : [ 34.0, 113.0, 1191.0, 884.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -8707,7 +8695,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 667.0, 588.0, 483.0, 181.0 ],
-									"presentation_linecount" : 13,
 									"text" : "It consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator.\nThe central frequency cf (Hz) is bordered by two successive multiples of the fundamental frequency f0 (Hz). The bandwith parameter (bw, in Hz) controls the width of the central peak in the spectrum of the PAF generator.\nTwo waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters.\n\nPAF synthesis is a basis to generate variable spectra on a pair of harmonics to build formants that enable to create sound close to sung vowels thanks to formants.\n\nabc_puckettespaf2~ object adds the possibility of inharmonic generation by adding a variable phase to the driving phasor controlled by two parameters: ifreq (Hz) and iamp (between 0 and 1)."
 								}
 
@@ -8749,7 +8736,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1174.0, 600.0, 114.0, 30.0 ],
-									"presentation_linecount" : 2,
 									"text" : ";\rmax launchbrowser $1"
 								}
 
@@ -8763,7 +8749,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 667.0, 510.0, 482.0, 47.0 ],
-									"presentation_linecount" : 3,
 									"text" : "abc_pucketttespaf~ is a Phase-Aligned Formant (PAF) generator.\n\nIt is based on the following paper by Miller Puckette:"
 								}
 
@@ -8805,11 +8790,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-57",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 105.077666282653809, 378.0, 184.922333717346191, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 105.077666282653809, 378.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -8833,16 +8817,6 @@
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 26.0, 262.0, 47.0, 22.0 ],
 									"text" : "*~ 0.05"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-63",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 771.0, 75.5, 45.0, 45.0 ]
 								}
 
 							}
@@ -11308,6 +11282,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-57", 1 ],
+									"midpoints" : [ 280.5, 311.5, 140.577666282653809, 311.5 ],
 									"source" : [ "obj-61", 0 ]
 								}
 

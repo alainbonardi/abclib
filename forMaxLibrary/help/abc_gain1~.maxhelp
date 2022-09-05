@@ -40,17 +40,6 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 498.0, 430.0, 97.75, 22.0 ],
-					"text" : "dac~"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 					"id" : "obj-9",
 					"linecount" : 2,
@@ -68,7 +57,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 359.0, 411.0, 45.0, 45.0 ]
+					"patching_rect" : [ 498.0, 420.5, 45.0, 45.0 ]
 				}
 
 			}
@@ -190,7 +179,7 @@
 					"numinlets" : 16,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 498.0, 382.0, 176.5, 22.0 ],
+					"patching_rect" : [ 498.0, 376.0, 176.5, 22.0 ],
 					"text" : "abc_chopan16~"
 				}
 
@@ -846,14 +835,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-13", 1 ],
+					"destination" : [ "obj-6", 1 ],
+					"midpoints" : [ 586.25, 411.75, 533.5, 411.75 ],
 					"source" : [ "obj-5", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
+					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 

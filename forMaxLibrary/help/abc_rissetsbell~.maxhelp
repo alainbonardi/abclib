@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1330.0, 710.0 ],
+						"rect" : [ 236.0, 113.0, 1330.0, 710.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1987,7 +1987,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 236.0, 113.0, 1330.0, 710.0 ],
+						"rect" : [ 0.0, 26.0, 1330.0, 710.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2032,11 +2032,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-3",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 143.5, 540.0, 101.727272727272748, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 143.5, 540.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -2226,16 +2225,6 @@
 									"patching_rect" : [ 143.5, 409.0, 201.0, 24.0 ],
 									"text" : "abc_rissetsbell~ @dur 30000",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-35",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 509.0, 608.5, 45.0, 45.0 ]
 								}
 
 							}

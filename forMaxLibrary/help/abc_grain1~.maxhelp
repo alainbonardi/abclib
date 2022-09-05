@@ -666,11 +666,10 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-8",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 178.571441999999934, 495.0, 45.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 178.571441999999934, 495.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -813,16 +812,6 @@
 									"outlettype" : [ "signal", "signal", "list" ],
 									"patching_rect" : [ 178.571441999999934, 355.0, 123.0, 24.0 ],
 									"text" : "abc_grain2~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 382.0, 529.5, 45.0, 45.0 ]
 								}
 
 							}

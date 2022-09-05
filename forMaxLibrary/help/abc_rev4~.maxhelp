@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 647.0, 589.0 ],
+						"rect" : [ 34.0, 113.0, 647.0, 589.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -94,7 +94,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 457.571441999999934, 94.0, 179.0, 208.0 ],
+									"patching_rect" : [ 457.571441999999934, 94.0, 182.0, 208.0 ],
 									"text" : "abc_rev4~ is a classical reverberation module with 2 controls (with values between 0 and 127): the duration (127 means an 'infinite' duration) and the gain.\n\nAs it is a cascade of delay lines with reinjection, it is proposed in two versions: a stereo one, abc_rev4sterero~, and a quadriphonic one, abc_rev4quadri~ that splits the outputs of the delay lines to the 4 outputs."
 								}
 
@@ -102,11 +102,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-2",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 188.0, 489.0, 125.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 188.0, 489.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -380,16 +379,6 @@
 								}
 
 							}
-, 							{
-								"box" : 								{
-									"id" : "obj-9",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 509.0, 484.0, 45.0, 45.0 ]
-								}
-
-							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -555,7 +544,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 113.0, 647.0, 589.0 ],
+						"rect" : [ 0.0, 26.0, 647.0, 589.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -587,11 +576,10 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-10",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 176.0, 483.0, 82.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 176.0, 483.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -603,7 +591,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 458.571441999999934, 97.0, 176.0, 208.0 ],
+									"patching_rect" : [ 458.571441999999934, 97.0, 179.0, 208.0 ],
 									"text" : "abc_rev4~ is a classical reverberation module with 2 controls (with values between 0 and 127): the duration (127 means an 'infinite' duration) and the gain.\n\nAs it is a cascade of delay lines with reinjection, it is proposed in two versions: a stereo one, abc_rev4sterero~, and a quadriphonic one, abc_rev4quadri~ that splits the outputs of the delay lines to the 4 outputs."
 								}
 
@@ -875,16 +863,6 @@
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.0, 6.0, 485.0, 61.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-9",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 509.0, 483.0, 45.0, 45.0 ]
 								}
 
 							}

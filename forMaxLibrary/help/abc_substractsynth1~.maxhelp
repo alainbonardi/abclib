@@ -88,16 +88,6 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 509.0, 595.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-70",
 									"linecount" : 9,
@@ -105,7 +95,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 468.0, 141.0 ],
-									"presentation_linecount" : 9,
 									"text" : "abc_substractsynth1~, abc_substract2~, ... objects enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).\n\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 								}
 
@@ -113,11 +102,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-2",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 106.0, 564.0, 78.917355371900811, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 106.0, 564.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -152,7 +140,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 352.5, 324.5, 100.0, 210.0 ],
-									"presentation_linecount" : 14,
 									"text" : ";\rs11 f0 440;\rs11 fmult00 0.56;\rs11 fmult01 0.56;\rs11 fmult02 0.92;\rs11 fmult03 0.92;\rs11 fmult04 1.19;\rs11 fmult05 1.7;\rs11 fmult06 2.;\rs11 fmult07 2.74;\rs11 fmult08 3.;\rs11 fmult09 3.76;\rs11 fmult10 4.07;\rs11 filterQ 70.;\r"
 								}
 
@@ -250,7 +237,6 @@
 									"numoutlets" : 12,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 									"patching_rect" : [ 106.0, 412.5, 168.0, 40.0 ],
-									"presentation_linecount" : 2,
 									"text" : "abc_substractsynth11~ @gain -30.",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
@@ -633,11 +619,10 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 12.5, 534.0, 88.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 12.5, 534.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -662,7 +647,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 662.0, 453.0, 59.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "filter Gain"
 								}
 
@@ -676,7 +660,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 547.0, 453.0, 59.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "quality Q factor"
 								}
 
@@ -856,7 +839,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 211.0, 305.5, 150.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "multipliers of the fundamental frequency"
 								}
 
@@ -870,7 +852,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 395.5, 305.5, 105.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "amplitudes of partials in dB"
 								}
 
@@ -1168,7 +1149,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 468.0, 141.0 ],
-									"presentation_linecount" : 9,
 									"text" : "abc_substractsynth1~, abc_substract2~, ... objects enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).\n\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 								}
 
@@ -1516,24 +1496,13 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-3",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 508.5, 594.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-70",
 									"linecount" : 9,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 69.0, 467.0, 141.0 ],
-									"presentation_linecount" : 16,
+									"patching_rect" : [ 6.0, 69.0, 468.0, 141.0 ],
 									"text" : "abc_substractsynth1~, abc_substract2~, ... objects enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).\n\nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude. \n"
 								}
 
@@ -1541,11 +1510,10 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-2",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 44.0, 526.0, 35.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 40.0, 528.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1570,7 +1538,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 451.5, 436.0, 59.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "filter Gain"
 								}
 
@@ -1584,7 +1551,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 340.0, 436.0, 59.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "quality Q factor"
 								}
 

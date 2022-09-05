@@ -916,11 +916,11 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-24",
-									"linecount" : 12,
+									"linecount" : 11,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 455.0, 277.0, 319.0, 167.0 ],
+									"patching_rect" : [ 455.0, 277.0, 323.0, 154.0 ],
 									"text" : "abc_linrandenv1~, abc_linrandenv2~, etc. objects provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 
@@ -1413,22 +1413,11 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-10",
+									"id" : "obj-9",
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 507.5, 565.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-9",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 128.5, 582.0, 45.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 128.5, 582.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1838,7 +1827,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 69.0, 484.0, 100.0 ],
+									"patching_rect" : [ 6.0, 69.0, 487.0, 100.0 ],
 									"text" : "abc_linrandenv1~, abc_linrandenv2~, etc. objects provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 

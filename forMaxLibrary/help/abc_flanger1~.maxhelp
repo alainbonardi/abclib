@@ -100,21 +100,10 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-51",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 38.130836486816406, 468.0, 62.5, 22.0 ],
-					"text" : "dac~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-50",
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 652.0, 545.0, 45.0, 45.0 ]
+					"patching_rect" : [ 38.130836486816406, 468.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -964,6 +953,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-51", 1 ],
+					"midpoints" : [ 91.130836486816406, 415.5, 73.630836486816406, 415.5 ],
 					"source" : [ "obj-1", 1 ]
 				}
 

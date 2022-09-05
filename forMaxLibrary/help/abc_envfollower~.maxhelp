@@ -85,11 +85,10 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-12",
-					"maxclass" : "newobj",
+					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 762.0, 447.0, 45.0, 22.0 ],
-					"text" : "dac~"
+					"patching_rect" : [ 762.0, 447.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -171,16 +170,6 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 764.0, 6.0, 239.0, 74.0 ],
 					"text" : "abc_sounddetector~ has two parameters:\n- attack: it is the attack duration in seconds (initial value: 0.001 sec)\n- release: it is the release duration in seconds (initial value : 0.01 sec)"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 134.0, 362.0, 45.0, 45.0 ]
 				}
 
 			}

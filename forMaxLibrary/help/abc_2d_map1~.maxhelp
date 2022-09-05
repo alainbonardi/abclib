@@ -794,21 +794,10 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-3",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 119.000000000000114, 597.0, 103.0, 22.0 ],
-									"text" : "dac~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-1",
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 380.0, 574.0, 45.0, 45.0 ]
+									"patching_rect" : [ 119.000000000000114, 597.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1060,7 +1049,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 212.500000000000114, 586.25, 212.500000000000114, 586.25 ],
+									"midpoints" : [ 212.500000000000114, 586.25, 154.500000000000114, 586.25 ],
 									"source" : [ "obj-27", 1 ]
 								}
 
@@ -1217,7 +1206,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 235.0, 113.0, 998.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 998.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1806,7 +1795,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 998.0, 745.0 ],
+						"rect" : [ 235.0, 113.0, 998.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,

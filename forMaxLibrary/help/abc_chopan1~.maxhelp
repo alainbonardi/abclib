@@ -641,40 +641,6 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-3",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 200.0, 324.0, 137.0, 33.0 ],
-									"text" : "Output gain in dB in the inspector menu"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-2",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc_stereoout~.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 11.0, 324.0, 185.0, 26.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-9",
 									"maxclass" : "number",
 									"numinlets" : 1,
@@ -908,7 +874,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 49.0, 390.0, 45.0, 45.0 ]
+									"patching_rect" : [ 11.0, 355.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -936,15 +902,15 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 1 ],
-									"midpoints" : [ 64.0, 312.5, 186.5, 312.5 ],
+									"destination" : [ "obj-35", 1 ],
+									"midpoints" : [ 64.0, 328.0, 46.5, 328.0 ],
 									"source" : [ "obj-10", 1 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-35", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 

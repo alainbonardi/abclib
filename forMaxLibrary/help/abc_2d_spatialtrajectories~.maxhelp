@@ -88,6 +88,16 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "ezdac~",
+									"numinlets" : 2,
+									"numoutlets" : 0,
+									"patching_rect" : [ 524.0, 632.0, 45.0, 45.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"args" : [ "@size", 0 ],
 									"bgmode" : 0,
 									"border" : 0,
@@ -907,7 +917,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 361.0, 617.5, 45.0, 45.0 ]
+									"patching_rect" : [ 524.0, 631.5, 45.0, 45.0 ]
 								}
 
 							}
@@ -1614,7 +1624,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 495.0, 542.0, 45.0, 45.0 ]
+									"patching_rect" : [ 524.0, 631.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -2183,7 +2193,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 494.0, 570.0, 45.0, 45.0 ]
+									"patching_rect" : [ 524.0, 631.0, 45.0, 45.0 ]
 								}
 
 							}

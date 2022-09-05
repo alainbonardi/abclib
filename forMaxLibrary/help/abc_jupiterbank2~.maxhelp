@@ -41,11 +41,10 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-7",
-					"maxclass" : "newobj",
+					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 71.0, 494.0, 87.25, 22.0 ],
-					"text" : "dac~"
+					"patching_rect" : [ 71.0, 494.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -654,16 +653,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 182.0, 139.0, 50.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 319.0, 290.5, 45.0, 45.0 ]
 				}
 
 			}

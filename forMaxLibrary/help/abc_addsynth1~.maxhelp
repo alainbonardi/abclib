@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 821.0, 608.0 ],
+						"rect" : [ 34.0, 113.0, 821.0, 608.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -565,11 +565,10 @@
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-3",
-									"maxclass" : "newobj",
+									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 18.5, 503.5, 69.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 18.5, 503.5, 45.0, 45.0 ]
 								}
 
 							}
@@ -606,29 +605,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 392.0, 167.0 ],
 									"text" : "abc_addsynth1~, abc_addsynth2~, ... objects enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude.\n"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 447.75, 492.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-9",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 205.5, 498.0, 137.0, 33.0 ],
-									"text" : "Output gain in dB in the inspector menu"
 								}
 
 							}
@@ -1354,7 +1330,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 113.0, 821.0, 608.0 ],
+						"rect" : [ 0.0, 26.0, 821.0, 608.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1389,20 +1365,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 405.0, 470.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-3",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 242.0, 482.0, 137.0, 33.0 ],
-									"text" : "Output gain in dB in the inspector menu"
+									"patching_rect" : [ 45.0, 505.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1459,27 +1422,6 @@
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.0, 6.0, 485.0, 61.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-2",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc_stereoout~.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 55.0, 482.0, 185.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1689,8 +1631,7 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 1 ],
-									"midpoints" : [ 64.5, 473.5, 230.5, 473.5 ],
+									"destination" : [ "obj-4", 1 ],
 									"order" : 0,
 									"source" : [ "obj-10", 0 ]
 								}
@@ -1698,7 +1639,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-4", 0 ],
 									"order" : 1,
 									"source" : [ "obj-10", 0 ]
 								}
