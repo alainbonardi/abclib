@@ -56,7 +56,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 233.0, 186.25, 314.0, 194.0 ],
+					"patching_rect" : [ 233.0, 186.25, 317.0, 194.0 ],
 					"text" : "abc_scope is an abstraction to be used within a bpatcher in association with abc_2d_scopeN~ objects to visualize X-Y signals for instance ambisonic components at the order N. There are 3 signal inputs: X signal, Y signal and a binary signal (1/0) to tell the drawing corresponds to positive (red) values or negative (blue) ones\nThree parameters can be set:\n- the type of drawing: points or lines\n- the size of the drawing (1 by default)\n- display on/off the floating window with the visualization.\nThe three default values can be set thanks to the bpatcher inspector.\nA unique 4 digit number is attributed to each instance and each visualization window"
 				}
 
@@ -202,9 +202,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",

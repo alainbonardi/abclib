@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 68.0, 100.0, 568.0, 500.0 ],
+		"rect" : [ 34.0, 87.0, 568.0, 500.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,14 +40,27 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"id" : "obj-58",
-					"linecount" : 8,
+					"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+					"id" : "obj-5",
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 326.0, 213.0, 150.0, 114.0 ],
-					"text" : "abc_quadriout is an abstraction that enables 4 channel output (dac~ 1 to 4) with a control of the global gain in dB. This global gain can be set as default value in the bpatcher inspector"
+					"patching_rect" : [ 314.5, 320.0, 137.0, 47.0 ],
+					"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"id" : "obj-58",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 314.5, 164.0, 150.0, 74.0 ],
+					"text" : "abc_quadriout is an abstraction that enables 4 channel output (dac~ 1 to 4) with a control of the global gain in dB."
 				}
 
 			}
@@ -192,9 +205,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",

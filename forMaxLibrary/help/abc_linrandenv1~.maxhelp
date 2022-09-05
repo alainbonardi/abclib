@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 306.0, 371.0, 777.0, 709.0 ],
+		"rect" : [ 237.0, 87.0, 777.0, 709.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 269.0, 603.0, 876.0, 648.0 ],
+						"rect" : [ 0.0, 26.0, 777.0, 683.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -86,7 +86,6 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
@@ -105,8 +104,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 69.0, 484.0, 100.0 ],
-									"presentation_linecount" : 7,
+									"patching_rect" : [ 6.0, 69.0, 487.0, 100.0 ],
 									"text" : "abc_linrandenv1~, abc_linrandenv2~, etc. objects provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 
@@ -228,7 +226,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 152.071441999999934, 517.0, 156.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "shapes of the 2 linear random envelopes"
 								}
 
@@ -491,7 +488,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 306.0, 397.0, 777.0, 683.0 ],
+						"rect" : [ 0.0, 26.0, 777.0, 683.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -573,7 +570,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 470.0, 66.5, 95.0, 47.0 ],
-									"presentation_linecount" : 3,
 									"text" : "spread (phase between channels)"
 								}
 
@@ -714,7 +710,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 380.0, 75.0, 71.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "envelope rarefaction"
 								}
 
@@ -728,7 +723,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 276.0, 75.0, 71.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "envelope frequency"
 								}
 
@@ -926,8 +920,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 455.0, 277.0, 316.0, 167.0 ],
-									"presentation_linecount" : 7,
+									"patching_rect" : [ 455.0, 277.0, 319.0, 167.0 ],
 									"text" : "abc_linrandenv1~, abc_linrandenv2~, etc. objects provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 
@@ -1389,7 +1382,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 777.0, 683.0 ],
+						"rect" : [ 237.0, 113.0, 777.0, 683.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1448,7 +1441,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 489.0, 208.5, 95.0, 47.0 ],
-									"presentation_linecount" : 3,
 									"text" : "spread (phase between channels)"
 								}
 
@@ -1759,7 +1751,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 413.0, 217.5, 71.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "envelope rarefaction"
 								}
 
@@ -1773,7 +1764,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 326.5, 217.5, 71.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "envelope frequency"
 								}
 
@@ -1848,7 +1838,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 69.0, 481.0, 100.0 ],
+									"patching_rect" : [ 6.0, 69.0, 484.0, 100.0 ],
 									"text" : "abc_linrandenv1~, abc_linrandenv2~, etc. objects provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 

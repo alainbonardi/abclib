@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 362.0, 218.0, 1003.0, 625.0 ],
+		"rect" : [ 34.0, 87.0, 1003.0, 625.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -768,9 +768,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
+														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~",
-														"palette_caption" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -1467,7 +1467,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 362.0, 244.0, 1003.0, 599.0 ],
+						"rect" : [ 34.0, 113.0, 1003.0, 599.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2034,9 +2034,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
+														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~",
-														"palette_caption" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -2622,9 +2622,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
