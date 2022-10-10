@@ -762,7 +762,7 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `f0`: the maximum delay applied (in samples)
+// * `f0`: the maximum frequency applied (in Hz)
 // * `fa`: decorrelation factor (between 0 and 1)
 // * `tf`: type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
@@ -821,7 +821,7 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `f0`: the maximum delay applied (in samples)
+// * `f0`: the maximum frequency applied (in Hz)
 // * `fa`: decorrelation factor (between 0 and 1)
 // * `tf`: type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
