@@ -780,7 +780,7 @@ with {
         coef = min(1, max(N * (fa - (N - i - 1) / N), 0));
     };
     //
-    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int;
+    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind));
 };
 
 //-------`(ho.).synRingMod`----------
@@ -840,7 +840,7 @@ with {
         coef = min(1, max(N * (fa - (N - i - 1) / N), 0));
     };
     //
-    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int;
+    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind));
 };
 
 
