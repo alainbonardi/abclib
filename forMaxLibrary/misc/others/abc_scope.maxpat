@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 8,
+			"minor" : 5,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 725.0, 261.0, 1117.0, 726.0 ],
+		"rect" : [ 987.0, 273.0, 1117.0, 726.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -173,7 +173,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 9,
 					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 791.5, 445.0, 274.0, 22.0 ],
 					"text" : "jit.gl.mesh @draw_mode line_strip @color 1 0 0 1"
 				}
@@ -311,8 +311,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 175.0, 681.0, 187.0, 22.0 ],
-					"text" : "jit.window #0-scope 0 40 200 240"
+					"patching_rect" : [ 175.0, 681.0, 251.0, 22.0 ],
+					"text" : "jit.window #0-scope 0 40 200 240 @floating 1"
 				}
 
 			}
@@ -338,7 +338,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 9,
 					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 626.0, 581.0, 326.0, 22.0 ],
 					"text" : "jit.gl.mesh #0-scope @draw_mode line_strip @color 0 0 1 1"
 				}
@@ -612,8 +612,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 8,
+							"minor" : 5,
+							"revision" : 1,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1381,7 +1381,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 9,
 					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 246.0, 581.0, 326.0, 22.0 ],
 					"text" : "jit.gl.mesh #0-scope @draw_mode line_strip @color 1 0 0 1"
 				}

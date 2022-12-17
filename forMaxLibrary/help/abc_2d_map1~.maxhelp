@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
-			"revision" : 1,
+			"minor" : 5,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 235.0, 87.0, 998.0, 771.0 ],
+		"rect" : [ 236.0, 96.0, 998.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -50,8 +50,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -156,7 +156,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ 0, 1.0, 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -755,8 +755,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1199,8 +1199,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1254,7 +1254,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 387.0, 552.0, 45.0, 45.0 ]
+									"patching_rect" : [ 626.0, 546.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1461,7 +1461,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 344.0, 353.0, 54.0, 52.0 ],
+									"patching_rect" : [ 344.0, 353.0, 78.0, 89.5 ],
 									"range" : [ -5.0, 5.0 ]
 								}
 
@@ -1473,7 +1473,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 344.0, 310.0, 88.0, 22.0 ],
+									"patching_rect" : [ 344.0, 310.0, 137.0, 22.0 ],
 									"text" : "abc_poltocar~"
 								}
 
@@ -1647,7 +1647,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
-									"midpoints" : [ 310.5, 287.5, 422.5, 287.5 ],
+									"midpoints" : [ 310.5, 287.5, 471.5, 287.5 ],
 									"order" : 0,
 									"source" : [ "obj-20", 0 ]
 								}
@@ -1678,7 +1678,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
-									"midpoints" : [ 221.5, 294.0, 353.5, 294.0 ],
+									"midpoints" : [ 221.5, 287.0, 353.5, 287.0 ],
 									"order" : 0,
 									"source" : [ "obj-25", 0 ]
 								}
@@ -1788,14 +1788,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 235.0, 113.0, 998.0, 745.0 ],
+						"rect" : [ 236.0, 122.0, 998.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2088,7 +2088,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ 0, 1.0, 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,

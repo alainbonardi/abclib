@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
-			"revision" : 1,
+			"minor" : 5,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 1001.0, 854.0 ],
+		"rect" : [ 236.0, 94.0, 1001.0, 854.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -50,8 +50,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -112,7 +112,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ 0, 1.0, 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -641,14 +641,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 113.0, 1001.0, 828.0 ],
+						"rect" : [ 236.0, 120.0, 1001.0, 828.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -756,7 +756,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ 0, 1.0, 1 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -770,7 +770,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 27.0, 627.5, 93.0, 105.5 ],
+									"patching_rect" : [ 27.0, 642.5, 93.0, 105.5 ],
 									"viewvisibility" : 1
 								}
 
