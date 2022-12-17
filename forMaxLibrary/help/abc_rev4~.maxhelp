@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
-			"revision" : 1,
+			"minor" : 5,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -50,14 +50,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 113.0, 647.0, 589.0 ],
+						"rect" : [ 0.0, 26.0, 647.0, 589.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -537,14 +537,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
-							"revision" : 1,
+							"minor" : 5,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 647.0, 589.0 ],
+						"rect" : [ 34.0, 113.0, 647.0, 589.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -591,7 +591,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 458.571441999999934, 97.0, 179.0, 208.0 ],
+									"patching_rect" : [ 458.571441999999934, 97.0, 182.0, 208.0 ],
 									"text" : "abc_rev4~ is a classical reverberation module with 2 controls (with values between 0 and 127): the duration (127 means an 'infinite' duration) and the gain.\n\nAs it is a cascade of delay lines with reinjection, it is proposed in two versions: a stereo one, abc_rev4sterero~, and a quadriphonic one, abc_rev4quadri~ that splits the outputs of the delay lines to the 4 outputs."
 								}
 
