@@ -933,7 +933,7 @@ puckettesPaf2(fund, cfreq, bwidth, g, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 };
 
 
-pulsedEnv2Synth(n, envFreq, ratio, spread, carrierFreq, fc, gain) = os.osccos(carrierFreq) <: par(i, n, *(pulsedEnv2(envFreq, ratio, (i * spread / (n-1)))) : *(gain) : fi.lowpass(2, fc));
+pulsedEnv2Synth(n, envFreq, ratio, spread, carrierFreq, fc, gain) = os.osccos(carrierFreq) <: par(i, n, *(pulsedEnv2(envFreq, ratio, (i * spread / max(1, n-1)))) : *(gain) : fi.lowpass(2, fc));
 
 //-------`(mm.)soundcoat`----------
 // Synthesizes an harmonic sound using n bandpass filters centered on partials of a fundamental frequency applied to white noise signals

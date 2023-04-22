@@ -21,7 +21,7 @@ then
 fi
 #number of channels
 let "Nch = 2 * $amborder + 2"
-#creates flangers
+#creates matrices
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 for i in `seq 2 $Nch`
 do

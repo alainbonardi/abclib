@@ -9,6 +9,6 @@
 //
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
-declare name "abc_generator";
+declare name "abc_pulsedenv2synth5";
 //
-process = library("abc.lib").abc_globalgenerator_ui;
+process = library("abc.lib").abc_pulsedenv2synth_ui(5);

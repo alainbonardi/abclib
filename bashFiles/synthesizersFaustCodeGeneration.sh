@@ -161,3 +161,23 @@ echo "declare name \"abc_jupiterbank2\";" >> $sortie
 #writes the process line
 echo "//
 process = library(\"abc.lib\").abc_jupiterbank2_ui;" >> $sortie
+#
+#abc_pulsedenv2synth$i.dsp
+#
+#number of channels
+let "Nch = 2 * $amborder + 2"
+headerfilename="../../bashFiles/faustCodeHeader.txt"
+for i in `seq 1 $Nch`
+do
+    sortie="abc_pulsedenv2synth$i.dsp"
+#writes the header
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_pulsedenv2synth$i\";" >> $sortie
+#writes the process line
+echo "//
+process = library(\"abc.lib\").abc_pulsedenv2synth_ui($i);" >> $sortie
+done
