@@ -40,6 +40,7 @@ closed source license or any other license if you decide so.
 
 ba = library("basics.lib");
 si = library("signals.lib");
+de = library("delays.lib");
 
 declare name "Mixed Music library";
 declare author "Alain Bonardi";
@@ -350,6 +351,7 @@ pulsedEnv1(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip
 //-------`(mm.)pulsedEnv2`----------
 // pulsedEnv2 generates a pulsed envelope at a rate/frequency based on a phasor
 // and a silence/sound ratio (for instance a value of 3 indicates that signal is on during 1/3 of the period)
+// it can be temporaly shifted between 0 and 1 period thanks to delta parameter 
 
 // `pulsedEnv2` is a standard Faust function.
 //
@@ -365,7 +367,7 @@ pulsedEnv1(rate, ratio) = os.osccos(rate) <: * : *(ratio) : -(ratio-1) : ampClip
 // * `ratio`: the silence/sound ratio
 //-----------------------------
 
-pulsedEnv2(rate, ratio) = os.phasor(ratio, rate) : -(ratio-1) : ampClip;
+pulsedEnv2(rate, ratio, delta) = os.phasor(1, rate) : +(delta) : ma.decimal : *(ratio)  : -(ratio-1) : ampClip;
 
 //
 //--------------------------------------------------------------------------------------//
@@ -446,13 +448,25 @@ flanger(rate, depth, off, fdbk, delta, nsamp) = _ <: (de.fdelay(nsamp, variableD
 
 decorrelatedFlangers(n, rate, depth, off, fdbk, spread, nsamp) =  _ <: par(i, n, flanger(rate, depth, off, fdbk, (i * spread / n), nsamp));
 
-//--------------------------------------------------------------------------------------//
-//DOUBLE OVERLAPPED DELAY
-//--------------------------------------------------------------------------------------//
+//-------`(mm.)overlappedDoubleDelay`----------
+// overlappedDoubleDelay function is a double overlapped delay without reinjection adapting de.sdelay
+// `overlappedDoubleDelay` is a standard Faust function.
 //
-//A double overlapped delay without reinjection//
-//--------------------------------------------------------------------------------------//
+// #### Usage
+//
+// ```
+// overlappedDoubleDelay(nsamp, nmax, freq) : _
+// ```
+//
+// Where:
+//
+// * `nsamp': the number of samples of effective delay
+// * `nmax': the maximum delay in samples, as a power of 2
+// * `freq: the frequency of change of the delay
+//-----------------------------
+
 overlappedDoubleDelay(nsamp, nmax, freq) = de.sdelay(nmax, int(ma.SR / freq), nsamp);
+
 //
 //A double overlapped delay with reinjection//
 //--------------------------------------------------------------------------------------//
