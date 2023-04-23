@@ -242,12 +242,24 @@ abc_2d_randomTrajectory_ui = xyRandom(freq, size)
 //2D SQUARE AND Z TRAJECTORIES
 //--------------------------------------------------------------------------------------//
 //
-//
 abc_2d_squareAndZTrajectory_ui = xySquareDoubleTriangle(freq, size, crossfade)
-			with {
-				freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
-				size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
-				crossfade = hslider("v:trajectory/crossfade", 0, 0, 1, 0.01) : si.smoo;
+		with {
+			freq = hslider("v:trajectory/freq [unit:s-1]", 1, -1000., 1000., 0.01) : si.smoo;
+			size = hslider("v:trajectory/size", 1, 0, 5, 0.01) : si.smoo;
+			crossfade = hslider("v:trajectory/crossfade", 0, 0, 1, 0.01) : si.smoo;
+};
+//
+//--------------------------------------------------------------------------------------//
+//POLAR VARIABLE CIRCLE TRAJECTORIES
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_polarVariableCircle_ui = polarVariableCircle(ampRho, freqRho, ampTheta, freqTheta, rotSpeed)
+		with {
+			ampRho = hslider("v:trajectory/ampRho", 0, 0, 1, 0.001);
+			freqRho = hslider("v:trajectory/freqRho [unit:Hz]", 0, 0, 1000, 0.001);
+			ampTheta = hslider("v:trajectory/ampTheta", 0, 0, 100, 0.001);
+			freqTheta = hslider("v:trajectory/freqTheta [unit:Hz]", 0, 0, 1000, 0.001);
+			rotSpeed = hslider("v:trajectory/rotSpeed [unit:t.s-1]", 0, -100, 100, 0.001);
 };
 //
 //--------------------------------------------------------------------------------------//
