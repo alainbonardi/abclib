@@ -179,5 +179,5 @@ do
 echo "declare name \"abc_pulsedenv2synth$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_pulsedenv2synth_ui($i);" >> $sortie
+process = library(\"abc.lib\").abc_pulsedEnv2Synth_ui($i);" >> $sortie
 done
