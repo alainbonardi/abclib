@@ -266,6 +266,27 @@ xyRandom(f, s) = thisRandomPos
 
 xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(1-cf), *(1-cf), *(cf), *(cf)) : ro.interleave(2,2) : (+, +);
 
+//-------`(mm.)polarVariableCircle`----------
+// polarVariableCircle generates two signals (RHO and THETA polar coordinates) corresponding to a variable circle (variable radius and variable angle)
+// `polarVariableCircle` is a standard Faust function.
+//
+// #### Usage
+//
+// ```
+// polarVariableCircle(aRho, fRho, aTheta, fTheta, rSpeed) : _,_
+// ```
+//
+// Where:
+//
+// * `aRho': the amplitude of variation of the radius around the average value that is 1
+// * `fRho`: the frequency of variation of the radius
+// * 'aTheta' : the amplitude of variation of the angle around its value (computed from the rSpeed speed of variation)
+// * 'fTheta' : the frequency of variation of the angle
+// * 'rotSpeed' : the speed of rotation in turns by second
+//-----------------------------
+
+polarVariableCircle(aRho, fRho, aTheta, fTheta, rSpeed) = (1 + aRho * os.osccos(fRho), (os.phasor(1, rSpeed) + aTheta * os.osccos(fTheta)) * ma.PI * 2);
+
 //--------------------------------------------------------------------------------------//
 // BUS FUNCTIONS
 //--------------------------------------------------------------------------------------//
