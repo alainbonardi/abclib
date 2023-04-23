@@ -34,5 +34,5 @@ do
 echo "declare name \"abc_addsynth$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_addsynth_ui($i);" >> $sortie
+process = library(\"abc.lib\").abc_addSynth_ui($i);" >> $sortie
 done

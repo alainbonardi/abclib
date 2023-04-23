@@ -34,5 +34,5 @@ sortie="abc_substractsynth$i.dsp"
 echo "declare name \"abc_substractsynth$i\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_substractsynth_ui($i);" >> $sortie
+process = library(\"abc.lib\").abc_substractSynth_ui($i);" >> $sortie
 done
