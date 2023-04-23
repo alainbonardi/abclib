@@ -1012,7 +1012,7 @@ rissetsbell(d, fund, pf2, rq, rg, of, g) = (_, _) <: (bell1, bell2, bell3, bell4
 				bell11 = bellGenerator2(1.33, 0.075, 4.07, 0., d, fund, pf2, rq, rg, of, g);
 };
 
-audiotester(n, nmax, f, g) = thisaudiotester
+audioTester(n, nmax, f, g) = thisAudioTester
 			with {
 				dur = 1000 / f; //duration in milliseconds between two envelopes//
 				globalfreq = f / n; //global frequency of the whole cycle of loudspeakers
@@ -1029,7 +1029,7 @@ audiotester(n, nmax, f, g) = thisaudiotester
 				selector(x) = _ <: par(i, nmax, *(x == i));
 				//
 				//the audiotester
-				thisaudiotester = impulse <: (counter, generator) : selector;
+				thisAudioTester = impulse <: (counter, generator) : selector;
 };
 
 //-------`(mm.)peakamp`----------

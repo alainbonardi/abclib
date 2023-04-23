@@ -104,7 +104,7 @@ done <"$headerfilename"
 echo "declare name \"abc_audiotester\";" >> $sortie
 #writes the process line
 echo "//
-process = library(\"abc.lib\").abc_audiotester_ui;" >> $sortie
+process = library(\"abc.lib\").abc_audioTester_ui;" >> $sortie
 #
 #abc_puckettespaf.dsp
 #

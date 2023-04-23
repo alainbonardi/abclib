@@ -541,12 +541,12 @@ abc_substractSynth_ui(n) = thisSubstractiveSynth
 //AUDIOTESTER
 //--------------------------------------------------------------------------------------//
 //
-abc_audiotester_ui = audiotester(n, nhpmax, freq, gain)
+abc_audioTester_ui = audioTester(n, nhpmax, freq, gain)
 			with {
 				nhpmax = 64; //maximum number of loudspeakers
-				n = nentry("v:audiotester/n", 2, 1, nhpmax, 1); //number of loudspeakers used (from 1 to 64)
-				freq = hslider("v:audiotester/freq", 1, 0.01, 100, 0.01);//frequency of the envelopes
-				gain = hslider("v:audiotester/gain [unit:dB]", -20, -127, 18, 0.01) : dbtogain;
+				n = nentry("v:audioTester/n", 2, 1, nhpmax, 1); //number of loudspeakers used (from 1 to 64)
+				freq = hslider("v:audioTester/freq", 1, 0.01, 100, 0.01);//frequency of the envelopes
+				gain = hslider("v:audioTester/gain [unit:dB]", -20, -127, 18, 0.01) : dbtogain;
 };
 
 //
