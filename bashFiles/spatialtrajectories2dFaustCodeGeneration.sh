@@ -8,7 +8,7 @@ cd abc_2d_spatialtrajectories/
 #no parameter is necessary for these spatial trajectories dsp files
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 #
-#abc_squareandztrajectory.dsp
+#abc_2d_squareandztrajectory.dsp
 #
 sortie="abc_2d_squareandztrajectory.dsp"
 #writes the header
@@ -22,7 +22,7 @@ echo "declare name \"abc_2d_squareandztrajectory\";" >> $sortie
 echo "//
 process = library(\"abc.lib\").abc_2d_squareAndZTrajectory_ui;" >> $sortie
 #
-#abc_squaretrajectory.dsp
+#abc_2d_squaretrajectory.dsp
 #
 sortie="abc_2d_squaretrajectory.dsp"
 #writes the header
@@ -36,7 +36,7 @@ echo "declare name \"abc_2d_squaretrajectory\";" >> $sortie
 echo "//
 process = library(\"abc.lib\").abc_2d_squareTrajectory_ui;" >> $sortie
 #
-#abc_ztrajectory.dsp
+#abc_2d_ztrajectory.dsp
 #
 sortie="abc_2d_ztrajectory.dsp"
 #writes the header
@@ -50,7 +50,7 @@ echo "declare name \"abc_2d_ztrajectory\";" >> $sortie
 echo "//
 process = library(\"abc.lib\").abc_2d_zTrajectory_ui;" >> $sortie
 #
-#abc_randomtrajectory.dsp
+#abc_2d_randomtrajectory.dsp
 #
 sortie="abc_2d_randomtrajectory.dsp"
 #writes the header
@@ -63,3 +63,17 @@ echo "declare name \"abc_2d_randomtrajectory\";" >> $sortie
 #writes the process line
 echo "//
 process = library(\"abc.lib\").abc_2d_randomTrajectory_ui;" >> $sortie
+#
+#abc_2d_polarvariablecircle.dsp
+#
+sortie="abc_2d_polarvariablecircle.dsp"
+#writes the header
+while IFS= read -r line
+do
+    echo "$line" >> $sortie
+done <"$headerfilename"
+#writes the declared name
+echo "declare name \"abc_2d_polarvariablecircle\";" >> $sortie
+#writes the process line
+echo "//
+process = library(\"abc.lib\").abc_2d_polarVariableCircle_ui;" >> $sortie
