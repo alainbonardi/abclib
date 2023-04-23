@@ -9,6 +9,6 @@
 //
 declare author "Alain Bonardi, Paul Goutmann & David Fierro";
 declare licence "LGPLv3";
-declare name "abc_pulsedenv2synth7";
+declare name "abc_2d_polarvariablecircle";
 //
-process = library("abc.lib").abc_pulsedEnv2Synth_ui(7);
+process = library("abc.lib").abc_2d_polarVariableCircle_ui;

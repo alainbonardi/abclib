@@ -7,8 +7,8 @@
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
-declare author "Alain Bonardi & Paul Goutmann";
+declare author "Alain Bonardi, Paul Goutmann & David Fierro";
 declare licence "LGPLv3";
 declare name "abc_pulsedenv2synth13";
 //
-process = library("abc.lib").abc_pulsedenv2synth_ui(13);
+process = library("abc.lib").abc_pulsedEnv2Synth_ui(13);

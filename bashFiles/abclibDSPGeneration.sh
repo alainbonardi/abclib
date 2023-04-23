@@ -80,6 +80,6 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./synfxdelay2dFaustCodeGeneration.sh $amborder
 ./synfxgrain2dFaustCodeGeneration.sh $amborder
 ./synfxringmod2dFaustCodeGeneration.sh $amborder
-./synthesizersFaustCodeGeneration.sh
+./synthesizersFaustCodeGeneration.sh $amborder
 ./vbap2dFaustCodeGeneration.sh $amborder
 ./wider2dFaustCodeGeneration.sh $amborder
