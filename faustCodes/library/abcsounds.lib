@@ -14,6 +14,7 @@ declare copyright "2019-2022 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
 import("abc.lib");
+import("mm.lib");
 //
 //--------------------------------------------------------------------------------------//
 //PLAYER OF A SET OF SAMPLES WITH LINEAR INTERPOLATION
@@ -53,7 +54,7 @@ abc_soundgrain_ui = abc_soundgrain(freqmult, rainstickSamples, gain)
 				//
 				freqmult = hslider("v:synthetizers/freqmult", 1, 0.001, 5, 0.01);
 				//
-				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : abc_dbtogain;
+				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
 };		
 
 //
