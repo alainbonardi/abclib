@@ -547,14 +547,13 @@ harmonizer(tr, w, g) = _ <: (transposer(0, tr, w, g), transposer(0.5, tr, w, g))
 // INPUTS 1 AND 2 ARE DECORRELATED NOISES FOR THE ENVELOPPE AND THE DELAY RANDOMIZATION
 // INPUT 3 IS THE SIGNAL TO BE GRANULATED
 //--------------------------------------------------------------------------------------//
-granulator(gs, d, s, fd) = (_, _, _) : (_, permutation) : (env, _, del) : (_, fdDelayLine) : *
+granulator(gs, d, s, fd) = (_, _, _) : ro.cross(3) : (_, del, env) : delayAndEnvelop
 	with {
 			//gs is the grain size in milliseconds//
 			//d is the max delay in milliseconds//
 			//s is the rarefaction between 0 and 1//
 			//fd is the reinjection for the delay line, between 0 and 1//
 			//the capacity of storage of the delay line is 262144 which is roughly 5,46 sec of delay at 48KHz
-			permutation(a, b) = (b, a);
 			f = 1000. / gs; //f is the frequency of the grain
 			ramp = os.phasor(1, f);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
@@ -562,7 +561,7 @@ granulator(gs, d, s, fd) = (_, _, _) : (_, permutation) : (env, _, del) : (_, fd
 			factor = randTest : ba.sAndH(th);
 			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
 			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
-			fdDelayLine = ((+, _) : de.delay(262144, _)) ~ (*(fd));
+			delayAndEnvelop = ((+, _, _) : (de.delay(262144, _), _) : *) ~ (*(fd));
 		};
 
 
