@@ -41,6 +41,8 @@ closed source license or any other license if you decide so.
 ba = library("basics.lib");
 si = library("signals.lib");
 de = library("delays.lib");
+no = library("noises.lib");
+fi = library("filters.lib");
 
 declare name "Mixed Music library";
 declare author "Alain Bonardi";
