@@ -19,6 +19,7 @@ fi
 #
 #gives the permission to run to all bash scripts
 chmod +x addsynthFaustCodeGeneration.sh
+chmod +x busplussesFaustCodeGeneration.sh
 chmod +x busselectsFaustCodeGeneration.sh
 chmod +x chowningMultipansFaustCodeGeneration.sh
 chmod +x decoders2dFaustCodeGeneration.sh
@@ -52,6 +53,7 @@ chmod +x vbap2dFaustCodeGeneration.sh
 chmod +x wider2dFaustCodeGeneration.sh
 #runs the various scripts to generate DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $amborder
+./busplussesFaustCodeGeneration.sh $amborder
 ./busselectsFaustCodeGeneration.sh $amborder
 ./chowningMultipansFaustCodeGeneration.sh $amborder
 ./decoders2dFaustCodeGeneration.sh $amborder
