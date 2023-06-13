@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 164.0, 100.0, 663.0, 642.0 ],
+		"rect" : [ 1059.0, 375.0, 689.0, 614.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 164.0, 126.0, 663.0, 616.0 ],
+						"rect" : [ 1059.0, 401.0, 689.0, 588.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -94,7 +94,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 413.0, 208.0, 218.0, 87.0 ],
+									"patching_rect" : [ 417.0, 183.0, 218.0, 87.0 ],
 									"text" : "abc_busplus1~, abc_busplus2~, ... objects enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
 								}
 
@@ -105,7 +105,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 147.000000000000341, 530.0, 45.0, 45.0 ]
+									"patching_rect" : [ 167.000000000000341, 520.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -117,7 +117,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 299.0, 400.5, 224.0, 33.0 ],
+									"patching_rect" : [ 303.0, 375.5, 225.0, 33.0 ],
 									"text" : "8 signal bus: 1st signal of left bus added to the 1st signal of right bus, etc."
 								}
 
@@ -130,7 +130,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 332.000000000000455, 318.5, 68.0, 33.0 ],
+									"patching_rect" : [ 336.000000000000455, 293.5, 68.0, 33.0 ],
 									"text" : "right 8 signal bus"
 								}
 
@@ -143,7 +143,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 59.0, 318.5, 68.0, 33.0 ],
+									"patching_rect" : [ 63.0, 293.5, 68.0, 33.0 ],
 									"text" : "left 8 signal bus"
 								}
 
@@ -155,7 +155,7 @@
 									"numinlets" : 8,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 269.999999999999829, 199.5, 112.625000000000227, 22.0 ],
+									"patching_rect" : [ 273.999999999999829, 174.5, 112.625000000000227, 22.0 ],
 									"text" : "abc_cosrandenv8~"
 								}
 
@@ -168,7 +168,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 269.999999999999829, 153.0, 126.000000000000341, 35.0 ],
+									"patching_rect" : [ 273.999999999999829, 128.0, 126.000000000000341, 35.0 ],
 									"text" : "abc_addsynth8~ @f0 330 @gain -10"
 								}
 
@@ -180,7 +180,7 @@
 									"numinlets" : 8,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 147.000000000000341, 487.0, 156.812499999999659, 22.0 ],
+									"patching_rect" : [ 151.000000000000341, 462.0, 156.812499999999659, 22.0 ],
 									"text" : "abc_chopan8~"
 								}
 
@@ -202,7 +202,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 71.0, 359.0, 72.0, 110.0 ],
+									"patching_rect" : [ 75.0, 334.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -214,7 +214,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 46.0, 153.0, 200.714285714287143, 22.0 ],
+									"patching_rect" : [ 50.0, 128.0, 200.714285714287143, 22.0 ],
 									"text" : "abc_multinoise8~"
 								}
 
@@ -227,7 +227,7 @@
 									"numinlets" : 8,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 46.0, 199.5, 181.0, 35.0 ],
+									"patching_rect" : [ 50.0, 174.5, 181.0, 35.0 ],
 									"text" : "abc_substractsynth8~ @f0 220. @gain -10"
 								}
 
@@ -241,7 +241,7 @@
 									"numinlets" : 16,
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 147.0, 359.0, 176.5, 24.0 ],
+									"patching_rect" : [ 151.0, 334.0, 176.5, 24.0 ],
 									"text" : "abc_busplus8~"
 								}
 
@@ -462,7 +462,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 225.406250000000171, 519.0, 182.500000000000341, 519.0 ],
 									"source" : [ "obj-133", 1 ]
 								}
 
@@ -533,7 +532,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-133", 0 ],
-									"midpoints" : [ 80.5, 481.5, 156.500000000000341, 481.5 ],
+									"midpoints" : [ 84.5, 456.5, 160.500000000000341, 456.5 ],
 									"source" : [ "obj-42", 0 ]
 								}
 
@@ -626,7 +625,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 663.0, 616.0 ],
+						"rect" : [ 0.0, 26.0, 689.0, 588.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -657,14 +656,47 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 3,
+									"outlettype" : [ "signal", "signal", "list" ],
+									"patching_rect" : [ 382.731183886528015, 321.505390524864197, 110.0, 22.0 ],
+									"text" : "abc_cosrandenv2~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ -127 ],
+									"bgmode" : 0,
+									"border" : 1,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-4",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc_gaincontrol.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 382.731183886528015, 126.0, 72.0, 110.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-3",
-									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 333.0, 186.0, 223.0, 35.0 ],
-									"text" : "abc_addsynth2~ @f0 220 @amp00 -6 @amp01 -12"
+									"patching_rect" : [ 382.731183886528015, 287.0, 201.0, 22.0 ],
+									"text" : "abc_addsynth2~ @f0 220"
 								}
 
 							}
@@ -675,7 +707,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 401.5, 160.5, 43.0, 20.0 ],
+									"patching_rect" : [ 426.5, 261.5, 43.0, 20.0 ],
 									"text" : "bus 2"
 								}
 
@@ -686,19 +718,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 129.0, 414.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-37",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 3,
-									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 129.0, 333.0, 172.0, 22.0 ],
-									"text" : "abc_gain2~"
+									"patching_rect" : [ 220.94623589515686, 451.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -710,7 +730,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 307.0, 397.0, 218.0, 87.0 ],
+									"patching_rect" : [ 332.0, 435.0, 218.0, 87.0 ],
 									"text" : "abc_busplus1~, abc_busplus2~, ... objects enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
 								}
 
@@ -732,7 +752,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 39.0, 186.0, 72.0, 110.0 ],
+									"patching_rect" : [ 213.0, 126.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -744,7 +764,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 206.0, 160.5, 43.0, 20.0 ],
+									"patching_rect" : [ 227.5, 261.5, 43.0, 20.0 ],
 									"text" : "bus 1"
 								}
 
@@ -756,7 +776,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "list" ],
-									"patching_rect" : [ 231.0, 186.0, 101.0, 22.0 ],
+									"patching_rect" : [ 256.0, 287.0, 101.0, 22.0 ],
 									"text" : "abc_soundgrain~"
 								}
 
@@ -768,7 +788,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "list" ],
-									"patching_rect" : [ 129.0, 186.0, 97.0, 22.0 ],
+									"patching_rect" : [ 154.0, 287.0, 97.0, 22.0 ],
 									"text" : "abc_soundcoat~"
 								}
 
@@ -782,7 +802,7 @@
 									"numinlets" : 4,
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 129.0, 256.0, 325.0, 24.0 ],
+									"patching_rect" : [ 154.0, 364.52688205242157, 325.0, 24.0 ],
 									"text" : "abc_busplus2~"
 								}
 
@@ -841,52 +861,66 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-37", 0 ],
-									"midpoints" : [ 48.5, 330.0, 138.5, 330.0 ],
+									"destination" : [ "obj-10", 0 ],
+									"order" : 0,
 									"source" : [ "obj-21", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 3 ],
+									"destination" : [ "obj-9", 0 ],
+									"order" : 1,
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 1 ],
 									"source" : [ "obj-3", 1 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 2 ],
+									"destination" : [ "obj-8", 0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 215.0, 384.0, 164.5, 384.0 ],
-									"source" : [ "obj-37", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
-									"source" : [ "obj-37", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-37", 1 ],
 									"source" : [ "obj-6", 1 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-37", 0 ],
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-6", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 3 ],
+									"source" : [ "obj-8", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 2 ],
+									"source" : [ "obj-8", 0 ]
 								}
 
 							}
@@ -993,17 +1027,17 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "abc_cosrandenv2~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_cosrandenv8~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_gain2~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/bbdmi/events/2022-06-21_US1/patches",
-				"patcherrelativepath" : "../../../bbdmi/events/2022-06-21_US1/patches",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
