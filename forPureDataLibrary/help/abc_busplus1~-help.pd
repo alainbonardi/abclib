@@ -1,4 +1,4 @@
-#N canvas 108 38 1062 776 10;
+#N canvas 768 35 1062 776 10;
 #X obj 11 5 cnv 15 500 25 empty empty abc_busplusN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Adds_two_buses_of_n_signals 20 12 0 12 #606060 #fcfcfc 0;
@@ -24,10 +24,11 @@
 #X obj 331 532 abc_meter;
 #X obj 818 371 abc_busplus8~ -------------;
 #X text 540 26 abc_busplus1~ \, abc_busplus2~ \, ... objects enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object \, the left one and the right one.;
+#X obj 291 380 abc_cosrandenv2~;
 #X connect 3 0 4 0;
 #X connect 8 0 15 0;
-#X connect 9 0 18 1;
-#X connect 10 0 18 2;
+#X connect 9 1 18 1;
+#X connect 10 1 18 2;
 #X connect 11 1 12 1;
 #X connect 11 2 12 2;
 #X connect 11 3 12 3;
@@ -69,8 +70,8 @@
 #X connect 18 2 22 0;
 #X connect 19 0 10 0;
 #X connect 19 0 9 0;
-#X connect 20 1 18 3;
-#X connect 20 2 18 4;
+#X connect 20 1 25 1;
+#X connect 20 2 25 2;
 #X connect 21 0 20 0;
 #X connect 23 1 15 1;
 #X connect 23 2 15 2;
@@ -80,4 +81,6 @@
 #X connect 23 6 15 6;
 #X connect 23 7 15 7;
 #X connect 23 8 15 8;
+#X connect 25 1 18 3;
+#X connect 25 2 18 4;
 #X coords 0 776 1 775 85 60 0;
