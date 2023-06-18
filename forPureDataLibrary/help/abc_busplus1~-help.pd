@@ -19,7 +19,7 @@
 #X obj 293 557 abc_meter;
 #X obj 730 348 abc_busplus8~ -------------;
 #X text 540 26 abc_busplus1~ \, abc_busplus2~ \, ... objects enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object \, the left one and the right one.;
-#X obj 189 465 abc_busplus3~;
+#X obj 186 466 abc_busplus3~;
 #X obj 135 397 abc_addsynth3~;
 #X obj 279 154 abc_upanddown;
 #X obj 279 134 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 1 1;
@@ -35,6 +35,7 @@
 #X floatatom 258 314 5 0 0 0 - - - 0;
 #X msg 258 350 f0 \$1;
 #X obj 258 397 abc_addsynth3~;
+#X obj 191 508 abc_chopan3~;
 #X connect 3 0 4 0;
 #X connect 8 0 13 0;
 #X connect 9 1 10 1;
@@ -82,10 +83,9 @@
 #X connect 18 6 13 6;
 #X connect 18 7 13 7;
 #X connect 18 8 13 8;
-#X connect 20 1 14 0;
-#X connect 20 1 6 0;
-#X connect 20 2 14 1;
-#X connect 20 2 17 0;
+#X connect 20 1 36 1;
+#X connect 20 2 36 2;
+#X connect 20 3 36 3;
 #X connect 21 1 20 1;
 #X connect 21 2 20 2;
 #X connect 21 3 20 3;
@@ -107,5 +107,9 @@
 #X connect 34 0 35 0;
 #X connect 35 1 20 4;
 #X connect 35 2 20 5;
-#X connect 35 3 20 5;
+#X connect 35 3 20 6;
+#X connect 36 1 14 0;
+#X connect 36 1 6 0;
+#X connect 36 2 14 1;
+#X connect 36 2 17 0;
 #X coords 0 776 1 775 85 60 0;
