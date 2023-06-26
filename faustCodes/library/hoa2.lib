@@ -110,6 +110,39 @@ with {
     };
 };
 
+//-------`(ho.)randomEncoder`----------
+// Ambisonic random encoder in 2D. A mono signal is encoded at a certain ambisonic order
+// with random position of the source around a certain angle and a certain angular range.
+//
+// #### Usage
+//
+// ```
+// _ : randomEncoder(N, freq, a, it) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `freq`: the azimuth speed expressed as angular speed (2PI/sec), positive or negative
+// * `angle`: the fixed azimuth when the rotation stops (sp = 0) in radians
+// * `deltaAngle` : interpolation time (in milliseconds) between the rotation and the fixed modes
+// * `index` : index of the random decoder, especially when several are used.
+//-----------------------------
+randomEncoder(N, freq, angle, deltaAngle, index) = thisRandomEncoder
+		with {
+			ramp = os.phasor(1, freq);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			temporalFilter = ba.sAndH(th);
+			//computes the temporal interval taking into account the case when f=0 and when f<0
+			dt = (ma.SR, max(0.00001, freq)) : / : ma.fabs ;
+			randomValue = + (90000 + index * 20) ~ *(1410065407);
+			noiseValue = randomValue / 2147483647.0;
+			randomAngle = noiseValue : *(deltaAngle / 2) : +(angle) : temporalFilter : ba.line(dt) : *(ma.PI) : /(180);
+			basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
+    		thisRandomEncoder = (_, randomAngle) : basicEncoder;
+};
+
+
 
 //-------`(ho.)stereoEncoder`----------
 // Encoding of a stereo pair of channels with symetric angles (a/2, -a/2).
@@ -162,6 +195,31 @@ with {
         vn = (sp == 0) : si.smooth(ba.tau2pole(it));
         x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
     };
+};
+
+
+//-------`(ho.)multiRandomEncoder`----------
+// Encoding of a set of P signals distributed on the unit circle according to a list of P speeds and P angles.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : multiRandomEncoder(N, lFreq, lAngle, lDeltaAngle) : _,_, ...
+// ```
+//
+// Where:
+//
+
+// A ADAPTER =>
+
+// * `N`: the ambisonic order (constant numerical expression)
+// * `lspeed` : a list of P speeds in turns by second (one speed per input signal, positive or negative)
+// * `langle` : a list of P angles in radians on the unit circle to localize the sources (one angle per input signal)
+// * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
+//-----------------------------
+multiRandomEncoder(N, lFreq, lAngle, lDeltaAngle) = par(i, P, randomEncoder(N, ba.take(i+1, lFreq), ba.take(i+1, lAngle), ba.take(i+1, lDeltaAngle), i)) :> si.bus(2*N+1)
+with {
+	P = outputs(lFreq); 
 };
 
 
