@@ -585,6 +585,8 @@ abc_busselect_ui(n) = busSelector(n, ramp, leftOrRight)
 
 abc_busplus_ui(n) = busPlus(n);
 
+abc_busmult_ui(n) = busMult(n);
+
 //
 //with one input source (exception for one source)
 abc_chowningPan1_ui = chowningPanner(incAngle, phi0) : (*(gain), *(gain))

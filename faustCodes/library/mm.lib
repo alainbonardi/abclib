@@ -303,6 +303,8 @@ busSelector(n, dt, lor) = thisBusSelector
 
 busPlus(N) = si.bus(2*N) :> si.bus(N);
 
+busMult(N) = si.bus(2*N) : ro.interleave(N, 2) : si.bus(2*N) : par(i, N, *);
+
 
 //PROCESSES
 
