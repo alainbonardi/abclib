@@ -133,7 +133,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 630.408970849513935, 53.740266218781358, 149.0, 22.0 ],
-					"restore" : [ 2.0 ],
+					"restore" : [ 3.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -476,11 +476,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-195",
 					"maxclass" : "newobj",
-					"numinlets" : 7,
+					"numinlets" : 9,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 55.195177718075456, 335.794413030147439, 200.0, 22.0 ],
-					"text" : "mc.pack~ 7",
+					"text" : "mc.pack~ 9",
 					"varname" : "mc_packer"
 				}
 
@@ -514,16 +514,14 @@
 				"box" : 				{
 					"fontface" : 3,
 					"fontname" : "Arial",
-					"fontsize" : 12.0,
+					"fontsize" : 10.0,
 					"id" : "obj-180",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 32.695177718075456, 24.286067724227792, 104.0, 33.0 ],
+					"patching_rect" : [ 32.695177718075456, 24.286067724227792, 127.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_linecount" : 2,
-					"presentation_rect" : [ -0.304822281924544, 1.536067724227792, 126.000000536441803, 33.0 ],
+					"presentation_rect" : [ -0.304822281924544, 2.536067724227792, 129.5, 18.0 ],
 					"text" : "abc_2d_fx_decorrelation"
 				}
 
@@ -534,11 +532,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
-					"numinlets" : 7,
-					"numoutlets" : 8,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
+					"numinlets" : 9,
+					"numoutlets" : 10,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 55.195177718075456, 294.794413030147439, 200.0, 22.0 ],
-					"text" : "abc_2d_fx_decorrelation3~.mxo",
+					"text" : "abc_2d_fx_decorrelation4~.mxo",
 					"varname" : "abc_fx_decorrelation"
 				}
 
@@ -1043,9 +1041,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 4,
-					"outlettype" : [ "script disconnect abc_encoder", "int", "mc_packer", "int" ],
-					"patching_rect" : [ 706.408970849513935, 588.166675686836243, 260.0, 22.0 ],
-					"text" : "t \"script disconnect abc_encoder\" i mc_packer i"
+					"outlettype" : [ "script disconnect abc_fx_decorrelation", "int", "mc_packer", "int" ],
+					"patching_rect" : [ 706.408970849513935, 588.166675686836243, 302.0, 22.0 ],
+					"text" : "t \"script disconnect abc_fx_decorrelation\" i mc_packer i"
 				}
 
 			}
@@ -1079,9 +1077,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 4,
-					"outlettype" : [ "script connect abc_encoder", "int", "mc_packer", "int" ],
-					"patching_rect" : [ 599.408970849513935, 340.666675686836243, 244.0, 22.0 ],
-					"text" : "t \"script connect abc_encoder\" i mc_packer i"
+					"outlettype" : [ "script connect abc_fx_decorrelation", "int", "mc_packer", "int" ],
+					"patching_rect" : [ 599.408970849513935, 340.666675686836243, 286.0, 22.0 ],
+					"text" : "t \"script connect abc_fx_decorrelation\" i mc_packer i"
 				}
 
 			}
@@ -1398,20 +1396,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-7", 6 ],
-					"source" : [ "obj-3", 6 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 5 ],
-					"source" : [ "obj-3", 5 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-7", 4 ],
 					"source" : [ "obj-3", 4 ]
 				}
@@ -1573,6 +1557,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-195", 8 ],
+					"source" : [ "obj-7", 8 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 7 ],
+					"source" : [ "obj-7", 7 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-195", 6 ],
 					"source" : [ "obj-7", 6 ]
 				}
@@ -1664,7 +1662,7 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "abc_2d_fx_decorrelation3~.mxo",
+				"name" : "abc_2d_fx_decorrelation4~.mxo",
 				"type" : "iLaX"
 			}
  ],

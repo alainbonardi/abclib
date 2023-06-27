@@ -119,8 +119,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 630.408970849513935, 53.740266218781358, 149.0, 22.0 ],
-					"restore" : [ 2.0 ],
+					"patching_rect" : [ 635.408970849513935, 52.740266218781358, 149.0, 22.0 ],
+					"restore" : [ 6.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
@@ -463,11 +463,11 @@
 					"fontsize" : 12.0,
 					"id" : "obj-195",
 					"maxclass" : "newobj",
-					"numinlets" : 7,
+					"numinlets" : 15,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 55.195177718075456, 230.794413030147439, 200.0, 22.0 ],
-					"text" : "mc.pack~ 7",
+					"text" : "mc.pack~ 15",
 					"varname" : "mc_packer"
 				}
 
@@ -520,10 +520,10 @@
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 8,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
+					"numoutlets" : 16,
+					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 					"patching_rect" : [ 55.195177718075456, 197.88606762886036, 200.0, 22.0 ],
-					"text" : "abc_2d_encoder3~.mxo",
+					"text" : "abc_2d_encoder7~.mxo",
 					"varname" : "abc_encoder"
 				}
 
@@ -1508,6 +1508,62 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-195", 14 ],
+					"source" : [ "obj-7", 14 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 13 ],
+					"source" : [ "obj-7", 13 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 12 ],
+					"source" : [ "obj-7", 12 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 11 ],
+					"source" : [ "obj-7", 11 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 10 ],
+					"source" : [ "obj-7", 10 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 9 ],
+					"source" : [ "obj-7", 9 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 8 ],
+					"source" : [ "obj-7", 8 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-195", 7 ],
+					"source" : [ "obj-7", 7 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-195", 6 ],
 					"source" : [ "obj-7", 6 ]
 				}
@@ -1599,7 +1655,7 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "abc_2d_encoder3~.mxo",
+				"name" : "abc_2d_encoder7~.mxo",
 				"type" : "iLaX"
 			}
  ],
