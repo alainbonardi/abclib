@@ -88,6 +88,18 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "signal" ],
+									"patching_rect" : [ 318.0, 128.0, 41.0, 22.0 ],
+									"text" : "sig~ 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-33",
 									"linecount" : 6,
@@ -95,7 +107,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 417.0, 183.0, 218.0, 87.0 ],
-									"text" : "abc_busplus1~, abc_busplus2~, ... objects enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
+									"text" : "abc_busplus1~, abc_busplus2~, ... objects enable to implement multichannel bus multiplications (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
 								}
 
 							}
@@ -157,19 +169,6 @@
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 									"patching_rect" : [ 273.999999999999829, 174.5, 112.625000000000227, 22.0 ],
 									"text" : "abc_cosrandenv8~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-1",
-									"linecount" : 2,
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 9,
-									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 273.999999999999829, 128.0, 126.000000000000341, 35.0 ],
-									"text" : "abc_addsynth8~ @f0 330 @gain -10"
 								}
 
 							}
@@ -242,7 +241,7 @@
 									"numoutlets" : 9,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 									"patching_rect" : [ 151.0, 334.0, 176.5, 24.0 ],
-									"text" : "abc_busplus8~"
+									"text" : "abc_busmult8~"
 								}
 
 							}
@@ -294,55 +293,63 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 7 ],
-									"source" : [ "obj-1", 7 ]
+									"order" : 0,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 6 ],
-									"source" : [ "obj-1", 6 ]
+									"order" : 1,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 5 ],
-									"source" : [ "obj-1", 5 ]
+									"order" : 2,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 4 ],
-									"source" : [ "obj-1", 4 ]
+									"order" : 3,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 3 ],
-									"source" : [ "obj-1", 3 ]
+									"order" : 4,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 2 ],
-									"source" : [ "obj-1", 2 ]
+									"order" : 5,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 1 ],
-									"source" : [ "obj-1", 1 ]
+									"order" : 6,
+									"source" : [ "obj-1", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-4", 0 ],
+									"order" : 7,
 									"source" : [ "obj-1", 0 ]
 								}
 
@@ -656,13 +663,26 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"format" : 6,
+									"id" : "obj-13",
+									"maxclass" : "flonum",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 231.0, 245.0, 50.0, 22.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-10",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
 									"patching_rect" : [ 231.0, 214.0, 36.0, 22.0 ],
-									"text" : "+ 0.1"
+									"text" : "+ 0.2"
 								}
 
 							}
@@ -673,8 +693,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 231.0, 190.0, 33.0, 22.0 ],
-									"text" : "* 10."
+									"patching_rect" : [ 231.0, 190.0, 29.5, 22.0 ],
+									"text" : "* 5."
 								}
 
 							}
@@ -739,7 +759,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 209.5, 338.0, 35.0, 22.0 ],
+									"patching_rect" : [ 231.0, 273.0, 35.0, 22.0 ],
 									"text" : "f0 $1"
 								}
 
@@ -753,43 +773,6 @@
 									"outlettype" : [ "signal", "signal", "list" ],
 									"patching_rect" : [ 168.552473554611197, 453.0, 88.0, 22.0 ],
 									"text" : "abc_chopan5~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-19",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "bang", "float" ],
-									"patching_rect" : [ 231.0, 241.0, 29.5, 22.0 ],
-									"text" : "t b f"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"format" : 6,
-									"id" : "obj-18",
-									"maxclass" : "flonum",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 209.5, 309.5, 50.0, 22.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-13",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "float" ],
-									"patching_rect" : [ 209.5, 272.5, 29.5, 22.0 ],
-									"text" : "+ 0."
 								}
 
 							}
@@ -885,7 +868,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 323.231183886528015, 479.5, 218.0, 87.0 ],
-									"text" : "abc_busplus1~, abc_busplus2~, ... objects enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
+									"text" : "abc_busplus1~, abc_busplus2~, ... objects enable to implement multichannel multiplications (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
 								}
 
 							}
@@ -933,7 +916,7 @@
 									"numoutlets" : 6,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "list" ],
 									"patching_rect" : [ 41.0, 387.52688205242157, 424.131183886527992, 24.0 ],
-									"text" : "abc_busplus5~"
+									"text" : "abc_busmult5~"
 								}
 
 							}
@@ -984,7 +967,7 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-19", 0 ],
+									"destination" : [ "obj-13", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -1034,29 +1017,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-18", 0 ],
-									"source" : [ "obj-13", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-22", 0 ],
-									"source" : [ "obj-18", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 1 ],
-									"source" : [ "obj-19", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 0 ],
-									"source" : [ "obj-19", 0 ]
+									"source" : [ "obj-13", 0 ]
 								}
 
 							}
@@ -1094,7 +1056,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
-									"midpoints" : [ 219.0, 369.0, 277.115591943264008, 369.0, 277.115591943264008, 300.0, 393.231183886528015, 300.0 ],
+									"midpoints" : [ 240.5, 301.5, 393.231183886528015, 301.5 ],
 									"source" : [ "obj-22", 0 ]
 								}
 
@@ -1201,16 +1163,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"order" : 1,
-									"source" : [ "obj-8", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 0 ],
-									"midpoints" : [ 130.5, 218.25, 219.0, 218.25 ],
-									"order" : 0,
 									"source" : [ "obj-8", 0 ]
 								}
 
@@ -1310,15 +1262,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_addsynth8~.mxo",
+				"name" : "abc_busmult5~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_busplus5~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_busplus8~.mxo",
+				"name" : "abc_busmult8~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
