@@ -111,22 +111,22 @@ with {
 };
 
 //-------`(ho.)randomEncoder`----------
-// Ambisonic random encoder in 2D. A mono signal is encoded at a certain ambisonic order
-// with random position of the source around a certain angle and a certain angular range.
+// Ambisonic random encoder in 2D. A mono signal is encoded at an ambisonic order
+// with a random position of the source around an angle inside an angular range.
 //
 // #### Usage
 //
 // ```
-// _ : randomEncoder(N, freq, a, it) : _,_, ...
+// _ : randomEncoder(N, freq, angle, deltaAngle, index) : _,_, ...
 // ```
 //
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `freq`: the azimuth speed expressed as angular speed (2PI/sec), positive or negative
-// * `angle`: the fixed azimuth when the rotation stops (sp = 0) in radians
-// * `deltaAngle` : interpolation time (in milliseconds) between the rotation and the fixed modes
-// * `index` : index of the random decoder, especially when several are used.
+// * `freq`: the frequency in Herz of update of the random position of the source
+// * `angle`: the angle in degrees on which the source is centered
+// * `deltaAngle` : the range of angular variation of the source in degrees
+// * `index` : the index of the random decoder, used when there are several random decoders, but can be left to 0 when there is only one.
 //-----------------------------
 randomEncoder(N, freq, angle, deltaAngle, index) = thisRandomEncoder
 		with {
@@ -199,7 +199,9 @@ with {
 
 
 //-------`(ho.)multiRandomEncoder`----------
-// Encoding of a set of P signals distributed on the unit circle according to a list of P speeds and P angles.
+// Random encoding of a set of P signals.
+// The signals are distributed on the unit circle.
+// Each of them is centered around an angle, within an angular range and updated at a certain frequency.
 //
 // #### Usage
 //
@@ -209,13 +211,10 @@ with {
 //
 // Where:
 //
-
-// A ADAPTER =>
-
 // * `N`: the ambisonic order (constant numerical expression)
-// * `lspeed` : a list of P speeds in turns by second (one speed per input signal, positive or negative)
-// * `langle` : a list of P angles in radians on the unit circle to localize the sources (one angle per input signal)
-// * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
+// * `lFreq` : a list of P frequencies in Herz of update of the random position of each source
+// * `lAngle` : a list of P angles in degrees on which each source is centered
+// * `lDeltaAngle` : a list of P ranges of angular variation of each source in degrees
 //-----------------------------
 multiRandomEncoder(N, lFreq, lAngle, lDeltaAngle) = par(i, P, randomEncoder(N, ba.take(i+1, lFreq), ba.take(i+1, lAngle), ba.take(i+1, lDeltaAngle), i)) :> si.bus(2*N+1)
 with {
