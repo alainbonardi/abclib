@@ -178,8 +178,8 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `lspeed` : a list of P speeds in turns by second (one speed per input signal, positive or negative)
-// * `langle` : a list of P angles in radians on the unit circle to localize the sources (one angle per input signal)
+// * `lspeed` : a list of speeds in turns by second (one speed per input signal, positive or negative)
+// * `langle` : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
 // * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
 multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
@@ -212,9 +212,9 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `lFreq` : a list of P frequencies in Herz of update of the random position of each source
-// * `lAngle` : a list of P angles in degrees on which each source is centered
-// * `lDeltaAngle` : a list of P ranges of angular variation of each source in degrees
+// * `lFreq` : a list of frequencies in Herz of update of the random position of each source
+// * `lAngle` : a list of angles in degrees on which each source is centered
+// * `lDeltaAngle` : a list of ranges of angular variation of each source in degrees
 //-----------------------------
 multiRandomEncoder(N, lFreq, lAngle, lDeltaAngle) = par(i, P, randomEncoder(N, ba.take(i+1, lFreq), ba.take(i+1, lAngle), ba.take(i+1, lDeltaAngle), i)) :> si.bus(2*N+1)
 with {
@@ -295,7 +295,7 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (there are 2*N+1 inputs to this function)
-// * `la` : the list of P angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
+// * `la` : the list of angles in degrees, for instance (0, 85, 182, 263) for four loudspeakers
 // * `direct`: 1 for direct mode, -1 for the indirect mode (changes the rotation direction)
 // * `shift` : angular shift in degrees to easily adjust angles
 //-----------------------------
