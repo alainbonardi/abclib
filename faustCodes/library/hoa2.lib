@@ -110,14 +110,14 @@ with {
     };
 };
 
-//-------`(ho.)randomEncoder`----------
-// Ambisonic random encoder in 2D. A mono signal is encoded at an ambisonic order
+//-------`(ho.)aleaEncoder`----------
+// Ambisonic aleatory encoder in 2D. A mono signal is encoded at an ambisonic order
 // with a random position of the source around an angle inside an angular range.
 //
 // #### Usage
 //
 // ```
-// _ : randomEncoder(N, freq, angle, deltaAngle, index) : _,_, ...
+// _ : aleaEncoder(N, freq, angle, deltaAngle, index) : _,_, ...
 // ```
 //
 // Where:
@@ -128,7 +128,7 @@ with {
 // * `deltaAngle` : the range of angular variation of the source in degrees
 // * `index` : the index of the random decoder, used when there are several random decoders, but can be left to 0 when there is only one.
 //-----------------------------
-randomEncoder(N, freq, angle, deltaAngle, index) = thisRandomEncoder
+aleaEncoder(N, freq, angle, deltaAngle, index) = thisAleaEncoder
 		with {
 			ramp = os.phasor(1, freq);
 			th = (ramp > 0.001) * (ramp@1 <= 0.001);
@@ -139,7 +139,7 @@ randomEncoder(N, freq, angle, deltaAngle, index) = thisRandomEncoder
 			noiseValue = randomValue / 2147483647.0;
 			randomAngle = noiseValue : *(deltaAngle / 2) : +(angle) : temporalFilter : ba.line(dt) : *(ma.PI) : /(180);
 			basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
-    		thisRandomEncoder = (_, randomAngle) : basicEncoder;
+    		thisAleaEncoder = (_, randomAngle) : basicEncoder;
 };
 
 
@@ -198,15 +198,15 @@ with {
 };
 
 
-//-------`(ho.)multiRandomEncoder`----------
-// Random encoding of a set of P signals.
+//-------`(ho.)multiAleaEncoder`----------
+// Aleatory encoding of a set of P signals.
 // The signals are distributed on the unit circle.
 // Each of them is centered around an angle, within an angular range and updated at a certain frequency.
 //
 // #### Usage
 //
 // ```
-// _,_, ... : multiRandomEncoder(N, lFreq, lAngle, lDeltaAngle) : _,_, ...
+// _,_, ... : multiAleaEncoder(N, lFreq, lAngle, lDeltaAngle) : _,_, ...
 // ```
 //
 // Where:
@@ -216,7 +216,7 @@ with {
 // * `lAngle` : a list of angles in degrees on which each source is centered
 // * `lDeltaAngle` : a list of ranges of angular variation of each source in degrees
 //-----------------------------
-multiRandomEncoder(N, lFreq, lAngle, lDeltaAngle) = par(i, P, randomEncoder(N, ba.take(i+1, lFreq), ba.take(i+1, lAngle), ba.take(i+1, lDeltaAngle), i)) :> si.bus(2*N+1)
+multiAleaEncoder(N, lFreq, lAngle, lDeltaAngle) = par(i, P, aleaEncoder(N, ba.take(i+1, lFreq), ba.take(i+1, lAngle), ba.take(i+1, lDeltaAngle), i)) :> si.bus(2*N+1)
 with {
 	P = outputs(lFreq); 
 };
@@ -323,6 +323,52 @@ with {
 //-----------------------------
 circularScaledVBAP(l, t) = thisCircularVbap
 with {
+        //
+		//modulo indexes between 1 and the number of elements of the list
+    	modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
+    	//
+    	//pick up the ith angle with a 360 degree modulo and a result in the interval [0, 360[ (360 is excluded)
+    	getAngle(i, l) = ma.modulo(ba.take(modIndex(i, l), l), 360) + (int(i / outputs(l)) - (i < 0)*(-i < outputs(l))) * 360;
+		//
+		//computation of the scaled VBAP gain of a pair
+		scaledVBAPGain(t1, t2, t) = ((diffSin(t2, t) <:(_, _, _)), (ma.signum(diffSin(t2, t1)) <: (_, _)), (diffSin(t, t1) <:(_, _, _))) : (*, *, *, *) : p1 : (_, _, (+ : sqrt <: (_, _))) : p2 : (/, /)
+		with {
+				 //function to compute the sinus of the difference between angles expressed in degrees
+				diffSin(u, v) = sin((v - u) * ma.PI / 180.);
+				//permutations to be used to compute scaledVBAPGain
+				p1(a, b, c, d) = (b, c, d, a);
+				p2(a, b, c, d) = (a, c, b, d);
+				//
+		};
+		//number of loudspeakers
+		p = outputs(l);
+		//
+		//list of all lower angle values (in degrees)
+		angleList1 = par(i, p, getAngle(i, l));
+		//
+		//list of all superior angle values
+		angleList2 = par(i, p, getAngle(i+1, l));
+		//
+		pairCondition = par(i, p, (ba.take(i+1, angleList1) <= t) * (t < ba.take(i+1, angleList2)));
+		//
+		//index of the loudspeaker corresponding to the closest lower angle
+		thisPairInd1 = pairCondition : sum(i, p, *(i));
+		//
+		//index of the loudspeaker corresponding to the closest superior angle
+		thisPairInd2 = ma.modulo(thisPairInd1 + 1, p);
+		//
+		//angle of the closest lower loudspeaker
+		angle1 = sum(i, p, ba.take(i+1, angleList1) * ba.take(i+1, pairCondition));
+		//
+		//angle of the closest superior loudspeaker
+		angle2 = sum(i, p, ba.take(i+1, angleList2) * ba.take(i+1, pairCondition));
+		//
+		//amplitudes of the p loudspeakers: the value is computed thanks to scaledVBAPGain function for the two loudspeakers of the active pair, and set to 0 for the other ones
+		amps = (angle1, angle2, t) : scaledVBAPGain : ((_ <: par(i, p, *(i == thisPairInd1))), (_ <: par(i, p, *(i == thisPairInd2)))) : ro.interleave(p, 2) : par(i, p, +);
+		//
+		//the set of p amplitudes is applied to the virtual source input
+		thisCircularVbap = (amps, (_<:si.bus(p))) : ro.interleave(p, 2) : par(i, p, *);
+    /*
     //modulo indexes between 1 and the number of elements of the list
     modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
     //
@@ -353,6 +399,7 @@ with {
     cumulatedGain(i, l, t) = rightGain(outputs(l)+i-1, l, t) * activePair(outputs(l)+i-1, l, t) + leftGain(i, l, t) * activePair(i, l, t);
     //
     thisCircularVbap = _ <: par(i, outputs(l), *(cumulatedGain(i, l, t)));
+    */
 };
 
 
