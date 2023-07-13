@@ -1084,6 +1084,28 @@ with {
     };
 };
 
+//-------`(ho.)multiEncoder3D`----------
+// 3D Encoding of a set of P signals distributed on the unit sphere according to lists of azimuth and elevation lists of speeds and angles
+//
+// #### Usage
+//
+// ```
+// _,_, ... : multiEncoder(N, lspeed, langle, it) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `lazsp` : a list of azimuth speeds in turns by second (one speed per input signal, positive or negative)
+// * `lelsp` : a list of elevation speeds in turns by second (one speed per input signal, positive or negative)
+// * `laz` : a list of azimuth angles in radians on the unit circle to localize the sources (one angle per input signal) when their azimuth speed is 0
+// * `lel` : a list of elevation angles in radians on the unit circle to localize the sources (one angle per input signal) when their elevation speed is 0
+// * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
+//-----------------------------
+multiEncoder3D(N, lazsp, lelsp, laz, lel, it) = par(i, P, ho.rEncoder3D(N, ba.take(i+1, lazsp), ba.take(i+1, lelsp), ba.take(i+1, laz), ba.take(i+1, lel), it)) :> si.bus((N+1)*(N+1))
+with {
+    P = outputs(lazsp); //all lists are supposed to have the same length
+
 
 //----------------`(ho.)optimBasic3D`-------------------------
 // The basic optimization has no effect and should be used for a perfect
