@@ -187,22 +187,7 @@ with {
     P = outputs(langle); //supposed to be the same as outputs(lspeed)
 };
 
-/*
-multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
-with {
-    P = outputs(langle); //supposed to be the same as outputs(lspeed)
-    basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
-    thisEncoder(sp, a, it) = (_, rotationOrStaticAngle) : basicEncoder
-    with {
-        //converting the static angle from radians to [0; 1]
-        an = (a / (2 * ma.PI), 1) : fmod;
-        rotationOrStaticAngle = ((1-vn) * x + vn * an) * 2 * ma.PI;
-        //to manage the case where frequency is zero, smoothly switches from one mode to another//
-        vn = (sp == 0) : si.smooth(ba.tau2pole(it));
-        x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
-    };
-};
-*/
+
 
 //-------`(ho.)multiAleaEncoder`----------
 // Aleatory encoding of a set of P signals.
