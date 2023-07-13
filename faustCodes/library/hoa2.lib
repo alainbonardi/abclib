@@ -182,6 +182,12 @@ with {
 // * `langle` : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
 // * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
+multiEncoder(N, lspeed, langle, it) = par(i, P, ho.rEncoder(N, ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
+with {
+    P = outputs(langle); //supposed to be the same as outputs(lspeed)
+};
+
+/*
 multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
 with {
     P = outputs(langle); //supposed to be the same as outputs(lspeed)
@@ -196,7 +202,7 @@ with {
         x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
     };
 };
-
+*/
 
 //-------`(ho.)multiAleaEncoder`----------
 // Aleatory encoding of a set of P signals.
