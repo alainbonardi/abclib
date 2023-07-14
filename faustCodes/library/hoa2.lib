@@ -559,7 +559,7 @@ with {
 
 
 //----------------`(ho.)wider`-------------------------
-// Can be used to wide the diffusion of a localized sound. The order
+// Can be used to widen the diffusion of a localized sound. The order
 // depending signals are weighted and appear in a logarithmic way to
 // have linear changes.
 //
@@ -1183,6 +1183,11 @@ with {
     P = outputs(lFreq); //all lists are supposed to have the same length
 };
 
+
+//=========================3D Optimization Functions======================================
+// Functions to weight the circular harmonics signals depending on the ambisonic optimization.
+// It can be `basic`for no optimization, `maxRe` or `inPhase`.
+//========================================================================================
 
 //----------------`(ho.)optimBasic3D`-------------------------
 // The basic optimization has no effect and should be used for a perfect
