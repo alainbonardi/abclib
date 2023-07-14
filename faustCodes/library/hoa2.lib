@@ -1081,7 +1081,7 @@ with {
 //-----------------------------
 rEncoder3D(N, azsp, elsp, az, el, it) = this3DEncoder
 with {
-    basic3DEncoder(sig, ang1, ang2) = encoder3D(N, sig, ang1, ang2);
+    basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(N, sig, ang1, ang2);
     this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
     with {
         x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI);
@@ -1091,6 +1091,45 @@ with {
         vn2 = (elsp == 0) : si.smooth(ba.tau2pole(it));
         rotationOrStaticElev =  (1-vn2) * x2 + vn2 * el;
     };
+};
+
+
+//-------`(ho.)aleaEncoder3D`----------
+// Ambisonic aleatory encoder in 3D. A mono signal is 3D-encoded at an ambisonic order
+// with a random position of the source around an azimuth and an elevation inside an azimuth range and an elevation range.
+//
+// #### Usage
+//
+// ```
+// _ : aleaEncoder3D(N, freq, azimuth, elevation, deltaAzimuth, deltaElevation, indA, indE) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `freq`: the frequency in Herz of update of the random position of the source
+// * `azimuth`: the azimuth in degrees on which the source is centered
+// * `elevation`: the elevation in degrees on which the source is centered
+// * `deltaAzimuth` : the range of azimuth variation of the source in degrees
+// * `deltaElevation` : the range of elevation variation of the source in degrees
+// * `indA` : the index of the random azimuth generator, used when there are several random decoders, but can be left to 0 when there is only one.
+// * `indE` : the index of the random elevation generator, used when there are several random decoders, but can be left to 1 when there is only one.
+//-----------------------------
+aleaEncoder3D(N, freq, azimuth, elevation, deltaAzimuth, deltaElevation, indA, indE) = thisAleaEncoder3D
+		with {
+			ramp = os.phasor(1, freq);
+			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			temporalFilter = ba.sAndH(th);
+			//computes the temporal interval taking into account the case when f=0 and when f<0
+			dt = (ma.SR, max(0.00001, freq)) : / : ma.fabs ;
+			rndValA = + (90000 + indA * 20) ~ *(1410065407);
+            rndValE = + (90000 + indE * 20) ~ *(1410065407);
+			noiseValA = rndValA / 2147483647.0;
+            noiseValE = rndValE / 2147483647.0;
+			randomAzimuth = noiseValA : *(deltaAzimuth / 2) : +(azimuth) : temporalFilter : ba.line(dt) : *(ma.PI) : /(180);
+            randomElevation = noiseValE : *(deltaElevation / 2) : +(elevation) : temporalFilter : ba.line(dt) : *(ma.PI) : /(180);
+            basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(N, sig, ang1, ang2);
+            thisAleaEncoder3D = (_, randomAzimuth, randomElevation) : basic3DEncoder;
 };
 
 
