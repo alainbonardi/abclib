@@ -56,7 +56,13 @@ declare author "Alain Bonardi";
 declare author "Paul Goutmann";
 declare copyright "2012-2013 Guillot, Paris, Colafrancesco, CICM labex art H2H, U. Paris 8, 2019 Wargreen, 2022 Bonardi, Goutmann";
 
-//============================Encoding/decoding Functions=================================
+
+//========================================================================================
+//==================================2D Functions==========================================
+//========================================================================================
+//========================================================================================
+
+//=========================2D Encoding/decoding Functions=================================
 //========================================================================================
 
 //----------------------`(ho.)encoder`---------------------------------
@@ -110,6 +116,7 @@ with {
     };
 };
 
+
 //-------`(ho.)aleaEncoder`----------
 // Ambisonic aleatory encoder in 2D. A mono signal is encoded at an ambisonic order
 // with a random position of the source around an angle inside an angular range.
@@ -141,7 +148,6 @@ aleaEncoder(N, freq, angle, deltaAngle, index) = thisAleaEncoder
 			basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
     		thisAleaEncoder = (_, randomAngle) : basicEncoder;
 };
-
 
 
 //-------`(ho.)stereoEncoder`----------
@@ -178,23 +184,13 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `lspeed` : a list of speeds in turns by second (one speed per input signal, positive or negative)
-// * `langle` : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
+// * `lSpeed` : a list of speeds in turns by second (one speed per input signal, positive or negative)
+// * `lAngle` : a list of angles in radians on the unit circle to localize the sources (one angle per input signal)
 // * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
 //-----------------------------
-multiEncoder(N, lspeed, langle, it) = par(i, P, thisEncoder(ba.take(i+1, lspeed), ba.take(i+1, langle), it)) :> si.bus(2*N+1)
+multiEncoder(N, lSpeed, lAngle, it) = par(i, P, ho.rEncoder(N, ba.take(i+1, lSpeed), ba.take(i+1, lAngle), it)) :> si.bus(2*N+1)
 with {
-    P = outputs(langle); //supposed to be the same as outputs(lspeed)
-    basicEncoder(sig, angle) = ho.encoder(N, sig, angle);
-    thisEncoder(sp, a, it) = (_, rotationOrStaticAngle) : basicEncoder
-    with {
-        //converting the static angle from radians to [0; 1]
-        an = (a / (2 * ma.PI), 1) : fmod;
-        rotationOrStaticAngle = ((1-vn) * x + vn * an) * 2 * ma.PI;
-        //to manage the case where frequency is zero, smoothly switches from one mode to another//
-        vn = (sp == 0) : si.smooth(ba.tau2pole(it));
-        x = (os.phasor(1, sp), an, 1) : (+, _) : fmod;
-    };
+    P = outputs(lSpeed); //supposed to be the same as the number of angles in lAngle
 };
 
 
@@ -466,12 +462,10 @@ with {
 };
 
 
-//============================Optimization Functions======================================
-// Functions to weight the circular harmonics signals depending to the
-// ambisonics optimization.
-// It can be `basic` for no optimization, `maxRe` or `inPhase`.
+//=========================2D Optimization Functions======================================
+// Functions to weight the circular harmonics signals depending on the ambisonic optimization.
+// It can be `basic`for no optimization, `maxRe` or `inPhase`.
 //========================================================================================
-
 
 //----------------`(ho.)optimBasic`-------------------------
 // The basic optimization has no effect and should be used for a perfect
@@ -697,7 +691,7 @@ with {
 };
 
 
-//============================Spatial Sound Processes ====================================
+//=========================2D Spatial Sound Processes ====================================
 // We propose implementations of processes intricated to the ambisonic model.
 // The process is implemented using as many instances as the number of harmonics at at certain order.
 // The key control parameters of these instances are computed thanks to distribution functions
@@ -765,6 +759,7 @@ with {
     dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
 
+
 //-------`(ho.).synDecorrelation`----------
 // Spatial ambisonic decorrelation in syn mode.
 //
@@ -830,6 +825,7 @@ with {
     dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
 
+
 //-------`(ho.).fxRingMod`----------
 // Spatial ring modulation in syn mode.
 //
@@ -886,6 +882,7 @@ with {
     //
     freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind));
 };
+
 
 //-------`(ho.).synRingMod`----------
 // Spatial ring modulation in syn mode.
@@ -976,8 +973,11 @@ th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2);
 
 
 //========================================================================================
-//============================3D Functions================================================
+//==================================3D Functions==========================================
 //========================================================================================
+//========================================================================================
+
+//=============================3D Encoding Functions======================================
 //========================================================================================
 
 //----------------------`(ho.)encoder3D`---------------------------------
@@ -1081,7 +1081,7 @@ with {
 //-----------------------------
 rEncoder3D(N, azsp, elsp, az, el, it) = this3DEncoder
 with {
-    basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(N, sig, ang1, ang2);
+    basic3DEncoder(sig, ang1, ang2) = encoder3D(N, sig, ang1, ang2);
     this3DEncoder = (_, rotationOrStaticAzim, rotationOrStaticElev) : basic3DEncoder
     with {
         x1 = (os.phasor(1, azsp), az, 1) : (+, _) : fmod : *(2 * ma.PI);
@@ -1095,7 +1095,7 @@ with {
 
 
 //-------`(ho.)aleaEncoder3D`----------
-// Ambisonic aleatory encoder in 3D. A mono signal is 3D-encoded at an ambisonic order
+// Ambisonic aleatory encoder in 3D. A mono signal is encoded at an ambisonic order
 // with a random position of the source around an azimuth and an elevation inside an azimuth range and an elevation range.
 //
 // #### Usage
@@ -1130,6 +1130,57 @@ aleaEncoder3D(N, freq, azimuth, elevation, deltaAzimuth, deltaElevation, indA, i
             randomElevation = noiseValE : *(deltaElevation / 2) : +(elevation) : temporalFilter : ba.line(dt) : *(ma.PI) : /(180);
             basic3DEncoder(sig, ang1, ang2) = ho.encoder3D(N, sig, ang1, ang2);
             thisAleaEncoder3D = (_, randomAzimuth, randomElevation) : basic3DEncoder;
+};
+
+
+//-------`(ho.)multiEncoder3D`----------
+// 3D Encoding of a set of P signals distributed on the unit sphere according to lists of azimuth and elevation lists of speeds and angles
+//
+// #### Usage
+//
+// ```
+// _,_, ... : multiEncoder(N, lspeed, langle, it) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `lAzSpeed` : a list of azimuth speeds in turns by second (one speed per input signal, positive or negative)
+// * `lElSpeed` : a list of elevation speeds in turns by second (one speed per input signal, positive or negative)
+// * `lAz` : a list of azimuth angles in radians on the unit circle to localize the sources (one angle per input signal) when their azimuth speed is 0
+// * `lEl` : a list of elevation angles in radians on the unit circle to localize the sources (one angle per input signal) when their elevation speed is 0
+// * `it` : interpolation time (in milliseconds) between the rotation and the fixed modes.
+//-----------------------------
+multiEncoder3D(N, lAzSpeed, lElSpeed, lAz, lEl, it) = par(i, P, ho.rEncoder3D(N, ba.take(i+1, lAzSpeed), ba.take(i+1, lElSpeed), ba.take(i+1, lAz), ba.take(i+1, lEl), it)) :> si.bus((N+1)*(N+1))
+with {
+    P = outputs(lAzSpeed); //all lists are supposed to have the same length
+};
+
+
+//-------`(ho.)multiAleaEncoder3D`----------
+// 3D aleatory encoding of a set of P signals.
+// The signals are distributed on the unit sphere.
+// Each of them is centered around an azimuth and an elevation,
+// within an azimuth range, an elevation range, and updated at certain frequencies.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : multiAleaEncoder(N, lFreq, lAngle, lDeltaAngle) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `lFreq` : a list of frequencies in Herz of update of the random position of each source
+// * `lAz` : a list of azimuths in degrees on which each source is centered
+// * `lEl` : a list of elevations in degrees on which each source is centered
+// * `lDeltaAz` : a list of ranges of azimuth variation of each source in degrees
+// * `lDeltaEl` : a list of ranges of elevation variation of each source in degrees
+//-----------------------------
+multiAleaEncoder3D(N, lFreq, lAz, lEl, lDeltaAz, lDeltaEl) = par(i, P, aleaEncoder3D(N, ba.take(i+1, lFreq), ba.take(i+1, lAz), ba.take(i+1, lEl), ba.take(i+1, lDeltaAz), ba.take(i+1, lDeltaEl), 2*i, 2*i+1)) :> si.bus((N+1)*(N+1))
+with {
+    P = outputs(lFreq); //all lists are supposed to have the same length
 };
 
 
@@ -1222,3 +1273,4 @@ with {
     bus3D = si.bus((N+1)*(N+1));
     thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(N)), (bus3D:ho.optimMaxRe3D(N)), (bus3D:ho.optimInPhase3D(N)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : ro.interleave(3*(N+1)*(N+1), 2) : par(i, 3*(N+1)*(N+1), *) :> bus3D;
 };
+
