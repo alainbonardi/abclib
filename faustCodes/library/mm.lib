@@ -164,18 +164,24 @@ scale(x1, x2, y1, y2, x) = ba.if(x1 != x2, (x - a1) * (b2 - b1) / (a2 - a1) + b1
 zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 
 
-//--------------------------------------------------------------------------------------//
-//AMPLITUDE CONTROL IN DB
-//--------------------------------------------------------------------------------------//
 //
-//A dB to linear conversion with threshold (-127)
+//-------`(mm.)db2gain`----------
+// db2gain transforms an amplitude in dB to a linear amplitude
+// with a theshold at -127 dB where the amplitude is forced to 0
+
+// `db2gain` is a standard Faust function.
 //
-dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+// #### Usage
 //
-//
-//Smooth amplitude control with gain in dB
-//
-dbtogain = si.smoo : dbcontrol;
+// ```
+// _ : db2gain : _
+// ```
+//-----------------------------
+
+db2gain = si.smoo : dbcontrol
+with {
+		dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+};
 
 //--------------------------------------------------------------------------------------//
 // TRAJECTORY GENERATORS

@@ -41,7 +41,7 @@ import("mm.lib");
 abc_2d_stereodecoder_ui(n) = thisStereoDecoder
 	with {
 			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
-			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			leftDispatcher = _<:(*(1-direct), *(direct));
 			rightDispatcher = _<:(*(direct), *(1-direct));
 			thisStereoDecoder = ho.decoderStereo(n) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
@@ -51,7 +51,7 @@ abc_2d_decoder_ui(n, p) = ho.iDecoder(n, la, direct, offset, stereo, gain)
 	with {
 			direct = (2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1) : si.smoo; 
 			offset = hslider("h:decoder/v:general/[1]angularoffset[unit:deg]", 0, -180, 180, 1) : si.smoo;
-			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			stereo = nentry("h:decoder/v:general/[4]stereo", 0, 0, 1, 1) : si.smoo;
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
 			a(i, nls) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
@@ -514,9 +514,9 @@ abc_addSynth_ui(n) = thisAdditiveSynth
 				//fundamental frequency//
 				f0 = nentry("v:addSynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
 				//general gain//
-				gain = hslider("v:addSynth/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:addSynth/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 				//amplitude of each partial
-				amp(ind) = hslider("v:addSynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
+				amp(ind) = hslider("v:addSynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : db2gain;
 				//frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
 				fmult(ind) = nentry("v:addSynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
 				//beats - second oscillator shifted of a few Hz (by default 0)
@@ -535,13 +535,13 @@ abc_substractSynth_ui(n) = thisSubstractiveSynth
 				//fundamental frequency//
 				f0 = hslider("v:substractSynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
 				//general gain
-				gain = hslider("v:substractSynth/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:substractSynth/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 				//filter quality
 				filterQ = hslider("v:substractSynth/filterQ", 50, 1, 500, 1);
 				//filter gain
 				filterG = hslider("v:substractSynth/filterG", 0.8, 0, 1, 0.01);
 				//amplitude of each partial
-				amp(ind) = hslider("v:substractSynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : dbtogain;
+				amp(ind) = hslider("v:substractSynth/h:partials/v:amps/amp%2ind", (ba.linear2db(1/(ind+1))), -127, 18, 0.01) : db2gain;
 				//frequency multipliers (harmonic by default :f, 2*f, 3*f, etc.))//
 				fmult(ind) = nentry("v:substractSynth/h:partials/v:fmults/fmult%2ind", (ind+1), 0, 1000, 0.00001);
 				//
@@ -558,7 +558,7 @@ abc_audioTester_ui = audioTester(n, nhpmax, freq, gain)
 				nhpmax = 64; //maximum number of loudspeakers
 				n = nentry("v:audioTester/n", 2, 1, nhpmax, 1); //number of loudspeakers used (from 1 to 64)
 				freq = hslider("v:audioTester/freq", 1, 0.01, 100, 0.01);//frequency of the envelopes
-				gain = hslider("v:audioTester/gain [unit:dB]", -20, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:audioTester/gain [unit:dB]", -20, -127, 18, 0.01) : db2gain;
 };
 
 //
@@ -595,14 +595,14 @@ abc_chowningPan1_ui = chowningPanner(incAngle, phi0) : (*(gain), *(gain))
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
 				//incAngle is the incident angle of the source when there is only one (not applicable to several sources)
 				incAngle = hslider("v:chopan/incAngle [unit:deg]", 0, -90, 90, 1) : si.smoo;
-				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };
 abc_chowningPan_ui(n) = multiChowningPanner(n, phi0, gain)
 			with {
 				//phi0 is the half angle of the stereophony, between the left speaker and the front line of the listener//
 				phi0 = hslider("v:chopan/phi0 [unit:deg]", 30, 1, 90, 1) : si.smoo;
 				//gain is the output gain in dB
-				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:chopan/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -613,7 +613,7 @@ abc_pardelset_ui(n) = par(i, n, (pardel(i) : *(gain(i))))
 			with {
 					tempo = nentry("h:multidelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
 					dur(ind)=((hslider("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min;
-					gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : dbtogain;
+					gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : db2gain;
 					fdbk(ind) = hslider("h:multidelays/v:fdbks/fdbk%2ind", 0, 0, 0.99999, 0.0001) : si.smoo;
 					updatefreq = hslider("h:multidelays/v:general/updatefreq [unit:Hz]", 30, 0.0001, 1000, 0.0001);
 					//
@@ -632,7 +632,7 @@ abc_delaychain_ui(n) = thisdelaychain
 				tempo = nentry("h:chaindelays/v:general/tempo [unit:bpm]", 60, 1, 600, 0.01);
 				//
 				dur(ind)=((nentry("h:multidelays/v:durations/dur%2ind [unit:musicaldur]", 1, 0, 32, 0.0001) * 60 / tempo * ma.SR), Ndelsamp) : min ;
-				gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : dbtogain;
+				gain(ind) = hslider("h:multidelays/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : db2gain;
 				delseq(ind) = overlappedDoubleDelay(dur(ind-1), Ndelsamp, updatefreq);
 				//
 				//--------------------------------------------------------------------------------------//
@@ -668,7 +668,7 @@ abc_multifreqshift_ui(n) = par(i, n, (fshiftp(fr(i)) : *(gain(i))))
 				//Shifting frequencies
 				fr(ind) = hslider("h:multifreqshifts/v:shiftingfreqs/fr%2ind [unit:Hz]", 0, -10000, 10000, 0.001);
 				//Gains in dB
-				gain(ind) = hslider("h:multifreqshifts/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : dbtogain;
+				gain(ind) = hslider("h:multifreqshifts/v:dynamics/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : db2gain;
 				//
 			};
 //
@@ -680,7 +680,7 @@ abc_gainline(n, g) = par(i, n, *(g));
 //
 abc_multigain_ui(n) = abc_gainline(n, gain)
 			with {
-				gain = hslider("v:gains/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:gains/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 
 };
 //
@@ -705,7 +705,7 @@ abc_multiharmo_ui(n) = par(ind, n, harmonizer(trans(ind), winsize(ind), gain(ind
 				//amount of transposition (in midicents) of the harmonizer #i
 				trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.01);
 				//gain in dB of the harmonizer #i
-				gain(ind) = hslider("h:multiharmo/v:gains/gain%2ind [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain(ind) = hslider("h:multiharmo/v:gains/gain%2ind [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 				//window size of the harmonizer #i
 				winsize(ind) = hslider("h:multiharmo/v:windowsizes/winsize%2ind", 50, 0, 127, 0.01) : pdLineDrive4096;
 			};
@@ -888,7 +888,7 @@ abc_raindrops_ui = abc_raindrops(dropfreq, dropthinness, avgfreq, attackdur, qf,
 				//
 				dropthinness = hslider("v:drops/dropthinness", 50, 0.01, 1000, 0.01); //must be > 0
 				//
-				gain = hslider("v:drops/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:drops/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };
 
 
@@ -899,7 +899,7 @@ abc_raindrops_ui = abc_raindrops(dropfreq, dropthinness, avgfreq, attackdur, qf,
 //
 abc_globalgenerator_ui = (noisegenerator, sinusgenerator, phasorgenerator) :> *(gain)
 			with {
-				gain = hslider("v:generator/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:generator/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 				//
 				//controls for the noise generator
 				noiseonoff = checkbox("v:generator/h:noise/noiseon") : si.smoo;
@@ -948,7 +948,7 @@ abc_rissetsbell_ui = (_, gate) : rissetsbell(dur, freq, pfreq2, resq, resg, osc2
 				osc2filter = nentry("osc2filter", 0., 0., 1., 0.01) : si.smoo;
 				//
 				//global amplitude of the bell
-				gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:decoder/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 				//
 				//triggering of the bell
 				gate = button("gate");
@@ -965,7 +965,7 @@ abc_soundcoat_ui = soundcoat(16, f0, randfreq, gain)
 				f0 = nentry("v:synthetizers/f0 [unit:Hz]", 100, 20, 10000, 0.01);
 				randwin= nentry("v:synthetizers/randwin [unit:msec]", 3000, 1, 20000, 1);
 				randfreq = 1000. / randwin;
-				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };
 
 
@@ -979,7 +979,7 @@ abc_jupiterbank_ui = jupiterOscFilterBank(f0, k, osc2filter, resq, resg, gain)
 				resq = nentry("v:jupiterbank/resq", 1000., 0., 1000., 0.1);//reson quality factor//
 				resg = nentry("v:jupiterbank/resg", 0.1, 0., 1., 0.01);//reson gain//
 				//global amplitude of the bell
-				gain = hslider("v:jupiterbank/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:jupiterbank/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };
 
 
@@ -995,7 +995,7 @@ abc_jupiterbank2_ui = jupiterOscFilterBank2(f0, k, fa, dt, osc2filter, resq, res
 				resq = nentry("v:jupiterbank/resq", 1000., 0., 1000., 0.1);//reson quality factor//
 				resg = nentry("v:jupiterbank/resg", 0.1, 0., 1., 0.01);//reson gain//
 				//global amplitude of the bell
-				gain = hslider("v:jupiterbank/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:jupiterbank/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };
 //
 //--------------------------------------------------------------------------------------//
@@ -1009,7 +1009,7 @@ abc_pulsedEnv2Synth_ui(n) = pulsedEnv2Synth(n, envFreq, ratio, spread, carrierFr
 				spread = hslider("v:pulsedEnv2Synth/spread", 0, 0, 1, 0.001);
 				carrierFreq = hslider("v:pulsedEnv2Synth/carrierFreq [unit:Hz]", 880, 0.001, 5000, 0.001);
 				fc = hslider("v:pulsedEnv2Synth/fc [unit:Hz]", 1500, 20, 10000, 1);
-				gain = hslider("v:pulsedEnv2Synth/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;	
+				gain = hslider("v:pulsedEnv2Synth/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;	
 };
 
 //
@@ -1025,7 +1025,7 @@ abc_puckettesPaf_ui = puckettesPaf(f0, cf, bw, gain, sigma, a, wf)
 				f0 = hslider("f0 [unit:Hz]",220, 20, 20000, 0.001);
 				cf = hslider("cf [unit:Hz]",500, 20, 20000, 0.001);
 				bw = hslider("bw [unit:Hz]", 50, 0.001, 5000, 0.001);
-				gain = hslider("gain [unit:dB]", 0, -127., 18., 0.01) : dbtogain;
+				gain = hslider("gain [unit:dB]", 0, -127., 18., 0.01) : db2gain;
 				wf = nentry("wf", 0, 0, 1, 1) : si.smoo; //0 for Gauss function, 1 for Cauchy function
 				//
 				//sigma for the gaussian function
@@ -1040,7 +1040,7 @@ abc_puckettesPaf2_ui = puckettesPaf2(f0, cf, bw, gain, iamp, ifreq, sigma, a, wf
 			f0 = hslider("f0 [unit:Hz]", 220, 20, 20000, 0.001);
 			cf = hslider("cf [unit:Hz]", 500, 20, 20000, 0.001);
 			bw = hslider("bw [unit:Hz]", 50, 0.001, 5000, 0.001);
-			gain = hslider("gain [unit:dB]", 0, -127., 18., 0.01) : dbtogain;
+			gain = hslider("gain [unit:dB]", 0, -127., 18., 0.01) : db2gain;
 			//
 			ifreq = hslider("ifreq [unit:Hz]", 0.1, 0, 1000, 0.001);
 			iamp = hslider("iamp", 0, 0, 1, 0.001) : si.smoo;
