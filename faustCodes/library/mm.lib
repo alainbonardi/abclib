@@ -293,16 +293,58 @@ polarVariableCircle(aRho, fRho, aTheta, fTheta, rSpeed) = (1 + aRho * os.osccos(
 // BUS FUNCTIONS
 //--------------------------------------------------------------------------------------//
 
+//-------`(mm.)busSelector`----------
+// busSelector enables a crossfade between two buses of N signals with dt as transition time, and left or right choice
 
-// number of channels, transition time in samples, left (0) or right (1)
-busSelector(n, dt, lor) = thisBusSelector
+//
+// #### Usage
+//
+// ```
+// _,_,... : busSelector(N, dt, lor) : _,_,...
+// ```
+//
+// Where:
+//
+// * `N': the number of signals/channels of each bus (total number of inputs: 2*N)
+// * `dt`: the transition time in number of samples
+// * 'lor' : left or right choice (0 for the left bus, 1 for the right bus)
+//-----------------------------
+busSelector(N, dt, lor) = thisBusSelector
 			with {
 					sel = lor : ba.line(dt); 
-					thisBusSelector = (par(i, n, *(1-sel)), par(i, n, *(sel))) :> si.bus(n);
+					thisBusSelector = (par(i, N, *(1-sel)), par(i, N, *(sel))) :> si.bus(N);
 };
 
+//-------`(mm.)busplus`----------
+// busPlus enables to add two buses of N signals (sig#1 of bus#1 is added to sig#1 of bus#2, etc.)
+//
+// #### Usage
+//
+// ```
+// _,_,... : busPlus(N) : _,_,...
+// ```
+//
+// Where:
+//
+// * `N': the number of signals/channels of each bus (total number of inputs: 2*N)
+//-----------------------------
 busPlus(N) = si.bus(2*N) :> si.bus(N);
 
+
+//-------`(mm.)busMult`----------
+// busPlus enables to multiply two buses of N signals (sig#1 of bus#1 is multiplied by sig#1 of bus#2, etc.)
+// the function enables N parallel modulations
+//
+// #### Usage
+//
+// ```
+// _,_,... : busMult(N) : _,_,...
+// ```
+//
+// Where:
+//
+// * `N': the number of signals/channels of each bus (total number of inputs: 2*N)
+//-----------------------------
 busMult(N) = si.bus(2*N) : ro.interleave(N, 2) : si.bus(2*N) : par(i, N, *);
 
 
