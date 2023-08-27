@@ -1005,7 +1005,7 @@ abc_jupiterbank2_ui = jupiterOscFilterBank2(f0, k, fa, dt, osc2filter, resq, res
 abc_pulsedEnv2Synth_ui(n) = pulsedEnv2Synth(n, envFreq, ratio, spread, carrierFreq, fc, gain)
 		with {
 				envFreq = hslider("v:pulsedEnv2Synth/envFreq [unit:Hz]", 8.36, 0.001, 500, 0.001);
-				ratio = hslider("v:pulsedEnv2Synth/ratio", 140, 1.001, 500, 0.001);
+				ratio = hslider("v:pulsedEnv2Synth/ratio", 140, 0, 500, 0.001);
 				spread = hslider("v:pulsedEnv2Synth/spread", 0, 0, 1, 0.001);
 				carrierFreq = hslider("v:pulsedEnv2Synth/carrierFreq [unit:Hz]", 880, 0.001, 5000, 0.001);
 				fc = hslider("v:pulsedEnv2Synth/fc [unit:Hz]", 1500, 20, 10000, 1);
