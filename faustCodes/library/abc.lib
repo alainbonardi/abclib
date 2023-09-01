@@ -47,7 +47,7 @@ abc_2d_stereodecoder_ui(n) = thisStereoDecoder
 			thisStereoDecoder = ho.decoderStereo(n) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
-abc_2d_decoder_ui(n, p) = ho.iDecoder(n, la, direct, offset, stereo, gain) 
+abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, gain) 
 	with {
 			direct = (2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1) : si.smoo; 
 			offset = hslider("h:decoder/v:general/[1]angularoffset[unit:deg]", 0, -180, 180, 1) : si.smoo;
