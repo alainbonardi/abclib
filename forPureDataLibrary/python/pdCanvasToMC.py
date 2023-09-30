@@ -3,12 +3,15 @@
 """
 Created on Mon Sep 11 15:53:35 2023
 @author: alainbonardi
-This Python program scans all canvas pd files within a directory and transforms them
+This Python program scans all canvas pd files within a selected directory and transforms them
 to multichannel abstractions using snake~ out and snake~ in objects
-It creates two kinds of 
+It creates two kinds of abstractions: 
+- simple multichannel abstractions without ui (with suffix _m)
+- multichannel abstractions with ui (with suffix _m_ui)
 """
 import os
 import shutil
+from tkinter.filedialog import askdirectory
 
 #declaration of constants
 Xobj = "#X obj"
@@ -445,7 +448,8 @@ def pdCodeProcess(fileName, patchFolder, objectName):
     savePdCode(pdCodeMC, mcFilePath)
 
 
-directory = '/Users/alainbonardi/Dropbox/faustFactory/abclib_factory/abclib_labo_brainstorming/manipulationPureDataEnPython/patchs'
+#directory = '/Users/alainbonardi/Dropbox/faustFactory/abclib_factory/abclib_labo_brainstorming/manipulationPureDataEnPython/patchs'
+directory = askdirectory()
 
 pathUI = os.path.join(directory,"UI")
 if os.path.exists(pathUI):
