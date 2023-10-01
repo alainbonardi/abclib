@@ -351,101 +351,106 @@ def pdCodeProcess(fileName, patchFolder, objectName):
     #keeps the original number of outlet~
     outletTildeNumber = len(outletTildeList)
     
-    #deletes the connections from the inlets~ to other objects
-    for indInlet in inletTildeList:
-        deleteConnectionsFromObject(pdCodeUI, indInlet)
-    #deletes the connections to the outlets (coming from other objects)
-    for indOutlet in outletTildeList:
-        deleteConnectionsToObject(pdCodeUI, indOutlet)
-    parsePdCode(pdCodeUI)
-    #adds the new connections between snake out and the pins of the faust object
-    inletConnectionLine = lastConnectLineNumber(pdCodeUI)+3
-    #inletConnectionLine = snakeInLine + 1
-    for ind in range(len(inletTildeList)):
-        addConnection(snakeOutIndex, ind, faustObjectIndex, ind+1, pdCodeUI, inletConnectionLine + ind)
-    outletConnectionLine = inletConnectionLine + len(inletTildeList)
-    #print(outletConnectionLine)
+    #we only process the patch if there are inlet~ inside
+    if inletTildeNumber > 0:
+        #deletes the connections from the inlets~ to other objects
+        for indInlet in inletTildeList:
+            deleteConnectionsFromObject(pdCodeUI, indInlet)
+            #deletes the connections to the outlets (coming from other objects)
+        for indOutlet in outletTildeList:
+            deleteConnectionsToObject(pdCodeUI, indOutlet)
+        parsePdCode(pdCodeUI)
+        #adds the new connections between snake out and the pins of the faust object
+        inletConnectionLine = lastConnectLineNumber(pdCodeUI)+3
+        #inletConnectionLine = snakeInLine + 1
+        for ind in range(len(inletTildeList)):
+            addConnection(snakeOutIndex, ind, faustObjectIndex, ind+1, pdCodeUI, inletConnectionLine + ind)
+        outletConnectionLine = inletConnectionLine + len(inletTildeList)
+        #print(outletConnectionLine)
     
-    for ind in range(len(outletTildeList)):
-        addConnection(faustObjectIndex, ind+1, snakeInIndex, ind, pdCodeUI, outletConnectionLine+ind)
+        for ind in range(len(outletTildeList)):
+            addConnection(faustObjectIndex, ind+1, snakeInIndex, ind, pdCodeUI, outletConnectionLine+ind)
     
-    addConnection(inletTildeList[0], 0, snakeOutIndex, 0, pdCodeUI, outletConnectionLine+len(outletTildeList))
-    addConnection(snakeInIndex, 0, outletTildeList[0], 0, pdCodeUI, outletConnectionLine+len(outletTildeList)+1)
+        addConnection(inletTildeList[0], 0, snakeOutIndex, 0, pdCodeUI, outletConnectionLine+len(outletTildeList))
+        addConnection(snakeInIndex, 0, outletTildeList[0], 0, pdCodeUI, outletConnectionLine+len(outletTildeList)+1)
     
-    #
-    #we delete all inlet~ objects (except the first one) and update the descrption of the connections in consequence
-    #displayPdCode(pdCode)
+        #
+        #we delete all inlet~ objects (except the first one) and update the descrption of the connections in consequence
+        #displayPdCode(pdCode)
     
-    for i in range(1, len(inletTildeList)):
-        #we skip the first inlet~ that is not deleted
-        #at each call, we delete the 2nd inlet~ to be found until there are no more inlet~ except the first one
-        lineNumber = lookForThisInlet(pdCodeUI, 1)
-        #print("line #="+str(lineNumber)+ " i="+str(i))
-        if (lineNumber > -1):
-            del pdCodeUI[lineNumber]
-            updateAllConnectionData(inletTildeList[1], pdCodeUI)
-            parsePdCode(pdCodeUI)
-        #all connections are updated 
+        for i in range(1, len(inletTildeList)):
+            #we skip the first inlet~ that is not deleted
+            #at each call, we delete the 2nd inlet~ to be found until there are no more inlet~ except the first one
+            lineNumber = lookForThisInlet(pdCodeUI, 1)
+            #print("line #="+str(lineNumber)+ " i="+str(i))
+            if (lineNumber > -1):
+                del pdCodeUI[lineNumber]
+                updateAllConnectionData(inletTildeList[1], pdCodeUI)
+                parsePdCode(pdCodeUI)
+            #all connections are updated 
     
-    for i in range(1, len(outletTildeList)):
-        #we skip the first outlet~ that is not deleted
-        #at each call, we delete the 2nd inlet~ to be found until there are no more inlet~ except the first one
-        lineNumber = lookForThisOutlet(pdCodeUI, 1)
-        #print("line #="+str(lineNumber)+ " i="+str(i))
-        if (lineNumber > -1):
-            del pdCodeUI[lineNumber]
-            updateAllConnectionData(outletTildeList[1], pdCodeUI)
-            parsePdCode(pdCodeUI)
-        #all connections are updated 
+        for i in range(1, len(outletTildeList)):
+            #we skip the first outlet~ that is not deleted
+            #at each call, we delete the 2nd inlet~ to be found until there are no more inlet~ except the first one
+            lineNumber = lookForThisOutlet(pdCodeUI, 1)
+            #print("line #="+str(lineNumber)+ " i="+str(i))
+            if (lineNumber > -1):
+                del pdCodeUI[lineNumber]
+                updateAllConnectionData(outletTildeList[1], pdCodeUI)
+                parsePdCode(pdCodeUI)
+           #all connections are updated 
 
     
-    #dump(pdCode)
-    uiCanvasFileName = faustObjectName+"_m_ui.pd"
-    uiCanvasPath = os.path.join(pathUI, uiCanvasFileName)
-    savePdCode(pdCodeUI, uiCanvasPath)
+        #dump(pdCode)
+        uiCanvasFileName = faustObjectName+"_m_ui.pd"
+        uiCanvasPath = os.path.join(pathUI, uiCanvasFileName)
+        savePdCode(pdCodeUI, uiCanvasPath)
     
-    #creation of the multichannel patch without user interface
-    #creating a new list of lines
-    pdCodeMC = []
-    mcFileName = faustObjectName+"_m.pd"
-    mcFilePath = os.path.join(pathMC, mcFileName)
-    #mcFile = open(mcFileName, "a")
-    #the content of the patch does not vary except the number of channels
-    #of the snake~ in and snake~ out objects
-    #patch window
-    pdCodeMC.append("#N canvas 0 0 400 350 12;\n")
-    #object 0 is the patch inlet
-    pdCodeMC.append("#X obj 30 30 inlet;\n")
-    #object 1 is the patch inlet~
-    pdCodeMC.append("#X obj 100 30 inlet~;\n")
-    #object 2 is the snake~ out with variable number of outlets
-    pdCodeMC.append("#X obj 100 80 snake~ out "+str(inletTildeNumber)+";\n")
-    #object 3 is the compiled Faust object
-    pdCodeMC.append("#X obj 30 130 "+faustObjectName+"~;\n")
-    #object 4 is the patch outlet
-    pdCodeMC.append("#X obj 30 230 outlet;\n")
-    #object 5 is the snake~ int with variable number of inlets
-    pdCodeMC.append("#X obj 100 180 snake~ in "+str(outletTildeNumber)+";\n")
-    #object 6 is the patch outlet~
-    pdCodeMC.append("#X obj 100 230 outlet~;\n")
-    #object 7 is the comment at the bottom of the patch
-    pdCodeMC.append("#X text 30 280 generated by pdCanvasToMC.py / abclib - CICM;\n")
-    #connects the patch inlet to the first inlet of the compiled Faust object
-    pdCodeMC.append("#X connect 0 0 3 0;\n")
-    #connects the patch inlet~ to the first inlet of snake~ out
-    pdCodeMC.append("#X connect 1 0 2 0;\n")
-    #loop to connect all outlets of snake~ out to all signal inlets of the compiled object
-    for i in range(1, inletTildeNumber+1):
-        pdCodeMC.append("#X connect 2 "+str(i-1)+" 3 "+str(i)+";\n")
-    #connects the control outlet of the compiled object to the patch outlet
-    pdCodeMC.append("#X connect 3 0 4 0;\n")
-    #loop to connect all signal outlets of the compiled object to the inlets of snake~ in
-    for i in range(1, outletTildeNumber+1):
-        pdCodeMC.append("#X connect 3 "+str(i)+" 5 "+str(i-1)+";\n")
-    #connects the outlet of snake~ in to the patch outlet~
-    pdCodeMC.append("#X connect 5 0 6 0;\n")
-    #
-    savePdCode(pdCodeMC, mcFilePath)
+        #creation of the multichannel patch without user interface
+        #creating a new list of lines
+        pdCodeMC = []
+        mcFileName = faustObjectName+"_m.pd"
+        mcFilePath = os.path.join(pathMC, mcFileName)
+        #mcFile = open(mcFileName, "a")
+        #the content of the patch does not vary except the number of channels
+        #of the snake~ in and snake~ out objects
+        #patch window
+        pdCodeMC.append("#N canvas 0 0 400 350 12;\n")
+        #object 0 is the patch inlet
+        pdCodeMC.append("#X obj 30 30 inlet;\n")
+        #object 1 is the patch inlet~
+        pdCodeMC.append("#X obj 100 30 inlet~;\n")
+        #object 2 is the snake~ out with variable number of outlets
+        pdCodeMC.append("#X obj 100 80 snake~ out "+str(inletTildeNumber)+";\n")
+        #object 3 is the compiled Faust object
+        pdCodeMC.append("#X obj 30 130 "+faustObjectName+"~;\n")
+        #object 4 is the patch outlet
+        pdCodeMC.append("#X obj 30 230 outlet;\n")
+        #object 5 is the snake~ int with variable number of inlets
+        pdCodeMC.append("#X obj 100 180 snake~ in "+str(outletTildeNumber)+";\n")
+        #object 6 is the patch outlet~
+        pdCodeMC.append("#X obj 100 230 outlet~;\n")
+        #object 7 is the comment at the bottom of the patch
+        pdCodeMC.append("#X text 30 280 generated by pdCanvasToMC.py / abclib - CICM;\n")
+        #connects the patch inlet to the first inlet of the compiled Faust object
+        pdCodeMC.append("#X connect 0 0 3 0;\n")
+        #connects the patch inlet~ to the first inlet of snake~ out
+        pdCodeMC.append("#X connect 1 0 2 0;\n")
+        #loop to connect all outlets of snake~ out to all signal inlets of the compiled object
+        for i in range(1, inletTildeNumber+1):
+            pdCodeMC.append("#X connect 2 "+str(i-1)+" 3 "+str(i)+";\n")
+        #connects the control outlet of the compiled object to the patch outlet
+        pdCodeMC.append("#X connect 3 0 4 0;\n")
+        #loop to connect all signal outlets of the compiled object to the inlets of snake~ in
+        for i in range(1, outletTildeNumber+1):
+            pdCodeMC.append("#X connect 3 "+str(i)+" 5 "+str(i-1)+";\n")
+        #connects the outlet of snake~ in to the patch outlet~
+        pdCodeMC.append("#X connect 5 0 6 0;\n")
+        #
+        savePdCode(pdCodeMC, mcFilePath)
+        print("==>canvas processed")
+    else:
+        print("==>No inlet~ in the patch - canvas not processed")
 
 
 #directory = '/Users/alainbonardi/Dropbox/faustFactory/abclib_factory/abclib_labo_brainstorming/manipulationPureDataEnPython/patchs'
@@ -453,23 +458,29 @@ directory = askdirectory()
 
 pathUI = os.path.join(directory,"UI")
 if os.path.exists(pathUI):
-    print("Existing UI directory")
+    print("Existing UI directory_the previous one is deleted")
     shutil.rmtree(pathUI)
 os.mkdir(pathUI)
 
 pathMC = os.path.join(directory, "MC")
 if os.path.exists(pathMC):
-    print("Existing MC directory")
+    print("Existing MC directory_the previous one is deleted")
     shutil.rmtree(pathMC)
 os.mkdir(pathMC)
 
 for fileName in os.listdir(directory):
     f = os.path.join(directory, fileName)
     if (os.path.isfile(f)) and (fileName != ".DS_Store"):
-        print("filename="+fileName)
+        #print("filename="+fileName)
         fullFileName = os.path.join(directory, fileName)
         myPatchSplit = fileName.partition('.')
         myProcessName = myPatchSplit[0]
         print("____________________________________________________________")
-        print("Creating "+myProcessName+"_m_ui.pd and "+myProcessName+"_m.pd")
-        pdCodeProcess(fullFileName, directory, myProcessName)
+        if fullFileName.endswith('.pd_darwin'):
+            print(fileName+" is not a .pd PureData file -- not processed")
+
+        if fullFileName.endswith('.pd'):
+            print("Creating "+myProcessName+"_m_ui.pd and "+myProcessName+"_m.pd")     
+            pdCodeProcess(fullFileName, directory, myProcessName)
+                 
+            
