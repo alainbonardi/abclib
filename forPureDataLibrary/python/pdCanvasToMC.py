@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Sep 11 15:53:35 2023
-@author: alainbonardi
+@author: alainbonardi - CICM - 2023
 This Python program scans all canvas pd files within a selected directory and transforms them
 to multichannel abstractions using snake~ out and snake~ in objects
 It creates two kinds of abstractions: 
@@ -455,6 +455,15 @@ def pdCodeProcess(fileName, patchFolder, objectName):
 
 #directory = '/Users/alainbonardi/Dropbox/faustFactory/abclib_factory/abclib_labo_brainstorming/manipulationPureDataEnPython/patchs'
 directory = askdirectory()
+print("____________________________________________________________")
+print("____________________________________________________________")
+print("pdCanvasToMC Python program - CICM  - 2023")
+print("Creating multichannel & multichannel+UI abstractions")
+print("from canvas got in Faust online compilation")
+print("All canvas in this directory: "+directory)
+print("will be processed")
+print("____________________________________________________________")
+print("____________________________________________________________")
 
 pathUI = os.path.join(directory,"UI")
 if os.path.exists(pathUI):
