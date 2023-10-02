@@ -1,0 +1,9 @@
+#N canvas 670 122 772 355 10;
+#X obj 61 5 inlet~;
+#X obj 61 25 snake~ out 3;
+#X obj 37 71 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
+#X text 56 202 cyclone/scope~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X coords 0 -1 1 1 144 170 1 30 50;
