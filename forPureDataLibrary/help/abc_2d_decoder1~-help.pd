@@ -1,4 +1,4 @@
-#N canvas 38 137 1436 781 10;
+#N canvas 92 310 1436 781 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_decoderN[_P]~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_decoders_at_orders_1_(3-16_LS)_2_(5-16_LS)_3_(7-16LS)_etc. 20 12 0 12 #606060 #fcfcfc 0;
@@ -49,7 +49,7 @@
 #X obj 950 260 abc_gain -127;
 #X obj 322 552 abc_quadriout_m -15 1 2 3 4;
 #X obj 64 227 abc_2d_encoder1_m;
-#X obj 255 265 abc_2d_scope1_m;
+#X obj 393 254 abc_2d_scope1_m;
 #X obj 19 372 abc_2d_decoder1_4_m_ui;
 #X obj 1188 473 abc_2d_scope3_m;
 #X obj 1070 383 abc_cosrandenv7_m;
@@ -62,10 +62,14 @@
 #X obj 1106 306 loadbang;
 #X msg 1106 327 gain -14;
 #X obj 343 365 abc_ambi_scope_m;
-#X obj 1275 532 abc_ambi_scope_m;
+#X obj 1275 546 abc_ambi_scope_m;
 #X text 80 339 or abc_2d_decoder1_m_ui;
 #X obj 181 549 abc_meter4_m;
-#X obj 1013 531 abc_meter8_m;
+#X obj 990 555 abc_meter16_m;
+#X msg 343 323 bgcolor 1 1 1;
+#X msg 343 344 fgcolor 0 0 1;
+#X msg 343 302 gridcolor 0 0 0;
+#X obj 342 282 loadbang;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
@@ -103,10 +107,10 @@
 #X connect 47 0 54 0;
 #X connect 49 1 51 1;
 #X connect 49 1 50 1;
-#X connect 50 1 62 0;
+#X connect 50 1 62 1;
 #X connect 51 1 48 0;
 #X connect 51 1 65 0;
-#X connect 52 1 63 0;
+#X connect 52 1 63 1;
 #X connect 53 1 52 1;
 #X connect 53 1 54 1;
 #X connect 54 1 55 0;
@@ -115,3 +119,9 @@
 #X connect 59 1 53 1;
 #X connect 60 0 61 0;
 #X connect 61 0 59 0;
+#X connect 67 0 62 0;
+#X connect 68 0 62 0;
+#X connect 69 0 62 0;
+#X connect 70 0 69 0;
+#X connect 70 0 67 0;
+#X connect 70 0 68 0;
