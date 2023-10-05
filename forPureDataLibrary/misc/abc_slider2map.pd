@@ -1,12 +1,10 @@
 #N canvas 538 191 310 524 10;
-#X obj 171 116 vsl 15 128 -1 1 0 0 empty empty Y 0 -9 0 10 -262144
--1 -1 6350 1;
-#X floatatom 106 231 5 0 0 0 - - -;
+#X obj 171 116 vsl 15 128 -1 1 0 0 empty empty Y 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 106 231 5 0 0 0 - - - 0;
 #X msg 99 281 \$1 20;
 #X obj 99 302 line~;
-#X obj 36 174 hsl 128 15 -1 1 0 0 empty empty X -2 -8 0 10 -262144
--1 -1 6350 1;
-#X floatatom 68 231 5 0 0 0 - - -;
+#X obj 36 174 hsl 128 15 -1 1 0 0 empty empty X -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 68 231 5 0 0 0 - - - 0;
 #X msg 49 280 \$1 20;
 #X obj 49 301 line~;
 #X obj 112 46 loadbang;
@@ -15,6 +13,7 @@
 #X obj 79 448 outlet~;
 #X obj 60 334 abc_cartopol~;
 #X obj 136 394 -~ 1.5708;
+#X obj 93 155 bng 16 250 50 0 empty empty reset -8 -8 0 10 #fcfcfc #000000 #000000;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -29,4 +28,5 @@
 #X connect 12 1 11 0;
 #X connect 12 2 13 0;
 #X connect 13 0 10 0;
+#X connect 14 0 9 0;
 #X coords 0 -1 1 1 160 150 1 30 100;
