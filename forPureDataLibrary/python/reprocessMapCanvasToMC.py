@@ -27,13 +27,13 @@ inletTildeList = []
 #the list of outlet~ indices
 outletTildeList = []
 #index of the snake~ out object
-snakeOutIndex = 0
+snakeOutIndex = -1
 #index of the snake~ in object
-snakeInIndex = 0
+#snakeInIndex = 0
 #y-coordinate of r $0-in object for snake~ out object
 ySnakeOut = 0
 #y-coordinate of s $0-out object for snake~ in object
-ySnakeIn = 0
+#ySnakeIn = 0
 #index of the compiled object from Faust code
 faustObjectIndex = 0
 #name of the compiled object from Faust code
@@ -43,8 +43,7 @@ faustObjectName = 'abc'
 #initialization of global variables
 def init():
     global objectList, msgList, connectionList
-    global inletTildeList, outletTildeList, snakeOutIndex, snakeInIndex
-    global ySnakeOut, ySnakeIn
+    global inletTildeList, outletTildeList, snakeOutIndex, ySnakeOut
     global faustObjectIndex, faustObjectName
     objectList = []
     msgList = []
@@ -60,8 +59,7 @@ def init():
 
 def parsePdCode(myCode):
     global objectList, msgList, connectionList
-    global inletTildeList, outletTildeList, snakeOutIndex, snakeInIndex
-    global ySnakeOut, ySnakeIn
+    global inletTildeList, outletTildeList, snakeOutIndex, ySnakeOut
     global faustObjectIndex, faustObjectName
     init()
 
@@ -108,8 +106,7 @@ def parsePdCode(myCode):
 
 def dump(myCode):
     global objectList, msgList, connectionList
-    global inletTildeList, outletTildeList, snakeOutIndex, snakeInIndex
-    global ySnakeOut, ySnakeIn
+    global inletTildeList, outletTildeList, snakeOutIndex, ySnakeOut
     global faustObjectIndex, faustObjectName
     print("____________________________________________________________")
     print("\n")
@@ -120,9 +117,9 @@ def dump(myCode):
     print(str(len(inletTildeList))+ " inlet~")
     print(str(len(outletTildeList))+ " outlet~")
     print("snakeOutIndex = " + str(snakeOutIndex))
-    print("snakeInIndex = " + str(snakeInIndex))
+    #print("snakeInIndex = " + str(snakeInIndex))
     print("ySnakeOut = "+str(ySnakeOut))
-    print("ySnakeIn = "+str(ySnakeIn))
+    #print("ySnakeIn = "+str(ySnakeIn))
     print("faustObjectIndex = " + str(faustObjectIndex))
     print("faustObjectName = "+faustObjectName)
     print("\n")
@@ -148,11 +145,11 @@ def pdCodeProcess(fileName, patchFolder, objectName):
     pdCodeUI = f.readlines()
     faustObjectName = objectName
     #
-    pathUI = os.path.join(patchFolder,"UI")
-    pathMC = os.path.join(patchFolder,"MC")
-    #
     # parses the original code
     parsePdCode(pdCodeUI)
+    if snakeOutIndex > -1:
+        print("snake~ out is with us\n")
+    """
     #keeps the original number of inlet~~
     inletTildeNumber = len(inletTildeList)
     #print("inlet="+str(inletTildeNumber))
@@ -301,6 +298,7 @@ def pdCodeProcess(fileName, patchFolder, objectName):
         print("==>canvas processed")
     else:
         print("==>canvas not processed. No inlet~ and no outlet~ inside")
+    """
 
 
 
