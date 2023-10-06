@@ -10,25 +10,33 @@ This is a set of Python functions and declarations to open, parse, transform and
 #declaration of constants
 Xobj = "#X obj"
 Xmsg = "#X msg"
+Xtext = "#X text"
 Xconnect = "#X connect"
 
 #tests if the current line describes an object
 def isObj(myLine):
-    if (myLine[0:6] == "#X obj"):
+    if (myLine[0:6] == Xobj):
         return True
     else:
         return False
     
 #tests if the current line describes a message
 def isMsg(myLine):
-    if (myLine[0:6] == "#X msg"):
+    if (myLine[0:6] == Xmsg):
+        return True
+    else:
+        return False
+    
+#tests if the current line describes a comment text
+def isText(myLine):
+    if (myLine[0:7] == Xtext):
         return True
     else:
         return False
 
 #tests if the current line describes a connection    
 def isConnection(myLine):
-    if (myLine[0:10] == "#X connect"):
+    if (myLine[0:10] == Xconnect):
         return True
     else:
         return False
@@ -63,18 +71,20 @@ def isSnakeIn(myLine):
 
 
 def getsYSnakeOut(myLine):
-    global ySnakeOut
+    ySOut = -1
     if ("r \$0-in;" in myLine):
         #print(myLine)
-        ySnakeOut = getsYPosObject(myLine)
+        ySOut = getsYPosObject(myLine)
         #print(str(ySnakeOut))
+    return ySOut
         
 def getsYSnakeIn(myLine):
-    global ySnakeIn
+    ySIn = -1
     if ("s \$0-out;" in myLine):
         #print(myLine)
-        ySnakeIn = getsYPosObject(myLine)
+        ySIn = getsYPosObject(myLine)
         #print(str(ySnakeIn))
+    return ySIn
         
         
 #tests if the current line describes the object compiled from the Faust code
@@ -85,15 +95,13 @@ def isFaustObject(myLine, faustObjectName):
         return False
     
 #adds the snake~ out object to the code   
-def addSnakeOut(outputNumber, myCode, lineNumber):
-    global ySnakeOut
-    newSnakeOutLine = Xobj+" "+str(70)+" "+str(ySnakeOut)+" snake~ out "+str(outputNumber)+";\n"
+def addSnakeOut(outputNumber, myCode, lineNumber, ySOut):
+    newSnakeOutLine = Xobj+" "+str(70)+" "+str(ySOut)+" snake~ out "+str(outputNumber)+";\n"
     myCode.insert(lineNumber, newSnakeOutLine)
 
 #adds the snake~ in object to the code
-def addSnakeIn(inputNumber, myCode, lineNumber):
-    global ySnakeIn
-    newSnakeInLine = Xobj+" "+str(70)+" "+str(ySnakeIn)+" snake~ in "+str(inputNumber)+";\n"
+def addSnakeIn(inputNumber, myCode, lineNumber, ySIn):
+    newSnakeInLine = Xobj+" "+str(70)+" "+str(ySIn)+" snake~ in "+str(inputNumber)+";\n"
     myCode.insert(lineNumber, newSnakeInLine)
 
 #adds a new connection to the code    
@@ -118,14 +126,21 @@ def getConnectionData(line, dataIndex):
         dataInfo = dataSet.split()
         return(dataInfo[dataIndex])
 
-def getsYPosObject(line):
+
+def getObjectData(line, dataIndex):
     if (isObj(line) or isMsg(line)):
         dataSet = line[6:]
         dataInfo = dataSet.split()
-        return(dataInfo[1])
+        return(dataInfo[dataIndex])
+
+def getsXPosObject(line):
+    return int(getObjectData(line, 0))
+
+def getsYPosObject(line):
+    return int(getObjectData(line, 1))
     
 #deletes the connections starting from a given object
-def deleteConnectionsFromObject(myCode, objectIndex):
+def deleteAllConnectionsFromObject(myCode, objectIndex):
     i = 0
     for line in myCode:
         if (getConnectionData(line, 0)==str(objectIndex)):
@@ -133,8 +148,17 @@ def deleteConnectionsFromObject(myCode, objectIndex):
             del myCode[i]
         i = i+1
         
+def deleteOneConnectionFromObject(myCode, objectIndex, outIndex):
+    i = 0
+    for line in myCode:
+        if isConnection(line):
+            if ((getConnectionData(line, 0)==str(objectIndex)) and (getConnectionData(line, 1)==str(outIndex))):
+                #print("ligne to delete=>"+str(i)+" "+line)
+                del myCode[i]
+        i = i+1
+
 #deletes the connections going to a given object        
-def deleteConnectionsToObject(myCode, objectIndex):
+def deleteAllConnectionsToObject(myCode, objectIndex):
     i = 0
     for line in myCode:
         if (getConnectionData(line, 2)==str(objectIndex)):
@@ -154,6 +178,7 @@ def updateConnectionData(line, threshold):
     newConnectionLine = Xconnect+" "+str(obj1)+" "+p1+" "+str(obj2)+" "+p2+"\n"
     return newConnectionLine
 
+
 def updateAllConnectionData(threshold, myCode):
     i = 0
     for line in myCode:
@@ -161,6 +186,12 @@ def updateAllConnectionData(threshold, myCode):
             newConnectionLine = updateConnectionData(line, threshold)
             myCode[i] = newConnectionLine
         i = i+1
+
+#gets the last data on a line as a character string including the final semicolon ;
+#removes the semicolon and converts the string to a number
+def lastDataProcess(lastDataString):
+    lastDataString = lastDataString[:-1]
+    return int(lastDataString)
 
 #returns the line number of the ith inlet~
 def lookForThisInlet(myCode, i):
