@@ -178,7 +178,7 @@ abc_2d_rotate_ui(n) = thisRotate
 			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			thisRotate =  ho.rotate(n, abc_rotationorstaticphase(rotfreq, rotphase, returntime));
+			thisRotate =  ho.rotate(n, 2 * ma.PI * abc_rotationorstaticphase(rotfreq, rotphase, returntime));
 };
 //
 //--------------------------------------------------------------------------------------//
