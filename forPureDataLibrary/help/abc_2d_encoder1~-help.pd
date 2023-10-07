@@ -33,8 +33,8 @@
 #X text 1008 260 msec;
 #X msg 909 236 90;
 #X msg 836 235 0.1;
-#X obj 604 382 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
-#X msg 604 406 stereo \$1;
+#X obj 732 359 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X msg 732 383 stereo \$1;
 #X text 919 25 - speed is the rotation speed in turns by second;
 #X text 925 41 - angle is the default static angle (in degrees) when the speed is zero;
 #X text 925 69 - returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0;
@@ -46,10 +46,10 @@
 #X msg 146 490 stereo \$1;
 #X obj 146 416 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 146 440 directangles \$1;
-#X obj 603 334 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
-#X msg 603 358 directangles \$1;
+#X obj 731 311 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X msg 731 335 directangles \$1;
 #X obj 1159 283 *~ 0.2;
-#X obj 711 178 abc_gain -127;
+#X obj 638 219 abc_gain -127;
 #X obj 72 201 abc_2d_encoder1_m_ui;
 #X obj 294 374 abc_2d_scope1_m;
 #X obj 115 527 abc_2d_decoder1_4_m;
