@@ -296,6 +296,9 @@ def pdCodeProcess(fileName, patchFolder, objectName):
         #connects the outlet of snake~ in to the patch outlet~
         pdCodeMC.append("#X connect "+str(snakeInId)+" 0 "+str(outletTildeId)+" 0;\n")
         #
+        #moves the canvas to the end if there is one
+        pdLib.movesCanvasLineToTheEnd(pdCodeUI)
+        #
         pdLib.savePdCode(pdCodeMC, mcFilePath)
         print("==>canvas processed")
     else:

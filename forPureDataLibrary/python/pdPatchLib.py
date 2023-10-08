@@ -12,6 +12,7 @@ Xobj = "#X obj"
 Xmsg = "#X msg"
 Xtext = "#X text"
 Xconnect = "#X connect"
+Xcoords = "#X coords"
 
 #tests if the current line describes an object
 def isObj(myLine):
@@ -69,6 +70,13 @@ def isSnakeIn(myLine):
     else:
         return False
 
+#tests is the current line describes a canvas (with its coordinates)
+def isCanvas(myLine):
+    if (myLine[0:9] == Xcoords):
+        return True
+    else:
+        return False
+
 
 def getsYSnakeOut(myLine):
     ySOut = -1
@@ -112,12 +120,30 @@ def addConnection(obj1, p1, obj2, p2, myCode, lineNumber):
 #finds the number of the last line describing a connection
 def lastConnectLineNumber(myCode):
     i = 0
-    lineNumber = 0
+    lineNumber = -1
     for line in myCode:
         if isConnection(line):
             lineNumber = i
         i = i+1
     return lineNumber
+
+#finds a canvas line if there is one
+def canvasLineNumber(myCode):
+    i = 0
+    lineNumber = -1
+    for line in myCode:
+        if isCanvas(line):
+            lineNumber = i
+        i = i+1
+    return lineNumber
+
+#moves the canvas line to the end if there is one
+def movesCanvasLineToTheEnd(myCode):
+    ind = canvasLineNumber(myCode)
+    if (ind > -1):
+        canvasLine = myCode[ind]
+        del myCode[ind]
+        myCode.append(canvasLine)
 
 #gets the various data of a connection, analyzing the line 
 def getConnectionData(line, dataIndex):

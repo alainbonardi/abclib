@@ -146,7 +146,7 @@ def dump(myCode):
 
 
 
-def pdCodeProcess(fileName, patchFolder, objectName, step):
+def pdCodeProcess(fileName, patchFolder, objectName):
     global objectList, msgList, connectionList
     global inletTildeList, outletTildeList, snakeOutIndex, snakeOutLine, xSnakeOut, ySnakeOut, snakeOutSize
     global faustObjectIndex, faustObjectName
@@ -158,6 +158,7 @@ def pdCodeProcess(fileName, patchFolder, objectName, step):
     #
     # parses the original code
     parsePdCode(pdCodeUI)
+    step = int(snakeOutSize / 2)
     #print("snake out size = "+str(snakeOutSize))
     #print("snake~ out is present on line # "+str(snakeOutLine))
     if ((snakeOutIndex > 0) and (snakeOutSize > step)):
@@ -202,7 +203,6 @@ def pdCodeProcess(fileName, patchFolder, objectName, step):
 
 
 
-
 #directory = '/Users/alainbonardi/Dropbox/faustFactory/abclib_factory/abclib_labo_brainstorming/manipulationPureDataEnPython/patchs'
 directory = askdirectory()
 print("____________________________________________________________")
@@ -227,15 +227,14 @@ for fileName in os.listdir(directory):
         else:
             if "_m" in myProcessName:
                 myProcessName = myProcessName[:-2]
-        #print(myProcessName)
         print("____________________________________________________________")
         if fullFileName.endswith('.pd_darwin'):
             print(fileName+" is not a .pd PureData file -- not processed")
 
         if fullFileName.endswith('.pd'):
             #only processes map abstractions
-            if "map" in myProcessName:
+            if "busselect" in myProcessName:
                 print("Processing "+myProcessName)     
-                pdCodeProcess(fullFileName, directory, myProcessName, 3)
+                pdCodeProcess(fullFileName, directory, myProcessName)
                  
             
