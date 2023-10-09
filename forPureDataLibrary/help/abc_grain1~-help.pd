@@ -1,95 +1,58 @@
 #N canvas 582 147 1440 603 10;
-#X obj 9 10 cnv 15 500 25 empty empty abc_grainN~ 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 9 10 cnv 15 500 25 empty empty abc_grainN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 8 561 abc_helpcredit;
-#X obj 9 36 cnv 15 500 25 empty empty Parallel_granular_processes 20
-12 0 12 #606060 #fcfcfc 0;
-#X obj 848 510 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 9 36 cnv 15 500 25 empty empty Parallel_granular_processes 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 848 510 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 848 538 \; pd dsp \$1 \;;
 #X text 935 20 CONTROLS;
 #X text 534 22 DESCRIPTION;
 #X obj 245 117 loadbang;
-#X obj 1306 184 loadbang;
+#X obj 1291 195 loadbang;
 #X obj 594 255 abc_gain2~;
 #X obj 7 250 r gctrl1;
-#X msg 245 144 \; gctrl1 gs-0 50 \; gctrl1 dt-0 500 \; gctrl1 fdbk-0
-0.2 \; gctrl1 rrf-0 0.5 \; gctrl1 gs-1 400 \; gctrl1 dt-1 100 \; gctrl1
-fdbk-1 0.1 \; gctrl1 rrf-1 0.4 \;;
+#X msg 245 144 \; gctrl1 gs-0 50 \; gctrl1 dt-0 500 \; gctrl1 fdbk-0 0.2 \; gctrl1 rrf-0 0.5 \; gctrl1 gs-1 400 \; gctrl1 dt-1 100 \; gctrl1 fdbk-1 0.1 \; gctrl1 rrf-1 0.4 \;;
 #X obj 573 193 abc_multinoise2~;
 #X obj 426 387 abc_meter;
-#X text 535 43 abc_grain1~ \, abc_grain2~ \, ... objects are parallel
-granular processes.;
+#X text 535 43 abc_grain1~ \, abc_grain2~ \, ... objects are parallel granular processes.;
 #X obj 7 278 abc_grain2;
-#X obj 1134 154 abc_addsynth7~ --------;
-#X obj 1140 258 abc_grain7~ ---------;
-#X obj 1100 191 r gctrl2;
-#X obj 1127 428 abc_2d_decoder3~ --------;
-#X obj 1149 537 dac~ 1 2 3 4 5 6 7 8;
-#X msg 1306 218 \; gctrl2 gs-0 100 \; gctrl2 dt-0 500 \; gctrl2 fdbk-0
-0.1 \; gctrl2 gs-1 100 \; gctrl2 dt-1 750 \; gctrl2 fdbk-1 0.2 \; gctrl2
-gs-2 100 \; gctrl2 dt-2 1000 \; gctrl2 fdbk-2 0.3 \; gctrl2 gs-3 100
-\; gctrl2 dt-3 1250 \; gctrl2 fdbk-3 0.4 \; gctrl2 gs-4 100 \; gctrl2
-dt-4 1500 \; gctrl2 fdbk-4 0.5 \; gctrl2 gs-5 100 \; gctrl2 dt-5 1750
-\; gctrl2 fdbk-5 0.6 \; gctrl2 gs-6 100 \; gctrl2 dt-6 2000 \; gctrl2
-fdbk-6 0.7 \;;
-#X obj 1039 235 abc_gain -127;
-#X obj 970 330 loadbang;
-#X msg 970 351 1;
-#X obj 970 374 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X msg 970 396 stereo \$1;
-#X text 935 41 gs-0 \, gs-1 \, gs-2 \, ... are the grain sizes expressed
-in milliseconds for the n granulators.;
-#X text 936 66 dt-0 \, dt-1 \, dt-2 \, ... are the maximum delays expressed
-in milliseconds for the n granulators.;
-#X text 936 92 fdbk-0 \, fdbk-1 \, fdbk-2 \, ... are the feedbacks
-of the n granulators (between 0 and 1);
-#X text 936 118 rrf-0 \, rrf-1 \, rrf-2 \, ... are the rarefactions
-of the n granulators (between 0 and 1 \, 0 means no rarefaction \,
-1 means total rarefaction);
-#X obj 1036 448 abc_meter;
+#X obj 1154 235 r gctrl2;
+#X msg 1291 229 \; gctrl2 gs-0 100 \; gctrl2 dt-0 500 \; gctrl2 fdbk-0 0.1 \; gctrl2 gs-1 100 \; gctrl2 dt-1 750 \; gctrl2 fdbk-1 0.2 \; gctrl2 gs-2 100 \; gctrl2 dt-2 1000 \; gctrl2 fdbk-2 0.3 \; gctrl2 gs-3 100 \; gctrl2 dt-3 1250 \; gctrl2 fdbk-3 0.4 \; gctrl2 gs-4 100 \; gctrl2 dt-4 1500 \; gctrl2 fdbk-4 0.5 \; gctrl2 gs-5 100 \; gctrl2 dt-5 1750 \; gctrl2 fdbk-5 0.6 \; gctrl2 gs-6 100 \; gctrl2 dt-6 2000 \; gctrl2 fdbk-6 0.7 \;;
+#X obj 1063 184 abc_gain -127;
+#X obj 994 279 loadbang;
+#X msg 994 300 1;
+#X obj 994 323 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X msg 994 345 stereo \$1;
+#X text 935 41 gs-0 \, gs-1 \, gs-2 \, ... are the grain sizes expressed in milliseconds for the n granulators.;
+#X text 936 66 dt-0 \, dt-1 \, dt-2 \, ... are the maximum delays expressed in milliseconds for the n granulators.;
+#X text 936 92 fdbk-0 \, fdbk-1 \, fdbk-2 \, ... are the feedbacks of the n granulators (between 0 and 1);
+#X text 936 118 rrf-0 \, rrf-1 \, rrf-2 \, ... are the rarefactions of the n granulators (between 0 and 1 \, 0 means no rarefaction \, 1 means total rarefaction);
 #X obj 655 382 abc_stereoout -15;
-#X obj 393 69 abc_gain -127;
+#X obj 393 77 abc_gain -127;
+#X obj 1136 154 abc_addsynth7_m;
+#X obj 1154 258 abc_grain7_m;
+#X obj 1125 381 abc_2d_decoder3_m;
+#X obj 1224 406 dac~ 1;
+#X obj 1068 406 abc_meter8_m;
 #X connect 3 0 4 0;
 #X connect 7 0 11 0;
-#X connect 8 0 21 0;
+#X connect 8 0 17 0;
 #X connect 9 1 15 1;
 #X connect 9 2 15 2;
 #X connect 10 0 15 0;
 #X connect 12 1 9 1;
 #X connect 12 2 9 2;
 #X connect 15 1 13 0;
-#X connect 15 1 32 0;
-#X connect 15 2 32 1;
-#X connect 16 1 17 1;
-#X connect 16 2 17 2;
-#X connect 16 3 17 3;
-#X connect 16 4 17 4;
-#X connect 16 5 17 5;
-#X connect 16 6 17 6;
-#X connect 16 7 17 7;
-#X connect 17 1 19 1;
-#X connect 17 2 19 2;
-#X connect 17 3 19 3;
-#X connect 17 4 19 4;
-#X connect 17 5 19 5;
-#X connect 17 6 19 6;
-#X connect 17 7 19 7;
-#X connect 18 0 17 0;
-#X connect 19 0 31 0;
-#X connect 19 1 20 0;
-#X connect 19 2 20 1;
-#X connect 19 3 20 2;
-#X connect 19 4 20 3;
-#X connect 19 5 20 4;
-#X connect 19 6 20 5;
-#X connect 19 7 20 6;
-#X connect 19 8 20 7;
-#X connect 22 0 19 0;
-#X connect 23 0 24 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 26 0 19 0;
-#X connect 33 0 9 0;
+#X connect 15 1 27 0;
+#X connect 15 2 27 1;
+#X connect 16 0 30 0;
+#X connect 18 0 31 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 31 0;
+#X connect 28 0 9 0;
+#X connect 29 1 30 1;
+#X connect 30 1 31 1;
+#X connect 31 1 32 0;
+#X connect 31 1 33 0;
 #X coords 0 603 1 602 85 60 0;

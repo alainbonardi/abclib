@@ -1,11 +1,8 @@
-#N canvas 833 254 1278 879 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_puckettespaf~  20 12 0 18
-#606060 #fcfcfc 0;
+#N canvas 833 254 1278 989 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_puckettespaf~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 948 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty A_Phase_Aligned_Formant_(PAF)_generator
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 1142 354 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty A_Phase_Aligned_Formant_(PAF)_generator 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 1142 354 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 1142 382 \; pd dsp \$1 \;;
 #X obj 153 81 r p1;
 #N canvas 515 50 143 300 perfectThird 0;
@@ -69,8 +66,7 @@
 #X obj 146 28 osc~ 0.09;
 #X obj 308 28 osc~ 0.11;
 #X obj 445 76 metro 20;
-#X obj 572 90 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 572 90 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X connect 0 0 1 1;
 #X connect 0 0 2 1;
 #X connect 0 0 3 1;
@@ -99,7 +95,7 @@
 #X connect 29 0 20 0;
 #X connect 29 0 10 0;
 #X connect 30 0 23 0;
-#X restore 770 113 pd pafControl1;
+#X restore 770 158 pd pafControl1;
 #N canvas 857 82 655 612 pafControl2 0;
 #X obj 27 27 inlet;
 #X obj 100 251 spigot;
@@ -143,52 +139,37 @@
 #X connect 17 0 5 0;
 #X connect 18 0 4 0;
 #X connect 19 0 7 0;
-#X restore 1088 107 pd pafControl2;
-#X obj 770 77 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X floatatom 770 160 5 0 0 0 - - - 0;
-#X msg 770 182 f0 \$1;
-#X floatatom 810 160 5 0 0 0 - - - 0;
-#X floatatom 851 161 5 0 0 0 - - - 0;
-#X msg 810 182 bw \$1;
-#X obj 770 239 s p1;
-#X msg 851 182 a \$1;
-#X obj 965 81 loadbang;
-#X obj 770 27 loadbang;
-#X msg 770 48 1;
-#X msg 919 141 500;
-#X floatatom 919 162 5 0 0 0 - - - 0;
-#X msg 919 182 cf \$1;
-#X floatatom 965 162 5 0 0 0 - - - 0;
-#X msg 965 141 1;
-#X msg 965 182 wf \$1;
-#X floatatom 1010 163 5 0 0 0 - - - 0;
-#X msg 1010 142 1;
-#X msg 1010 183 sigma \$1;
-#X obj 1089 71 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X obj 1089 24 loadbang;
-#X msg 1089 45 1;
+#X restore 1088 152 pd pafControl2;
+#X obj 770 122 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 770 205 5 0 0 0 - - - 0;
+#X msg 770 227 f0 \$1;
+#X floatatom 810 205 5 0 0 0 - - - 0;
+#X floatatom 851 206 5 0 0 0 - - - 0;
+#X msg 810 227 bw \$1;
+#X obj 770 284 s p1;
+#X msg 851 227 a \$1;
+#X obj 965 126 loadbang;
+#X obj 770 72 loadbang;
+#X msg 770 93 1;
+#X msg 919 186 500;
+#X floatatom 919 207 5 0 0 0 - - - 0;
+#X msg 919 227 cf \$1;
+#X floatatom 965 207 5 0 0 0 - - - 0;
+#X msg 965 186 1;
+#X msg 965 227 wf \$1;
+#X floatatom 1010 208 5 0 0 0 - - - 0;
+#X msg 1010 187 1;
+#X msg 1010 228 sigma \$1;
+#X obj 1089 116 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 1089 69 loadbang;
+#X msg 1089 90 1;
 #X obj 395 76 abc_gain -127;
-#X floatatom 1088 144 5 0 0 0 - - - 0;
-#X floatatom 1169 144 5 0 0 0 - - - 0;
-#X msg 1088 180 ifreq \$1;
-#X msg 1169 179 iamp \$1;
-#X obj 1088 240 s p2;
-#X text 749 627 abc_pucketttespaf~ is a Phase-Aligned Formant (PAF)
-generator. It is based on the following paper by Miller Puckette: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html
-It consists in a two-cosine carrier signal multiplied by a waveshaping
-pulse generator. The central frequency cf (Hz) is bordered by two successive
-multiples of the fundamental frequency f0 (Hz). The bandwith parameter
-(bw \, in Hz) controls the width of the central peak in the spectrum
-of the PAF generator. Two waveshaping functions are provided: either
-Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled
-by sigma and a parameters. PAF synthesis is a basis to generate variable
-spectra on a pair of harmonics to build formants that enable to create
-sound close to sung vowels thanks to formants. abc_puckettespaf2~ object
-adds the possibility of inharmonic generation by adding a variable
-phase to the driving phasor controlled by two parameters: ifreq (Hz)
-and iamp (between 0 and 1).;
+#X floatatom 1088 189 5 0 0 0 - - - 0;
+#X floatatom 1169 189 5 0 0 0 - - - 0;
+#X msg 1088 225 ifreq \$1;
+#X msg 1169 224 iamp \$1;
+#X obj 1088 285 s p2;
+#X text 749 627 abc_pucketttespaf~ is a Phase-Aligned Formant (PAF) generator. It is based on the following paper by Miller Puckette: http://msp.ucsd.edu/techniques/v0.11/book-html/node96.html It consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator. The central frequency cf (Hz) is bordered by two successive multiples of the fundamental frequency f0 (Hz). The bandwith parameter (bw \, in Hz) controls the width of the central peak in the spectrum of the PAF generator. Two waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters. PAF synthesis is a basis to generate variable spectra on a pair of harmonics to build formants that enable to create sound close to sung vowels thanks to formants. abc_puckettespaf2~ object adds the possibility of inharmonic generation by adding a variable phase to the driving phasor controlled by two parameters: ifreq (Hz) and iamp (between 0 and 1).;
 #N canvas 949 146 292 402 envRandControl 0;
 #X obj 120 35 loadbang;
 #X msg 50 85 0.8;
@@ -974,72 +955,15 @@ and iamp (between 0 and 1).;
 #X obj 995 436 r paf8;
 #X obj 60 480 r evt;
 #X floatatom 60 501 5 0 0 0 - - - 24;
-#N canvas 112 38 1400 879 meaLuxControl 0;
-#X msg 1147 185 \; paf1 pitch 5100 1000 \; paf1 vamp 0 \; paf1 vfreq
-0 \; paf1 amp 0 \; paf1 cf 75 \; paf1 bw 56 \; paf2 pitch 5900 1000
-\; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 0 \; paf2 cf 80 \; paf2
-bw 51 \; paf3 pitch 6200 1000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3
-amp 0 \; paf3 cf 82 \; paf3 bw 58 \; paf4 pitch 7000 1000 \; paf4 vamp
-0 \; paf4 vfreq 0 \; paf4 amp 0 \; paf4 cf 86 \; paf4 bw 62 \; paf5
-pitch 3200 1000 \; paf5 vamp 0 \; paf5 vfreq 0 \; paf5 amp 0 \; paf5
-cf 36 \; paf5 bw 46 \; paf6 pitch 9100 1000 \; paf6 vamp 0 \; paf6
-vfreq 0 \; paf6 amp 0 \; paf6 cf 0 \; paf6 bw 88 \; paf7 pitch 7000
-1000 \; paf7 vamp 0 \; paf7 vfreq 0 \; paf7 amp 0 \; paf7 cf 81 \;
-paf7 bw 88 \; paf8 pitch 7300 1000 \; paf8 vamp 0 \; paf8 vfreq 0 \;
-paf8 amp 0 \; paf8 cf 80 \; paf8 bw 88 \; evt 1 \;;
-#X msg 1014 211 \; paf1 amp 102 3000 \; paf2 amp 102 3000 \; paf3 amp
-102 3000 \; paf4 amp 60 3000 \; paf5 amp 135 3000 \; paf6 amp 81 3000
-\;;
-#X msg 925 314 \; paf1 pitch 4800 1000 \; paf1 vamp 0 \; paf1 vfreq
-0 \; paf1 amp 102 \; paf1 cf 64 \; paf1 bw 56 \; paf2 pitch 5900 1000
-\; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 102 \; paf2 cf 66 \; paf2
-bw 51 \; paf3 pitch 6300 1000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3
-amp 102 \; paf3 cf 72 \; paf3 bw 58 \; paf4 pitch 4800 1000 \; paf4
-vamp 0 \; paf4 vfreq 0 \; paf4 amp 102 \; paf4 cf 68 \; paf4 bw 62
-\; paf5 pitch 3200 1000 \; paf5 vamp 0 \; paf5 vfreq 0 \; paf5 amp
-135 \; paf5 cf 36 \; paf5 bw 46 \; paf6 pitch 9100 1000 \; paf6 vamp
-4 \; paf6 vfreq 111 \; paf6 amp 81 \; paf6 cf 96 \; paf6 bw 88 \; paf7
-pitch 7000 1000 \; paf7 vamp 2 \; paf7 vfreq 108 \; paf7 amp 0 \; paf7
-cf 81 \; paf7 bw 88 \; paf8 pitch 7300 1000 \; paf8 vamp 0 \; paf8
-vfreq 0 \; paf8 amp 0 \; paf8 cf 80 \; paf8 bw 88 \; evt 2 \;;
-#X msg 747 316 \; paf4 amp 60 \; paf5 pitch 2900 1000 \; paf5 vamp
-3 \; paf5 vfreq 41 \; paf5 cf 52 \; paf5 bw 55 \; paf6 pitch 8200 1000
-\; paf6 amp 90 \; paf6 cf 103 \; paf7 pitch 7300 1000 \; paf7 cf 80
-\; paf7 bw 88 \; paf8 amp 100 \; paf8 cf 80 \; paf8 bw 88 \; evt 3
-\;;
-#X msg 586 406 \; paf1 pitch 4000 1000 \; paf1 vamp 0 \; paf1 vfreq
-0 \; paf1 amp 108 \; paf1 cf 53 \; paf1 bw 48 \; paf2 pitch 5500 1000
-\; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 108 \; paf2 cf 59 \; paf2
-bw 45 \; paf3 amp 108 \; paf3 cf 71 \; paf3 bw 67 \; paf4 pitch 7800
-1000 \; paf4 amp 108 \; paf4 cf 83 \; paf4 bw 107 \; evt 4 \;;
-#X msg 428 463 \; paf1 pitch 5000 1000 \; paf1 vamp 0 \; paf1 vfreq
-0 \; paf1 amp 110 \; paf1 cf 58 \; paf1 bw 60 \; paf2 pitch 5800 1000
-\; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 110 \; paf2 cf 63 \; paf2
-bw 53 \; paf3 pitch 6300 1000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3
-amp 110 \; paf3 cf 70 \; paf3 bw 56 \; paf4 pitch 6700 1000 \; paf4
-vamp 0 \; paf4 vfreq 0 \; paf4 amp 110 \; paf4 cf 73 \; paf4 bw 65
-\; paf5 pitch 6300 1000 \; paf5 vamp 3 \; paf5 vfreq 41 \; paf5 amp
-87 \; paf5 cf 70 \; paf5 bw 73 \; paf6 pitch 9400 1000 \; paf6 vamp
-127 \; paf6 vfreq 127 \; paf6 amp 98 \; paf6 cf 103 \; paf6 bw 88 \;
-paf8 pitch 7300 1000 \; paf8 vamp 2 \; paf8 vfreq 108 \; paf8 amp 60
-\; paf8 cf 80 \; paf8 bw 88 \; evt 5 \;;
-#X msg 257 544 \; paf1 pitch 7400 2000 \; paf1 vamp 0 \; paf1 vfreq
-0 \; paf1 amp 117 \; paf1 cf 88 \; paf1 bw 0 \; paf2 pitch 8000 2000
-\; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 117 \; paf2 cf 92 \; paf2
-bw 0 \; paf3 pitch 8500 2000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3
-amp 117 \; paf3 cf 93 \; paf3 bw 0 \; paf4 pitch 8800 2000 \; paf4
-vamp 0 \; paf4 vfreq 0 \; paf4 amp 117 \; paf4 cf 93 \; paf4 bw 0 \;
-paf5 pitch 6300 2000 \; paf5 vamp 3 \; paf5 vfreq 41 \; paf5 amp 87
-\; paf5 cf 70 \; paf5 bw 73 \; paf6 pitch 9400 2000 \; paf6 vamp 127
-\; paf6 vfreq 127 \; paf6 amp 98 \; paf6 cf 103 \; paf6 bw 88 \; paf7
-pitch 7100 2000 \; paf7 vamp 127 \; paf7 vfreq 127 \; paf7 amp 127
-\; paf6 cf 114 \; paf6 bw 60 \; paf8 pitch 7300 2000 \; paf8 vamp 2
-\; paf8 vfreq 108 \; paf8 amp 60 \; paf8 cf 80 \; paf8 bw 88 \; evt
-6 \;;
-#X msg 257 1104;
-#X msg 116 634 \; paf1 amp 0 3000 \; paf2 amp 0 3000 \; paf3 amp 0
-3000 \; paf4 amp 0 3000 \; paf5 amp 0 3000 \; paf6 amp 0 3000 \; paf7
-amp 0 3000 \; paf8 amp 0 3000;
+#N canvas 112 38 1400 1167 meaLuxControl 0;
+#X msg 1147 185 \; paf1 pitch 5100 1000 \; paf1 vamp 0 \; paf1 vfreq 0 \; paf1 amp 0 \; paf1 cf 75 \; paf1 bw 56 \; paf2 pitch 5900 1000 \; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 0 \; paf2 cf 80 \; paf2 bw 51 \; paf3 pitch 6200 1000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3 amp 0 \; paf3 cf 82 \; paf3 bw 58 \; paf4 pitch 7000 1000 \; paf4 vamp 0 \; paf4 vfreq 0 \; paf4 amp 0 \; paf4 cf 86 \; paf4 bw 62 \; paf5 pitch 3200 1000 \; paf5 vamp 0 \; paf5 vfreq 0 \; paf5 amp 0 \; paf5 cf 36 \; paf5 bw 46 \; paf6 pitch 9100 1000 \; paf6 vamp 0 \; paf6 vfreq 0 \; paf6 amp 0 \; paf6 cf 0 \; paf6 bw 88 \; paf7 pitch 7000 1000 \; paf7 vamp 0 \; paf7 vfreq 0 \; paf7 amp 0 \; paf7 cf 81 \; paf7 bw 88 \; paf8 pitch 7300 1000 \; paf8 vamp 0 \; paf8 vfreq 0 \; paf8 amp 0 \; paf8 cf 80 \; paf8 bw 88 \; evt 1 \;;
+#X msg 1014 211 \; paf1 amp 102 3000 \; paf2 amp 102 3000 \; paf3 amp 102 3000 \; paf4 amp 60 3000 \; paf5 amp 135 3000 \; paf6 amp 81 3000 \;;
+#X msg 925 314 \; paf1 pitch 4800 1000 \; paf1 vamp 0 \; paf1 vfreq 0 \; paf1 amp 102 \; paf1 cf 64 \; paf1 bw 56 \; paf2 pitch 5900 1000 \; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 102 \; paf2 cf 66 \; paf2 bw 51 \; paf3 pitch 6300 1000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3 amp 102 \; paf3 cf 72 \; paf3 bw 58 \; paf4 pitch 4800 1000 \; paf4 vamp 0 \; paf4 vfreq 0 \; paf4 amp 102 \; paf4 cf 68 \; paf4 bw 62 \; paf5 pitch 3200 1000 \; paf5 vamp 0 \; paf5 vfreq 0 \; paf5 amp 135 \; paf5 cf 36 \; paf5 bw 46 \; paf6 pitch 9100 1000 \; paf6 vamp 4 \; paf6 vfreq 111 \; paf6 amp 81 \; paf6 cf 96 \; paf6 bw 88 \; paf7 pitch 7000 1000 \; paf7 vamp 2 \; paf7 vfreq 108 \; paf7 amp 0 \; paf7 cf 81 \; paf7 bw 88 \; paf8 pitch 7300 1000 \; paf8 vamp 0 \; paf8 vfreq 0 \; paf8 amp 0 \; paf8 cf 80 \; paf8 bw 88 \; evt 2 \;;
+#X msg 747 316 \; paf4 amp 60 \; paf5 pitch 2900 1000 \; paf5 vamp 3 \; paf5 vfreq 41 \; paf5 cf 52 \; paf5 bw 55 \; paf6 pitch 8200 1000 \; paf6 amp 90 \; paf6 cf 103 \; paf7 pitch 7300 1000 \; paf7 cf 80 \; paf7 bw 88 \; paf8 amp 100 \; paf8 cf 80 \; paf8 bw 88 \; evt 3 \;;
+#X msg 586 406 \; paf1 pitch 4000 1000 \; paf1 vamp 0 \; paf1 vfreq 0 \; paf1 amp 108 \; paf1 cf 53 \; paf1 bw 48 \; paf2 pitch 5500 1000 \; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 108 \; paf2 cf 59 \; paf2 bw 45 \; paf3 amp 108 \; paf3 cf 71 \; paf3 bw 67 \; paf4 pitch 7800 1000 \; paf4 amp 108 \; paf4 cf 83 \; paf4 bw 107 \; evt 4 \;;
+#X msg 428 463 \; paf1 pitch 5000 1000 \; paf1 vamp 0 \; paf1 vfreq 0 \; paf1 amp 110 \; paf1 cf 58 \; paf1 bw 60 \; paf2 pitch 5800 1000 \; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 110 \; paf2 cf 63 \; paf2 bw 53 \; paf3 pitch 6300 1000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3 amp 110 \; paf3 cf 70 \; paf3 bw 56 \; paf4 pitch 6700 1000 \; paf4 vamp 0 \; paf4 vfreq 0 \; paf4 amp 110 \; paf4 cf 73 \; paf4 bw 65 \; paf5 pitch 6300 1000 \; paf5 vamp 3 \; paf5 vfreq 41 \; paf5 amp 87 \; paf5 cf 70 \; paf5 bw 73 \; paf6 pitch 9400 1000 \; paf6 vamp 127 \; paf6 vfreq 127 \; paf6 amp 98 \; paf6 cf 103 \; paf6 bw 88 \; paf8 pitch 7300 1000 \; paf8 vamp 2 \; paf8 vfreq 108 \; paf8 amp 60 \; paf8 cf 80 \; paf8 bw 88 \; evt 5 \;;
+#X msg 257 544 \; paf1 pitch 7400 2000 \; paf1 vamp 0 \; paf1 vfreq 0 \; paf1 amp 117 \; paf1 cf 88 \; paf1 bw 0 \; paf2 pitch 8000 2000 \; paf2 vamp 0 \; paf2 vfreq 0 \; paf2 amp 117 \; paf2 cf 92 \; paf2 bw 0 \; paf3 pitch 8500 2000 \; paf3 vamp 0 \; paf3 vfreq 0 \; paf3 amp 117 \; paf3 cf 93 \; paf3 bw 0 \; paf4 pitch 8800 2000 \; paf4 vamp 0 \; paf4 vfreq 0 \; paf4 amp 117 \; paf4 cf 93 \; paf4 bw 0 \; paf5 pitch 6300 2000 \; paf5 vamp 3 \; paf5 vfreq 41 \; paf5 amp 87 \; paf5 cf 70 \; paf5 bw 73 \; paf6 pitch 9400 2000 \; paf6 vamp 127 \; paf6 vfreq 127 \; paf6 amp 98 \; paf6 cf 103 \; paf6 bw 88 \; paf7 pitch 7100 2000 \; paf7 vamp 127 \; paf7 vfreq 127 \; paf7 amp 127 \; paf6 cf 114 \; paf6 bw 60 \; paf8 pitch 7300 2000 \; paf8 vamp 2 \; paf8 vfreq 108 \; paf8 amp 60 \; paf8 cf 80 \; paf8 bw 88 \; evt 6 \;;
+#X msg 116 634 \; paf1 amp 0 3000 \; paf2 amp 0 3000 \; paf3 amp 0 3000 \; paf4 amp 0 3000 \; paf5 amp 0 3000 \; paf6 amp 0 3000 \; paf7 amp 0 3000 \; paf8 amp 0 3000;
 #X obj 1014 93 loadbang;
 #X obj 1014 114 t b b b;
 #X obj 1014 181 del 1500;
@@ -1055,33 +979,31 @@ amp 0 3000 \; paf8 amp 0 3000;
 #X obj 217 498 t b b b;
 #X obj 116 594 del 10000;
 #X obj 57 562 del 13000;
-#X obj 1095 44 bng 50 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
-#X connect 6 0 7 0;
-#X connect 9 0 10 0;
-#X connect 10 0 12 0;
-#X connect 10 1 11 0;
-#X connect 10 2 0 0;
-#X connect 11 0 1 0;
+#X obj 1095 44 bng 50 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 9 1 10 0;
+#X connect 9 2 0 0;
+#X connect 10 0 1 0;
+#X connect 11 0 12 0;
 #X connect 12 0 13 0;
+#X connect 12 1 2 0;
 #X connect 13 0 14 0;
-#X connect 13 1 2 0;
 #X connect 14 0 15 0;
+#X connect 14 1 3 0;
 #X connect 15 0 16 0;
-#X connect 15 1 3 0;
 #X connect 16 0 17 0;
+#X connect 16 1 4 0;
 #X connect 17 0 18 0;
-#X connect 17 1 4 0;
 #X connect 18 0 19 0;
+#X connect 18 1 5 0;
 #X connect 19 0 20 0;
-#X connect 19 1 5 0;
-#X connect 20 0 21 0;
-#X connect 21 0 23 0;
-#X connect 21 1 22 0;
-#X connect 21 2 6 0;
-#X connect 22 0 8 0;
-#X connect 23 0 24 0;
-#X connect 24 0 10 0;
+#X connect 20 0 22 0;
+#X connect 20 1 21 0;
+#X connect 20 2 6 0;
+#X connect 21 0 7 0;
+#X connect 22 0 23 0;
+#X connect 23 0 9 0;
 #X restore 60 537 pd meaLuxControl;
 #X text 748 605 DESCRIPTION AND CONTROLS;
 #X obj 255 305 abc_stereoout -20;

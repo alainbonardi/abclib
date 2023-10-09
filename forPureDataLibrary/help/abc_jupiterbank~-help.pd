@@ -1,11 +1,8 @@
 #N canvas 194 270 1161 647 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_jupiterbank~  20 12 0 18
-#606060 #fcfcfc 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_jupiterbank~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 610 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty A_synthetizer_inspired_by_Manoury's_Jupiter_bank_of_oscillators
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 701 406 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty A_synthetizer_inspired_by_Manoury's_Jupiter_bank_of_oscillators 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 701 406 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 701 434 \; pd dsp \$1 \;;
 #X text 766 271 CONTROLS;
 #X text 765 50 DESCRIPTION;
@@ -117,27 +114,10 @@
 #X restore 184 387 pd envs;
 #X obj 416 237 *~ 0.3;
 #X obj 371 554 abc_stereoout -40;
-#X text 767 292 - k is the constant that determines the harmonic/inharmonic
-behaviour of the generator - f0 is the 'fundamental' frequency of the
-generator - osc2filter provides a crossfade between the 14 oscillators
-and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg
-is the gain of the filters - resq is the quality factor of the filters
-;
-#X text 766 70 abc_jupiterbank~ is inspired by the bank of 14 oscillators
-used by Philippe Manoury in Jupiter for flute and live electronics.
-It enables to generate spectra that can evoluate from harmonic to inharmonic
-content. Each partial has a separate output in the object. The 14 frequencies
-(i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is
-a constant and f0 a kind of 'fundamental' frequency. The distance between
-the frequencies is always f0. When k is 1 \, the spectrem is harmonic
-and results in f0 \, 2*f0 \, ... \, 14*f0. When k is diffrent from
-integers \, the spectrum is inharmonic. We added to these 14 oscillators
-14 resonant filters tuned at the same frequencies. Crossfading between
-oscillators and filters is controlled by osc2filter.;
-#X text 767 223 The Faust implementation is largely inspired by Maxence
-Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
-#X obj 405 90 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 1 1;
+#X text 767 292 - k is the constant that determines the harmonic/inharmonic behaviour of the generator - f0 is the 'fundamental' frequency of the generator - osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators \, 1 => filters) - resg is the gain of the filters - resq is the quality factor of the filters;
+#X text 766 70 abc_jupiterbank~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics. It enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object. The 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1 \, the spectrem is harmonic and results in f0 \, 2*f0 \, ... \, 14*f0. When k is diffrent from integers \, the spectrum is inharmonic. We added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.;
+#X text 767 223 The Faust implementation is largely inspired by Maxence Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
+#X obj 405 90 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 1 1;
 #X obj 47 77 abc_gain -127;
 #X connect 3 0 4 0;
 #X connect 7 0 13 0;
@@ -237,8 +217,8 @@ Larrieu's article: https://hal.archives-ouvertes.fr/hal-02135597;
 #X connect 44 1 47 0;
 #X connect 44 2 47 1;
 #X connect 45 0 25 0;
-#X connect 46 0 10 1;
 #X connect 46 0 26 1;
+#X connect 46 0 10 1;
 #X connect 51 0 8 0;
-#X connect 52 0 10 0;
 #X connect 52 0 26 0;
+#X connect 52 0 10 0;
