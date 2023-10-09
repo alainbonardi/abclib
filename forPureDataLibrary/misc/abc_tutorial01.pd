@@ -1,4 +1,4 @@
-#N canvas 112 72 1326 866 10;
+#N canvas 359 230 1121 866 10;
 #X obj 14 6 cnv 15 500 25 empty empty abclib_Library 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 824 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty 20_years_of_research_teaching_and_creation_in_mixed_music_=>_Faust 20 12 0 12 #606060 #fcfcfc 0;
@@ -36,6 +36,3 @@
 #X text 593 489 3) Since version 1.1.0 of abclib \, we provide multichannel by abstractions without interface (with _m suffix);
 #X text 594 616 4) Since version 1.1.0 \, we also provide multichannel abstractions with the corresponding user interface (with _m_ui suffix);
 #X obj 599 655 abc_2d_decoder1_4_m_ui;
-#X msg 951 259 \; pd open abc_tutorial01.pd /Users/alainbonardi/Documents/Github/abclib/forPureDataLibrary/misc;
-#X msg 975 373 \; pd open abc_tutorial01.pd ../;
-#X obj 1052 461 getdir;
