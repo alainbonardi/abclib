@@ -1,11 +1,8 @@
 #N canvas 622 190 1331 697 10;
-#X obj 9 9 cnv 15 500 25 empty empty abc_delayN~ 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 9 9 cnv 15 500 25 empty empty abc_delayN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 8 657 abc_helpcredit;
-#X obj 9 35 cnv 15 500 25 empty empty Parallel_double_overlapped_delays_with_reinjection
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 9 35 cnv 15 500 25 empty empty Parallel_double_overlapped_delays_with_reinjection 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 533 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 533 494 \; pd dsp \$1 \;;
 #X text 935 30 CONTROLS;
 #X text 534 32 DESCRIPTION;
@@ -15,22 +12,19 @@
 #X text 95 489 original;
 #X obj 128 449 abc_delay1~;
 #X msg 282 346 dur-0 \$1;
-#X obj 221 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 221 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 221 133 loadbang;
 #X msg 221 155 80;
 #X floatatom 221 327 5 0 0 0 - - - 0;
 #X msg 221 347 tempo \$1;
 #X obj 282 177 abc_musdur 3;
-#X obj 403 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 403 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X floatatom 282 326 5 0 0 0 - - - 0;
 #X floatatom 403 325 5 0 0 0 - - - 0;
 #X msg 403 345 fdbk-0 \$1;
 #X obj 429 465 loadbang;
 #X msg 429 487 1;
-#X obj 429 511 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 429 511 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 429 533 metro 20000;
 #X obj 429 556 s top;
 #X obj 105 253 r top;
@@ -39,7 +33,6 @@
 #X msg 495 303 30;
 #X floatatom 495 324 5 0 0 0 - - - 0;
 #X msg 495 344 updatefreq \$1;
-#X obj 802 446 abc_delay4~;
 #X obj 879 255 r top;
 #N canvas 850 71 200 227 aleafreq 0;
 #X obj 30 18 inlet;
@@ -60,8 +53,6 @@
 #X restore 879 283 pd aleafreq;
 #X floatatom 942 311 5 0 0 0 - - - 0;
 #X text 919 311 f0;
-#X obj 879 337 abc_addsynth4~;
-#X obj 872 374 abc_cosrandenv4~;
 #X obj 715 221 loadbang;
 #X floatatom 715 317 5 0 0 0 - - - 0;
 #X floatatom 777 317 5 0 0 0 - - - 0;
@@ -70,37 +61,19 @@
 #X msg 715 296 4;
 #X msg 777 296 0.95;
 #X obj 802 408 r dels;
-#X obj 853 503 abc_chopan8~ ---------;
 #X obj 1113 384 loadbang;
-#X msg 1113 406 \; dels dur-0 1 \; dels fdbk-0 0.2 \; dels gain-0 0
-\; dels dur-1 1.5 \; dels fdbk-1 0.4 \; dels gain-1 -3 \; dels dur-2
-2 \; dels fdbk-2 0.6 \; dels gain-2 -6 \; dels dur-3 2.5 \; dels fdbk-3
-0.8 \; dels gain-3 -9 \;;
-#X obj 993 251 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X msg 1113 406 \; dels dur-0 1 \; dels fdbk-0 0.2 \; dels gain-0 0 \; dels dur-1 1.5 \; dels fdbk-1 0.4 \; dels gain-1 -3 \; dels dur-2 2 \; dels fdbk-2 0.6 \; dels gain-2 -6 \; dels dur-3 2.5 \; dels fdbk-3 0.8 \; dels gain-3 -9 \;;
+#X obj 993 251 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 993 193 loadbang;
 #X floatatom 993 387 5 0 0 0 - - - 0;
 #X msg 993 407 tempo \$1;
 #X msg 993 215 60;
-#X text 535 53 abc_delay1~ \, abc_delay2~ \, ... objects provide multiple
-parallel delay lines with reinjection. Each line is a double overlapped
-delay enabling duration changes without clicking at a maximum speed
-set by updatefreq parameter which is initialized at 30 Hz (30 Hz means
-one can change the duration of the delay up to 30 times per second).
-The other important feature of these delays lines is that all durations
-are given not in milliseconds but as a musical durations: 1 stands
-for a quarter \, 0.5 for an 8th \, 0.25 for a 16th \, etc.;
-#X text 936 51 Durations are parameters dur-0 \, dur-1 \, dur-2 \,
-etc.These musical durations are automatically converted to milliseconds
-thanks to the tempo parameter expressed in bpm.;
-#X text 937 96 Each delay line has got an individual feedback: fdbk-0
-\, fdbk-1 \, fdbk-2 \, etc. (between 0 and 1);
-#X text 938 131 Each delay line has got an individual gain: gain-0
-\, gain-1 \, gain-2 \, etc. in dB (between -127 and +18);
-#X obj 765 506 abc_meter;
-#X obj 1018 504 abc_meter;
-#X text 770 657 delays;
-#X text 1003 657 original sounds;
+#X text 535 53 abc_delay1~ \, abc_delay2~ \, ... objects provide multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second). The other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter \, 0.5 for an 8th \, 0.25 for a 16th \, etc.;
+#X text 936 51 Durations are parameters dur-0 \, dur-1 \, dur-2 \, etc.These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.;
+#X text 937 96 Each delay line has got an individual feedback: fdbk-0 \, fdbk-1 \, fdbk-2 \, etc. (between 0 and 1);
+#X text 938 131 Each delay line has got an individual gain: gain-0 \, gain-1 \, gain-2 \, etc. in dB (between -127 and +18);
+#X text 790 636 delays;
+#X text 1003 634 original sounds;
 #X obj 18 476 abc_meter;
 #X obj 234 479 abc_meter;
 #X text 18 630 original;
@@ -108,13 +81,22 @@ thanks to the tempo parameter expressed in bpm.;
 #X obj 87 321 *~ 0.3;
 #X msg 817 295 gain -10;
 #X obj 87 510 abc_stereoout -127;
-#X obj 899 544 abc_stereoout -127;
+#X obj 879 337 abc_addsynth4_m;
+#X obj 867 374 abc_cosrandenv4_m;
+#X obj 802 446 abc_delay4_m;
+#X obj 737 480 abc_meter4_m;
+#X obj 851 572 abc_chopan8_m;
+#X obj 851 597 abc_stereoout_m -127;
+#X obj 833 480 snake~ out 4;
+#X obj 911 480 snake~ out 4;
+#X obj 869 513 snake~ in 8, f 15;
+#X obj 1002 481 abc_meter4_m;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
-#X connect 9 0 69 0;
-#X connect 11 1 66 0;
-#X connect 11 1 71 1;
+#X connect 9 0 63 0;
+#X connect 11 1 60 0;
+#X connect 11 1 65 1;
 #X connect 12 0 11 0;
 #X connect 13 0 16 0;
 #X connect 14 0 15 0;
@@ -135,54 +117,44 @@ thanks to the tempo parameter expressed in bpm.;
 #X connect 31 0 32 0;
 #X connect 32 0 33 0;
 #X connect 33 0 11 0;
-#X connect 33 0 34 0;
-#X connect 34 1 49 5;
-#X connect 34 1 61 0;
-#X connect 34 2 49 6;
-#X connect 34 2 61 0;
-#X connect 34 3 49 7;
-#X connect 34 3 61 0;
-#X connect 34 4 49 8;
-#X connect 34 4 61 0;
-#X connect 35 0 36 0;
-#X connect 36 0 39 0;
-#X connect 36 1 37 0;
-#X connect 39 1 40 1;
-#X connect 39 2 40 2;
-#X connect 39 3 40 3;
-#X connect 39 4 40 4;
-#X connect 40 1 34 1;
-#X connect 40 1 49 1;
-#X connect 40 1 62 0;
-#X connect 40 2 34 2;
-#X connect 40 2 49 2;
-#X connect 40 2 62 0;
-#X connect 40 3 34 3;
-#X connect 40 3 49 3;
-#X connect 40 3 62 0;
-#X connect 40 4 34 4;
-#X connect 40 4 49 4;
-#X connect 40 4 62 0;
-#X connect 41 0 46 0;
-#X connect 41 0 47 0;
-#X connect 41 0 70 0;
-#X connect 42 0 44 0;
-#X connect 43 0 45 0;
+#X connect 33 0 68 0;
+#X connect 34 0 35 0;
+#X connect 35 0 66 0;
+#X connect 35 1 36 0;
+#X connect 38 0 43 0;
+#X connect 38 0 44 0;
+#X connect 38 0 64 0;
+#X connect 39 0 41 0;
+#X connect 40 0 42 0;
+#X connect 41 0 67 0;
+#X connect 42 0 67 0;
+#X connect 43 0 39 0;
 #X connect 44 0 40 0;
-#X connect 45 0 40 0;
-#X connect 46 0 42 0;
-#X connect 47 0 43 0;
-#X connect 48 0 34 0;
-#X connect 49 1 72 0;
-#X connect 49 2 72 1;
+#X connect 45 0 68 0;
+#X connect 46 0 47 0;
+#X connect 48 0 50 0;
+#X connect 49 0 52 0;
 #X connect 50 0 51 0;
-#X connect 52 0 54 0;
-#X connect 53 0 56 0;
-#X connect 54 0 55 0;
-#X connect 55 0 34 0;
-#X connect 56 0 52 0;
-#X connect 69 0 11 1;
-#X connect 69 0 65 0;
-#X connect 69 0 71 0;
-#X connect 70 0 39 0;
+#X connect 51 0 68 0;
+#X connect 52 0 48 0;
+#X connect 63 0 11 1;
+#X connect 63 0 59 0;
+#X connect 63 0 65 0;
+#X connect 64 0 66 0;
+#X connect 66 1 67 1;
+#X connect 67 1 68 1;
+#X connect 67 1 73 0;
+#X connect 67 1 75 0;
+#X connect 68 1 69 0;
+#X connect 68 1 72 0;
+#X connect 70 1 71 0;
+#X connect 72 0 74 0;
+#X connect 72 1 74 1;
+#X connect 72 2 74 2;
+#X connect 72 3 74 3;
+#X connect 73 0 74 4;
+#X connect 73 1 74 5;
+#X connect 73 2 74 6;
+#X connect 73 3 74 6;
+#X connect 74 0 70 1;
 #X coords 0 697 1 696 85 60 0;

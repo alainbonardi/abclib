@@ -1,20 +1,15 @@
 #N canvas 430 90 756 653 10;
-#X obj 11 -67 cnv 15 500 25 empty empty abc_env_noise~ 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 11 -67 cnv 15 500 25 empty empty abc_env_noise~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 550 abc_helpcredit;
-#X obj 11 -41 cnv 15 500 25 empty empty Enveloped_noise_with_rarefaction
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 213 453 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 11 -41 cnv 15 500 25 empty empty Enveloped_noise_with_rarefaction 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 213 453 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 213 481 \; pd dsp \$1 \;;
 #X text 169 60 CONTROLS;
 #X text 166 1 DESCRIPTION;
 #X obj 37 362 abc_meter;
 #X obj 37 168 abc_env_noise 200 0.3;
-#X text 169 74 -argument 1 is the grain size (envelope period in milliseconds)
-;
-#X text 167 22 The abc_env_noise~ is a noise generator enveloped with
-a positive cosine shape (Hanning window). It uses rarefaction.;
+#X text 169 74 -argument 1 is the grain size (envelope period in milliseconds);
+#X text 167 22 The abc_env_noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction.;
 #X text 168 106 -argument 2 is the rarefaction between 0 and 1;
 #X obj 381 168 abc_env_noise 123 0.4;
 #X obj 382 362 abc_meter;
