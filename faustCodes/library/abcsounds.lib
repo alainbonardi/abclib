@@ -54,7 +54,7 @@ abc_soundgrain_ui = abc_soundgrain(freqmult, rainstickSamples, gain)
 				//
 				freqmult = hslider("v:synthetizers/freqmult", 1, 0.001, 5, 0.01);
 				//
-				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : dbtogain;
+				gain = hslider("v:synthetizers/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 };		
 
 //
