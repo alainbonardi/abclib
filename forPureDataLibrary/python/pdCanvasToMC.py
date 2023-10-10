@@ -160,57 +160,60 @@ def generalProcess(fileName, patchFolder, objectName):
     #if we have 0 or 1 inlet~ and 0 or 1 outlet~
     if (inletTildeNumber > 1) or (outletTildeNumber > 1):
         #snakeOutLine = pdLib.lastConnectLineNumber(pdCodeUI)+1;
-        addSnakeOutTest = (inletTildeNumber > 0) 
+        #addSnakeOutTest = (inletTildeNumber > 0) 
         #and not("multiencoder" in objectName)
         #print(addSnakeOutTest)
         snakeOutLine = len(pdCodeUI)+1
         snakeInLine = snakeOutLine
         #
-        if (addSnakeOutTest == True):
+        if (inletTildeNumber > 1):
             #adds the snake~ out object to the patch
             #print("Adds the snakeOutLine")
             pdLib.addSnakeOut(len(inletTildeList), pdCodeUI, snakeOutLine, ySnakeOut)
             snakeInLine = snakeOutLine + 1
-
-        #adds the snake~ in object to the patch      
-        pdLib.addSnakeIn(len(outletTildeList), pdCodeUI, snakeInLine, ySnakeIn)
+        if (outletTildeNumber > 1):
+            #adds the snake~ in object to the patch      
+            pdLib.addSnakeIn(len(outletTildeList), pdCodeUI, snakeInLine, ySnakeIn)
         #re-parses the new code
         parsePdCode(pdCodeUI)
         #pdLib.displayPdCode(pdCodeUI)
     
         #we check if there are inlet~ in the patch
-        if (addSnakeOutTest == True):
+        if (inletTildeNumber > 1):
             #print("Deletes the connection from the inlets to other objects")
             #deletes the connections from the inlets~ to other objects
             for indInlet in inletTildeList:
                 pdLib.deleteAllConnectionsFromObject(pdCodeUI, indInlet)
         #deletes the connections to the outlets (coming from other objects)
-        for indOutlet in outletTildeList:
-            pdLib.deleteAllConnectionsToObject(pdCodeUI, indOutlet)
-        parsePdCode(pdCodeUI)
+        if (outletTildeNumber > 1):
+            for indOutlet in outletTildeList:
+                pdLib.deleteAllConnectionsToObject(pdCodeUI, indOutlet)
+            parsePdCode(pdCodeUI)
     
         #adds the new connections between snake out and the pins of the faust object
         #inletConnectionLine = pdLib.lastConnectLineNumber(pdCodeUI)+3
         #inletConnectionLine = snakeInLine + 1
         inletConnectionLine = len(pdCodeUI)+1
-        if (addSnakeOutTest == True):
+        if (inletTildeNumber > 1):
             #print("Adds the new connections")
             for ind in range(len(inletTildeList)):
                 pdLib.addConnection(snakeOutIndex, ind, faustObjectIndex, ind+1, pdCodeUI, inletConnectionLine + ind)
         outletConnectionLine = inletConnectionLine + len(inletTildeList)
         #print(outletConnectionLine)
-
-        for ind in range(len(outletTildeList)):
-            pdLib.addConnection(faustObjectIndex, ind+1, snakeInIndex, ind, pdCodeUI, outletConnectionLine+ind)
-        if inletTildeNumber > 0:
+        if (outletTildeNumber > 1):
+            for ind in range(len(outletTildeList)):
+                pdLib.addConnection(faustObjectIndex, ind+1, snakeInIndex, ind, pdCodeUI, outletConnectionLine+ind)
+        
+        if inletTildeNumber > 1:
             pdLib.addConnection(inletTildeList[0], 0, snakeOutIndex, 0, pdCodeUI, outletConnectionLine+len(outletTildeList))
   
-        pdLib.addConnection(snakeInIndex, 0, outletTildeList[0], 0, pdCodeUI, outletConnectionLine+len(outletTildeList)+1)
+        if outletTildeNumber > 1:
+            pdLib.addConnection(snakeInIndex, 0, outletTildeList[0], 0, pdCodeUI, outletConnectionLine+len(outletTildeList)+1)
     
         #
         #we delete all inlet~ objects (except the first one) and update the description of the connections in consequence
         #displayPdCode(pdCode)
-        if (addSnakeOutTest == True):
+        if inletTildeNumber > 1:
             #print("Deletes inlet~ objects")
             for i in range(1, len(inletTildeList)):
                 #we skip the first inlet~ that is not deleted
@@ -222,16 +225,16 @@ def generalProcess(fileName, patchFolder, objectName):
                     pdLib.updateAllConnectionData(inletTildeList[1], pdCodeUI)
                     parsePdCode(pdCodeUI)
                 #all connections are updated 
-    
-        for i in range(1, len(outletTildeList)):
-            #we skip the first outlet~ that is not deleted
-            #at each call, we delete the 2nd inlet~ to be found until there are no more inlet~ except the first one
-            lineNumber = pdLib.lookForThisOutlet(pdCodeUI, 1)
-            #print("line #="+str(lineNumber)+ " i="+str(i))
-            if (lineNumber > -1):
-                del pdCodeUI[lineNumber]
-                pdLib.updateAllConnectionData(outletTildeList[1], pdCodeUI)
-                parsePdCode(pdCodeUI)
+        if outletTildeNumber > 1:
+            for i in range(1, len(outletTildeList)):
+                #we skip the first outlet~ that is not deleted
+                #at each call, we delete the 2nd inlet~ to be found until there are no more inlet~ except the first one
+                lineNumber = pdLib.lookForThisOutlet(pdCodeUI, 1)
+                #print("line #="+str(lineNumber)+ " i="+str(i))
+                if (lineNumber > -1):
+                    del pdCodeUI[lineNumber]
+                    pdLib.updateAllConnectionData(outletTildeList[1], pdCodeUI)
+                    parsePdCode(pdCodeUI)
                 #all connections are updated 
         
         pdLib.movesCanvasLineToTheEnd(pdCodeUI)
@@ -251,46 +254,67 @@ def generalProcess(fileName, patchFolder, objectName):
         #the content of the patch does not vary except the number of channels
         #of the snake~ in and snake~ out objects
         #patch window
+        #initializes object IDs
+        inletTildeId = -1
+        snakeOutId = -1
+        outletTildeId = -1
+        snakeInId = -1
+        #
         pdCodeMC.append("#N canvas 0 0 400 350 10;\n")
         #object 0 is the patch inlet
         inletId = 0
         pdCodeMC.append("#X obj 30 30 inlet;\n")
-        if (addSnakeOutTest == True):
+        if (inletTildeNumber > 0):
             #object 1 is the patch inlet~
             inletTildeId = 1
             pdCodeMC.append("#X obj 100 30 inlet~;\n")
             #object 2 is the snake~ out with variable number of outlets
+        if (inletTildeNumber > 1):
             snakeOutId = 2
             pdCodeMC.append("#X obj 100 80 snake~ out "+str(inletTildeNumber)+";\n")
        
         pdCodeMC.append("#X obj 30 130 "+faustObjectName+"~;\n")
         pdCodeMC.append("#X obj 30 230 outlet;\n")
-        pdCodeMC.append("#X obj 100 180 snake~ in "+str(outletTildeNumber)+";\n")
-        pdCodeMC.append("#X obj 100 230 outlet~;\n")
+        if (outletTildeNumber > 1):
+            pdCodeMC.append("#X obj 100 180 snake~ in "+str(outletTildeNumber)+";\n")
+        if (outletTildeNumber > 0):
+            pdCodeMC.append("#X obj 100 230 outlet~;\n")
         pdCodeMC.append("#X text 30 280 generated by pdCanvasToMC.py / abclib - CICM;\n")
         
-        if (addSnakeOutTest == True):
+        if (inletTildeNumber > 1):
             #object 3 is the compiled Faust object
             faustObjectId = 3
             #object 4 is the patch outlet
             outletId = 4
-            #object 5 is the snake~ int with variable number of inlets
-            snakeInId = 5
-            #object 6 is the patch outlet~
-            outletTildeId = 6
-            #object 7 is the comment at the bottom of the patch
-            commentId = 7
+            if (outletTildeNumber > 1):
+                #object 5 is the snake~ int with variable number of inlets
+                snakeInId = 5
+                #object 6 is the patch outlet~
+                outletTildeId = 6
+                #object 7 is the comment at the bottom of the patch
+                commentId = 7
+            else:
+                if (outletTildeNumber == 1):
+                    #object 5 is the patch outlet~
+                    outletTildeId = 5
+                    #object 6 is the comment at the bottom of the patch
+                    commentId = 6
+                else:
+                    #no outlet~
+                    #object 5 is the comment at the bottom of the patch
+                    commentId = 5
         else:
-            #object 1 is the compiled Faust object
-            faustObjectId = 1
-            #object 2 is the patch outlet
-            outletId = 2
-            #object 3 is the snake~ int with variable number of inlets
-            snakeInId = 3
-            #object 4 is the patch outlet~
-            outletTildeId = 4
-            #object 5 is the comment at the bottom of the patch
-            commentId = 5
+            if (inletTildeNumber == 0):
+                #object 1 is the compiled Faust object
+                faustObjectId = 1
+                #object 2 is the patch outlet
+                outletId = 2
+                #object 3 is the snake~ int with variable number of inlets
+                snakeInId = 3
+                #object 4 is the patch outlet~
+                outletTildeId = 4
+                #object 5 is the comment at the bottom of the patch
+                commentId = 5
         
         
         #connects the patch inlet to the first inlet of the compiled Faust object
