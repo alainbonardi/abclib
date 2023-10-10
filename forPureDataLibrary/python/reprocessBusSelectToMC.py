@@ -146,7 +146,7 @@ def dump(myCode):
 
 
 
-def pdCodeProcess(fileName, patchFolder, objectName):
+def pdCodeProcessFor2Buses(fileName, patchFolder, objectName):
     global objectList, msgList, connectionList
     global inletTildeList, outletTildeList, snakeOutIndex, snakeOutLine, xSnakeOut, ySnakeOut, snakeOutSize
     global faustObjectIndex, faustObjectName
@@ -158,28 +158,23 @@ def pdCodeProcess(fileName, patchFolder, objectName):
     #
     # parses the original code
     parsePdCode(pdCodeUI)
+    print("faustObjectIndex = "+str(faustObjectIndex))
     step = int(snakeOutSize / 2)
-    #print("snake out size = "+str(snakeOutSize))
-    #print("snake~ out is present on line # "+str(snakeOutLine))
+
     if ((snakeOutIndex > 0) and (snakeOutSize > step)):
         print("snake~ out is present on line # "+str(snakeOutLine))
-        #print("xSnakeOut = "+str(xSnakeOut)+" ySnakeOut = "+str(ySnakeOut))
-        #print("xInletTilde = "+str(xInletTilde)+" yInletTilde = "+str(yInletTilde))
-        #print("snake out size = "+str(snakeOutSize))
         #deletes all connections from snake out above the third one
         for i in range(step, snakeOutSize):
             pdLib.deleteOneConnectionFromObject(pdCodeUI, snakeOutIndex, i)
         #modifies the existing snake out to have 3 outputs
         snakeOutCommand = pdCodeUI[snakeOutLine]
         newSnakeOutCommand = pdLib.Xobj+" "+pdLib.getObjectData(snakeOutCommand, 0)+" "+pdLib.getObjectData(snakeOutCommand, 1)+" snake~ out "+str(step)+";\n"
-        #print(newSnakeOutCommand)
         pdCodeUI[snakeOutLine] = newSnakeOutCommand
         #line number of the first insertion
         #insert new objects and connections at the end 
         otherInletsInsertLine = len(pdCodeUI)+1
         #number of pairs inlet~ + snake~ out  to insert
         insertPairNumber = int(snakeOutSize / step - 1)
-        #print(insertPairNumber)
         #inserts pairs of inlet~ + snake~ out objects
         for i in range(insertPairNumber):
             pdCodeUI.insert(otherInletsInsertLine+2*i, pdLib.Xobj+" "+str(xInletTilde+(i+1)*100)+" "+str(yInletTilde)+" inlet~;\n")
@@ -208,7 +203,7 @@ directory = askdirectory()
 print("____________________________________________________________")
 print("____________________________________________________________")
 print("reprocesssMapCanvasToMC Python program - CICM  - 2023")
-print("Adapting multichannel for map abstractions")
+print("Adapting multichannel for double bus input")
 print("All canvas in this directory: "+directory)
 print("will be processed")
 print("____________________________________________________________")
@@ -222,11 +217,6 @@ for fileName in os.listdir(directory):
         fullFileName = os.path.join(directory, fileName)
         myPatchSplit = fileName.partition('.')
         myProcessName = myPatchSplit[0]
-        if "_m_ui" in myProcessName:
-            myProcessName = myProcessName[:-5]
-        else:
-            if "_m" in myProcessName:
-                myProcessName = myProcessName[:-2]
         print("____________________________________________________________")
         if fullFileName.endswith('.pd_darwin'):
             print(fileName+" is not a .pd PureData file -- not processed")
@@ -235,6 +225,11 @@ for fileName in os.listdir(directory):
             #only processes map abstractions
             if "busselect" in myProcessName:
                 print("Processing "+myProcessName)     
-                pdCodeProcess(fullFileName, directory, myProcessName)
+                if "_m_ui" in myProcessName:
+                    myProcessName = myProcessName[:-5]
+                else:
+                    if "_m" in myProcessName:
+                        myProcessName = myProcessName[:-2]
+                pdCodeProcessFor2Buses(fullFileName, directory, myProcessName)
                  
             

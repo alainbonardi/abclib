@@ -120,33 +120,8 @@ def parsePdCode(myCode):
 
 
 
-def dump(myCode):
-    global objectList, msgList, connectionList
-    global inletTildeList, outletTildeList, snakeOutIndex, snakeOutLine, xSnakeOut, ySnakeOut, snakeOutSize
-    global faustObjectIndex, faustObjectName
-    global xInletTilde, yInletTilde
-    print("____________________________________________________________")
-    print("\n")
-    print("Number of lines in the code = "+str(len(myCode)))
-    print(str(len(objectList))+" objects")
-    print(str(len(msgList))+" msgs")
-    print(str(len(connectionList))+ " connections")
-    print(str(len(inletTildeList))+ " inlet~")
-    print(str(len(outletTildeList))+ " outlet~")
-    print("snakeOutIndex = " + str(snakeOutIndex))
-    #print("snakeInIndex = " + str(snakeInIndex))
-    print("ySnakeOut = "+str(ySnakeOut))
-    #print("ySnakeIn = "+str(ySnakeIn))
-    print("faustObjectIndex = " + str(faustObjectIndex))
-    print("faustObjectName = "+faustObjectName)
-    print("\n")
-    print("____________________________________________________________")
 
-    
-
-
-
-def pdCodeProcess(fileName, patchFolder, objectName, step):
+def pdCodeProcessByStep(fileName, patchFolder, objectName, step):
     global objectList, msgList, connectionList
     global inletTildeList, outletTildeList, snakeOutIndex, snakeOutLine, xSnakeOut, ySnakeOut, snakeOutSize
     global faustObjectIndex, faustObjectName
@@ -158,27 +133,22 @@ def pdCodeProcess(fileName, patchFolder, objectName, step):
     #
     # parses the original code
     parsePdCode(pdCodeUI)
-    #print("snake out size = "+str(snakeOutSize))
-    #print("snake~ out is present on line # "+str(snakeOutLine))
+    print("faustObjectIndex = "+str(faustObjectIndex))
+    #
     if ((snakeOutIndex > 0) and (snakeOutSize > step)):
         print("snake~ out is present on line # "+str(snakeOutLine))
-        #print("xSnakeOut = "+str(xSnakeOut)+" ySnakeOut = "+str(ySnakeOut))
-        #print("xInletTilde = "+str(xInletTilde)+" yInletTilde = "+str(yInletTilde))
-        #print("snake out size = "+str(snakeOutSize))
         #deletes all connections from snake out above the third one
         for i in range(step, snakeOutSize):
             pdLib.deleteOneConnectionFromObject(pdCodeUI, snakeOutIndex, i)
-        #modifies the existing snake out to have 3 outputs
+        #modifies the existing snake out to have a number of outputs = step
         snakeOutCommand = pdCodeUI[snakeOutLine]
         newSnakeOutCommand = pdLib.Xobj+" "+pdLib.getObjectData(snakeOutCommand, 0)+" "+pdLib.getObjectData(snakeOutCommand, 1)+" snake~ out "+str(step)+";\n"
-        #print(newSnakeOutCommand)
         pdCodeUI[snakeOutLine] = newSnakeOutCommand
         #line number of the first insertion
         #insert new objects and connections at the end 
         otherInletsInsertLine = len(pdCodeUI)+1
         #number of pairs inlet~ + snake~ out  to insert
         insertPairNumber = int(snakeOutSize / step - 1)
-        #print(insertPairNumber)
         #inserts pairs of inlet~ + snake~ out objects
         for i in range(insertPairNumber):
             pdCodeUI.insert(otherInletsInsertLine+2*i, pdLib.Xobj+" "+str(xInletTilde+(i+1)*100)+" "+str(yInletTilde)+" inlet~;\n")
@@ -191,15 +161,12 @@ def pdCodeProcess(fileName, patchFolder, objectName, step):
             pdCodeUI.insert(otherConnectionsInsertLine+4*i, pdLib.Xconnect+" "+str(objectIndex+2*i)+" 0 "+str(objectIndex+2*i+1)+ " 0;\n")
             for j in range(step):
                 pdCodeUI.insert(otherConnectionsInsertLine+4*i+j+1, pdLib.Xconnect+" "+str(objectIndex+2*i+1)+" "+str(j)+" "+str(faustObjectIndex)+ " "+str(step*(i+1)+1+j)+";\n")
-            #pdCodeUI.insert(otherConnectionsInsertLine+4*i+2, pdLib.Xconnect+" "+str(objectIndex+2*i+1)+" 1 "+str(faustObjectIndex)+ " "+str(3*(i+1)+2)+";\n")
-            #pdCodeUI.insert(otherConnectionsInsertLine+4*i+3, pdLib.Xconnect+" "+str(objectIndex+2*i+1)+" 2 "+str(faustObjectIndex)+ " "+str(3*(i+1)+3)+";\n")
         #moves the canvas to the end if there is one
         pdLib.movesCanvasLineToTheEnd(pdCodeUI)
         #
         pdLib.savePdCode(pdCodeUI, fileName)
     else:
         print("No snake~ out object")
-
 
 
 
@@ -222,11 +189,7 @@ for fileName in os.listdir(directory):
         fullFileName = os.path.join(directory, fileName)
         myPatchSplit = fileName.partition('.')
         myProcessName = myPatchSplit[0]
-        if "_m_ui" in myProcessName:
-            myProcessName = myProcessName[:-5]
-        else:
-            if "_m" in myProcessName:
-                myProcessName = myProcessName[:-2]
+
         #print(myProcessName)
         print("____________________________________________________________")
         if fullFileName.endswith('.pd_darwin'):
@@ -236,6 +199,11 @@ for fileName in os.listdir(directory):
             #only processes map abstractions
             if "map" in myProcessName:
                 print("Processing "+myProcessName)     
-                pdCodeProcess(fullFileName, directory, myProcessName, 3)
+                if "_m_ui" in myProcessName:
+                    myProcessName = myProcessName[:-5]
+                else:
+                    if "_m" in myProcessName:
+                        myProcessName = myProcessName[:-2]
+                pdCodeProcessByStep(fullFileName, directory, myProcessName, 3)
                  
             

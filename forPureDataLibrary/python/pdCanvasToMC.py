@@ -96,6 +96,9 @@ def parsePdCode(myCode):
         if pdLib.isMsg(line):
             msgList.append(objectIndex)
             objectIndex = objectIndex + 1
+            
+        if pdLib.isText(line):
+            objectIndex = objectIndex + 1
 
         if pdLib.isConnection(line):
             connectionList.append(connectionIndex)
@@ -156,7 +159,8 @@ def pdCodeProcess(fileName, patchFolder, objectName):
     outletTildeNumber = len(outletTildeList)
     #if we have 0 or 1 inlet~ and 0 or 1 outlet~
     if (inletTildeNumber > 1) or (outletTildeNumber > 1):
-        snakeOutLine = pdLib.lastConnectLineNumber(pdCodeUI)+1;
+        #snakeOutLine = pdLib.lastConnectLineNumber(pdCodeUI)+1;
+        snakeOutLine = len(pdCodeUI)+1
         if inletTildeNumber > 0:
             #adds the snake~ out object to the patch
             pdLib.addSnakeOut(len(inletTildeList), pdCodeUI, snakeOutLine, ySnakeOut)
@@ -182,8 +186,9 @@ def pdCodeProcess(fileName, patchFolder, objectName):
         parsePdCode(pdCodeUI)
     
         #adds the new connections between snake out and the pins of the faust object
-        inletConnectionLine = pdLib.lastConnectLineNumber(pdCodeUI)+3
+        #inletConnectionLine = pdLib.lastConnectLineNumber(pdCodeUI)+3
         #inletConnectionLine = snakeInLine + 1
+        inletConnectionLine = len(pdCodeUI)+1
         if inletTildeNumber > 0:
             for ind in range(len(inletTildeList)):
                 pdLib.addConnection(snakeOutIndex, ind, faustObjectIndex, ind+1, pdCodeUI, inletConnectionLine + ind)
@@ -198,7 +203,7 @@ def pdCodeProcess(fileName, patchFolder, objectName):
         pdLib.addConnection(snakeInIndex, 0, outletTildeList[0], 0, pdCodeUI, outletConnectionLine+len(outletTildeList)+1)
     
         #
-        #we delete all inlet~ objects (except the first one) and update the descrption of the connections in consequence
+        #we delete all inlet~ objects (except the first one) and update the description of the connections in consequence
         #displayPdCode(pdCode)
         if inletTildeNumber > 0:
             for i in range(1, len(inletTildeList)):
@@ -222,6 +227,8 @@ def pdCodeProcess(fileName, patchFolder, objectName):
                 pdLib.updateAllConnectionData(outletTildeList[1], pdCodeUI)
                 parsePdCode(pdCodeUI)
                 #all connections are updated 
+        
+        pdLib.movesCanvasLineToTheEnd(pdCodeUI)
     
     #if ((inletTildeNumber > 0) or (outletTildeNumber > 0)):
         #dump(pdCode)
@@ -302,7 +309,7 @@ def pdCodeProcess(fileName, patchFolder, objectName):
         pdLib.savePdCode(pdCodeMC, mcFilePath)
         print("==>canvas processed")
     else:
-        print("==>canvas not processed. No inlet~ and no outlet~ inside")
+        print("==>canvas not processed")
 
 
 
