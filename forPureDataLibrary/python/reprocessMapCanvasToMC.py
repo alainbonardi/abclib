@@ -167,6 +167,7 @@ def pdCodeProcessByStep(fileName, patchFolder, objectName, step):
         pdLib.savePdCode(pdCodeUI, fileName)
     else:
         print("No snake~ out object")
+    f.close()
 
 
 
