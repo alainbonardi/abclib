@@ -38,7 +38,7 @@
 #X msg 684 160 resq \$1;
 #X msg 630 110 10;
 #X msg 684 110 60;
-#X obj 615 217 s jup2;
+#X obj 615 225 s jup2;
 #X msg 521 111 1;
 #X msg 196 117 220;
 #X msg 578 111 220;

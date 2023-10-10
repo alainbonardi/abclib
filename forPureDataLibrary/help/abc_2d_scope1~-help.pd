@@ -23,7 +23,7 @@
 #X obj 47 345 abc_ambi_scope_m;
 #X obj 442 237 abc_2d_encoder7_m;
 #X obj 454 281 abc_2d_scope7_m;
-#X obj 540 345 abc_ambi_scope_m;
+#X obj 540 347 abc_ambi_scope_m;
 #X obj 12 552 abc_helpcredit;
 #X connect 2 0 7 0;
 #X connect 3 0 4 0;

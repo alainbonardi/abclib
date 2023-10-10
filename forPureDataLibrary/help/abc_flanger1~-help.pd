@@ -53,7 +53,7 @@
 #X text 559 84 offset enables to shift the variation of the delay duration between offset and offset+depth;
 #X text 559 118 feeedback is the amount of delayed sound added to the original;
 #X text 560 153 spread controls spatial spreading 0 => mono \, all outputs identical 1 => maximum spatial split. For abc_flanger2~ it means a maximum stereo effect.;
-#X obj 327 325 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 1 1;
+#X obj 327 323 tgl 25 1 empty empty empty 17 7 0 10 #feffc6 #000000 #000000 0 1;
 #X obj 678 216 abc_gain -127;
 #X obj 139 453 abc_flanger2_m;
 #X obj 152 531 abc_stereoout_m -15;

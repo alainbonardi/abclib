@@ -33,7 +33,7 @@
 #X obj 901 334 abc_substractsynth8_m;
 #X obj 925 286 abc_multinoise8_m;
 #X obj 1037 334 abc_cosrandenv8_m;
-#X obj 1048 287 abc_addsynth8_m;
+#X obj 1049 287 abc_addsynth8_m;
 #X obj 954 441 abc_chopan8_m;
 #X obj 1029 493 abc_stereoout_m -15;
 #X obj 944 492 abc_meter2_m;

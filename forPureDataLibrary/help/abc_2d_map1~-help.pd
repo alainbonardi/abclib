@@ -1,4 +1,4 @@
-#N canvas 122 465 2190 785 10;
+#N canvas 122 465 2259 785 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_mapN[_S]~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_map_of_sources_in_polar_coordinates 20 12 0 12 #606060 #fcfcfc 0;
@@ -30,7 +30,7 @@
 #X obj 1562 148 abc_soundgrain~;
 #X obj 1766 147 abc_soundcoat~;
 #X obj 1670 147 r ztraj;
-#X obj 1878 70 abc_env_noise 125 0.5 -5;
+#X obj 1880 70 abc_env_noise 125 0.5 -5;
 #X obj 1912 168 cos~;
 #X obj 1912 189 +~ 1;
 #X obj 1948 169 abc_mult2pi~;
