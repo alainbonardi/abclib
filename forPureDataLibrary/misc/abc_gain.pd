@@ -1,20 +1,16 @@
 #N canvas 851 316 220 365 10;
-#X obj 34 73 vsl 15 128 -127 18 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 34 73 vsl 15 128 -127 18 0 0 empty empty empty 0 -9 0 10 #feffc6 #000000 #000000 0 1;
 #X obj 34 2 loadbang;
 #X floatatom 34 207 5 0 0 0 - - - 0;
 #X obj 34 26 f \$1;
-#X obj 53 144 bng 15 250 50 0 empty empty R 17 7 0 10 #ffffff #000000
-#000000;
+#X obj 53 144 bng 15 250 50 0 empty empty R 17 7 0 10 #ffffff #000000 #000000;
 #X obj 34 327 outlet;
 #X msg 34 300 gain \$1;
 #X msg 107 73 0;
 #X text 66 209 dB;
 #X msg 120 158 -127;
-#X obj 53 107 bng 15 250 50 0 empty empty O 17 7 0 10 #dfdfdf #000000
-#000000;
-#X obj 53 126 bng 15 250 50 0 empty empty -127 17 7 0 10 #dfdfdf #000000
-#000000;
+#X obj 53 107 bng 15 250 50 0 empty empty O 17 7 0 10 #dfdfdf #000000 #000000;
+#X obj 53 126 bng 15 250 50 0 empty empty -127 17 7 0 10 #dfdfdf #000000 #000000;
 #X msg 34 241 \$1 20;
 #X obj 34 262 line -127;
 #X connect 0 0 2 0;
