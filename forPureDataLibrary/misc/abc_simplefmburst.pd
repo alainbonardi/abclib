@@ -1,6 +1,5 @@
-#N canvas 1533 301 386 508 10;
-#X obj 93 68 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#N canvas 1126 301 386 508 10;
+#X obj 93 68 bng 15 250 50 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000;
 #X obj 243 33 inlet;
 #X obj 243 143 t b b;
 #X obj 207 181 del 30;

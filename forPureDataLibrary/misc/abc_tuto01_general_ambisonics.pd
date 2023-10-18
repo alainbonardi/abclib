@@ -57,7 +57,7 @@
 #X msg 550 709 \; pd dsp \$1 \;;
 #X obj 676 450 abc_2d_stereoencoder1~;
 #X obj 712 371 r envs;
-#X obj 679 307 hsl 128 15 0 120 0 0 empty empty Opening\ angle -2 -8 0 10 #feffc6 #000000 #000000 0 1;
+#X obj 679 307 hsl 128 15 0 120 0 0 empty empty Opening\ angle -2 -8 0 10 #dfdfdf #000000 #000000 0 1;
 #X floatatom 676 327 5 0 0 0 - - - 0;
 #X obj 676 248 loadbang;
 #X msg 676 269 60;
@@ -74,7 +74,7 @@
 #X obj 809 576 abc_ambi_scope_m;
 #X obj 811 546 abc_2d_scope1_m;
 #X obj 270 490 abc_2d_optim3_m;
-#X obj 183 357 vradio 15 1 0 3 empty empty empty 0 -8 0 10 #feffc6 #000000 #000000 0;
+#X obj 183 357 vradio 15 1 0 3 empty empty empty 0 -8 0 10 #dfdfdf #000000 #000000 0;
 #X floatatom 183 413 5 0 0 0 - - - 0;
 #X obj 183 302 loadbang;
 #X msg 183 331 2;

@@ -1,5 +1,5 @@
 #N canvas 851 316 220 365 10;
-#X obj 34 73 vsl 15 128 -127 18 0 0 empty empty empty 0 -9 0 10 #feffc6 #000000 #000000 0 1;
+#X obj 34 73 vsl 15 128 -127 18 0 0 empty empty empty 0 -9 0 10 #dfdfdf #000000 #000000 0 1;
 #X obj 34 2 loadbang;
 #X floatatom 34 207 5 0 0 0 - - - 0;
 #X obj 34 26 f \$1;

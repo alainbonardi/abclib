@@ -223,7 +223,7 @@ for fileName in os.listdir(directory):
 
         if fullFileName.endswith('.pd'):
             #only processes map abstractions
-            if "busselect" in myProcessName:
+            if ("busselect" in myProcessName) or ("busplus" in myProcessName) or ("busmult" in myProcessName):
                 print("Processing "+myProcessName)     
                 if "_m_ui" in myProcessName:
                     myProcessName = myProcessName[:-5]

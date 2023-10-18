@@ -1,10 +1,9 @@
 #N canvas 439 368 506 469 10;
-#X obj 85 82 vradio 15 1 0 7 empty empty Duration 0 -8 0 10 -262144
--1 -1 0;
+#X obj 85 82 vradio 15 1 0 7 empty empty Duration 0 -8 0 10 #dfdfdf #000000 #000000 0;
 #X obj 94 226 select 0 1 2 3 4 5 6;
-#X floatatom 153 67 5 0 0 0 - - -;
+#X floatatom 153 67 5 0 0 0 - - - 0;
 #X msg 94 290 4;
-#X floatatom 197 352 5 0 0 0 - - -;
+#X floatatom 197 352 5 0 0 0 - - - 0;
 #X msg 130 290 2;
 #X msg 164 290 1;
 #X msg 197 290 0.5;

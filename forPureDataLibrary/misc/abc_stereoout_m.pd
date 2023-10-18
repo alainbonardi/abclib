@@ -1,11 +1,11 @@
-#N canvas 1358 104 787 425 10;
-#X obj 102 122 tgl 15 0 empty empty DSP 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#N canvas 725 104 787 425 10;
+#X obj 102 122 tgl 15 0 empty empty DSP 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 50 177 \; pd dsp \$1 \;;
 #X obj 13 5 inlet~;
 #X obj 13 51 *~;
 #X obj 199 11 loadbang;
 #X obj 199 35 f \$1;
-#X obj 192 122 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
+#X obj 192 122 bng 15 250 50 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000;
 #X obj 82 52 *~;
 #X floatatom 142 122 5 -127 18 1 dB - - 0;
 #X obj 211 212 dbtorms;
