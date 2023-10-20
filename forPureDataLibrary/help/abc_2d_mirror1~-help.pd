@@ -1,10 +1,10 @@
-#N canvas 72 129 1440 788 10;
+#N canvas 72 129 1386 788 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_mirrorN~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_mirrors_of_spatial_components_at_orders_1_2_3... 20 12 0 12 #606060 #fcfcfc 0;
 #X obj 553 363 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 553 387 stereo \$1;
-#X obj 574 674 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 574 674 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 574 704 \; pd dsp \$1 \;;
 #X obj 81 115 abc_soundcoat~;
 #X obj 64 137 loadbang;

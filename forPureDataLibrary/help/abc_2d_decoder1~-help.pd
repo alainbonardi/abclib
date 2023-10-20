@@ -33,7 +33,7 @@
 #X msg 788 629 a-3 \$1;
 #X obj 1053 419 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 1053 443 stereo \$1;
-#X obj 890 590 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 890 590 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 890 620 \; pd dsp \$1 \;;
 #X text 907 26 - gain is the output gain in dB that can directly be controlled;
 #X text 907 53 - angularoffset is the possible angular shift of the loudspeakers (in degrees);
