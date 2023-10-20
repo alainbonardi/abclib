@@ -2,7 +2,7 @@
 #X obj 10 -13 cnv 15 500 25 empty empty abc_2d_syn_decorrelationN~ &_fx 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 8 670 abc_helpcredit;
 #X obj 10 13 cnv 15 500 25 empty empty Decorrelation_processes_to_generate_or_process_spatial_components 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 1054 624 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 1054 624 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 1054 652 \; pd dsp \$1 \;;
 #X text 943 -24 CONTROLS;
 #X text 546 -26 DESCRIPTION;
@@ -69,7 +69,7 @@
 #X msg 1595 221 delay \$1;
 #X text 547 -6 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~ \, ... objects generate spatial decorrelated components in ambisonic from one mono signal. abc_2d_fx_decorrelated1~ \, abc_2d_fx_decorrelated2~ \, ... objects apply decorrelation to spatial components already created by encoders or maps for instance. If we are at order N in ambisonics \, the number of spatial components is P = 2*N+1. Each spatial component is delayed and the P delay lines are driven by a 'factor' parameter between 0 and 1 The ith (i between 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter is compared to 1-(i+1)/P. If it is greater than this threshold the delay is (i+1)*delay/P \, else the delay is 0;
 #X text 943 -3 delay is the maximum duration in samples of the delays (by default it is 48000 \, minimum is 10 maximum 262144 \, that is roughly 5 \, 46 sec at 48KHz);
-#X obj 1664 137 tgl 25 1 empty empty empty 17 7 0 10 #feffc6 #000000 #000000 0 1;
+#X obj 1664 137 tgl 25 1 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 537 245 angle \$1;
 #X floatatom 537 224 5 -360 360 0 - - - 0;
 #X text 942 37 factor (between 0 and 1) is a control parameter that 'opens' the delay lines when increasing;

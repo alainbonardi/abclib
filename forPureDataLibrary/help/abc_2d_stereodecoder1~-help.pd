@@ -2,7 +2,7 @@
 #X obj 14 6 cnv 15 500 25 empty empty abc_stereodecoderN~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 698 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_stereo_decoders_at_orders_1_2_3_etc. 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 503 568 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 503 568 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 503 598 \; pd dsp \$1 \;;
 #X obj 103 458 abc_meter;
 #X text 905 8 CONTROLS;

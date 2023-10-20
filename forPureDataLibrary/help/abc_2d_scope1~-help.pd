@@ -4,7 +4,7 @@
 #X obj 85 98 loadbang;
 #X floatatom 85 160 5 0 0 0 - - - 0;
 #X msg 85 183 speed \$1;
-#X obj 256 474 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 256 474 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 256 502 \; pd dsp \$1 \;;
 #X msg 85 136 -0.2;
 #X msg 49 137 0;
@@ -21,8 +21,8 @@
 #X obj 85 227 abc_2d_encoder1_m;
 #X obj 97 297 abc_2d_scope1_m;
 #X obj 47 345 abc_ambi_scope_m;
-#X obj 442 237 abc_2d_encoder7_m;
-#X obj 454 281 abc_2d_scope7_m;
+#X obj 578 237 abc_2d_encoder7_m;
+#X obj 590 281 abc_2d_scope7_m;
 #X obj 540 347 abc_ambi_scope_m;
 #X obj 12 552 abc_helpcredit;
 #X connect 2 0 7 0;
