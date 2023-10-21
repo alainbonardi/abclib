@@ -1,4 +1,4 @@
-#N canvas 323 69 1597 773 10;
+#N canvas 0 79 1470 773 10;
 #X obj 11 2 cnv 15 500 25 empty empty abc_2d_syn_ringmodN~ &_fx 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 730 abc_helpcredit;
 #X obj 11 28 cnv 15 500 25 empty empty Ring_modulation_to_generate_or_process_spatial_components 20 12 0 12 #606060 #fcfcfc 0;
@@ -96,7 +96,7 @@
 #X text 1393 492 2^(10(x-1));
 #X text 1381 524 1-sqrt(1-x^2);
 #X text 1369 539 sqrt(1-(x-1)^2);
-#X obj 1245 450 tgl 25 0 empty empty empty 17 7 0 10 #feffc6 #000000 #000000 0 1;
+#X obj 1245 450 tgl 25 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 1333 475 f0 \$1;
 #X obj 1333 456 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
 #X text 1029 69 factor (between 0 and 1) is a control parameter that 'opens' the ring modulators when increasing.;
@@ -118,7 +118,7 @@
 #X obj 825 468 abc_2d_decoder1_m, f 33;
 #X obj 868 522 abc_quadriout_m -15 1 2 3 4;
 #X obj 769 523 abc_meter4_m;
-#X obj 1039 522 abc_ambi_scope_m;
+#X obj 1039 522 abc_xy_scope_m;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 92 0;

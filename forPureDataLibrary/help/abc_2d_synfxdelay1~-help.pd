@@ -93,9 +93,9 @@
 #X obj 224 343 metro 1000;
 #X msg 224 320 1;
 #X msg 296 148 0.4;
-#X obj 1871 605 abc_ambi_scope_m;
 #X obj 1181 621 abc_ambi_scope1_m;
 #X obj 1721 605 abc_ambi_scope7_m;
+#X obj 1871 605 abc_xy_scope_m;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 73 0;
@@ -166,14 +166,14 @@
 #X connect 77 1 81 0;
 #X connect 79 1 80 1;
 #X connect 80 1 82 1;
-#X connect 80 1 95 1;
+#X connect 80 1 94 1;
 #X connect 82 1 83 0;
 #X connect 82 1 84 0;
 #X connect 85 1 86 1;
-#X connect 85 2 94 1;
+#X connect 85 2 96 1;
 #X connect 86 1 87 1;
 #X connect 87 1 88 1;
-#X connect 87 1 96 1;
+#X connect 87 1 95 1;
 #X connect 88 1 89 0;
 #X connect 88 1 90 0;
 #X connect 91 0 23 0;

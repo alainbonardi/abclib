@@ -1,4 +1,4 @@
-#N canvas 34 111 1436 781 10;
+#N canvas -1 110 1436 781 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_decoderN[_P]~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Ambisonic_decoders_at_orders_1_(3-16_LS)_2_(5-16_LS)_3_(7-16LS)_etc. 20 12 0 12 #606060 #fcfcfc 0;
@@ -67,7 +67,8 @@
 #X obj 342 221 loadbang;
 #X text 906 191 - using cyclone/scope~ \, it is possible to give a simple representation of the sound field (for example in abc_ambi_scope_m abstraction), f 72;
 #X obj 343 365 abc_ambi_scope1_m;
-#X obj 1275 555 abc_ambi_scope3_m;
+#X obj 1275 555 abc_xy_scope_m;
+#X obj 1325 509 abc_2d_scope7_m;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
@@ -108,7 +109,7 @@
 #X connect 49 1 47 0;
 #X connect 49 1 60 0;
 #X connect 50 1 51 1;
-#X connect 50 1 68 1;
+#X connect 50 1 69 1;
 #X connect 51 1 52 0;
 #X connect 51 1 61 0;
 #X connect 55 1 56 1;
@@ -121,3 +122,4 @@
 #X connect 65 0 64 0;
 #X connect 65 0 62 0;
 #X connect 65 0 63 0;
+#X connect 69 1 68 1;
