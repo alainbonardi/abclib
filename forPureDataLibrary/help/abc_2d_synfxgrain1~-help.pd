@@ -92,9 +92,8 @@
 #X obj 1533 450 abc_2d_fx_delay7_m;
 #X obj 1540 557 abc_2d_decoder7_m;
 #X obj 1639 592 dac~ 1;
-#X obj 1666 558 abc_2d_scope7_m;
 #X obj 1359 591 abc_meter16_m;
-#X obj 1693 592 abc_ambi_scope_m;
+#X obj 1693 592 abc_ambi_scope7_m;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 76 0;
@@ -175,8 +174,7 @@
 #X connect 88 1 89 1;
 #X connect 89 1 90 1;
 #X connect 90 1 91 1;
-#X connect 90 1 93 1;
+#X connect 90 1 94 1;
 #X connect 91 1 92 0;
-#X connect 91 1 94 0;
-#X connect 93 1 95 1;
+#X connect 91 1 93 0;
 #X coords 0 806 1 805 85 60 0;
