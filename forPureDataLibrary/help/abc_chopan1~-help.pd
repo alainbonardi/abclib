@@ -2,7 +2,7 @@
 #X obj 11 5 cnv 15 500 25 empty empty abc_chopanN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Chowning_panners 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 544 584 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 544 584 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 544 612 \; pd dsp \$1 \;;
 #X text 962 26 CONTROLS;
 #X text 536 28 DESCRIPTION;
@@ -30,13 +30,13 @@
 #X obj 314 288 abc_env_noise 200 0.3 0;
 #X obj 920 210 abc_gain -127;
 #X obj 86 334 abc_chopan1_m_ui;
-#X obj 314 475 abc_stereoout_m -15;
+#X obj 314 495 abc_stereoout_m -15;
 #X obj 1018 335 abc_addsynth16_m;
 #X obj 1006 358 abc_cosrandenv16_m;
 #X obj 1030 435 abc_chopan16_m;
 #X obj 1111 497 abc_stereoout_m -15;
 #X obj 1008 497 abc_meter2_m;
-#X obj 231 474 abc_meter2_m;
+#X obj 231 494 abc_meter2_m;
 #X text 1115 396 16 channels panned;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;

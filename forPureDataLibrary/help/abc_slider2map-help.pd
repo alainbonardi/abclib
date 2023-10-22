@@ -1,14 +1,10 @@
 #N canvas 578 82 575 784 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_slider2map 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_slider2map 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty Graphic_2D_control_of_a_source_position
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 336 665 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty Graphic_2D_control_of_a_source_position 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 336 665 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 336 695 \; pd dsp \$1 \;;
-#X obj 35 412 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 35 412 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 35 434 stereo \$1;
 #X obj 143 468 abc_2d_decoder3~ --------------;
 #X obj 182 644 dac~ 1 2 3 4 5 6 7 8;
@@ -18,16 +14,13 @@
 #X obj 224 147 abc_slider2map;
 #X obj 81 530 abc_meter;
 #X text 140 69 DESCRIPTION;
-#X text 140 89 abc_slider2map is an abstraction that enables to graphically
-control the abc_2d_map objects. There are no default values;
-#X obj 409 521 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
-232 74 79 77 96 98 102 0 empty;
+#X text 140 89 abc_slider2map is an abstraction that enables to graphically control the abc_2d_map objects. There are no default values;
+#X obj 409 521 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
 #X text 428 654 cyclone/scope~;
 #X text 266 298 generates the polar coordinates of the source;
 #X obj 110 153 loadbang;
 #X msg 110 177 1;
-#X obj 110 201 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 110 201 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 110 225 directangles \$1;
 #X obj 17 203 abc_gain -127;
 #X connect 3 0 4 0;

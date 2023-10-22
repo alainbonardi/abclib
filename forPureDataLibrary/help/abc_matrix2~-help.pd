@@ -2,7 +2,7 @@
 #X obj 11 5 cnv 15 500 25 empty empty abc_matrixN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Signal_matrices_with_coefficients_from_-1_to_1_and_transition_ramp 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 749 672 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 749 672 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 749 700 \; pd dsp \$1 \;;
 #X text 935 3 CONTROLS;
 #X text 539 5 DESCRIPTION;

@@ -2,7 +2,7 @@
 #X obj 11 5 cnv 15 500 25 empty empty abc_busselectN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Selection_between_2_buses_of_n_signals_towards_a_bus_of_n_signals 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 541 589 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 541 589 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 541 617 \; pd dsp \$1 \;;
 #X text 935 3 CONTROLS;
 #X text 539 5 DESCRIPTION;

@@ -1,51 +1,43 @@
 #N canvas 36 25 918 779 10;
-#X obj 11 8 cnv 15 500 25 empty empty abc_linedrive~ 20 12 0 18 -99865
--262144 0;
+#X obj 11 8 cnv 15 500 25 empty empty abc_linedrive~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 736 abc_helpcredit;
-#X obj 11 34 cnv 15 500 25 empty empty Cartesian_to_polar_coordinates
-20 12 0 12 -99865 -262144 0;
-#X obj 399 613 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+#X obj 11 34 cnv 15 500 25 empty empty Cartesian_to_polar_coordinates 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 399 613 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 399 641 \; pd dsp \$1 \;;
 #X text 421 157 CONTROLS;
 #X text 419 76 DESCRIPTION;
 #X text 421 177 no specific control;
-#X obj 307 236 hsl 128 15 0 127 0 0 empty empty input_[0-127] -2 -8
-0 10 -262144 -1 -1 0 1;
-#X floatatom 304 256 5 0 0 0 - - -;
+#X obj 307 236 hsl 128 15 0 127 0 0 empty empty input_[0-127] -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 304 256 5 0 0 0 - - - 0;
 #X obj 304 276 sig~;
 #X obj 76 306 abc_linedrive;
 #X obj 304 418 snapshot~;
-#X floatatom 304 439 5 0 0 1 exponential_result - -;
+#X floatatom 304 439 5 0 0 1 exponential_result - - 0;
 #X obj 458 235 loadbang;
 #X msg 458 256 1;
 #X obj 458 277 metro 50;
 #X msg 76 257 outputmax \$1;
 #X msg 162 257 expcurve \$1;
 #X obj 76 207 r outputmax;
-#X floatatom 76 228 5 0 0 0 - - -;
-#X floatatom 162 228 5 0 0 0 - - -;
+#X floatatom 76 228 5 0 0 0 - - - 0;
+#X floatatom 162 228 5 0 0 0 - - - 0;
 #X obj 162 207 r expcurve;
 #X obj 134 458 loadbang;
 #X msg 134 478 \; outputmax 1 \; expcurve 1.06 \;;
 #X msg 135 551 \; outputmax 4096 \; expcurve 1.07177 \;;
-#X text 420 97 abc_linedrive~ converts a signal between 0 and 127 to
-a signal between 0 and outputmax following an exponential profile to
-be defined by the expcurve parameter;
+#X text 420 97 abc_linedrive~ converts a signal between 0 and 127 to a signal between 0 and outputmax following an exponential profile to be defined by the expcurve parameter;
 #X obj 662 233 phasor~ 1;
 #X obj 662 254 *~ 127;
 #X obj 702 335 snapshot~;
-#X floatatom 702 356 5 0 0 1 input_as_a_phasor_*~_127 - -;
+#X floatatom 702 356 5 0 0 1 input_as_a_phasor_*~_127 - - 0;
 #X obj 583 492 abc_linedrive~;
 #X msg 584 446 expcurve \$1;
 #X obj 583 538 snapshot~;
-#X floatatom 583 559 5 0 0 1 exponential_result - -;
+#X floatatom 583 559 5 0 0 1 exponential_result - - 0;
 #X msg 574 402 1.06;
 #X msg 609 402 2;
-#X obj 708 601 hsl 128 15 0 127 0 0 empty empty input -2 -8 0 10 -262144
--1 -1 10592 1;
-#X obj 708 635 hsl 128 15 0 1 0 0 empty empty linedrive -2 -8 0 10
--262144 -1 -1 3043 1;
+#X obj 708 601 hsl 128 15 0 127 0 0 empty empty input -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 708 635 hsl 128 15 0 1 0 0 empty empty linedrive -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X connect 3 0 4 0;
 #X connect 8 0 9 0;
 #X connect 9 0 10 0;

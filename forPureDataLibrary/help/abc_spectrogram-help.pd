@@ -1,22 +1,17 @@
-#N struct 1042-template-master float x float x2 float color float colort
-float xs float ys symbol sym;
+#N struct 1666-template-master float x float x2 float color float colort float xs float ys symbol sym;
 #N canvas 90 25 910 740 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_spectrogram 20 12 0 18 -99865
--262144 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_spectrogram 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 698 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty Visualization_representation_of_the_spectrum_of_a_signal
-20 12 0 12 -99865 -262144 0;
-#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 -262144 -1
--1 1 1;
+#X obj 14 32 cnv 15 500 25 empty empty Visualization_representation_of_the_spectrum_of_a_signal 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 362 628 \; pd dsp \$1 \;;
 #X text 18 68 DESCRIPTION;
 #X text 397 65 CONTROLS;
 #X msg 511 405 onoff \$1;
-#X obj 511 382 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X floatatom 613 381 5 0 0 0 - - -;
+#X obj 511 382 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 613 381 5 0 0 0 - - - 0;
 #X obj 612 301 loadbang;
-#X floatatom 718 381 5 0 0 0 - - -;
+#X floatatom 718 381 5 0 0 0 - - - 0;
 #X msg 511 361 1;
 #X text 28 610 thanks to Pierre Guillot;
 #X text 397 90 - onoff (1/0): displays or not the input signal;
@@ -24,11 +19,7 @@ float xs float ys symbol sym;
 #X obj 366 206 r spectrogram;
 #X obj 27 269 abc_spectrogram;
 #X obj 614 485 s spectrogram;
-#X text 18 91 The spetrogram offers a visual representation of the
-spectrum of frequencies of a signal. The horizontal axis represents
-the frequency bins that depend on the FFT size. The vertical axis represents
-the amplitude of a frequency bins. Three amplitude scales are available
-: rms (root mean square) \, decibel and power.;
+#X text 18 91 The spetrogram offers a visual representation of the spectrum of frequencies of a signal. The horizontal axis represents the frequency bins that depend on the FFT size. The vertical axis represents the amplitude of a frequency bins. Three amplitude scales are available : rms (root mean square) \, decibel and power.;
 #X msg 613 404 fftsize \$1;
 #X msg 613 358 1024;
 #X msg 718 358 0;
@@ -37,8 +28,7 @@ the amplitude of a frequency bins. Three amplitude scales are available
 #X msg 718 404 ampscale \$1;
 #X text 436 315 Spectrogram controls;
 #X text 397 107 - fftsize: number of FFT bins (power of 2);
-#X text 397 123 - ampscale: three possible values (0 for rms \, 1 for
-decibel \, 2 for power);
+#X text 397 123 - ampscale: three possible values (0 for rms \, 1 for decibel \, 2 for power);
 #X obj 27 206 phasor~ 400;
 #X connect 3 0 4 0;
 #X connect 7 0 18 0;

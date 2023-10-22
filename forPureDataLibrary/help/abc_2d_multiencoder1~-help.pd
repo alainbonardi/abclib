@@ -4,7 +4,7 @@
 #X obj 14 32 cnv 15 500 25 empty empty 1_to_8_source_encoders_at_orders_1_2_3... 20 12 0 12 #606060 #fcfcfc 0;
 #X obj 532 308 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 532 336 \; pd dsp \$1 \;;
-#X text 921 7 CONTROLS;
+#X text 921 3 CONTROLS;
 #X text 542 6 DESCRIPTION;
 #X obj 476 154 abc_env_noise 200 0.3 0;
 #X obj 123 444 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
@@ -64,7 +64,7 @@
 #X obj 1113 538 s multi1;
 #X obj 916 259 loadbang;
 #X text 543 26 abc_multiencoderN_S~ objects gather multiple encoders within a single object. N is the ambisonic order and S is the number of sources. It is possible to encode a maximum of 8 sources. N varies between 1 and 7 For instance \, at ambisonic order 3 \, abc_2d_multiencoder3_4~ enables to encode 4 monophonic sources.;
-#X text 921 26 The speeds (s00 \, s01 \, ...) of the sources in turns per second and the fixed angles (a00 \, a01 \, ...) in degrees (when the speeds equal 0) \, as well as the return time (it) in milliseconds are the control parameters.;
+#X text 921 25 The speeds (s00 \, s01 \, ...) of the sources in turns per second and the fixed angles (a00 \, a01 \, ...) in degrees (when the speeds equal 0) \, as well as the return time (it) in milliseconds are the control parameters.;
 #X msg 659 318 0 0 0 0;
 #X obj 25 307 abc_gain -127;
 #X obj 131 261 abc_2d_multiencoder3_4_m_ui;

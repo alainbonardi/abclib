@@ -1,11 +1,8 @@
 #N canvas 40 25 840 697 10;
-#X obj 9 9 cnv 15 500 25 empty empty abc_musdur 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 9 9 cnv 15 500 25 empty empty abc_musdur 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 8 657 abc_helpcredit;
-#X obj 9 35 cnv 15 500 25 empty empty Abstraction_to_provide_a_selection_of_musical_durations
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 572 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 9 35 cnv 15 500 25 empty empty Abstraction_to_provide_a_selection_of_musical_durations 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 572 466 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 572 494 \; pd dsp \$1 \;;
 #X text 468 71 DESCRIPTION;
 #X obj 145 215 loadbang;
@@ -14,22 +11,19 @@
 #X text 134 489 original;
 #X obj 167 449 abc_delay1~;
 #X msg 321 346 dur-0 \$1;
-#X obj 260 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 260 191 vsl 15 128 1 128 0 0 empty empty tempo 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 260 133 loadbang;
 #X msg 260 155 80;
 #X floatatom 260 327 5 0 0 0 - - - 0;
 #X msg 260 347 tempo \$1;
 #X obj 321 177 abc_musdur 3;
-#X obj 442 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 442 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
 #X floatatom 321 326 5 0 0 0 - - - 0;
 #X floatatom 442 325 5 0 0 0 - - - 0;
 #X msg 442 345 fdbk-0 \$1;
 #X obj 468 465 loadbang;
 #X msg 468 487 1;
-#X obj 468 511 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 468 511 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 468 556 s top;
 #X obj 163 257 r top;
 #X text 238 491 echo;
@@ -42,9 +36,7 @@
 #X text 57 630 original;
 #X text 280 633 echo;
 #X obj 468 533 metro 10000;
-#X text 469 92 abc_musdur is an abstraction that provides a selection
-of musical durations. - whole = 4 - half = 2 - quarter = 1 - 8th =
-0.5 - 16th = 0.25 - 32nd = 0.125 - triplet = 0.333;
+#X text 469 92 abc_musdur is an abstraction that provides a selection of musical durations. - whole = 4 - half = 2 - quarter = 1 - 8th = 0.5 - 16th = 0.25 - 32nd = 0.125 - triplet = 0.333;
 #X obj 145 325 *~ 0.3;
 #X obj 162 516 abc_gain2~;
 #X obj 46 164 abc_gain -127;

@@ -1,4 +1,4 @@
-#N canvas 37 66 1470 735 10;
+#N canvas 310 59 1470 735 10;
 #X obj 10 -13 cnv 15 500 25 empty empty abc_2d_syn_decorrelationN~ &_fx 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 8 670 abc_helpcredit;
 #X obj 10 13 cnv 15 500 25 empty empty Decorrelation_processes_to_generate_or_process_spatial_components 20 12 0 12 #606060 #fcfcfc 0;
@@ -9,7 +9,7 @@
 #X obj 106 371 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 106 397 stereo \$1;
 #X obj 1664 176 abc_upanddown;
-#X obj 640 240 abc_soundgrain~;
+#X obj 641 245 abc_soundgrain~;
 #X obj 534 376 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 534 396 stereo \$1;
 #X obj 449 178 abc_gain -127;
@@ -24,7 +24,7 @@
 #X obj 509 464 abc_meter;
 #X obj 953 483 abc_meter;
 #X obj 112 273 r cmd;
-#X obj 539 304 r cmd;
+#X obj 539 306 r cmd;
 #X obj 1075 360 r cmd;
 #X obj 1633 599 s cmd;
 #X obj 1535 93 loadbang;
@@ -70,8 +70,8 @@
 #X text 547 -6 abc_2d_syn_decorrelation1~ \, abc_2d_syn_decorrelation2~ \, ... objects generate spatial decorrelated components in ambisonic from one mono signal. abc_2d_fx_decorrelated1~ \, abc_2d_fx_decorrelated2~ \, ... objects apply decorrelation to spatial components already created by encoders or maps for instance. If we are at order N in ambisonics \, the number of spatial components is P = 2*N+1. Each spatial component is delayed and the P delay lines are driven by a 'factor' parameter between 0 and 1 The ith (i between 0 and P-1) delay is either 0 or (i+1)*delay/P. The factor parameter is compared to 1-(i+1)/P. If it is greater than this threshold the delay is (i+1)*delay/P \, else the delay is 0;
 #X text 943 -3 delay is the maximum duration in samples of the delays (by default it is 48000 \, minimum is 10 maximum 262144 \, that is roughly 5 \, 46 sec at 48KHz);
 #X obj 1664 137 tgl 25 1 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
-#X msg 537 245 angle \$1;
-#X floatatom 537 224 5 -360 360 0 - - - 0;
+#X msg 539 245 angle \$1;
+#X floatatom 539 224 5 -360 360 0 - - - 0;
 #X text 942 37 factor (between 0 and 1) is a control parameter that 'opens' the delay lines when increasing;
 #X text 942 74 functiontype (between 0 and 21) set the distribution used to spread delay time between the spatial components;
 #X text 941 109 fdbk set the amount of feedback of each delay line;
@@ -80,7 +80,7 @@
 #X obj 107 421 abc_2d_decoder1_m, f 33;
 #X obj 154 464 abc_quadriout_m -15 1 2 3 4;
 #X obj 51 464 abc_meter4_m;
-#X obj 538 269 abc_2d_encoder1_m, f 32;
+#X obj 539 269 abc_2d_encoder1_m, f 32;
 #X obj 539 330 abc_2d_fx_decorrelation1_m, f 32;
 #X obj 534 423 abc_2d_decoder1_m, f 33;
 #X obj 585 461 abc_quadriout_m -15 1 2 3 4;
@@ -90,7 +90,7 @@
 #X obj 1018 455 abc_2d_decoder7_m;
 #X obj 1029 524 dac~ 1;
 #X obj 758 461 abc_ambi_scope1_m;
-#X obj 1145 479 abc_ambi_scope7_m;
+#X obj 1145 462 abc_ambi_scope7_m;
 #X connect 3 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 78 0;

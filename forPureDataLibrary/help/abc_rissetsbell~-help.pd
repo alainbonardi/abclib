@@ -1,7 +1,7 @@
 #N canvas 287 189 1787 821 10;
 #X obj 11 38 cnv 15 500 25 empty empty abc_rissetsbell~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 11 64 cnv 15 500 25 empty empty Risset's_bell_synthesis 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 1015 638 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 1015 638 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 1015 666 \; pd dsp \$1 \;;
 #X text 932 36 CONTROLS;
 #X text 539 38 DESCRIPTION;
@@ -112,8 +112,7 @@
 #X obj 551 523 abc_2d_decoder5_m;
 #X obj 650 549 dac~ 1;
 #X obj 462 583 abc_meter16_m;
-#X obj 702 549 abc_2d_scope5_m;
-#X obj 743 584 abc_ambi_scope_m;
+#X obj 743 584 abc_ambi_scope5_m;
 #X connect 2 0 3 0;
 #X connect 6 0 11 0;
 #X connect 7 0 8 0;
@@ -200,5 +199,4 @@
 #X connect 84 1 88 1;
 #X connect 85 1 86 0;
 #X connect 85 1 87 0;
-#X connect 88 1 89 1;
 #X coords 0 821 1 820 85 60 0;

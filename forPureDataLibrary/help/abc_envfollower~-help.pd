@@ -1,7 +1,7 @@
 #N canvas 564 25 1022 811 10;
 #X obj 11 21 cnv 15 500 25 empty empty abc_envfollower~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 11 47 cnv 15 500 25 empty empty Envelope_follower 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 919 317 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 919 317 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 919 345 \; pd dsp \$1 \;;
 #X text 537 76 CONTROLS;
 #X text 539 21 DESCRIPTION;

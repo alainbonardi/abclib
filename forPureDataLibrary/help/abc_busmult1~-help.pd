@@ -2,7 +2,7 @@
 #X obj 11 5 cnv 15 500 25 empty empty abc_busmultN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
 #X obj 11 31 cnv 15 500 25 empty empty Multiplies_two_buses_of_n_signals 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 410 596 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 410 596 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 410 624 \; pd dsp \$1 \;;
 #X text 539 5 DESCRIPTION;
 #X obj 555 202 abc_gain -127;
@@ -56,9 +56,9 @@
 #X msg 1170 303 factor \$1;
 #X text 938 452 applies the 7 decorrelated envelopes to the set of 7 harmonics of the 440 Hz A;
 #X text 280 448 ring modulation on a set of 7 harmonics of the 220 Hz A with 7 harmonics of a LF fundamental (between 0.1 and 20.1 Hz);
-#X obj 966 544 abc_ambi_scope_m;
 #X text 1119 355 The decorrelation factor scans the range between 0 and 1 This provides both spectral and spatialization changes;
 #X obj 1016 512 abc_2d_scope3_m;
+#X obj 966 543 abc_xy_scope_m;
 #X connect 3 0 4 0;
 #X connect 6 0 32 0;
 #X connect 7 0 19 0;
@@ -87,7 +87,7 @@
 #X connect 29 0 30 0;
 #X connect 30 1 31 2;
 #X connect 31 1 32 1;
-#X connect 31 1 59 1;
+#X connect 31 1 58 1;
 #X connect 32 1 33 0;
 #X connect 32 1 35 0;
 #X connect 36 0 37 0;
@@ -105,5 +105,5 @@
 #X connect 51 0 52 0;
 #X connect 52 0 50 0;
 #X connect 54 0 53 0;
-#X connect 59 1 57 1;
+#X connect 58 1 59 1;
 #X coords 0 776 1 775 85 60 0;
