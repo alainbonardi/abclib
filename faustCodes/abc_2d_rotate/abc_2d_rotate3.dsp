@@ -7,7 +7,7 @@
 //---------------------CICM - MUSIDANSE LABORATORY - PARIS 8 UNIVERSITY-----------------//
 //--------------------------------------------------------------------------------------//
 //
-declare author "Alain Bonardi, Paul Goutmann & David Fierro";
+declare author "Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni";
 declare licence "LGPLv3";
 //
 process = library("abc.lib").abc_2d_rotate_ui(3);
