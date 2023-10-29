@@ -37,14 +37,26 @@ import("mm.lib");
 //AMBISONIC DECODERS: STEREO AND IRREGULAR (general decoder includes both modes)
 //--------------------------------------------------------------------------------------//
 //
-
-abc_2d_stereodecoder_ui(n) = thisStereoDecoder
+//-------`abc_2d_stereodecoder_ui`----------
+// UI function for the stereo ambisonic decoder
+//
+// #### Usage
+//
+// ```
+// _,_, ... : abc_2d_stereodecoder_ui(N) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+//-----------------------------
+abc_2d_stereodecoder_ui(N) = thisStereoDecoder
 	with {
 			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			leftDispatcher = _<:(*(1-direct), *(direct));
 			rightDispatcher = _<:(*(direct), *(1-direct));
-			thisStereoDecoder = ho.decoderStereo(n) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
+			thisStereoDecoder = ho.decoderStereo(N) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
 abc_2d_decoder_ui(n, p) = iDecoder(n, la, direct, offset, stereo, gain) 
