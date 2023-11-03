@@ -82,7 +82,7 @@ abc_2d_decoder_ui(N, P) = iDecoder(N, la, direct, offset, stereo, gain)
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
 			a(i, nls) = nentry("h:decoder/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
 			//la = list of angles//
- 			la = par(i, P, a(i, p));
+ 			la = par(i, P, a(i, P));
 };
 //
 //--------------------------------------------------------------------------------------//

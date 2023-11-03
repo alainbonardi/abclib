@@ -239,7 +239,7 @@ with {
 //-------------------------------------------------------------------
 decoder(N, P) = par(i, 2*N+1, _) <: par(i, P, speaker(N, 2 * ma.PI*i/P))
 with {
-    speaker(N,a) = /(2), par(i, 2*N, _), encoder(N, 2/P, a) : si.dot(2*N+1);
+    speaker(N,a) = /(2), par(i, 2*N, _), ho.encoder(N, 2/P, a) : si.dot(2*N+1);
 };
 
 
