@@ -131,7 +131,7 @@ def generalProcess(fileName, patchFolder, objectName):
     pdCodeFG.append("#X obj 30 30 inlet;\n")
     #object 1 is the Faust compiled object
     faustObjectId = 1
-    pdCodeFG.append("#X obj 30 130 faustgen2~ "+faustObjectName+";\n")
+    pdCodeFG.append("#X obj 30 130 faustgen2~ "+faustObjectName+"_f;\n")
     #object 2 is the outlet
     outletId = 2
     pdCodeFG.append("#X obj 30 230 outlet;\n")
@@ -182,7 +182,7 @@ pathFaustgen = os.path.join(directory,"faustgen")
 if (os.path.exists(pathFaustgen)):
     print("Existing faustgen directory_the previous one is deleted")
     shutil.rmtree(pathFaustgen)
-    os.mkdir(pathFaustgen)
+os.mkdir(pathFaustgen)
 for fileName in os.listdir(directory):
     f = os.path.join(directory, fileName)
     if (os.path.isfile(f)) and (fileName != ".DS_Store"):
@@ -194,7 +194,7 @@ for fileName in os.listdir(directory):
         if fullFileName.endswith('.pd_darwin'):
             print(fileName+" is not a .pd PureData file -- not processed")
 
-        if (fullFileName.endswith('.pd')):
+        if (fullFileName.endswith('.pd')) and not(fullFileName.endswith('-help.pd')):
             print("Creating "+myProcessName+"~.pd")     
             generalProcess(fullFileName, directory, myProcessName)
 
