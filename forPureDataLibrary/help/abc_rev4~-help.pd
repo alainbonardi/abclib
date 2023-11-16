@@ -1,23 +1,34 @@
 #N canvas 147 25 1064 784 10;
-#X obj 9 13 cnv 15 500 25 empty empty abc_rev4~ 20 12 0 18 #606060 #fcfcfc 0;
+#X obj 9 13 cnv 15 500 25 empty empty abc_rev4~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 8 741 abc_helpcredit;
-#X obj 9 39 cnv 15 500 25 empty empty Rev4~_reverberation 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 492 600 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
+#X obj 9 39 cnv 15 500 25 empty empty Rev4~_reverberation 20 12 0 12
+#606060 #fcfcfc 0;
+#X obj 492 600 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 492 628 \; pd dsp \$1 \;;
 #X text 404 71 CONTROLS;
 #X text 10 72 DESCRIPTION;
 #X obj 136 554 abc_meter;
-#X text 11 93 abc_rev4~ is a classical reverberation module.As it is a cascade of delay lines with reinjection \, it is proposed in two versions: a stereo one \, abc_rev4sterero~ \, and a quadriphonic one \, abc_rev4quadri~ that splits the outputs of the delay lines to the 4 outputs.;
+#X text 11 93 abc_rev4~ is a classical reverberation module.As it is
+a cascade of delay lines with reinjection \, it is proposed in two
+versions: a stereo one \, abc_rev4sterero~ \, and a quadriphonic one
+\, abc_rev4quadri~ that splits the outputs of the delay lines to the
+4 outputs.;
 #X obj 247 176 loadbang;
 #X msg 247 212 110;
-#X obj 247 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 247 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X floatatom 247 378 5 0 0 0 - - - 0;
 #X msg 247 398 revDur \$1;
-#X obj 317 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 317 242 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X floatatom 317 378 5 0 0 0 - - - 0;
 #X msg 317 212 85;
 #X msg 317 398 revGain \$1;
-#X text 405 92 2 controls (with values between 0 and 127): the duration (revDur \, 127 means an 'infinite' duration) and the gain (revGain).;
+#X text 405 92 2 controls (with values between 0 and 127): the duration
+(revDur \, 127 means an 'infinite' duration) and the gain (revGain).
+;
 #X obj 247 451 abc_rev4stereo~;
 #X obj 119 352 abc_simplefmburst;
 #X text 334 240 rev4 gain 0 to 127;
@@ -25,10 +36,12 @@
 #X obj 710 553 abc_meter;
 #X obj 821 175 loadbang;
 #X msg 821 211 110;
-#X obj 821 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 821 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X floatatom 821 377 5 0 0 0 - - - 0;
 #X msg 821 397 revDur \$1;
-#X obj 891 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 891 241 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
 #X floatatom 891 377 5 0 0 0 - - - 0;
 #X msg 891 211 85;
 #X msg 891 397 revGain \$1;

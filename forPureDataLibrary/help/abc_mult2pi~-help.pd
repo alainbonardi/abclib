@@ -1,8 +1,11 @@
 #N canvas 647 97 865 776 10;
-#X obj 11 5 cnv 15 500 25 empty empty abc_mult2pi~ 20 12 0 18 #606060 #fcfcfc 0;
+#X obj 11 5 cnv 15 500 25 empty empty abc_mult2pi~ 20 12 0 18 #606060
+#fcfcfc 0;
 #X obj 10 733 abc_helpcredit;
-#X obj 11 31 cnv 15 500 25 empty empty Multiplication_by_2*PI 20 12 0 12 #606060 #fcfcfc 0;
-#X obj 499 643 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
+#X obj 11 31 cnv 15 500 25 empty empty Multiplication_by_2*PI 20 12
+0 12 #606060 #fcfcfc 0;
+#X obj 499 643 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X msg 499 671 \; pd dsp \$1 \;;
 #X text 494 154 CONTROLS;
 #X text 492 73 DESCRIPTION;
@@ -10,7 +13,8 @@
 #X text 494 174 no specific control;
 #X obj 129 374 abc_2d_map1~;
 #X obj 120 468 abc_2d_decoder1~;
-#X obj 7 420 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 7 420 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
 #X msg 7 440 stereo \$1;
 #X obj 175 274 sig~ 1;
 #X obj 291 233 phasor~ 1;
@@ -19,14 +23,18 @@
 #X msg 407 263 1;
 #X obj 407 302 metro 50;
 #X obj 407 335 snapshot~;
-#X obj 407 282 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 407 282 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X floatatom 407 356 5 0 0 0 - - - 0;
 #X obj 336 336 snapshot~;
 #X floatatom 336 357 5 0 0 0 - - - 0;
-#X text 493 91 abc_mult2pi~ multiplies the incoming signal by 2*PI. Therefore a phasor~ between 0 and 1 becomes an angle between 0 and 2*Pi;
+#X text 493 91 abc_mult2pi~ multiplies the incoming signal by 2*PI.
+Therefore a phasor~ between 0 and 1 becomes an angle between 0 and
+2*Pi;
 #X obj 316 439 abc_2d_scope1~;
 #X obj 150 121 abc_env_noise 200 0.3 0;
-#X obj 292 490 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
+#X obj 292 490 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
+232 74 79 77 96 98 102 0 empty;
 #X text 311 623 cyclone/scope~;
 #X text 155 257 constant r;
 #X text 234 357 theta in radians;
