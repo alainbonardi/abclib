@@ -1,16 +1,13 @@
 #N canvas 40 67 1472 850 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_2d_rotateN~  20 12 0 18
-#606060 #fcfcfc 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_2d_rotateN~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 12 806 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty Rotation_of_the_ambisonic_sound_field
-20 12 0 12 #606060 #fcfcfc 0;
+#X obj 14 32 cnv 15 500 25 empty empty Rotation_of_the_ambisonic_sound_field 20 12 0 12 #606060 #fcfcfc 0;
 #X obj 46 119 loadbang;
 #X floatatom 46 181 5 0 0 0 - - - 0;
 #X msg 46 204 speed \$1;
 #X obj 17 392 abc_gain -127;
 #X obj 351 461 abc_2d_scope1~;
-#X obj 509 625 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 509 625 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 509 653 \; pd dsp \$1 \;;
 #X msg 46 157 -0.2;
 #X msg 10 158 0;
@@ -36,22 +33,17 @@
 #X text 1317 384 deg.;
 #X text 1383 384 msec;
 #X msg 1284 360 90;
-#X obj 596 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 596 347 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 596 371 stereo \$1;
 #X text 919 25 - speed is the rotation speed in turns by second;
-#X text 921 41 - angle is the default static angle (in degrees) when
-the speed is zero;
-#X text 921 68 - returntime is the transition time (in msec) between
-the fixed angle position and the position on the circle when the speed
-is more than 0;
+#X text 921 41 - angle is the default static angle (in degrees) when the speed is zero;
+#X text 921 68 - returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0;
 #X obj 54 621 abc_meter;
 #X obj 665 526 abc_meter;
 #X text 921 7 CONTROLS;
 #X text 542 6 DESCRIPTION;
 #X obj 80 269 abc_2d_rotate1;
-#X obj 106 531 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 106 531 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 106 555 stereo \$1;
 #X msg 1175 360 0.4;
 #X msg 1211 359 0;
@@ -63,11 +55,9 @@ is more than 0;
 #X msg 757 289 0.5;
 #X msg 757 336 factor \$1;
 #X obj 308 177 abc_env_noise 100 0.25 0;
-#X obj 181 530 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 181 530 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 181 554 directangles \$1;
-#X obj 550 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 550 395 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 550 419 directangles \$1;
 #X obj 828 305 abc_2d_map3~ ------------;
 #X obj 849 391 abc_2d_fx_decorrelation3~;
@@ -76,23 +66,12 @@ is more than 0;
 #X obj 1002 524 abc_2d_scope3~ --------------;
 #X obj 1254 525 abc_2d_rotate3~ --------------;
 #X obj 1258 603 abc_2d_scope3~ --------------;
-#X text 543 24 abc_2d_rotate1~ \, abc_2d_rotate2~ \, ... objects enable
-the rotation of the ambisonic sound field. It can be either a continuous
-rotation at a certain speed in tours by second (with speed parameter)
-or a fixed angle of rotation in degrees (with angle parameter \, when
-the speed is zero). The 'returntime' in milliseconds is the duration
-of the interpolation between a continuous rotation or a fixed angle.
-Contrary to the encoding that enables the rotation of one punctual
-source \, the abc_2d_rotateN~ objects enable the rotation of the whole
-sound field.;
-#X obj 337 505 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
-232 74 79 77 96 98 102 0 empty;
+#X text 543 24 abc_2d_rotate1~ \, abc_2d_rotate2~ \, ... objects enable the rotation of the ambisonic sound field. It can be either a continuous rotation at a certain speed in tours by second (with speed parameter) or a fixed angle of rotation in degrees (with angle parameter \, when the speed is zero). The 'returntime' in milliseconds is the duration of the interpolation between a continuous rotation or a fixed angle. Contrary to the encoding that enables the rotation of one punctual source \, the abc_2d_rotateN~ objects enable the rotation of the whole sound field.;
+#X obj 337 505 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
 #X text 356 638 cyclone/scope~;
-#X obj 1031 581 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
-232 74 79 77 96 98 102 0 empty;
+#X obj 1031 581 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
 #X text 1050 714 cyclone/scope~;
-#X obj 1289 658 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
-232 74 79 77 96 98 102 0 empty;
+#X obj 1289 658 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
 #X text 1308 791 cyclone/scope~;
 #X obj 127 643 abc_quadriout -15 1 2 3 4;
 #X obj 665 208 abc_gain -127;

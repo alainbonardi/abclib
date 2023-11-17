@@ -3,8 +3,7 @@
 #X obj 43 40 f \$1;
 #X obj 112 17 loadbang;
 #X obj 112 41 f \$2;
-#X obj 412 120 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 412 120 bng 15 250 50 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000;
 #X floatatom 103 119 5 0 0 1 grain_size - - 0;
 #X floatatom 203 119 5 0 1 1 rarefaction - - 0;
 #X obj 85 285 noise~;
