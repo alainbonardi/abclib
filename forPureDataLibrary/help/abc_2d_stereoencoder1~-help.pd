@@ -1,21 +1,15 @@
-#N canvas 1573 110 678 811 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_stereoencoderN~  20 12 0
-18 #606060 #fcfcfc 0;
+#N canvas 459 80 678 811 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_stereoencoderN~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 14 777 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty Stereo_encoders_at_orders_1_2_3_..._to_diffuse_stereo_in_ambisonics
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 422 437 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty Stereo_encoders_at_orders_1_2_3_..._to_diffuse_stereo_in_ambisonics 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 422 437 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 422 467 \; pd dsp \$1 \;;
 #X obj 26 481 abc_meter;
 #X text 415 78 CONTROLS;
 #X text 17 78 DESCRIPTION;
-#X obj 308 338 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 308 338 tgl 15 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 308 360 directangles \$1;
-#X text 17 98 abc_stereoencoder1~ \, abc_stereoencoder2~ \, etc. objects
-enable to diffuse a stereo source in ambisonics using two encoders
-with an opening angle in degrees (initialized to 60 degrees);
+#X text 17 98 abc_stereoencoder1~ \, abc_stereoencoder2~ \, etc. objects enable to diffuse a stereo source in ambisonics using two encoders with an opening angle in degrees (initialized to 60 degrees);
 #N canvas 323 117 123 164 voice1 0;
 #X obj 28 14 phasor~ 3;
 #X obj 28 35 *~ 110;
@@ -39,8 +33,7 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X connect 4 0 0 0;
 #X restore 351 179 pd voice2;
 #X obj 241 238 abc_linrandenv2~;
-#X obj 86 241 hsl 128 15 0 360 0 0 empty empty Opening\\\ angle -2
--8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 86 241 hsl 128 15 0 360 0 0 empty empty Opening\ angle -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X floatatom 83 261 5 0 0 0 - - - 0;
 #X obj 83 182 loadbang;
 #X msg 83 203 60;
@@ -51,13 +44,11 @@ with an opening angle in degrees (initialized to 60 degrees);
 #X text 417 96 - angle is the opening angle in degrees;
 #X obj 83 326 abc_2d_stereoencoder3~;
 #X obj 95 438 abc_2d_decoder3~;
-#X obj 308 292 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 308 292 tgl 15 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 308 314 stereo \$1;
 #X obj 88 538 dac~ 1 2 3 4 5 6 7 8;
 #X obj 211 439 abc_2d_scope3~ ------------;
-#X obj 237 494 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229
-232 74 79 77 96 98 102 0 empty;
+#X obj 237 494 cyclone/scope~ 130 130 16 3 256 -1 1 0 0 0 0 205 229 232 74 79 77 96 98 102 0 empty;
 #X text 256 627 cyclone/scope~;
 #X obj 423 216 abc_gain -127;
 #X connect 3 0 4 0;

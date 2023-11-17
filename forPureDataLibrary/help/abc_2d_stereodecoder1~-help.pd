@@ -1,11 +1,8 @@
-#N canvas 1208 328 1278 740 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_stereodecoderN~  20 12 0
-18 #606060 #fcfcfc 0;
+#N canvas 50 94 1278 740 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_stereodecoderN~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 698 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty Ambisonic_stereo_decoders_at_orders_1_2_3_etc.
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 503 568 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty Ambisonic_stereo_decoders_at_orders_1_2_3_etc. 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 503 568 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 503 598 \; pd dsp \$1 \;;
 #X obj 687 480 abc_meter;
 #X obj 103 458 abc_meter;
@@ -68,18 +65,13 @@
 #X obj 68 347 abc_2d_encoder1~;
 #X obj 456 296 loadbang;
 #X msg 456 317 1;
-#X obj 455 339 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 455 339 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 455 361 directangles \$1;
 #X obj 780 245 abc_2d_squaretrajectory~;
 #X text 778 228 generates a square trajectory in cartesian;
-#X text 532 27 abc_stereodecoder1~ \, abc_stereodecoder2~ \, etc. objects
-enable to decode from ambisonic spatial components to stereo - gain
-is the output gain in dB - directangles is 1 for anticlockwise (as
-in ambisonic norm) and 0 for clockwise;
+#X text 532 27 abc_stereodecoder1~ \, abc_stereodecoder2~ \, etc. objects enable to decode from ambisonic spatial components to stereo - gain is the output gain in dB - directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise;
 #X text 907 26 - gain is the output gain in dB;
-#X text 907 53 - directangles is 1 for anticlockwise (as in ambisonic
-norm) and 0 for clockwise;
+#X text 907 53 - directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise;
 #X obj 804 300 abc_cartopol~;
 #X obj 698 365 abc_2d_map7~ ------------;
 #X obj 655 163 abc_gain -127;
@@ -90,10 +82,8 @@ norm) and 0 for clockwise;
 #X msg 75 111 gain -10;
 #X obj 135 411 abc_2d_stereodecoder1~;
 #X obj 668 419 abc_2d_stereodecoder7~ ------------;
-#X obj 916 331 cyclone/scope~ 130 130 16 3 256 -2 2 0 0 0 0 205 229
-232 74 79 77 96 98 102 0 empty;
-#X text 935 464 cyclone/scope~;
 #X obj 353 174 abc_gain -127;
+#X obj 899 363 abc_xy_scope;
 #X connect 3 0 4 0;
 #X connect 9 1 10 1;
 #X connect 9 2 10 2;
@@ -143,9 +133,9 @@ norm) and 0 for clockwise;
 #X connect 19 0 33 0;
 #X connect 19 0 34 0;
 #X connect 20 1 25 1;
-#X connect 20 1 35 0;
+#X connect 20 1 36 1;
 #X connect 20 2 25 2;
-#X connect 20 2 35 1;
+#X connect 20 2 36 2;
 #X connect 25 1 26 2;
 #X connect 25 2 26 3;
 #X connect 26 1 34 1;
@@ -173,4 +163,4 @@ norm) and 0 for clockwise;
 #X connect 34 1 5 0;
 #X connect 34 1 29 0;
 #X connect 34 2 29 1;
-#X connect 37 0 33 0;
+#X connect 35 0 33 0;

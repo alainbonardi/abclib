@@ -1,4 +1,4 @@
-#N canvas 322 163 1320 783 10;
+#N canvas 41 51 1320 783 10;
 #X obj 14 6 cnv 15 500 25 empty empty abc_2d_multiencoderN_S~  20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 746 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty 1_to_8_source_encoders_at_orders_1_2_3... 20 12 0 12 #606060 #fcfcfc 0;
@@ -71,7 +71,8 @@
 #X text 921 26 The speeds (s00 \, s01 \, ...) of the sources in turns per second and the fixed angles (a00 \, a01 \, ...) in degrees (when the speeds equal 0) \, as well as the return time (it) in milliseconds are the control parameters.;
 #X msg 651 258 0 0 0 0;
 #X obj 25 339 abc_gain -127;
-#X obj 403 509 abc_ambi_scope3;
+#X obj 428 470 snake~ in 7;
+#X obj 403 509 abc_ambi_scope3_m;
 #X connect 3 0 4 0;
 #X connect 8 0 14 3;
 #X connect 9 0 10 0;
@@ -81,19 +82,19 @@
 #X connect 13 1 14 1;
 #X connect 13 2 14 2;
 #X connect 14 1 17 1;
-#X connect 14 1 52 1;
+#X connect 14 1 52 0;
 #X connect 14 2 17 2;
-#X connect 14 2 52 2;
+#X connect 14 2 52 1;
 #X connect 14 3 17 3;
-#X connect 14 3 52 3;
+#X connect 14 3 52 2;
 #X connect 14 4 17 4;
-#X connect 14 4 52 4;
+#X connect 14 4 52 3;
 #X connect 14 5 17 5;
-#X connect 14 5 52 5;
+#X connect 14 5 52 4;
 #X connect 14 6 17 6;
-#X connect 14 6 52 6;
+#X connect 14 6 52 5;
 #X connect 14 7 17 7;
-#X connect 14 7 52 7;
+#X connect 14 7 52 6;
 #X connect 15 0 13 1;
 #X connect 16 0 13 2;
 #X connect 17 1 5 0;
@@ -141,3 +142,4 @@
 #X connect 47 0 43 0;
 #X connect 50 0 21 0;
 #X connect 51 0 17 0;
+#X connect 52 0 53 1;
