@@ -1,4 +1,4 @@
-The abclib works in multichannel environment using ambisonic paradigm
+≤The abclib works in multichannel environment using ambisonic paradigm
 It is possible to generate the Faust code at any ambisonic order
 For instance to generate addsynth faust codes at the ambisonic order 7, just type in your terminal
 bash addsynthfaustcodegeneration.sh 7
