@@ -1,12 +1,9 @@
 #N canvas 0 41 1822 796 10;
-#X obj 11 25 cnv 15 500 25 empty empty abc_addsynthN~ 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 11 25 cnv 15 500 25 empty empty abc_addsynthN~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 10 753 abc_helpcredit;
-#X obj 11 51 cnv 15 500 25 empty empty Additive_synthesis_generators
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 644 693 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X msg 644 721 \; pd dsp \$1 \;;
+#X obj 11 51 cnv 15 500 25 empty empty Additive_synthesis_generators 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 954 674 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
+#X msg 954 702 \; pd dsp \$1 \;;
 #X text 935 23 CONTROLS;
 #X text 539 25 DESCRIPTION;
 #X obj 322 475 abc_meter;
@@ -43,34 +40,22 @@
 #X msg 1161 329 -6;
 #X obj 83 217 loadbang;
 #X msg 39 264 gain -127;
-#X obj 1331 104 abc_addsynth11;
-#X obj 1331 74 r s11;
+#X obj 1331 72 abc_addsynth11;
+#X obj 1331 42 r s11;
 #X obj 1238 534 loadbang;
-#X obj 1428 547 abc_cosrandenv11~ -------------;
-#X obj 1438 586 abc_chopan11~ -------------;
+#X obj 1428 515 abc_cosrandenv11~ -------------;
+#X obj 1438 554 abc_chopan11~ -------------;
 #X msg 109 264 fbeat-0 10;
-#X text 540 45 abc_addsynth1~ \, abc_addsynth2~ \, ... objects enable
-additive synthesis by adding elementary sound modules.;
-#X text 935 43 Each module includes two oscillators that start at the
-same frequency but can be tuned finely thanks to fbeat frequencies
-(fbeat is the frequential increment of the second oscillator).;
-#X text 935 151 The amplitudes of the partials (in dB) can also be
-set individually thanks to amp00 \, amp01 \, etc. messages.;
-#X text 935 96 f0 is the general fundamental frequency. fmult00 \,
-fmult01 \, etc. are the multipliers of f0 to get the frequencies of
-the partials. For an harmonic spectrum \, one can use fmult00 = 1 \,
-fmult01 = 2 \, fmult02 = 3 etc.;
-#X text 936 185 gain (in dB) is the general control of the amplitude.
-;
-#X obj 1421 613 abc_meter;
-#X msg 1238 559 \; s11 gain -10 \; s11 f0 440 \; s11 fmult-0 0.56 \;
-s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4
-1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11
-fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1
-\; s11 fbeat-3 1.7 \;;
+#X text 540 45 abc_addsynth1~ \, abc_addsynth2~ \, ... objects enable additive synthesis by adding elementary sound modules.;
+#X text 935 43 Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator).;
+#X text 935 151 The amplitudes of the partials (in dB) can also be set individually thanks to amp00 \, amp01 \, etc. messages.;
+#X text 935 96 f0 is the general fundamental frequency. fmult00 \, fmult01 \, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum \, one can use fmult00 = 1 \, fmult01 = 2 \, fmult02 = 3 etc.;
+#X text 936 185 gain (in dB) is the general control of the amplitude.;
+#X obj 1421 581 abc_meter;
+#X msg 1238 559 \; s11 gain -10 \; s11 f0 440 \; s11 fmult-0 0.56 \; s11 fmult-1 0.56 \; s11 fmult-2 0.92 \; s11 fmult-3 0.92 \; s11 fmult-4 1.19 \; s11 fmult-5 1.7 \; s11 fmult-6 2 \; s11 fmult-7 2.74 \; s11 fmult-8 3 \; s11 fmult-9 3.76 \; s11 fmult10 4.07 \; s11 fbeat-1 1 \; s11 fbeat-3 1.7 \;;
 #X obj 779 499 abc_stereoout -15;
 #X obj 391 475 abc_stereoout -15;
-#X obj 1503 631 abc_stereoout -127;
+#X obj 1503 599 abc_stereoout -127;
 #X connect 3 0 4 0;
 #X connect 9 0 22 0;
 #X connect 10 0 23 0;
