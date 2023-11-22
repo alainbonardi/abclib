@@ -1,11 +1,8 @@
 #N canvas 50 43 1462 867 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_drops~ 20 12 0 18 #606060
-#fcfcfc 0;
+#X obj 14 6 cnv 15 500 25 empty empty abc_drops~ 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 14 828 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty Rain_drop_synthetizer 20 12
-0 12 #606060 #fcfcfc 0;
-#X obj 606 611 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty Rain_drop_synthetizer 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 606 611 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 606 641 \; pd dsp \$1 \;;
 #X text 22 64 DESCRIPTION;
 #X obj 182 669 abc_meter;
@@ -20,8 +17,7 @@
 #X msg 360 307 50;
 #X msg 360 348 qf \$1;
 #X msg 407 349 limiter \$1;
-#X obj 407 329 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 407 329 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 407 307 1;
 #X floatatom 479 329 5 0 0 0 - - - 0;
 #X msg 479 308 1000;
@@ -29,17 +25,9 @@
 #X floatatom 552 329 5 0 0 0 - - - 0;
 #X msg 552 308 5;
 #X msg 552 349 attackdur \$1;
-#X text 22 85 abc_drops~ simulates raindrops with a periodic exciter
-that enters a reson filter whose frequency varies randomly at a random
-speed.;
+#X text 22 85 abc_drops~ simulates raindrops with a periodic exciter that enters a reson filter whose frequency varies randomly at a random speed.;
 #X text 434 65 CONTROLS;
-#X text 436 78 - the period of the drop: dropperiod in milliseconds
-- the thinness of the drop: dropthinness is the thinness of the impulsion
-to enter the reason filter (the higher the thinner) - the quality factor
-of the reason filter: qf - the use of the limiter at the output or
-not: limiter 1 or 0 - the average frequency of the randomization of
-drop frequencies: avgfreq in Hz - the duration of the attack of the
-envelope: attackdur in milliseconds;
+#X text 436 78 - the period of the drop: dropperiod in milliseconds - the thinness of the drop: dropthinness is the thinness of the impulsion to enter the reason filter (the higher the thinner) - the quality factor of the reason filter: qf - the use of the limiter at the output or not: limiter 1 or 0 - the average frequency of the randomization of drop frequencies: avgfreq in Hz - the duration of the attack of the envelope: attackdur in milliseconds;
 #X obj 1006 136 loadbang;
 #X msg 900 196 1.618;
 #X msg 1108 196 700;
@@ -64,9 +52,8 @@ envelope: attackdur in milliseconds;
 #X msg 1315 419 speed \$1;
 #X msg 999 419 avgfreq \$1;
 #X msg 1108 418 avgfreq \$1;
-#X obj 1013 612 abc_2d_decoder1~;
-#X obj 822 531 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 1015 634 abc_2d_decoder1~;
+#X obj 822 531 tgl 15 0 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 822 555 stereo \$1;
 #X obj 735 390 abc_gain -127;
 #X obj 974 464 abc_drops~;
@@ -76,6 +63,8 @@ envelope: attackdur in milliseconds;
 #X obj 1010 711 abc_quadriout 0 1 2 3 4;
 #X obj 44 185 abc_gain -127;
 #X obj 261 668 dac~;
+#X obj 1025 567 abc_busplus3~;
+#X obj 1164 647 abc_ambi_scope1;
 #X connect 3 0 4 0;
 #X connect 7 0 9 0;
 #X connect 7 0 13 0;
@@ -145,10 +134,16 @@ envelope: attackdur in milliseconds;
 #X connect 56 0 53 0;
 #X connect 57 1 59 1;
 #X connect 58 1 60 1;
-#X connect 59 1 53 1;
-#X connect 59 2 53 2;
-#X connect 59 3 53 3;
-#X connect 60 1 53 1;
-#X connect 60 2 53 2;
-#X connect 60 3 53 3;
+#X connect 59 1 64 1;
+#X connect 59 2 64 2;
+#X connect 59 3 64 3;
+#X connect 60 1 64 4;
+#X connect 60 2 64 5;
+#X connect 60 3 64 6;
 #X connect 62 0 35 0;
+#X connect 64 1 53 1;
+#X connect 64 1 65 1;
+#X connect 64 2 53 2;
+#X connect 64 2 65 2;
+#X connect 64 3 53 3;
+#X connect 64 3 65 3;
