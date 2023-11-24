@@ -1,35 +1,29 @@
-#N canvas 140 38 532 740 10;
-#X obj 14 6 cnv 15 500 25 empty empty abc_quadriout 20 12 0 18 #606060
-#fcfcfc 0;
+#N canvas 140 38 752 740 10;
+#X obj 14 6 cnv 15 500 25 empty empty abc_quadriout 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 698 abc_helpcredit;
-#X obj 14 32 cnv 15 500 25 empty empty 4_channel_output_with_amplitude_control_in_dB
-20 12 0 12 #606060 #fcfcfc 0;
-#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 14 32 cnv 15 500 25 empty empty 4_channel_output_with_amplitude_control_in_dB 20 12 0 12 #606060 #fcfcfc 0;
+#X obj 362 598 tgl 15 0 empty empty DSP_on/off 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X msg 362 628 \; pd dsp \$1 \;;
 #X obj 101 527 abc_meter;
 #X text 91 74 DESCRIPTION;
-#X obj 136 351 abc_multinoise4~ ----------------;
-#X obj 123 412 abc_substractsynth4~ ----------------;
-#X obj 134 477 abc_cosrandenv4~ ----------------;
-#X text 93 97 abc_quadriout is an abstraction that enables 4 channel
-output with a control of the global gain in dB. This global gain can
-be set as default value \, as well as the numbers of the outputs (for
-the dac~ object);
-#X obj 31 186 abc_gain -127;
+#X text 93 97 abc_quadriout is an abstraction that enables 4 channel output with a control of the global gain in dB. This global gain can be set as default value \, as well as the numbers of the outputs (for the dac~ object);
+#X obj 99 210 abc_gain -127;
 #X obj 185 527 abc_quadriout 0 1 2 3 4;
+#X obj 195 361 abc_multinoise4~;
+#X obj 182 416 abc_substractsynth4~;
+#X obj 194 476 abc_cosrandenv4~;
 #X connect 3 0 4 0;
-#X connect 7 1 8 1;
-#X connect 7 2 8 2;
-#X connect 7 3 8 3;
-#X connect 7 4 8 4;
-#X connect 8 1 9 1;
-#X connect 8 2 9 2;
-#X connect 8 3 9 3;
-#X connect 8 4 9 4;
-#X connect 9 1 5 0;
-#X connect 9 1 12 0;
-#X connect 9 2 12 1;
-#X connect 9 3 12 2;
-#X connect 9 4 12 3;
-#X connect 11 0 8 0;
+#X connect 8 0 11 0;
+#X connect 10 1 11 1;
+#X connect 10 2 11 2;
+#X connect 10 3 11 3;
+#X connect 10 4 11 4;
+#X connect 11 1 12 1;
+#X connect 11 2 12 2;
+#X connect 11 3 12 3;
+#X connect 11 4 12 4;
+#X connect 12 1 5 0;
+#X connect 12 1 9 0;
+#X connect 12 2 9 1;
+#X connect 12 3 9 2;
+#X connect 12 4 9 3;

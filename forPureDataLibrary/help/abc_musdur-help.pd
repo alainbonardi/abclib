@@ -1,4 +1,4 @@
-#N canvas 40 25 840 697 10;
+#N canvas 831 25 840 697 10;
 #X obj 9 9 cnv 15 500 25 empty empty abc_musdur 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 8 657 abc_helpcredit;
 #X obj 9 35 cnv 15 500 25 empty empty Abstraction_to_provide_a_selection_of_musical_durations 20 12 0 12 #606060 #fcfcfc 0;
