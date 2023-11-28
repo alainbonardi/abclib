@@ -10,7 +10,7 @@
 #X obj 224 147 abc_slider2map;
 #X text 140 69 DESCRIPTION;
 #X text 140 89 abc_slider2map is an abstraction that enables to graphically control the abc_2d_map objects. There are no default values;
-#X text 266 298 generates the polar coordinates of the source;
+#X text 266 298 generates the polar coordinates of the source, f 14;
 #X obj 111 216 loadbang;
 #X msg 111 240 1;
 #X obj 111 264 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
