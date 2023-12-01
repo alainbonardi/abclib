@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 570.0, 538.0 ],
+		"rect" : [ 34.0, 99.0, 570.0, 562.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -50,13 +50,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 570.0, 512.0 ],
+						"rect" : [ 34.0, 99.0, 570.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -245,7 +245,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 472.087500000000091, 202.0, 62.0, 22.0 ],
-									"presentation_linecount" : 2,
 									"text" : "spread $1"
 								}
 
@@ -458,7 +457,7 @@
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "abc_gaincontrol.maxpat",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
@@ -469,7 +468,6 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@size", 0 ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -483,7 +481,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 486.0, 548.0, 23.0 ],
+									"patching_rect" : [ 6.0, 486.0, 335.0, 41.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
@@ -512,7 +510,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 5,
-											"revision" : 4,
+											"revision" : 6,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -551,9 +549,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -1183,13 +1181,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 87.0, 570.0, 512.0 ],
+						"rect" : [ 34.0, 99.0, 570.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1267,7 +1265,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 5,
-											"revision" : 4,
+											"revision" : 6,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1670,7 +1668,7 @@
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "abc_gaincontrol.maxpat",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
@@ -1681,7 +1679,6 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@size", 0 ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -1695,7 +1692,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 486.0, 548.0, 23.0 ],
+									"patching_rect" : [ 6.0, 486.0, 332.0, 42.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
@@ -1724,7 +1721,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 5,
-											"revision" : 4,
+											"revision" : 6,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1763,9 +1760,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -2413,13 +2410,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 570.0, 512.0 ],
+						"rect" : [ 0.0, 26.0, 570.0, 536.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2545,7 +2542,7 @@
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "abc_gaincontrol.maxpat",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
@@ -2556,7 +2553,6 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@size", 0 ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -2570,7 +2566,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 486.0, 548.0, 23.0 ],
+									"patching_rect" : [ 6.0, 486.0, 330.0, 39.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
@@ -2599,7 +2595,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 5,
-											"revision" : 4,
+											"revision" : 6,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2638,9 +2634,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -3035,13 +3031,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 570.0, 512.0 ],
+						"rect" : [ 34.0, 99.0, 570.0, 512.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3093,7 +3089,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 5,
-											"revision" : 4,
+											"revision" : 6,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3132,9 +3128,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -3542,7 +3538,7 @@
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "abc_gaincontrol.maxpat",
-									"numinlets" : 0,
+									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
@@ -3566,7 +3562,6 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@size", 0 ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -3580,7 +3575,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 486.0, 548.0, 23.0 ],
+									"patching_rect" : [ 6.0, 486.0, 331.0, 39.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
@@ -3686,7 +3681,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -4089,7 +4084,7 @@
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "abc_gaincontrol.maxpat",
-					"numinlets" : 0,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
@@ -4100,7 +4095,6 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@size", 0 ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -4114,7 +4108,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.0, 486.0, 548.0, 23.0 ],
+					"patching_rect" : [ 6.0, 486.0, 332.0, 39.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 42.0, 732.916625999999951, 548.0, 23.0 ],
 					"viewvisibility" : 1
@@ -4143,7 +4137,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -4182,9 +4176,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -4861,8 +4855,8 @@
 			}
 , 			{
 				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
