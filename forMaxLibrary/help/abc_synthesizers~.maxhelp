@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 99.0, 570.0, 562.0 ],
+		"rect" : [ 34.0, 99.0, 1012.0, 562.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,7 +37,8 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
-		"showontab" : 1,
+		"showrootpatcherontab" : 0,
+		"showontab" : 0,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
@@ -339,11 +340,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-31",
+									"linecount" : 10,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 438.087500000000091, 289.0, 150.0, 20.0 ],
-									"text" : "abc_pulsedenv2synthN~"
+									"patching_rect" : [ 438.087500000000091, 289.0, 274.0, 141.0 ],
+									"text" : "abc_pulsedenv2synthN~ are multichannel generators of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency).\nThe ratio silence/sound is controlable (ratio).\nThe short envelopes can be decorrelated thanks to spread control (between 0 and 1).\nA lowpass filter (at frequency fc) is applied to the output."
 								}
 
 							}
@@ -1231,12 +1233,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-31",
-									"linecount" : 6,
+									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 301.087500000000091, 293.0, 150.0, 87.0 ],
-									"text" : "abc_audiotester~ enables to test the audio configuration from 1 to 16 loudspeakers by sending a pink noise alternatively to them"
+									"patching_rect" : [ 301.087500000000091, 293.0, 150.0, 100.0 ],
+									"text" : "abc_audiotester~ enables to test the audio configuration from 1 to 16 loudspeakers by sending a pink noise alternatively to them at a certain frequency"
 								}
 
 							}
@@ -2416,7 +2418,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 570.0, 536.0 ],
+						"rect" : [ 0.0, 26.0, 1012.0, 536.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3068,6 +3070,120 @@
 						"assistshowspatchername" : 0,
 						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-122",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 92.0, 104.5, 38.821442000000062, 20.0 ],
+									"text" : "Gain"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
+									"border" : 1,
+									"id" : "obj-123",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 90.0, 104.5, 40.821442000000062, 20.0 ],
+									"proportion" : 0.5,
+									"rounded" : 10
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Avenir Book",
+									"fontsize" : 12.0,
+									"id" : "obj-116",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 67.0, 104.5, 23.0, 23.0 ],
+									"text" : "2",
+									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
+									"id" : "obj-117",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 63.0, 102.5, 23.0, 25.0 ],
+									"proportion" : 0.5,
+									"shape" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-120",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 135.0, 379.5, 49.0, 20.0 ],
+									"text" : "Turn on"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Avenir Book",
+									"fontsize" : 12.0,
+									"id" : "obj-114",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 109.0, 378.5, 23.0, 23.0 ],
+									"text" : "1",
+									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
+									"id" : "obj-115",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 105.0, 376.5, 23.0, 25.0 ],
+									"proportion" : 0.5,
+									"shape" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
+									"border" : 1,
+									"id" : "obj-121",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 135.0, 379.5, 54.0, 20.0 ],
+									"proportion" : 0.5,
+									"rounded" : 10
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"args" : [ "@obj-name", "abc_soundcoat~", "@obj-desc", "Synthesizers", "in", "Faust" ],
 									"bgmode" : 0,
