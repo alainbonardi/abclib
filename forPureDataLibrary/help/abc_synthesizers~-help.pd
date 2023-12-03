@@ -1,4 +1,4 @@
-#N canvas 339 494 1916 741 10;
+#N canvas 311 184 1916 741 10;
 #X obj 14 6 cnv 15 500 25 empty empty abclib_synthesizers 20 12 0 18 #606060 #fcfcfc 0;
 #X obj 13 698 abc_helpcredit;
 #X obj 14 32 cnv 15 500 25 empty empty Synthesizers_in_Faust 20 12 0 12 #606060 #fcfcfc 0;
@@ -81,7 +81,7 @@
 #X msg 1627 324 \; pe envFreq 8.36 \; pe carrierFreq 880 \; pe ratio 34 \; pe spread 0.5 \; pe fc 1500 \;;
 #X text 468 108 abc_pulsedenv2synthN~ are multichannel generators of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency). The ratio silence/sound is controlable (ratio). The short envelopes can be decorrelated thanks to spread control (between 0 and 1). A lowpass filter (at frequency fc) is applied to the output.;
 #X obj 1626 194 abc_upanddown;
-#X obj 1626 174 tgl 15 1 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 1 1;
+#X obj 1626 174 tgl 15 1 empty empty empty 17 7 0 10 #dfdfdf #000000 #000000 0 1;
 #X obj 1626 152 loadbang;
 #X msg 1626 244 spread \$1;
 #X obj 1626 268 s pe;
