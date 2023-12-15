@@ -1,7 +1,7 @@
 # abclib
 ## 20 years of research, teaching and creation in mixed music using Faust language
 ### CICM (Centre de recherches Informatique et Création Musicale) - University Paris 8
-### http://cicm.mshparisnord.org/
+### http://cicm.univ-paris8.fr/
 
 abclib library is released by the CICM / MUSIDANSE (Centre de Recherches Informatique et Création Musicale, Paris 8 University) and is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language.
 The main topics addressed are:
