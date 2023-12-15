@@ -25,4 +25,4 @@ Graphic objects especially to represent spatial components were developed using 
 
 Teaching mixed music at Paris 8 University helped us in many implementation choices, thinking of practical requirements for composers, to allow them to test their patches either in multichannel academic studios or at home in simple stereo.
 
-abclib has been developed by Alain Bonardi with the collaboration of Paul Goutmann.
+abclib has been developed by Alain Bonardi with the collaboration of Paul Goutmann, David Fierro and Adrien Zanni.
