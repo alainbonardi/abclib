@@ -284,7 +284,7 @@ xySquareDoubleTriangle(f, s, cf) = (xySquare(f, s), xyDoubleTriangle(f,s)) : (*(
 // * `fRho`: the frequency of variation of the radius
 // * 'aTheta' : the amplitude of variation of the angle around its value (computed from the rSpeed speed of variation)
 // * 'fTheta' : the frequency of variation of the angle
-// * 'rotSpeed' : the speed of rotation in turns by second
+// * 'rSpeed' : the speed of rotation in turns by second
 //-----------------------------
 
 polarVariableCircle(aRho, fRho, aTheta, fTheta, rSpeed) = (1 + aRho * os.osccos(fRho), (os.phasor(1, rSpeed) + aTheta * os.osccos(fTheta)) * ma.PI * 2);
