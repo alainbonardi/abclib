@@ -319,15 +319,20 @@ with {
 //-----------------------------
 circularScaledVBAP(l, t) = thisCircularVbap
 with {
-        //
-		//modulo indexes between 1 and the number of elements of the list
+        //modulo indexes between 1 and the number of elements of the list
     	modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
     	//
-    	//pick up the ith angle with a 360 degree modulo and a result in the interval [0, 360[ (360 is excluded)
-    	getAngle(i, l) = ma.modulo(ba.take(modIndex(i, l), l), 360) + (int(i / outputs(l)) - (i < 0)*(-i < outputs(l))) * 360;
+    	//pick up the ith angle
+    	getAngle(i, l) = ba.take(modIndex(i, l), l); 
+		//
+        //a function to avoid division by zero (for the normalization of the vector of gains)
+        avoidZero = _ <:(_, (_ == 0)) : +;
+        //
+		//a function to get the modulo of angles forced to be positive
+		mod360(ang) = ma.modulo(ang+360, 360);
 		//
 		//computation of the scaled VBAP gain of a pair
-		scaledVBAPGain(t1, t2, t) = ((diffSin(t2, t) <:(_, _, _)), (ma.signum(diffSin(t2, t1)) <: (_, _)), (diffSin(t, t1) <:(_, _, _))) : (*, *, *, *) : p1 : (_, _, (+ : sqrt <: (_, _))) : p2 : (/, /)
+		scaledVBAPGain(t1, t2, t) = ((diffSin(t2, t) <:(_, _, _)), (ma.signum(diffSin(t2, t1)) <: (_, _)), (diffSin(t, t1) <:(_, _, _))) : (*, *, *, *) : p1 : (_, _, (+ : sqrt : avoidZero <: (_, _))) : p2 : (/, /)
 		with {
 				 //function to compute the sinus of the difference between angles expressed in degrees
 				diffSin(u, v) = sin((v - u) * ma.PI / 180.);
@@ -345,11 +350,12 @@ with {
 		//list of all superior angle values
 		angleList2 = par(i, p, getAngle(i+1, l));
 		//
-		pairCondition = par(i, p, (ba.take(i+1, angleList1) <= t) * (t < ba.take(i+1, angleList2)));
+		//
+		pairCondition = par(i, p, (mod360(t - ba.take(i+1, angleList1)) <= mod360(ba.take(i+1, angleList2) - ba.take(i+1, angleList1))));
 		//
 		//index of the loudspeaker corresponding to the closest lower angle
 		thisPairInd1 = pairCondition : sum(i, p, *(i));
-		//
+
 		//index of the loudspeaker corresponding to the closest superior angle
 		thisPairInd2 = ma.modulo(thisPairInd1 + 1, p);
 		//
