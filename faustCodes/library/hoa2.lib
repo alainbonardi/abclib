@@ -321,53 +321,48 @@ circularScaledVBAP(l, t) = thisCircularVbap
 with {
         //modulo indexes between 1 and the number of elements of the list
     	modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
-    	//
-    	//pick up the ith angle
+    	//picks up the ith angle
     	getAngle(i, l) = ba.take(modIndex(i, l), l); 
-		//
-        //a function to avoid division by zero (for the normalization of the vector of gains)
-        avoidZero = _ <:(_, (_ == 0)) : +;
-        //
-		//a function to get the modulo of angles forced to be positive
-		mod360(ang) = ma.modulo(ang+360, 360);
-		//
+		//computes the cross product between two points on the unit circle set by their polar angles u and v
+        diffSin(u, v) = sin(ma.deg2rad(v-u));
 		//computation of the scaled VBAP gain of a pair
 		normalizedVBAPGain(t1, t2, t) = ((diffSin(t2, t) <:(_, _, _)), (ma.signum(diffSin(t2, t1)) <: (_, _)), (diffSin(t, t1) <:(_, _, _))) : (*, *, *, *) : p1 : (_, _, (+ : sqrt : avoidZero <: (_, _))) : p2 : (/, /)
 		with {
-				 //function to compute the sinus of the difference between angles expressed in degrees
-				diffSin(u, v) = sin((v - u) * ma.PI / 180.);
+				//function to avoid division by zero (for the normalization of the vector of gains)
+                avoidZero = _ <:(_, (_ == 0)) : +;
 				//permutations to be used to compute normalizedVBAPGain
 				p1(a, b, c, d) = (b, c, d, a);
 				p2(a, b, c, d) = (a, c, b, d);
 				//
 		};
+        //tests if the virtual source (at t angle) is between the ith and the (i+1)th loudspeakers of the l list
+        //the ith source is named as A, the (i+1)th source is named as B, the virtual source is named as C
+        isBetween(i, l, t) = betweenTest
+        with {
+            //computes the cross product between the ith and (i+1)th loudspeakers (respectively points A and B)
+            ab_cp = diffSin(getAngle(i, l), getAngle(i+1, l));
+            //computes the cross product between the ith loudspeaker and the virtual source (respectively points A and C)
+            ac_cp = diffSin(getAngle(i, l), t);
+            //computes the cross product between the virtual source and the (i+1)th loudspeaker (respectively points C and B)
+            cb_cp = diffSin(t, getAngle(i+1, l));
+            //the test returns true if all cross products have the same sign
+            betweenTest = ((ab_cp > 0)*(ac_cp >= 0)*(cb_cp > 0) + (ab_cp < 0)*(ac_cp <= 0)*(cb_cp < 0)) > 0;
+        };
 		//number of loudspeakers
 		p = outputs(l);
 		//
-		//list of all lower angle values (in degrees)
-		angleList1 = par(i, p, getAngle(i, l));
-		//
-		//list of all superior angle values
-		angleList2 = par(i, p, getAngle(i+1, l));
-		//
-		//
-		pairCondition = par(i, p, (mod360(t - ba.take(i+1, angleList1)) <= mod360(ba.take(i+1, angleList2) - ba.take(i+1, angleList1))));
-		//
+        //tests all successive pairs of loudspeakers to check is the virtual source is inside this pair
+	    pairCondition = par(i, p, isBetween(i, l, t));
+	    //angle of the closest lower loudspeaker
+	    angle1 = sum(i, p, getAngle(i, l) * ba.take(i+1, pairCondition));
+        //angle of the closest superior loudspeaker
+	    angle2 = sum(i, p, getAngle(i+1, l) * ba.take(i+1, pairCondition));
 		//index of the loudspeaker corresponding to the closest lower angle
 		thisPairInd1 = pairCondition : sum(i, p, *(i));
-
 		//index of the loudspeaker corresponding to the closest superior angle
 		thisPairInd2 = ma.modulo(thisPairInd1 + 1, p);
-		//
-		//angle of the closest lower loudspeaker
-		angle1 = sum(i, p, ba.take(i+1, angleList1) * ba.take(i+1, pairCondition));
-		//
-		//angle of the closest superior loudspeaker
-		angle2 = sum(i, p, ba.take(i+1, angleList2) * ba.take(i+1, pairCondition));
-		//
 		//amplitudes of the p loudspeakers: the value is computed thanks to scaledVBAPGain function for the two loudspeakers of the active pair, and set to 0 for the other ones
 		amps = (angle1, angle2, t) : normalizedVBAPGain : ((_ <: par(i, p, *(i == thisPairInd1))), (_ <: par(i, p, *(i == thisPairInd2)))) : ro.interleave(p, 2) : par(i, p, +);
-		//
 		//the set of p amplitudes is applied to the virtual source input
 		thisCircularVbap = (amps, (_<:si.bus(p))) : ro.interleave(p, 2) : par(i, p, *);
     /*
