@@ -242,7 +242,8 @@ xyDoubleTriangle(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
 xyRandom(f, s) = thisRandomPos
 		with {
 			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			step = f / ma.SR;
+			th = (ramp > step) * (ramp@1 <= step);
 			temporalFilter = ba.sAndH(th);
 			//computes the temporal interval taking into account the case when f=0 and when f<0
 			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
@@ -449,7 +450,8 @@ shorteningEnv(f, s, delta) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
 	with {
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			step = f / ma.SR;
+			th = (ramp > step) * (ramp@1 <= step);
 			factor = randTest : ba.sAndH(th);
 	};
 
@@ -558,7 +560,8 @@ transposer(moffset, tr, w, g) = dopplerDelay
 					pdPhasor(f) = os.phasor(1, f);
 					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
 					//threshold to input new control values//
-					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
+					step = freq / ma.SR;
+					th_trigger = (adjustedPhasor > step) * (adjustedPhasor@1 <= step);
 					trig_win = w : ba.sAndH(th_trigger);
 					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
 					variableDelay = de.fdelay(262144, delayInSgainles);
@@ -581,8 +584,9 @@ harmonizer(tr, w, g) = _ <: (transposer(0, tr, w, g), transposer(0.5, tr, w, g))
 					//shifted phasor//
 					pdPhasor(f) = os.phasor(1, f);
 					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
+					step = freq / ma.SR;
 					//threshold to input new control values//
-					th_trigger = (adjustedPhasor > 0.001) * (adjustedPhasor@1 <= 0.001);
+					th_trigger = (adjustedPhasor > step) * (adjustedPhasor@1 <= step);
 					trig_win = w : ba.sAndH(th_trigger);
 					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
 					variableDelay = de.fdelay(262144, delayInSgainles);
@@ -606,7 +610,8 @@ granulator(gs, d, s, fd) = (_, _, _) : ro.cross(3) : (_, del, env) : delayAndEnv
 			//the capacity of storage of the delay line is 262144 which is roughly 5,46 sec of delay at 48KHz
 			f = 1000. / gs; //f is the frequency of the grain
 			ramp = os.phasor(1, f);
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			step = f / ma.SR;
+			th = (ramp > step) * (ramp@1 <= step);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			factor = randTest : ba.sAndH(th);
 			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
@@ -1033,8 +1038,9 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 						with {	
 								filterQ = 200;
 								filterG = 1;
-								ramp = os.phasor(1, frand) : +(i/n) : ma.decimal;		
-								th = (ramp > 0.001) * (ramp@1 <= 0.001);
+								ramp = os.phasor(1, frand) : +(i/n) : ma.decimal;
+								step = frand / ma.SR;
+								th = (ramp > step) * (ramp@1 <= step);
 								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
 						};
 };
