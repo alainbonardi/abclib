@@ -243,8 +243,8 @@ xyRandom(f, s) = thisRandomPos
 		with {
 			ramp = os.phasor(1, f);
 			step = f / ma.SR;
-			th = (ramp > step) * (ramp@1 <= step);
-			temporalFilter = ba.sAndH(th);
+			phasorThreshold = (ramp > step) * (ramp@1 <= step);
+			temporalFilter = ba.sAndH(phasorThreshold);
 			//computes the temporal interval taking into account the case when f=0 and when f<0
 			dt = (ma.SR, ba.if(f==0, 0.00001, f)) : / : ma.fabs ;
 			thisRandomPos = no.multinoise(2) : (temporalFilter, temporalFilter) : (*(s), *(s)) : (ba.line(dt), ba.line(dt));
@@ -451,8 +451,8 @@ shorteningEnv(f, s, delta) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
 			step = f / ma.SR;
-			th = (ramp > step) * (ramp@1 <= step);
-			factor = randTest : ba.sAndH(th);
+			phasorThreshold = (ramp > step) * (ramp@1 <= step);
+			factor = randTest : ba.sAndH(phasorThreshold);
 	};
 
 //
@@ -462,10 +462,10 @@ shorteningEnv(f, s, delta) = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor)
 //
 linRandEnv(f, s, delta) = (_, _) : (randVol, _) : *
 	with {
-			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(th)) : ba.line(ma.SR / f);
+			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(phasorThreshold)) : ba.line(ma.SR / f);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
-			th = (ramp > 0.001) * (ramp@1 <= 0.001);
+			phasorThreshold = (ramp > 0.001) * (ramp@1 <= 0.001);
 };
 
 //--------------------------------------------------------------------------------------//
@@ -611,11 +611,11 @@ granulator(gs, d, s, fd) = (_, _, _) : ro.cross(3) : (_, del, env) : delayAndEnv
 			f = 1000. / gs; //f is the frequency of the grain
 			ramp = os.phasor(1, f);
 			step = f / ma.SR;
-			th = (ramp > step) * (ramp@1 <= step);
+			phasorThreshold = (ramp > step) * (ramp@1 <= step);
 			randTest = (_, (s : *(2) : -(1))) : >;
-			factor = randTest : ba.sAndH(th);
+			factor = randTest : ba.sAndH(phasorThreshold);
 			env = ((ramp : *(ma.PI) : os.oscp(0)), _) : *(factor);
-			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(th);
+			del = +(1) : *(0.5) : *(d) : *(0.001) : *(ma.SR) : int : ba.sAndH(phasorThreshold);
 			delayAndEnvelop = ((+, _, _) : (de.delay(262144, _), _) : *) ~ (*(fd));
 		};
 
@@ -932,9 +932,9 @@ puckettesPaf(fund, cfreq, bwidth, g, sgauss, acauchy, wfunc) = (carrier, modulat
 		with {
 				ratio = (cfreq / fund);
 				ph = os.phasor(1, fund);
-				th = ph <: (_, @(1)) : ((_ > 0.00001), (_ <= 0.00001)) : *;
+				phasorThreshold = ph <: (_, @(1)) : ((_ > 0.00001), (_ <= 0.00001)) : *;
 				//looking for k so that cf belongs to [kf0; (k+1)f0]
-				k = (ratio - ma.frac(ratio)) : ba.sAndH(th); //computation of k coefficient
+				k = (ratio - ma.frac(ratio)) : ba.sAndH(phasorThreshold); //computation of k coefficient
 				q = ratio - k;
 				p = 1 - q;
 				//
@@ -985,9 +985,9 @@ puckettesPaf2(fund, cfreq, bwidth, g, inharmoAmp, inharmoFreq, sgauss, acauchy, 
 		with {
 				ratio = (cfreq / fund);
 				ph = os.phasor(1, fund);
-				th = ph <: (_, @(1)) : ((_ > 0.00001), (_ <= 0.00001)) : *;
+				phasorThreshold = ph <: (_, @(1)) : ((_ > 0.00001), (_ <= 0.00001)) : *;
 				//looking for k so that cf belongs to [kf0; (k+1)f0]
-				k = (ratio - ma.frac(ratio)) : ba.sAndH(th); //computation of k coefficient
+				k = (ratio - ma.frac(ratio)) : ba.sAndH(phasorThreshold); //computation of k coefficient
 				q = ratio - k;
 				p = 1 - q;
 				//
@@ -1040,8 +1040,8 @@ soundcoat(n, fund, frand, g) = no.multinoise(2) : ((_ <: si.bus(n)), (_ <: si.bu
 								filterG = 1;
 								ramp = os.phasor(1, frand) : +(i/n) : ma.decimal;
 								step = frand / ma.SR;
-								th = (ramp > step) * (ramp@1 <= step);
-								randVol = +(1) : *(0.1) : ba.sAndH(th) : si.smooth(ba.tau2pole(1));
+								phasorThreshold = (ramp > step) * (ramp@1 <= step);
+								randVol = +(1) : *(0.1) : ba.sAndH(phasorThreshold) : si.smooth(ba.tau2pole(1));
 						};
 };
 
