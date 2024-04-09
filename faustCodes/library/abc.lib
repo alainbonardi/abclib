@@ -171,6 +171,18 @@ abc_2d_mirror_ui(n) = ho.mirror(n, factor)
 };
 //
 //--------------------------------------------------------------------------------------//
+//ANALYSIS FUNCTION TO COMPUTE VECTOR VELOCITY & ENERGY COORDINATES
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_vectors_ui(P) = ho.vectorVE(la) 
+	with {
+			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
+			a(i, nls) = nentry("h:vectorVE/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
+			//la = list of angles//
+ 			la = par(i, P, a(i, P));
+};
+//
+//--------------------------------------------------------------------------------------//
 //AMBISONIC OPTIMIZATION WITH OPTIM TYPE
 //--------------------------------------------------------------------------------------//
 //
