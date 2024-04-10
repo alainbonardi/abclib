@@ -174,12 +174,24 @@ abc_2d_mirror_ui(n) = ho.mirror(n, factor)
 //ANALYSIS FUNCTION TO COMPUTE VECTOR VELOCITY & ENERGY COORDINATES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_vectors_ui(P) = ho.vectorVE(la) 
+//
+abc_2d_vectors_ui(nls) = ho.vectorVE(laz) 
 	with {
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
 			a(i, nls) = nentry("h:vectorVE/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
 			//la = list of angles//
- 			la = par(i, P, a(i, P));
+ 			laz = par(i, nls, a(i, nls));
+};
+//
+abc_3d_vectors_ui(nls) = ho.vectorVE3D(laz, lel) 
+	with {
+			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
+			a(i, nls) = nentry("h:vectorVE/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
+            e(i, nls) = nentry("h:vectorVE/v:elev/e%2i [unit:deg]", i * 90 / nls, -90, 90, 1);
+			//laz = list of azimuth//
+            //lel = list of elevation//
+            laz = par(i, nls, a(i, nls));
+            lel = par(i, nls, e(i, nls));
 };
 //
 //--------------------------------------------------------------------------------------//
