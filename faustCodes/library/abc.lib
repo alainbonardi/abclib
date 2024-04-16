@@ -10,7 +10,7 @@
 declare author "Alain Bonardi & Paul Goutmann";
 declare licence "LGPLv3";
 declare name "abclib";
-declare copyright "2019-2022 Bonardi, Goutmann CICM, U. Paris 8";
+declare copyright "2019-2024 Bonardi, Goutmann CICM, U. Paris 8";
 //
 import("stdfaust.lib");
 //provisional import of functions in hoa2.lib that will be migrated later to the official hoa.lib
