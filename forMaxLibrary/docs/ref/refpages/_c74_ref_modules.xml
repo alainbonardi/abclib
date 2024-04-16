@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<root>
+  <module>jit-ref</module>
+  <module>m4l-ref</module>
+  <module>max-ref</module>
+  <module>msp-ref</module>
+  <module>abclib-ref</module>
+</root>

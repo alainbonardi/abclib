@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.decoder~" module="abclib">
+  <digest>abclib's 2D Ambisonic (HOA) Decoder</digest>
+  <description><o>abc.hoa.decoder~</o> is a 2D Ambisonic (HOA) decoder.
+    <br />
+    <br />
+    This object enable to decode from ambisonic spatial components to sets of loudspeakers. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS. To change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. This decoder use Ambisonics Channel Numbering and N2D format. <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+        <objarg name="order" optional="1" type="integer">
+                <digest>
+                    Ambisonic order
+                </digest>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <!-- <attributelist>
+    <attribute name="" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest></digest>
+    </attribute>
+  </attributelist> -->
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="a[index]">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the angle of the speaker [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example.</description>
+      <digest>set the angle of the speaker [index]</digest>
+    </method>
+    <method name="angularoffset">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set an offset to the angle of all the speakers [min=-180, max=180, step=1].</description>
+      <digest>set an offset to the angle of all the speakers</digest>
+    </method>
+    <method name="directangles">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>set rotation direction, true is anti-clockwise, false is clockwise [init=1:min=0:max=1:step=1].</description>
+      <digest>set rotation direction</digest>
+    </method>
+    <method name="stereo">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>set decoder mode to be stereo or ambisonic, true is stereo decode, false is ambisonic decode [init=0:min=0:max=1:step=1].</description>
+      <digest>set decoder mode to be stereo or ambisonic</digest>
+    </method>
+    <method name="gain">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set decoder gain in dB [init=0, min=-127, max=18, step=0.01].</description>
+      <digest>set decoder gain</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.hoa.wider~" />
+    <seealso name="abc.hoa.trajectories~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.decorrelation~" />
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grains~" />
+    <seealso name="abc.hoa.ringmod~" />
+  </seealsolist>
+</c74object>

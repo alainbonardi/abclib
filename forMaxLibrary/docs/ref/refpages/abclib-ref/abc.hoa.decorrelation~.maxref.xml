@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.decorrelation~" module="abclib">
+  <digest>abclib's Ambisonic (HOA) Decorrelation</digest>
+  <description><o>abc.hoa.decorrelation~</o> is a Ambisonic (HOA) decorrelation process. This object have two modes : syn and fx. The fx mode applies decorrelation to the ambisonics channels and the syn mode generates spatial decorrelated components from one mono signal at a given ambisonic order N.
+    <br />
+    <br />
+    The decorrelation is defined for each i spatial component among P=2*N+1 at the ambisonic order <i>N</i> in 2D and <i>P=(N+1)^2</i> in 3D as a delay of 0 if factor is under <i>1-(i+1)/P</i> and <i>delay*functiontype((i+1)/P)</i> in the contrary case, where delay is the maximum delay applied (in samples) and functiontype is a distribution function for durations. The user can choose this delay time distribution among 22 different ones. The delay increases according to the index of ambisonic components. But it increases at each step and it is modulated by a threshold. For the 2D decorrelation, the increment order follows the Ambisonics Channel Number. For the 3D decorrelation, the user can choose the increment order among 3 different ones. Therefore, delays are progressively revealed when the factor increases:
+    <br />
+    - when the factor is close to 0, only upper components are delayed;
+    - when the factor increases, more and more components are delayed.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="mode" type="string" set="1" get="1" size="1">
+      <description>set the mode of decorrelation. Possible values: 'fx', 'syn', 'man'.</description>
+      <digest>set the mode of decorrelation</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="delay">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the delay window size in samples, also set maximum delay value [init=48000, min=10, max=262144, step=1].</description>
+      <digest>set the delay window size in samples</digest>
+    </method>
+    <method name="factor">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the decorralation factor value between 0 and 1, 0 means no fx, 1 is full decorrelation [init=0, min=0, max=1, step=0.001].</description>
+      <digest>set the decorralation factor value between 0 and 1</digest>
+    </method>
+    <method name="fdbk">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the feedback amont value between 0 and 0.99, 0 means no feedback [init=0, min=0, max=0.99, step=0.001].</description>
+      <digest>set the feedback factor value between 0 and 0.99</digest>
+    </method>
+    <method name="functiontype">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>set the function decorralation type [init=0, min=0, max=21, step=1]
+        <br />
+        <br />
+        Possible functions from 0 to 21 correspond to : 
+        <br />
+        x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
+      <digest>set the function decorralation type</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grain~" />
+    <seealso name="abc.hoa.rindmodulation~" />
+    <seealso name="abc.hoa.gain~" />
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.hoa.optim~" />
+  </seealsolist>
+</c74object>

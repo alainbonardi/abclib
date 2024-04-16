@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc_2d_encoder~" module="abclib">
+  <digest>abclib's 2D Ambisonic (HOA) Encoder</digest>
+  <description><o>abc_2d_encoder~</o> is a 2D Ambisonic (HOA) encoder. 
+    <br />
+    <br />
+    abc_encoder1~, abc_encoder2~, etc. objects enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle
+    - speed is the rotation speed in turns by second
+    - angle is the default static angle (in degrees) when the speed is zero
+    - returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0<br /><br /></description>
+
+    <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <!-- <attributelist>
+    <attribute name="" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest></digest>
+    </attribute>
+  </attributelist> -->
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="angle">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the angle of the encoded signal in degree[init=0:min=-360:max=360:step=0.01].</description>
+      <digest>set the angle of the encoded signal in degree</digest>
+    </method>
+    <method name="speed">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the rotation speed of the encoded signal in turn/s [init=0:min=-100:max=100:step=0.001].</description>
+      <digest>set the angle of the encoded signal in degree</digest>
+    </method>
+    <method name="returntime">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the return time in ms of the encoded source to come back to intial position after rotation speed goes back to 0 [init=20:min=0:max=1000:step=1].</description>
+      <digest>set the angle of the encoded signal in degree</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc_2d_encoder1~" />
+    <seealso name="abc_2d_stereodecoder1~~" />
+    <seealso name="abc_2d_multiencoder1_1~" />
+    <seealso name="abc_2d_map1_1~" />
+    <seealso name="abc_2d_mirror1~" />
+    <seealso name="abc_2d_fx_decorrelation1~" />
+    <seealso name="abc_2d_fx_delay1~" />
+    <seealso name="abc_2d_fx_grain1~" />
+    <seealso name="abc_2d_fx_ringmod1~" />
+  </seealsolist>
+</c74object>
