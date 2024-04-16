@@ -6,10 +6,10 @@ mgraphics.init();
 mgraphics.relative_coords = 0;
 mgraphics.autofill = 0; 
 
-var myDelays = [], channels = 7, functiontype = 0, delayHittedBefore=0, bgcolor = [0.118, 0.118, 0.118, 1], bordercolor = [0.502, 0.502, 0.502, 1], bordersize = 2, fa = 0, thickness = 1, radius = 10, width = this.box.rect[2] - this.box.rect[0], height = this.box.rect[3] - this.box.rect[1], width_utill, onset = 110, offset = 50, delay = 1000, delayHitted = 0, i; 
+var myDelays = [], channels = 7, functiontype = 0, delayHittedBefore=0, bgcolor = [0.118, 0.118, 0.118, 1], bordercolor = [0.502, 0.502, 0.502, 1], bordersize = 2, factor = 0, thickness = 1, radius = 10, width = this.box.rect[2] - this.box.rect[0], height = this.box.rect[3] - this.box.rect[1], width_utill, onset = 110, offset = 50, delay = 1000, delayHitted = 0, i; 
 
 declareattribute("functiontype", null, "set_functiontype", 1);
-declareattribute("fa", null, "set_fa", 1);
+declareattribute("factor", null, "set_factor", 1);
 declareattribute("delay", null, "set_delay", 1);
 declareattribute("channels", null, "set_channels", 1);
 //declareattribute("mode", null, "set_mode", 1);
@@ -24,8 +24,8 @@ function set_functiontype(ft) {
     initialize();
     mgraphics.redraw();
 }
-function set_fa(factor) {
-	fa = factor;
+function set_factor(fa) {
+	factor = fa;
     mgraphics.redraw();
 }
 function set_delay(del) {
@@ -130,12 +130,13 @@ var ind = (index + 1) / channels
 		}
 }
 function out(){
-var s1, s2, del, gain;
+var s1, s2, count, del, gain;
 	for(i = 0 ; i < channels; i++){
-	
- 	s1 = "delay" + String(i+1) ;
-    s2 = "gain" + String(i+1);
- 	del = Math.floor(myDelays[i].position[0] * 1000)/1000;
+            count = i < 10 ? '0' + i : i;
+ 	        s1 = "delay" + String(count);
+            s2 = "gain" + String(count);
+    //NEED TO BE OPTIMIZED BECAUSE WE MAKE THE CALCULUS MULTIPLE TIME
+ 	del = myDelays[i].position[0] > (1-factor) ? (delay*Math.floor(myDelays[i].position[0] * 1000)/1000) : 0 ;
     gain = Math.floor((1 - myDelays[i].position[1])*2000)/1000;
 
 	outlet(0, s1, del) ;
@@ -169,7 +170,7 @@ function paint(){
             myDelays[i].x = myDelays[i].position[0] * width_utill + onset;
             myDelays[i].y = myDelays[i].position[1] * height;
             
-            if( myDelays[i].position[0] > (1-fa) ){
+            if( myDelays[i].position[0] > (1-factor) ){
                 set_source_rgba(0.831, 0.161, 0.173, 1.0)
             } else 
                 set_source_rgba(0.314, 0.314, 0.314, 1.0)
@@ -195,7 +196,7 @@ function paint(){
             }else{
                 move_to(50, (height-((i-10)*11) - 5))
             }
-			var str2 = (i+1)+" : "+( Math.floor( myDelays[i].position[0] * delay  * fa));
+			var str2 = (i+1)+" : "+( Math.floor( myDelays[i].position[0] * delay  * factor));
 			show_text(str2);
 			stroke();
 			

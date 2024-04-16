@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.map.ui" module="abclib">
+  <digest>4 DoF GUI</digest>
+  <description><o>abc.map.ui</o> object lets you use the circle's position, radius and opacity to control processing. Create circles with the 'add' message (with the number of circles as an argument), delete circles with the 'del' message (the numbers of circles to be deleted as a list). This object is compatible with pattrstorage.
+  </description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="mode">
+      <arglist>
+        <arg type="string" />
+      </arglist>
+      <description>set the coordinate format of the circle's position. It can be cartesian or polar</description>
+      <digest>set the coordinate format</digest>
+    </method>
+    <method name="add">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>add a variable number of circle on the GUI</description>
+      <digest>add circles</digest>
+    </method>
+    <method name="del">
+      <arglist>
+        <arg type="list" />
+      </arglist>
+      <description>If the message 'del' is send without any number, all the circles will be delete. If a list is added (e.g. 'del 1 5'), the corresponding circles will be deteled</description>
+      <digest>delete corresponding circles</digest>
+    </method>
+    <method name="precision">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>define the number of circle printed on the system</description>
+      <digest></digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.2plf.ui" />
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.hoa.decorrelation~" />
+    <seealso name="abc.hoa.ringmod~" />
+  </seealsolist>
+</c74object>
