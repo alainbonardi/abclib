@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.addsynth~" module="abclib">
+  <digest>abclib's additive synthesis</digest>
+  <description><o>abc.mc.addsynth~</o> provides additive synthesis by adding n elementary sound modules. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <!-- <attributelist>
+    <attribute name="" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest></digest>
+    </attribute>
+  </attributelist> -->
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="f0">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the general fundamental frequency in Hz [init=220, min=0.01, max=15000, step=0.01].</description>
+      <digest>sets the general fundamental frequency in Hz</digest>
+    </method>
+    <method name="gain">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the general volume in dB [init=0, min=-127, max=18, step=0.01].</description>
+      <digest>sets the volume in dB</digest>
+    </method>
+    <method name="fmultK">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the Kth multiplier of the fundamental f0 to tune the Kth module [init=K, min=0, max=1000, step=0.00001].</description>
+      <digest>sets the Kth multiplier of the fundamental f0</digest>
+    </method>
+    <method name="fbeatK">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>set the Kth frequency shift of the second oscillator of the Kth module [init=0, min=0, max=20, step=0.01].</description>
+      <digest>set the Kth frequency shift in Hz</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.substractsynth~" />
+  </seealsolist>
+</c74object>
