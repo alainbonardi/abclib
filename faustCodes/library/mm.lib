@@ -46,7 +46,7 @@ fi = library("filters.lib");
 
 declare name "Mixed Music library";
 declare author "Alain Bonardi";
-declare copyright "2022- Bonardi, CICM / MUSIDANSE, U. Paris 8";
+declare copyright "2022-2024 Bonardi, CICM / MUSIDANSE, U. Paris 8";
 
 //==================================General functions=====================================
 //========================================================================================
