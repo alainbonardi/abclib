@@ -365,38 +365,6 @@ with {
 		amps = (angle1, angle2, t) : normalizedVBAPGain : ((_ <: par(i, p, *(i == thisPairInd1))), (_ <: par(i, p, *(i == thisPairInd2)))) : ro.interleave(p, 2) : par(i, p, +);
 		//the set of p amplitudes is applied to the virtual source input
 		thisCircularVbap = (amps, (_<:si.bus(p))) : ro.interleave(p, 2) : par(i, p, *);
-    /*
-    //modulo indexes between 1 and the number of elements of the list
-    modIndex(i, l) = ma.modulo(i, outputs(l)) + 1;
-    //
-    //pick up the ith angle with a 360 degree modulo
-    getElt(i, l) = ma.modulo(ba.take(modIndex(i, l), l), 360);
-    //
-    //function to compute the sinus of the difference between angles expressed in degrees
-    diffSin(u, v) = sin((v - u) * ma.PI / 180.);
-    //
-    //permutations to be used to compute scaledVBAPGain
-    p1(a, b, c, d) = (b, c, d, a);
-    p2(a, b, c, d) = (a, c, b, d);
-    //
-    //computation of the scaled VBAP gain of a pair
-    scaledVBAPGain(t1, t2, t) = ((diffSin(t2, t) <:(_, _, _)), (ma.signum(diffSin(t2, t1)) <: (_, _)), (diffSin(t, t1) <:(_, _, _))) : (*, *, *, *) : p1 : (_, _, (+ : sqrt <: (_, _))) : p2 : (/, /);
-    sVBAPGain(i, l, t) = scaledVBAPGain(getElt(i, l), getElt(i+1, l), t);
-    //
-    //computes the left and the right gains using the matrix inversion (VBAP)
-    leftGain(i, l, t) = sVBAPGain(i, l, t) : (_, !);
-    rightGain(i, l, t) = sVBAPGain(i, l, t) : (!, _);
-    //computation of boolean activePair that determines whether the pair of LS is active or not
-    //we have to distinguish leftGain >0 and rightGain >= 0
-    //if we put >=0 for both, two pairs will be simultaneously active when theta is one of the loudspeaker angles in the list
-    //if we put > 0 for both, all the pairs will be inactive when theta is one of the loudspeaker angles in the list
-    activePair(i, l, t) = (leftGain(i, l, t) > 0) * (rightGain(i, l, t) >= 0);
-    //
-    //computes the total gain for each loudspeaker
-    cumulatedGain(i, l, t) = rightGain(outputs(l)+i-1, l, t) * activePair(outputs(l)+i-1, l, t) + leftGain(i, l, t) * activePair(i, l, t);
-    //
-    thisCircularVbap = _ <: par(i, outputs(l), *(cumulatedGain(i, l, t)));
-    */
 };
 
 
