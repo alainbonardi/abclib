@@ -118,6 +118,7 @@
     <refpage name='abc_2d_fx_decorrelation3~.maxref.xml' /> -->
     <refpage name='abc.hoa.decorrelation~.maxref.xml' />
     <refpage name='abc.mc.addsynth~.maxref.xml' />
+    <refpage name='abc.mc.substractsynth~.maxref.xml' />
     <!-- <refpage name='abc_2d_fx_decorrelation4~.maxref.xml' />
     <refpage name='abc_2d_fx_decorrelation5~.maxref.xml' />
     <refpage name='abc_2d_fx_decorrelation6~.maxref.xml' />

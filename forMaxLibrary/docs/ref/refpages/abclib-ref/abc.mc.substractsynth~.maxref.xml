@@ -3,9 +3,9 @@
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
 
-<c74object name="abc.mc.addsynth~" module="abclib">
-  <digest>abclib's additive synthesis</digest>
-  <description><o>abc.mc.addsynth~</o> provides additive synthesis by adding n elementary sinusoidal generators. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
+<c74object name="abc.mc.substractsynth~" module="abclib">
+  <digest>abclib's substractive synthesis</digest>
+  <description><o>abc.mc.substractsynth~</o> provides substractive synthesis by adding n elementary filters. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
     <br /><br /></description>
 
   <!--INLETS-->
@@ -51,30 +51,37 @@
       <description>sets the general volume in dB [init=0, min=-127, max=18, step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
+    <method name="filterQ">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the factor of quality of all filters [init=50, min=1, max=500, step=1].</description>
+      <digest>sets the factor of quality of filters</digest>
+    </method>
+    <method name="filterG">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the gain of all filters [init=0.8, min=0, max=1, step=0.01].</description>
+      <digest>sets the factor of quality of filters</digest>
+    </method>
     <method name="ampK">
       <arglist>
         <arg type="number" />
       </arglist>
-      <description>sets the Kth amplitude of the Kth module in dB [init=dB(1/K), min=-127, max=18, step=0.01].</description>
-      <digest>sets the Kth amplitude of the Kth module</digest>
+      <description>sets the Kth amplitude of the Kth partial in dB [init=dB(1/K), min=-127, max=18, step=0.01].</description>
+      <digest>sets the Kth amplitude of the Kth partial</digest>
     </method>
     <method name="fmultK">
       <arglist>
         <arg type="number" />
       </arglist>
-      <description>sets the Kth multiplier of the fundamental f0 to tune the Kth module [init=K, min=0, max=1000, step=0.00001].</description>
+      <description>sets the Kth multiplier of the fundamental f0 to tune the Kth filter [init=K, min=0, max=1000, step=0.00001].</description>
       <digest>sets the Kth multiplier of the fundamental f0</digest>
-    </method>
-    <method name="fbeatK">
-      <arglist>
-        <arg type="number" />
-      </arglist>
-      <description>set the Kth frequency shift of the second oscillator of the Kth module [init=0, min=0, max=20, step=0.01].</description>
-      <digest>set the Kth frequency shift in Hz</digest>
     </method>
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.mc.substractsynth~" />
+    <seealso name="abc.mc.addsynth~" />
   </seealsolist>
 </c74object>

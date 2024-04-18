@@ -644,7 +644,7 @@ abc_substractSynth_ui(n) = thisSubstractiveSynth
 				f0 = hslider("v:substractSynth/f0 [unit:Hz]", 220, 0.01, 15000, 0.01);
 				//general gain
 				gain = hslider("v:substractSynth/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
-				//filter quality
+				//filter factor of quality
 				filterQ = hslider("v:substractSynth/filterQ", 50, 1, 500, 1);
 				//filter gain
 				filterG = hslider("v:substractSynth/filterG", 0.8, 0, 1, 0.01);
