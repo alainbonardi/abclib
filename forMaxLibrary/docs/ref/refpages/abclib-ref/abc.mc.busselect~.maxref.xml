@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.busplus~" module="abclib">
+  <digest>abclib's crossfaded selector of two buses</digest>
+  <description><o>abc.mc.busplus~</o> enables a crossfade between two buses of N signals giving N signals.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="n" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest>sets the number of signals of each bus</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="ramp">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the transition ramp duration in milliseconds [init=100, min=0, max=100000, step=1].</description>
+      <digest>sets the transition duration in msec</digest>
+    </method>
+    <method name="leftOrRight">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the index of the bus to select, 0 for left, 1 for right [init=0, min=0, max=1, step=1].</description>
+      <digest>sets the index of the bus to select</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.busmult~" />
+    <seealso name="abc.mc.busplus~" />
+  </seealsolist>
+</c74object>

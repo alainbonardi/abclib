@@ -31,7 +31,7 @@
   <attributelist>
     <attribute name="n" type="string" set="1" get="1" size="1">
       <description></description>
-      <digest>sets the number of modules of synthesis</digest>
+      <digest>sets the number of modules of additive synthesis</digest>
     </attribute>
   </attributelist>
 
