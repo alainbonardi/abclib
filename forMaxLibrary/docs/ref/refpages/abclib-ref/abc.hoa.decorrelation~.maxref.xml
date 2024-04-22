@@ -36,10 +36,10 @@
   <objarglist>
       <objarg name="ambisonic-order" optional="0" type="int">
           <digest>
-              The ambisonic order of the decorrelation process
+              the ambisonic order of the decorrelation process
           </digest>
           <description>
-              First argument is the ambisonic order [init=1, min=1, max=7, step=1].
+              first argument is the ambisonic order [init=1, min=1, max=7, step=1].
           </description>
       </objarg>
   </objarglist>

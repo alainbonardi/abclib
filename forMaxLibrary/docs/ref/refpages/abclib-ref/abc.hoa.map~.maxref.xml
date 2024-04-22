@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.map~" module="abclib">
+  <digest>Abclib's 2D High Order Ambisonics (HOA) spatializer</digest>
+  <description><o>abc.hoa.map~</o> is a 2D High Order Ambisonics (HOA) map.
+    <br />
+    <br />
+    This object enable you to encode multiple sources in ambisonic in polar coordinate. In contrary of the <o>abc.hoa.encoder~</o>, the user can change the distance between the sweet-spot and the source<br /><br />
+  </description>
+
+  <!--INLETS-->
+  <inletlist>
+    <inlet id="1" type="INLET_TYPE">
+      <digest>mc signal sources</digest>
+      <description>multicanal signal sources</description>
+    </inlet>
+  </inletlist>
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="ambisonic-order" optional="1" type="int">
+          <digest>
+            ambisonic order
+          </digest>
+          <description>
+              first argument is the ambisonic order [init=1:min=1:max=7:step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+      <attribute name="sources" type="int" set="1" get="1" size="1">
+        <description>sets the number of sources [init=1:min=1:max=8:step=1].</description>
+        <digest>sets the number of sources</digest>
+      </attribute>
+      <attribute name="dimension" type="int" set="1" get="1" size="1">
+        <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+        <digest>sets the number of dimensions</digest>
+      </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.hoa.wider~" />
+    <seealso name="abc.hoa.trajectories~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.decorrelation~" />
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grains~" />
+    <seealso name="abc.hoa.ringmod~" />
+  </seealsolist>
+</c74object>

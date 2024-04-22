@@ -36,10 +36,10 @@
   <objarglist>
       <objarg name="ambisonic-order" optional="0" type="int">
           <digest>
-              The ambisonic order of the decorrelation process
+              the ambisonic order of the decorrelation process
           </digest>
           <description>
-              First argument is the ambisonic order [init=1, min=1, max=7, step=1].
+              first argument is the ambisonic order [init=1, min=1, max=7, step=1].
           </description>
       </objarg>
   </objarglist>
@@ -47,8 +47,8 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="mode" type="string" set="1" get="1" size="1">
-      <description>set the mode of ring modulation. Possible values: 'fx', 'syn'.</description>
-      <digest>set the mode of modulation</digest>
+      <description>sets the mode of ring modulation. Possible values: 'fx', 'syn'.</description>
+      <digest>sets the mode of modulation</digest>
     </attribute>
   </attributelist>
 
@@ -58,34 +58,34 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>set the frequency modulation window size in Hz, also set maximum frequency value [init=48000, min=10, max=262144, step=1].</description>
-      <digest>set the delay window size in samples</digest>
+      <description>sets the frequency modulation window size in Hz, also set maximum frequency value [init=48000:min=10:max=262144:step=1].</description>
+      <digest>sets the delay window size in samples</digest>
     </method>
     <method name="factor">
       <arglist>
         <arg type="number" />
       </arglist>
-      <description>set the decorralation factor value between 0 and 1, 0 means no fx, 1 is full decorrelation [init=0, min=0, max=1, step=0.001].</description>
-      <digest>set the decorralation factor value between 0 and 1</digest>
+      <description>sets the decorralation factor value between 0 and 1, 0 means no fx, 1 is full decorrelation [init=0:min=0:max=1:step=0.001].</description>
+      <digest>sets the decorralation factor value between 0 and 1</digest>
     </method>
     <method name="fdbk">
       <arglist>
         <arg type="number" />
       </arglist>
-      <description>set the feedback amont value between 0 and 0.99, 0 means no feedback [init=0, min=0, max=0.99, step=0.001].</description>
-      <digest>set the feedback factor value between 0 and 0.99</digest>
+      <description>sets the feedback amont value between 0 and 0.99, 0 means no feedback [init=0:min=0:max=0.99:step=0.001].</description>
+      <digest>sets the feedback factor value between 0 and 0.99</digest>
     </method>
     <method name="functiontype">
       <arglist>
         <arg type="int" />
       </arglist>
-      <description>set the function decorralation type [init=0, min=0, max=21, step=1]
+      <description>sets the function decorralation type [init=0:min=0:max=21:step=1]
         <br />
         <br />
         Possible functions from 0 to 21 correspond to : 
         <br />
         x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
-      <digest>set the function decorralation type</digest>
+      <digest>sets the function decorralation type</digest>
     </method>
   </methodlist>
 

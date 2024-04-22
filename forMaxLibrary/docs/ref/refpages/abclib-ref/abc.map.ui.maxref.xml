@@ -37,8 +37,8 @@
       <arglist>
         <arg type="string" />
       </arglist>
-      <description>set the coordinate format of the circle's position. It can be cartesian or polar</description>
-      <digest>set the coordinate format</digest>
+      <description>sets the coordinate format of the circle's position. It can be cartesian or polar</description>
+      <digest>sets the coordinate format</digest>
     </method>
     <method name="add">
       <arglist>

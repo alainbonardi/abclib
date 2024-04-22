@@ -29,10 +29,10 @@
   <objarglist>
       <objarg name="ambisonic-order" optional="1" type="int">
           <digest>
-              The ambisonic order of the decorrelation process
+              the ambisonic order of the decorrelation process
           </digest>
           <description>
-              First argument is the ambisonic order [init=1, min=1, max=7, step=1].
+              first argument is the ambisonic order [init=1, min=1, max=7, step=1].
           </description>
       </objarg>
   </objarglist>
@@ -40,12 +40,12 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="sources" type="int" set="1" get="1" size="1">
-      <description>set the number of sources [init=1:min=1:max=8:step=1].</description>
-      <digest>set the number of sources</digest>
+      <description>sets the number of sources [init=1:min=1:max=8:step=1].</description>
+      <digest>setq the number of sources</digest>
     </attribute>
     <attribute name="dimension" type="int" set="1" get="1" size="1">
-      <description>set the number of dimensions [init=2:min=2:max=3:step=1].</description>
-      <digest>set the number of dimensions</digest>
+      <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+      <digest>sets the number of dimensions</digest>
     </attribute>
   </attributelist>
 
@@ -55,22 +55,22 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>set the angle of the encoded signal in degree [init=0:min=-360:max=360:step=0.01].</description>
-      <digest>set the angle of the encoded signal in degree</digest>
+      <description>sets the angle of the encoded signal in degree [init=0:min=-360:max=360:step=0.01].</description>
+      <digest>sets the angle of the encoded signal in degree</digest>
     </method>
     <method name="speed">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>set the rotation speed of the encoded signal in turn/s [init=0:min=-100:max=100:step=0.001].</description>
-      <digest>set the angle of the encoded signal in degree</digest>
+      <description>sets the rotation speed of the encoded signal in turn/s [init=0:min=-100:max=100:step=0.001].</description>
+      <digest>sets the angle of the encoded signal in degree</digest>
     </method>
     <method name="returntime">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>set the return time in ms of the encoded source to come back to intial position after rotation speed goes back to 0 [init=20:min=0:max=1000:step=1].</description>
-      <digest>set the angle of the encoded signal in degree</digest>
+      <description>sets the return time in ms of the encoded source to come back to intial position after rotation speed goes back to 0 [init=20:min=0:max=1000:step=1].</description>
+      <digest>sets the angle of the encoded signal in degree</digest>
     </method>
   </methodlist>
 
