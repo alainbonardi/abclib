@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 346.0, 368.0, 470.0, 144.0 ],
+		"rect" : [ 346.0, 368.0, 517.0, 399.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 14.0,
@@ -50,7 +50,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 16.0, 16.0, 543.0, 19.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ -22.0, -2.0, 351.0, 38.0 ],
+					"presentation_rect" : [ -10.5, -2.0, 351.0, 38.0 ],
 					"proportion" : 0.39,
 					"rounded" : 0,
 					"shadow" : -1
@@ -140,7 +140,7 @@
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 1.0, 1.0, 328.0, 32.0 ],
-					"text" : "abclibrary | Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni © 2019 - 2023 CICM | University Paris 8",
+					"text" : "abclibrary | Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni © 2019 - 2024 CICM | University Paris 8",
 					"textcolor" : [ 0.317518, 0.317518, 0.317518, 1.0 ]
 				}
 

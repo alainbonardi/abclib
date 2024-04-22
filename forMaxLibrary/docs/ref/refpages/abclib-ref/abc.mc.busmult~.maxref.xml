@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.busmult~" module="abclib">
+  <digest>abclib's multiplication of two buses</digest>
+  <description><o>abc.mc.busmult~</o> enables to multiply two buses of N signals (sig#1 of bus#1 is multiplied by sig#1 of bus#2, etc.) giving N signals. It enables N parallel signal modulations.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="n" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest>sets the number of signals of each bus</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.busplus~" />
+    <seealso name="abc.mc.busselect~" />
+  </seealsolist>
+</c74object>

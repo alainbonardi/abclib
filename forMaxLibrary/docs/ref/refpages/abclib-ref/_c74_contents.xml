@@ -5,6 +5,16 @@
     <refpage name='abc.map.ui.maxref.xml' />
     <refpage name='abc.hoa.decorrelation~.maxref.xml' />
     <refpage name='abc.hoa.ringmod~.maxref.xml' />
+    <refpage name='abc.mc.addsynth~.maxref.xml' />
+    <refpage name='abc.mc.substractsynth~.maxref.xml' />
+    <refpage name='abc.mc.busmult~.maxref.xml' />
+    <refpage name='abc.mc.busplus~.maxref.xml' />
+    <refpage name='abc.mc.busselect~.maxref.xml' />
+    <!-- <refpage name='abc_2d_fx_decorrelation4~.maxref.xml' />
+    <refpage name='abc_2d_fx_decorrelation5~.maxref.xml' />
+    <refpage name='abc_2d_fx_decorrelation6~.maxref.xml' />
+    <refpage name='abc_2d_fx_decorrelation7~.maxref.xml' />
+    <refpage name='abc_2d_fx_delay1~.maxref.xml' /> -->
     <!-- <refpage name='abc_2d_fx_delay2~.maxref.xml' />
     <refpage name='abc_2d_fx_delay3~.maxref.xml' />
     <refpage name='abc_2d_fx_delay4~.maxref.xml' />
