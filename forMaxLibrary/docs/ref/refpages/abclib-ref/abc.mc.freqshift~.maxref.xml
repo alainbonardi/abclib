@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.freqshift~" module="abclib">
+  <digest>abclib's multichannel frequency shifter</digest>
+  <description><o>abc.mc.freqshift~</o> provides a multichannel frequency shifter. There are n parallel frequency shifters, each having its own input and own output.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="n" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest>sets the number of frequency shifters</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="frK">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the Kth shifting frequency of the Kth frequency shifter in Hz [init=0, min=-10000, max=10000, step=0.001].</description>
+      <digest>sets the Kth shifting frequency of the Kth frequency shifter in Hz</digest>
+    </method>
+    <method name="gainK">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the Kth gain of the Kth frequency shifter in dB [init=0, min=-127, max=18, step=0.001].</description>
+      <digest>sets the Kth gain of the Kth frequency shifter in dB</digest>
+    </method>
+  </methodlist>
+  
+  <seealsolist>
+    <seealso name="abc.mc.harmo~" />
+  </seealsolist>
+</c74object>

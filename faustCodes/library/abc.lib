@@ -811,11 +811,11 @@ abc_multigrain_ui(n) = (no.multinoise(2*n), si.bus(n)) : ro.interleave(n, 3) : p
 abc_multiharmo_ui(n) = par(ind, n, harmonizer(trans(ind), winsize(ind), gain(ind)))
 			with {
 				//amount of transposition (in midicents) of the harmonizer #i
-				trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.01);
+				trans(ind) = hslider("h:multiharmo/v:transpositions/trans%2ind [unit:midicents]", 0, -2400, 2400, 0.001);
 				//gain in dB of the harmonizer #i
-				gain(ind) = hslider("h:multiharmo/v:gains/gain%2ind [unit:dB]", 0, -127, 18, 0.01) : db2gain;
+				gain(ind) = hslider("h:multiharmo/v:gains/gain%2ind [unit:dB]", 0, -127, 18, 0.001) : db2gain;
 				//window size of the harmonizer #i
-				winsize(ind) = hslider("h:multiharmo/v:windowsizes/winsize%2ind", 50, 0, 127, 0.01) : pdLineDrive4096;
+				winsize(ind) = hslider("h:multiharmo/v:windowsizes/winsize%2ind", 50, 0, 127, 0.001) : pdLineDrive4096;
 			};
 //
 //--------------------------------------------------------------------------------------//
