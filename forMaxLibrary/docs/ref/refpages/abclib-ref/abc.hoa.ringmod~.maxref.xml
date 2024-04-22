@@ -3,17 +3,17 @@
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
 
-<c74object name="abc.hoa.decorrelation~" module="abclib">
-  <digest>Abclib's High Order Ambisonics (HOA) Decorrelation</digest>
-  <description><o>abc.hoa.decorrelation~</o> is a ambisonic decorrelation process. This object have tree modes : <i>syn</i>, <i>fx</i> and <i>man</i>. The fx mode applies decorrelation to the ambisonics channels and the syn mode generates spatial decorrelated components from one mono signal at a given ambisonic order <i>N</i>.
+<c74object name="abc.hoa.ringmod~" module="abclib">
+  <digest>Abclib's High Order Ambisonics (HOA) Ring Modulation</digest>
+  <description><o>abc.hoa.ringmod~</o> is a ambisonic ring modulation process. This object have two modes : <i>syn</i> and <i>fx</i>. The fx mode applies ring modulation to the ambisonics channels and the syn mode generates spatial modulated components from one mono signal at a given ambisonic order <i>N</i>.
     <br />
     <br />
-    The decorrelation is defined for each i spatial component among <i>P=2*N+1</i> at the ambisonic order <i>N</i> in 2D and <i>P=(N+1)^2</i> in 3D as a delay of 0 if factor is under <i>1-(i+1)/P</i> and <i>delay*functiontype((i+1)/P)</i> in the contrary case, where delay is the maximum delay applied (in samples) and functiontype is a distribution function for durations. The user can choose this delay time distribution among 22 different ones. The delay increases according to the index of ambisonic components. But it increases at each step and it is modulated by a threshold. For the 2D decorrelation, the increment order follows the Ambisonics Channel Number. For the 3D decorrelation, the user can choose the increment order among 3 different ones. Therefore, delays are progressively revealed when the factor increases:
+    The ring modulation is defined for each i spatial component among <i>P=2*N+1</i> at the ambisonic order <i>N</i> in 2D and <i>P=(N+1)^2</i> in 3D as a frequency of 0 if factor is under <i>1-(i+1)/P</i> and <i>freq*functiontype((i+1)/P)</i> in the contrary case, where delay is the maximum delay applied (in samples) and functiontype is a distribution function for frequencies. The user can choose this frequency of modulation distribution among 22 different ones. The frequency increases according to the index of ambisonic components. But it increases at each step and it is modulated by a threshold. For the 2D ring modulation, the increment order follows the Ambisonics Channel Number. For the 3D ring modulation, the user can choose the increment order among 3 different ones. Therefore, delays are progressively revealed when the factor increases:
     <br />
     <br />
-    - when the factor is close to 0, only upper components are delayed;
+    - when the factor is close to 0, only upper components are modulated;
     <br />
-    - when the factor increases, more and more components are delayed.
+    - when the factor increases, more and more components are modulated.
     <br /><br />
 </description>
 
@@ -47,18 +47,18 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="mode" type="string" set="1" get="1" size="1">
-      <description>set the mode of decorrelation. Possible values: 'fx', 'syn', 'man'.</description>
-      <digest>set the mode of decorrelation</digest>
+      <description>set the mode of ring modulation. Possible values: 'fx', 'syn'.</description>
+      <digest>set the mode of modulation</digest>
     </attribute>
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="delay">
+    <method name="frequency-modulation">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>set the delay window size in samples, also set maximum delay value [init=48000, min=10, max=262144, step=1].</description>
+      <description>set the frequency modulation window size in Hz, also set maximum frequency value [init=48000, min=10, max=262144, step=1].</description>
       <digest>set the delay window size in samples</digest>
     </method>
     <method name="factor">
