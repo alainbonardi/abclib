@@ -5,7 +5,7 @@
 
 <c74object name="abc.hoa.decoder~" module="abclib">
   <digest>Abclib's 2D High Order Ambisonics (HOA) Decoder</digest>
-  <description><o>abc.hoa.decoder~</o> is a 2D High Order Ambisonics (HOA) decoder.
+  <description><o>abc.hoa.decoder~</o> is an 2D High Order Ambisonics (HOA) decoder.
     <br />
     <br />
     This object enable you to decode from ambisonic spatial components to sets of loudspeakers. At order 1, the decoder is by default for 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS. You can change the number of loudspeakers with the <i>speakers</i> attribut. This decoder use Ambisonics Channel Numbering and N2D format. <br /><br />

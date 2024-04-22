@@ -5,7 +5,7 @@
 
 <c74object name="abc.hoa.grains~" module="abclib">
   <digest>Abclib's High Order Ambisonics (HOA) Granulator</digest>
-  <description><o>abc.hoa.grains~</o> is a ambisonic granulator process. This object have two modes : <i>syn</i> and <i>fx</i> and <i>man</i>. The fx mode applies granulator to the ambisonics channels and the syn mode generates spatial granulated components from one mono signal at a given ambisonic order <i>N</i>. <br /><br />
+  <description><o>abc.hoa.grains~</o> is an High Order Ambisonics (HOA) granulator process. This object have two modes : <i>syn</i> and <i>fx</i> and <i>man</i>. The fx mode applies granulator to the ambisonics channels and the syn mode generates spatial granulated components from one mono signal at a given ambisonic order <i>N</i>. <br /><br />
 </description>
 
   <!--INLETS-->

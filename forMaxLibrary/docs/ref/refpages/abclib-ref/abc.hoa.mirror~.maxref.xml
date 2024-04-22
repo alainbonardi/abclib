@@ -5,7 +5,7 @@
 
 <c74object name="abc.hoa.mirror~" module="abclib">
   <digest>Abclib's High Order Ambisonics (HOA) Mirror</digest>
-  <description><o>abc.hoa.mirror~</o> is a ambisonic mirror process. This objects apply mirror L/R symmetry to a set of ambisonic spatial components using a simple multiplication of negative components by a 'factor'. This 'factor' parameter can take three different values: 1 (original sound field), 0 (original and mirror sound field together) and -1 (only the mirror sound field).
+  <description><o>abc.hoa.mirror~</o> is an High Order Ambisonics (HOA) mirror process. This objects apply mirror L/R symmetry to a set of ambisonic spatial components using a simple multiplication of negative components by a 'factor'. This 'factor' parameter can take three different values: 1 (original sound field), 0 (original and mirror sound field together) and -1 (only the mirror sound field).
 <br /><br />
 </description>
 

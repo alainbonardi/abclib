@@ -5,7 +5,7 @@
 
 <c74object name="abc.hoa.encoder~" module="abclib">
   <digest>Abclib's 2D High Order Ambisonics (HOA) Encoder</digest>
-  <description><o>abc.hoa.encoder~</o> is a 2D High Order Ambisonics (HOA) encoder.
+  <description><o>abc.hoa.encoder~</o> is an 2D High Order Ambisonics (HOA) encoder.
     <br />
     <br />
     This object enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle.</description>
