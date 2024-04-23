@@ -51,7 +51,7 @@
       <arglist>
         <arg type="list" />
       </arglist>
-      <description>If the message 'del' is send without any number, all the circles will be delete. If a list is added (e.g. 'del 1 5'), the corresponding circles will be deteled</description>
+      <description>if the message 'del' is send without any number, all the circles will be delete. If a list is added (e.g. 'del 1 5'), the corresponding circles will be deteled</description>
       <digest>delete corresponding circles</digest>
     </method>
     <method name="precision">

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.scope~" module="abclib">
+  <digest>Abclib's High Order Ambisonics (HOA) Scope</digest>
+  <description><o>abc.hoa.scope~</o> is an High Order Ambisonics (HOA) scope process. This objects objects enable the visualization of the ambisonic field in a scope~ Max graphical object
+      The <o>abc.scope</o> abstraction within a bpatcher enables to graphically render the ambisonic field using Jitter OpenGL.<br /><br />
+<br /><br />
+</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="ambisonic-order" optional="0" type="int">
+          <digest>
+              the ambisonic order
+          </digest>
+          <description>
+              first argument is the ambisonic order [init=1, min=1, max=7, step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+      <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
+        <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+        <digest>sets the number of dimensions</digest>
+      </attribute>-->
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="refresh">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the refresh time in ms for the visualization [init=10:min=1:max=2000:step=1].<br /><br />
+        </description>
+      <digest>sets the refresh time in ms</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grain~" />
+    <seealso name="abc.hoa.rindmodulation~" />
+    <seealso name="abc.hoa.gain~" />
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.hoa.optim~" />
+  </seealsolist>
+</c74object>
