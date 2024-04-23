@@ -8,14 +8,14 @@
   <description><o>abc.hoa.map~</o> is an 2D High Order Ambisonics (HOA) map.
     <br />
     <br />
-    This object enable you to encode multiple sources in ambisonic in polar coordinate. In contrary of the <o>abc.hoa.encoder~</o>, the user can change the distance between the sweet-spot and the source<br /><br />
+    This object enable you to encode multiple sources in ambisonic in polar coordinate. In contrary of the <o>abc.hoa.encoder~</o>, the user can change the distance between the sweet-spot and the source. Each input of this object corresponds to a multichannel signal which combine the signal source and his polar coordinate [sig, radian, meter]. For example, if the user spatialize 2 sources (e.g. using <at>@sources 2</at>), the object will have 2 inputs. The first input will wait a 3 channels mc signal corresponding to the signal of the first source and his polar coordinates. The second input will wait a 3 channels mc signal corresponding to the signal of the second source and his polar coordinates.<br /><br />
   </description>
 
   <!--INLETS-->
   <inletlist>
     <inlet id="1" type="INLET_TYPE">
-      <digest>mc signal sources</digest>
-      <description>multicanal signal sources</description>
+      <digest>signal and his polar coordinates</digest>
+      <description>signal and his polar coordinates [sig, radian, meter]</description>
     </inlet>
   </inletlist>
 
@@ -44,10 +44,10 @@
         <description>sets the number of sources [init=1:min=1:max=8:step=1].</description>
         <digest>sets the number of sources</digest>
       </attribute>
-      <attribute name="dimension" type="int" set="1" get="1" size="1">
+      <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
         <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
         <digest>sets the number of dimensions</digest>
-      </attribute>
+      </attribute>-->
   </attributelist>
 
   <!--MESSAGES-->

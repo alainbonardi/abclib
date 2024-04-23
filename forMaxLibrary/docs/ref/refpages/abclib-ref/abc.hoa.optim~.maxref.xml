@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.optim~" module="abclib">
+  <digest>Abclib's High Order Ambisonics (HOA) Optimizations</digest>
+  <description><o>abc.hoa.optim~</o> is an High Order Ambisonics (HOA) optimization process. This objects enable to apply optimizations to the sound field with 3 levels (depending on optimtype value). It provides solutions when having an audience that cannot be considered as staying in the center of the ambisonic circle.<br /><br />
+      -basic (0) has no effect;<br />
+      -maxRe (1) optimization is used when the audience is confined to the center of the circle;<br />
+      -inPhase (2) optimization is used when the audience covers all the circle.
+<br /><br />
+</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="ambisonic-order" optional="0" type="int">
+          <digest>
+              the ambisonic order
+          </digest>
+          <description>
+              first argument is the ambisonic order [init=1, min=1, max=7, step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+      <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
+        <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+        <digest>sets the number of dimensions</digest>
+      </attribute>-->
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="optimtype">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the optimization type [init=0:min=0:max=2:step=1].<br /><br />
+        If 2, inPhase optimization is used when the audience covers all the circle<br />
+        If 1, maxRe optimization is used when the audience is confined to the center of the circle<br />
+        If 0, basic has no effect<br />
+        </description>
+      <digest>sets the optimization </digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grain~" />
+    <seealso name="abc.hoa.rindmodulation~" />
+    <seealso name="abc.hoa.gain~" />
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.hoa.optim~" />
+  </seealsolist>
+</c74object>

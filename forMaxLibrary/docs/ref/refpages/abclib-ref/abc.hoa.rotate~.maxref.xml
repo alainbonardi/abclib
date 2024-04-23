@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.rotate~" module="abclib">
+  <digest>Abclib's High Order Ambisonics (HOA) Rotate</digest>
+  <description><o>abc.hoa.rotate~</o> is an High Order Ambisonics (HOA) rotate process. This objects enable the rotation of the ambisonic sound field. It can be either a continuous rotation at a certain speed in tours by second (with speed parameter) or a fixed angle of rotation in degrees (with angle parameter, when the speed is zero). The 'returntime' in milliseconds is the duration of the interpolation between a continuous rotation or a fixed angle. Contrary to the encoding that enables the rotation of one punctual source, the <o>abc.hoa.rotate~</o> objects enable the rotation of the whole sound field.
+      <br /><br />
+</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="ambisonic-order" optional="0" type="int">
+          <digest>
+              the ambisonic order
+          </digest>
+          <description>
+              first argument is the ambisonic order [init=1, min=1, max=7, step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+      <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
+        <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+        <digest>sets the number of dimensions</digest>
+      </attribute>-->
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="speed">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets rotation frequency in turn per second [init=0:min=-100:max=100:step=0.001].
+        </description>
+      <digest>sets the rotation frequency (t/s)</digest>
+    </method>
+    <method name="angle">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the rotation angle in degree of the soundfield [init=0:min=-360:max=360:step=0.01].
+        </description>
+      <digest>sets the rotation angle in degree</digest>
+    </method>
+    <method name="returntime">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the duration time of the return to  angle of rotation when the speed rotation comes to 0 [init=20:min=0:max=1000:step=1].
+        </description>
+      <digest>sets the duration time to stop the rotation when speed comes to 0 in ms</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grain~" />
+    <seealso name="abc.hoa.rindmodulation~" />
+    <seealso name="abc.hoa.gain~" />
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.hoa.optim~" />
+  </seealsolist>
+</c74object>
