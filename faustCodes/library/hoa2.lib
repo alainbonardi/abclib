@@ -431,6 +431,53 @@ with {
 };
 
 
+//============================Analysis Functions======================================
+//In order to apprehend or anticipate the localization accuracy of an ambisonic reproduction, 
+//two indices have been theorized by Gerzon based on Makita's theory of perception: 
+//the energy vector and the velocity vector. 
+//========================================================================================
+
+
+//-------`(ho.)vectorVE`----------
+// The velocity vector is valid for frequencies below 700 Hz, its direction corresponds 
+//to the apparent direction of the source and its norm corresponds to the precision (or blur) 
+//of the rendering. The energy vector is the analog of the velocity vector for frequencies 
+//from 500 Hz to 5 kHz. These localization indices, calculated on the signals sent to the loudspeakers, 
+//enable ambisonic signals to be optimized for the best possible rendering in a given situation. 
+//The function receives post-decodage signals and gives the coordinate of the two vectors.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : vectorVE(la) : _,_,_,_,
+// ```
+//
+// Where:
+//
+// * `laz`: the list of azimuth in degrees
+//-----------------------------
+
+vectorVE(laz) = thisVectorVE
+with{
+    p = outputs(laz);
+    ang(i) = ba.take(i+1, laz);
+    //Polar to cartesian coordinates
+    lx(p) = par(i, p, * (cos((ang(i) + 90) / 180 * ma.PI)));
+    ly(p) = par(i, p, * (sin((ang(i) + 90) / 180 * ma.PI)));
+    
+    clip(mini,maxi) = min(maxi, max(mini, _));
+    parSquare(p) = par(i, p, ^(2));
+    sumOfSquare(p) = par(i, p, _ <: (*)) :> _ ;
+    simpleSum(p) = si.bus(p) :> _ ;
+    zeroException =  _ <: (_ == (0)) * ma.MIN, _  : + ;
+
+    vx(p) = si.bus(2*p+2) : par(i, 2, (lx(p):simpleSum(p))), si.bus(2):route(4,4, 1, 1, 2, 3, 3, 4, 4, 2) : /, / : clip(-1, 1), clip(-1,1);
+    vy(p) = si.bus(2*p+2) : par(i, 2, (ly(p):simpleSum(p))), si.bus(2):route(4,4, 1, 1, 2, 3, 3, 4, 4, 2) : /, / : clip(-1, 1), clip(-1,1);
+
+thisVectorVE = si.bus(p) <: si.bus(p), (parSquare(p)<:si.bus(p), (simpleSum(p):zeroException)), (simpleSum(p):zeroException) <: vx(p), vy(p) : ro.interleave(2, 2);
+};
+
+
 //=========================2D Optimization Functions======================================
 // Functions to weight the circular harmonics signals depending on the ambisonic optimization.
 // It can be `basic`for no optimization, `maxRe` or `inPhase`.
@@ -660,14 +707,14 @@ with {
 };
 
 
-//=========================2D Spatial Sound Processes ====================================
+//============================Spatial Sound Processes ====================================
 // We propose implementations of processes intricated to the ambisonic model.
 // The process is implemented using as many instances as the number of harmonics at at certain order.
 // The key control parameters of these instances are computed thanks to distribution functions
 // (th functions below) and to a global driving factor.
 //========================================================================================
 
-//-------`(ho.).fxDecorrelation`----------
+//-------`(ho.)fxDecorrelation`----------
 // Spatial ambisonic decorrelation in fx mode.
 //
 // `fxDecorrelation` applies decorrelations to spatial components already created.
@@ -710,14 +757,17 @@ with {
 // * `fd`: feedback / level of reinjection (between 0 and 1)
 // * `tf`: type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
-fxDecorrelation(N, d, wf, fa, fd, tf) = par(i, 2*N+1, gate(d, i, 2*N+1, fa, tf, wf, fd))
+fxDecorrelation(N, d, wf, fa, fd, tf) = fxDelay(N, ld, wf, lf)
 with {
-    gate(d, i, N, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, N, fa, tf), 262144, wf, fd) * env1(fa, i, N), _ * env1c(fa, i, N) : +;
+    //number of components
+    P = 2*N+1 ; 
+    //list of delay time - I THINK THAT WE CAN DELETE P HERE
+    ld = par(i, P, dur(d, i, P, fa, tf));
+    //list of feedback level
+    lf = par(i, P, (fd*fa*env(fa,i,P)));
     //
-    fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
-    //
-    env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
-    env1c(fa, i, N) = 1 - env1(fa, i, N);
+    //actives the feedback amount when the factor is upper the threshold of the spatial component
+    env(fa, i, P) = (fa > ((P-i-1)/P)) : si.smooth(ba.tau2pole(0.005));
     //
     //computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
     elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x * fa
@@ -728,8 +778,7 @@ with {
     dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
 };
 
-
-//-------`(ho.).synDecorrelation`----------
+//-------`(ho.)synDecorrelation`----------
 // Spatial ambisonic decorrelation in syn mode.
 //
 // `synDecorrelation` generates spatial decorrelated components in ambisonics from one mono signal.
@@ -763,7 +812,7 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : synDecorrelation(N, d, wf, fa, fd, tf) : _,_, ...
+// _ : synDecorrelation(N, d, wf, fa, fd, tf) : _,_, ...
 // ```
 //
 // Where:
@@ -775,28 +824,32 @@ with {
 // * `fd`: feedback / level of reinjection (between 0 and 1)
 // * `tf`: type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
-synDecorrelation(N, d, wf, fa, fd, tf) =  _ <: par(i, 2*N+1, crossFade(d, i, 2*N+1, fa, tf, wf, fd))
+synDecorrelation(N, d, wf, fa, fd, tf) = thisSynDecorrelation 
 with {
-    crossFade(d, i, N, fa, tf, wf, fd) = _ <: fdOverlappedDelay(dur(d, i, N, fa, tf), 262144, wf, fd) * env1(fa, i, N), _ * env1c(fa, i, N) :> _ * env2(fa, i, N);
+    P = 2*N+1 ; 
+    //list of delay time - I THINK THAT WE CAN DELETE P HERE
+    ld = par(i, P, dur(d, i, P, fa, tf));
+    //list of feedback level 
+    lf = par(i, P, (fd * fa * env(fa,i,P)));
+    //list of gain
+    lg = par(i, P, gain(fa, i, P));
     //
-    fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
-    //
-    env1(fa, i, N) = (fa > ((N-i-1)/N)) : si.smooth(ba.tau2pole(0.005));
-    env1c(fa, i, N) = 1 - env1(fa, i, N) ;
-    env2(fa, i, N) = ((i > 0) * N * min(fa, 1/N)) + ((i == 0) * (sqrt(N) * (1 - (N - sqrt(N)) * min(fa, 1/N)))) : si.smooth(ba.tau2pole(0.005));
-    //
+    //actives the feedback amount when the factor is upper the threshold of the spatial component
+    env(fa, i, P) = (fa > ((P-i-1)/P)) : si.smooth(ba.tau2pole(0.005));
+    //computes the ith gain to avoid directional sources when 0<fa<1/P
+    gain(fa, i, P) = ((i > 0) * P * min(fa, 1/P)) + ((i == 0) * (sqrt(P) * (1 - (P - sqrt(P)) * min(fa, 1/P)))) : si.smooth(ba.tau2pole(0.005));
     //computes the ith duration of the ith delay in samples with twenty two possibilities of distribution
-    elemdur(d, i, p, fa, tf, ind) = (tf == ind) * fa * d * x
+    elemdur(d, i, p, fa, tf, ind) = (tf == ind) * (fa > (1 - x)) * d * x * fa
     with {
         x = th(ind, i, p);
     };
     //duration in samples computed as a sum of the 22 cases//
     dur(d, i, p, fa, tf) = sum(ind, 22, elemdur(d, i, p, fa, tf, ind)) : int;
+    thisSynDecorrelation = synDelay(N, ld, wf, lf) : fxGain(N, lg) ;
 };
 
-
-//-------`(ho.).fxRingMod`----------
-// Spatial ring modulation in syn mode.
+//-------`(ho.)fxRingMod`----------
+// Spatial ring modulation in fx mode.
 //
 // `fxRingMod` applies ring modulation to spatial components already created.
 // The ring modulation is defined for each spatial component among P=2\*n+1 at the ambisonic order `N`.
@@ -831,7 +884,7 @@ with {
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `f0`: the maximum frequency applied (in Hz)
+// * `f0`: the maximum delay applied (in samples)
 // * `fa`: decorrelation factor (between 0 and 1)
 // * `tf`: type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
@@ -849,11 +902,10 @@ with {
         coef = min(1, max(N * (fa - (N - i - 1) / N), 0));
     };
     //
-    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind));
+    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int;
 };
 
-
-//-------`(ho.).synRingMod`----------
+//-------`(ho.)synRingMod`----------
 // Spatial ring modulation in syn mode.
 //
 // `synRingMod` generates spatial components in ambisonics from one mono signal thanks to ring modulation.
@@ -885,13 +937,13 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : synRingMod(N, f0, fa, tf) : _,_, ...
+// _ : synRingMod(N, f0, fa, tf) : _,_, ...
 // ```
 //
 // Where:
 //
 // * `N`: the ambisonic order (constant numerical expression)
-// * `f0`: the maximum frequency applied (in Hz)
+// * `f0`: the maximum delay applied (in samples)
 // * `fa`: decorrelation factor (between 0 and 1)
 // * `tf`: type of function of delay distribution (integer, between 0 and 21)
 //-----------------------------
@@ -910,9 +962,98 @@ with {
         coef = min(1, max(N * (fa - (N - i - 1) / N), 0));
     };
     //
-    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind));
+    freq(f, i, N, tf) = sum(ind, 22, ringmodfreq(f, i, N, tf, ind)) : int;
 };
 
+
+//-------`(ho.)fxDelay`----------
+// Spatial ambisonic delay in fx mode.
+//
+// `fxDelay` applies delay lines to spatial components already created.
+// The delay time is defined for each spatial component among P=2\*n+1 at the ambisonic order `N`.
+//
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxDelay(N, ld, wf, lf) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `ld`: list of delay time (in sample)
+// * `wf`: window frequency (in Hz) for the overlapped delay
+// * `lf`: list of feedback amont
+//-----------------------------
+fxDelay(N, ld, wf, lf) = par(i, 2*N+1, fdOverlappedDelay(ba.take(i+1, ld), 262144, wf, ba.take(i+1, lf)))
+with{
+    fdOverlappedDelay(nsamp, nmax, freq, fdbk) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ (*(fdbk));
+    };
+
+
+//-------`(ho.)synDelay`----------
+// Spatial ambisonic delay in syn mode.
+//
+// `synDelay` generates spatial components in ambisonics from one mono signal thanks to ambisonic delay.
+// The delay time is defined for each spatial component among P=2\*n+1 at the ambisonic order `N`.
+//
+//
+// #### Usage
+//
+// ```
+// _ : synDelay(N, ld, wf, lf) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `ld`: list of delay time (in sample)
+// * `wf`: window frequency (in Hz) for the overlapped delay
+// * `lf`: list of feedback amont
+//-----------------------------
+synDelay(N, ld, wf, lf) = _ <: si.bus(2*N+1) : fxDelay(N, ld, wf, lf);
+
+
+//-------`(ho.)fxGain`----------
+// Gain controller for ambisonic component in fx mode.
+//
+// `fxGain` applies a gain to spatial components already created.
+// The gain is defined for each spatial component among P=2\*n+1 at the ambisonic order `N`.
+//
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxGain(N, lg) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `lg`: list of gains
+//-----------------------------
+fxGain(N, lg) = par(i, 2*N+1, (_ * ba.take(i+1, lg)));
+
+//-------`(ho.)synGain`----------
+// Gain controller for ambisonic component in syn mode.
+//
+// `fxGain` generates spatial components in ambisonics from one mono signal.
+// The gain is defined for each spatial component among P=2\*n+1 at the ambisonic order `N`.
+//
+//
+// #### Usage
+//
+// ```
+// _ : synGain(N, lg) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `lg`: list of gains
+//-----------------------------
+synGain(N, lg) = _ <: si.bus(2*N+1) : fxGain(N, lg);
 
 //TYPES OF DISTRIBUTIONS: 22 EASING FUNCTIONS FROM [0, 1] to [0,1]
 //(i+1)/p belongs to [0, 1] and its image by any function in the list also belongs to the interval
@@ -1166,7 +1307,7 @@ with {
 // #### Usage
 //
 // ```
-// _ : optimBasic3D(N) : _
+// _,_, ... : optimBasic3D(N) : _,_, ... 
 // ```
 //
 // Where:
@@ -1183,7 +1324,7 @@ optimBasic3D(N) = par(i, (N+1) * (N+1), _);
 // #### Usage
 //
 // ```
-// _ : optimMaxRe3D(N) : _
+// _,_, ... : optimMaxRe3D(N) : _,_, ... 
 // ```
 //
 // Where:
@@ -1205,7 +1346,7 @@ with {
 // #### Usage
 //
 // ```
-// _ : optimInPhase3D(N) : _
+// _,_, ... : optimInPhase3D(N) : _,_, ... 
 // ```
 //
 // Where:
@@ -1248,3 +1389,278 @@ with {
     thisOptimizer = ((bus3D  <: ((bus3D:ho.optimBasic3D(N)), (bus3D:ho.optimMaxRe3D(N)), (bus3D:ho.optimInPhase3D(N)))), ((optb <: bus3D), (optm <: bus3D), (opti <: bus3D))) : ro.interleave(3*(N+1)*(N+1), 2) : par(i, 3*(N+1)*(N+1), *) :> bus3D;
 };
 
+
+//-------`(ho.)vectorVE3D`----------
+// The velocity vector is valid for frequencies below 700 Hz, its direction corresponds 
+//to the apparent direction of the source and its norm corresponds to the precision (or blur) 
+//of the rendering. The energy vector is the analog of the velocity vector for frequencies 
+//from 500 Hz to 5 kHz. These localization indices, calculated on the signals sent to the loudspeakers, 
+//enable ambisonic signals to be optimized for the best possible rendering in a given situation. 
+//The function receives post-decodage signals and gives the cartesian coordinate of the two vectors.
+//
+// #### Usage
+//
+// ```
+// _,_, ... : vectorVE3D(laz, lel) : _,_,_,_,_,_
+// ```
+//
+// Where:
+//
+// * `laz`: the list of azimuth in degrees
+// * `lel`: the list of elevation in degrees
+//-----------------------------
+vectorVE3D(laz, lel) = thisVectorVE3D
+with{
+    p = outputs(laz);
+    azim(i) = ba.take(i+1, laz);
+    elev(i) = ba.take(i+1, lel);
+    //Polar to cartesian coordinates
+    lx(p) = par(i, p, * (cos((azim(i) + 90) / 180 * ma.PI)));
+    ly(p) = par(i, p, * (sin((azim(i) + 90) / 180 * ma.PI)));
+    lz(p) = par(i, p, * (cos((elev(i) + 90) / 180 * ma.PI)));
+    
+    clip(mini,maxi) = min(maxi, max(mini, _));
+    parSquare(p) = par(i, p, ^(2));
+    sumOfSquare(p) = par(i, p, _ <: (*)) :> _ ;
+    simpleSum(p) = si.bus(p) :> _ ;
+    zeroException =  _ <: (_ == (0)) * ma.MIN, _  : + ;
+
+    vx(p) = si.bus(2*p+2) : par(i, 2, (lx(p):simpleSum(p))), si.bus(2):route(4,4, 1, 1, 2, 3, 3, 4, 4, 2) : /, / : clip(-1, 1), clip(-1,1);
+    vy(p) = si.bus(2*p+2) : par(i, 2, (ly(p):simpleSum(p))), si.bus(2):route(4,4, 1, 1, 2, 3, 3, 4, 4, 2) : /, / : clip(-1, 1), clip(-1,1);
+    vz(p) = si.bus(2*p+2) : par(i, 2, (lz(p):simpleSum(p))), si.bus(2):route(4,4, 1, 1, 2, 3, 3, 4, 4, 2) : /, / : clip(-1, 1), clip(-1,1);
+
+thisVectorVE3D = si.bus(p) <: si.bus(p), (parSquare(p)<:si.bus(p), (simpleSum(p):zeroException)), (simpleSum(p):zeroException) <: vx(p), vy(p), vz(p) : route(6,6, 1, 1, 2, 4, 3, 2, 4, 5, 5, 3, 6, 6);
+};
+
+
+//-------`(ho.)fxDecorrelation3D`----------
+// Spatial ambisonic decorrelation in fx mode.
+//
+// `fxDecorrelation3D` applies decorrelations to spatial components already created.
+// The decorrelation is defined for each #i spatial component among P=(N+1)^2 in 3D as a delay of 0 
+// if factor `fa` is under a certain value 1-(i+1)/P and d\*F((i+1)/p) in the contrary case,
+// where `d` is the maximum delay applied (in samples) and F is a distribution function for durations.
+// The user can choose this delay time distribution among 22 different ones.
+// The delay increases according to the index of ambisonic components.
+// But it increases at each step and it is modulated by a threshold.
+// For the 3D decorrelation, the user can choose the increment order among 3 different ones. 
+// Therefore, delays are progressively revealed when the factor increases:
+//
+// * when the factor is close to 0, only upper components are delayed;
+// * when the factor increases, more and more components are delayed.
+//
+//
+//H mode 0  H mode 1  H mode 2             THRESHOLD            DELAY
+//0         0         0                    1-(1/P)              0 OR DELAY*F(1/P)
+//-1, 1     0, 1     -1, 1                 1-(2/P)              0 OR DELAY*F(2/P)
+//0, 1     -1, 1      1, 1                 1-(3/P)              0 OR DELAY*F(3/P) 
+//1, 1      1, 1      0, 1                 1-(4/P)              0 OR DELAY*F(4/P)
+//-2, 2     0, 2     -2, 2                 1-(5/P)              0 OR DELAY*F(5/P)
+//-1, 2    -1, 2      2, 2                 1-(6/P)              0 OR DELAY*F(6/P)
+//0, 2      1, 2     -1, 2                 1-(7/P)              0 OR DELAY*F(7/P)
+//1, 2     -2, 2      1, 2                 1-(8/P)              0 OR DELAY*F(8/P)
+//2, 2      2, 2      0, 2                 1-(9/P)              0 OR DELAY*F(9/P)
+//...
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxDecorrelation3D(N, d, wf, fa, fd, tf, md) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `d`: the maximum delay applied (in samples)
+// * `wf`: window frequency (in Hz) for the overlapped delay
+// * `fa`: decorrelation factor (between 0 and 1)
+// * `fd`: feedback / level of reinjection (between 0 and 1)
+// * `tf`: type of function of delay distribution (integer, between 0 and 21)
+// * `md`: type of distribution ordering (integer between 0 and 2)
+//-----------------------------
+fxDecorrelation3D(N, d, wf, fa, fd, tf, mode) = par(i, N+1, par(j, 2*i+1,fdOverlappedDelay(dur(d, i, j, (N+1)^2, fa, tf, mode), 262144, wf, fd, fa, i, j, (N+1)^2, mode)))
+with {
+    //
+    fdOverlappedDelay(nsamp, nmax, freq, fdbk, fa, i, j, p, mode) = (+ : de.sdelay(nmax, int(ma.SR / freq), nsamp)) ~ ( * (fdbk * fa * env(fa, index(mode, i, j), p)));
+    //
+    //actives the feedback amount when the factor is upper the threshold of the spatial component
+    env(fa, k, p) = (fa > ((p-k-1)/p)) : si.smooth(ba.tau2pole(0.005));
+    //
+    //computes the ith duration of the ith delay in samples with twenty two possibilities of distribution in three types of channel ordering
+    elemdur(d, i, j, p, fa, tf, ind, ind2, mode) = (mode == ind2) * (tf == ind) * (fa > (1 - x)) * d * x * fa
+    with {
+        x = th(ind, index(ind2, i, j), p);
+    };
+    //duration in samples computed as a sum of the 66 cases, the twenty two possibilities of distribution and the three types of channel ordering//
+    dur(d, i, j, p, fa, tf, mode) = sum(ind2, 3, sum(ind, 22, elemdur(d, i, j, p, fa, tf, ind, ind2, mode))) : int;
+};
+
+
+//-------`(ho.)synDecorrelation3D`----------
+// Spatial ambisonic decorrelation in syn mode.
+//
+// `synDecorrelation3D` creates decorrelated spatial components from one mono source.
+// The decorrelation is defined for each #i spatial component among P=(N+1)^2 in 3D as a delay of 0 
+// if factor `fa` is under a certain value 1-(i+1)/P and d\*F((i+1)/p) in the contrary case,
+// where `d` is the maximum delay applied (in samples) and F is a distribution function for durations.
+// The user can choose this delay time distribution among 22 different ones.
+// The delay increases according to the index of ambisonic components.
+// But it increases at each step and it is modulated by a threshold.
+// For the 2D decorrelation, the increment order follows the Ambisonics Channel Number. 
+// For the 3D decorrelation, the user can choose the increment order among 3 different ones. 
+// Therefore, delays are progressively revealed when the factor increases:
+//
+// * when the factor is close to 0, only upper components are delayed;
+// * when the factor increases, more and more components are delayed.
+//
+//H mode 0  H mode 1  H mode 2             THRESHOLD            DELAY
+//0         0         0                    1-(1/P)              0 OR DELAY*F(1/P)
+//-1, 1     0, 1     -1, 1                 1-(2/P)              0 OR DELAY*F(2/P)
+//0, 1     -1, 1      1, 1                 1-(3/P)              0 OR DELAY*F(3/P) 
+//1, 1      1, 1      0, 1                 1-(4/P)              0 OR DELAY*F(4/P)
+//-2, 2     0, 2     -2, 2                 1-(5/P)              0 OR DELAY*F(5/P)
+//-1, 2    -1, 2      2, 2                 1-(6/P)              0 OR DELAY*F(6/P)
+//0, 2      1, 2     -1, 2                 1-(7/P)              0 OR DELAY*F(7/P)
+//1, 2     -2, 2      1, 2                 1-(8/P)              0 OR DELAY*F(8/P)
+//2, 2      2, 2      0, 2                 1-(9/P)              0 OR DELAY*F(9/P)
+//...
+//
+// #### Usage
+//
+// ```
+// _ : synDecorrelation3dD(N, d, wf, fa, fd, tf, md) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `d`: the maximum delay applied (in samples)
+// * `wf`: window frequency (in Hz) for the overlapped delay
+// * `fa`: decorrelation factor (between 0 and 1)
+// * `fd`: feedback / level of reinjection (between 0 and 1)
+// * `tf`: type of function of delay distribution (integer, between 0 and 21)
+// * `md`: type of distribution ordering (integer between 0 and 2)
+//-----------------------------
+synDecorrelation3D(N, d, wf, fa, fd, tf, mode) = _ <: fxDecorrelation3D(N, d, wf, fa, fd, tf, mode); 
+
+
+//-------`(ho.)fxRingMod3D`----------
+// Spatial ring modulation in fx mode.
+//
+// `fxRingMod3D` applies ring modulation to spatial components already created.
+// The ring modulation is defined for each spatial component among P=(N+1)^2 at the ambisonic order `N` in 3D.
+// For each spatial component #i, the result is either the original signal or a ring modulated signal
+// according to a threshold that is i/P.
+//
+// The general process is drive by a factor `fa` between 0 and 1 and a modulation frequency `f0`.
+// If `fa` is greater than theshold (P-i-1)/P, the ith ring modulator is on with carrier frequency of f0\*(i+1)/P.
+// On the contrary, it provides the original signal.
+//
+//
+//H mode 0  H mode 1  H mode 2             THRESHOLD            FREQUENCY
+//0         0         0                    1-(1/P)              ORIGINAL OR RING MODULATION BY F0*F(1/P)
+//-1, 1     0, 1     -1, 1                 1-(2/P)              ORIGINAL OR RING MODULATION BY F0*F(2/P)
+//0, 1     -1, 1      1, 1                 1-(3/P)              ORIGINAL OR RING MODULATION BY F0*F(3/P) 
+//1, 1      1, 1      0, 1                 1-(4/P)              ORIGINAL OR RING MODULATION BY F0*F(4/P)
+//-2, 2     0, 2     -2, 2                 1-(5/P)              ORIGINAL OR RING MODULATION BY F0*F(5/P)
+//-1, 2    -1, 2      2, 2                 1-(6/P)              ORIGINAL OR RING MODULATION BY F0*F(6/P)
+//0, 2      1, 2     -1, 2                 1-(7/P)              ORIGINAL OR RING MODULATION BY F0*F(7/P)
+//1, 2     -2, 2      1, 2                 1-(8/P)              ORIGINAL OR RING MODULATION BY F0*F(8/P)
+//2, 2      2, 2      0, 2                 1-(9/P)              ORIGINAL OR RING MODULATION BY F0*F(9/P)
+//...
+//
+// #### Usage
+//
+// ```
+// _,_, ... : fxRingMod3D(N, f0, fa, tf, md) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `f0`: the maximum frequency of modulation applied (in Hz)
+// * `fa`: modulation factor (between 0 and 1)
+// * `tf`: type of function of modulation distribution (integer, between 0 and 21)
+// * `md`: type of distribution ordering (integer between 0 and 2)
+//-----------------------------
+
+fxRingMod3D(N, f0, fa, tf, mode) = par(i, N+1, par(j, 2*i+1, gate_ringmod(f0, mode, i, j, (N+1)^2, fa, tf)))
+with {
+    //
+    env1(fa, mode, i, j, P) = (fa > ((P-index(mode, i, j)-1)/P)) : si.smooth(ba.tau2pole(0.005));
+    env1c(fa, mode, i, j, P) = 1 - env1(fa, mode, i, j, P);
+    //
+    gate_ringmod(f, mode, i, j, P, fa, tf) = _ <: _ * os.osccos(freq(f, mode, i, j, P, tf)) * env1(fa, mode, i, j, P), _ * env1c(fa, mode, i, j, P) : +;
+    //
+    ringmodfreq(f, mode, i, j, P, tf, ind, ind2) = (mode == ind2) * (tf == ind) * f * x * coef
+    with {
+        x = th(ind, index(ind2, i, j), P);
+        coef = min(1, max(P * (fa - (P - index(ind2, i, j) - 1) / P), 0));
+    };
+    //
+    freq(f, mode, i, j, P, tf) = sum(ind2, 3, sum(ind, 22, ringmodfreq(f, mode, i, j, P, tf, ind, ind2)));
+};
+
+
+//-------`(ho.)synRingMod3D`----------
+// Spatial ring modulation in syn mode.
+//
+// `synRingMod3D` generates modulated spatial components from one mono source.
+// The ring modulation is defined for each spatial component among P=(N+1)^2 at the ambisonic order `N` in 3D.
+// For each spatial component #i, the result is either the original signal or a ring modulated signal
+// according to a threshold that is i/P.
+//
+// The general process is drive by a factor `fa` between 0 and 1 and a modulation frequency `f0`.
+// If `fa` is greater than theshold (P-i-1)/P, the ith ring modulator is on with carrier frequency of f0\*(i+1)/P.
+// On the contrary, it provides the original signal.
+//
+//
+//H mode 0  H mode 1  H mode 2             THRESHOLD            FREQUENCY
+//0         0         0                    1-(1/P)              ORIGINAL OR RING MODULATION BY F0*F(1/P)
+//-1, 1     0, 1     -1, 1                 1-(2/P)              ORIGINAL OR RING MODULATION BY F0*F(2/P)
+//0, 1     -1, 1      1, 1                 1-(3/P)              ORIGINAL OR RING MODULATION BY F0*F(3/P) 
+//1, 1      1, 1      0, 1                 1-(4/P)              ORIGINAL OR RING MODULATION BY F0*F(4/P)
+//-2, 2     0, 2     -2, 2                 1-(5/P)              ORIGINAL OR RING MODULATION BY F0*F(5/P)
+//-1, 2    -1, 2      2, 2                 1-(6/P)              ORIGINAL OR RING MODULATION BY F0*F(6/P)
+//0, 2      1, 2     -1, 2                 1-(7/P)              ORIGINAL OR RING MODULATION BY F0*F(7/P)
+//1, 2     -2, 2      1, 2                 1-(8/P)              ORIGINAL OR RING MODULATION BY F0*F(8/P)
+//2, 2      2, 2      0, 2                 1-(9/P)              ORIGINAL OR RING MODULATION BY F0*F(9/P)
+//...
+//
+// #### Usage
+//
+// ```
+// _ : synRingMod3D(N, f0, fa, tf, md) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `f0`: the maximum frequency of modulation applied (in Hz)
+// * `fa`: modulation factor (between 0 and 1)
+// * `tf`: type of function of modulation distribution (integer, between 0 and 21)
+// * `md`: type of distribution ordering (integer between 0 and 2)
+//-----------------------------
+synRingMod3D(N, f0, fa, tf, mode) = _ <: fxRingMod3D(N, f0, fa, tf, mode);
+
+
+//MODES OF SPATIAL COMPONENT SORTING
+//computes index of the ith spatial component function of channel ordering type
+//H mode 0  H mode 1  H mode 2
+//0         0         0   
+//-1, 1     0, 1     -1, 1
+//0, 1     -1, 1      1, 1
+//1, 1      1, 1      0, 1
+//-2, 2     0, 2     -2, 2
+//-1, 2    -1, 2      2, 2
+//0, 2      1, 2     -1, 2
+//1, 2     -2, 2      1, 2
+//2, 2      2, 2      0, 2
+index(mode, x, y) = (mode==0) * (x^2 + y) + (mode==1) * ((y <= x) * (x^2 + 2 * y) + (y > x) * lastMinus1or2(x, y)) + (mode==2) * ((x != 0) * (((y < x) * lastMinus2(x, y)) + (y >= x) * lastPlus2(x, y))) 
+with {
+    
+lastMinus1or2(x, y) = x^2 + 2 * (y - (y - x)) - (2 * (y - x) - 1);
+lastMinus2(x, y) = x^2 + x + (x-1) - 2 * y;
+lastPlus2(x, y) = x^2 + 2 * (y - x);
+
+};

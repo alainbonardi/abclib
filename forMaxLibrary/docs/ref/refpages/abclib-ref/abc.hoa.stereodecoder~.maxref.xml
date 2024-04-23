@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.stereodecoder~" module="abclib">
+  <digest>Abclib's 2D High Order Ambisonics (HOA) Stereo Decoder</digest>
+  <description><o>abc.hoa.stereodecoder~</o> is an 2D High Order Ambisonics (HOA) stereo decoder.
+    <br />
+    <br />
+    This objects enable to decode from ambisonic spatial components to stereo<br /><br />
+    - gain is the output gain in dB<br />
+    - directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise <br /><br />
+  </description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="ambisonic-order" optional="1" type="int">
+          <digest>
+            ambisonic order
+          </digest>
+          <description>
+              first argument is the ambisonic order [init=1:min=1:max=7:step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the output gain in dB</digest>
+    </method>
+    <method name="directangles">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>sets direction of encodage angle between clockwise and couterclockwise, true is anti-clockwise, false is clockwise [init=1:min=0:max=1:step=1].</description>
+      <digest>sets direction of encodage angle</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.hoa.wider~" />
+    <seealso name="abc.hoa.trajectories~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.decorrelation~" />
+    <seealso name="abc.hoa.delay~" />
+    <seealso name="abc.hoa.grains~" />
+    <seealso name="abc.hoa.ringmod~" />
+  </seealsolist>
+</c74object>
