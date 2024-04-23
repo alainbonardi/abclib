@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.flanger~" module="abclib">
+  <digest>abclib's multichannel flanger</digest>
+  <description><o>abc.mc.flanger~</o> provides a multichannel flanger. All inputs are connected to the same source. Each flanger has its own output.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="n" type="string" set="1" get="1" size="1">
+      <description></description>
+      <digest>sets the number of flangers</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="rate">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the frequency of the sinusoid varying the delay in Hz [init=0.5, min=0.01, max=500, step=0.001].</description>
+      <digest>sets the frequency of the sinusoid varying the delay in Hz</digest>
+    </method>
+    <method name="depth">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the maximum of the delay duration volume in milliseonds [init=40, min=0, max=1000, step=0.001].</description>
+      <digest>sets the maximum of the delay duration in msec</digest>
+    </method>
+    <method name="offset">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>shifts the variation of the delay duration between offset and offset+depth in msec [init=10, min=0, max=200, step=0.001].</description>
+      <digest>shifts the variation of the delay duration between offset and offset+depth</digest>
+    </method>
+    <method name="fdbk">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>sets the amount of delayed sound added to the original [init=1, min=0, max=1, step=0.001].</description>
+      <digest>sets the amount of delayed sound added to the original</digest>
+    </method>
+    <method name="spread">
+      <arglist>
+        <arg type="number" />
+      </arglist>
+      <description>controls spatial spreading [init=0, min=0, max=1, step=0.001].</description>
+      <digest>controls spatial spreading</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.harmo~" />
+  </seealsolist>
+</c74object>
