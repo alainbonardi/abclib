@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.2plf.ui" module="abclib">
+  <digest>3 DoF GUI</digest>
+  <description><o>abc.2plf.ui</o> lets you control processes with three degrees of freedom: the position of points on the first (thickest) line, the color of points on the first line, and points on the second line. By double-clicking, a point will be inserted at cursor level on the first line (with the "option" key for the second line). To change their color, press the "cmd" key and drag the mouse. The "play" message, followed by a number corresponding to the execution time, brings up lists compatible with the "line" object. The "shift" key displays a marker at cursor level. This object is compatible with pattrstorage.
+  </description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="play">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the time window of the interface which affect the output data format</description>
+      <digest>sets the time window of the interface</digest>
+    </method>
+    <method name="init">
+      <arglist>
+        <arg type="" />
+      </arglist>
+      <description>delete all points</description>
+      <digest>delete all points</digest>
+    </method>
+  </methodlist>
+  
+  <seealsolist>
+    <seealso name="abc.map.ui" />
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.hoa.decorrelation~" />
+    <seealso name="abc.hoa.ringmod~" />
+  </seealsolist>
+</c74object>
