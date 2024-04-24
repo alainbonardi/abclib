@@ -89,14 +89,14 @@ abc_2d_decoder_ui(N, P) = iDecoder(N, la, direct, offset, stereo, gain)
 //AMBISONIC ENCODERS WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_encoder_ui(n) = ho.rEncoder(n, speed, angle, returntime)
+abc_2d_encoder_ui(N) = ho.rEncoder(N, speed, angle, returntime)
 	with {
 			speed = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
 			angle = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 ;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 };
 
-abc_3d_encoder_ui(n) = ho.rEncoder3D(n, speedazim, speedelev, azim, elev, returntime)
+abc_3d_encoder_ui(N) = ho.rEncoder3D(N, speedazim, speedelev, azim, elev, returntime)
 	with {
 			speedazim = hslider("v:encoder/speedazim [unit:s-1]", 0, -100, 100, 0.001);
             speedelev = hslider("v:encoder/speedelev [unit:s-1]", 0, -100, 100, 0.001);
@@ -110,12 +110,12 @@ abc_3d_encoder_ui(n) = ho.rEncoder3D(n, speedazim, speedelev, azim, elev, return
 //MULTIPLE AMBISONIC ENCODERS TO PLAY SEVERAL LOCALIZED SOURCES (STATIC ANGLES)
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_stereoEncoder_ui(n) = ho.stereoEncoder(n, angle)
+abc_2d_stereoEncoder_ui(N) = ho.stereoEncoder(N, angle)
 	with {
 			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 : si.smoo;
 };
 
-abc_2d_multiEncoder_ui(n, ns) = ho.multiEncoder(n, ls, la, returntime)
+abc_2d_multiEncoder_ui(N, ns) = ho.multiEncoder(N, ls, la, returntime)
 	with {
 			//the speed of the ith source among p sources, expressed in turns by second for the end user
 			s(i, p) = nentry("v:multiencoder/h:speeds/s%2i [unit:s-1]", 0, -100, 100, 0.001);
@@ -134,12 +134,12 @@ abc_2d_multiEncoder_ui(n, ns) = ho.multiEncoder(n, ls, la, returntime)
 //2D MAPS : ONE SOURCE OR MULTISOURCE
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_map_ui(n) = thisMap
+abc_2d_map_ui(N) = thisMap
 	with {
-		thisMap(x, r, a) = ho.map(n, x, r, a);
+		thisMap(x, r, a) = ho.map(N, x, r, a);
 };
 
-abc_2d_multiMap_ui(n, ns) = par(i, ns, abc_2d_map_ui(n)) :> si.bus(2*n+1);
+abc_2d_multiMap_ui(N, ns) = par(i, ns, abc_2d_map_ui(N)) :> si.bus(2*N+1);
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC MIRROR WITH FACTOR
@@ -165,7 +165,7 @@ abc_2d_multiMap_ui(n, ns) = par(i, ns, abc_2d_map_ui(n)) :> si.bus(2*n+1);
 //0 => ORIGINAL + MIRROR SOUND FIELD
 //-1 => MIRROR SOUND FIELD
 //--------------------------------------------------------------------------------------//
-abc_2d_mirror_ui(n) = ho.mirror(n, factor)
+abc_2d_mirror_ui(N) = ho.mirror(N, factor)
 		with {
 			factor = hslider("factor", 1, -1, 1, 1) : si.smoo;
 };
@@ -175,7 +175,7 @@ abc_2d_mirror_ui(n) = ho.mirror(n, factor)
 //--------------------------------------------------------------------------------------//
 //
 //
-abc_2d_vectors_ui(nls) = ho.vectorVE(laz) 
+abc_2d_vectors_ui(nls) = vectorVE(laz) 
 	with {
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
 			a(i, nls) = nentry("h:vectorVE/v:angles/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
@@ -183,7 +183,7 @@ abc_2d_vectors_ui(nls) = ho.vectorVE(laz)
  			laz = par(i, nls, a(i, nls));
 };
 //
-abc_3d_vectors_ui(nls) = ho.vectorVE3D(laz, lel) 
+abc_3d_vectors_ui(nls) = vectorVE3D(laz, lel) 
 	with {
 			//the angle of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
 			a(i, nls) = nentry("h:vectorVE3D/v:azimuth/a%2i [unit:deg]", i * 360 / nls, -360, 360, 1);
@@ -213,7 +213,7 @@ abc_3d_vectors_ui(nls) = ho.vectorVE3D(laz, lel)
 //The inPhase Optimization optimize energy vector and put all loudspeakers signals 
 //in phase. It should be used for an auditory.
 //--------------------------------------------------------------------------------------//
-abc_2d_optim_ui(n) = ho.optim(n, optimtype)
+abc_2d_optim_ui(N) = ho.optim(N, optimtype)
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
 };
@@ -222,20 +222,20 @@ abc_2d_optim_ui(n) = ho.optim(n, optimtype)
 //AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_rotate_ui(n) = thisRotate
+abc_2d_rotate_ui(N) = thisRotate
 		with {
 			rotfreq = hslider("v:rotate/speed [unit:s-1]", 0, -100, 100, 0.001);
 			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			thisRotate =  ho.rotate(n, 2 * ma.PI * abc_rotationorstaticphase(rotfreq, rotphase, returntime));
+			thisRotate =  ho.rotate(N, 2 * ma.PI * abc_rotationorstaticphase(rotfreq, rotphase, returntime));
 };
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_wider_ui(n) = ho.wider(n, width)
+abc_2d_wider_ui(N) = ho.wider(N, width)
 		with {
 			width = hslider("width", 0, 0, 1, 0.01) : si. smoo;
 };
@@ -244,7 +244,7 @@ abc_2d_wider_ui(n) = ho.wider(n, width)
 //SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_scope_ui(n) = ho.scope(n, refresh)
+abc_2d_scope_ui(N) = ho.scope(N, refresh)
 		with {
 			//refresh time, default is 10 msec
 			refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;
@@ -349,7 +349,7 @@ abc_2d_polarVariableCircle_ui = polarVariableCircle(ampRho, freqRho, ampTheta, f
 //--------------------------------------------------------------------------------------//
 //fx decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_2d_fx_decorrelation_ui(n) = ho.fxDecorrelation(n, delay, winfreq, factor, fdbk, functiontype) 
+abc_2d_fx_decorrelation_ui(N) = fxDecorrelation(N, delay, winfreq, factor, fdbk, functiontype) 
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
@@ -365,7 +365,7 @@ abc_2d_fx_decorrelation_ui(n) = ho.fxDecorrelation(n, delay, winfreq, factor, fd
 //syn decorrelation process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_decorrelation_ui(n) = ho.synDecorrelation(n, delay, winfreq, factor, fdbk, functiontype)
+abc_2d_syn_decorrelation_ui(N) = synDecorrelation(N, delay, winfreq, factor, fdbk, functiontype)
 	with {
 		delay = hslider("v:synfxdecorrelation/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
@@ -378,9 +378,28 @@ abc_2d_syn_decorrelation_ui(n) = ho.synDecorrelation(n, delay, winfreq, factor, 
 
 //
 //--------------------------------------------------------------------------------------//
+//man decorrelation process thaught to be control with abc.dtd.ui in the Max distribution
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_man_decorrelation_ui(N) = thisManDecorrelation 
+with {
+        P = 2*N+1;
+        fd(i) = hslider("v:synfxdelay/feedback%2i", 0, 0, 1, 0.001) :  si.smoo;
+		d(i) = hslider("v:synfxdelay/delay%2i [unit:msec]", (i/P)*1000, 0, 1000, 0.01);
+        winfreq = 1000. / 10;
+        //ms to smpl//
+        durToSamp(x) = int(x * 0.001 * ma.SR);
+		//list of delays//
+ 		ld = par(i, P, durToSamp(d(i)));
+        //list of feedbacks
+        lf = par(i, P, fd(i));
+        thisManDecorrelation = fxDelay(N, ld, winfreq, lf) : abc_2d_fx_gain_ui(N);
+    };
+//
+//--------------------------------------------------------------------------------------//
 //fx 3D decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_3d_fx_decorrelation_ui(n) = fxDecorrelation3D(n, delay, winfreq, factor, fdbk, functiontype, mode) 
+abc_3d_fx_decorrelation_ui(N) = fxDecorrelation3D(N, delay, winfreq, factor, fdbk, functiontype, mode) 
 	with {
 		delay = hslider("v:synfxdecorrelation3d/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
@@ -396,7 +415,7 @@ abc_3d_fx_decorrelation_ui(n) = fxDecorrelation3D(n, delay, winfreq, factor, fdb
 //--------------------------------------------------------------------------------------//
 //syn 3D decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_3d_syn_decorrelation_ui(n) = synDecorrelation3D(n, delay, winfreq, factor, fdbk, functiontype, mode) 
+abc_3d_syn_decorrelation_ui(N) = synDecorrelation3D(N, delay, winfreq, factor, fdbk, functiontype, mode) 
 	with {
 		delay = hslider("v:synfxdecorrelation3d/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
@@ -589,6 +608,33 @@ abc_3d_syn_ringmod_ui(N) = synRingMod3D(N, f0, factor, functiontype, mode)
         mode = hslider("v:synfxringmod3d/mode", 0, 0, 2, 1);
 };
 
+//
+//--------------------------------------------------------------------------------------//
+//fx 2D gain process 
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_fx_gain_ui(N) = fxGain(N, lg)
+    with {
+        P = 2*N+1;
+        gain(i) = hslider("v:synfxgain/gain%2i", 0., 0., 1., 0.0001);
+        //list of gains
+        lg = par(i, P, gain(i));
+	};
+
+//
+//--------------------------------------------------------------------------------------//
+//syn 2D gain process 
+//--------------------------------------------------------------------------------------//
+//
+abc_2d_syn_gain_ui(N) = synGain(N, lg)
+    with {
+        P = 2*N+1;
+        gain(i) = hslider("v:synfxgain/gain%2i", 0., 0., 1., 0.0001);
+        //list of gains
+        lg = par(i, P, gain(i));
+	};
+
+//
 //
 //--------------------------------------------------------------------------------------//
 // VBAP spatialization
