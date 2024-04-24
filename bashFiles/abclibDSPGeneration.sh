@@ -50,7 +50,8 @@ chmod +x synfxdelay2dFaustCodeGeneration.sh
 chmod +x synfxgrain2dFaustCodeGeneration.sh
 chmod +x synfxringmod2dFaustCodeGeneration.sh
 chmod +x synthesizersFaustCodeGeneration.sh
-chmod +x vbap2dFaustCodeGeneration.sh 
+chmod +x vbap2dFaustCodeGeneration.sh
+chmod +x vectors2dFaustCodeGeneration.sh 
 chmod +x wider2dFaustCodeGeneration.sh
 #runs the various scripts to generate DSP Faust codes
 ./addsynthFaustCodeGeneration.sh $amborder
@@ -86,4 +87,5 @@ chmod +x wider2dFaustCodeGeneration.sh
 ./synfxringmod2dFaustCodeGeneration.sh $amborder
 ./synthesizersFaustCodeGeneration.sh $amborder
 ./vbap2dFaustCodeGeneration.sh $amborder
+./vectors2dFaustCodeGeneration.sh $amborder
 ./wider2dFaustCodeGeneration.sh $amborder
