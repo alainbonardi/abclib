@@ -22,7 +22,6 @@ fi
 headerfilename="../../bashFiles/faustCodeHeader.txt"
 for i in `seq 1 $amborder`
 do
-    let "j = 2 * $i + 1"
     sortie="abc_2d_syn_decorrelation$i.dsp"
 #writes the header
     while IFS= read -r line
@@ -44,7 +43,6 @@ mkdir abc_2d_fx_decorrelations
 cd abc_2d_fx_decorrelations/
 for i in `seq 1 $amborder`
 do
-    let "j = 2 * $i + 1"
     sortie="abc_2d_fx_decorrelation$i.dsp"
 #writes the header
     while IFS= read -r line
@@ -56,4 +54,26 @@ do
 #writes the process line
 echo "//
 process = library(\"abc.lib\").abc_2d_fx_decorrelation_ui($i);" >> $sortie
+done
+#
+#now moves to faustCodes directory to create the MAN_DECORRELATIONS directory and files
+cd ../
+#ABC_2D_MAN_DECORRELATIONS FAUST CODE GENERATION
+#deletes the previous abc_2d_man_decorrelations folder
+rm -R abc_2d_man_decorrelations
+mkdir abc_2d_man_decorrelations
+cd abc_2d_man_decorrelations/
+for i in `seq 1 $amborder`
+do
+    sortie="abc_2d_man_decorrelation$i.dsp"
+#writes the header
+    while IFS= read -r line
+    do
+        echo "$line" >> $sortie
+    done <"$headerfilename"
+#writes the declared name
+    echo "declare name \"abc_2d_man_decorrelation$i\";" >> $sortie
+#writes the process line
+echo "//
+process = library(\"abc.lib\").abc_2d_man_decorrelation_ui($i);" >> $sortie
 done

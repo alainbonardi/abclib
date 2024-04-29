@@ -2,20 +2,8 @@
 #runs all bashes for the generation of folders
 #of Faust code from the templates in abccommon folder
 #
-#is there a parameter?
-#if not we force 7 as default value
-if [ -z $1 ]
-then
-amborder=7
-else
-amborder=$1
-fi
-#is the parameter lower than 7
-#we then force 7 as a minimum
-if [ $amborder -le 7 ]
-then
-amborder=7
-fi
+amb2dorder=7
+amb3dorder=5
 #
 #gives the permission to run to all bash scripts
 chmod +x addsynthFaustCodeGeneration.sh
@@ -45,47 +33,53 @@ chmod +x scopes2dFaustCodeGeneration.sh
 chmod +x spatialtrajectories2dFaustCodeGeneration.sh
 chmod +x stereodecodersFaustCodeGeneration.sh
 chmod +x substractsynthFaustCodeGeneration.sh
-chmod +x synfxdecorrelation2dFaustCodeGeneration.sh
+chmod +x synfxdecorrelation3dFaustCodeGeneration.sh
 chmod +x synfxdelay2dFaustCodeGeneration.sh
+chmod +x synfxgain2dFaustCodeGeneration.sh
 chmod +x synfxgrain2dFaustCodeGeneration.sh
+chmod +x synfxmandecorrelation2dFaustCodeGeneration.sh
 chmod +x synfxringmod2dFaustCodeGeneration.sh
+chmod +x synfxringmod3dFaustCodeGeneration.sh
 chmod +x synthesizersFaustCodeGeneration.sh
 chmod +x vbap2dFaustCodeGeneration.sh
 chmod +x vectors2dFaustCodeGeneration.sh 
 chmod +x wider2dFaustCodeGeneration.sh
 #runs the various scripts to generate DSP Faust codes
-./addsynthFaustCodeGeneration.sh $amborder
-./busmultsFaustCodeGeneration.sh $amborder
-./busplussesFaustCodeGeneration.sh $amborder
-./busselectsFaustCodeGeneration.sh $amborder
-./chowningMultipansFaustCodeGeneration.sh $amborder
-./decoders2dFaustCodeGeneration.sh $amborder
-./delaychainsFaustCodeGeneration.sh $amborder
-./encoders2dFaustCodeGeneration.sh $amborder
-./flangersFaustCodeGeneration.sh $amborder
-./gainFaustCodeGeneration.sh $amborder
-./maps2dFaustCodeGeneration.sh $amborder
-./matricesFaustCodeGeneration.sh $amborder
-./mirror2dFaustCodeGeneration.sh $amborder
+./addsynthFaustCodeGeneration.sh $amb2dorder
+./busmultsFaustCodeGeneration.sh $amb2dorder
+./busplussesFaustCodeGeneration.sh $amb2dorder
+./busselectsFaustCodeGeneration.sh $amb2dorder
+./chowningMultipansFaustCodeGeneration.sh $amb2dorder
+./decoders2dFaustCodeGeneration.sh $amb2dorder
+./delaychainsFaustCodeGeneration.sh $amb2dorder
+./encoders2dFaustCodeGeneration.sh $amb2dorder
+./flangersFaustCodeGeneration.sh $amb2dorder
+./gainFaustCodeGeneration.sh $amb2dorder
+./maps2dFaustCodeGeneration.sh $amb2dorder
+./matricesFaustCodeGeneration.sh $amb2dorder
+./mirror2dFaustCodeGeneration.sh $amb2dorder
 ./miscFaustCodeGeneration.sh
-./multidelaysFaustCodeGeneration.sh $amborder
-./multifreqshiftsFaustCodeGeneration.sh $amborder
-./multigrainsFaustCodeGeneration.sh $amborder
-./multiharmosFaustCodeGeneration.sh $amborder
-./multinoiseFaustCodeGeneration.sh $amborder
-./optim2dFaustCodeGeneration.sh $amborder
-./randenvFaustCodeGeneration.sh $amborder
+./multidelaysFaustCodeGeneration.sh $amb2dorder
+./multifreqshiftsFaustCodeGeneration.sh $amb2dorder
+./multigrainsFaustCodeGeneration.sh $amb2dorder
+./multiharmosFaustCodeGeneration.sh $amb2dorder
+./multinoiseFaustCodeGeneration.sh $amb2dorder
+./optim2dFaustCodeGeneration.sh $amb2dorder
+./randenvFaustCodeGeneration.sh $amb2dorder
 ./rev4FaustCodeGeneration.sh
-./rotate2dFaustCodeGeneration.sh $amborder
-./scopes2dFaustCodeGeneration.sh $amborder
+./rotate2dFaustCodeGeneration.sh $amb2dorder
+./scopes2dFaustCodeGeneration.sh $amb2dorder
 ./spatialtrajectories2dFaustCodeGeneration.sh
-./stereodecodersFaustCodeGeneration.sh $amborder
-./substractsynthFaustCodeGeneration.sh $amborder
-./synfxdecorrelation2dFaustCodeGeneration.sh $amborder
-./synfxdelay2dFaustCodeGeneration.sh $amborder
-./synfxgrain2dFaustCodeGeneration.sh $amborder
-./synfxringmod2dFaustCodeGeneration.sh $amborder
-./synthesizersFaustCodeGeneration.sh $amborder
-./vbap2dFaustCodeGeneration.sh $amborder
-./vectors2dFaustCodeGeneration.sh $amborder
-./wider2dFaustCodeGeneration.sh $amborder
+./stereodecodersFaustCodeGeneration.sh $amb2dorder
+./substractsynthFaustCodeGeneration.sh $amb2dorder
+./synfxdecorrelation3dFaustCodeGeneration.sh $amb3dorder
+./synfxdelay2dFaustCodeGeneration.sh $amb2dorder
+./synfxgain2dFaustCodeGeneration.sh $amb2dorder
+./synfxgrain2dFaustCodeGeneration.sh $amb2dorder
+./synfxmandecorrelation2dFaustCodeGeneration.sh $amb2dorder
+./synfxringmod2dFaustCodeGeneration.sh $amb2dorder
+./synfxringmod3dFaustCodeGeneration.sh $amb3dorder
+./synthesizersFaustCodeGeneration.sh $amb2dorder
+./vbap2dFaustCodeGeneration.sh $amb2dorder
+./vectors2dFaustCodeGeneration.sh $amb2dorder
+./wider2dFaustCodeGeneration.sh $amb2dorder
