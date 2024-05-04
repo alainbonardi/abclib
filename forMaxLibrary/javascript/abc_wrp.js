@@ -4,10 +4,11 @@
 // Automatically generate Maxpat that finds the right abc_lib objet depending on the amount of desired channels
 // abclibrary | Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni © 2019 - 2024 CICM | University Paris 8
 
+//function anything() {
+//}
+//post("number of objects : ",this.patcher.count);
 
 //Ajouter un array pour garder toutes les autres attributes et les placer dans l'objet faust comme ça Ex:'@functiontype 4'
-
-
 
 var wrapper = wrapper || {};
 wrapper.numobjects = -1;
@@ -15,25 +16,40 @@ wrapper.theObjects = new Array(100);
 var objectToInstantiate = "";
 var actualobject;
 var withUI = false;
-var extraAttributes = new Array(100);
+//var extraAttributes = new Array(100);
+var abcAttributes = "";
 
-cleanup();
+//cleanup();//Not working, Javascript-Max-API doesn't count objects created from javascript, only hand made objects. Can't count, can't delete.
 patching();
 
 function patching() {
 	//Constants:
 	var baseAmbisonicOrder = 1;
 	var maxAmbisonicOrder = 7;
-
+	var maxSpeakers = 16;
+	var maxMCinstances = 16;
+	var maxMAPsources = 8;
+	var maxMEncoderSources = 8;
 	//------------------------
+	var patcherName = this.patcher.name;//name of 'abc' object
 	var args = jsarguments;
-	var jsobjectname = args[0];
-	var order = baseAmbisonicOrder;
-	if (typeof args[1] === 'number' && args[1] != 0) order = args[1];//Max puts a zero when there are no arguments
-	if (order > maxAmbisonicOrder) order = maxAmbisonicOrder;
-	var patcherName = this.patcher.name;
+	//var jsobjectname = args[0];
+	var order = baseAmbisonicOrder;//We will save in 'order' every first attribute, for HOA objectes is the order, for the others is the first parameter, ex. channels etc...
+	var isHOA = (new RegExp("abc.hoa", "i").test(patcherName));//||(new RegExp("abc_3d", "i").test(jsobjectname));
+	if (typeof args[1] === 'number' && args[1] != 0) {
+		order = args[1];//Max puts a zero when there are no arguments
+		if (order > maxAmbisonicOrder && isHOA) {//We check if is an HOA object
+			post("O--------------abc------------>");
+			post("\n");
+			post("abcWrapper => ", "The maximum HOA order is", maxAmbisonicOrder, ". Replacing", order, "by", maxAmbisonicOrder, ".");
+			post("\n");
+			post(">--------------abc------------O");
+			order = maxAmbisonicOrder;
+		}
+	}
+
 	var speakers = order * 2 + 2;
-	var stereo = false;
+	//var stereo = false;
 	var dimensions = "2d";
 	var sources = 1;//To transform the encoder to multiencoder
 	var mode = "fx";//fx or syn
@@ -42,36 +58,66 @@ function patching() {
 		if (args[i] == "@speakers" || args[i] == "@spk") {
 			speakers = args[i + 1];
 			var speakersSettedUp = true;
-		}
-		if (args[i] == "@dimensions" || args[i] == "@dim") {
+			i++;
+		} else if (args[i] == "@dimensions" || args[i] == "@dim") {
 			if (args[i + 1] == 3) {
 				dimensions = "3d";
+			} else if (args[i + 1] == 2) {
+				dimensions = "2d";
 			} else {
+				post("O--------------abc------------>");
+				post("\n");
+				post("abcWrapper => ", "Only 2d and 3d objects are allowed. Replacing", args[i + 1], "dimensions", "by 2 dimensions.");
+				post("\n");
+				post(">--------------abc------------O");
 				dimensions = "2d";
 			}
-		}
-		if (args[i] == "@stereo" || args[i] == "@st") {
-			if (args[i + 1] == 1) {
-				stereo = true;
-			} else {
-				stereo = false;
-			}
-		}
-		if (args[i] == "@sources" || args[i] == "@src") {
+			i++;
+		} else if (args[i] == "@sources" || args[i] == "@src") {
 			sources = args[i + 1];
-		}
-		if (args[i] == "@mode" || args[i] == "@mod") {
+			i++;
+		} else if (args[i] == "@mode" || args[i] == "@mod") {
 			mode = args[i + 1];
-		}
-		if (args[i] == "@instances" || args[i] == "@inst") {
+			i++;
+		} else if (args[i] == "@instances" || args[i] == "@inst") {
 			var instances = args[i + 1];
-		}
-		if (args[i] == "@channels" || args[i] == "@chan" || args[i] == "@chans") {
+			i++;
+		} else if (args[i] == "@channels" || args[i] == "@chan" || args[i] == "@chans" || args[i] == "@ch") {
 			var channels = args[i + 1];
+			i++;
+		} else if (typeof args[i] !== 'number') {//Other arguments to pass to the abcObject
+			//Extra attributes of the 'abc' objects:
+			//extraAttributes[i] = args[i];
+			abcAttributes += " " + args[i] + " " + args[i + 1];
+			i++;
 		}
-		//Extra attributes of the 'abc' objects:
-		extraAttributes[i] = args[i];
 	}
+	//Validation des maximums:
+	if (speakers > maxSpeakers) {
+		post("O--------------abc------------>");
+		post("\n");
+		post("abcWrapper => ", "The maximum number of speakers is", maxSpeakers, ". Replacing", speakers, "by", maxSpeakers, ".");
+		post("\n");
+		post(">--------------abc------------O");
+		speakers = maxSpeakers;
+	}
+	if (instances > maxMCinstances) {
+		post("O--------------abc------------>");
+		post("\n");
+		post("abcWrapper => ", "The maximum number of MC instances is", maxMCinstances, ". Replacing", instances, "by", maxMCinstances, ".");
+		post("\n");
+		post(">--------------abc------------O");
+		instances = maxMCinstances;
+	}
+	if (channels > maxMCinstances) {
+		post("O--------------abc------------>");
+		post("\n");
+		post("abcWrapper => ", "The maximum number of MC channels is", maxMCinstances, ". Replacing", channels, "by", maxMCinstances, ".");
+		post("\n");
+		post(">--------------abc------------O");
+		channels = maxMCinstances;
+	}
+
 	//List of ABC sweet objects:
 	if (patcherName == 'abc.hoa.decoder~' || patcherName == 'abc.hoa.decoder') {
 		if (patcherName == 'abc.hoa.decoder') withUI = true;
@@ -81,10 +127,26 @@ function patching() {
 		if (sources == 1) {
 			objectToInstantiate = "abc_" + dimensions + "_encoder" + order + "~";
 		} else {
+			if (sources > maxMEncoderSources) {//We check if is an HOA object
+				post("O--------------abc------------>");
+				post("\n");
+				post("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
+				post("\n");
+				post(">--------------abc------------O");
+				sources = maxMEncoderSources;
+			}
 			objectToInstantiate = "abc_" + dimensions + "_multiencoder" + order + "_" + sources + "~";
 		}
 	} else if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {
 		if (patcherName == 'abc.hoa.map') withUI = true;
+		if (sources > maxMAPsources) {
+			post("O--------------abc------------>");
+			post("\n");
+			post("abcWrapper => ", "The maximum number sources for the 'map' object is", maxMAPsources, ". Replacing", sources, "by", maxMAPsources, ".");
+			post("\n");
+			post(">--------------abc------------O");
+			sources = maxMAPsources;
+		}
 		objectToInstantiate = "abc_" + dimensions + "_map" + order + "_" + sources + "~";
 	} else if (patcherName == 'abc.hoa.decorrelation~' || patcherName == 'abc.hoa.decorrelation') {
 		if (patcherName == 'abc.hoa.decorrelation') withUI = true;
@@ -92,28 +154,22 @@ function patching() {
 	} else if (patcherName == 'abc.hoa.ringmod~' || patcherName == 'abc.hoa.ringmod') {
 		if (patcherName == 'abc.hoa.ringmod') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_" + mode + "_ringmod" + order + "~";
-	} else if (patcherName == 'abc.hoa.grains~' || patcherName == 'abc.hoa.grains') {
-		if (patcherName == 'abc.hoa.grains') withUI = true;
-		if (mode == "fx") {
-			objectToInstantiate = "abc_" + "grain" + order + "~";
-		} else {
-			objectToInstantiate = "abc_" + dimensions + "_" + mode + "_grain" + order + "~";
-		}
+	} else if (patcherName == 'abc.mc.grain~' || patcherName == 'abc.hoa.grain') {
+		if (patcherName == 'abc.mc.grain') withUI = true;
+		objectToInstantiate = "abc_" + "grain" + order + "~";
+	} else if (patcherName == 'abc.hoa.grain~' || patcherName == 'abc.hoa.grain') {
+		if (patcherName == 'abc.hoa.grain') withUI = true;
+		objectToInstantiate = "abc_" + dimensions + "_" + mode + "_grain" + order + "~";
 	} else if (patcherName == 'abc.hoa.delay~' || patcherName == 'abc.hoa.delay') {
 		if (patcherName == 'abc.hoa.delay') withUI = true;
-		if (mode == "fx") {
-			objectToInstantiate = "abc_" + "delay" + order + "~";
-		} else if (mode == "syn") {
-			objectToInstantiate = "abc_" + dimensions + "_" + mode + "_delay" + order + "~";
-		}
+		objectToInstantiate = "abc_" + dimensions + "_" + mode + "_delay" + order + "~";
 	} else if (patcherName == 'abc.mc.delay~' || patcherName == 'abc.mc.delay') {
 		if (patcherName == 'abc.mc.delay') withUI = true;
-		if (mode == "fx") {
-			objectToInstantiate = "abc_" + "delay" + order + "~";
-		} else if (mode == "chain") {
-			if (order == 1) order = 2;
-			objectToInstantiate = "abc_delaychain" + order + "~";
-		}
+		objectToInstantiate = "abc_" + "delay" + order + "~";
+	} else if (patcherName == 'abc.delaychain~' || patcherName == 'abc.delaychain') {
+		if (patcherName == 'abc.delaychain') withUI = true;
+		if (order == 1) order = 2;
+		objectToInstantiate = "abc_delaychain" + order + "~";
 	} else if (patcherName == 'abc.hoa.mirror~' || patcherName == 'abc.hoa.mirror') {
 		if (patcherName == 'abc.hoa.mirror') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_mirror" + order + "~";
@@ -137,6 +193,9 @@ function patching() {
 		} else if (mode == "squareZ" || mode == "squarez") {
 			objectToInstantiate = "abc_" + dimensions + "_squareandztrajectory" + "~";
 		}
+	} else if (patcherName == 'abc.hoa.stereoencoder~' || patcherName == 'abc.hoa.stereoencoder') {
+		if (patcherName == 'abc.hoa.stereoencoder') withUI = true;
+		objectToInstantiate = "abc_" + dimensions + "_stereoencoder" + order + "~";
 	} else if (patcherName == 'abc.hoa.stereodecoder~' || patcherName == 'abc.hoa.stereodecoder') {
 		if (patcherName == 'abc.hoa.stereodecoder') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_stereodecoder" + order + "~";
@@ -213,6 +272,20 @@ function patching() {
 			objectToInstantiate = "abc_" + "chopan" + order + "~";
 			finalchannels = order;
 		}
+	} else if (patcherName == 'abc.mc.randenv~' || patcherName == 'abc.mc.randenv') {
+		if (patcherName == 'abc.mc.randenv') withUI = true;
+		if (channels) {
+			finalchannels = channels;
+		} else if (instances) {
+			finalchannels = instances;
+		} else {
+			finalchannels = order;
+		}
+		if (mode == "fx" || mode == "cosinus" || mode == "cos") {
+			objectToInstantiate = "abc_" + "cosrandenv" + finalchannels + "~";
+		} else if (mode == "lin" || mode == "linear" || mode == "line") {
+			objectToInstantiate = "abc_" + "linrandenv" + finalchannels + "~";
+		}
 	} else if (patcherName == 'abc.mc.cosrandenv~' || patcherName == 'abc.mc.cosrandenv') {
 		if (patcherName == 'abc.mc.cosrandenv') withUI = true;
 		if (channels) {
@@ -231,8 +304,8 @@ function patching() {
 	} else if (patcherName == 'abc.envfollower~' || patcherName == 'abc.envfollower') {
 		if (patcherName == 'abc.envfollower') withUI = true;
 		objectToInstantiate = "abc_" + "envfollower" + "~";
-	} else if (patcherName == 'abc.mc.flanger~' || patcherName == 'abc.mc.flanger') {
-		if (patcherName == 'abc.mc.flanger') withUI = true;
+	} else if (patcherName == 'abc.flanger~' || patcherName == 'abc.flanger') {
+		if (patcherName == 'abc.flanger') withUI = true;
 		if (channels) {
 			objectToInstantiate = "abc_" + "flanger" + channels + "~";
 			finalchannels = channels;
@@ -284,32 +357,13 @@ function patching() {
 		}
 	} else if (patcherName == 'abc.jupiterbank~' || patcherName == 'abc.jupiterbank') {
 		if (patcherName == 'abc.jupiterbank') withUI = true;
-		if (channels) {
-			objectToInstantiate = "abc_" + "jupiterbank" + channels + "~";
-			finalchannels = channels;
-		} else if (instances) {
-			objectToInstantiate = "abc_" + "jupiterbank" + instances + "~";
-			finalchannels = instances;
-		} else {
-			if (order == 1) {
-				objectToInstantiate = "abc_" + "jupiterbank~";
-			} else {
-				objectToInstantiate = "abc_" + "jupiterbank" + order + "~";
-			}
-			finalchannels = order;
-		}
-	} else if (patcherName == 'abc.mc.linrandenv~' || patcherName == 'abc.mc.linrandenv~') {
-		if (patcherName == 'abc.mc.linrandenv') withUI = true;
-		if (channels) {
-			objectToInstantiate = "abc_" + "linrandenv" + channels + "~";
-			finalchannels = channels;
-		} else if (instances) {
-			objectToInstantiate = "abc_" + "linrandenv" + instances + "~";
-			finalchannels = instances;
-		} else {
-			objectToInstantiate = "abc_" + "linrandenv" + order + "~";
-			finalchannels = order;
-		}
+		objectToInstantiate = "abc_jupiterbank~";
+	} else if (patcherName == 'abc.jupiterbank2~' || patcherName == 'abc.jupiterbank2') {
+		if (patcherName == 'abc.jupiterbank2') withUI = true;
+		objectToInstantiate = "abc_jupiterbank2~";
+	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
+		if (patcherName == 'abc.linedrive') withUI = true;
+		objectToInstantiate = "abc_linedrive~";
 	} else if (patcherName == 'abc.mc.matrix~' || patcherName == 'abc.mc.matrix') {
 		if (patcherName == 'abc.mc.matrix') withUI = true;
 		if (channels) {
@@ -323,7 +377,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "matrix" + order + "~";
 			finalchannels = order;
 		}
-	} else if (patcherName == 'abc.mult2pi~' || patcherName == 'abc.mult2pi~') {
+	} else if (patcherName == 'abc.mult2pi~' || patcherName == 'abc.mult2pi') {
 		if (patcherName == 'abc.mult2pi') withUI = true;
 		objectToInstantiate = "abc_" + "mult2pi" + "~";
 	} else if (patcherName == 'abc.mc.multinoise~' || patcherName == 'abc.mc.multinoise') {
@@ -375,7 +429,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "pulsedenv2synth" + order + "~";
 			finalchannels = order;
 		}
-	} else if (patcherName == 'abc.rev4~' || patcherName == 'abc.rev4~') {
+	} else if (patcherName == 'abc.rev4~' || patcherName == 'abc.rev4') {
 		if (patcherName == 'abc.rev4') withUI = true;
 		//By default we use stereo, but if they put on the parameters something different from 2 or 4(only possible options) we fall into the quadri option (4)
 		if (mode != "fx") {
@@ -431,82 +485,68 @@ function patching() {
 		if (patcherName == 'abc.polarvariablecircle') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_polarvariablecircle~";
 	}
-	//Attention :  the order of placing the objects here is for the GUI, to connect them we use the order in which they where added to the patch
-	//for(p = 0; p < extraAttributes.length;p++){
-	//	objectToInstantiate += " " + extraAttributes[p];
-	//}
-	addobjectauto(objectToInstantiate, 3);//Object#0(for connection)//the abc object
+
 	//if (stereo) {
-	//	wrapper.theObjects[wrapper.numobjects].message('stereo', 1)
+	//	objectToInstantiate += " @stereo 1";
 	//}
-	objectToInstantiate = "inlet";
-	addobjectauto(objectToInstantiate, 0);//Object#1(for connection)//
-	objectToInstantiate = "t signal l";
-	addobjectauto(objectToInstantiate, 1);//Object#2(for connection)//
-	connectobject(1, 0, 2, 0);//connect inlet to trigger
-	
 
-	objectToInstantiate = "t b l ";
-	addobject(objectToInstantiate, 130, 180);//Object#3(for connection)//
-	connectobject(2, 1, 3, 0);//connect trigger right to new trigger input
-	objectToInstantiate = "message";
-	addobject(objectToInstantiate, 130, 210);//Object#4(for connection)//
-	
-
-	
-	if (inletsoutlets(wrapper.theObjects[0])[0] > 1) {
-		objectToInstantiate = "mc.unpack~ " + inletsoutlets(wrapper.theObjects[0])[0];
-		addobjectauto(objectToInstantiate, 2);//Object#5(for connection)//
-		//connect mc.unpack~ to abc object:
-		for (d = 0; d < inletsoutlets(wrapper.theObjects[0])[0]; d++) {
-			connectobject(5, d, 0, d);//connect mc.unpack~ to abc object
+	var alertMessage = patcher.newdefault(300, 100, "comment");
+	alertMessage.message('fontsize', 50);
+	alertMessage.message('fontface', "bold");
+	alertMessage.message('textjustification', 1);
+	//alertMessage.message('textcolor', "red");
+	alertMessage.message('set', "DO NOT MODIFY THIS ABSTRACTION");
+	objectToInstantiate += abcAttributes;
+	var abcObject = patcher.newdefault(20, 240, objectToInstantiate);//x,y,name of object
+	var inlet1 = patcher.newdefault(20, 60, "inlet");
+	var inlet2 = patcher.newdefault(700, 60, "inlet");
+	connectobject(inlet2, 0, abcObject, 0);
+	if (inletsoutlets(abcObject)[0] > 1) {
+		objectToInstantiate = "mc.unpack~ " + inletsoutlets(abcObject)[0];
+		var unpacker = patcher.newdefault(20, 180, objectToInstantiate);
+		connectobject(inlet1, 0, unpacker, 0);
+		for (d = 0; d < inletsoutlets(abcObject)[0]; d++) {
+			connectobject(unpacker, d, abcObject, d);//connect mc.unpack~ to abc object
 		}
 	} else {//The ABC object only has 1 input (like the encoder~)
-		wrapper.numobjects++;
-		connectobject(2, 0, 0, 0);//connect trigger(signal) to abc object
+		connectobject(inlet1, 0, abcObject, 0);
 	}
-	connectobject(2, 0, 5, 0);//connect trigger unpack~
-	objectToInstantiate = "outlet";
-	addobjectauto(objectToInstantiate, 5);//Object#6(for connection)//
-	if (inletsoutlets(wrapper.theObjects[0])[1] > 1) {
-		objectToInstantiate = "mc.pack~ " + (inletsoutlets(wrapper.theObjects[0])[1] - 1);
-		addobjectauto(objectToInstantiate, 4);//Object#7(for connection)//
-		for (d = 0; d < inletsoutlets(wrapper.theObjects[0])[1] - 1; d++) {
-			connectobject(0, d, 7, d);//connect abc object to mc.pack~
+
+	var outlet = patcher.newdefault(20, 360, "outlet");
+
+	if (inletsoutlets(abcObject)[1] > 1) {
+		objectToInstantiate = "mc.pack~ " + (inletsoutlets(abcObject)[1] - 1);
+		var packer = patcher.newdefault(20, 300, objectToInstantiate);
+		addobjectauto(objectToInstantiate, 4);
+		for (d = 0; d < inletsoutlets(abcObject)[1] - 1; d++) {
+			connectobject(abcObject, d, packer, d);//connect abc object to mc.pack~
 		}
-		connectobject(7, 0, 6, 0);//connect mc.pack~ to outlet
+		connectobject(packer, 0, outlet, 0);//connect mc.pack~ to outlet
+	} else {//The ABC object only has 1 output
+		connectobject(abcObject, 0, outlet, 0);
 	}
-
-	objectToInstantiate = "route multichannelsignal";
-	addobject(objectToInstantiate, 130, 240);//Object#8(for connection)//
-	connectobject(3, 0, 4, 0);//connect new trigger to message
-	connectobject(3, 1, 4, 1);//connect new trigger to message
-	connectobject(4, 0, 8, 0);//connect message to route
-
-	connectobject(8, 1, 0, 0);//connect route to abc object
-
-
 
 	//Special cases : Map and Buses:
 	if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {//n buses of 3 channels
-		disconnectobject(2, 0, 5, 0);//disconnect the trigger output from the unpack
+		disconnectobject(inlet1, 0, unpacker, 0);
 		objectToInstantiate = "mc.combine~ " + sources;
-		addobject(objectToInstantiate, 140, 120);//add mc.combine~//index = 9
-		connectobject(2, 0, 9, 0);//connect trigger to mc.combine~
+		var combine = patcher.newdefault(20, 120, objectToInstantiate);
+		connectobject(inlet1, 0, combine, 0);
+		var mapInlet;
 		for (k = 0; k < sources - 1; k++) {//add new inlets
-			addobject("inlet", 60 + 40 * k, 60);
-			connectobject(10 + k, 0, 9, 1 + k);//connect inlets to mc.combine~
+			mapInlet = patcher.newdefault(60 + 40 * k, 60, "inlet");
+			connectobject(mapInlet, 0, combine, 1 + k);//connect inlets to mc.combine~
 		}
-		connectobject(9, 0, 5, 0);//connect combine to unpack~
+		connectobject(combine, 0, unpacker, 0);//connect combine to unpack~
 	}
-	if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect' || patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult'|| patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {//2 buses of n channels
-		disconnectobject(2, 0, 5, 0);//disconnect the trigger output from the unpack
+	if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect' || patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult' || patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {//2 buses of n channels
+		disconnectobject(inlet1, 0, unpacker, 0);
 		objectToInstantiate = "mc.combine~ " + 2;
-		addobject(objectToInstantiate, 140, 120);//add mc.combine~//index = 9
-		connectobject(2, 0, 9, 0);//connect trigger to mc.combine~
-		addobject("inlet", 100, 60);//add new inlet//index = 10
-		connectobject(10, 0, 9, 1);//connect inlets to mc.combine~
-		connectobject(9, 0, 5, 0);//connect combine to unpack~
+		var combine = patcher.newdefault(20, 120, objectToInstantiate);
+		connectobject(inlet1, 0, combine, 0);
+		var businlet = patcher.newdefault(120, 60, "inlet");
+		connectobject(businlet, 0, combine, 1);//connect inlets to mc.combine~
+		connectobject(combine, 0, unpacker, 0);//connect combine to unpack~
 	}
 	//-----------------------------------------------------
 }
@@ -514,17 +554,44 @@ function patching() {
 function anything() {
 }
 function cleanup() {
-	while (wrapper.numobjects >= 0) {
-		patcher.remove(wrapper.theObjects[wrapper.numobjects]);
-		wrapper.numobjects--;
+	/*
+	this.box.varname = "wrapper"; //Nom donné à l'objet js 
+	function removeAll(obj) {
+		if (obj.varname !== "wrapper") {
+			this.patcher.remove(obj);
+		}
 	}
+	// Appliquer la fonction removeUnlessVarname à tous les objets du patch
+	patcher.apply(removeAll);
+	*/
+	/*
+	for(i=0;i<300;i++){
+		
+	}
+	post("yyy amount of objects : ", this.patcher.count);*/
+	/*
+	var obj = this.patcher.firstobject;
+	post("xxxxx the object name yuhuuu : ",obj.varname);
+	var countertemp = 0;
+	while (obj) {
+		//var tempobj = obj.nextobject;
+		//if (obj.varname != "wrapper") {
+			//this.patcher.remove(obj);
+		//}
+		post("iteration : ",countertemp);
+		countertemp ++;
+		//obj = tempobj;
+		obj = obj.nextobject;
+	}
+	return null;*/
 }
+/*
 function addobject() {//name of object to instantiate,x,y
 	wrapper.numobjects++;
-	actualobject = patcher.newdefault(arguments[1], arguments[2], arguments[0]);
+	actualobject = patcher.newdefault(arguments[1], arguments[2], arguments[0]);//x,y,name of object
 	actualobject.varname = 'abc_w_' + wrapper.numobjects;
 	wrapper.theObjects[wrapper.numobjects] = actualobject;
-}
+}*/
 function addobjectauto() {//arguments: object and number of entering position, for the GUI position
 	wrapper.numobjects++;
 	if (arguments[1] == -1) {
@@ -539,8 +606,8 @@ function inletsoutlets() {
 	return [arguments[0].getboxattr('numinlets'), arguments[0].getboxattr('numoutlets')];
 }
 function connectobject() {//object, outlet, object, inlet// Need to give the index on the patch(the order in which it was added), not the GUI oindex!
-	patcher.connect(wrapper.theObjects[arguments[0]], arguments[1], wrapper.theObjects[arguments[2]], arguments[3]);
+	patcher.connect(arguments[0], arguments[1], arguments[2], arguments[3]);
 }
 function disconnectobject() {//object, outlet, object, inlet// Need to give the index on the patch(the order in which it was added), not the GUI oindex!
-	patcher.disconnect(wrapper.theObjects[arguments[0]], arguments[1], wrapper.theObjects[arguments[2]], arguments[3]);
+	patcher.disconnect(arguments[0], arguments[1], arguments[2], arguments[3]);
 }
