@@ -8,3 +8,5 @@ max objectfile abc.scope abc.scope;
 max definesubstitution abc.scope bpatcher @name abc.scope;
 max objectfile abc.quadriout~ abc.quadriout~;
 max definesubstitution abc.quadriout~ bpatcher @name abc.quadriout~;
+max objectfile abc.env.noise~ abc.env.noise~;
+max definesubstitution abc.env.noise~ bpatcher @name abc.env.noise~;

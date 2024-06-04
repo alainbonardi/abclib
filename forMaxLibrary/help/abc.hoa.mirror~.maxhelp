@@ -95,7 +95,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 253.5, 66.0, 246.0, 114.0 ],
-									"presentation_linecount" : 8,
 									"text" : "abc.hoa.mirror~ object apply mirror L/R symmetry to a set of ambisonic spatial components using a simple multiplication of negative components by a 'factor'. This 'factor' parameter can take three different values: 1 (original sound field), 0 (original and mirror sound field together) and -1 (only the mirror sound field)"
 								}
 
@@ -117,7 +116,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 148.0, 467.0, 63.0, 22.0 ],
+									"patching_rect" : [ 148.0, 467.0, 90.0, 22.0 ],
 									"text" : "abc.scope"
 								}
 
@@ -128,7 +127,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 25.5, 461.0, 63.0, 22.0 ],
+									"patching_rect" : [ 25.0, 461.0, 90.0, 22.0 ],
 									"text" : "abc.scope"
 								}
 
@@ -277,12 +276,12 @@
 									"lockeddragscroll" : 0,
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
-									"name" : "abc_gaincontrol.maxpat",
+									"name" : "abc.gaincontrol.maxpat",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 533.0, 274.0, 72.0, 110.0 ],
+									"patching_rect" : [ 489.5, 281.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -452,7 +451,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 89.25, 179.5, 29.5, 22.0 ],
+									"patching_rect" : [ 83.0, 180.0, 29.5, 22.0 ],
 									"text" : "0."
 								}
 
@@ -475,7 +474,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 179.5, 220.5, 63.0, 20.0 ],
+									"patching_rect" : [ 174.0, 221.0, 63.0, 20.0 ],
 									"text" : "t.s-1"
 								}
 
@@ -487,7 +486,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 128.0, 179.5, 80.0, 22.0 ],
+									"patching_rect" : [ 122.0, 180.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.1"
 								}
 
@@ -503,7 +502,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 128.0, 220.5, 50.0, 22.0 ]
+									"patching_rect" : [ 122.0, 221.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -524,7 +523,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 128.0, 255.5, 58.0, 22.0 ],
+									"patching_rect" : [ 122.0, 256.0, 58.0, 22.0 ],
 									"text" : "speed $1"
 								}
 
@@ -616,7 +615,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-51", 0 ],
-									"midpoints" : [ 98.75, 210.5, 137.5, 210.5 ],
+									"midpoints" : [ 92.5, 211.0, 131.5, 211.0 ],
 									"source" : [ "obj-36", 0 ]
 								}
 
@@ -640,7 +639,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 1 ],
-									"midpoints" : [ 542.5, 452.5, 488.0, 452.5 ],
 									"source" : [ "obj-43", 0 ]
 								}
 
@@ -685,7 +683,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-53", 1 ],
-									"midpoints" : [ 137.5, 297.0, 131.0, 297.0 ],
+									"midpoints" : [ 131.5, 297.0, 131.0, 297.0 ],
 									"source" : [ "obj-52", 0 ]
 								}
 
@@ -968,7 +966,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 266.0, 71.0, 244.0, 114.0 ],
+									"patching_rect" : [ 266.0, 71.0, 246.0, 114.0 ],
 									"text" : "abc.hoa.mirror~ object apply mirror L/R symmetry to a set of ambisonic spatial components using a simple multiplication of negative components by a 'factor'. This 'factor' parameter can take three different values: 1 (original sound field), 0 (original and mirror sound field together) and -1 (only the mirror sound field)"
 								}
 
@@ -1023,7 +1021,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 282.0, 535.0, 99.0, 110.0 ],
+									"patching_rect" : [ 282.0, 535.0, 90.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1044,7 +1042,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 22.0, 528.5, 93.0, 103.5 ],
+									"patching_rect" : [ 22.0, 528.0, 90.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1232,7 +1230,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 525.0, 564.0, 185.0, 32.0 ],
+									"patching_rect" : [ 525.0, 564.0, 190.0, 40.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1249,12 +1247,12 @@
 									"lockeddragscroll" : 0,
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
-									"name" : "abc_gaincontrol.maxpat",
+									"name" : "abc.gaincontrol.maxpat",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 525.0, 325.0, 72.0, 110.0 ],
+									"patching_rect" : [ 529.398798333333161, 324.5, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1473,7 +1471,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 534.5, 477.5, 704.5, 477.5 ],
+									"midpoints" : [ 538.898798333333161, 477.0, 704.5, 477.0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -1594,79 +1592,86 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
+				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.encoder~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.mirror~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.scope~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.addsynth~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.cosrandenv~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.quadriout~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.scope.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.soundcoat~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1707,16 +1712,9 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_gaincontrol.maxpat",
+				"name" : "abc_help_icon.png",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
@@ -1726,8 +1724,15 @@
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "resize_bpatcher.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
