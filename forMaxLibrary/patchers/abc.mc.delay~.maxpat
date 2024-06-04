@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 7,
+			"minor" : 6,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 174.0, -963.0, 1612.0, 929.0 ],
+		"rect" : [ -64.0, -963.0, 1612.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,18 +45,28 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 20.0, 295.0, 22.0 ],
+					"patching_rect" : [ 25.0, 25.0, 295.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "abc_wrp.js",
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js abc_wrp.js #1 #2 #3 #4 #5 #6 #7 #8 #9"
+					"text" : "js abc_wrp.js #1 #2 #3 #4 #5 #6 #7 #8 #9",
+					"varname" : "wrapper"
 				}
 
 			}
  ],
-		"lines" : [  ]
+		"lines" : [  ],
+		"dependency_cache" : [ 			{
+				"name" : "abc_wrp.js",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }

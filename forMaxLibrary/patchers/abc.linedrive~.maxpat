@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 7,
+			"minor" : 6,
+			"revision" : 1,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -45,18 +45,28 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 20.0, 295.0, 22.0 ],
+					"patching_rect" : [ 30.0, 43.0, 295.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "abc_wrp.js",
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js abc_wrp.js #1 #2 #3 #4 #5 #6 #7 #8 #9"
+					"text" : "js abc_wrp.js #1 #2 #3 #4 #5 #6 #7 #8 #9",
+					"varname" : "wrapper"
 				}
 
 			}
  ],
-		"lines" : [  ]
+		"lines" : [  ],
+		"dependency_cache" : [ 			{
+				"name" : "abc_wrp.js",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
