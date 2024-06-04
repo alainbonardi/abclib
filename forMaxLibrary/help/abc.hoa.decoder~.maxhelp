@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 84.0, 100.0, 1001.0, 811.0 ],
+		"rect" : [ 84.0, 100.0, 1001.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1001.0, 785.0 ],
+						"rect" : [ 0.0, 26.0, 1001.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,6 +88,40 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-24",
+									"linecount" : 17,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 541.190480666666531, 21.0, 447.0, 234.0 ],
+									"text" : "abc.hoa.decoder~ enable to decode from ambisonic spatial components to sets of loudspeakers. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS. All decoders are compiled from 3 loudspeakers to 16 loudspeakers. \n\nThe first argument is the ambisonic order. \n\nTo change the number of loudspeakers, use the attribute '@speakers' followed by the number of loudspeakers. \n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a00, a01, ..., a09, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@obj-name", "abc.hoa.decoder~", "@obj-desc", "Ambisonic", "decoders", "at", "orders", 1, "to", 7, "for", 3, "to", 16, "LS" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-3",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.helpheader.maxpat",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 5.0, 6.0, 485.0, 61.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-11",
 									"maxclass" : "meter~",
 									"numinlets" : 1,
@@ -106,19 +140,6 @@
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 176.0, 264.0, 82.0, 22.0 ],
 									"text" : "mc.pack~ 7"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-24",
-									"linecount" : 18,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 497.0, 101.0, 446.0, 248.0 ],
-									"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 								}
 
 							}
@@ -299,27 +320,6 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@obj-name", "abc_2d_decoderN[_P]~", "@obj-desc", "Ambisonic", "decoders", "at", "orders", 1, "(3-16", "LS),", 2, "(5-16", "LS),", 3, "(7-16", "LS)..." ],
-									"bgmode" : 0,
-									"border" : 0,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-3",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc.helpheader.maxpat",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 5.0, 6.0, 485.0, 61.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-9",
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
@@ -495,7 +495,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 84.0, 126.0, 1001.0, 785.0 ],
+						"rect" : [ 84.0, 126.0, 1001.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -830,8 +830,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 427.309519333333242, 483.5, 150.0, 33.0 ],
-									"text" : "angles for the abc_decoder1_4~ below"
+									"patching_rect" : [ 429.999999999999943, 477.0, 187.0, 33.0 ],
+									"text" : "angles for the 'abc.hoa.decoder~ 1 @speakers 4' below"
 								}
 
 							}
@@ -839,12 +839,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-54",
-									"linecount" : 3,
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 284.5, 357.25, 144.0, 47.0 ],
-									"text" : "gain, angularoffsert and directangles for the abc_decoder1_4~ below"
+									"patching_rect" : [ 284.5, 357.25, 144.0, 60.0 ],
+									"text" : "gain, angularoffsert and directangles for the 'abc.hoa.decoder~ 1 @speakers 4' below"
 								}
 
 							}
@@ -998,7 +998,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 268.0, 515.0, 42.0, 22.0 ],
+									"patching_rect" : [ 308.0, 504.0, 42.0, 22.0 ],
 									"text" : "r dec1"
 								}
 
@@ -1109,12 +1109,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-24",
-									"linecount" : 18,
+									"linecount" : 17,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 526.190480666666531, 6.0, 446.0, 248.0 ],
-									"text" : "abc_2d_decoder1~, abc_2d_decoder2~, etc. objects enable to decode from ambisonic spatial components to sets of loudspeakers. Since these decoders were developed in Faust language, we had to set fixed configurations. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS.\n\nTo change the number of loudspeakers, objects have been added to enable any number of loudspeakers betwen 3 (above stereo) and 16 at any order. For instance abc_2d_decoder1_8~ (order 1 with 8 LS), abc_2d_decoder3_11~ (order 3 with 11 LS) and so on. Therefore abc_2d_decoder1~ and abc_2d_decoder1_4~ are exactly the same objects.\n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a_0, a_1, ..., a_9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+									"patching_rect" : [ 526.190480666666531, 6.0, 447.0, 234.0 ],
+									"text" : "abc.hoa.decoder~ enable to decode from ambisonic spatial components to sets of loudspeakers. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS. All decoders are compiled for 3 loudspeakers until 16 loudspeakers. \n\nThe first argument is the ambisonic order. \n\nTo change the number of loudspeakers, use the attribute '@speakers' followed by the number of loudspeakers. \n\n- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a00, a01, ..., a09, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 								}
 
 							}
@@ -1200,7 +1200,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@obj-name", "abc_2d_decoderN[_P]~", "@obj-desc", "Ambisonic", "decoders", "at", "orders", 1, "(3-16", "LS),", 2, "(5-16", "LS),", 3, "(7-16", "LS)..." ],
+									"args" : [ "@obj-name", "abc.hoa.decoder~", "@obj-desc", "Ambisonic", "decoders", "at", "orders", 1, "to", 7, "for", 3, "to", 16, "LS" ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -1335,8 +1335,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 136.0, 548.0, 151.0, 24.0 ],
-									"text" : "abc.hoa.decoder~ 1 4",
+									"patching_rect" : [ 136.0, 548.0, 230.0, 24.0 ],
+									"text" : "abc.hoa.decoder~ 1 @speakers 4",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
 									"varname" : "faustgen-3857d0"
 								}
@@ -1498,7 +1498,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 1 ],
-									"midpoints" : [ 277.5, 523.25, 277.5, 523.25 ],
+									"midpoints" : [ 317.5, 538.25, 356.5, 538.25 ],
 									"source" : [ "obj-37", 0 ]
 								}
 
@@ -1662,70 +1662,70 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.envnoise~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
+				"bootpath" : "~/Git/abc/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.encoder~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.scope~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.randenv~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.quadriout~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.scope.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1756,14 +1756,14 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/javascript",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
