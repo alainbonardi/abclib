@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 275.0, 100.0, 708.0, 733.0 ],
+		"rect" : [ 100.0, 100.0, 708.0, 733.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 275.0, 126.0, 708.0, 707.0 ],
+						"rect" : [ 100.0, 126.0, 708.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +87,40 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"args" : [ "@obj-name", "abc.hoa.encoder~", "@obj-desc", "Ambisonic", "encoders", "at", "orders", "1,", "2,", "3..." ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-28",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.helpheader.maxpat",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 21.0, 21.0, 485.0, 61.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-11",
+									"linecount" : 15,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 428.0, 280.0, 245.0, 208.0 ],
+									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n\n- the first argument is the ambisonic order\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "newobj",
@@ -320,8 +354,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 122.0, 505.0, 125.0, 22.0 ],
-									"text" : "abc.hoa.decoder~ 3 8"
+									"patching_rect" : [ 122.0, 505.0, 189.0, 22.0 ],
+									"text" : "abc.hoa.decoder~ 3 @speakers 8"
 								}
 
 							}
@@ -524,40 +558,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-11",
-									"linecount" : 13,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 420.0, 302.0, 245.0, 181.0 ],
-									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ "@obj-name", "abc_2d_encoderN~", "@obj-desc", "Ambisonic", "encoders", "at", "orders", "1,", "2,", "3..." ],
-									"bgmode" : 0,
-									"border" : 0,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-28",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc.helpheader.maxpat",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 6.0, 485.0, 61.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-9",
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
@@ -570,7 +570,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-57", 1 ],
-									"midpoints" : [ 56.5, 495.0, 237.5, 495.0 ],
+									"midpoints" : [ 56.5, 495.0, 301.5, 495.0 ],
 									"source" : [ "obj-19", 0 ]
 								}
 
@@ -606,7 +606,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-57", 1 ],
-									"midpoints" : [ 198.5, 496.0, 237.5, 496.0 ],
+									"midpoints" : [ 198.5, 496.0, 301.5, 496.0 ],
 									"source" : [ "obj-31", 0 ]
 								}
 
@@ -642,7 +642,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-57", 1 ],
-									"midpoints" : [ 260.5, 493.5, 237.5, 493.5 ],
+									"midpoints" : [ 260.5, 493.5, 301.5, 493.5 ],
 									"source" : [ "obj-38", 0 ]
 								}
 
@@ -808,6 +808,20 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-11",
+									"linecount" : 15,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 443.0, 295.0, 245.0, 208.0 ],
+									"presentation_linecount" : 15,
+									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n\n- the first argument is the ambisonic order\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-19",
 									"maxclass" : "comment",
@@ -1160,19 +1174,6 @@
 , 							{
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-11",
-									"linecount" : 13,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 427.5, 265.0, 245.0, 181.0 ],
-									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-29",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -1376,7 +1377,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@obj-name", "abc_2d_encoderN~", "@obj-desc", "Ambisonic", "encoders", "at", "orders", "1,", "2,", "3..." ],
+									"args" : [ "@obj-name", "abc.hoa.encoder~", "@obj-desc", "Ambisonic", "encoders", "at", "orders", "1,", "2,", "3..." ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -1414,8 +1415,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 105.0, 478.0, 125.0, 22.0 ],
-									"text" : "abc.hoa.decoder~ 1 4"
+									"patching_rect" : [ 105.0, 478.0, 189.0, 22.0 ],
+									"text" : "abc.hoa.decoder~ 1 @speakers 4"
 								}
 
 							}
@@ -1537,7 +1538,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 221.5, 476.5, 220.5, 476.5 ],
+									"midpoints" : [ 221.5, 466.5, 284.5, 466.5 ],
 									"source" : [ "obj-30", 0 ]
 								}
 
@@ -1553,7 +1554,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 35.5, 467.5, 220.5, 467.5 ],
+									"midpoints" : [ 35.5, 467.5, 284.5, 467.5 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -1568,7 +1569,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 1 ],
-									"midpoints" : [ 155.5, 467.75, 220.5, 467.75 ],
+									"midpoints" : [ 155.5, 467.75, 284.5, 467.75 ],
 									"source" : [ "obj-56", 0 ]
 								}
 
@@ -1658,77 +1659,77 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.envnoise~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/clippings/AudioOut",
+				"bootpath" : "~/Git/abc/forMaxLibrary/clippings/AudioOut",
 				"patcherrelativepath" : "../clippings/AudioOut",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.encoder~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.scope~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.addsynth~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.randenv~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/global_abstractions",
-				"patcherrelativepath" : "../global_abstractions",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.quadriout~.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.scope.maxpat",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1767,14 +1768,14 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/javascript",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
