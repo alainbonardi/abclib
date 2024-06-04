@@ -1372,8 +1372,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
-									"midpoints" : [ 61.5, 417.5, 36.5, 417.5 ],
+									"destination" : [ "obj-11", 1 ],
+									"midpoints" : [ 61.5, 417.5, 132.5, 417.5 ],
 									"source" : [ "obj-12", 0 ]
 								}
 
