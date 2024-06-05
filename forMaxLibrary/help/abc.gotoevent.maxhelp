@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 637.0, 526.0 ],
+		"rect" : [ 134.0, 172.0, 637.0, 526.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -360,7 +360,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_gotoevent.maxpat",
+					"name" : "abc.gotoevent.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -379,7 +379,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 318.0, 122.0, 298.0, 87.0 ],
-					"text" : "The abc_gotoevent abstraction enables to resume a mixed music piece at a certain event. Left input is the target as an event number, right input is the bang that triggers the counter from 0 to that event. It first switches off the dsp if it is on, and at the end restores its status as it was."
+					"text" : "The abc.gotoevent abstraction enables to resume a mixed music piece at a certain event. Left input is the target as an event number, right input is the bang that triggers the counter from 0 to that event. It first switches off the dsp if it is on, and at the end restores its status as it was."
 				}
 
 			}
@@ -417,7 +417,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_gotoevent", "@obj-desc", "Targeted", "event", "counter", "useful", "in", "mixed", "music" ],
+					"args" : [ "@obj-name", "abc.gotoevent", "@obj-desc", "Targeted", "event", "counter", "useful", "in", "mixed", "music" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -436,8 +436,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -932,24 +932,31 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"name" : "abc.gotoevent.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_gotoevent.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"name" : "abc.helpcredit.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "resize_bpatcher.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],

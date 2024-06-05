@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 645.0, 488.0 ],
+		"rect" : [ 134.0, 172.0, 645.0, 488.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -130,12 +130,12 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise~.maxpat",
+					"name" : "abc.env.noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 121.5, 156.5, 314.0, 32.0 ],
+					"patching_rect" : [ 121.0, 156.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -164,12 +164,12 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise~.maxpat",
+					"name" : "abc.env.noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 67.0, 114.5, 311.0, 31.0 ],
+					"patching_rect" : [ 67.0, 114.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -194,7 +194,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 264.0, 223.0, 353.0, 60.0 ],
-					"text" : "The abc_env_noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction. \n-argument 1 is the grain size (envelope period in milliseconds)\n-argument 2 is the rarefaction between 0 and 1"
+					"text" : "The abc.env.noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction. \n-argument 1 is the grain size (envelope period in milliseconds)\n-argument 2 is the rarefaction between 0 and 1"
 				}
 
 			}
@@ -232,7 +232,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_env_noise~", "@obj-desc", "Enveloped", "noise", "with", "rarefaction" ],
+					"args" : [ "@obj-name", "abc.env.noise~", "@obj-desc", "Enveloped", "noise", "with", "rarefaction" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -251,8 +251,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -666,24 +666,31 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"name" : "abc.env.noise~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/clippings/AudioOut",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/clippings/AudioOut",
+				"name" : "abc.helpcredit.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "resize_bpatcher.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],

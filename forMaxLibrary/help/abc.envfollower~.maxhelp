@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 1011.0, 584.0 ],
+		"rect" : [ 376.0, 113.0, 1102.0, 613.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,39 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 762.0, 326.0, 70.0, 22.0 ],
+					"text" : "mc.pack~ 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "meter~",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 677.0, 460.5, 80.0, 37.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "mc.ezdac~",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 762.0, 456.5, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-19",
 					"maxclass" : "comment",
@@ -221,7 +254,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_gaincontrol.maxpat",
+					"name" : "abc.gaincontrol.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -233,45 +266,13 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "live.meter~",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 820.0, 429.0, 5.0, 100.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-14",
-					"maxclass" : "live.meter~",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 740.0, 429.0, 5.0, 100.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 762.0, 447.0, 45.0, 45.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 3,
-					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 762.0, 395.0, 71.0, 22.0 ],
-					"text" : "abc_gain2~"
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 762.0, 395.0, 90.0, 22.0 ],
+					"text" : "abc.mc.gain~ 2"
 				}
 
 			}
@@ -299,12 +300,12 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_env_noise~.maxpat",
+					"name" : "abc.env.noise~.maxpat",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 535.0, 130.5, 310.0, 31.0 ],
+					"patching_rect" : [ 535.0, 130.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -340,7 +341,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 764.0, 6.0, 239.0, 74.0 ],
-					"text" : "abc_sounddetector~ has two parameters:\n- attack: it is the attack duration in seconds (initial value: 0.001 sec)\n- release: it is the release duration in seconds (initial value : 0.01 sec)"
+					"text" : "abc.sounddetector~ has two parameters:\n- attack: it is the attack duration in seconds (initial value: 0.001 sec)\n- release: it is the release duration in seconds (initial value : 0.01 sec)"
 				}
 
 			}
@@ -476,11 +477,11 @@
 				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 460.0, 293.0, 102.0, 22.0 ],
-					"text" : "abc_envfollower~"
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 460.0, 293.0, 99.0, 22.0 ],
+					"text" : "abc.envfollower~"
 				}
 
 			}
@@ -493,7 +494,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 508.0, 6.0, 242.0, 33.0 ],
-					"text" : "abc_sounddetector~ provides an envelope follower"
+					"text" : "abc.sounddetector~ provides an envelope follower"
 				}
 
 			}
@@ -508,7 +509,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_simplefmburst~.maxpat",
+					"name" : "abc.simplefmburst~.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -542,7 +543,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_envfollower~", "@obj-desc", "Envelope", "follower" ],
+					"args" : [ "@obj-name", "abc.envfollower~", "@obj-desc", "Envelope", "follower" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -561,8 +562,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -929,23 +930,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 1 ],
-					"order" : 1,
-					"source" : [ "obj-11", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"order" : 0,
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-14", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"order" : 1,
 					"source" : [ "obj-11", 0 ]
 				}
@@ -953,9 +938,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
+					"destination" : [ "obj-4", 0 ],
 					"order" : 0,
-					"source" : [ "obj-11", 1 ]
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -1001,8 +993,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 95.5, 253.5, 469.5, 253.5 ],
+					"destination" : [ "obj-2", 1 ],
+					"midpoints" : [ 95.5, 277.5, 549.5, 277.5 ],
 					"source" : [ "obj-40", 0 ]
 				}
 
@@ -1037,16 +1029,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 257.5, 253.5, 469.5, 253.5 ],
+					"destination" : [ "obj-2", 1 ],
+					"midpoints" : [ 257.5, 278.5, 549.5, 278.5 ],
 					"source" : [ "obj-48", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"midpoints" : [ 699.5, 386.5, 771.5, 386.5 ],
+					"destination" : [ "obj-11", 1 ],
+					"midpoints" : [ 699.5, 386.5, 842.5, 386.5 ],
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -1060,8 +1052,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 1 ],
-					"midpoints" : [ 469.5, 258.0, 823.5, 258.0 ],
+					"destination" : [ "obj-12", 1 ],
+					"midpoints" : [ 469.5, 258.0, 822.5, 258.0 ],
 					"order" : 0,
 					"source" : [ "obj-7", 0 ]
 				}
@@ -1069,7 +1061,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
+					"destination" : [ "obj-12", 0 ],
 					"midpoints" : [ 469.5, 257.0, 771.5, 257.0 ],
 					"order" : 1,
 					"source" : [ "obj-7", 0 ]
@@ -1078,16 +1070,44 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"name" : "abc.env.noise~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_env_noise~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/clippings/AudioOut",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/clippings/AudioOut",
+				"name" : "abc.envfollower~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.helpcredit.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.gain~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.simplefmburst~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1100,24 +1120,24 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_simplefmburst~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
+				"name" : "abc_wrp.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "resize_bpatcher.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
