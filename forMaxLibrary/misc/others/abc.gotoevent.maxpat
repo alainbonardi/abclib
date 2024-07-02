@@ -225,7 +225,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 66.5, 34.5, 76.0, 18.0 ],
-					"text" : "abc_gotoevent"
+					"text" : "abc.gotoevent"
 				}
 
 			}
