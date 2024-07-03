@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 0.0, 99.0, 938.0, 653.0 ],
+		"rect" : [ 100.0, 172.0, 938.0, 653.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -156,11 +156,11 @@
 				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 608.130836486816406, 510.0, 71.0, 22.0 ],
-					"text" : "abc_gain1~"
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 608.130836486816406, 510.0, 90.0, 22.0 ],
+					"text" : "abc.mc.gain~ 1"
 				}
 
 			}
@@ -173,7 +173,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 768.0, 279.0, 150.0, 60.0 ],
-					"text" : "a simple flanger with a rate controlled by the amplitude given by abc_peakamp~"
+					"text" : "a simple flanger with a rate controlled by the amplitude given by abc.peakamp~"
 				}
 
 			}
@@ -279,11 +279,11 @@
 					"fontsize" : 14.0,
 					"id" : "obj-26",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 699.652472257614136, 191.5, 189.0, 24.0 ],
-					"text" : "abc_peakamp~ @period 50",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 699.652472257614136, 191.5, 185.0, 24.0 ],
+					"text" : "abc.peakamp~ @period 50",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 				}
 
@@ -339,11 +339,11 @@
 				"box" : 				{
 					"id" : "obj-14",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 608.130836486816406, 142.129629969596863, 101.0, 22.0 ],
-					"text" : "abc_soundgrain~"
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 608.130836486816406, 142.129629969596863, 98.0, 22.0 ],
+					"text" : "abc.soundgrain~"
 				}
 
 			}
@@ -359,7 +359,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_gaincontrol.maxpat",
+					"name" : "abc.gaincontrol.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -485,11 +485,11 @@
 					"fontsize" : 14.0,
 					"id" : "obj-15",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "signal", "list" ],
-					"patching_rect" : [ 57.0, 330.5, 109.0, 24.0 ],
-					"text" : "abc_peakamp~",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 57.0, 330.5, 105.0, 24.0 ],
+					"text" : "abc.peakamp~",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 				}
 
@@ -530,18 +530,18 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-3",
-					"linecount" : 7,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 379.592591881752014, 147.0, 145.0, 100.0 ],
-					"text" : "abc_peakamp~ computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds"
+					"patching_rect" : [ 379.592591881752014, 147.0, 145.0, 87.0 ],
+					"text" : "abc.peakamp~ computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc_peakamp~", "@obj-desc", "Peak", "amplitude", "measurement" ],
+					"args" : [ "@obj-name", "abc.peakamp~", "@obj-desc", "Peak", "amplitude", "measurement" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -579,8 +579,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 540.630836486816406, 505.379629969596863, 617.630836486816406, 505.379629969596863 ],
+					"destination" : [ "obj-1", 1 ],
+					"midpoints" : [ 540.630836486816406, 505.379629969596863, 688.630836486816406, 505.379629969596863 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -763,16 +763,44 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.gain~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.peakamp~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.soundgrain~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -781,16 +809,9 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
@@ -801,6 +822,13 @@
 , 			{
 				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_wrp.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
 			}
  ],
 		"autosave" : 0,

@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 743.0, 671.0 ],
+		"rect" : [ 134.0, 172.0, 743.0, 671.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -50,8 +50,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -88,6 +88,17 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "meter~",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "float" ],
+									"patching_rect" : [ 34.0, 479.0, 85.0, 56.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-84",
 									"linecount" : 5,
@@ -95,7 +106,28 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 712.0, 74.0 ],
-									"text" : "abc_grain1~, abc_grain2~, ... objects are parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
+									"text" : "abc.mc.grain~ object is parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@obj-name", "abc.mc.grain~", "@obj-desc", "Parallel", "granular", "processes" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-3",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.helpheader.maxpat",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 6.0, 6.0, 485.0, 61.0 ],
+									"viewvisibility" : 1
 								}
 
 							}
@@ -183,23 +215,12 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-8",
-									"maxclass" : "live.meter~",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 130.0, 470.0, 5.0, 100.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-42",
 									"maxclass" : "newobj",
-									"numinlets" : 8,
+									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 147.0, 483.5, 130.0, 22.0 ],
-									"text" : "dac~ 1 2 3 4 5 6 7 8"
+									"patching_rect" : [ 147.0, 483.5, 134.0, 22.0 ],
+									"text" : "mc.dac~ 1 2 3 4 5 6 7 8"
 								}
 
 							}
@@ -220,11 +241,11 @@
 								"box" : 								{
 									"id" : "obj-85",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 8,
-									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 147.0, 168.0, 191.666666666666742, 22.0 ],
-									"text" : "abc_addsynth7~ @gain -10"
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 147.0, 168.0, 175.0, 22.0 ],
+									"text" : "abc.mc.addsynth~ 7 @gain -10"
 								}
 
 							}
@@ -266,11 +287,11 @@
 								"box" : 								{
 									"id" : "obj-54",
 									"maxclass" : "newobj",
-									"numinlets" : 7,
-									"numoutlets" : 9,
-									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 147.0, 431.5, 145.857142857142833, 22.0 ],
-									"text" : "abc_2d_decoder3~"
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 147.0, 431.5, 115.0, 22.0 ],
+									"text" : "abc.hoa.decoder~ 3"
 								}
 
 							}
@@ -315,11 +336,11 @@
 									"fontsize" : 14.0,
 									"id" : "obj-44",
 									"maxclass" : "newobj",
-									"numinlets" : 7,
-									"numoutlets" : 8,
-									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 147.0, 322.5, 167.0, 24.0 ],
-									"text" : "abc_grain7~"
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 147.0, 322.5, 115.0, 24.0 ],
+									"text" : "abc.mc.grain~ 7"
 								}
 
 							}
@@ -355,27 +376,6 @@
 								}
 
 							}
-, 							{
-								"box" : 								{
-									"args" : [ "@obj-name", "abc_grainN~", "@obj-desc", "Parallel", "granular", "processes" ],
-									"bgmode" : 0,
-									"border" : 0,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-3",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc.helpheader.maxpat",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 6.0, 485.0, 61.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
@@ -386,8 +386,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-54", 0 ],
-									"midpoints" : [ 38.5, 419.75, 156.5, 419.75 ],
+									"destination" : [ "obj-54", 1 ],
+									"midpoints" : [ 38.5, 419.75, 252.5, 419.75 ],
 									"source" : [ "obj-21", 0 ]
 								}
 
@@ -401,48 +401,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-54", 6 ],
-									"source" : [ "obj-44", 6 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 5 ],
-									"source" : [ "obj-44", 5 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 4 ],
-									"source" : [ "obj-44", 4 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 3 ],
-									"source" : [ "obj-44", 3 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 2 ],
-									"source" : [ "obj-44", 2 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 1 ],
-									"source" : [ "obj-44", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-54", 0 ],
 									"source" : [ "obj-44", 0 ]
 								}
@@ -450,8 +408,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-44", 0 ],
-									"midpoints" : [ 179.0, 316.0, 156.5, 316.0 ],
+									"destination" : [ "obj-44", 1 ],
+									"midpoints" : [ 179.0, 316.0, 252.5, 316.0 ],
 									"source" : [ "obj-45", 0 ]
 								}
 
@@ -465,58 +423,17 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-54", 0 ],
-									"midpoints" : [ 297.0, 423.25, 156.5, 423.25 ],
+									"destination" : [ "obj-54", 1 ],
+									"midpoints" : [ 297.0, 423.25, 252.5, 423.25 ],
 									"source" : [ "obj-48", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-42", 7 ],
-									"source" : [ "obj-54", 7 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-42", 6 ],
-									"source" : [ "obj-54", 6 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-42", 5 ],
-									"source" : [ "obj-54", 5 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-42", 4 ],
-									"source" : [ "obj-54", 4 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-42", 3 ],
-									"source" : [ "obj-54", 3 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-42", 2 ],
-									"source" : [ "obj-54", 2 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-42", 1 ],
-									"source" : [ "obj-54", 1 ]
+									"destination" : [ "obj-4", 0 ],
+									"order" : 1,
+									"source" : [ "obj-54", 0 ]
 								}
 
 							}
@@ -530,59 +447,9 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-8", 0 ],
-									"order" : 1,
-									"source" : [ "obj-54", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-54", 0 ],
-									"midpoints" : [ 72.5, 380.75, 156.5, 380.75 ],
+									"destination" : [ "obj-54", 1 ],
+									"midpoints" : [ 72.5, 380.75, 252.5, 380.75 ],
 									"source" : [ "obj-57", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-44", 6 ],
-									"source" : [ "obj-85", 6 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-44", 5 ],
-									"source" : [ "obj-85", 5 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-44", 4 ],
-									"source" : [ "obj-85", 4 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-44", 3 ],
-									"source" : [ "obj-85", 3 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-44", 2 ],
-									"source" : [ "obj-85", 2 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-44", 1 ],
-									"source" : [ "obj-85", 1 ]
 								}
 
 							}
@@ -626,14 +493,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 113.0, 743.0, 645.0 ],
+						"rect" : [ 134.0, 198.0, 743.0, 645.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -663,6 +530,16 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "mc.ezdac~",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 178.571441999999934, 494.5, 45.0, 45.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-122",
 									"maxclass" : "comment",
@@ -778,16 +655,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-8",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 178.571441999999934, 495.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"args" : [ -127.0 ],
 									"bgmode" : 0,
 									"border" : 1,
@@ -798,7 +665,7 @@
 									"lockeddragscroll" : 0,
 									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
-									"name" : "abc_gaincontrol.maxpat",
+									"name" : "abc.gaincontrol.maxpat",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
@@ -813,10 +680,10 @@
 									"id" : "obj-6",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 3,
-									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 178.571441999999934, 441.0, 71.0, 22.0 ],
-									"text" : "abc_gain2~"
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 178.571441999999934, 441.0, 90.0, 22.0 ],
+									"text" : "abc.mc.gain~ 2"
 								}
 
 							}
@@ -851,7 +718,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 131.571441999999934, 307.0, 45.0, 22.0 ],
+									"patching_rect" : [ 275.0, 310.0, 45.0, 22.0 ],
 									"text" : "r gctrl1"
 								}
 
@@ -894,11 +761,11 @@
 								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 178.571441999999934, 223.5, 124.0, 22.0 ],
-									"text" : "abc_multinoise2~"
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 178.571441999999934, 223.5, 122.0, 22.0 ],
+									"text" : "abc.mc.multinoise~ 2"
 								}
 
 							}
@@ -907,10 +774,10 @@
 									"id" : "obj-5",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 3,
-									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 178.571441999999934, 279.0, 71.0, 22.0 ],
-									"text" : "abc_gain2~"
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 178.571441999999934, 279.0, 90.0, 22.0 ],
+									"text" : "abc.mc.gain~ 2"
 								}
 
 							}
@@ -921,10 +788,10 @@
 									"id" : "obj-11",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
-									"numoutlets" : 3,
-									"outlettype" : [ "signal", "signal", "list" ],
-									"patching_rect" : [ 178.571441999999934, 355.0, 123.0, 24.0 ],
-									"text" : "abc_grain2~"
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 178.571441999999934, 355.0, 115.0, 24.0 ],
+									"text" : "abc.mc.grain~ 2"
 								}
 
 							}
@@ -937,7 +804,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 712.0, 74.0 ],
-									"text" : "abc_grain1~, abc_grain2~, ... objects are parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
+									"text" : "abc.mc.grain~ object is parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
 								}
 
 							}
@@ -965,7 +832,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@obj-name", "abc_grainN~", "@obj-desc", "Parallel", "granular", "processes" ],
+									"args" : [ "@obj-name", "abc.mc.grain~", "@obj-desc", "Parallel", "granular", "processes" ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -986,13 +853,6 @@
 							}
  ],
 						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 1 ],
-									"source" : [ "obj-11", 1 ]
-								}
-
-							}
-, 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-11", 0 ]
@@ -1018,17 +878,9 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
-									"midpoints" : [ 141.071441999999934, 340.5, 188.071441999999934, 340.5 ],
+									"destination" : [ "obj-11", 1 ],
+									"midpoints" : [ 284.5, 340.5, 284.071441999999934, 340.5 ],
 									"source" : [ "obj-19", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-5", 1 ],
-									"midpoints" : [ 240.571441999999934, 258.25, 240.071441999999934, 258.25 ],
-									"source" : [ "obj-4", 1 ]
 								}
 
 							}
@@ -1041,14 +893,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 1 ],
-									"midpoints" : [ 214.071441999999934, 327.5, 292.071441999999934, 327.5 ],
-									"source" : [ "obj-5", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
 									"source" : [ "obj-5", 0 ]
 								}
@@ -1056,30 +900,23 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 59.0, 414.5, 188.071441999999934, 414.5 ],
+									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 59.0, 414.5, 259.071441999999934, 414.5 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-8", 1 ],
-									"source" : [ "obj-6", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-8", 0 ],
+									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-6", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-5", 0 ],
-									"midpoints" : [ 329.321441999999934, 264.25, 188.071441999999934, 264.25 ],
+									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 329.321441999999934, 264.25, 259.071441999999934, 264.25 ],
 									"source" : [ "obj-7", 0 ]
 								}
 
@@ -1146,21 +983,63 @@
  ],
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
+				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_2d_decoder3~.mxo",
+				"name" : "abc.hoa.decoder~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.addsynth~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.gain~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.grain~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.multinoise~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_2d_decoder3_8~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1174,7 +1053,7 @@
 , 			{
 				"name" : "abc_gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1188,14 +1067,21 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_multinoise2~.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_wrp.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
 			}
  ],
 		"autosave" : 0,

@@ -88,12 +88,24 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 207.666666666666629, 511.0, 107.0, 22.0 ],
+									"text" : "mc.combine~ 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-8",
 									"maxclass" : "meter~",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 114.0, 495.0, 80.0, 13.0 ]
+									"patching_rect" : [ 313.666666666666629, 449.0, 88.0, 19.0 ]
 								}
 
 							}
@@ -104,7 +116,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 136.500000000000114, 315.5, 18.0, 58.0 ]
+									"patching_rect" : [ 145.0, 315.5, 18.0, 58.0 ]
 								}
 
 							}
@@ -137,7 +149,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 535.0, 6.0, 266.0, 301.0 ],
+									"patching_rect" : [ 535.0, 6.0, 269.0, 301.0 ],
 									"text" : "abc.mc.delay~ object provide multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\n"
 								}
 
@@ -330,7 +342,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 274.0, 187.5, 90.0, 35.0 ],
-									"text" : "f0 440"
+									"text" : "f0 880"
 								}
 
 							}
@@ -583,7 +595,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 136.500000000000114, 522.0, 51.500000000000114, 33.0 ],
+									"patching_rect" : [ 159.0, 462.0, 51.500000000000114, 33.0 ],
 									"text" : "delayed\nsounds"
 								}
 
@@ -854,8 +866,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 400.988108666666449, 599.25, 217.166666666666629, 599.25 ],
+									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 400.988108666666449, 599.25, 305.166666666666629, 599.25 ],
 									"source" : [ "obj-2", 0 ]
 								}
 
@@ -901,8 +913,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 1 ],
-									"order" : 0,
+									"destination" : [ "obj-5", 1 ],
+									"order" : 1,
 									"source" : [ "obj-43", 0 ]
 								}
 
@@ -910,7 +922,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-43", 0 ]
 								}
 
@@ -949,6 +961,13 @@
 									"destination" : [ "obj-21", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-49", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-5", 0 ]
 								}
 
 							}
@@ -1024,6 +1043,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
+									"midpoints" : [ 217.166666666666629, 357.5, 305.166666666666629, 357.5 ],
 									"order" : 0,
 									"source" : [ "obj-9", 0 ]
 								}
@@ -1031,7 +1051,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
+									"destination" : [ "obj-5", 0 ],
 									"order" : 1,
 									"source" : [ "obj-9", 0 ]
 								}
