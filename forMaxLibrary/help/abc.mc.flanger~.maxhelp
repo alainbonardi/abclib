@@ -45,7 +45,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 869.0, 487.5, 80.0, 13.0 ]
+					"patching_rect" : [ 869.0, 487.5, 83.0, 33.056159347295761 ]
 				}
 
 			}
@@ -860,7 +860,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 391.333333333333258, 142.129629969596863, 97.0, 22.0 ],
-					"text" : "abc_upanddown"
+					"text" : "abc.upanddown"
 				}
 
 			}
@@ -1633,6 +1633,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.upanddown.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc_2d_decoder3_8~.mxo",
 				"type" : "iLaX"
 			}
@@ -1650,13 +1657,6 @@
 , 			{
 				"name" : "abc_soundcoat~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",

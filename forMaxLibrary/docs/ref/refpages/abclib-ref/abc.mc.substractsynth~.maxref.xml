@@ -25,14 +25,14 @@
   </outletlist> -->
 
   <objarglist>
+      <objarg name="n" type="string" set="1" get="1" size="1">
+        <description>number of instances</description>
+        <digest>sets the number of modules of substractive synthesis</digest>
+      </objarg>
   </objarglist>
 
   <!--ATTRIBUTES-->
   <attributelist>
-    <attribute name="n" type="string" set="1" get="1" size="1">
-      <description></description>
-      <digest>sets the number of modules of substractive synthesis</digest>
-    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

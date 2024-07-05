@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 126.0, 669.0, 766.0 ],
+						"rect" : [ 0.0, 26.0, 669.0, 766.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +87,17 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "meter~",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "float" ],
+									"patching_rect" : [ 79.0, 632.0, 84.0, 30.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"args" : [ 0, 1.0, 0 ],
 									"bgmode" : 0,
@@ -128,7 +139,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 385.0, 123.0, 248.0, 74.0 ],
-									"presentation_linecount" : 5,
 									"text" : "abc.hoa.wider~ object can be used to widen the diffusion of a localized sound. The order depending signals are weighted and appear in a logarithmic way to have linear changes.\nwidth parameter varies between 0 and 1"
 								}
 
@@ -200,17 +210,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-5",
-									"maxclass" : "live.meter~",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 146.0, 621.0, 5.0, 100.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"args" : [ 0, 1.0, 0 ],
 									"bgmode" : 0,
 									"border" : 1,
@@ -225,7 +224,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 376.5, 449.0, 90.0, 110.0 ],
+									"patching_rect" : [ 376.0, 449.0, 90.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -613,7 +612,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 669.0, 766.0 ],
+						"rect" : [ 134.0, 126.0, 669.0, 766.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -643,6 +642,17 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "meter~",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "float" ],
+									"patching_rect" : [ 81.5, 649.5, 84.0, 30.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"args" : [ 0, 1.0, 0 ],
 									"bgmode" : 0,
@@ -860,24 +870,13 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-10",
-									"maxclass" : "live.meter~",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 161.0, 654.0, 5.0, 100.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-22",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 69.0, 184.0, 97.0, 22.0 ],
-									"text" : "abc_upanddown"
+									"patching_rect" : [ 69.0, 184.0, 93.0, 22.0 ],
+									"text" : "abc.upanddown"
 								}
 
 							}
@@ -1204,16 +1203,16 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-10", 0 ],
-									"order" : 1,
+									"destination" : [ "obj-35", 0 ],
+									"order" : 0,
 									"source" : [ "obj-3", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-35", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-7", 0 ],
+									"order" : 1,
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1402,6 +1401,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.upanddown.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc_2d_decoder3_8~.mxo",
 				"type" : "iLaX"
 			}
@@ -1438,13 +1444,6 @@
 , 			{
 				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",

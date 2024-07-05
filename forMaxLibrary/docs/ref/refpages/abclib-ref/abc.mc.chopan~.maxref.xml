@@ -25,14 +25,14 @@
   </outletlist> -->
 
   <objarglist>
+      <objarg name="inputs" type="string" set="1" get="1" size="1">
+        <digest>number of inputs</digest>
+        <description>sets the number of input sources to be panned [init=1:min=1:max=16]</description>
+      </objarg>
   </objarglist>
 
   <!--ATTRIBUTES-->
   <attributelist>
-    <attribute name="n" type="string" set="1" get="1" size="1">
-      <description></description>
-      <digest>sets the number of input sources to be panned</digest>
-    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

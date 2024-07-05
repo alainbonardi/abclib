@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 635.0, 636.0 ],
+						"rect" : [ 233.0, 126.0, 635.0, 636.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -371,7 +371,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 233.0, 126.0, 635.0, 636.0 ],
+						"rect" : [ 0.0, 26.0, 635.0, 636.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -593,8 +593,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 231.0, 110.0, 97.0, 22.0 ],
-									"text" : "abc_upanddown"
+									"patching_rect" : [ 231.0, 110.0, 93.0, 22.0 ],
+									"text" : "abc.upanddown"
 								}
 
 							}
@@ -1068,6 +1068,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.upanddown.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc_addsynth5~.mxo",
 				"type" : "iLaX"
 			}
@@ -1105,13 +1112,6 @@
 , 			{
 				"name" : "abc_substractsynth8~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",

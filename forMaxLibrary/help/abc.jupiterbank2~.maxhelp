@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 87.0, 877.0, 657.0 ],
+		"rect" : [ 134.0, 172.0, 877.0, 657.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,16 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "mc.ezdac~",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 71.0, 494.5, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-122",
 					"maxclass" : "comment",
@@ -154,16 +164,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 71.0, 494.0, 45.0, 45.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"bgcolor" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
 					"bgcolor2" : [ 0.866667, 0.866667, 0.866667, 0.0 ],
 					"bgfillcolor_angle" : 270.0,
@@ -205,6 +205,7 @@
 			}
 , 			{
 				"box" : 				{
+					"displaychan" : 3,
 					"id" : "obj-20",
 					"maxclass" : "spectroscope~",
 					"numinlets" : 2,
@@ -273,8 +274,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -747,11 +748,11 @@
 				"box" : 				{
 					"id" : "obj-33",
 					"maxclass" : "newobj",
-					"numinlets" : 14,
-					"numoutlets" : 3,
-					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 71.0, 436.0, 155.5, 22.0 ],
-					"text" : "abc_chopan14~"
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 71.0, 436.0, 114.0, 22.0 ],
+					"text" : "abc.mc.chopan~ 14"
 				}
 
 			}
@@ -776,11 +777,11 @@
 					"fontsize" : 14.0,
 					"id" : "obj-5",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 15,
-					"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-					"patching_rect" : [ 71.0, 290.5, 166.0, 24.0 ],
-					"text" : "abc_jupiterbank2~"
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 71.0, 290.5, 128.0, 24.0 ],
+					"text" : "abc.jupiterbank2~"
 				}
 
 			}
@@ -796,7 +797,7 @@
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "abc_gaincontrol.maxpat",
+					"name" : "abc.gaincontrol.maxpat",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
@@ -837,7 +838,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 412.0, 226.0, 446.0, 328.0 ],
-					"text" : "abc_jupiterbank2~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics.\nIt enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object.\nThe 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1, the spectrem is harmonic and results in f0, 2*f0, ..., 14*f0. When k is diffrent from integers, the spectrum is inharmonic.\nWe added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.\n\n- k is the constant that determines the harmonic/inharmonic behaviour of the generator\n- f0 is the 'fundamental' frequency of the generator\n- osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters)\n- resg is the gain of the filters\n- resq is the quality factor of the filters\n\nCompared to abc_jupiterbank~ synthesis, this one adds the control of the amplitudes of the 14 oscillators thanks to a factor fa and to a transfer function that maps each frequency multiplied by fa to a level between 0 and 127.\n\nThe Faust implementation is largely inspired by Maxence Larrieu's article:"
+					"text" : "abc.jupiterbank2~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics.\nIt enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object.\nThe 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1, the spectrem is harmonic and results in f0, 2*f0, ..., 14*f0. When k is diffrent from integers, the spectrum is inharmonic.\nWe added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.\n\n- k is the constant that determines the harmonic/inharmonic behaviour of the generator\n- f0 is the 'fundamental' frequency of the generator\n- osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters)\n- resg is the gain of the filters\n- resq is the quality factor of the filters\n\nCompared to abc_jupiterbank~ synthesis, this one adds the control of the amplitudes of the 14 oscillators thanks to a factor fa and to a transfer function that maps each frequency multiplied by fa to a level between 0 and 127.\n\nThe Faust implementation is largely inspired by Maxence Larrieu's article:"
 				}
 
 			}
@@ -862,8 +863,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1281,14 +1282,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-7", 1 ],
-					"source" : [ "obj-33", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
+					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-33", 0 ]
 				}
 
@@ -1316,7 +1310,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-5", 1 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -1331,23 +1325,23 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 21.5, 217.75, 80.5, 217.75 ],
+					"midpoints" : [ 21.5, 249.75, 80.5, 249.75 ],
 					"source" : [ "obj-46", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 698.5, 217.25, 80.5, 217.25 ],
+					"destination" : [ "obj-5", 1 ],
+					"midpoints" : [ 698.5, 217.25, 189.5, 217.25 ],
 					"source" : [ "obj-47", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 784.5, 217.25, 80.5, 217.25 ],
+					"destination" : [ "obj-5", 1 ],
+					"midpoints" : [ 784.5, 217.25, 189.5, 217.25 ],
 					"source" : [ "obj-48", 0 ]
 				}
 
@@ -1356,215 +1350,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
 					"order" : 0,
-					"source" : [ "obj-5", 13 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 12 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 11 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 10 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 9 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 8 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 7 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 6 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 5 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 4 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 3 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
-					"source" : [ "obj-5", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 0,
 					"source" : [ "obj-5", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 13 ],
-					"order" : 1,
-					"source" : [ "obj-5", 13 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 12 ],
-					"order" : 1,
-					"source" : [ "obj-5", 12 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 11 ],
-					"order" : 1,
-					"source" : [ "obj-5", 11 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 10 ],
-					"order" : 1,
-					"source" : [ "obj-5", 10 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 9 ],
-					"order" : 1,
-					"source" : [ "obj-5", 9 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 8 ],
-					"order" : 1,
-					"source" : [ "obj-5", 8 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 7 ],
-					"order" : 1,
-					"source" : [ "obj-5", 7 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 6 ],
-					"order" : 1,
-					"source" : [ "obj-5", 6 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 5 ],
-					"order" : 1,
-					"source" : [ "obj-5", 5 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 4 ],
-					"order" : 1,
-					"source" : [ "obj-5", 4 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 3 ],
-					"order" : 1,
-					"source" : [ "obj-5", 3 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 2 ],
-					"order" : 1,
-					"source" : [ "obj-5", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 1 ],
-					"order" : 1,
-					"source" : [ "obj-5", 1 ]
 				}
 
 			}
@@ -1592,32 +1378,32 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 554.5, 217.75, 80.5, 217.75 ],
+					"destination" : [ "obj-5", 1 ],
+					"midpoints" : [ 554.5, 217.75, 189.5, 217.75 ],
 					"source" : [ "obj-58", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 286.5, 217.25, 80.5, 217.25 ],
+					"destination" : [ "obj-5", 1 ],
+					"midpoints" : [ 286.5, 217.25, 189.5, 217.25 ],
 					"source" : [ "obj-59", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 396.5, 217.25, 80.5, 217.25 ],
+					"destination" : [ "obj-5", 1 ],
+					"midpoints" : [ 396.5, 217.25, 189.5, 217.25 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 191.5, 217.25, 80.5, 217.25 ],
+					"destination" : [ "obj-5", 1 ],
+					"midpoints" : [ 191.5, 217.25, 189.5, 217.25 ],
 					"source" : [ "obj-60", 0 ]
 				}
 
@@ -1631,9 +1417,30 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.jupiterbank2~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.chopan~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1642,22 +1449,22 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_jupiterbank2~.mxo",
 				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_wrp.js",
+				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
 			}
  ],
 		"autosave" : 0,
