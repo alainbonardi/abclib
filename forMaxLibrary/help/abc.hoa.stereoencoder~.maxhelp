@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 38.0, 123.0, 90.0, 22.0 ],
+					"text" : "mc.combine~ 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-122",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -352,7 +364,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 354.0, 109.0, 53.0, 22.0 ],
+					"patching_rect" : [ 109.0, 82.0, 53.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -531,7 +543,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 38.0, 109.0, 53.0, 22.0 ],
+					"patching_rect" : [ 38.0, 82.0, 53.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -548,10 +560,10 @@
 					"id" : "obj-17",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 3,
-					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 38.0, 156.5, 335.0, 22.0 ],
-					"text" : "abc_linrandenv2~ @freq 16 @rarefaction 0.5"
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 38.0, 156.5, 268.0, 22.0 ],
+					"text" : "abc.mc.linrandenv~ 2 @freq 16 @rarefaction 0.5"
 				}
 
 			}
@@ -906,6 +918,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-17", 0 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"midpoints" : [ 69.5, 338.5, 47.5, 338.5 ],
 					"source" : [ "obj-12", 0 ]
@@ -923,13 +942,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
 					"source" : [ "obj-16", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 1 ],
-					"source" : [ "obj-17", 1 ]
 				}
 
 			}
@@ -1002,7 +1014,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 0 ],
+					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-33", 0 ]
 				}
 
@@ -1017,7 +1029,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 1 ],
+					"destination" : [ "obj-11", 1 ],
 					"source" : [ "obj-35", 0 ]
 				}
 
@@ -1096,6 +1108,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.mc.linrandenv~.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.scope.maxpat",
 				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
@@ -1127,10 +1146,6 @@
 				"patcherrelativepath" : "../misc/others",
 				"type" : "PNG",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_linrandenv2~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_wrp.js",

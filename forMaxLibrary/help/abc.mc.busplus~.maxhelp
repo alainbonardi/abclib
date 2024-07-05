@@ -105,7 +105,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 426.0, 231.0, 218.0, 74.0 ],
-									"presentation_linecount" : 5,
 									"text" : "abc.mc.busplus~ object enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one."
 								}
 
@@ -468,7 +467,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 231.0, 110.0, 97.0, 22.0 ],
-									"text" : "abc_upanddown"
+									"text" : "abc.upanddown"
 								}
 
 							}
@@ -1010,6 +1009,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.upanddown.maxpat",
+				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc_addsynth5~.mxo",
 				"type" : "iLaX"
 			}
@@ -1051,13 +1057,6 @@
 , 			{
 				"name" : "abc_substractsynth8~.mxo",
 				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_upanddown.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
-				"type" : "JSON",
-				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",
