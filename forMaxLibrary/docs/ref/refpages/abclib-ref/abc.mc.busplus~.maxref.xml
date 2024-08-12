@@ -4,7 +4,7 @@
 
 
 <c74object name="abc.mc.busplus~" module="abclib">
-  <digest>abclib's addition of two buses</digest>
+  <digest>Abclib's addition of two buses</digest>
   <description><o>abc.mc.busplus~</o> enables to add two buses of N signals (sig#1 of bus#1 is multiplied by sig#1 of bus#2, etc.) giving N signals.
     <br /><br /></description>
 
@@ -26,8 +26,9 @@
 
   <objarglist>
       <objarg name="signalsPerBus" type="int" set="1" get="1" size="1">
-          <digest>number of signals</digest>
+          <digest>number of signals per bus</digest>
         <description>sets the number of signals of each bus [init=1:min=1:max=16]</description>
+      </objarg>
   </objarglist>
 
   <!--ATTRIBUTES-->

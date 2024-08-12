@@ -4,7 +4,7 @@
 
 
 <c74object name="abc.mc.addsynth~" module="abclib">
-  <digest>abclib's additive synthesis</digest>
+  <digest>Abclib's additive synthesis</digest>
   <description><o>abc.mc.addsynth~</o> provides additive synthesis by adding n elementary sinusoidal generators. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
     <br /><br /></description>
 
@@ -39,42 +39,46 @@
   <methodlist>
     <method name="f0">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the general fundamental frequency in Hz [init=220, min=0.01, max=15000, step=0.01].</description>
+      <description>sets the general fundamental frequency in Hz [init=220:min=0.01:max=15000:step=0.01].</description>
       <digest>sets the general fundamental frequency in Hz</digest>
     </method>
     <method name="gain">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the general volume in dB [init=0, min=-127, max=18, step=0.01].</description>
+      <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
-    <method name="ampK">
+    <method name="amp[index]">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the Kth amplitude of the Kth module in dB [init=dB(1/K), min=-127, max=18, step=0.01].</description>
-      <digest>sets the Kth amplitude of the Kth module</digest>
+      <description>sets the amplitude of the [index] module in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=dB(1/[index]):min=-127:max=18:step=0.01].</description>
+      <digest>sets the amplitude of the [index] module</digest>
     </method>
-    <method name="fmultK">
+    <method name="fmult[index]">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the Kth multiplier of the fundamental f0 to tune the Kth module [init=K, min=0, max=1000, step=0.00001].</description>
-      <digest>sets the Kth multiplier of the fundamental f0</digest>
+      <description>sets the multiplier of the fundamental f0 to tune the [index] module, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=[index]:min=0:max=1000:step=0.00001].</description>
+      <digest>sets the multiplier of the fundamental f0 to tune the [index] module</digest>
     </method>
-    <method name="fbeatK">
+    <method name="fbeat[index]">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>set the Kth frequency shift of the second oscillator of the Kth module [init=0, min=0, max=20, step=0.01].</description>
-      <digest>set the Kth frequency shift in Hz</digest>
+      <description>set the frequency shift of the second oscillator of the [index] module in Hz, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=0:max=20:step=0.01].</description>
+      <digest>set the frequency shift of the second oscillator of the [index] module in Hz</digest>
     </method>
   </methodlist>
 
   <seealsolist>
     <seealso name="abc.mc.substractsynth~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.harmo~" />
+    <seealso name="abc.mc.flanger~" />
+    <seealso name="abc.mc.freqshift~" />
   </seealsolist>
 </c74object>

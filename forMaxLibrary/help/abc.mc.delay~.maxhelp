@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 105.0, 822.0, 787.0 ],
+		"rect" : [ 100.0, 100.0, 822.0, 786.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 131.0, 822.0, 761.0 ],
+						"rect" : [ 100.0, 126.0, 822.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -145,12 +145,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-84",
-									"linecount" : 21,
+									"linecount" : 20,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 535.0, 6.0, 270.0, 301.0 ],
-									"text" : "abc.mc.delay~ object provide multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\n"
+									"patching_rect" : [ 535.0, 6.0, 273.0, 288.0 ],
+									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\n"
 								}
 
 							}
@@ -342,7 +342,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 274.0, 187.5, 90.0, 35.0 ],
-									"text" : "f0 770"
+									"text" : "f0 440"
 								}
 
 							}
@@ -1089,7 +1089,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 822.0, 761.0 ],
+						"rect" : [ 0.0, 26.0, 822.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1139,7 +1139,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 724.0, 127.0 ],
-									"text" : "abc.mc.delay~ object provide multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\n"
+									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\n"
 								}
 
 							}
@@ -2237,8 +2237,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}

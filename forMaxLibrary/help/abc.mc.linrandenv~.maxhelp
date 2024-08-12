@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 777.0, 707.0 ],
+						"rect" : [ 38.0, 126.0, 777.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -107,8 +107,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 5.0, 69.0, 487.0, 100.0 ],
-									"presentation_linecount" : 7,
-									"text" : "abc.mc.linrandenv~ object provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
+									"text" : "abc.mc.linrandenv~ object provides multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 
 							}
@@ -529,13 +528,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-24",
-									"linecount" : 13,
+									"linecount" : 12,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 422.0, 255.0, 282.0, 181.0 ],
-									"presentation_linecount" : 7,
-									"text" : "abc.mc.linrandenv~ object provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
+									"patching_rect" : [ 422.0, 255.0, 285.0, 167.0 ],
+									"text" : "abc.mc.linrandenv~ object provides multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 
 							}
@@ -1146,7 +1144,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 38.0, 126.0, 777.0, 707.0 ],
+						"rect" : [ 0.0, 26.0, 777.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1729,7 +1727,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 69.0, 487.0, 100.0 ],
-									"text" : "abc.mc.linrandenv~ object provide multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
+									"text" : "abc.mc.linrandenv~ object provides multichannel envelopes based on linear segments. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence. If the shortening is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the shortening is 0., the envelope is constantly played, whereas whe it is 1 no sound is played at all (maximum shortening).\nfreq parameter is the frequency of the envelope generated."
 								}
 
 							}
@@ -2082,8 +2080,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
