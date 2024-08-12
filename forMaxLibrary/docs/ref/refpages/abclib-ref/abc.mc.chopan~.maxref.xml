@@ -4,7 +4,7 @@
 
 
 <c74object name="abc.mc.chopan~" module="abclib">
-  <digest>abclib's panner</digest>
+  <digest>Abclib's panner</digest>
   <description><o>abc.mc.chopan~</o> provides multisource stereo panning using a generalization of Chowning's algorithm.
     <br /><br /></description>
 
@@ -39,27 +39,32 @@
   <methodlist>
     <method name="phi0">
       <arglist>
-        <arg type="number" />
+        <arg type="int" />
       </arglist>
-      <description>sets the opening angle of the stereo in degrees [init=30, min=1, max=90, step=1].</description>
+      <description>sets the opening angle of the stereo in degrees [init=30:min=1:max=90:step=1].</description>
       <digest>sets the opening angle of the stereo in degrees</digest>
     </method>
     <method name="gain">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the general volume in dB [init=0, min=-127, max=18, step=0.01].</description>
+      <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
     <method name="incAngle">
       <arglist>
-        <arg type="number" />
+        <arg type="int" />
       </arglist>
-      <description>sets the incident angle of the source in degrees when there is only one (for chopan1) [init=0, min=-90, max=90, step=1].</description>
-      <digest>sets the incident angle of the source in degrees when there is only one (for chopan1)</digest>
+      <description>sets the incident angle of the source in degrees when there is only one (<o>for abc.mc.chopan~ 1</o>) [init=0:min=-90:max=90:step=1].</description>
+      <digest>sets the incident angle of the source in degrees when there is only one</digest>
     </method>
   </methodlist>
 
   <seealsolist>
+    <seealso name="abc.mc.harmo~" />
+    <seealso name="abc.mc.freqshift~" />
+    <seealso name="abc.mc.flanger~" />
+    <seealso name="abc.mc.randenv~" />
+    <seealso name="abc.mc.grain~" />
   </seealsolist>
 </c74object>

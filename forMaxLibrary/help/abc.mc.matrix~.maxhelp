@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 140.0, 791.0, 752.0 ],
+		"rect" : [ 100.0, 100.0, 791.0, 752.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 166.0, 791.0, 726.0 ],
+						"rect" : [ 0.0, 26.0, 791.0, 726.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -105,7 +105,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 493.0, 6.0, 280.0, 87.0 ],
-									"text" : "abc.mc.matrix~ object (there is no 'abc.mc.matrix~ 1') provide signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
+									"text" : "abc.mc.matrix~ object (there is no 'abc.mc.matrix~ 1') provides signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
 								}
 
 							}
@@ -834,7 +834,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 493.0, 6.0, 280.0, 87.0 ],
-									"text" : "abc.mc.matrix~ object (there is no 'abc.mc.matrix~ 1') provide signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
+									"text" : "abc.mc.matrix~ object (there is no 'abc.mc.matrix~ 1') provides signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
 								}
 
 							}
@@ -2302,7 +2302,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 791.0, 726.0 ],
+						"rect" : [ 100.0, 126.0, 791.0, 726.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2638,8 +2638,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 493.0, 6.0, 277.0, 87.0 ],
-									"text" : "abc.mc.matrix~ object (there is no 'abc.mc.matrix~ 1') provide signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
+									"patching_rect" : [ 493.0, 6.0, 280.0, 87.0 ],
+									"text" : "abc.mc.matrix~ object (there is no 'abc.mc.matrix~ 1') provides signal matrices with coefficients from -1 and 1\nThe ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds)"
 								}
 
 							}
@@ -3363,8 +3363,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}

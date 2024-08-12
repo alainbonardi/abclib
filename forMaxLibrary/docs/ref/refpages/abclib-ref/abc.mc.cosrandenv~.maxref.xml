@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.cosrandenv~" module="abclib">
+  <digest>Abclib's cosinus random envelopes</digest>
+  <description><o>abc.mc.cosrandenv~</o> provides multichannel envelopes based on the cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="instances" type="int" set="1" get="1" size="1">
+          <digest>number of instances</digest>
+        <description>sets the number of modules of envelopes [init=1:min=1:max=16]</description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="freq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the envelope generated [init=0.5:min=0.01:max=100:step=0.01].</description>
+      <digest>sets the frequency of the envelope generated</digest>
+    </method>
+    <method name="rarefaction">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the proportion of envelope played. If the rarefaction is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the rarefaction is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum rarefaction).[init=0:min=0:max=1:step=0.001].</description>
+      <digest>sets the proportion of envelope played.</digest>
+    </method>
+    <method name="spread">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>controls  the phase between the envelopes of the various channels: 0 means no dephasing, 1 means maximum dephasing (for instance half a period when there are 2 channels).[init=0:min=0:max=1:step=0.001].</description>
+      <digest>controls  the phase between the envelopes of the various channels</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.randenv~" />
+    <seealso name="abc.mc.linrandenv~" />
+    <seealso name="abc.mc.matrix~" />
+    <seealso name="abc.mc.multinoise~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.flanger~" />
+    <seealso name="abc.mc.freqshift~" />
+  </seealsolist>
+</c74object>
