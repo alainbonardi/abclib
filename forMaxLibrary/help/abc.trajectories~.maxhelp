@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 151.0, 132.0, 969.0, 760.0 ],
+		"rect" : [ 100.0, 100.0, 753.0, 760.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 151.0, 158.0, 969.0, 734.0 ],
+						"rect" : [ 100.0, 126.0, 753.0, 734.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +87,19 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-4",
+									"linecount" : 13,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-15",
 									"maxclass" : "newobj",
@@ -118,19 +131,6 @@
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 208.0, 430.0, 103.0, 22.0 ],
 									"text" : "mc.combine~ 2"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-4",
-									"linecount" : 13,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 507.0, 241.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nobjects generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -856,7 +856,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 969.0, 734.0 ],
+						"rect" : [ 0.0, 26.0, 753.0, 734.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -886,6 +886,19 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-4",
+									"linecount" : 13,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-7",
 									"maxclass" : "newobj",
@@ -1032,22 +1045,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 324.5, 590.0, 137.0, 47.0 ],
-									"presentation_linecount" : 3,
 									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-4",
-									"linecount" : 13,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 477.0, 221.0, 246.0, 181.0 ],
-									"presentation_linecount" : 13,
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nobjects generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -1324,7 +1322,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 348.0, 308.0, 70.0, 60.0 ],
-									"presentation_linecount" : 4,
 									"text" : "generates a square trajectory in cartesian"
 								}
 
@@ -1580,7 +1577,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 969.0, 734.0 ],
+						"rect" : [ 0.0, 26.0, 753.0, 734.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1610,6 +1607,19 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-4",
+									"linecount" : 13,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-8",
 									"maxclass" : "newobj",
@@ -1943,7 +1953,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 325.5, 348.0, 70.0, 60.0 ],
-									"presentation_linecount" : 4,
 									"text" : "generates a square trajectory in cartesian"
 								}
 
@@ -1974,19 +1983,6 @@
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 194.5, 271.0, 233.0, 24.0 ],
 									"text" : "abc.trajectories~ @mode squareZ"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-4",
-									"linecount" : 13,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 471.0, 233.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nobjects generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -2293,7 +2289,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 969.0, 734.0 ],
+						"rect" : [ 0.0, 26.0, 753.0, 734.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2323,6 +2319,19 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-4",
+									"linecount" : 13,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-8",
 									"maxclass" : "newobj",
@@ -2656,7 +2665,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 348.0, 308.0, 70.0, 60.0 ],
-									"presentation_linecount" : 4,
 									"text" : "generates a square trajectory in cartesian"
 								}
 
@@ -2687,19 +2695,6 @@
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 217.0, 231.0, 187.0, 24.0 ],
 									"text" : "abc.trajectories~ @mode Z"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-4",
-									"linecount" : 13,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 530.0, 129.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nobjects generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -2935,7 +2930,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 969.0, 734.0 ],
+						"rect" : [ 0.0, 26.0, 753.0, 734.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3123,8 +3118,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 462.0, 206.0, 244.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nobjects generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -3265,7 +3260,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 123.5, 575.0, 190.0, 40.0 ],
+									"patching_rect" : [ 123.0, 575.0, 190.0, 40.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -4123,8 +4118,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}

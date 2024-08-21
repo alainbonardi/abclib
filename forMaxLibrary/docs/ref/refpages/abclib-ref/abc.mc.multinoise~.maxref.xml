@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.multinoise~" module="abclib">
+  <digest>Abclib's multichannel decorrelated white noise</digest>
+  <description><o>abc.mc.multinoise~</o> procudes multichannel decorrelated white noise signals.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="instances" type="int" set="1" get="1" size="1">
+        <digest>number of instances</digest>
+        <description>sets the number of harmonizers [init=1:min=1:max=16]</description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.plus~" />
+    <seealso name="abc.mc.busmult~" />
+    <seealso name="abc.mc.busselect~" />
+    <seealso name="abc.mc.gain~" />
+  </seealsolist>
+</c74object>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.peakamp~" module="abclib">
+  <digest>Abclib's peak amplitude measurement</digest>
+  <description><o>abc.peakamp~</o> computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="period">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>set the temporal window in which the peak amplitude is computed in ms. [init=10:min=1:max=5000:step=1].</description>
+      <digest>set the temporal window in which the peak amplitude is computed in ms.</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.busplus~" />
+    <seealso name="abc.mc.busselect~" />
+  </seealsolist>
+</c74object>

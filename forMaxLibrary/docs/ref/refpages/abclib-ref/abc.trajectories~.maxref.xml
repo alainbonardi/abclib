@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.trajectories~" module="abclib">
+  <digest>Abclib's 2D trajectories generator</digest>
+  <description><o>abc.trajectories~</o> 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory. All of them have in common two controllers: freq (frequency of the shape in s-1), and size.
+  <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="mode" type="string" set="1" get="1" size="1">
+      <description>sets the mode of trajectories. Possible values: 'square', 'Z', 'squareZ', 'random'.</description>
+      <digest>sets the mode of reverberation (stereo or quadri)</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="revDur">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the duration of reverberation with values between 0 and 127: 127 means an 'infinite' duration. [init=120:min=0:max=127:step=1].</description>
+      <digest>sets the duration of reverberation with values between 0 and 127</digest>
+    </method>
+    <method name="revGain">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets gain of the reverberate signal. [init=100:min=0:max=127:step=1].</description>
+      <digest>sets gain of the reverberate signal</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.peakamp~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.gain~" />
+    <seealso name="abc.mc.addsynth~" />
+  </seealsolist>
+</c74object>

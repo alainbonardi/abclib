@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.adcinput~" module="abclib">
+  <digest>Abclib's mono adc~ input</digest>
+  <description><o>abc.adcinput~</o> is an abstraction for a mono adc~ input with possible dc filtering. The bpatcher can accept three default values as arguments.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+        <objarg name="channel-nmbr" optional="1" type="int">
+          <digest>
+              the channel number of the adc
+          </digest>
+          <description>
+              first argument is the the channel number of the adc.
+          </description>
+      </objarg>
+
+      <objarg name="level" optional="1" type="int">
+          <digest>
+              the init level in dB
+          </digest>
+          <description>
+              the init level in dB
+          </description>
+      </objarg>
+
+      <objarg name="dc-filter" optional="1" type="int">
+          <digest>
+              the enabling of the dc filtering (1/0)
+          </digest>
+          <description>
+              the enabling of the dc filtering (1/0)
+          </description>
+      </objarg>      
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  <method name="int">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>actives the input [init=0:min=0:max=1:step=1].</description>
+      <digest>actives the input</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.cartopol~" />
+    <seealso name="abc.mult2pi~" />
+    <seealso name="abc.quadriout~" />
+    <seealso name="abc.stereoout~" />
+  </seealsolist>
+</c74object>

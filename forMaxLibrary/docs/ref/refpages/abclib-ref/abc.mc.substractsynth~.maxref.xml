@@ -4,7 +4,7 @@
 
 
 <c74object name="abc.mc.substractsynth~" module="abclib">
-  <digest>abclib's substractive synthesis</digest>
+  <digest>Abclib's substractive synthesis</digest>
   <description><o>abc.mc.substractsynth~</o> provides substractive synthesis by adding n elementary filters. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
     <br /><br /></description>
 
@@ -25,8 +25,8 @@
   </outletlist> -->
 
   <objarglist>
-      <objarg name="n" type="string" set="1" get="1" size="1">
-        <description>number of instances</description>
+      <objarg name="instances" type="int" set="1" get="1" size="1">
+        <digest>number of instances</digest>
         <digest>sets the number of modules of substractive synthesis</digest>
       </objarg>
   </objarglist>
@@ -39,49 +39,52 @@
   <methodlist>
     <method name="f0">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the general fundamental frequency in Hz [init=220, min=0.01, max=15000, step=0.01].</description>
+      <description>sets the general fundamental frequency in Hz [init=220:min=0.01:max=15000:step=0.01].</description>
       <digest>sets the general fundamental frequency in Hz</digest>
     </method>
     <method name="gain">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the general volume in dB [init=0, min=-127, max=18, step=0.01].</description>
+      <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
     <method name="filterQ">
       <arglist>
-        <arg type="number" />
+        <arg type="int" />
       </arglist>
-      <description>sets the factor of quality of all filters [init=50, min=1, max=500, step=1].</description>
+      <description>sets the factor of quality of all filters [init=50:min=1:max=500:step=1].</description>
       <digest>sets the factor of quality of filters</digest>
     </method>
     <method name="filterG">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the gain of all filters [init=0.8, min=0, max=1, step=0.01].</description>
+      <description>sets the gain of all filters [init=0.8:min=0:max=1:step=0.01].</description>
       <digest>sets the factor of quality of filters</digest>
     </method>
-    <method name="ampK">
+    <method name="amp[index]">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the Kth amplitude of the Kth partial in dB [init=dB(1/K), min=-127, max=18, step=0.01].</description>
-      <digest>sets the Kth amplitude of the Kth partial</digest>
+      <description>sets the amplitude of the [index] partial in dB [init=dB(1/[index]):min=-127:max=18:step=0.01].</description>
+      <digest>sets the amplitude of the [index] partial</digest>
     </method>
-    <method name="fmultK">
+    <method name="fmult[index]">
       <arglist>
-        <arg type="number" />
+        <arg type="float" />
       </arglist>
-      <description>sets the Kth multiplier of the fundamental f0 to tune the Kth filter [init=K, min=0, max=1000, step=0.00001].</description>
-      <digest>sets the Kth multiplier of the fundamental f0</digest>
+      <description>sets the multiplier of the fundamental f0 to tune the [index] filter [init=[index]:min=0:max=1000:step=0.00001].</description>
+      <digest>sets the multiplier of the fundamental f0 to tune the [index] filter</digest>
     </method>
   </methodlist>
 
   <seealsolist>
     <seealso name="abc.mc.addsynth~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.freqshift~" />
+    <seealso name="abc.mc.gain~" />
   </seealsolist>
 </c74object>
