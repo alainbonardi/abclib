@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.generator~" module="abclib">
+  <digest>Abclib's simple multi-source generator</digest>
+  <description><o>abc.generator~</o>enables the generation of various sounds (noise, sinus, phasor). Generated sounds are pulsed at a certain frequency (pulse rate) and have a pulse ratio (or duty: ratio between sound and silence).<br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="phasoron">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>sets the phasor generator (1 is on, 0 is off).</description>
+      <digest>sets the phasor generator (1 is on, 0 is off)</digest>
+    </method>
+    <method name="noiseon">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>sets the noise generator (1 is on, 0 is off).</description>
+      <digest>sets the noise generator (1 is on, 0 is off)</digest>
+    </method>
+    <method name="sinuson">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>sets the sinus generator (1 is on, 0 is off).</description>
+      <digest>sets the sinus generator (1 is on, 0 is off)</digest>
+    </method>
+    <method name="phasorfreq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the phasor frequency in Hz. [init=440:min=20:max=20000:step=0.01]</description>
+      <digest>sets the phasor frequency in Hz</digest>
+    </method>
+    <method name="phasorpulserate">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the phasor pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
+      <digest>sets frequency of the phasor pulsation in Hz</digest>
+    </method>
+    <method name="phasorpulseratio">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the ratio between sound and silence for the phasor. [init=1:min=0:max=10:step=1]</description>
+      <digest>sets the ratio between sound and silence for the phasor</digest>
+    </method>
+    <method name="sinusfreq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the sinus frequency in Hz. [init=440:min=20:max=20000:step=0.01]</description>
+      <digest>sets the sinus frequency in Hz</digest>
+    </method>
+    <method name="sinuspulserate">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the sinus pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
+      <digest>sets frequency of the sinus pulsation in Hz</digest>
+    </method>
+    <method name="sinuspulseratio">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the ratio between sound and silence for the sinus. [init=1:min=0:max=10:step=1]</description>
+      <digest>sets the ratio between sound and silence for the sinus</digest>
+    </method>
+    <method name="noisecutoff">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the low-pass filter on the noise. [init=1760:min=20:max=20000:step=0.01]
+</description>
+      <digest>sets the frequency of the low-pass filter on the noise.</digest>
+    </method>
+    <method name="noisepulserate">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the noise pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
+      <digest>sets frequency of the noise pulsation in Hz</digest>
+    </method>
+    <method name="noisepulseratio">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the ratio between sound and silence for the noise. [init=1:min=0:max=10:step=1]</description>
+      <digest>sets the ratio between sound and silence for the noise</digest>
+    </method>
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the general gain in dB. [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the general gain in dB</digest>
+    </method>  
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.generatorinterface~" />
+    <seealso name="abc.drops~" />
+    <seealso name="abc.rissetsbell~" />
+    <seealso name="abc.puckettespaf~" />
+    <seealso name="abc.gaincontrol" />
+  </seealsolist>
+</c74object>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.delaychain~" module="abclib">
+  <digest>Abclib's sequential double overlapped delays without reinjection</digest>
+  <description><o>abc.delaychain~</o> provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second). 
+
+  Since it is a chain of delays, there is no 'abc.delaychain~ 1' object. Each delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18). A feedback parameter (fdbk) enables to loop the rhythmic structure.
+    <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="nmbr-delay" type="int" set="1" get="1" size="1">
+        <digest>number of delays in the chain</digest>
+        <description>sets the number of delay in the chain [init=2:min=2:max=16]</description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="dur[index]">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the duration of the delay line [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
+      <digest>sets the duration of the delay line [index] in musical duration</digest>
+    </method>
+    <method name="gain[index]">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the gain of the [index] delay line in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
+      <digest>sets the gain of the [index] delay line in dB</digest>
+    </method>
+    <method name="fdbk">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the global feedback level. [init=0:min=0:max=0.99999:step=0.0001] </description>
+      <digest>sets the global feedback level</digest>
+    </method>
+    <method name="tempo">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the reference tempo in bpm to calculate the delay lines durations [init=60:min=1:max=600:step=0.01] </description>
+      <digest>sets the reference tempo in bpm to calculate the delay lines durations</digest>
+    </method>
+    <method name="updatefreq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the interpolation between the delay lines which are overlapped. [init=30:min=0.0001:max=1000:step=0.0001] </description>
+      <digest>sets the reference tempo in bpm to calculate the delay lines durations</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.harmo~" />
+    <seealso name="abc.mc.freqshift~" />
+    <seealso name="abc.mc.flanger~" />
+    <seealso name="abc.mc.randenv~" />
+    <seealso name="abc.mc.grain~" />
+  </seealsolist>
+</c74object>

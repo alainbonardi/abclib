@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.puckettespaf~" module="abclib">
+  <digest>Abclib's phase-aligned formant (PAF) generator</digest>
+  <description><o>abc.puckettespaf~</o> consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator. The central frequency cf (Hz) is bordered by two successive multiples of the fundamental frequency f0 (Hz). The bandwith parameter (bw, in Hz) controls the width of the central peak in the spectrum of the PAF generator. Two waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters. This implementation is based on the paper of Miller Puckett: https://msp.ucsd.edu/techniques/v0.11/book-html/node96.html. 
+  <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="mode" optional="0" type="int">
+          <digest>
+              mode 
+          </digest>
+          <description>
+              first argument is the mode, mode 2 allows inharmonic generation [init=1:min=1:max=2:step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+
+    <method name="a">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>controls the waveshape when wf=0 (Gaussian mode). [init=1:min=0.001:max=100:step=0.001]</description>
+      <digest>controls the waveshape when wf=0 (Gaussian mode)</digest>
+    </method>
+
+    <method name="bw">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the width of the central peak in the spectrum. [init=50:min=0.001:max=5000:step=0.001]</description>
+      <digest>sets the width of the central peak in the spectrum</digest>
+    </method>
+
+    <method name="cf">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the central frequency in Hz. cf is bordered by two successive multiples of the fundamental frequency f0. [init=500:min=20:max=20000:step=0.001]</description>
+      <digest>sets the central frequency in Hz</digest>
+    </method>
+
+    <method name="f0">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the fundamental frequency in Hz. [init=220:min=20:max=20000:step=0.001]</description>
+      <digest>sets the fundamental frequency in Hz</digest>
+    </method>
+
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>[init=0:min=-127:max=18:step=0.01:cur=-127]</description>
+      <digest></digest>
+    </method>
+
+    <method name="sigma">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>controls the waveshape when wf=1 (Cauchy mode). [init=1:min=0.001:max=5:step=0.001]</description>
+      <digest>controls the waveshape when wf=1</digest>
+    </method>
+
+    <method name="wf">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>sets the waveshaping mode. 0 uses the Gaussian function, 1 uses Cauchy function</description>
+      <digest>sets the waveshaping mode.</digest>
+    </method>
+
+    <method name="ifreq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the variable phase for 'abc.puckettespaf~ 2' in Hz. [init=0.1:min=0:max=1000:step=0.001]</description>
+      <digest>sets the frequency of the variable phase for 'abc.puckettespaf~ 2'</digest>
+    </method>
+
+    <method name="iamp">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the amplitude of the variable phase for 'abc.puckettespaf~ 2'. [init=0:min=0:max=1:step=0.001]</description>
+      <digest>sets the amplitude of the variable phase for 'abc.puckettespaf~ 2'</digest>
+    </method>
+
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.peakamp~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.gain~" />
+    <seealso name="abc.mc.addsynth~" />
+  </seealsolist>
+</c74object>

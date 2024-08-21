@@ -205,7 +205,6 @@
 			}
 , 			{
 				"box" : 				{
-					"displaychan" : 3,
 					"id" : "obj-20",
 					"maxclass" : "spectroscope~",
 					"numinlets" : 2,
@@ -838,7 +837,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 412.0, 226.0, 446.0, 328.0 ],
-					"text" : "abc.jupiterbank2~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics.\nIt enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object.\nThe 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1, the spectrem is harmonic and results in f0, 2*f0, ..., 14*f0. When k is diffrent from integers, the spectrum is inharmonic.\nWe added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.\n\n- k is the constant that determines the harmonic/inharmonic behaviour of the generator\n- f0 is the 'fundamental' frequency of the generator\n- osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters)\n- resg is the gain of the filters\n- resq is the quality factor of the filters\n\nCompared to abc_jupiterbank~ synthesis, this one adds the control of the amplitudes of the 14 oscillators thanks to a factor fa and to a transfer function that maps each frequency multiplied by fa to a level between 0 and 127.\n\nThe Faust implementation is largely inspired by Maxence Larrieu's article:"
+					"text" : "abc.jupiterbank2~ is inspired by the bank of 14 oscillators used by Philippe Manoury in Jupiter for flute and live electronics.\nIt enables to generate spectra that can evoluate from harmonic to inharmonic content. Each partial has a separate output in the object.\nThe 14 frequencies (i from 0 to 13) are given by the formula: f_i = (k+i)*f0 where k is a constant and f0 a kind of 'fundamental' frequency. The distance between the frequencies is always f0. When k is 1, the spectrem is harmonic and results in f0, 2*f0, ..., 14*f0. When k is diffrent from integers, the spectrum is inharmonic.\nWe added to these 14 oscillators 14 resonant filters tuned at the same frequencies. Crossfading between oscillators and filters is controlled by osc2filter.\n\n- k is the constant that determines the harmonic/inharmonic behaviour of the generator\n- f0 is the 'fundamental' frequency of the generator\n- osc2filter provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters)\n- resg is the gain of the filters\n- resq is the quality factor of the filters\n\nCompared to abc.jupiterbank~ synthesis, this one adds the control of the amplitudes of the 14 oscillators thanks to a factor fa and to a transfer function that maps each frequency multiplied by fa to a level between 0 and 127.\n\nThe Faust implementation is largely inspired by Maxence Larrieu's article:"
 				}
 
 			}
@@ -1450,8 +1449,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}

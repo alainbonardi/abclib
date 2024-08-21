@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.sounddetector~" module="abclib">
+  <digest>Abclib's sound detector</digest>
+  <description><o>abc.sounddetector~</o> abc.sounddetector~ provides the detection of attacks and releases of incoming sound. Its first outlet is an on-off envelope. The second outlet provides a binary signal of detection of the attack. The third outlet provides a binary signal of detection of the release.<br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+
+    <method name="offset">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>dB offset to increase the measurement of the amplitude if necessary. [init=10:min=-64:max=64:step=1]</description>
+      <digest>dB offset to increase the measurement of the amplitude if necessary</digest>
+    </method>
+
+    <method name="noteOn">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the threshold in dB of detection of the attack. [init=-60:min=-120:max=0:step=1:cur=0]</description>
+      <digest>sets the threshold in dB of detection of the attack</digest>
+    </method>
+
+    <method name="noiseFloor">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the threshold in dB to make the distinction between the incoming sound and ambient noise. [init=-50:min=-120:max=0:step=1]</description>
+      <digest>sets the threshold in dB to make the distinction between the incoming sound and ambient noise</digest>
+    </method>
+
+    <method name="noteDur">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>[init=50:min=1:max=500:step=1]</description>
+      <digest></digest>
+    </method>
+
+    <method name="offDur">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>[init=25:min=1:max=500:step=1]</description>
+      <digest></digest>
+    </method>
+
+    <method name="attack">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>[init=0:min=0:max=1:step=1]</description>
+      <digest></digest>
+    </method>
+
+    <method name="tSlide">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>[init=10:min=1:max=100:step=1]</description>
+      <digest></digest>
+    </method>
+
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.peakamp~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.gain~" />
+    <seealso name="abc.mc.addsynth~" />
+  </seealsolist>
+</c74object>

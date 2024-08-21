@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.gaincontrol" module="abclib">
+  <digest>Abclib's graphic control of amplitude</digest>
+  <description><o>abc.gaincontrol</o> is an abstraction that outputs a message 'gain' followed by an amplitude value in dB (from -127 to +18 dB). It enables to control abc.mc.gain~ and abc.hoa.decoder~ objects.As a bpatcher, it includes one default value that is the gain value in dB when launching the patch.  </description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="gain" optional="1" type="float">
+          <digest>
+            initial gain in dB
+          </digest>
+          <description>
+              first argument is the initial gain in dB [init=0:min=-127:max=18:step=0.01]
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.gain~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.adcinput~" />
+    <seealso name="abc.cartopol~" />
+  </seealsolist>
+</c74object>

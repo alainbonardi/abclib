@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.gotoevent" module="abclib">
+  <digest>Abclib's event counter utility</digest>
+  <description><o>abc.gotoevent</o> abstraction enables to resume a mixed music piece at a certain event. Left input is the target as an event number, right input is the bang that triggers the counter from 0 to that event. It first switches off the dsp if it is on, and at the end restores its status as it was.
+  <br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>  
+    <method name="int">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the targeted event. </description>
+      <digest>sets the targeted event</digest>
+    </method>
+    <method name="bang">
+      <arglist>
+        <arg type="bang" />
+      </arglist>
+      <description>goes to the targeted event from 0 to that event. </description>
+      <digest>goes to the targeted event from 0 to that event</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.poltocar~" />
+    <seealso name="abc.cartopol~" />
+    <seealso name="abc.peakamp~" />
+    <seealso name="abc.adcinput~" />
+  </seealsolist>
+</c74object>
