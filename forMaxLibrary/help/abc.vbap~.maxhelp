@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 1131.0, 552.0 ],
+		"rect" : [ 367.0, -768.0, 1131.0, 552.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -251,7 +251,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 291.25, 449.0, 137.0, 47.0 ],
+					"patching_rect" : [ 296.0, 449.0, 137.0, 47.0 ],
 					"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
 				}
 
@@ -748,9 +748,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -874,7 +874,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 4.0, 398.0, 27.0 ],
-									"text" : "abc_2d_vbapN~",
+									"text" : "abc.vbap~",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_title[1]"
 								}
@@ -890,7 +890,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 5.0, 401.0, 27.0 ],
-									"text" : "abc_2d_vbapN~",
+									"text" : "abc.vbap~",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_title[2]"
 								}

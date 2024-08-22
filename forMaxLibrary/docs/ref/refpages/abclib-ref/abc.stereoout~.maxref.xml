@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.stereoout~" module="abclib">
+  <digest>Abclib's 2 channel output abstraction</digest>
+  <description><o>abc.stereoout~</o> is an abstraction that enables 2 channel output (dac~ 1 to 2) with a control of the global gain in dB. This global gain can be set as default value in the bpatcher inspector.</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="level" optional="1" type="int">
+          <digest>
+              initial value of the level
+          </digest>
+          <description>
+              first argument is the initial value of the level [init=0, min=-127, max=18, step=0.01].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.phasor2pi~" />
+    <seealso name="abc.poltocar~" />
+    <seealso name="abc.adcinput~" />
+  </seealsolist>
+</c74object>

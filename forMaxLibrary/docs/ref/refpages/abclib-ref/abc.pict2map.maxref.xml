@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.pict2map" module="abclib">
+  <digest>Abclib's Graphic 2D control of a source position</digest>
+  <description><o>abc.pict2map</o> is an abstraction inside a bpatcher that enables to graphically control the abc.hoa.map~ object. There are no default values. It generates the polar coordinates of the source r and theta (in radians).</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="reset">
+      <arglist>
+        <arg type="string" />
+      </arglist>
+      <description>when sended to the left inlet sets the initial value (x=0, y=0).</description>
+      <digest>when sended to the left inlet sets the initial value</digest>
+    </method>
+
+    <method name="float">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>when sended to the left inlet sets the x value.</description>
+      <digest>when sended to the left inlet sets the x value</digest>
+    </method>
+
+      <method name="float">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>when sended to the right inlet sets the y value.</description>
+      <digest>when sended to the right inlet sets the y value</digest>
+    </method>
+
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.poltocar~" />
+    <seealso name="abc.adcinput~" />
+  </seealsolist>
+</c74object>
