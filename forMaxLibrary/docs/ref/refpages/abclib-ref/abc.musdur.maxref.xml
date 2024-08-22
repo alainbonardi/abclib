@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.musdur" module="abclib">
+  <digest>Abclib's Musical duration controller</digest>
+  <description><o>abc.musdur</o> is an abstraction to set the duration of a delay line as a musical duration. As a bpatcher, it includes one defaut value: the index of the duration chosen (0 for a whole, 1 for a half, 2 for a quarter, 3 for an 8th, 4 for a 16th, 5 for a 32nd, 6 for a triplet).</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="init-value" optional="1" type="int">
+          <digest>
+              initial value
+          </digest>
+          <description>
+              first argument is the initial value in the menu [init=1, min=1, max=6, step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.phasor2pi~" />
+    <seealso name="abc.poltocar~" />
+    <seealso name="abc.adcinput~" />
+  </seealsolist>
+</c74object>

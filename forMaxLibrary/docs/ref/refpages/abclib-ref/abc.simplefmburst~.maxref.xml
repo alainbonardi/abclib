@@ -3,10 +3,9 @@
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
 
-<c74object name="abc.peakamp~" module="abclib">
-  <digest>Abclib's peak amplitude measurement</digest>
-  <description><o>abc.peakamp~</o> computes the highest absolute value of the incoming signal on a duration defined by period attribute in milliseconds.
-    <br /><br /></description>
+<c74object name="abc.simpleburstfm~" module="abclib">
+  <digest>Abclib's simple and short (110 ms) FM Synthesis</digest>
+  <description><o>abc.simpleburstfm~</o> is an abstraction that generates a short (110 milliseconds) FM synthetized sound (carrier at 440 Hz, modulator at 220 Hz, modulation index equals 5). There is no default value in the bpatcher.</description>
 
   <!--INLETS-->
   <!-- <inletlist>
@@ -33,13 +32,6 @@
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="period">
-      <arglist>
-        <arg type="int" />
-      </arglist>
-      <description>sets the temporal window in which the peak amplitude is computed in ms. [init=10:min=1:max=5000:step=1].</description>
-      <digest>sets the temporal window in which the peak amplitude is computed in ms.</digest>
-    </method>
   </methodlist>
 
   <seealsolist>

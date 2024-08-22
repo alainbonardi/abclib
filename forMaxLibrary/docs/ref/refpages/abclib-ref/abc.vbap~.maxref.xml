@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.vbap~" module="abclib">
+  <digest>Abclib's circular VBAP spatialization with irregular angles</digest>
+  <description><o>abc.vbap~</o>object provide implementations of VBAP algorithm  by Ville Pulkki for various number of loudspeakers dispatched on a circle with angles that can be irregular.<br /><br />
+  Angles are given by parameters a00, a01, a02... angles (in degrees). theta is the angle of the virtual source (in degrees).</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="nmbr-speakers" optional="1" type="int">
+          <digest>
+            number of speakers
+          </digest>
+          <description>
+            first argument is the number of speakers. [init=2:min=2:max=16:step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="a[index]">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the angle of the [index] speaker in degree, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-360:max=360:step=0.01].</description>
+      <digest>sets the angle of the [index] speaker in degree</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.phasor2pi~" />
+    <seealso name="abc.poltocar~" />
+    <seealso name="abc.adcinput~" />
+  </seealsolist>
+</c74object>

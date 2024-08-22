@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 562.0, 522.0 ],
+		"rect" : [ 108.0, -619.0, 562.0, 522.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -183,7 +183,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 211.0, 150.0, 151.0, 127.0 ],
-					"text" : "abc.simplefmburst is an abstraction that generates a short (110 milliseconds) FM synthetized sound (carrier at 440 Hz, modulator at 220 Hz, modulation index equals 5). There is no default value in the bpatcher"
+					"text" : "abc.simplefmburst~ is an abstraction that generates a short (110 milliseconds) FM synthetized sound (carrier at 440 Hz, modulator at 220 Hz, modulation index equals 5). There is no default value in the bpatcher"
 				}
 
 			}
@@ -253,7 +253,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ "@obj-name", "abc.simplefmburst", "@obj-desc", "Simple", "and", "short", "(110", "milliseconds)", "FM", "synthesis" ],
+					"args" : [ "@obj-name", "abc.simplefmburst~", "@obj-desc", "Simple", "and", "short", "(110", "milliseconds)", "FM", "synthesis" ],
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
@@ -312,9 +312,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -676,8 +676,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
