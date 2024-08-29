@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 45.0, 100.0, 851.0, 791.0 ],
+		"rect" : [ 45.0, 100.0, 851.0, 786.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -51,13 +51,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 45.0, 126.0, 851.0, 765.0 ],
+						"rect" : [ 45.0, 126.0, 851.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -95,7 +95,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 66.0, 392.0, 154.0 ],
-									"presentation_linecount" : 10,
 									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude.\n"
 								}
 
@@ -378,13 +377,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 851.0, 765.0 ],
+						"rect" : [ 0.0, 26.0, 851.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -419,8 +418,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 18.5, 519.0, 54.0, 22.0 ],
-									"text" : "mc.dac~"
+									"patching_rect" : [ 18.5, 519.0, 74.0, 22.0 ],
+									"text" : "mc.dac~ 1 2"
 								}
 
 							}
@@ -1178,13 +1177,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 851.0, 765.0 ],
+						"rect" : [ 0.0, 26.0, 851.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1214,6 +1213,28 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "mc.ezdac~",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 55.0, 525.0, 45.0, 45.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 55.0, 474.0, 65.0, 22.0 ],
+									"text" : "mc.dup~ 2"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-122",
 									"maxclass" : "comment",
@@ -1324,16 +1345,6 @@
 									"patching_rect" : [ 128.0, 517.5, 54.0, 20.0 ],
 									"proportion" : 0.5,
 									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "ezdac~",
-									"numinlets" : 2,
-									"numoutlets" : 0,
-									"patching_rect" : [ 45.0, 505.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1598,16 +1609,7 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-4", 1 ],
-									"order" : 0,
-									"source" : [ "obj-10", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
-									"order" : 1,
+									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -1653,6 +1655,13 @@
 									"destination" : [ "obj-10", 0 ],
 									"midpoints" : [ 353.0, 415.75, 64.5, 415.75 ],
 									"source" : [ "obj-18", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-2", 0 ]
 								}
 
 							}
@@ -1764,50 +1773,50 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.addsynth~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.chopan~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.cosrandenv~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.stereoout~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -1833,15 +1842,15 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

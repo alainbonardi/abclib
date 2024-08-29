@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -51,13 +51,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 224.0, 1003.0, 595.0 ],
+						"rect" : [ 0.0, 26.0, 1003.0, 621.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -121,7 +121,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 6,
-											"revision" : 2,
+											"revision" : 4,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -160,9 +160,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
+														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~",
-														"palette_caption" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -1411,13 +1411,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1003.0, 595.0 ],
+						"rect" : [ 134.0, 198.0, 1003.0, 621.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1447,6 +1447,18 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 84.0, 293.0, 65.0, 22.0 ],
+									"text" : "mc.dup~ 2"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-122",
 									"maxclass" : "comment",
@@ -1564,10 +1576,10 @@
 								"box" : 								{
 									"id" : "obj-6",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
+									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 77.0, 317.5, 35.0, 22.0 ],
-									"text" : "dac~"
+									"patching_rect" : [ 84.0, 330.0, 74.0, 22.0 ],
+									"text" : "mc.dac~ 1 2"
 								}
 
 							}
@@ -2058,7 +2070,7 @@
 										"appversion" : 										{
 											"major" : 8,
 											"minor" : 6,
-											"revision" : 2,
+											"revision" : 4,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2097,9 +2109,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
+														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~",
-														"palette_caption" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -2223,7 +2235,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 78.0, 4.0, 398.0, 27.0 ],
-													"text" : "abc_drops~",
+													"text" : "abc.drops~",
 													"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 													"varname" : "autohelp_top_title[1]"
 												}
@@ -2239,7 +2251,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 0,
 													"patching_rect" : [ 79.0, 5.0, 401.0, 27.0 ],
-													"text" : "abc_drops~",
+													"text" : "abc.drops~",
 													"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 													"varname" : "autohelp_top_title[2]"
 												}
@@ -2446,6 +2458,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
 									"midpoints" : [ 189.5, 247.0, 93.5, 247.0 ],
 									"source" : [ "obj-48", 0 ]
@@ -2462,16 +2481,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 1 ],
-									"order" : 0,
-									"source" : [ "obj-7", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 1,
+									"destination" : [ "obj-4", 0 ],
 									"source" : [ "obj-7", 0 ]
 								}
 
@@ -2646,7 +2656,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2685,9 +2695,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -3014,43 +3024,43 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.drops~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.encoder~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.quadriout~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -3068,22 +3078,22 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/media/images",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_bpatcher.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -200,13 +200,12 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-10",
-					"linecount" : 9,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 40.0, 267.5, 193.0, 127.0 ],
-					"presentation_linecount" : 9,
-					"text" : "abc.gaincontrol is an abstraction that outputs a message 'gain' followed by an amplitude value in dB (from -127 to +18 dB).\nIt enables to control abc.mc.gain~ and abc.hoa.decoder~ objects.\nAs a bpatcher, it includes one default value that is the gain value in dB when launching the patch"
+					"patching_rect" : [ 40.0, 267.5, 193.0, 141.0 ],
+					"text" : "abc.gaincontrol is an abstraction that outputs a message 'gain' followed by an amplitude value in dB (from -127 to +18 dB).\nIt enables to control abc.mc.gain~, abc.hoa.decoder~ and abc.mc.chopan~ objects.\nAs a bpatcher, it includes one default value that is the gain value in dB when launching the patch"
 				}
 
 			}
@@ -389,7 +388,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -428,9 +427,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -554,7 +553,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 4.0, 398.0, 27.0 ],
-									"text" : "abc_gaincontrol",
+									"text" : "abc.gaincontrol",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_title[1]"
 								}
@@ -570,7 +569,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 5.0, 401.0, 27.0 ],
-									"text" : "abc_gaincontrol",
+									"text" : "abc.gaincontrol",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_title[2]"
 								}
@@ -827,57 +826,57 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.chopan~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.cosrandenv~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.gain~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.multinoise~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.substractsynth~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.stereoout~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -895,8 +894,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/media/images",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
@@ -910,8 +909,8 @@
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

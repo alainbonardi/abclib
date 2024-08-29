@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 162.0, 631.0, 730.0 ],
+		"rect" : [ 134.0, 156.0, 631.0, 730.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -192,7 +192,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 369.0, 415.0, 104.0, 20.0 ],
+					"patching_rect" : [ 338.0, 449.0, 104.0, 20.0 ],
 					"text" : "theta (in radians)"
 				}
 
@@ -305,7 +305,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 24.0, 292.5, 310.0, 30.0 ],
+					"patching_rect" : [ 24.0, 292.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -321,7 +321,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 367.0, 198.0, 92.0, 35.0 ],
+					"patching_rect" : [ 353.0, 198.0, 92.0, 35.0 ],
 					"sig" : 0.0
 				}
 
@@ -344,7 +344,7 @@
 					"maxclass" : "scope~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 150.5, 130.0, 130.0 ],
+					"patching_rect" : [ 455.0, 151.0, 130.0, 130.0 ],
 					"range" : [ 0.0, 1.0 ]
 				}
 
@@ -360,18 +360,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 369.0, 379.0, 92.0, 35.0 ],
+					"patching_rect" : [ 338.0, 413.0, 92.0, 35.0 ],
 					"sig" : 0.0
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 99.0, 221.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -405,7 +395,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 285.0, 143.0, 87.0 ],
+					"patching_rect" : [ 455.0, 285.0, 143.0, 87.0 ],
 					"text" : "abc.mult2pi~ multiplies the incoming signal by 2*PI. Therefore a phasor~ between 0 and 1 becomes an angle between 0 and 2*Pi"
 				}
 
@@ -458,7 +448,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 347.5, 127.0, 376.5, 127.0 ],
+					"midpoints" : [ 347.5, 127.0, 362.5, 127.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -467,7 +457,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-40", 0 ],
-					"midpoints" : [ 347.5, 128.25, 476.5, 128.25 ],
+					"midpoints" : [ 347.5, 128.25, 464.5, 128.25 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -516,6 +506,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
+					"midpoints" : [ 158.5, 498.5, 371.5, 498.5 ],
 					"order" : 0,
 					"source" : [ "obj-14", 0 ]
 				}
@@ -538,7 +529,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
-					"midpoints" : [ 58.5, 522.75, 287.5, 522.75 ],
+					"midpoints" : [ 58.5, 517.75, 287.5, 517.75 ],
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -553,64 +544,64 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.env.noise~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.map~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.scope~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.stereodecoder~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mult2pi~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.scope.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -628,8 +619,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
@@ -639,15 +630,15 @@
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_bpatcher.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
