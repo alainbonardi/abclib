@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -45,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 42.0, 278.0, 90.0, 22.0 ],
+					"patching_rect" : [ 74.0, 282.0, 90.0, 22.0 ],
 					"text" : "mc.combine~ 2"
 				}
 
@@ -56,7 +56,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 57.0, 100.0, 52.5, 20.0 ],
+					"patching_rect" : [ 89.0, 104.0, 52.5, 20.0 ],
 					"text" : "Sound"
 				}
 
@@ -71,7 +71,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 58.0, 99.0, 48.821442000000047, 22.0 ],
+					"patching_rect" : [ 90.0, 103.0, 48.821442000000047, 22.0 ],
 					"proportion" : 0.5,
 					"rounded" : 10
 				}
@@ -86,7 +86,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 35.0, 99.0, 23.0, 23.0 ],
+					"patching_rect" : [ 67.0, 103.0, 23.0, 23.0 ],
 					"text" : "2",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
@@ -101,7 +101,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 31.0, 97.0, 23.0, 25.0 ],
+					"patching_rect" : [ 63.0, 101.0, 23.0, 25.0 ],
 					"proportion" : 0.5,
 					"shape" : 1
 				}
@@ -113,7 +113,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 389.0, 349.0, 49.0, 20.0 ],
+					"patching_rect" : [ 421.0, 353.0, 49.0, 20.0 ],
 					"text" : "Turn on"
 				}
 
@@ -127,7 +127,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 363.0, 348.0, 23.0, 23.0 ],
+					"patching_rect" : [ 395.0, 352.0, 23.0, 23.0 ],
 					"text" : "1",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
@@ -142,7 +142,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 359.0, 346.0, 23.0, 25.0 ],
+					"patching_rect" : [ 391.0, 350.0, 23.0, 25.0 ],
 					"proportion" : 0.5,
 					"shape" : 1
 				}
@@ -158,7 +158,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 389.0, 349.0, 54.0, 20.0 ],
+					"patching_rect" : [ 421.0, 353.0, 54.0, 20.0 ],
 					"proportion" : 0.5,
 					"rounded" : 10
 				}
@@ -171,7 +171,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 41.0, 205.5, 40.0, 22.0 ],
+					"patching_rect" : [ 73.0, 210.0, 40.0, 22.0 ],
 					"text" : "*~ 0.3"
 				}
 
@@ -182,7 +182,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 376.0, 373.0, 45.0, 45.0 ]
+					"patching_rect" : [ 408.0, 377.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -193,7 +193,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 247.0, 181.0, 113.0, 22.0 ],
+					"patching_rect" : [ 279.0, 185.0, 113.0, 22.0 ],
 					"text" : "loadmess tempo 80"
 				}
 
@@ -206,7 +206,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 234.0, 86.0, 293.0, 74.0 ],
+					"patching_rect" : [ 266.0, 90.0, 293.0, 74.0 ],
 					"text" : "abc.musdur is an abstraction to set the duration of a delay line as a musical duration. As a bpatcher, it includes one defaut value: the index of the duration chosen (0 for a whole, 1 for a half, 2 for a quarter, 3 for an 8th, 4 for a 16th, 5 for a 32nd, 6 for a triplet)."
 				}
 
@@ -218,7 +218,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 263.0, 209.0, 119.0, 22.0 ],
+					"patching_rect" : [ 295.0, 213.0, 119.0, 22.0 ],
 					"text" : "loadmess fdbk00 0.5"
 				}
 
@@ -229,7 +229,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 162.0, 308.0, 50.0, 20.0 ],
+					"patching_rect" : [ 250.0, 255.0, 50.0, 20.0 ],
 					"text" : "echo"
 				}
 
@@ -240,7 +240,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 51.0, 308.0, 50.0, 20.0 ],
+					"patching_rect" : [ 16.0, 255.0, 50.0, 20.0 ],
 					"text" : "original"
 				}
 
@@ -261,7 +261,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 41.0, 334.0, 185.0, 26.0 ],
+					"patching_rect" : [ 73.0, 338.0, 185.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -273,7 +273,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 113.0, 250.0, 96.0, 22.0 ],
+					"patching_rect" : [ 145.0, 254.0, 96.0, 22.0 ],
 					"text" : "abc.mc.delay~ 1"
 				}
 
@@ -294,7 +294,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 41.0, 126.0, 60.0, 67.0 ],
+					"patching_rect" : [ 73.0, 130.0, 60.0, 67.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -316,7 +316,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 107.0, 162.0, 125.0, 31.0 ],
+					"patching_rect" : [ 139.0, 166.0, 125.0, 31.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -338,7 +338,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 107.0, 205.5, 56.0, 22.0 ],
+					"patching_rect" : [ 139.0, 210.0, 56.0, 22.0 ],
 					"text" : "dur00 $1"
 				}
 
@@ -387,7 +387,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -426,9 +426,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -762,7 +762,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
-					"midpoints" : [ 272.5, 245.25, 199.5, 245.25 ],
+					"midpoints" : [ 304.5, 249.25, 231.5, 249.25 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -770,7 +770,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
-					"midpoints" : [ 256.5, 244.75, 199.5, 244.75 ],
+					"midpoints" : [ 288.5, 248.75, 231.5, 248.75 ],
 					"source" : [ "obj-26", 0 ]
 				}
 
@@ -778,7 +778,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
-					"midpoints" : [ 116.5, 191.25, 116.5, 191.25 ],
+					"midpoints" : [ 148.5, 195.25, 148.5, 195.25 ],
 					"source" : [ "obj-36", 0 ]
 				}
 
@@ -786,7 +786,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
-					"midpoints" : [ 50.5, 245.0, 122.5, 245.0 ],
+					"midpoints" : [ 82.5, 249.0, 154.5, 249.0 ],
 					"order" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
@@ -833,36 +833,36 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.delay~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.musdur.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.simplefmburst~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.stereoout~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -872,22 +872,22 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
-				"patcherrelativepath" : "../misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/media/images",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_bpatcher.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
-				"patcherrelativepath" : "../javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

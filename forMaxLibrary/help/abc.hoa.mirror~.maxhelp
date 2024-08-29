@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 726.0, 100.0, 752.0, 771.0 ],
+		"rect" : [ 277.0, 100.0, 752.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -51,7 +51,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -106,29 +106,49 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 369.0, 571.0, 80.0, 13.0 ]
+									"patching_rect" : [ 535.0, 502.0, 95.0, 37.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"args" : [ 0, 1, 0 ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
 									"id" : "obj-4",
-									"maxclass" : "newobj",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.scope.maxpat",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 148.0, 467.0, 90.0, 22.0 ],
-									"text" : "abc.scope"
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 148.0, 461.0, 90.0, 110.0 ],
+									"viewvisibility" : 1
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"args" : [ 0, 1, 0 ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
 									"id" : "obj-3",
-									"maxclass" : "newobj",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.scope.maxpat",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 25.0, 461.0, 90.0, 22.0 ],
-									"text" : "abc.scope"
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 25.0, 461.0, 90.0, 110.0 ],
+									"viewvisibility" : 1
 								}
 
 							}
@@ -193,7 +213,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 643.0, 335.0, 24.0, 24.0 ]
+									"patching_rect" : [ 582.0, 357.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -214,7 +234,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 643.0, 372.0, 90.0, 22.0 ],
+									"patching_rect" : [ 582.0, 394.0, 90.0, 22.0 ],
 									"text" : "directangles $1"
 								}
 
@@ -227,7 +247,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 616.0, 274.0, 24.0, 24.0 ]
+									"patching_rect" : [ 555.0, 296.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -248,7 +268,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 616.0, 306.0, 59.0, 22.0 ],
+									"patching_rect" : [ 555.0, 328.0, 59.0, 22.0 ],
 									"text" : "stereo $1"
 								}
 
@@ -281,7 +301,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 489.5, 281.0, 72.0, 110.0 ],
+									"patching_rect" : [ 478.5, 317.0, 72.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -389,7 +409,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 312.5, 303.0, 175.0, 58.0 ],
+									"patching_rect" : [ 282.0, 262.0, 175.0, 58.0 ],
 									"text" : "Mirror factor: \n1 - Original sound field\n0 - Original + Mirror sound field\n-1 - Mirror sound field"
 								}
 
@@ -646,7 +666,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-44", 0 ]
 								}
 
@@ -654,7 +674,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
-									"order" : 0,
+									"order" : 1,
 									"source" : [ "obj-44", 0 ]
 								}
 
@@ -707,7 +727,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 1 ],
-									"midpoints" : [ 652.5, 457.25, 488.0, 457.25 ],
+									"midpoints" : [ 591.5, 457.25, 488.0, 457.25 ],
 									"source" : [ "obj-54", 0 ]
 								}
 
@@ -722,7 +742,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 1 ],
-									"midpoints" : [ 625.5, 458.0, 488.0, 458.0 ],
+									"midpoints" : [ 564.5, 458.0, 488.0, 458.0 ],
 									"source" : [ "obj-57", 0 ]
 								}
 
@@ -753,13 +773,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 726.0, 126.0, 752.0, 745.0 ],
+						"rect" : [ 277.0, 126.0, 752.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1713,8 +1733,8 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
 			}
