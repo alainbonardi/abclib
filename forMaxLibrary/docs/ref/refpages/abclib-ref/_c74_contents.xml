@@ -45,12 +45,19 @@
     <refpage name='abc.mc.matrix~.maxref.xml' />
     <refpage name='abc.mc.multinoise~.maxref.xml' />
     <refpage name='abc.mc.substractsynth~.maxref.xml' />
+    <refpage name='abc.mult2pi~.maxref.xml' />
     <refpage name='abc.peakamp~.maxref.xml' />
     <refpage name='abc.phasor2pi~.maxref.xml' />
+    <refpage name='abc.pict2map.maxref.xml' />
     <refpage name='abc.poltocar~.maxref.xml' />
     <refpage name='abc.puckettespaf~.maxref.xml' />
+    <refpage name='abc.quadriout~.maxref.xml' />
     <refpage name='abc.rev4~.maxref.xml' />
     <refpage name='abc.rissetsbell~.maxref.xml' />
+    <refpage name='abc.scope.maxref.xml' />
+    <refpage name='abc.simplefmburst~.maxref.xml' />
     <refpage name='abc.sounddetector~.maxref.xml' />
+    <refpage name='abc.stereoout~.maxref.xml' />
     <refpage name='abc.trajectories~.maxref.xml' />
+    <refpage name='abc.vbap~.maxref.xml' />
 </root>
