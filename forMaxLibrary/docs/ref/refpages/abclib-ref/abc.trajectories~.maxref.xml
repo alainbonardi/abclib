@@ -5,7 +5,7 @@
 
 <c74object name="abc.trajectories~" module="abclib">
   <digest>Abclib's 2D trajectories generator</digest>
-  <description><o>abc.trajectories~</o> 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory. All of them have in common two controllers: freq (frequency of the shape in s-1), and size.
+  <description><o>abc.trajectories~</o> 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory. Mode 'square', 'Z', 'squareZ' and 'random' have in common two controllers: freq (frequency of the shape in s-1), and size. Mode 'circular' has particular variables.
   <br /><br /></description>
 
   <!--INLETS-->
@@ -30,26 +30,56 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="mode" type="string" set="1" get="1" size="1">
-      <description>sets the mode of trajectories. Possible values: 'square', 'Z', 'squareZ', 'random'.</description>
-      <digest>sets the mode of reverberation (stereo or quadri)</digest>
+      <description>sets the mode of trajectories. Possible values: 'square', 'Z', 'squareZ', 'random', 'circular'.</description>
+      <digest>sets the mode of the trajectories: 'square', 'Z', 'squareZ', 'random', 'circular'</digest>
     </attribute>
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="revDur">
+    <method name="freq">
       <arglist>
-        <arg type="int" />
+        <arg type="float" />
       </arglist>
-      <description>sets the duration of reverberation with values between 0 and 127: 127 means an 'infinite' duration. [init=120:min=0:max=127:step=1].</description>
-      <digest>sets the duration of reverberation with values between 0 and 127</digest>
+      <description>sets the frequency of the trajectorie. [init=1:min=-1000:max=1000:step=0.01].</description>
+      <digest>sets the frequency of the trajectorie.</digest>
     </method>
-    <method name="revGain">
+    <method name="size">
       <arglist>
-        <arg type="int" />
+        <arg type="float" />
       </arglist>
-      <description>sets gain of the reverberate signal. [init=100:min=0:max=127:step=1].</description>
-      <digest>sets gain of the reverberate signal</digest>
+      <description>sets the size of the trajectorie. init=1:min=0:max=5:step=0.01:cur=2].</description>
+      <digest>sets the size of the trajectorie</digest>
+    </method>
+    <method name="ampRho">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>for 'circular' mode</description>
+      <digest>for 'circular' mode</digest>
+    </method>
+
+    <method name="freqRho">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>for 'circular' mode</description>
+      <digest>for 'circular' mode</digest>
+    </method>
+
+    <method name="freqTheta">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>for 'circular' mode</description>
+      <digest>for 'circular' mode</digest>
+    </method>
+    <method name="rotSpeed">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>for 'circular' mode</description>
+      <digest>for 'circular' mode</digest>
     </method>
   </methodlist>
 

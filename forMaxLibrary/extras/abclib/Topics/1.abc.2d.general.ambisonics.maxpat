@@ -299,7 +299,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 278.0, 188.0, 130.0, 22.0 ],
-					"text" : "abc.mc.cosrandenv~ 5"
+					"text" : "abc.mc.randenv~ 5"
 				}
 
 			}
@@ -3365,7 +3365,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 19.0, 182.0, 130.0, 22.0 ],
-									"text" : "abc.mc.cosrandenv~ 7"
+									"text" : "abc.mc.randenv~ 7"
 								}
 
 							}
@@ -4059,7 +4059,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.mc.cosrandenv~.maxpat",
+				"name" : "abc.mc.randenv~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",

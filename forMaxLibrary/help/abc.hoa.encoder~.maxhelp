@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 1201.0, 707.0 ],
+						"rect" : [ 0.0, 26.0, 1201.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -94,7 +94,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 695.0, 330.0, 252.0, 328.0 ],
+									"patching_rect" : [ 695.0, 330.0, 255.0, 328.0 ],
 									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters.\n\n- the first argument is the ambisonic order\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
 								}
 
@@ -138,7 +138,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 387.398798333333218, 378.0, 38.821442000000062, 20.0 ],
+									"patching_rect" : [ 117.0, 372.0, 38.821442000000062, 20.0 ],
 									"text" : "Gain"
 								}
 
@@ -153,7 +153,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 385.398798333333218, 378.0, 40.821442000000062, 20.0 ],
+									"patching_rect" : [ 115.0, 372.0, 40.821442000000062, 20.0 ],
 									"proportion" : 0.5,
 									"rounded" : 10
 								}
@@ -168,7 +168,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 362.398798333333218, 378.0, 23.0, 23.0 ],
+									"patching_rect" : [ 92.0, 372.0, 23.0, 23.0 ],
 									"text" : "2",
 									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 								}
@@ -183,7 +183,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 358.398798333333218, 376.0, 23.0, 25.0 ],
+									"patching_rect" : [ 88.0, 370.0, 23.0, 25.0 ],
 									"proportion" : 0.5,
 									"shape" : 1
 								}
@@ -253,7 +253,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1017.0, 35.0, 188.0, 20.0 ],
+									"patching_rect" : [ 1017.0, 35.0, 147.0, 20.0 ],
 									"text" : "return time in milliseconds"
 								}
 
@@ -550,7 +550,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 492.0, 400.0, 24.0, 24.0 ]
+									"patching_rect" : [ 222.0, 394.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -571,7 +571,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 492.0, 437.0, 90.0, 22.0 ],
+									"patching_rect" : [ 222.0, 431.0, 90.0, 22.0 ],
 									"text" : "directangles $1"
 								}
 
@@ -592,7 +592,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 230.0, 411.0, 90.0, 110.0 ],
+									"patching_rect" : [ 347.0, 399.0, 90.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -604,7 +604,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 230.0, 363.0, 104.0, 22.0 ],
+									"patching_rect" : [ 347.0, 351.0, 104.0, 22.0 ],
 									"text" : "abc.hoa.scope~ 3"
 								}
 
@@ -652,7 +652,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 73.5, 179.0, 310.0, 30.0 ],
+									"patching_rect" : [ 73.0, 179.0, 310.0, 30.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -847,18 +847,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-11",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 224.000000000000028, 548.0, 150.0, 20.0 ],
-									"text" : "or abc.hoa.decoder~ 3"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-35",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -1024,7 +1012,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 157.0, 95.0, 53.0, 22.0 ],
+									"patching_rect" : [ 153.0, 95.0, 53.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -1222,9 +1210,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 38.0, 126.0, 138.333333333333314, 49.0 ],
-									"text" : "abc.mc.linrandenv~ 2 @freq 16 @rarefaction 0.5"
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 38.0, 121.0, 134.0, 49.0 ],
+									"text" : "abc.mc.randenv~ 2 @mode linear @freq 16 @rarefaction 0.5"
 								}
 
 							}
@@ -1246,7 +1234,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 432.0, 363.0, 70.0, 22.0 ],
+									"patching_rect" : [ 162.0, 357.0, 70.0, 22.0 ],
 									"text" : "loadmess 0"
 								}
 
@@ -1259,7 +1247,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 432.0, 400.0, 24.0, 24.0 ]
+									"patching_rect" : [ 162.0, 394.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -1280,7 +1268,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 432.0, 437.0, 59.0, 22.0 ],
+									"patching_rect" : [ 162.0, 431.0, 59.0, 22.0 ],
 									"text" : "stereo $1"
 								}
 
@@ -1324,7 +1312,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 339.5, 404.0, 72.0, 110.0 ],
+									"patching_rect" : [ 69.0, 398.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1428,6 +1416,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
+									"midpoints" : [ 47.5, 328.75, 356.5, 328.75 ],
 									"order" : 0,
 									"source" : [ "obj-2", 0 ]
 								}
@@ -1560,7 +1549,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 501.5, 531.0, 143.5, 531.0 ],
+									"midpoints" : [ 231.5, 531.0, 143.5, 531.0 ],
 									"source" : [ "obj-38", 0 ]
 								}
 
@@ -1648,7 +1637,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 349.0, 531.0, 143.5, 531.0 ],
+									"midpoints" : [ 78.5, 531.0, 143.5, 531.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -1663,7 +1652,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 441.5, 532.0, 143.5, 532.0 ],
+									"midpoints" : [ 171.5, 532.0, 143.5, 532.0 ],
 									"source" : [ "obj-8", 0 ]
 								}
 
@@ -1768,7 +1757,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 505.0, 277.0, 252.0, 328.0 ],
+									"patching_rect" : [ 505.0, 277.0, 255.0, 328.0 ],
 									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters.\n\n- the first argument is the ambisonic order\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
 								}
 
@@ -1808,6 +1797,7 @@
 							}
 , 							{
 								"box" : 								{
+									"dbperled" : 9,
 									"id" : "obj-4",
 									"maxclass" : "meter~",
 									"numinlets" : 1,
@@ -2016,7 +2006,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 47.0, 373.0, 72.0, 110.0 ],
+									"patching_rect" : [ 47.0, 373.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -2452,7 +2442,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1201.0, 707.0 ],
+						"rect" : [ 100.0, 126.0, 1201.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2483,6 +2473,28 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"args" : [ 200, 0.3, 0.0 ],
+									"bgmode" : 0,
+									"border" : 1,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-25",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.env.noise~.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"offset" : [ 0.0, 0.0 ],
+									"outlettype" : [ "signal" ],
+									"patching_rect" : [ 105.0, 82.0, 310.0, 30.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"args" : [ "@obj-name", "abc.hoa.encoder~", "@obj-desc", "Ambisonic", "encoders", "for", 1, "to", 8, "sources", "at", "orders", "1,", "2,", "3..." ],
 									"bgmode" : 0,
 									"border" : 0,
@@ -2504,35 +2516,13 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 200, 0.3, 0.0 ],
-									"bgmode" : 0,
-									"border" : 0,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-27",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc.env.noise~.maxpat",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"offset" : [ 0.0, 0.0 ],
-									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 105.0, 87.0, 310.0, 30.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-11",
 									"linecount" : 24,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 473.0, 240.0, 249.0, 328.0 ],
+									"patching_rect" : [ 473.0, 240.0, 255.0, 328.0 ],
 									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters.\n\n- the first argument is the ambisonic order\n- speed is the rotation speed in turns by second\n- angle is the default static angle (in degrees) when the speed is zero\n- returntime is the transition time (in msec) between the fixed angle position and the position on the circle when the speed is more than 0"
 								}
 
@@ -2882,7 +2872,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 26.0, 349.0, 72.0, 110.0 ],
+									"patching_rect" : [ 26.0, 349.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -3189,15 +3179,15 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-30", 0 ],
-									"source" : [ "obj-26", 0 ]
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-25", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
-									"source" : [ "obj-27", 0 ]
+									"destination" : [ "obj-30", 0 ],
+									"source" : [ "obj-26", 0 ]
 								}
 
 							}
@@ -3333,91 +3323,84 @@
 		"dependency_cache" : [ 			{
 				"name" : "abc.env.noise~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.encoder~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.scope~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.addsynth~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc.mc.linrandenv~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.randenv~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.quadriout~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.scope.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.soundcoat~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -3459,10 +3442,14 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/media/images",
 				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_linrandenv2~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_soundcoat~.mxo",
@@ -3471,14 +3458,14 @@
 , 			{
 				"name" : "abc_wrp.js",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_bpatcher.js",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
-				"patcherrelativepath" : "../../../../Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
