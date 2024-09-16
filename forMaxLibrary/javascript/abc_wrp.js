@@ -31,6 +31,8 @@ function patching() {
 	var maxMAPsources = 8;
 	var maxMEncoderSources = 8;
 	//------------------------
+	var controlData = true;
+	var signalData = true;
 	var patcherName = this.patcher.name;//name of 'abc' object
 	var args = jsarguments;
 	//var jsobjectname = args[0];
@@ -148,6 +150,7 @@ function patching() {
 			sources = maxMAPsources;
 		}
 		objectToInstantiate = "abc_" + dimensions + "_map" + order + "_" + sources + "~";
+		controlData = false;
 	} else if (patcherName == 'abc.hoa.decorrelation~' || patcherName == 'abc.hoa.decorrelation') {
 		if (patcherName == 'abc.hoa.decorrelation') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_" + mode + "_decorrelation" + order + "~";
@@ -193,6 +196,7 @@ function patching() {
 		} else if (mode == "squareZ" || mode == "squarez") {
 			objectToInstantiate = "abc_" + dimensions + "_squareandztrajectory" + "~";
 		}
+		signalData = false;
 	} else if (patcherName == 'abc.hoa.stereoencoder~' || patcherName == 'abc.hoa.stereoencoder') {
 		if (patcherName == 'abc.hoa.stereoencoder') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_stereoencoder" + order + "~";
@@ -260,6 +264,7 @@ function patching() {
 	} else if (patcherName == 'abc.cartopol~' || patcherName == 'abc.cartopol') {
 		if (patcherName == 'abc.cartopol') withUI = true;
 		objectToInstantiate = "abc_" + "cartopol" + "~";
+		controlData = false;
 	} else if (patcherName == 'abc.mc.chopan~' || patcherName == 'abc.mc.chopan') {
 		if (patcherName == 'abc.mc.chopan') withUI = true;
 		if (channels) {
@@ -286,21 +291,10 @@ function patching() {
 		} else if (mode == "lin" || mode == "linear" || mode == "line") {
 			objectToInstantiate = "abc_" + "linrandenv" + finalchannels + "~";
 		}
-	} else if (patcherName == 'abc.mc.cosrandenv~' || patcherName == 'abc.mc.cosrandenv') {
-		if (patcherName == 'abc.mc.cosrandenv') withUI = true;
-		if (channels) {
-			objectToInstantiate = "abc_" + "cosrandenv" + channels + "~";
-			finalchannels = channels;
-		} else if (instances) {
-			objectToInstantiate = "abc_" + "cosrandenv" + instances + "~";
-			finalchannels = instances;
-		} else {
-			objectToInstantiate = "abc_" + "cosrandenv" + order + "~";
-			finalchannels = order;
-		}
 	} else if (patcherName == 'abc.drops~' || patcherName == 'abc.drops') {
 		if (patcherName == 'abc.drops') withUI = true;
 		objectToInstantiate = "abc_" + "drops" + "~";
+		signalData = false;
 	} else if (patcherName == 'abc.envfollower~' || patcherName == 'abc.envfollower') {
 		if (patcherName == 'abc.envfollower') withUI = true;
 		objectToInstantiate = "abc_" + "envfollower" + "~";
@@ -343,6 +337,7 @@ function patching() {
 	} else if (patcherName == 'abc.generator~' || patcherName == 'abc.generator') {
 		if (patcherName == 'abc.generator') withUI = true;
 		objectToInstantiate = "abc_" + "generator" + "~";
+		signalData = false;
 	} else if (patcherName == 'abc.mc.harmo~' || patcherName == 'abc.mc.harmo') {
 		if (patcherName == 'abc.mc.harmo') withUI = true;
 		if (channels) {
@@ -358,9 +353,11 @@ function patching() {
 	} else if (patcherName == 'abc.jupiterbank~' || patcherName == 'abc.jupiterbank') {
 		if (patcherName == 'abc.jupiterbank') withUI = true;
 		objectToInstantiate = "abc_jupiterbank~";
+		signalData = false;
 	} else if (patcherName == 'abc.jupiterbank2~' || patcherName == 'abc.jupiterbank2') {
 		if (patcherName == 'abc.jupiterbank2') withUI = true;
 		objectToInstantiate = "abc_jupiterbank2~";
+		signalData = false;
 	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
 		if (patcherName == 'abc.linedrive') withUI = true;
 		objectToInstantiate = "abc_linedrive~";
@@ -380,6 +377,7 @@ function patching() {
 	} else if (patcherName == 'abc.mult2pi~' || patcherName == 'abc.mult2pi') {
 		if (patcherName == 'abc.mult2pi') withUI = true;
 		objectToInstantiate = "abc_" + "mult2pi" + "~";
+		controlData = false;
 	} else if (patcherName == 'abc.mc.multinoise~' || patcherName == 'abc.mc.multinoise') {
 		if (patcherName == 'abc.mc.multinoise') withUI = true;
 		if (channels) {
@@ -401,6 +399,7 @@ function patching() {
 	} else if (patcherName == 'abc.poltocar~' || patcherName == 'abc.poltocar') {
 		if (patcherName == 'abc.poltocar') withUI = true;
 		objectToInstantiate = "abc_" + "poltocar" + "~";
+		controlData = false;
 	} else if (patcherName == 'abc.puckettespaf~' || patcherName == 'abc.puckettespaf') {
 		if (patcherName == 'abc.puckettespaf') withUI = true;
 		if (channels) {
@@ -417,6 +416,7 @@ function patching() {
 			}
 			finalchannels = order;
 		}
+		signalData = false;
 	} else if (patcherName == 'abc.mc.pulsedenv2synth~' || patcherName == 'abc.mc.pulsedenv2synth') {
 		if (patcherName == 'abc.mc.pulsedenv2synth') withUI = true;
 		if (channels) {
@@ -460,9 +460,11 @@ function patching() {
 	} else if (patcherName == 'abc.rissetsbell~' || patcherName == 'abc.rissetsbell') {
 		if (patcherName == 'abc.rissetsbell') withUI = true;
 		objectToInstantiate = "abc_" + "rissetsbell" + "~";
+		signalData = false;
 	} else if (patcherName == 'abc.soundcoat~' || patcherName == 'abc.soundcoat') {
 		if (patcherName == 'abc.soundcoat') withUI = true;
 		objectToInstantiate = "abc_" + "soundcoat" + "~";
+		signalData = false;
 	} else if (patcherName == 'abc.sounddetector~' || patcherName == 'abc.sounddetector') {
 		if (patcherName == 'abc.sounddetector') withUI = true;
 		objectToInstantiate = "abc_" + "sounddetector" + "~";
@@ -491,44 +493,30 @@ function patching() {
 	//}
 
 	var alertMessage = patcher.newdefault(300, 100, "comment");
-	alertMessage.message('fontsize', 50);
+	alertMessage.message('fontsize', 30);
 	alertMessage.message('fontface', "bold");
 	alertMessage.message('textjustification', 1);
 	//alertMessage.message('textcolor', "red");
 	alertMessage.message('set', "DO NOT MODIFY THIS ABSTRACTION");
 	objectToInstantiate += abcAttributes;
 	var abcObject = patcher.newdefault(20, 240, objectToInstantiate);//x,y,name of object
-	var inlet1 = patcher.newdefault(20, 60, "inlet");
-	var inlet2 = patcher.newdefault(700, 60, "inlet");
-	connectobject(inlet2, 0, abcObject, 0);
-	if (inletsoutlets(abcObject)[0] > 1) {
-		objectToInstantiate = "mc.unpack~ " + inletsoutlets(abcObject)[0];
-		var unpacker = patcher.newdefault(20, 180, objectToInstantiate);
-		connectobject(inlet1, 0, unpacker, 0);
-		for (d = 0; d < inletsoutlets(abcObject)[0]; d++) {
-			connectobject(unpacker, d, abcObject, d);//connect mc.unpack~ to abc object
-		}
-	} else {//The ABC object only has 1 input (like the encoder~)
+	if (signalData){
+		var inlet1 = patcher.newdefault(20, 60, "inlet");
 		connectobject(inlet1, 0, abcObject, 0);
 	}
+	if(controlData){
+		var inlet2 = patcher.newdefault(700, 60, "inlet");
+		connectobject(inlet2, 0, abcObject, 0);
+	}
+	
+
 
 	var outlet = patcher.newdefault(20, 360, "outlet");
-
-	if (inletsoutlets(abcObject)[1] > 1) {
-		objectToInstantiate = "mc.pack~ " + (inletsoutlets(abcObject)[1] - 1);
-		var packer = patcher.newdefault(20, 300, objectToInstantiate);
-		addobjectauto(objectToInstantiate, 4);
-		for (d = 0; d < inletsoutlets(abcObject)[1] - 1; d++) {
-			connectobject(abcObject, d, packer, d);//connect abc object to mc.pack~
-		}
-		connectobject(packer, 0, outlet, 0);//connect mc.pack~ to outlet
-	} else {//The ABC object only has 1 output
-		connectobject(abcObject, 0, outlet, 0);
-	}
+	connectobject(abcObject, 0, outlet, 0);
 
 	//Special cases : Map and Buses:
 	if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {//n buses of 3 channels
-		disconnectobject(inlet1, 0, unpacker, 0);
+		disconnectobject(inlet1, 0, abcObject, 0);
 		objectToInstantiate = "mc.combine~ " + sources;
 		var combine = patcher.newdefault(20, 120, objectToInstantiate);
 		connectobject(inlet1, 0, combine, 0);
@@ -537,16 +525,16 @@ function patching() {
 			mapInlet = patcher.newdefault(60 + 40 * k, 60, "inlet");
 			connectobject(mapInlet, 0, combine, 1 + k);//connect inlets to mc.combine~
 		}
-		connectobject(combine, 0, unpacker, 0);//connect combine to unpack~
+		connectobject(combine, 0, abcObject, 0);//connect combine to abcObject
 	}
 	if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect' || patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult' || patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {//2 buses of n channels
-		disconnectobject(inlet1, 0, unpacker, 0);
+		disconnectobject(inlet1, 0, abcObject, 0);
 		objectToInstantiate = "mc.combine~ " + 2;
 		var combine = patcher.newdefault(20, 120, objectToInstantiate);
 		connectobject(inlet1, 0, combine, 0);
 		var businlet = patcher.newdefault(120, 60, "inlet");
 		connectobject(businlet, 0, combine, 1);//connect inlets to mc.combine~
-		connectobject(combine, 0, unpacker, 0);//connect combine to unpack~
+		connectobject(combine, 0, abcObject, 0);//connect combine to abcObject
 	}
 	//-----------------------------------------------------
 }
