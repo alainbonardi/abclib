@@ -560,7 +560,7 @@ transposer(moffset, tr, w, g) = dopplerDelay
 					pdPhasor(f) = os.phasor(1, f);
 					adjustedPhasor = freq : pdPhasor : +(moffset) : ma.decimal;
 					//threshold to input new control values//
-					step = freq / ma.SR;
+					step = abs(freq) / ma.SR;
 					th_trigger = (adjustedPhasor > step) * (adjustedPhasor@1 <= step);
 					trig_win = w : ba.sAndH(th_trigger);
 					delayInSgainles = adjustedPhasor : *(trig_win) : *(ma.SR) : /(1000.);
