@@ -1,35 +1,53 @@
 max objectfile abc.2plf.ui abc.2plf.ui;
-max definesubstitution abc.2plf.ui bpatcher @name abc.2plf.ui.maxpat;
+max definesubstitution abc.2plf.ui bpatcher @name abc.2plf.ui.maxpat @border 1;
 
 max objectfile abc.map.ui abc.map.ui;
-max definesubstitution abc.map.ui bpatcher @name abc.map.ui.maxpat;
-
-max objectfile abc.pict2map abc.pict2map;
-max definesubstitution abc.pict2map bpatcher @name abc.pict2map;
-
-max objectfile abc.scope abc.scope;
-max definesubstitution abc.scope bpatcher @name abc.scope;
-
-max objectfile abc.quadriout~ abc.quadriout~;
-max definesubstitution abc.quadriout~ bpatcher @name abc.quadriout~;
-
-max objectfile abc.env.noise~ abc.env.noise~;
-max definesubstitution abc.env.noise~ bpatcher @name abc.env.noise~;
+max definesubstitution abc.map.ui bpatcher @name abc.map.ui.maxpat @border 1;
 
 max objectfile abc.adcinput~ abc.adcinput~;
-max definesubstitution abc.adcinput~ bpatcher @name abc.adcinput~;
+max definesubstitution abc.adcinput~ bpatcher @name abc.adcinput~ @border 1;
 
-max objectfile abc.simplefmburst~ abc.simplefmburst~;
-max definesubstitution abc.simplefmburst~ bpatcher @name abc.simplefmburst~;
-
-max objectfile abc.generatorinterface~ abc.generatorinterface~;
-max definesubstitution abc.generatorinterface~ bpatcher @name abc.generatorinterface~;
-
-max objectfile abc.gotoevent abc.gotoevent;
-max definesubstitution abc.gotoevent bpatcher @name abc.gotoevent;
+max objectfile abc.env.noise~ abc.env.noise~;
+max definesubstitution abc.env.noise~ bpatcher @name abc.env.noise~ @border 1;
 
 max objectfile abc.gaincontrol abc.gaincontrol;
-max definesubstitution abc.gaincontrol bpatcher @name abc.gaincontrol;
+max definesubstitution abc.gaincontrol bpatcher @name abc.gaincontrol @border 1;
+
+max objectfile abc.generatorinterface~ abc.generatorinterface~;
+max definesubstitution abc.generatorinterface~ bpatcher @name abc.generatorinterface~ @border 1;
+
+max objectfile abc.gotoevent abc.gotoevent;
+max definesubstitution abc.gotoevent bpatcher @name abc.gotoevent @border 1;
+
+max objectfile abc.quadriout~ abc.quadriout~;
+max definesubstitution abc.quadriout~ bpatcher @name abc.quadriout~ @border 1;
+
+max objectfile abc.pict2map abc.pict2map;
+max definesubstitution abc.pict2map bpatcher @name abc.pict2map @border 1;
+
+max objectfile abc.scope abc.scope;
+max definesubstitution abc.scope bpatcher @name abc.scope @border 1;
+
+max objectfile abc.meters abc.meters;
+max definesubstitution abc.meters bpatcher @name abc.meters @border 1;
+
+max objectfile abc.musdur abc.musdur;
+max definesubstitution abc.musdur bpatcher @name abc.musdur @border 1;
+
+max objectfile abc.simplefmburst~ abc.simplefmburst~;
+max definesubstitution abc.simplefmburst~ bpatcher @name abc.simplefmburst~ @border 1;
+
+max objectfile abc.source.noise abc.source.noise;
+max definesubstitution abc.source.noise bpatcher @name abc.source.noise @border 1;
+
+max objectfile abc.source.phasor abc.source.phasor;
+max definesubstitution abc.source.phasor bpatcher @name abc.source.phasor @border 1;
+
+max objectfile abc.source.sinus abc.source.sinus;
+max definesubstitution abc.source.sinus bpatcher @name abc.source.sinus @border 1;
+
+max objectfile abc.stereoout~ abc.stereoout~;
+max definesubstitution abc.stereoout~ bpatcher @name abc.stereoout~ @border 1;
 
 max objectfile abc.audiotester~ abc.audiotester~;
 max objectfile abc.cartopol~  abc.cartopol~;
@@ -61,14 +79,12 @@ max objectfile abc.mc.busmult~ abc.mc.busmult~;
 max objectfile abc.mc.busplus~ abc.mc.busplus~;
 max objectfile abc.mc.busselect~ abc.mc.busselect~;
 max objectfile abc.mc.chopan~ abc.mc.chopan~;
-max objectfile abc.mc.cosrandenv~ abc.mc.cosrandenv~;
 max objectfile abc.mc.delay~ abc.mc.delay~;
 max objectfile abc.mc.flanger~ abc.mc.flanger~;
 max objectfile abc.mc.freqshift~ abc.mc.freqshift~;
 max objectfile abc.mc.gain~ abc.mc.gain~;
 max objectfile abc.mc.grain~ abc.mc.grain~;
 max objectfile abc.mc.harmo~ abc.mc.harmo~;
-max objectfile abc.mc.linrandenv~ abc.mc.linrandenv~;
 max objectfile abc.mc.matrix~ abc.mc.matrix~;
 max objectfile abc.mc.multinoise~ abc.mc.multinoise~;
 max objectfile abc.mc.pulsedenv2synth~ abc.mc.pulsedenv2synth~;

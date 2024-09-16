@@ -668,7 +668,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 207.666666666666629, 264.0, 156.333333333333371, 35.0 ],
-									"text" : "abc.mc.cosrandenv~ 4 @freq 4 @rarefaction 0.95"
+									"text" : "abc.mc.randenv~ 4 @freq 4 @rarefaction 0.95"
 								}
 
 							}
@@ -2170,7 +2170,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.mc.cosrandenv~.maxpat",
+				"name" : "abc.mc.randenv~.maxpat",
 				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",

@@ -3,9 +3,9 @@
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
 
-<c74object name="abc.mc.cosrandenv~" module="abclib">
-  <digest>Abclib's cosinus random envelopes</digest>
-  <description><o>abc.mc.cosrandenv~</o> provides multichannel envelopes based on the cosinus curve. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.
+<c74object name="abc.mc.randenv~" module="abclib">
+  <digest>Abclib's Random envelopes</digest>
+  <description><o>abc.mc.randenv~</o>  object provides multichannel envelopes with two modes: linear and cosinus. By default the object is in cosinus mode. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.
     <br /><br /></description>
 
   <!--INLETS-->
@@ -33,6 +33,10 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="mode" type="string" set="1" get="1" size="1">
+      <description>sets the envelope shape between linear and cosinus</description>
+      <digest>sets the envelope shape between linear and cosinus</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -61,8 +65,6 @@
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.mc.randenv~" />
-    <seealso name="abc.mc.linrandenv~" />
     <seealso name="abc.mc.matrix~" />
     <seealso name="abc.mc.multinoise~" />
     <seealso name="abc.mc.delay~" />

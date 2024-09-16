@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 753.0, 760.0 ],
+		"rect" : [ 34.0, 100.0, 753.0, 760.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -51,13 +51,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 753.0, 734.0 ],
+						"rect" : [ 34.0, 126.0, 753.0, 734.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -90,12 +90,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-4",
-									"linecount" : 13,
+									"linecount" : 14,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+									"patching_rect" : [ 462.0, 206.0, 246.0, 194.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n@mode circular\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -106,7 +106,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 142.0, 274.0, 84.0, 22.0 ],
+									"patching_rect" : [ 236.0, 266.0, 84.0, 22.0 ],
 									"text" : "mc.unpack~ 2"
 								}
 
@@ -118,7 +118,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 90.0, 593.0, 80.0, 13.0 ]
+									"patching_rect" : [ 8.0, 597.0, 109.0, 64.0 ]
 								}
 
 							}
@@ -129,7 +129,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 208.0, 430.0, 103.0, 22.0 ],
+									"patching_rect" : [ 124.0, 394.0, 103.0, 22.0 ],
 									"text" : "mc.combine~ 2"
 								}
 
@@ -164,7 +164,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 635.0, 133.0, 50.0, 22.0 ]
+									"patching_rect" : [ 551.0, 131.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -175,7 +175,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 635.0, 104.0, 80.0, 22.0 ],
+									"patching_rect" : [ 551.0, 102.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.1"
 								}
 
@@ -197,7 +197,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 635.0, 163.0, 74.0, 22.0 ],
+									"patching_rect" : [ 551.0, 161.0, 74.0, 22.0 ],
 									"text" : "rotSpeed $1"
 								}
 
@@ -211,7 +211,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 546.0, 133.0, 50.0, 22.0 ]
+									"patching_rect" : [ 462.0, 131.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -222,7 +222,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 546.0, 104.0, 73.0, 22.0 ],
+									"patching_rect" : [ 462.0, 102.0, 73.0, 22.0 ],
 									"text" : "loadmess 2."
 								}
 
@@ -244,7 +244,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 546.0, 163.0, 77.0, 22.0 ],
+									"patching_rect" : [ 462.0, 161.0, 77.0, 22.0 ],
 									"text" : "freqTheta $1"
 								}
 
@@ -258,7 +258,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 462.0, 133.0, 50.0, 22.0 ]
+									"patching_rect" : [ 378.0, 131.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -269,7 +269,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 462.0, 104.0, 80.0, 22.0 ],
+									"patching_rect" : [ 378.0, 102.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.1"
 								}
 
@@ -291,7 +291,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 462.0, 163.0, 79.0, 22.0 ],
+									"patching_rect" : [ 378.0, 161.0, 79.0, 22.0 ],
 									"text" : "ampTheta $1"
 								}
 
@@ -304,7 +304,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 143.0, 304.0, 105.0, 89.0 ],
+									"patching_rect" : [ 237.0, 296.0, 105.0, 89.0 ],
 									"range" : [ -2.0, 2.0 ]
 								}
 
@@ -349,7 +349,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 108.5, 484.0, 24.0, 24.0 ]
+									"patching_rect" : [ 104.0, 292.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -370,7 +370,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 108.5, 516.0, 90.0, 22.0 ],
+									"patching_rect" : [ 104.0, 324.0, 90.0, 22.0 ],
 									"text" : "directangles $1"
 								}
 
@@ -383,7 +383,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 39.0, 484.0, 24.0, 24.0 ]
+									"patching_rect" : [ 34.0, 292.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -404,7 +404,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 39.0, 516.0, 59.0, 22.0 ],
+									"patching_rect" : [ 34.0, 324.0, 59.0, 22.0 ],
 									"text" : "stereo $1"
 								}
 
@@ -415,7 +415,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 208.299999999999955, 610.0, 134.0, 22.0 ],
+									"patching_rect" : [ 124.0, 626.0, 134.0, 22.0 ],
 									"text" : "mc.dac~ 1 2 3 4 5 6 7 8"
 								}
 
@@ -427,7 +427,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 208.0, 406.0, 70.0, 22.0 ],
+									"patching_rect" : [ 124.0, 370.0, 70.0, 22.0 ],
 									"text" : "receive~ s5"
 								}
 
@@ -449,7 +449,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 408.0, 418.0, 72.0, 110.0 ],
+									"patching_rect" : [ 241.0, 408.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -461,7 +461,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 208.299999999999955, 550.5, 115.0, 22.0 ],
+									"patching_rect" : [ 124.0, 567.0, 115.0, 22.0 ],
 									"text" : "abc.hoa.decoder~ 3"
 								}
 
@@ -473,7 +473,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 208.0, 458.5, 95.0, 22.0 ],
+									"patching_rect" : [ 124.0, 423.0, 95.0, 22.0 ],
 									"text" : "abc.hoa.map~ 3"
 								}
 
@@ -487,7 +487,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 142.0, 245.0, 81.0, 22.0 ],
+									"patching_rect" : [ 236.0, 237.0, 81.0, 22.0 ],
 									"text" : "abc.poltocar~",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
@@ -502,7 +502,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 375.5, 133.0, 50.0, 22.0 ]
+									"patching_rect" : [ 292.0, 131.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -513,7 +513,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 375.5, 104.0, 80.0, 22.0 ],
+									"patching_rect" : [ 292.0, 102.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.2"
 								}
 
@@ -535,7 +535,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 375.5, 163.0, 68.0, 22.0 ],
+									"patching_rect" : [ 292.0, 161.0, 68.0, 22.0 ],
 									"text" : "freqRho $1"
 								}
 
@@ -549,7 +549,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 291.5, 133.0, 50.0, 22.0 ]
+									"patching_rect" : [ 208.0, 131.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -560,7 +560,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 291.5, 104.0, 80.0, 22.0 ],
+									"patching_rect" : [ 208.0, 102.0, 80.0, 22.0 ],
 									"text" : "loadmess 0.5"
 								}
 
@@ -582,7 +582,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 291.5, 163.0, 71.0, 22.0 ],
+									"patching_rect" : [ 208.0, 161.0, 71.0, 22.0 ],
 									"text" : "ampRho $1"
 								}
 
@@ -595,9 +595,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 291.5, 197.0, 168.0, 24.0 ],
-									"text" : "abc.polarvariablecircle~"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 208.0, 195.0, 230.0, 24.0 ],
+									"text" : "abc.trajectories~ @mode circular"
 								}
 
 							}
@@ -619,7 +619,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 644.5, 190.5, 301.0, 190.5 ],
+									"midpoints" : [ 560.5, 188.5, 217.5, 188.5 ],
 									"source" : [ "obj-12", 0 ]
 								}
 
@@ -669,7 +669,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 385.0, 190.5, 301.0, 190.5 ],
+									"midpoints" : [ 301.5, 188.5, 217.5, 188.5 ],
 									"source" : [ "obj-20", 0 ]
 								}
 
@@ -698,7 +698,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-30", 1 ],
-									"midpoints" : [ 417.5, 535.5, 313.799999999999955, 535.5 ],
+									"midpoints" : [ 250.5, 551.5, 229.5, 551.5 ],
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -713,6 +713,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-14", 0 ],
+									"midpoints" : [ 133.5, 593.5, 17.5, 593.5 ],
 									"order" : 1,
 									"source" : [ "obj-30", 0 ]
 								}
@@ -743,7 +744,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 555.5, 190.5, 301.0, 190.5 ],
+									"midpoints" : [ 471.5, 188.5, 217.5, 188.5 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -751,7 +752,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-13", 1 ],
-									"order" : 0,
+									"order" : 1,
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -759,8 +760,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-32", 0 ],
-									"midpoints" : [ 301.0, 237.5, 151.5, 237.5 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -796,7 +796,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-30", 1 ],
-									"midpoints" : [ 118.0, 543.75, 313.799999999999955, 543.75 ],
+									"midpoints" : [ 113.5, 559.75, 229.5, 559.75 ],
 									"source" : [ "obj-87", 0 ]
 								}
 
@@ -811,7 +811,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-30", 1 ],
-									"midpoints" : [ 48.5, 543.75, 313.799999999999955, 543.75 ],
+									"midpoints" : [ 43.5, 559.75, 229.5, 559.75 ],
 									"source" : [ "obj-89", 0 ]
 								}
 
@@ -819,7 +819,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
-									"midpoints" : [ 471.5, 190.5, 301.0, 190.5 ],
+									"midpoints" : [ 387.5, 188.5, 217.5, 188.5 ],
 									"source" : [ "obj-9", 0 ]
 								}
 
@@ -850,7 +850,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -889,12 +889,27 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-4",
-									"linecount" : 13,
+									"linecount" : 14,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+									"patching_rect" : [ 462.0, 206.0, 246.0, 194.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n@mode circular\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 245.0, 261.5, 81.0, 22.0 ],
+									"text" : "abc.cartopol~",
+									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
 							}
@@ -917,7 +932,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 245.0, 263.0, 100.0, 22.0 ],
+									"patching_rect" : [ 245.0, 285.5, 100.0, 22.0 ],
 									"text" : "mc.unpack~ 2"
 								}
 
@@ -1271,7 +1286,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 326.0, 418.0, 72.0, 110.0 ],
+									"patching_rect" : [ 326.0, 418.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1308,7 +1323,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 245.0, 287.0, 100.0, 102.0 ],
+									"patching_rect" : [ 245.0, 309.5, 100.0, 102.0 ],
 									"range" : [ -5.0, 5.0 ]
 								}
 
@@ -1321,23 +1336,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 348.0, 308.0, 70.0, 60.0 ],
+									"patching_rect" : [ 348.0, 330.5, 70.0, 60.0 ],
 									"text" : "generates a square trajectory in cartesian"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 217.0, 393.0, 81.0, 22.0 ],
-									"text" : "abc.cartopol~",
-									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
 							}
@@ -1408,7 +1408,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 1 ],
+									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -1489,15 +1489,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-7", 1 ],
+									"order" : 1,
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -1571,7 +1571,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1610,12 +1610,27 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-4",
-									"linecount" : 13,
+									"linecount" : 14,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+									"patching_rect" : [ 462.0, 206.0, 246.0, 194.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n@mode circular\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 222.5, 300.0, 81.0, 22.0 ],
+									"text" : "abc.cartopol~",
+									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
 							}
@@ -1649,7 +1664,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 222.5, 303.0, 100.0, 22.0 ],
+									"patching_rect" : [ 222.5, 324.0, 100.0, 22.0 ],
 									"text" : "mc.unpack~ 2"
 								}
 
@@ -1902,7 +1917,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 303.5, 458.0, 72.0, 110.0 ],
+									"patching_rect" : [ 303.0, 458.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1939,7 +1954,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 222.5, 327.0, 100.0, 102.0 ],
+									"patching_rect" : [ 222.5, 348.0, 100.0, 102.0 ],
 									"range" : [ -5.0, 5.0 ]
 								}
 
@@ -1952,23 +1967,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 325.5, 348.0, 70.0, 60.0 ],
+									"patching_rect" : [ 325.5, 369.0, 70.0, 60.0 ],
 									"text" : "generates a square trajectory in cartesian"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 194.5, 433.0, 81.0, 22.0 ],
-									"text" : "abc.cartopol~",
-									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
 							}
@@ -2098,7 +2098,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 1 ],
+									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -2179,14 +2179,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"order" : 1,
-									"source" : [ "obj-5", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
 									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
@@ -2194,8 +2186,16 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-7", 1 ],
+									"order" : 1,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
-									"midpoints" : [ 313.0, 574.0, 222.0, 574.0 ],
+									"midpoints" : [ 312.5, 574.0, 222.0, 574.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -2283,7 +2283,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2320,14 +2320,29 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 245.0, 262.0, 81.0, 22.0 ],
+									"text" : "abc.cartopol~",
+									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-4",
-									"linecount" : 13,
+									"linecount" : 14,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+									"patching_rect" : [ 462.0, 206.0, 246.0, 194.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n@mode circular\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -2361,7 +2376,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 245.0, 263.0, 100.0, 22.0 ],
+									"patching_rect" : [ 245.0, 288.0, 100.0, 22.0 ],
 									"text" : "mc.unpack~ 2"
 								}
 
@@ -2614,7 +2629,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 326.0, 418.0, 72.0, 110.0 ],
+									"patching_rect" : [ 326.0, 418.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -2651,7 +2666,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 245.0, 287.0, 100.0, 102.0 ],
+									"patching_rect" : [ 245.0, 312.0, 100.0, 102.0 ],
 									"range" : [ -5.0, 5.0 ]
 								}
 
@@ -2664,23 +2679,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 348.0, 308.0, 70.0, 60.0 ],
+									"patching_rect" : [ 348.0, 333.0, 70.0, 60.0 ],
 									"text" : "generates a square trajectory in cartesian"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 217.0, 393.0, 81.0, 22.0 ],
-									"text" : "abc.cartopol~",
-									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
 							}
@@ -2761,7 +2761,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 1 ],
+									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -2842,15 +2842,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-7", 1 ],
+									"order" : 1,
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -2924,7 +2924,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2961,6 +2961,18 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 234.0, 247.0, 81.0, 22.0 ],
+									"text" : "abc.poltocar~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -2978,7 +2990,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 230.0, 248.0, 100.0, 22.0 ],
+									"patching_rect" : [ 234.0, 273.0, 100.0, 22.0 ],
 									"text" : "mc.unpack~ 2"
 								}
 
@@ -3105,7 +3117,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 309.5, 575.0, 137.0, 47.0 ],
+									"patching_rect" : [ 323.0, 575.0, 137.0, 47.0 ],
 									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
 								}
 
@@ -3114,12 +3126,12 @@
 								"box" : 								{
 									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-4",
-									"linecount" : 13,
+									"linecount" : 14,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 462.0, 206.0, 246.0, 181.0 ],
-									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
+									"patching_rect" : [ 462.0, 206.0, 246.0, 194.0 ],
+									"text" : "@mode square \n@mode Z\n@mode squareZ\n@mode random\n@mode circular\n\nabc.trajectories generate 2D trajectories in cartesian coordinates. mode square stands for a square, mode Z for a Z, mode squareZ for an interpolation between a square and a Z, mode random for a random trajectory.\nAll of them have in common two controllers: freq (frequency of the shape in s-1), and size."
 								}
 
 							}
@@ -3388,7 +3400,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 311.0, 403.0, 72.0, 110.0 ],
+									"patching_rect" : [ 311.0, 403.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -3425,7 +3437,7 @@
 									"maxclass" : "scope~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 230.0, 272.0, 100.0, 102.0 ],
+									"patching_rect" : [ 234.0, 297.0, 100.0, 102.0 ],
 									"range" : [ -5.0, 5.0 ]
 								}
 
@@ -3438,23 +3450,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 333.0, 293.0, 70.0, 60.0 ],
+									"patching_rect" : [ 337.0, 318.0, 70.0, 60.0 ],
 									"text" : "generates a square trajectory in cartesian"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 202.0, 378.0, 81.0, 22.0 ],
-									"text" : "abc.cartopol~",
-									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
 							}
@@ -3482,7 +3479,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 1 ],
+									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -3563,15 +3560,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-7", 1 ],
+									"order" : 1,
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -3645,7 +3642,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 6,
-							"revision" : 2,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -3996,70 +3993,63 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "abc.cartopol~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.map~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
-				"patcherrelativepath" : "../patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc.polarvariablecircle~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.poltocar~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.quadriout~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/misc/others",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.trajectories~.maxpat",
-				"bootpath" : "~/Git/abc/forMaxLibrary/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
@@ -4089,10 +4079,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_polarvariablecircle~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "abc_2d_randomtrajectory~.mxo",
 				"type" : "iLaX"
 			}
@@ -4118,7 +4104,7 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Git/abc/forMaxLibrary/media/images",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/media/images",
 				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
@@ -4133,14 +4119,14 @@
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_bpatcher.js",
-				"bootpath" : "~/Git/abc/forMaxLibrary/javascript",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1

@@ -34,16 +34,15 @@
     <refpage name='abc.mc.busplus~.maxref.xml' />
     <refpage name='abc.mc.busselect~.maxref.xml' />
     <refpage name='abc.mc.chopan~.maxref.xml' />
-    <refpage name='abc.mc.cosrandenv~.maxref.xml' />
     <refpage name='abc.mc.delay~.maxref.xml' />
     <refpage name='abc.mc.flanger~.maxref.xml' />
     <refpage name='abc.mc.freqshift~.maxref.xml' />
     <refpage name='abc.mc.gain~.maxref.xml' />
     <refpage name='abc.mc.grain~.maxref.xml' />
     <refpage name='abc.mc.harmo~.maxref.xml' />
-    <refpage name='abc.mc.linrandenv~.maxref.xml' />
     <refpage name='abc.mc.matrix~.maxref.xml' />
     <refpage name='abc.mc.multinoise~.maxref.xml' />
+    <refpage name='abc.mc.randenv~.maxref.xml' />
     <refpage name='abc.mc.substractsynth~.maxref.xml' />
     <refpage name='abc.mult2pi~.maxref.xml' />
     <refpage name='abc.peakamp~.maxref.xml' />

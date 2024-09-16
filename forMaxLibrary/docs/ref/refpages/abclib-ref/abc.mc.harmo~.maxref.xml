@@ -64,6 +64,6 @@
     <seealso name="abc.mc.freqshift~" />
     <seealso name="abc.mc.flanger~" />
     <seealso name="abc.mc.delay~" />
-    <seealso name="abc.mc.cosrandenv~" />
+    <seealso name="abc.mc.randenv~" />
   </seealsolist>
 </c74object>
