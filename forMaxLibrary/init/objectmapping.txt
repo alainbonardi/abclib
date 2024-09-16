@@ -28,6 +28,9 @@ max definesubstitution abc.generatorinterface~ bpatcher @name abc.generatorinter
 max objectfile abc.gotoevent abc.gotoevent;
 max definesubstitution abc.gotoevent bpatcher @name abc.gotoevent;
 
+max objectfile abc.gaincontrol abc.gaincontrol;
+max definesubstitution abc.gaincontrol bpatcher @name abc.gaincontrol;
+
 max objectfile abc.audiotester~ abc.audiotester~;
 max objectfile abc.cartopol~  abc.cartopol~;
 max objectfile abc.delaychain~ abc.delaychain~;
