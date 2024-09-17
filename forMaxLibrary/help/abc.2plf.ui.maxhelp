@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 768.0, 759.0 ],
+						"rect" : [ 100.0, 126.0, 768.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -596,7 +596,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ "@obj-name", "abc.2plf", "@obj-desc", 3, "degrees", "of", "freedom", "GUI" ],
+									"args" : [ "@obj-name", "abc.2plf.ui", "@obj-desc", 3, "degrees", "of", "freedom", "GUI" ],
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -874,7 +874,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 768.0, 759.0 ],
+						"rect" : [ 0.0, 26.0, 768.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
