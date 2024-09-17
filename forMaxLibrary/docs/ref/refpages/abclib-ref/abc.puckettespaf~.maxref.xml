@@ -25,18 +25,14 @@
   </outletlist> -->
 
   <objarglist>
-      <objarg name="mode" optional="0" type="int">
-          <digest>
-              mode 
-          </digest>
-          <description>
-              first argument is the mode, mode 2 allows inharmonic generation [init=1:min=1:max=2:step=1].
-          </description>
-      </objarg>
   </objarglist>
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="mode" type="int" set="1" get="1" size="1">
+      <description>sets the mode of puckettespaf. '@mode 2' allows inharmonic generation [init=1:min=1:max=2:step=1]..</description>
+      <digest>mode of puckettespaf</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

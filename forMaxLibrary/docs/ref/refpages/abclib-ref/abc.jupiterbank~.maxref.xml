@@ -31,6 +31,12 @@ We added to these 14 oscillators 14 resonant filters tuned at the same frequenci
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attributelist>
+    <attribute name="mode" type="int" set="1" get="1" size="1">
+      <description>sets the mode of jupiterbank. '@mode 2' adds the control of the amplitudes of the 14 oscillators</description>
+      <digest>sets the mode of jupiterbank</digest>
+    </attribute>
+  </attributelist>
   </attributelist>
 
   <!--MESSAGES-->
@@ -84,6 +90,15 @@ We added to these 14 oscillators 14 resonant filters tuned at the same frequenci
       <description>sets the general gain in dB. [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the general gain in dB</digest>
     </method>  
+
+    <method name="fa">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>controls of the amplitudes of the 14 oscillators [ONLY FOR '@mode 2']. [init=1:min=0.01:max=100:step=0.01].</description>
+      <digest>controls of the amplitudes of the 14 oscillators</digest>
+    </method>  
+
   </methodlist>
 
   <seealsolist>
