@@ -40,19 +40,17 @@ function patching() {
 	//var jsobjectname = args[0];
 	var order = baseAmbisonicOrder;//We will save in 'order' every first attribute, for HOA objectes is the order, for the others is the first parameter, ex. channels etc...
 	var isHOA = (new RegExp("abc.hoa", "i").test(patcherName));//||(new RegExp("abc_3d", "i").test(jsobjectname));
+	var isMC = (new RegExp("abc.mc", "i").test(patcherName));
+	
 	if (typeof args[1] === 'number' && args[1] != 0) {
 		order = args[1];//Max puts a zero when there are no arguments
-		if (order > maxAmbisonicOrder && isHOA) {//We check if is an HOA object
-			post("O--------------abc------------>");
-			post("\n");
-			post("abcWrapper => ", "The maximum HOA order is", maxAmbisonicOrder, ". Replacing", order, "by", maxAmbisonicOrder, ".");
-			post("\n");
-			post(">--------------abc------------O");
+		if (order > maxAmbisonicOrder && isHOA == 1) {//We check if is an HOA object
+			error("abcWrapper => ", "The maximum HOA order is", maxAmbisonicOrder, ". Replacing", order, "by", maxAmbisonicOrder, ".");
 			order = maxAmbisonicOrder;
 		}
 	}
 
-	var speakers = order * 2 + 2;
+	var speakers;
 	//var stereo = false;
 	var dimensions = "2d";
 	var sources = 1;//To transform the encoder to multiencoder
@@ -69,11 +67,7 @@ function patching() {
 			} else if (args[i + 1] == 2) {
 				dimensions = "2d";
 			} else {
-				post("O--------------abc------------>");
-				post("\n");
-				post("abcWrapper => ", "Only 2d and 3d objects are allowed. Replacing", args[i + 1], "dimensions", "by 2 dimensions.");
-				post("\n");
-				post(">--------------abc------------O");
+				error("abcWrapper => ", "Only 2d and 3d objects are allowed. Replacing", args[i + 1], "dimensions", "by 2 dimensions.");
 				dimensions = "2d";
 			}
 			i++;
@@ -98,33 +92,22 @@ function patching() {
 	}
 	//Validation des maximums:
 	if (speakers > maxSpeakers) {
-		post("O--------------abc------------>");
-		post("\n");
-		post("abcWrapper => ", "The maximum number of speakers is", maxSpeakers, ". Replacing", speakers, "by", maxSpeakers, ".");
-		post("\n");
-		post(">--------------abc------------O");
+		error("abcWrapper => ", "The maximum number of speakers is", maxSpeakers, ". Replacing", speakers, "by", maxSpeakers, ".");
 		speakers = maxSpeakers;
 	}
 	if (instances > maxMCinstances) {
-		post("O--------------abc------------>");
-		post("\n");
-		post("abcWrapper => ", "The maximum number of MC instances is", maxMCinstances, ". Replacing", instances, "by", maxMCinstances, ".");
-		post("\n");
-		post(">--------------abc------------O");
+		error("abcWrapper => ", "The maximum number of MC instances is", maxMCinstances, ". Replacing", instances, "by", maxMCinstances, ".");
 		instances = maxMCinstances;
 	}
 	if (channels > maxMCinstances) {
-		post("O--------------abc------------>");
-		post("\n");
-		post("abcWrapper => ", "The maximum number of MC channels is", maxMCinstances, ". Replacing", channels, "by", maxMCinstances, ".");
-		post("\n");
-		post(">--------------abc------------O");
+		error("abcWrapper => ", "The maximum number of MC channels is", maxMCinstances, ". Replacing", channels, "by", maxMCinstances, ".");
 		channels = maxMCinstances;
 	}
 
-	//List of ABC sweet objects:
+	//List of ABC delicious objects:
 	if (patcherName == 'abc.hoa.decoder~' || patcherName == 'abc.hoa.decoder') {
 		if (patcherName == 'abc.hoa.decoder') withUI = true;
+		if(speakersSettedUp == false) speakers = order*2+2;
 		objectToInstantiate = "abc_" + dimensions + "_decoder" + order + "_" + speakers + "~";
 	} else if (patcherName == 'abc.hoa.encoder~' || patcherName == 'abc.hoa.encoder') {
 		if (patcherName == 'abc.hoa.encoder') withUI = true;
@@ -132,11 +115,7 @@ function patching() {
 			objectToInstantiate = "abc_" + dimensions + "_encoder" + order + "~";
 		} else {
 			if (sources > maxMEncoderSources) {//We check if is an HOA object
-				post("O--------------abc------------>");
-				post("\n");
-				post("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
-				post("\n");
-				post(">--------------abc------------O");
+				error("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
 				sources = maxMEncoderSources;
 			}
 			objectToInstantiate = "abc_" + dimensions + "_multiencoder" + order + "_" + sources + "~";
@@ -144,11 +123,7 @@ function patching() {
 	} else if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {
 		if (patcherName == 'abc.hoa.map') withUI = true;
 		if (sources > maxMAPsources) {
-			post("O--------------abc------------>");
-			post("\n");
-			post("abcWrapper => ", "The maximum number sources for the 'map' object is", maxMAPsources, ". Replacing", sources, "by", maxMAPsources, ".");
-			post("\n");
-			post(">--------------abc------------O");
+			error("abcWrapper => ", "The maximum number sources for the 'map' object is", maxMAPsources, ". Replacing", sources, "by", maxMAPsources, ".");
 			sources = maxMAPsources;
 		}
 		objectToInstantiate = "abc_" + dimensions + "_map" + order + "_" + sources + "~";
@@ -206,7 +181,7 @@ function patching() {
 		} else{
 			objectToInstantiate = "abc_" + dimensions + "_randomtrajectory" + "~";
 			addCARTOPOL = true;
-			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => ","Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 		signalData = false;
 	} else if (patcherName == 'abc.hoa.stereoencoder~' || patcherName == 'abc.hoa.stereoencoder') {
@@ -307,7 +282,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "linrandenv" + finalchannels + "~";
 		} else {
 			objectToInstantiate = "abc_" + "cosrandenv" + finalchannels + "~";
-			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 	} else if (patcherName == 'abc.drops~' || patcherName == 'abc.drops') {
 		if (patcherName == 'abc.drops') withUI = true;
@@ -376,7 +351,7 @@ function patching() {
 			objectToInstantiate = "abc_jupiterbank2~";
 		} else {
 			objectToInstantiate = "abc_jupiterbank~";
-			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
 		if (patcherName == 'abc.linedrive') withUI = true;
@@ -429,7 +404,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "puckettespaf2~";
 		} else {
 			objectToInstantiate = "abc_" + "puckettespaf~";
-			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 		finalchannels = channels;
 		signalData = false;
@@ -475,7 +450,7 @@ function patching() {
 			}
 		} else {
 			objectToInstantiate = "abc_" + "rev4stereo~";
-			error("ABC wrapper can not instantiate the object ", patcherName,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 	} else if (patcherName == 'abc.rissetsbell~' || patcherName == 'abc.rissetsbell') {
 		if (patcherName == 'abc.rissetsbell') withUI = true;
