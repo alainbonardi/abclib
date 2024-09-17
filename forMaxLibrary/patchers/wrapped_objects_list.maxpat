@@ -45,8 +45,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 563.0, 61.0, 202.0, 22.0 ],
-					"text" : "abc.hoa.decoder~ 99 @speakers 99",
+					"patching_rect" : [ 563.0, 61.0, 115.0, 22.0 ],
+					"text" : "abc.hoa.decoder~ 3",
 					"varname" : "abc.hoa.decoder~[7]"
 				}
 
@@ -2062,11 +2062,11 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_2d_decoder5_12~.mxo",
+				"name" : "abc_2d_decoder3_8~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_decoder7_16~.mxo",
+				"name" : "abc_2d_decoder5_12~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

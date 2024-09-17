@@ -34,6 +34,7 @@ function patching() {
 	var controlData = true;
 	var signalData = true;
 	var HcontroldataPos = 20;//Horizontal position of the control data input, in order not to put it so far to the left, but to the right position at the end of the other inputs.
+	var speakersSettedUp = false;
 	var addCARTOPOL = false;//If true it will add a cartopol before the output, created to convert trajectories outputs into polar.
 	var patcherName = this.patcher.name;//name of 'abc' object
 	var args = jsarguments;
@@ -59,7 +60,7 @@ function patching() {
 	for (var i = 1; i < args.length; i++) {
 		if (args[i] == "@speakers" || args[i] == "@spk") {
 			speakers = args[i + 1];
-			var speakersSettedUp = true;
+			speakersSettedUp = true;
 			i++;
 		} else if (args[i] == "@dimensions" || args[i] == "@dim") {
 			if (args[i + 1] == 3) {
@@ -108,6 +109,7 @@ function patching() {
 	if (patcherName == 'abc.hoa.decoder~' || patcherName == 'abc.hoa.decoder') {
 		if (patcherName == 'abc.hoa.decoder') withUI = true;
 		if(speakersSettedUp == false) speakers = order*2+2;
+
 		objectToInstantiate = "abc_" + dimensions + "_decoder" + order + "_" + speakers + "~";
 	} else if (patcherName == 'abc.hoa.encoder~' || patcherName == 'abc.hoa.encoder') {
 		if (patcherName == 'abc.hoa.encoder') withUI = true;
