@@ -262,6 +262,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "busmult" + order + "~";
 			finalchannels = order;
 		}
+		controlData = false;
 	} else if (patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {
 		if (patcherName == 'abc.mc.busplus') withUI = true;
 		if (channels) {
@@ -274,6 +275,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "busplus" + order + "~";
 			finalchannels = order;
 		}
+		controlData = false;
 	} else if (patcherName == 'abc.cartopol~' || patcherName == 'abc.cartopol') {
 		if (patcherName == 'abc.cartopol') withUI = true;
 		objectToInstantiate = "abc_" + "cartopol" + "~";
