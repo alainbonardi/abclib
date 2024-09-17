@@ -376,7 +376,6 @@ function patching() {
 			objectToInstantiate = "abc_jupiterbank~";
 			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
-		signalData = false;
 	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
 		if (patcherName == 'abc.linedrive') withUI = true;
 		objectToInstantiate = "abc_linedrive~";
