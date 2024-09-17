@@ -33,6 +33,8 @@ function patching() {
 	//------------------------
 	var controlData = true;
 	var signalData = true;
+	var HcontroldataPos = 60;//Horizontal position of the control data input, in order not to put it so far to the left, but to the right position at the end of the other inputs.
+	var addCARTOPOL = false;//If true it will add a cartopol before the output, created to convert trajectories outputs into polar.
 	var patcherName = this.patcher.name;//name of 'abc' object
 	var args = jsarguments;
 	//var jsobjectname = args[0];
@@ -189,13 +191,19 @@ function patching() {
 		if (patcherName == 'abc.trajectories') withUI = true;
 		if (mode == "fx" || mode == "random") {//We use fx as it's the default setting, but we'll select the random trajectory as default
 			objectToInstantiate = "abc_" + dimensions + "_randomtrajectory" + "~";
+			addCARTOPOL = true;
 		} else if (mode == "square") {
 			objectToInstantiate = "abc_" + dimensions + "_squaretrajectory" + "~";
+			addCARTOPOL = true;
 		} else if (mode == "Z") {
 			objectToInstantiate = "abc_" + dimensions + "_ztrajectory" + "~";
+			addCARTOPOL = true;
 		} else if (mode == "squareZ" || mode == "squarez") {
 			objectToInstantiate = "abc_" + dimensions + "_squareandztrajectory" + "~";
-		}
+			addCARTOPOL = true;
+		} else if (mode == "circular") {
+			objectToInstantiate = "abc_" + dimensions + "_polarvariablecircle~"
+		} 
 		signalData = false;
 	} else if (patcherName == 'abc.hoa.stereoencoder~' || patcherName == 'abc.hoa.stereoencoder') {
 		if (patcherName == 'abc.hoa.stereoencoder') withUI = true;
@@ -298,8 +306,8 @@ function patching() {
 	} else if (patcherName == 'abc.envfollower~' || patcherName == 'abc.envfollower') {
 		if (patcherName == 'abc.envfollower') withUI = true;
 		objectToInstantiate = "abc_" + "envfollower" + "~";
-	} else if (patcherName == 'abc.flanger~' || patcherName == 'abc.flanger') {
-		if (patcherName == 'abc.flanger') withUI = true;
+	} else if (patcherName == 'abc.mc.flanger~' || patcherName == 'abc.mc.flanger') {
+		if (patcherName == 'abc.mc.flanger') withUI = true;
 		if (channels) {
 			objectToInstantiate = "abc_" + "flanger" + channels + "~";
 			finalchannels = channels;
@@ -352,11 +360,8 @@ function patching() {
 		}
 	} else if (patcherName == 'abc.jupiterbank~' || patcherName == 'abc.jupiterbank') {
 		if (patcherName == 'abc.jupiterbank') withUI = true;
-		objectToInstantiate = "abc_jupiterbank~";
-		signalData = false;
-	} else if (patcherName == 'abc.jupiterbank2~' || patcherName == 'abc.jupiterbank2') {
-		if (patcherName == 'abc.jupiterbank2') withUI = true;
-		objectToInstantiate = "abc_jupiterbank2~";
+		if (mode == 1) objectToInstantiate = "abc_jupiterbank~";
+		if (mode == 2) objectToInstantiate = "abc_jupiterbank2~";
 		signalData = false;
 	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
 		if (patcherName == 'abc.linedrive') withUI = true;
@@ -402,20 +407,9 @@ function patching() {
 		controlData = false;
 	} else if (patcherName == 'abc.puckettespaf~' || patcherName == 'abc.puckettespaf') {
 		if (patcherName == 'abc.puckettespaf') withUI = true;
-		if (channels) {
-			objectToInstantiate = "abc_" + "puckettespaf" + channels + "~";
-			finalchannels = channels;
-		} else if (instances) {
-			objectToInstantiate = "abc_" + "puckettespaf" + instances + "~";
-			finalchannels = instances;
-		} else {
-			if (order == 1) {
-				objectToInstantiate = "abc_" + "puckettespaf~";
-			} else {
-				objectToInstantiate = "abc_" + "puckettespaf" + order + "~";
-			}
-			finalchannels = order;
-		}
+		if(mode == 1 || mode == "fx") objectToInstantiate = "abc_" + "puckettespaf~";
+		if(mode == 2) objectToInstantiate = "abc_" + "puckettespaf2~";
+		finalchannels = channels;
 		signalData = false;
 	} else if (patcherName == 'abc.mc.pulsedenv2synth~' || patcherName == 'abc.mc.pulsedenv2synth') {
 		if (patcherName == 'abc.mc.pulsedenv2synth') withUI = true;
@@ -483,36 +477,22 @@ function patching() {
 			objectToInstantiate = "abc_" + "substractsynth" + order + "~";
 			finalchannels = order;
 		}
-	} else if (patcherName == 'abc.polarvariablecircle~' || patcherName == 'abc.polarvariablecircle') {
-		if (patcherName == 'abc.polarvariablecircle') withUI = true;
-		objectToInstantiate = "abc_" + dimensions + "_polarvariablecircle~";
 	}
 
-	//if (stereo) {
-	//	objectToInstantiate += " @stereo 1";
-	//}
 
-	var alertMessage = patcher.newdefault(300, 100, "comment");
-	alertMessage.message('fontsize', 30);
+	var alertMessage = patcher.newdefault(200, 100, "comment");
+	alertMessage.message('patching_rect', 200,100,375,160);
+	alertMessage.message('fontsize', 20);
 	alertMessage.message('fontface', "bold");
-	alertMessage.message('textjustification', 1);
+	alertMessage.message('textjustification', 0);
 	//alertMessage.message('textcolor', "red");
-	alertMessage.message('set', "DO NOT MODIFY THIS ABSTRACTION");
+	alertMessage.message('set', "DO NOT MODIFY THIS ABSTRACTION. \nThis abstraction serves as a wrapper for the objects of the 'abc' library. It automatically selects the correct object and sets the appropriate inputs and outputs. Any modification will cause it to malfunction.");
 	objectToInstantiate += abcAttributes;
 	var abcObject = patcher.newdefault(20, 240, objectToInstantiate);//x,y,name of object
 	if (signalData){
 		var inlet1 = patcher.newdefault(20, 60, "inlet");
 		connectobject(inlet1, 0, abcObject, 0);
 	}
-	if(controlData){
-		var inlet2 = patcher.newdefault(700, 60, "inlet");
-		connectobject(inlet2, 0, abcObject, 0);
-	}
-	
-
-
-	var outlet = patcher.newdefault(20, 360, "outlet");
-	connectobject(abcObject, 0, outlet, 0);
 
 	//Special cases : Map and Buses:
 	if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {//n buses of 3 channels
@@ -523,6 +503,7 @@ function patching() {
 		var mapInlet;
 		for (k = 0; k < sources - 1; k++) {//add new inlets
 			mapInlet = patcher.newdefault(60 + 40 * k, 60, "inlet");
+			HcontroldataPos += 40;
 			connectobject(mapInlet, 0, combine, 1 + k);//connect inlets to mc.combine~
 		}
 		connectobject(combine, 0, abcObject, 0);//connect combine to abcObject
@@ -535,8 +516,23 @@ function patching() {
 		var businlet = patcher.newdefault(120, 60, "inlet");
 		connectobject(businlet, 0, combine, 1);//connect inlets to mc.combine~
 		connectobject(combine, 0, abcObject, 0);//connect combine to abcObject
+		HcontroldataPos = 160;
 	}
 	//-----------------------------------------------------
+
+	if(controlData){
+		var inlet2 = patcher.newdefault(HcontroldataPos, 60, "inlet");
+		connectobject(inlet2, 0, abcObject, 0);
+	}
+	var outlet = patcher.newdefault(20, 360, "outlet");
+	if(addCARTOPOL){
+		var cartopol = patcher.newdefault(20, 320, "abc_cartopol~");
+		connectobject(abcObject, 0, cartopol, 0);
+		connectobject(abcObject, 1, cartopol, 1);
+		connectobject(cartopol, 0, outlet, 0);
+	}else{
+		connectobject(abcObject, 0, outlet, 0);
+	}
 }
 
 function anything() {

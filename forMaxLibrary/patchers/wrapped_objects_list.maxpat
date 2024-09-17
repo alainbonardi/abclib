@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 950.0, 848.0 ],
+		"rect" : [ 35.0, 100.0, 950.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,37 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-6",
+					"id" : "obj-271",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "multichannelsignal", "list" ],
-					"patching_rect" : [ 426.0, 179.0, 105.0, 22.0 ],
-					"text" : "abc_2d_map3_5~"
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 20.266667187213898, 1182.0, 152.0, 22.0 ],
+					"text" : "abc.jupiterbank~ @mode 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-270",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 664.000017404556274, 992.800014793872833, 104.0, 22.0 ],
+					"text" : "abc.mc.flanger~ 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-21",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 964.347794473171234, 572.000017046928406, 184.0, 22.0 ],
+					"text" : "abc.trajectories~ @mode circular"
 				}
 
 			}
@@ -94,7 +118,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1736.0, 2008.0, 100.0, 22.0 ]
+					"patching_rect" : [ 1848.0, 2084.0, 100.0, 22.0 ]
 				}
 
 			}
@@ -192,18 +216,6 @@
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 16.000000476837158, 642.0, 148.0, 22.0 ],
 					"text" : "abc.hoa.stereoencoder~ 5"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-69",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 18.66666716337204, 1178.400017559528351, 104.0, 22.0 ],
-					"text" : "abc.jupiterbank2~"
 				}
 
 			}
@@ -347,18 +359,6 @@
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 16.0, 338.0, 86.0, 22.0 ],
 					"text" : "abc.mc.delay~"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-205",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 964.0, 572.000017046928406, 135.0, 22.0 ],
-					"text" : "abc.polarvariablecircle~"
 				}
 
 			}
@@ -789,8 +789,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 20.266667187213898, 1142.400017023086548, 97.0, 22.0 ],
-					"text" : "abc.jupiterbank~"
+					"patching_rect" : [ 20.266667187213898, 1150.0, 152.0, 22.0 ],
+					"text" : "abc.jupiterbank~ @mode 1"
 				}
 
 			}
@@ -981,8 +981,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 466.666673839092255, 992.800014793872833, 161.0, 22.0 ],
-					"text" : "abc.flanger~ 6 @instances 8"
+					"patching_rect" : [ 466.666673839092255, 992.800014793872833, 180.0, 22.0 ],
+					"text" : "abc.mc.flanger~ 6 @instances 8"
 				}
 
 			}
@@ -993,8 +993,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 264.266670823097229, 992.800014793872833, 158.0, 22.0 ],
-					"text" : "abc.flanger~ 6 @channels 5"
+					"patching_rect" : [ 264.266670823097229, 992.800014793872833, 178.0, 22.0 ],
+					"text" : "abc.mc.flanger~ 6 @channels 5"
 				}
 
 			}
@@ -1005,8 +1005,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 134.666668891906738, 992.800014793872833, 85.0, 22.0 ],
-					"text" : "abc.flanger~ 6"
+					"patching_rect" : [ 134.666668891906738, 992.800014793872833, 104.0, 22.0 ],
+					"text" : "abc.mc.flanger~ 6"
 				}
 
 			}
@@ -1017,8 +1017,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 14.666667103767395, 992.800014793872833, 75.0, 22.0 ],
-					"text" : "abc.flanger~"
+					"patching_rect" : [ 14.666667103767395, 992.800014793872833, 94.0, 22.0 ],
+					"text" : "abc.mc.flanger~"
 				}
 
 			}
@@ -1675,13 +1675,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.flanger~.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc.generator~.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : ".",
@@ -1787,13 +1780,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.jupiterbank2~.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc.jupiterbank~.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : ".",
@@ -1844,6 +1830,13 @@
 			}
 , 			{
 				"name" : "abc.mc.delay~.maxpat",
+				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.mc.flanger~.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -1928,13 +1921,6 @@
 			}
 , 			{
 				"name" : "abc.phasor2pi~.maxpat",
-				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "abc.polarvariablecircle~.maxpat",
 				"bootpath" : "~/Documents/GitHub/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
@@ -2273,6 +2259,10 @@
 			}
 , 			{
 				"name" : "abc_flanger1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_flanger4~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
