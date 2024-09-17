@@ -33,7 +33,7 @@ function patching() {
 	//------------------------
 	var controlData = true;
 	var signalData = true;
-	var HcontroldataPos = 60;//Horizontal position of the control data input, in order not to put it so far to the left, but to the right position at the end of the other inputs.
+	var HcontroldataPos = 20;//Horizontal position of the control data input, in order not to put it so far to the left, but to the right position at the end of the other inputs.
 	var addCARTOPOL = false;//If true it will add a cartopol before the output, created to convert trajectories outputs into polar.
 	var patcherName = this.patcher.name;//name of 'abc' object
 	var args = jsarguments;
@@ -203,7 +203,11 @@ function patching() {
 			addCARTOPOL = true;
 		} else if (mode == "circular") {
 			objectToInstantiate = "abc_" + dimensions + "_polarvariablecircle~"
-		} 
+		} else{
+			objectToInstantiate = "abc_" + dimensions + "_randomtrajectory" + "~";
+			addCARTOPOL = true;
+			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+		}
 		signalData = false;
 	} else if (patcherName == 'abc.hoa.stereoencoder~' || patcherName == 'abc.hoa.stereoencoder') {
 		if (patcherName == 'abc.hoa.stereoencoder') withUI = true;
@@ -230,6 +234,7 @@ function patching() {
 		} else {
 			objectToInstantiate = "abc_" + "addsynth" + order + "~";
 		}
+		signalData = false;
 	} else if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect') {
 		if (patcherName == 'abc.mc.busselect') withUI = true;
 		if (channels) {
@@ -298,6 +303,9 @@ function patching() {
 			objectToInstantiate = "abc_" + "cosrandenv" + finalchannels + "~";
 		} else if (mode == "lin" || mode == "linear" || mode == "line") {
 			objectToInstantiate = "abc_" + "linrandenv" + finalchannels + "~";
+		} else {
+			objectToInstantiate = "abc_" + "cosrandenv" + finalchannels + "~";
+			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 	} else if (patcherName == 'abc.drops~' || patcherName == 'abc.drops') {
 		if (patcherName == 'abc.drops') withUI = true;
@@ -360,8 +368,14 @@ function patching() {
 		}
 	} else if (patcherName == 'abc.jupiterbank~' || patcherName == 'abc.jupiterbank') {
 		if (patcherName == 'abc.jupiterbank') withUI = true;
-		if (mode == 1) objectToInstantiate = "abc_jupiterbank~";
-		if (mode == 2) objectToInstantiate = "abc_jupiterbank2~";
+		if (mode == 1){
+			objectToInstantiate = "abc_jupiterbank~";
+		} else if (mode == 2){
+			objectToInstantiate = "abc_jupiterbank2~";
+		} else {
+			objectToInstantiate = "abc_jupiterbank~";
+			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+		}
 		signalData = false;
 	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
 		if (patcherName == 'abc.linedrive') withUI = true;
@@ -395,6 +409,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "multinoise" + order + "~";
 			finalchannels = order;
 		}
+		signalData = false;
 	} else if (patcherName == 'abc.peakamp~' || patcherName == 'abc.peakamp') {
 		if (patcherName == 'abc.peakamp') withUI = true;
 		objectToInstantiate = "abc_" + "peakamp" + "~";
@@ -407,8 +422,14 @@ function patching() {
 		controlData = false;
 	} else if (patcherName == 'abc.puckettespaf~' || patcherName == 'abc.puckettespaf') {
 		if (patcherName == 'abc.puckettespaf') withUI = true;
-		if(mode == 1 || mode == "fx") objectToInstantiate = "abc_" + "puckettespaf~";
-		if(mode == 2) objectToInstantiate = "abc_" + "puckettespaf2~";
+		if(mode == 1 || mode == "fx"){
+			objectToInstantiate = "abc_" + "puckettespaf~";
+		} else if(mode == 2){
+			objectToInstantiate = "abc_" + "puckettespaf2~";
+		} else {
+			objectToInstantiate = "abc_" + "puckettespaf~";
+			error("ABC wrapper can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+		}
 		finalchannels = channels;
 		signalData = false;
 	} else if (patcherName == 'abc.mc.pulsedenv2synth~' || patcherName == 'abc.mc.pulsedenv2synth') {
@@ -423,6 +444,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "pulsedenv2synth" + order + "~";
 			finalchannels = order;
 		}
+		signalData = false;
 	} else if (patcherName == 'abc.rev4~' || patcherName == 'abc.rev4') {
 		if (patcherName == 'abc.rev4') withUI = true;
 		//By default we use stereo, but if they put on the parameters something different from 2 or 4(only possible options) we fall into the quadri option (4)
@@ -444,12 +466,15 @@ function patching() {
 			} else {
 				objectToInstantiate = "abc_" + "rev4quadri~";
 			}
-		} else {
+		} else if(order > 0 && order <= 4){
 			if (order == 1 || order == 2) {
 				objectToInstantiate = "abc_" + "rev4stereo~";
 			} else {
 				objectToInstantiate = "abc_" + "rev4quadri~";
 			}
+		} else {
+			objectToInstantiate = "abc_" + "rev4stereo~";
+			error("ABC wrapper can not instantiate the object ", patcherName,". Instead, the object:",objectToInstantiate,"has been instantiated.");
 		}
 	} else if (patcherName == 'abc.rissetsbell~' || patcherName == 'abc.rissetsbell') {
 		if (patcherName == 'abc.rissetsbell') withUI = true;
@@ -492,6 +517,7 @@ function patching() {
 	if (signalData){
 		var inlet1 = patcher.newdefault(20, 60, "inlet");
 		connectobject(inlet1, 0, abcObject, 0);
+		HcontroldataPos += 40;
 	}
 
 	//Special cases : Map and Buses:
@@ -519,7 +545,6 @@ function patching() {
 		HcontroldataPos = 160;
 	}
 	//-----------------------------------------------------
-
 	if(controlData){
 		var inlet2 = patcher.newdefault(HcontroldataPos, 60, "inlet");
 		connectobject(inlet2, 0, abcObject, 0);
@@ -528,7 +553,6 @@ function patching() {
 	if(addCARTOPOL){
 		var cartopol = patcher.newdefault(20, 320, "abc_cartopol~");
 		connectobject(abcObject, 0, cartopol, 0);
-		connectobject(abcObject, 1, cartopol, 1);
 		connectobject(cartopol, 0, outlet, 0);
 	}else{
 		connectobject(abcObject, 0, outlet, 0);
