@@ -242,7 +242,7 @@ xyDoubleTriangle(f, s) = os.phasor(1, f) <: (x,  y) : (*(s), *(s))
 xyRandom(f, s) = thisRandomPos
 		with {
 			ramp = os.phasor(1, f);
-			step = f / ma.SR;
+			step = abs(f) / ma.SR;
 			phasorThreshold = (ramp > step) * (ramp@1 <= step);
 			temporalFilter = ba.sAndH(phasorThreshold);
 			//computes the temporal interval taking into account the case when f=0 and when f<0
