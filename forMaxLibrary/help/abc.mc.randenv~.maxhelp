@@ -215,7 +215,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 368.0, 548.0, 156.0, 33.0 ],
-									"presentation_linecount" : 2,
 									"text" : "shapes of the 2 cosinus random envelopes"
 								}
 
@@ -859,7 +858,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 502.0, 69.0, 143.0, 60.0 ],
-									"presentation_linecount" : 4,
 									"text" : "two modes are provided: \n\n@mode linear\n@mode cosinus"
 								}
 
@@ -873,7 +871,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 5.0, 69.0, 487.0, 167.0 ],
-									"presentation_linecount" : 12,
 									"text" : "abc.mc.randenv~ object provides multichannel envelopes with two modes: linear and cosinus. By default the object is in cosinus mode. \n\nA probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.\n- If the rarefaction is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the rarefaction is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum rarefaction).\n- freq parameter is the frequency of the envelope generated.\n- spread parameter controls the phase between the envelopes of the various channels: 0 means no dephasing, 1 means maximum dephasing (for instance half a period when there are 2 channels)."
 								}
 
@@ -1524,8 +1521,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 503.0, 69.0, 142.0, 60.0 ],
-									"presentation_linecount" : 4,
+									"patching_rect" : [ 503.0, 69.0, 143.0, 60.0 ],
 									"text" : "two modes are provided: \n\n@mode linear\n@mode cosinus"
 								}
 

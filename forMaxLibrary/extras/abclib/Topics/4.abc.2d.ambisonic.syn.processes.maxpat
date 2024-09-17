@@ -271,8 +271,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 92.0, 157.0, 130.0, 22.0 ],
-									"text" : "abc.mc.
-									randenv~ 9"
+									"text" : "abc.mc.randenv~ 9"
 								}
 
 							}

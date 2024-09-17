@@ -148,7 +148,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "int" ],
-					"patching_rect" : [ 174.5, 207.0, 5.0, 100.0 ]
+					"patching_rect" : [ 176.0, 231.0, 5.0, 100.0 ]
 				}
 
 			}
@@ -181,7 +181,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 121.0, 156.0, 310.0, 30.0 ],
+					"patching_rect" : [ 121.5, 175.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -215,7 +215,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 67.0, 114.0, 310.0, 30.0 ],
+					"patching_rect" : [ 67.0, 140.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -239,7 +239,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 264.0, 223.0, 353.0, 60.0 ],
+					"patching_rect" : [ 6.0, 62.0, 485.0, 60.0 ],
 					"text" : "The abc.env.noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction. \n-argument 1 is the grain size (envelope period in milliseconds)\n-argument 2 is the rarefaction between 0 and 1"
 				}
 
@@ -337,9 +337,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -732,19 +732,6 @@
 
 			}
  ],
-		"parameters" : 		{
-			"parameterbanks" : 			{
-				"0" : 				{
-					"index" : 0,
-					"name" : "",
-					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
-				}
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
 		"dependency_cache" : [ 			{
 				"name" : "abc.env.noise~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
