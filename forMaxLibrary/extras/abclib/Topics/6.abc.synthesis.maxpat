@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 36.0, 107.0, 959.0, 663.0 ],
+		"rect" : [ 597.0, -850.0, 959.0, 663.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -58,7 +58,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 36.0, 133.0, 959.0, 637.0 ],
+						"rect" : [ 0.0, 26.0, 959.0, 637.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -330,7 +330,6 @@
 					}
 ,
 					"patching_rect" : [ 95.0, 262.0, 59.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1552,7 +1551,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 959.0, 637.0 ],
+						"rect" : [ 597.0, -824.0, 959.0, 637.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1797,9 +1796,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 64.0, 281.0, 128.0, 24.0 ],
-									"text" : "abc.jupiterbank2~"
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 64.0, 281.0, 187.0, 24.0 ],
+									"text" : "abc.jupiterbank~ @mode 2"
 								}
 
 							}
@@ -3266,7 +3265,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.jupiterbank2~.maxpat",
+				"name" : "abc.jupiterbank~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",
@@ -3390,6 +3389,10 @@
 				"patcherrelativepath" : "../../../media/images",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_jupiterbank2~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_multinoise4~.mxo",

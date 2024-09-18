@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 768.0, 785.0 ],
+		"rect" : [ -472.0, -1313.0, 768.0, 785.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 768.0, 759.0 ],
+						"rect" : [ 0.0, 26.0, 768.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +87,41 @@
 						"showontab" : 2,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontname" : "Avenir",
+									"id" : "obj-37",
+									"linecount" : 5,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 343.0, 260.0, 365.0, 88.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 7,
+									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 121.0 ],
+									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate\nCMD+CLIC+DRAG = if on a point, change the color of the point"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"border" : 1,
+									"bordercolor" : [ 0.286274509803922, 0.309803921568627, 0.313725490196078, 1.0 ],
+									"grad1" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"grad2" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-123",
+									"maxclass" : "panel",
+									"mode" : 1,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 343.0, 260.0, 365.0, 88.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 56.0 ],
+									"proportion" : 0.5
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bgmode" : 0,
 									"border" : 0,
@@ -200,7 +235,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 207.0, 502.0, 75.0, 110.0 ],
+									"patching_rect" : [ 207.0, 497.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -473,7 +508,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 54.0, 135.0, 257.0, 200.0 ]
+									"patching_rect" : [ 53.0, 135.0, 257.0, 200.0 ]
 								}
 
 							}
@@ -496,7 +531,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 357.0, 188.0, 59.0, 22.0 ],
+									"patching_rect" : [ 356.0, 188.0, 59.0, 22.0 ],
 									"text" : "0, 127 $1"
 								}
 
@@ -509,7 +544,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "int" ],
-									"patching_rect" : [ 313.0, 148.0, 63.0, 22.0 ],
+									"patching_rect" : [ 312.0, 148.0, 63.0, 22.0 ],
 									"text" : "unpack s i"
 								}
 
@@ -522,7 +557,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
-									"patching_rect" : [ 357.0, 224.0, 41.0, 22.0 ],
+									"patching_rect" : [ 356.0, 224.0, 41.0, 22.0 ],
 									"text" : "line 0."
 								}
 
@@ -534,38 +569,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 58.0, 104.0, 61.0, 22.0 ],
+									"patching_rect" : [ 57.0, 104.0, 61.0, 22.0 ],
 									"text" : "play 2000"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Avenir",
-									"id" : "obj-37",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 320.0, 265.0, 365.0, 72.0 ],
-									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"border" : 1,
-									"bordercolor" : [ 0.286274509803922, 0.309803921568627, 0.313725490196078, 1.0 ],
-									"grad1" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"grad2" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-123",
-									"maxclass" : "panel",
-									"mode" : 1,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 320.0, 265.0, 365.0, 76.0 ],
-									"proportion" : 0.5
 								}
 
 							}
@@ -576,7 +581,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 264.0, 104.0, 29.5, 22.0 ],
+									"patching_rect" : [ 263.0, 104.0, 29.5, 22.0 ],
 									"text" : "init"
 								}
 
@@ -589,7 +594,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 59.0, 107.0, 58.0, 22.0 ],
+									"patching_rect" : [ 58.0, 107.0, 58.0, 22.0 ],
 									"text" : "loadbang"
 								}
 
@@ -631,7 +636,7 @@
 									"numoutlets" : 3,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "", "", "" ],
-									"patching_rect" : [ 58.0, 135.0, 250.0, 200.0 ],
+									"patching_rect" : [ 57.0, 135.0, 250.0, 200.0 ],
 									"varname" : "abc.2plf.ui",
 									"viewvisibility" : 1
 								}
@@ -689,7 +694,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
-									"midpoints" : [ 273.5, 130.0, 67.5, 130.0 ],
+									"midpoints" : [ 272.5, 130.0, 66.5, 130.0 ],
 									"source" : [ "obj-15", 0 ]
 								}
 
@@ -704,7 +709,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-53", 1 ],
-									"midpoints" : [ 296.5, 494.0, 267.0, 494.0, 267.0, 458.0, 235.5, 458.0 ],
+									"midpoints" : [ 296.5, 487.0, 267.0, 487.0, 267.0, 458.0, 235.5, 458.0 ],
 									"source" : [ "obj-19", 0 ]
 								}
 
@@ -807,6 +812,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-21", 1 ],
+									"midpoints" : [ 138.5, 613.0, 216.5, 613.0 ],
 									"source" : [ "obj-56", 0 ]
 								}
 
@@ -874,7 +880,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 768.0, 759.0 ],
+						"rect" : [ -472.0, -1287.0, 768.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -957,7 +963,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 96.0, 529.0, 52.0, 62.0 ],
+									"patching_rect" : [ 94.0, 529.0, 52.0, 62.0 ],
 									"text" : "0.5 0 0.81 728 0.5 1272"
 								}
 
@@ -1078,15 +1084,15 @@
 								"box" : 								{
 									"fontname" : "Avenir",
 									"id" : "obj-37",
-									"linecount" : 4,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 388.0, 413.0, 365.0, 72.0 ],
+									"patching_rect" : [ 388.0, 413.0, 365.0, 88.0 ],
 									"presentation" : 1,
-									"presentation_linecount" : 5,
-									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 88.0 ],
-									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate"
+									"presentation_linecount" : 7,
+									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 121.0 ],
+									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate\nCMD+CLIC+DRAG = if on a point, change the color of the point"
 								}
 
 							}
@@ -1102,7 +1108,7 @@
 									"mode" : 1,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 388.0, 413.0, 365.0, 76.0 ],
+									"patching_rect" : [ 388.0, 413.0, 365.0, 88.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 56.0 ],
 									"proportion" : 0.5
@@ -1171,12 +1177,12 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-5",
-									"linecount" : 6,
+									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 8.0, 68.0, 542.0, 87.0 ],
-									"text" : "This interface lets you control processes with three degrees of freedom: the position of points on the first (thickest) line, the color of points on the first line, and points on the second line. By double-clicking, a point will be inserted at cursor level on the first line (with the \"option\" key for the second line). To change their color, press the \"cmd\" key and drag the mouse. The \"play\" message, followed by a number corresponding to the execution time, brings up lists compatible with the \"line\" object. The \"shift\" key displays a marker at cursor level. This object is compatible with pattrstorage."
+									"patching_rect" : [ 10.0, 61.5, 542.0, 100.0 ],
+									"text" : "This interface lets you control processes with three degrees of freedom: the position of points on the first (thickest) line, the color of points on the first line, and points on the second line. By double-clicking, a point will be inserted at cursor level on the first line (with the \"option\" key for the second line). To change their color, press the \"cmd\" key and drag verticaly the mouse. The \"play\" message, followed by a number corresponding to the execution time, brings up lists compatible with the \"line\" object. The \"shift\" key displays a marker at cursor level. This object is compatible with pattrstorage."
 								}
 
 							}
