@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 645.0, 488.0 ],
+		"rect" : [ 268.0, 279.0, 645.0, 488.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,16 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "mc.ezdac~",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 67.0, 373.5, 45.0, 45.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "newobj",
@@ -181,7 +191,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 121.5, 175.0, 310.0, 30.0 ],
+					"patching_rect" : [ 121.0, 175.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -239,18 +249,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 6.0, 62.0, 485.0, 60.0 ],
+					"patching_rect" : [ 6.0, 62.0, 488.0, 60.0 ],
 					"text" : "The abc.env.noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction. \n-argument 1 is the grain size (envelope period in milliseconds)\n-argument 2 is the rarefaction between 0 and 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "ezdac~",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 68.0, 378.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -337,9 +337,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_caption" : "hoa.2d.scope~",
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
 									}
 ,
 									"maxclass" : "fpic",
@@ -665,7 +665,7 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-14", 0 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -673,7 +673,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 1 ],
-					"midpoints" : [ 196.5, 378.0, 184.0, 378.0, 184.0, 324.0, 147.5, 324.0 ],
+					"midpoints" : [ 196.5, 378.0, 166.0, 378.0, 166.0, 324.0, 147.5, 324.0 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
