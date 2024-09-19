@@ -465,7 +465,8 @@ linRandEnv(f, s, delta) = (_, _) : (randVol, _) : *
 			randVol = (_ <: (randTest, (+(1) : *(0.5))) : * : ba.sAndH(phasorThreshold)) : ba.line(ma.SR / f);
 			randTest = (_, (s : *(2) : -(1))) : >;
 			ramp = os.phasor(1, f) : +(delta) : ma.decimal;
-			phasorThreshold = (ramp > 0.001) * (ramp@1 <= 0.001);
+			step = f / ma.SR;
+			phasorThreshold = (ramp > step) * (ramp@1 <= step);
 };
 
 //--------------------------------------------------------------------------------------//

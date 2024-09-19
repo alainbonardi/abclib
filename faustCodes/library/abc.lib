@@ -52,7 +52,7 @@ import("mm.lib");
 //-----------------------------
 abc_2d_stereodecoder_ui(N) = thisStereoDecoder
 	with {
-			direct = 2 * nentry("v:decoderStereo2/directangles", 1, 0, 1, 1) - 1;
+			direct = 2 * nentry("v:decoderStereo2/directangles", 0, 0, 1, 1) - 1;
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			leftDispatcher = _<:(*(1-direct), *(direct));
 			rightDispatcher = _<:(*(direct), *(1-direct));
@@ -75,7 +75,7 @@ abc_2d_stereodecoder_ui(N) = thisStereoDecoder
 //-----------------------------
 abc_2d_decoder_ui(N, P) = iDecoder(N, la, direct, offset, stereo, gain) 
 	with {
-			direct = (2 * nentry("h:decoder/v:general/[0]directangles", 1, 0, 1, 1) - 1) : si.smoo; 
+			direct = (2 * nentry("h:decoder/v:general/[0]directangles", 0, 0, 1, 1) - 1) : si.smoo; 
 			offset = hslider("h:decoder/v:general/[1]angularoffset[unit:deg]", 0, -180, 180, 1) : si.smoo;
 			gain = hslider("h:decoder/v:general/[3]gain[unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			stereo = nentry("h:decoder/v:general/[4]stereo", 0, 0, 1, 1) : si.smoo;
