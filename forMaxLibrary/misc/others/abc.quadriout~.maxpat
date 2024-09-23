@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 211.0, 607.0, 970.0, 521.0 ],
+		"rect" : [ 211.0, 365.0, 970.0, 521.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -58,8 +58,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 488.0, 85.5, 45.0, 22.0 ],
-					"text" : "190 40"
+					"patching_rect" : [ 488.0, 85.5, 52.0, 22.0 ],
+					"text" : "190. 33."
 				}
 
 			}
@@ -568,7 +568,7 @@
 		"dependency_cache" : [ 			{
 				"name" : "resize_bpatcher.js",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
-				"patcherrelativepath" : "../../../../../Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

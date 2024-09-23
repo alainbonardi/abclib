@@ -31,12 +31,10 @@ We added to these 14 oscillators 14 resonant filters tuned at the same frequenci
 
   <!--ATTRIBUTES-->
   <attributelist>
-    <attributelist>
     <attribute name="mode" type="int" set="1" get="1" size="1">
-      <description>sets the mode of jupiterbank. '@mode 2' adds the control of the amplitudes of the 14 oscillators</description>
+      <description>sets the mode of jupiterbank (1 or 2). '@mode 2' adds the control of the amplitudes of the 14 oscillators</description>
       <digest>sets the mode of jupiterbank</digest>
     </attribute>
-  </attributelist>
   </attributelist>
 
   <!--MESSAGES-->
