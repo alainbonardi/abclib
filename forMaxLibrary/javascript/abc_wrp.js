@@ -457,7 +457,6 @@ function patching() {
 	} else if (patcherName == 'abc.rissetsbell~' || patcherName == 'abc.rissetsbell') {
 		if (patcherName == 'abc.rissetsbell') withUI = true;
 		objectToInstantiate = "abc_" + "rissetsbell" + "~";
-		signalData = false;
 	} else if (patcherName == 'abc.soundcoat~' || patcherName == 'abc.soundcoat') {
 		if (patcherName == 'abc.soundcoat') withUI = true;
 		objectToInstantiate = "abc_" + "soundcoat" + "~";
