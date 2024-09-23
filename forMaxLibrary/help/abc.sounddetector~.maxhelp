@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 346.0, 170.0, 1132.0, 577.0 ],
+		"rect" : [ 100.0, 100.0, 1132.0, 577.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -600,11 +600,11 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-68",
-					"linecount" : 7,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 508.0, 6.0, 242.0, 100.0 ],
+					"patching_rect" : [ 6.0, 59.0, 482.0, 60.0 ],
 					"text" : "abc.sounddetector~ provides the detection of attacks and releases of incoming sound\nIts first outlet is an on-off envelope\nThe second outlet provides a binary signal of detection of the attack\nThe third outlet provides a binary signal of detection of the release"
 				}
 
@@ -734,9 +734,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_caption" : "hoa.2d.scope~",
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
 									}
 ,
 									"maxclass" : "fpic",
@@ -860,7 +860,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 78.0, 4.0, 398.0, 27.0 ],
-									"text" : "abc_sounddetector~",
+									"text" : "abc.sounddetector~",
 									"textcolor" : [ 0.999903, 1.0, 0.99983, 1.0 ],
 									"varname" : "autohelp_top_title[1]"
 								}
@@ -876,7 +876,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 79.0, 5.0, 401.0, 27.0 ],
-									"text" : "abc_sounddetector~",
+									"text" : "abc.sounddetector~",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 									"varname" : "autohelp_top_title[2]"
 								}
