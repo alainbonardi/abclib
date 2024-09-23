@@ -347,7 +347,7 @@ function patching() {
 		}
 	} else if (patcherName == 'abc.jupiterbank~' || patcherName == 'abc.jupiterbank') {
 		if (patcherName == 'abc.jupiterbank') withUI = true;
-		if (mode == 1){
+		if (mode == 1 ||  mode == "fx"){
 			objectToInstantiate = "abc_jupiterbank~";
 		} else if (mode == 2){
 			objectToInstantiate = "abc_jupiterbank2~";
