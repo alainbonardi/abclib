@@ -38,10 +38,10 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
-      <attribute name="dimension" type="int" set="1" get="1" size="1">
+      <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
         <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
         <digest>sets the number of dimensions</digest>
-      </attribute>
+      </attribute>-->
   </attributelist>
 
   <!--MESSAGES-->
