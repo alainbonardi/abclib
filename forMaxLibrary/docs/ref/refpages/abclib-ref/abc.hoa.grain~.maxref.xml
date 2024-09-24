@@ -83,7 +83,6 @@
     <seealso name="abc.hoa.delay~" />
     <seealso name="abc.hoa.decorrelation~" />
     <seealso name="abc.hoa.ringmod~" />
-    <seealso name="abc.hoa.gain~" />
     <seealso name="abc.hoa.encoder~" />
     <seealso name="abc.hoa.decoder~" />
     <seealso name="abc.hoa.optim~" />
