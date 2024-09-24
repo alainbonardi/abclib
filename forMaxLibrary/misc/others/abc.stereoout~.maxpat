@@ -59,7 +59,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 488.0, 85.5, 52.0, 22.0 ],
-					"text" : "189. 29."
+					"text" : "189. 26."
 				}
 
 			}
