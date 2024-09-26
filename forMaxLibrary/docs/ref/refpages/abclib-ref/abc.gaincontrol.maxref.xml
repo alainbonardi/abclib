@@ -29,7 +29,7 @@
             initial gain in dB
           </digest>
           <description>
-              first argument is the initial gain in dB [init=0:min=-127:max=18:step=0.01]
+              [ONLY IN INSPECTOR] first argument is the initial gain in dB [init=0:min=-127:max=18:step=0.01]
           </description>
       </objarg>
   </objarglist>

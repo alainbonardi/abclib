@@ -30,7 +30,7 @@
               the channel number of the adc
           </digest>
           <description>
-              first argument is the the channel number of the adc.
+              [ONLY IN INSPECTOR] first argument is the the channel number of the adc.
           </description>
       </objarg>
 
@@ -39,7 +39,7 @@
               the init level in dB
           </digest>
           <description>
-              the init level in dB
+              [ONLY IN INSPECTOR] the init level in dB
           </description>
       </objarg>
 
@@ -48,7 +48,7 @@
               the enabling of the dc filtering (1/0)
           </digest>
           <description>
-              the enabling of the dc filtering (1/0)
+             [ONLY IN INSPECTOR] the enabling of the dc filtering (1/0)
           </description>
       </objarg>      
   </objarglist>
