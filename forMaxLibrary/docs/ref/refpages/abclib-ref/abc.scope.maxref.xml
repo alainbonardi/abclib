@@ -35,7 +35,7 @@ A unique 4 digit number is attributed to each instance and each visualization wi
               type of drawing (points or lines).
           </digest>
           <description>
-              type of drawing (points or lines).
+              [ONLY IN INSPECTOR] type of drawing (points or lines).
           </description>
       </objarg>
 
@@ -44,7 +44,7 @@ A unique 4 digit number is attributed to each instance and each visualization wi
               size of the drawing.
           </digest>
           <description>
-              size of the drawing.
+              [ONLY IN INSPECTOR] size of the drawing.
           </description>
       </objarg>
 
@@ -53,7 +53,7 @@ A unique 4 digit number is attributed to each instance and each visualization wi
               display on/off the floating window of the visualization
           </digest>
           <description>
-              display on/off the floating window of the visualization
+              [ONLY IN INSPECTOR] display on/off the floating window of the visualization
           </description>
       </objarg>
   </objarglist>

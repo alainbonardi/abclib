@@ -33,10 +33,37 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+
+    <attribute name="dur[index]" type="float" set="1" get="1" size="1">
+      <description>sets the duration of the delay line [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
+      <digest>sets the duration of the delay line [index] in musical duration</digest>
+    </attribute>
+
+    <attribute name="gain[index]" type="float" set="1" get="1" size="1">
+      <description>sets the gain of the [index] delay line in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
+      <digest>sets the gain of the [index] delay line in dB</digest>
+    </attribute>
+
+    <attribute name="fdbk[index]" type="float" set="1" get="1" size="1">
+      <description>sets the feedback level of the [index] delay line, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=0:max=0.99999:step=0.0001] </description>
+      <digest>sets the feedback level of the [index] delay line</digest>
+    </attribute>
+
+    <attribute name="tempo" type="float" set="1" get="1" size="1">
+      <description>sets the reference tempo in bpm to calculate the delay lines durations [init=60:min=1:max=600:step=0.01] </description>
+      <digest>sets the reference tempo in bpm to calculate the delay lines durations</digest>
+    </attribute>
+
+    <attribute name="updatefreq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the interpolation between the delay lines which are overlapped. [init=30:min=0.0001:max=1000:step=0.0001] </description>
+      <digest>sets the reference tempo in bpm to calculate the delay lines durations</digest>
+    </attribute>
+
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="dur[index]">
       <arglist>
         <arg type="float" />
@@ -44,6 +71,7 @@
       <description>sets the duration of the delay line [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
       <digest>sets the duration of the delay line [index] in musical duration</digest>
     </method>
+
     <method name="gain[index]">
       <arglist>
         <arg type="float" />
@@ -51,6 +79,7 @@
       <description>sets the gain of the [index] delay line in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
       <digest>sets the gain of the [index] delay line in dB</digest>
     </method>
+
     <method name="fdbk[index]">
       <arglist>
         <arg type="float" />
@@ -58,6 +87,7 @@
       <description>sets the feedback level of the [index] delay line, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=0:max=0.99999:step=0.0001] </description>
       <digest>sets the feedback level of the [index] delay line</digest>
     </method>
+
     <method name="tempo">
       <arglist>
         <arg type="float" />
@@ -65,6 +95,7 @@
       <description>sets the reference tempo in bpm to calculate the delay lines durations [init=60:min=1:max=600:step=0.01] </description>
       <digest>sets the reference tempo in bpm to calculate the delay lines durations</digest>
     </method>
+
     <method name="updatefreq">
       <arglist>
         <arg type="float" />
@@ -72,6 +103,7 @@
       <description>sets the frequency of the interpolation between the delay lines which are overlapped. [init=30:min=0.0001:max=1000:step=0.0001] </description>
       <digest>sets the reference tempo in bpm to calculate the delay lines durations</digest>
     </method>
+    
   </methodlist>
 
   <seealsolist>

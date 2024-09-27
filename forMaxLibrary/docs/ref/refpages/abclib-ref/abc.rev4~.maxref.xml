@@ -33,6 +33,16 @@
       <description>sets the mode of reverberation. Possible values: 'stereo', 'quadri'.</description>
       <digest>sets the mode of reverberation (stereo or quadri)</digest>
     </attribute>
+
+    <attribute name="revDur" type="int" set="1" get="1" size="1">
+      <description>sets the duration of reverberation with values between 0 and 127: 127 means an 'infinite' duration. [init=120:min=0:max=127:step=1].</description>
+      <digest>sets the duration of reverberation with values between 0 and 127</digest>
+    </attribute>
+    
+    <attribute name="revGain" type="int" set="1" get="1" size="1">
+      <description>sets gain of the reverberate signal. [init=100:min=0:max=127:step=1].</description>
+      <digest>sets gain of the reverberate signal</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -44,6 +54,7 @@
       <description>sets the duration of reverberation with values between 0 and 127: 127 means an 'infinite' duration. [init=120:min=0:max=127:step=1].</description>
       <digest>sets the duration of reverberation with values between 0 and 127</digest>
     </method>
+
     <method name="revGain">
       <arglist>
         <arg type="int" />

@@ -33,10 +33,42 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+  
+    <attribute name="f0" type="float" set="1" get="1" size="1">
+      <description>sets the general fundamental frequency in Hz [init=220:min=0.01:max=15000:step=0.01].</description>
+      <digest>sets the general fundamental frequency in Hz</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the volume in dB</digest>
+    </attribute>
+
+    <attribute name="filterQ" type="int" set="1" get="1" size="1">
+      <description>sets the factor of quality of all filters [init=50:min=1:max=500:step=1].</description>
+      <digest>sets the factor of quality of filters</digest>
+    </attribute>
+
+    <attribute name="filterG" type="float" set="1" get="1" size="1">
+      <description>sets the gain of all filters [init=0.8:min=0:max=1:step=0.01].</description>
+      <digest>sets the factor of quality of filters</digest>
+    </attribute>
+
+    <attribute name="amp[index]" type="float" set="1" get="1" size="1">
+      <description>sets the amplitude of the [index] partial in dB [init=dB(1/[index]):min=-127:max=18:step=0.01].</description>
+      <digest>sets the amplitude of the [index] partial</digest>
+    </attribute>
+
+    <attribute name="fmult[index]" type="float" set="1" get="1" size="1">
+      <description>sets the multiplier of the fundamental f0 to tune the [index] filter [init=[index]:min=0:max=1000:step=0.00001].</description>
+      <digest>sets the multiplier of the fundamental f0 to tune the [index] filter</digest>
+    </attribute>
+    
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="f0">
       <arglist>
         <arg type="float" />
@@ -44,6 +76,7 @@
       <description>sets the general fundamental frequency in Hz [init=220:min=0.01:max=15000:step=0.01].</description>
       <digest>sets the general fundamental frequency in Hz</digest>
     </method>
+
     <method name="gain">
       <arglist>
         <arg type="float" />
@@ -51,6 +84,7 @@
       <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
+
     <method name="filterQ">
       <arglist>
         <arg type="int" />
@@ -58,6 +92,7 @@
       <description>sets the factor of quality of all filters [init=50:min=1:max=500:step=1].</description>
       <digest>sets the factor of quality of filters</digest>
     </method>
+
     <method name="filterG">
       <arglist>
         <arg type="float" />
@@ -65,6 +100,7 @@
       <description>sets the gain of all filters [init=0.8:min=0:max=1:step=0.01].</description>
       <digest>sets the factor of quality of filters</digest>
     </method>
+
     <method name="amp[index]">
       <arglist>
         <arg type="float" />
@@ -72,6 +108,7 @@
       <description>sets the amplitude of the [index] partial in dB [init=dB(1/[index]):min=-127:max=18:step=0.01].</description>
       <digest>sets the amplitude of the [index] partial</digest>
     </method>
+
     <method name="fmult[index]">
       <arglist>
         <arg type="float" />
@@ -79,6 +116,7 @@
       <description>sets the multiplier of the fundamental f0 to tune the [index] filter [init=[index]:min=0:max=1000:step=0.00001].</description>
       <digest>sets the multiplier of the fundamental f0 to tune the [index] filter</digest>
     </method>
+
   </methodlist>
 
   <seealsolist>

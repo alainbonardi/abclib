@@ -28,6 +28,15 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="outputmax" type="float" set="1" get="1" size="1">
+      <description>sets the maximum output. [init=1:min=0:max=100000:step=0.01].</description>
+      <digest>sets the maximum output</digest>
+    </attribute>
+
+    <attribute name="expcurve" type="float" set="1" get="1" size="1">
+      <description>sets the exponential profile. [init=1.06:min=1e-05:max=2:step=1e-05].</description>
+      <digest>sets the exponential profile</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -48,12 +57,15 @@
       <description>sets the exponential profile. [init=1.06:min=1e-05:max=2:step=1e-05].</description>
       <digest>sets the exponential profile</digest>
     </method>
+
   </methodlist>
 
   <seealsolist>
     <seealso name="abc.peakamp~" />
-    <seealso name="abc.mc.delay~" />
-    <seealso name="abc.mc.gain~" />
-    <seealso name="abc.mc.addsynth~" />
+    <seealso name="abc.mc.randenv~" />
+    <seealso name="abc.envfollower~" />
+    <seealso name="abc.phasor2pi~" />
+    <seealso name="abc.cartopol~" />
+    <seealso name="abc.poltocar~" />
   </seealsolist>
 </c74object>

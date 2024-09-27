@@ -28,6 +28,40 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="offset" type="int" set="1" get="1" size="1">
+      <description>dB offset to increase the measurement of the amplitude if necessary. [init=10:min=-64:max=64:step=1]</description>
+      <digest>dB offset to increase the measurement of the amplitude if necessary</digest>
+    </attribute>
+
+    <attribute name="noteOn" type="int" set="1" get="1" size="1">
+      <description>sets the threshold in dB of detection of the attack. [init=-60:min=-120:max=0:step=1:cur=0]</description>
+      <digest>sets the threshold in dB of detection of the attack</digest>
+    </attribute>
+
+    <attribute name="noiseFloor" type="int" set="1" get="1" size="1">
+      <description>sets the threshold in dB to make the distinction between the incoming sound and ambient noise. [init=-50:min=-120:max=0:step=1]</description>
+      <digest>sets the threshold in dB to make the distinction between the incoming sound and ambient noise</digest>
+    </attribute>
+
+    <attribute name="noteDur" type="int" set="1" get="1" size="1">
+      <description>[init=50:min=1:max=500:step=1]</description>
+      <digest></digest>
+    </attribute>
+
+    <attribute name="offDur" type="int" set="1" get="1" size="1">
+      <description>[init=25:min=1:max=500:step=1]</description>
+      <digest></digest>
+    </attribute>
+
+    <attribute name="attack" type="boolean" set="1" get="1" size="1">
+      <description>[init=0:min=0:max=1:step=1]</description>
+      <digest></digest>
+    </attribute>
+
+    <attribute name="tSlide" type="int" set="1" get="1" size="1">
+      <description>[init=10:min=1:max=100:step=1]</description>
+      <digest></digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

@@ -33,6 +33,52 @@
       <description>sets the mode of puckettespaf. '@mode 2' allows inharmonic generation [init=1:min=1:max=2:step=1]..</description>
       <digest>mode of puckettespaf</digest>
     </attribute>
+
+    <attribute name="a" type="float" set="1" get="1" size="1">
+      <description>controls the waveshape when wf=0 (Gaussian mode). [init=1:min=0.001:max=100:step=0.001]</description>
+      <digest>controls the waveshape when wf=0 (Gaussian mode)</digest>
+    </attribute>
+
+    <attribute name="bw" type="float" set="1" get="1" size="1">
+      <description>sets the width of the central peak in the spectrum. [init=50:min=0.001:max=5000:step=0.001]</description>
+      <digest>sets the width of the central peak in the spectrum</digest>
+    </attribute>
+
+    <attribute name="cf" type="float" set="1" get="1" size="1">
+      <description>sets the central frequency in Hz. cf is bordered by two successive multiples of the fundamental frequency f0. [init=500:min=20:max=20000:step=0.001]</description>
+      <digest>sets the central frequency in Hz</digest>
+    </attribute>
+
+    <attribute name="f0" type="float" set="1" get="1" size="1">
+      <description>sets the fundamental frequency in Hz. [init=220:min=20:max=20000:step=0.001]</description>
+      <digest>sets the fundamental frequency in Hz</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>[init=0:min=-127:max=18:step=0.01:cur=-127]</description>
+      <digest></digest>
+    </attribute>
+
+    <attribute name="sigma" type="float" set="1" get="1" size="1">
+      <description>controls the waveshape when wf=1 (Cauchy mode). [init=1:min=0.001:max=5:step=0.001]</description>
+      <digest>controls the waveshape when wf=1</digest>
+    </attribute>
+
+    <attribute name="wf" type="boolean" set="1" get="1" size="1">
+      <description>sets the waveshaping mode. 0 uses the Gaussian function, 1 uses Cauchy function</description>
+      <digest>sets the waveshaping mode.</digest>
+    </attribute>
+
+    <attribute name="ifreq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the variable phase for 'abc.puckettespaf~ 2' in Hz. [init=0.1:min=0:max=1000:step=0.001]</description>
+      <digest>sets the frequency of the variable phase for 'abc.puckettespaf~ 2'</digest>
+    </attribute>
+
+    <attribute name="iamp" type="float" set="1" get="1" size="1">
+      <description>sets the amplitude of the variable phase for 'abc.puckettespaf~ 2'. [init=0:min=0:max=1:step=0.001]</description>
+      <digest>sets the amplitude of the variable phase for 'abc.puckettespaf~ 2'</digest>
+    </attribute>
+
   </attributelist>
 
   <!--MESSAGES-->

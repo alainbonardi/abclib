@@ -29,6 +29,10 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="freq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the phasor in Hz. [init=0.1:min=0:max=20000:step=0.00001].</description>
+      <digest>sets the frequency of the phasor in Hz.</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

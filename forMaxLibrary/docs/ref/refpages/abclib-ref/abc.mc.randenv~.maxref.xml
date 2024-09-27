@@ -33,14 +33,32 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+
     <attribute name="mode" type="string" set="1" get="1" size="1">
       <description>sets the envelope shape between linear and cosinus</description>
       <digest>sets the envelope shape between linear and cosinus</digest>
     </attribute>
+    
+    <attribute name="freq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the envelope generated [init=0.5:min=0.01:max=100:step=0.01].</description>
+      <digest>sets the frequency of the envelope generated</digest>
+    </attribute>
+
+    <attribute name="rarefaction" type="float" set="1" get="1" size="1">
+      <description>sets the proportion of envelope played. If the rarefaction is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the rarefaction is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum rarefaction).[init=0:min=0:max=1:step=0.001].</description>
+      <digest>sets the proportion of envelope played.</digest>
+    </attribute>
+
+    <attribute name="spread" type="float" set="1" get="1" size="1">
+      <description>controls  the phase between the envelopes of the various channels: 0 means no dephasing, 1 means maximum dephasing (for instance half a period when there are 2 channels).[init=0:min=0:max=1:step=0.001].</description>
+      <digest>controls  the phase between the envelopes of the various channels</digest>
+    </attribute>
+    
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="freq">
       <arglist>
         <arg type="float" />
@@ -48,6 +66,7 @@
       <description>sets the frequency of the envelope generated [init=0.5:min=0.01:max=100:step=0.01].</description>
       <digest>sets the frequency of the envelope generated</digest>
     </method>
+
     <method name="rarefaction">
       <arglist>
         <arg type="float" />
@@ -55,6 +74,7 @@
       <description>sets the proportion of envelope played. If the rarefaction is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the rarefaction is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum rarefaction).[init=0:min=0:max=1:step=0.001].</description>
       <digest>sets the proportion of envelope played.</digest>
     </method>
+
     <method name="spread">
       <arglist>
         <arg type="float" />
@@ -62,6 +82,7 @@
       <description>controls  the phase between the envelopes of the various channels: 0 means no dephasing, 1 means maximum dephasing (for instance half a period when there are 2 channels).[init=0:min=0:max=1:step=0.001].</description>
       <digest>controls  the phase between the envelopes of the various channels</digest>
     </method>
+
   </methodlist>
 
   <seealsolist>

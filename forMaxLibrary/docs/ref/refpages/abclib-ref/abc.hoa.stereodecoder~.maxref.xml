@@ -42,6 +42,15 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the output gain in dB</digest>
+    </attribute>
+
+    <attribute name="directangles" type="boolean" set="1" get="1" size="1">
+      <description>sets direction of encodage angle between clockwise and couterclockwise, true is anti-clockwise, false is clockwise [init=1:min=0:max=1:step=1].</description>
+      <digest>sets direction of encodage angle</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -53,6 +62,7 @@
       <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the output gain in dB</digest>
     </method>
+
     <method name="directangles">
       <arglist>
         <arg type="boolean" />
@@ -66,11 +76,7 @@
     <seealso name="abc.hoa.encoder~" />
     <seealso name="abc.hoa.map~" />
     <seealso name="abc.hoa.wider~" />
-    <seealso name="abc.hoa.trajectories~" />
+    <seealso name="abc.hoa.decoder~" />
     <seealso name="abc.hoa.mirror~" />
-    <seealso name="abc.hoa.decorrelation~" />
-    <seealso name="abc.hoa.delay~" />
-    <seealso name="abc.hoa.grains~" />
-    <seealso name="abc.hoa.ringmod~" />
   </seealsolist>
 </c74object>
