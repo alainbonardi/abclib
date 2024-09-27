@@ -430,7 +430,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1188.0, 726.0 ],
+						"rect" : [ 38.0, 160.0, 1188.0, 726.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -553,7 +553,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -15 ],
+									"args" : [ "@gain", -15 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -567,7 +567,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 577.0, 284.0, 189.0, 29.0 ],
+									"patching_rect" : [ 577.0, 284.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1944,7 +1944,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 38.0, 160.0, 1188.0, 726.0 ],
+						"rect" : [ 0.0, 26.0, 1188.0, 726.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3579,7 +3579,7 @@
 									"fontsize" : 14.0,
 									"id" : "obj-54",
 									"maxclass" : "newobj",
-									"numinlets" : 3,
+									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 528.0, 481.5, 134.0, 24.0 ],
@@ -3838,7 +3838,7 @@
 									"fontsize" : 14.0,
 									"id" : "obj-17",
 									"maxclass" : "newobj",
-									"numinlets" : 3,
+									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 872.0, 472.5, 135.0, 24.0 ],
@@ -4458,7 +4458,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 1 ],
-									"midpoints" : [ 662.5, 445.0, 595.0, 445.0 ],
+									"midpoints" : [ 662.5, 445.0, 652.5, 445.0 ],
 									"source" : [ "obj-50", 0 ]
 								}
 

@@ -94,7 +94,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 826.0, 760.0 ],
+						"rect" : [ 134.0, 126.0, 826.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -702,7 +702,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 126.0, 826.0, 760.0 ],
+						"rect" : [ 0.0, 26.0, 826.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -774,7 +774,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.964279000000033, 186.0, 124.071441999999934, 20.0 ],
+									"patching_rect" : [ 353.0, 186.0, 124.071441999999934, 20.0 ],
 									"text" : "cartesian coordinates"
 								}
 
@@ -884,7 +884,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 179.0, 185.0, 186.0, 22.0 ],
+									"patching_rect" : [ 164.0, 185.0, 186.0, 22.0 ],
 									"text" : "abc.trajectories~ @mode random"
 								}
 
@@ -1408,7 +1408,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-83", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 444.5, 171.5, 188.5, 171.5 ],
+									"midpoints" : [ 444.5, 171.5, 173.5, 171.5 ],
 									"source" : [ "obj-7", 0 ]
 								}
 
@@ -1437,7 +1437,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
-									"midpoints" : [ 188.5, 220.5, 284.5, 220.5 ],
+									"midpoints" : [ 173.5, 220.5, 284.5, 220.5 ],
 									"order" : 0,
 									"source" : [ "obj-83", 0 ]
 								}
@@ -1757,7 +1757,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 364.0, 186.0, 124.071441999999934, 20.0 ],
+									"patching_rect" : [ 349.0, 186.0, 124.071441999999934, 20.0 ],
 									"text" : "cartesian coordinates"
 								}
 
@@ -1941,7 +1941,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 179.0, 186.0, 186.0, 22.0 ],
+									"patching_rect" : [ 164.0, 186.0, 186.0, 22.0 ],
 									"text" : "abc.trajectories~ @mode random"
 								}
 
@@ -2141,7 +2141,7 @@
 								"patchline" : 								{
 									"destination" : [ "obj-83", 0 ],
 									"hidden" : 1,
-									"midpoints" : [ 444.5, 171.5, 188.5, 171.5 ],
+									"midpoints" : [ 444.5, 171.5, 173.5, 171.5 ],
 									"source" : [ "obj-7", 0 ]
 								}
 
@@ -2156,7 +2156,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
-									"midpoints" : [ 188.5, 220.5, 321.5, 220.5 ],
+									"midpoints" : [ 173.5, 220.5, 321.5, 220.5 ],
 									"order" : 0,
 									"source" : [ "obj-83", 0 ]
 								}
