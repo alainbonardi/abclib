@@ -409,7 +409,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 5.5, 62.0, 486.0, 87.0 ],
-									"text" : "abc.mc.pulsedenv2synth~ are multichannel generators of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency).\nThe ratio silence/sound is controlable (ratio).\nThe short envelopes can be decorrelated thanks to spread control (between 0 and 1).\nA lowpass filter (at frequency fc) is applied to the output."
+									"text" : "abc.mc.pulsedenv2synth~ is a multichannel generator of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency).\nThe ratio silence/sound is controlable (ratio).\nThe short envelopes can be decorrelated thanks to spread control (between 0 and 1).\nA lowpass filter (at frequency fc) is applied to the output."
 								}
 
 							}
@@ -593,9 +593,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_caption" : "hoa.2d.scope~",
 														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-														"palette_action" : "hoa.2d.scope~"
+														"palette_action" : "hoa.2d.scope~",
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -1187,9 +1187,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~",
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -1514,14 +1514,6 @@
 			}
  ],
 		"lines" : [  ],
-		"parameters" : 		{
-			"parameterbanks" : 			{
-
-			}
-,
-			"inherited_shortname" : 1
-		}
-,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
