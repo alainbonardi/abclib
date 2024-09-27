@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.mc.pulsedenv2synth~" module="abclib">
+  <digest>Abclib's pulsed synthetizer</digest>
+  <description><o>abc.mc.pulsedenv2synth~</o> is a multichannel generator of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency).<br /><br />
+  The ratio silence/sound is controlable (ratio).<br />
+  The short envelopes can be decorrelated thanks to spread control (between 0 and 1).<br />
+  A lowpass filter (at frequency fc) is applied to the output.<br />
+</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+
+    <attribute name="envFreq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the triangular envelopes. [init=8.36:min=0.001:max=500:step=0.001].</description>
+      <digest>sets the frequency of the triangular envelopes.</digest>
+    </attribute>
+
+    <attribute name="carrierFreq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of sinusoid sound. [init=880:min=0.001:max=5000:step=0.001].</description>
+      <digest>sets the frequency of sinusoid sound</digest>
+    </attribute>
+  
+    <attribute name="ratio" type="float" set="1" get="1" size="1">
+      <description>sets the ratio between silence and sound. [init=140:min=0:max=500:step=0.001].</description>
+      <digest>sets the ratio between silence and sound</digest>
+    </attribute>
+
+    <attribute name="spread" type="float" set="1" get="1" size="1">
+      <description>sets factor of decorrelation between envelopes. [init=0:min=0:max=1:step=0.001].</description>
+      <digest>sets factor of decorrelation between envelopes.</digest>
+    </attribute>
+
+    <attribute name="fc" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of lowpass filter. [init=1500:min=20:max=10000:step=1].</description>
+      <digest>sets the frequency of lowpass filter.</digest>
+    </attribute>
+  
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the output gain in dB</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="envFreq">
+      <arglist>
+        <arg type="fload" />
+      </arglist>
+      <description>sets the frequency of the triangular envelopes. [init=8.36:min=0.001:max=500:step=0.001].</description>
+      <digest>sets the frequency of the triangular envelopes.</digest>
+    </method>
+
+    <method name="carrierFreq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of sinusoid sound. [init=880:min=0.001:max=5000:step=0.001].</description>
+      <digest>sets the frequency of sinusoid sound</digest>
+    </method>
+  
+    <method name="ratio">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the ratio between silence and sound. [init=140:min=0:max=500:step=0.001].</description>
+      <digest>sets the ratio between silence and sound</digest>
+    </method>
+
+    <method name="spread">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets factor of decorrelation between envelopes. [init=0:min=0:max=1:step=0.001].</description>
+      <digest>sets factor of decorrelation between envelopes.</digest>
+    </method>
+
+    <method name="fc">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of lowpass filter. [init=1500:min=20:max=10000:step=1].</description>
+      <digest>sets the frequency of lowpass filter.</digest>
+    </method>
+
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the output gain in dB</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.substractsynth~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.harmo~" />
+    <seealso name="abc.mc.flanger~" />
+    <seealso name="abc.mc.freqshift~" />
+  </seealsolist>
+</c74object>
