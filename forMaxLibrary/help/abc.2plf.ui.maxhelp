@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -472.0, -1313.0, 768.0, 785.0 ],
+		"rect" : [ 100.0, 100.0, 960.0, 785.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 768.0, 759.0 ],
+						"rect" : [ 0.0, 26.0, 960.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,17 +88,29 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 37.0, 74.0, 94.0, 22.0 ],
+									"text" : "abc.soundcoat~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"fontname" : "Avenir",
 									"id" : "obj-37",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 343.0, 260.0, 365.0, 88.0 ],
+									"patching_rect" : [ 343.0, 269.0, 405.0, 88.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 7,
 									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 121.0 ],
-									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate\nCMD+CLIC+DRAG = if on a point, change the color of the point"
+									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate\nCMD+CLIC+DRAG vertically= if on a point, change the color of the point"
 								}
 
 							}
@@ -114,7 +126,7 @@
 									"mode" : 1,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 343.0, 260.0, 365.0, 88.0 ],
+									"patching_rect" : [ 343.0, 271.0, 405.0, 86.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 56.0 ],
 									"proportion" : 0.5
@@ -137,28 +149,6 @@
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.0, 703.0, 339.0, 43.0 ],
-									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"args" : [ 20, 0.6, 0 ],
-									"bgmode" : 0,
-									"border" : 1,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-28",
-									"lockeddragscroll" : 0,
-									"lockedsize" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "abc.env.noise~.maxpat",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"offset" : [ 0.0, 0.0 ],
-									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 37.0, 71.0, 310.0, 30.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -199,7 +189,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -213,7 +203,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 37.0, 650.0, 190.0, 40.0 ],
+									"patching_rect" : [ 37.0, 650.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -758,13 +748,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-53", 0 ],
-									"source" : [ "obj-28", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-31", 0 ],
 									"order" : 1,
 									"source" : [ "obj-3", 0 ]
@@ -799,6 +782,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-26", 0 ],
 									"source" : [ "obj-34", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-53", 0 ],
+									"source" : [ "obj-4", 0 ]
 								}
 
 							}
@@ -880,7 +870,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -472.0, -1287.0, 768.0, 759.0 ],
+						"rect" : [ 100.0, 126.0, 960.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1088,11 +1078,11 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 388.0, 413.0, 365.0, 88.0 ],
+									"patching_rect" : [ 388.0, 411.0, 405.0, 88.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 7,
 									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 121.0 ],
-									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate\nCMD+CLIC+DRAG = if on a point, change the color of the point"
+									"text" : "DBLCLIC = add (or del) a point on the bold line\nOPT + DBLCLIC = add (or del) a point on the fine line\nDRAG = control the position of a point\nSHIFT = print a cursor with coordinate\nCMD+CLIC+DRAG vertically= if on a point, change the color of the point"
 								}
 
 							}
@@ -1108,7 +1098,7 @@
 									"mode" : 1,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 388.0, 413.0, 365.0, 88.0 ],
+									"patching_rect" : [ 388.0, 413.0, 405.0, 86.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 454.5, 641.470027430057598, 268.0, 56.0 ],
 									"proportion" : 0.5
@@ -1182,7 +1172,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 10.0, 61.5, 542.0, 100.0 ],
-									"text" : "This interface lets you control processes with three degrees of freedom: the position of points on the first (thickest) line, the color of points on the first line, and points on the second line. By double-clicking, a point will be inserted at cursor level on the first line (with the \"option\" key for the second line). To change their color, press the \"cmd\" key and drag verticaly the mouse. The \"play\" message, followed by a number corresponding to the execution time, brings up lists compatible with the \"line\" object. The \"shift\" key displays a marker at cursor level. This object is compatible with pattrstorage."
+									"text" : "This interface lets you control processes with three degrees of freedom: the position of points on the first (thickest) line, the color of points on the first line, and points on the second line. By double-clicking, a point will be inserted at cursor level on the first line (with the \"option\" key for the second line). To change their color, press the \"cmd\" key and drag vertically the mouse. The \"play\" message, followed by a number corresponding to the execution time, brings up lists compatible with the \"line\" object. The \"shift\" key displays a marker at cursor level. This object is compatible with pattrstorage."
 								}
 
 							}
@@ -1348,13 +1338,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.env.noise~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
@@ -1397,6 +1380,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.soundcoat~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc_2d_decoder3_4~.mxo",
 				"type" : "iLaX"
 			}
@@ -1410,6 +1400,10 @@
 				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_soundcoat~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_wrp.js",
