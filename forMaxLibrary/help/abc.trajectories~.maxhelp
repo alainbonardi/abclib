@@ -1060,7 +1060,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 324.5, 590.0, 137.0, 47.0 ],
+									"patching_rect" : [ 332.220240333333322, 590.0, 137.0, 47.0 ],
 									"text" : "Output gain in dB and\nnumbers of the outputs in the inspector menu"
 								}
 
@@ -1145,7 +1145,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2642,7 +2642,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 329.0, 417.5, 75.0, 110.0 ],
+									"patching_rect" : [ 329.0, 417.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -3524,7 +3524,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,

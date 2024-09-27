@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 236.0, -1056.0, 839.0, 786.0 ],
+		"rect" : [ 134.0, 100.0, 839.0, 786.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 236.0, -1030.0, 839.0, 760.0 ],
+						"rect" : [ 134.0, 126.0, 839.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -207,7 +207,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.916666666666629, 62.0, 617.0, 141.0 ],
+									"patching_rect" : [ 13.916666666666629, 62.0, 620.0, 141.0 ],
 									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
 								}
 
@@ -400,7 +400,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 95.0, 250.0, 90.0, 35.0 ],
-									"text" : "f0 330"
+									"text" : "f0 880"
 								}
 
 							}
@@ -698,7 +698,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0 ],
+									"args" : [ "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -712,7 +712,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 28.0, 642.0, 189.0, 29.0 ],
+									"patching_rect" : [ 28.0, 642.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 

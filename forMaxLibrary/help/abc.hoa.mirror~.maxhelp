@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 381.0, -1282.0, 1048.0, 771.0 ],
+		"rect" : [ 134.0, 115.0, 1048.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 381.0, -1256.0, 1048.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 1048.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -422,7 +422,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 138.0, 314.0, 18.0, 50.0 ],
 									"size" : 3,
-									"value" : 1
+									"value" : 2
 								}
 
 							}
@@ -874,7 +874,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1048.0, 745.0 ],
+						"rect" : [ 134.0, 141.0, 1048.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -914,7 +914,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 608.0, 511.0, 94.0, 58.0 ],
-									"presentation_linecount" : 2,
 									"text" : "take a look at the scope of the original soundfield"
 								}
 
@@ -930,7 +929,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 401.0, 511.0, 101.0, 58.0 ],
-									"presentation_linecount" : 2,
 									"text" : "take a look at the scope of the mirrored soundfield"
 								}
 
@@ -1255,7 +1253,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 122.0, 240.0, 18.0, 50.0 ],
 									"size" : 3,
-									"value" : 1
+									"value" : 0
 								}
 
 							}
@@ -1399,7 +1397,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1413,7 +1411,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 15.0, 633.0, 190.0, 40.0 ],
+									"patching_rect" : [ 15.0, 633.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 

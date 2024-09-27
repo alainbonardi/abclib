@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 10.0, 106.0, 94.0, 22.0 ],
+					"text" : "abc.soundcoat~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -525,7 +537,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25.0, 1, 2, 3, 4 ],
+					"args" : [ 1, 2, 3, 4, "@gain", -25.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -539,7 +551,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 10.0, 628.0, 190.0, 40.0 ],
+					"patching_rect" : [ 10.0, 628.0, 190.0, 33.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -628,28 +640,6 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 200, 0.3, 0 ],
-					"bgmode" : 0,
-					"border" : 1,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-11",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc.env.noise~.maxpat",
-					"numinlets" : 0,
-					"numoutlets" : 1,
-					"offset" : [ 0.0, 0.0 ],
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 10.0, 103.0, 310.0, 30.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"args" : [ "@obj-name", "abc.cartopol~", "@obj-desc", "Cartesian", "to", "polar", "coordinates." ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -680,7 +670,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"source" : [ "obj-11", 0 ]
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -821,13 +811,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc.env.noise~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
-				"patcherrelativepath" : "../misc/others",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
@@ -877,6 +860,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.soundcoat~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc_2d_decoder1_4~.mxo",
 				"type" : "iLaX"
 			}
@@ -894,6 +884,10 @@
 				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "abc_soundcoat~.mxo",
+				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_wrp.js",

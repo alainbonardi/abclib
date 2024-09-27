@@ -229,7 +229,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0 ],
+									"args" : [ "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -243,7 +243,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 116.0, 482.0, 189.0, 29.0 ],
+									"patching_rect" : [ 116.0, 482.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -603,7 +603,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 60.0, 485.0, 141.0 ],
+									"patching_rect" : [ 6.0, 60.0, 488.0, 141.0 ],
 									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude.\n"
 								}
 

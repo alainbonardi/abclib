@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -225.0, -1353.0, 998.0, 785.0 ],
+		"rect" : [ 134.0, 101.0, 998.0, 785.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -562,7 +562,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -576,7 +576,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 21.0, 607.0, 190.0, 40.0 ],
+									"patching_rect" : [ 21.0, 607.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1078,7 +1078,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 163.0, 192.0, 110.0, 130.0 ],
+									"patching_rect" : [ 163.0, 192.0, 105.0, 130.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -2039,7 +2039,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 998.0, 759.0 ],
+						"rect" : [ 134.0, 127.0, 998.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2340,7 +2340,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2354,7 +2354,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 25.0, 605.0, 190.0, 40.0 ],
+									"patching_rect" : [ 25.0, 605.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -2730,7 +2730,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -225.0, -1327.0, 998.0, 759.0 ],
+						"rect" : [ 0.0, 26.0, 998.0, 759.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3338,7 +3338,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -3352,7 +3352,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 28.0, 608.0, 190.0, 40.0 ],
+									"patching_rect" : [ 28.0, 608.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 

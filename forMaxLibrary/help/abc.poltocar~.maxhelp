@@ -236,7 +236,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20.0, 1, 2, 3, 4 ],
+					"args" : [ 1, 2, 3, 4, "@gain", -20.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -250,7 +250,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 21.0, 467.0, 190.0, 40.0 ],
+					"patching_rect" : [ 21.0, 467.0, 190.0, 33.0 ],
 					"viewvisibility" : 1
 				}
 

@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 964.0, 732.0 ],
+						"rect" : [ 100.0, 126.0, 964.0, 732.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -102,7 +102,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 14.0, 108.5, 60.0, 67.0 ],
+									"patching_rect" : [ 14.0, 108.0, 60.0, 67.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -667,7 +667,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -681,7 +681,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 15.0, 606.0, 190.0, 40.0 ],
+									"patching_rect" : [ 15.0, 606.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1317,7 +1317,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 964.0, 732.0 ],
+						"rect" : [ 0.0, 26.0, 964.0, 732.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1500,7 +1500,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1514,7 +1514,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 7.0, 618.0, 190.0, 40.0 ],
+									"patching_rect" : [ 7.0, 618.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -2108,7 +2108,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 453.0, 345.5, 219.0, 40.0 ],
+									"patching_rect" : [ 453.0, 345.5, 221.0, 40.0 ],
 									"text" : "abc.hoa.delay~ 3 @window 400 @deltime 1000 @feedback 0.5"
 								}
 

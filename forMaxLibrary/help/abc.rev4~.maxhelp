@@ -375,7 +375,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -893,7 +893,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 154.0, 92.0, 82.0, 20.0 ],
-									"presentation_linecount" : 2,
 									"text" : "predelay (ms)"
 								}
 

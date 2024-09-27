@@ -196,7 +196,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 6.0, 60.0, 475.0, 47.0 ],
+					"patching_rect" : [ 6.0, 60.0, 479.0, 47.0 ],
 					"text" : "abc.musdur is an abstraction to set the duration of a delay line as a musical duration. As a bpatcher, it includes one defaut value: the index of the duration chosen (0 for a whole, 1 for a half, 2 for a quarter, 3 for an 8th, 4 for a 16th, 5 for a 32nd, 6 for a triplet)."
 				}
 
@@ -237,7 +237,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15 ],
+					"args" : [ "@gain", -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -251,7 +251,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 69.0, 371.0, 189.0, 29.0 ],
+					"patching_rect" : [ 69.0, 371.0, 189.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 

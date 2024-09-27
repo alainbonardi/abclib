@@ -1656,7 +1656,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 61.0, 478.0, 100.0 ],
+									"patching_rect" : [ 6.0, 61.0, 482.0, 100.0 ],
 									"text" : "abc.hoa.rotate~ object enable the rotation of the ambisonic sound field. It can be either a continuous rotation at a certain speed in tours by second (with speed parameter) or a fixed angle of rotation in degrees (with angle parameter, when the speed is zero). The 'returntime' in milliseconds is the duration of the interpolation between a continuous rotation or a fixed angle.\nContrary to the encoding that enables the rotation of one punctual source, the abc.hoa.rotate~ enable the rotation of the whole sound field."
 								}
 
@@ -1697,7 +1697,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1711,7 +1711,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 477.0, 510.0, 190.0, 40.0 ],
+									"patching_rect" : [ 477.0, 510.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 

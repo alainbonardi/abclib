@@ -167,7 +167,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0 ],
+					"args" : [ "@gain", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -181,7 +181,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 10.0, 535.0, 189.0, 29.0 ],
+					"patching_rect" : [ 10.0, 535.0, 189.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -203,7 +203,7 @@
 				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 10.0, 146.0, 128.0, 22.0 ],

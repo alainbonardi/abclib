@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 572.0, 580.0 ],
+						"rect" : [ 100.0, 126.0, 572.0, 580.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -193,7 +193,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0 ],
+									"args" : [ "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -207,7 +207,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 23.0, 463.0, 189.0, 29.0 ],
+									"patching_rect" : [ 23.0, 463.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -427,7 +427,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 572.0, 580.0 ],
+						"rect" : [ 0.0, 26.0, 572.0, 580.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,

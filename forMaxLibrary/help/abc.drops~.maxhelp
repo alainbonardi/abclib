@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1003.0, 687.0 ],
+						"rect" : [ 100.0, 126.0, 1003.0, 687.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -300,9 +300,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
+														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 														"palette_action" : "hoa.2d.scope~",
-														"palette_caption" : "hoa.2d.scope~",
-														"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -709,7 +709,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -723,7 +723,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 589.0, 190.0, 40.0 ],
+									"patching_rect" : [ 6.0, 589.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1504,7 +1504,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 1003.0, 687.0 ],
+						"rect" : [ 0.0, 26.0, 1003.0, 687.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2336,9 +2336,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
+														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 														"palette_action" : "hoa.2d.scope~",
-														"palette_caption" : "hoa.2d.scope~",
-														"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+														"palette_caption" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -2929,9 +2929,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
 										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~",
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+										"palette_caption" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
