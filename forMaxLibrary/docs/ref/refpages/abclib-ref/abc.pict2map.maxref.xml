@@ -44,16 +44,8 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>when sended to the left inlet sets the x value.</description>
-      <digest>when sended to the left inlet sets the x value</digest>
-    </method>
-
-      <method name="float">
-      <arglist>
-        <arg type="float" />
-      </arglist>
-      <description>when sended to the right inlet sets the y value.</description>
-      <digest>when sended to the right inlet sets the y value</digest>
+      <description>In left inlet sets the x value, in right inlet sets the y value.</description>
+      <digest>In left inlet sets the x value, in right inlet sets the y value</digest>
     </method>
 
   </methodlist>
