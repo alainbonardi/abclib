@@ -176,8 +176,10 @@ zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 
 db2gain = si.smoo : dbcontrol
 with {
-		dbcontrol = _ <: ((_ > -127.0), ba.db2linear) : *;
+	zeroThreshold = -126; //-127 is absolute zero in our convention
+	dbcontrol = _ <: ((_ >= zeroThreshold), ba.db2linear) : *;
 };
+
 
 //--------------------------------------------------------------------------------------//
 // TRAJECTORY GENERATORS
