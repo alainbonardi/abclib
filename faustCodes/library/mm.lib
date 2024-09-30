@@ -174,9 +174,10 @@ zmap(x1, x2, y1, y2, x) = scale(x1, x2, y1, y2, clip(x1, x2, x));
 // ```
 //-----------------------------
 
-db2gain = si.smoo : dbcontrol
+db2gain = si.smooth(ba.tau2pole(tempConst)) : dbcontrol
 with {
-	zeroThreshold = -126; //-127 is absolute zero in our convention
+	tempConst = 0.003; //temporal constant for ba.tau2pole//
+	zeroThreshold = -126; //-127 is absolute zero in our convention//
 	dbcontrol = _ <: ((_ >= zeroThreshold), ba.db2linear) : *;
 };
 
