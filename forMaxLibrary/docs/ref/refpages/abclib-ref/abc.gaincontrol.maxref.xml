@@ -24,18 +24,15 @@
   </outletlist> -->
 
   <objarglist>
-      <objarg name="gain" optional="1" type="float">
-          <digest>
-            initial gain in dB
-          </digest>
-          <description>
-              [ONLY IN INSPECTOR] first argument is the initial gain in dB [init=0:min=-127:max=18:step=0.01]
-          </description>
-      </objarg>
   </objarglist>
 
   <!--ATTRIBUTES-->
   <attributelist>
+      <attribute name="gain" type="float" set="1" get="1" size="1">
+          <description>
+              [ONLY IN INSPECTOR] sets the initial value of the level [init=0, min=-127, max=18, step=0.01].
+          </description>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

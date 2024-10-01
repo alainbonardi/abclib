@@ -309,7 +309,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -904,7 +904,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127.0 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1644,7 +1644,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127.0 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
