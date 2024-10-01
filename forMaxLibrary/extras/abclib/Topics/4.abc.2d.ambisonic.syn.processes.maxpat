@@ -941,7 +941,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 550, 0.6, 0 ],
+									"args" : [ "@grainsize", 550, "@rarefaction", 0.6,"@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1503,7 +1503,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 30, 0.85, 0 ],
+									"args" : [ "@grainsize", 30, "@rarefaction", 0.85,"@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,

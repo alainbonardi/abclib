@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 155.0, 692.0, 731.0 ],
+		"rect" : [ 169.0, -775.0, 692.0, 731.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 77.5, 344.0, 90.0, 22.0 ],
+					"patching_rect" : [ 77.0, 344.0, 90.0, 22.0 ],
 					"text" : "mc.combine~ 2"
 				}
 
@@ -68,7 +68,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 181.0, 692.0, 705.0 ],
+						"rect" : [ 0.0, 26.0, 692.0, 705.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -436,12 +436,12 @@
 								"box" : 								{
 									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 									"id" : "obj-78",
-									"linecount" : 9,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 269.0, 178.0, 244.0, 127.0 ],
-									"text" : "The abc.adcinput~ abstraction is a mono adc~ input with possible dc filtering. The bpatcher can accept three default values as arguments\n-argument 1 is the number of the channel (adc)\n-argument 2 is the amplitude in dB\n-argument 3 is the enabling (1/0) of the dc filtering"
+									"patching_rect" : [ 6.0, 62.0, 485.0, 74.0 ],
+									"text" : "The abc.adcinput~ abstraction is a mono adc~ input with possible dc filtering. The bpatcher can accept three default values as attributes in the inspector:\n@channel is the number of the channel (adc)\n@gain is the amplitude in dB\n@dc-filter is the enabling (1/0) of the dc filtering"
 								}
 
 							}
@@ -457,7 +457,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 2, -10.0, 1 ],
+									"args" : [ "@channel", 2, "@gain", -10.0, "@dc-filter", 1 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1294,6 +1294,19 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-14",
+									"linecount" : 10,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 6.0, 60.0, 488.0, 141.0 ],
+									"text" : "abc.scope is a bpatcher to be used in association with abc.hoa.scope~ object to visualize X-Y signals for instance ambisonic components at the order N. There are 3 signal inputs: X signal, Y signal and a binary signal (1/0) to tell the drawing corresponds to positive (red) values or negative (blue) ones\nThree parameters can be set as attributs in the inspector:\n'@drawing-type' the type of drawing: points or lines\n'@size' the size of the drawing (1 by default)\n'@display' display on/off the floating window with the visualization.\nThe three default values can be set thanks to the bpatcher inspector.\nA unique 4 digit number is attributed to each instance and each visualization window"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -1337,25 +1350,12 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-14",
-									"linecount" : 15,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 367.0, 277.0, 210.0, 208.0 ],
-									"text" : "abc.scope is an abstraction to be used within a bpatcher in association with abc.hoa.scope~ object to visualize ambisonic components at the order N\nThree parameters can be set:\n- the type of drawing: points or lines\n- the size of the drawing (1 by default)\n- display on/off the floating window with the visualization.\nThe three default values can be set thanks to the bpatcher inspector.\nA unique 4 digit number is attributed to each instance and each visualization window"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-39",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 162.0, 335.0, 104.0, 22.0 ],
+									"patching_rect" : [ 162.0, 388.0, 104.0, 22.0 ],
 									"text" : "abc.hoa.scope~ 3"
 								}
 
@@ -1367,7 +1367,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 162.0, 240.0, 122.0, 22.0 ],
+									"patching_rect" : [ 162.0, 293.0, 122.0, 22.0 ],
 									"text" : "abc.mc.multinoise~ 7"
 								}
 
@@ -1379,14 +1379,14 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 162.0, 286.5, 197.0, 22.0 ],
+									"patching_rect" : [ 162.0, 340.0, 197.0, 22.0 ],
 									"text" : "abc.mc.substractsynth~ 7 @f0 220."
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1400,7 +1400,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 162.0, 382.0, 90.0, 110.0 ],
+									"patching_rect" : [ 162.0, 435.0, 90.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1412,7 +1412,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 162.0, 198.0, 70.0, 20.0 ],
+									"patching_rect" : [ 162.0, 251.0, 70.0, 20.0 ],
 									"text" : "abc.scope"
 								}
 
@@ -1688,7 +1688,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 692.0, 705.0 ],
+						"rect" : [ 169.0, -749.0, 692.0, 705.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1820,18 +1820,18 @@
 								"box" : 								{
 									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
 									"id" : "obj-34",
-									"linecount" : 7,
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 12.0, 258.0, 210.0, 100.0 ],
-									"text" : "abc.env.noise~ is a simple granulator abstraction (randomized cosine envelope). As a bpatcher, it includes two default values: the grain size in milliseconds and the rarefaction between 0 and 1 when launching the patch"
+									"patching_rect" : [ 6.0, 62.0, 485.0, 60.0 ],
+									"text" : "abc.env.noise~ is a simple granulator abstraction (randomized cosine envelope). As a bpatcher, it includes three default values in the inspector: '@grainsize' the grain size in milliseconds, '@rarefaction' the rarefaction between 0 and 1, '@gain' for the level when launching the patch"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 200, 0.3, 0 ],
+									"args" : [ "@grainsize", 200, "@rarefaction", 0.3, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2481,7 +2481,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 77.5, 368.0, 95.0, 22.0 ],
+					"patching_rect" : [ 77.0, 368.0, 95.0, 22.0 ],
 					"text" : "abc.hoa.map~ 3"
 				}
 
@@ -2493,7 +2493,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 185.5, 166.0, 89.0, 20.0 ],
+					"patching_rect" : [ 185.0, 166.0, 89.0, 20.0 ],
 					"text" : "abc.pict2map"
 				}
 
@@ -2504,7 +2504,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 222.5, 189.0, 22.0, 20.0 ],
+					"patching_rect" : [ 222.0, 189.0, 22.0, 20.0 ],
 					"text" : "y"
 				}
 
@@ -2515,7 +2515,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 155.5, 189.0, 22.0, 20.0 ],
+					"patching_rect" : [ 155.0, 189.0, 22.0, 20.0 ],
 					"text" : "x"
 				}
 
@@ -2531,7 +2531,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 240.5, 189.0, 50.0, 22.0 ]
+					"patching_rect" : [ 240.0, 189.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -2546,7 +2546,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 172.5, 189.0, 50.0, 22.0 ]
+					"patching_rect" : [ 172.0, 189.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -2557,7 +2557,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 148.5, 165.0, 35.0, 22.0 ],
+					"patching_rect" : [ 148.0, 165.0, 35.0, 22.0 ],
 					"text" : "reset"
 				}
 
@@ -2578,7 +2578,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 148.0, 212.0, 105.0, 130.0 ],
+					"patching_rect" : [ 147.0, 212.0, 105.0, 130.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -2590,7 +2590,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 77.5, 141.0, 94.0, 22.0 ],
+					"patching_rect" : [ 77.0, 141.0, 94.0, 22.0 ],
 					"text" : "abc.soundcoat~"
 				}
 
@@ -2732,7 +2732,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-45", 0 ],
-					"midpoints" : [ 87.0, 396.75, 280.0, 396.75 ],
+					"midpoints" : [ 86.5, 396.75, 280.0, 396.75 ],
 					"order" : 0,
 					"source" : [ "obj-30", 0 ]
 				}

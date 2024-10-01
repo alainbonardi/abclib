@@ -291,7 +291,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 500, 0.7, -5 ],
+					"args" : [ "@grainsize", 500, "@rarefaction", 0.7,"@gain", -5 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
