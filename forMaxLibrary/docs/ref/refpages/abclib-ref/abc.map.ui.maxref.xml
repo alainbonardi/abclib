@@ -40,26 +40,37 @@
       <description>sets the coordinate format of the circle's position. It can be cartesian or polar</description>
       <digest>sets the coordinate format</digest>
     </method>
+
     <method name="add">
       <arglist>
         <arg type="number" />
       </arglist>
-      <description>add a variable number of circle on the GUI</description>
-      <digest>add circles</digest>
+      <description>adds a variable number of circle on the GUI</description>
+      <digest>adds circles</digest>
     </method>
+
     <method name="del">
       <arglist>
         <arg type="list" />
       </arglist>
       <description>if the message 'del' is send without any number, all the circles will be delete. If a list is added (e.g. 'del 1 5'), the corresponding circles will be deteled</description>
-      <digest>delete corresponding circles</digest>
+      <digest>deletes corresponding circles</digest>
     </method>
+
     <method name="precision">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>define the number of circle printed on the system</description>
-      <digest></digest>
+      <description>defines the number of circle printed on the system</description>
+      <digest>defines the number of circle printed on the system</digest>
+    </method>
+
+    <method name="flip_axis">
+      <arglist>
+        <arg type="boolean" />
+      </arglist>
+      <description>makes a flip of 90° (anti-clockwise) on the axis</description>
+      <digest>makes a flip of 90° (anti-clockwise) on the axis</digest>
     </method>
   </methodlist>
 
