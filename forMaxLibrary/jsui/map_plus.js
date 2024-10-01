@@ -23,8 +23,8 @@ var circles = [], //table of objects
     mode = "polar",
     toDelete,
     opacityAmount, //Buffer for the print colour
-    i; //An index for the iterative loops
-    flip = 0;
+    i, //An index for the iterative loops
+    flip = false;
 
 declareattribute("precision", null, "set_precision"); //Attribute which can be accessed by the inspector
 declareattribute("mode", null, "set_mode"); //Attribute which can be accessed by the inspector
@@ -130,6 +130,7 @@ function deleteTheGoodOne(item) {
 
     return item.name !== toDelete;
 }
+deleteTheGoodOne.local = 1;
 //Painting of the grid circular system
 function paint_grid() {
 
@@ -155,6 +156,7 @@ function paint_grid() {
         stroke(); //Draw the context
     }
 }
+paint_grid.local = 1;
 //Function to calculate the dimensions of the UI window
 function calcAspect() {
 
@@ -164,11 +166,13 @@ function calcAspect() {
     return width / height
 
 }
+calcAspect.local = 1;
 //Clip
 function clip(input, min, max) {
 
     return Math.min(max, Math.max(min, input))
 }
+clip.local = 1;
 //----------------------------------------------//
 //--------------- GETTER SETTER ----------------//
 //----------------------------------------------//
@@ -180,6 +184,8 @@ function set_precision(a) {
     else precision = a;
     mgraphics.redraw();
 }
+set_precision.local = 1;
+
 function set_mode(a) {
 
     if (a == "polar") {
@@ -191,17 +197,18 @@ function set_mode(a) {
     out("coordinate", circleHitten);
     }
 }
+set_mode.local = 1;
 function set_flip(a) {
-
     if (a == 0) {
-        flip = 0;
-    } else {
-        flip = a;
+        flip = false;
+    } else if (a == 1) {
+        flip = true;
     }
     if (circles.length>0){
         out("coordinate", circleHitten);
     }
 }
+set_flip.local = 1;
 function getvalueof() {
 
     var a = new Array();
@@ -218,6 +225,7 @@ function getvalueof() {
 
     return (a);
 }
+getvalueof.local = 1;
 function setvalueof() {
 
     circles.splice(0, circles.length);
@@ -243,10 +251,12 @@ function setvalueof() {
     circleHitten = 0;
     mgraphics.redraw();
 }
+setvalueof.local = 1;
 function print() {
 
     post(circles[0].name, circles[1].name);
 }
+print.local = 1;
 //----------------------------------------------//
 //--------------- ROUTINE FUNCTIONS ------------//
 //----------------------------------------------//
@@ -288,6 +298,7 @@ function paint() {
     }
     outlet(1, outForDump);
 }
+paint.local = 1;
 //Function to test which source is hitted 
 function hittest(x, y) {
 
@@ -309,6 +320,7 @@ function hittest(x, y) {
     }
     return 0
 }
+hittest.local = 1;
 function onclick(x, y) {
 
     var cursorPosition = sketch.screentoworld(x, y);
@@ -321,6 +333,7 @@ function onclick(x, y) {
     refresh();
 
 }
+onclick.local = 1;
 function ondrag(x, y, button, cmd, shift, caps, opt, ctrl) {
 
     var cursorPosition = sketch.screentoworld(x, y);
@@ -374,6 +387,7 @@ function ondrag(x, y, button, cmd, shift, caps, opt, ctrl) {
     refresh();
     notifyclients(); //Notifies any clients (such as the pattr family of objects), that the object’s current value has changed. 
 }
+ondrag.local = 1;
 function onidle() {
 
     if (!circles[circleHitten].overcircle) {
@@ -381,11 +395,13 @@ function onidle() {
         mgraphics.redraw();
     }
 }
+onidle.local = 1;
 function onidleout() {
 
     circles[circleHitten].overcircle = false;
     mgraphics.redraw();
 }
+onidleout.local = 1;
 function cartopol(x, y) {
 
     // Calculer la distance r depuis l'origine (0, 0)
@@ -407,6 +423,7 @@ function cartopol(x, y) {
     // Retourner les coordonnées polaires (theta, r)
     return polarCoordinates;
 }
+cartopol.local = 1;
 function flipOfaxis(x, y, outputType){
 if (outputType == "pol"){
         // Calculer la distance r depuis l'origine (0, 0)
@@ -436,6 +453,7 @@ if (outputType == "pol"){
         return cartesianCoordinates;
     }
 }
+flipOfaxis.local = 1;
 /*
 function out(data, circle) {
 
@@ -472,7 +490,7 @@ function out(data, circle) {
 */
 function out(data, circle) {
 
-    if (flip == 0) {
+    if (flip == false) {
 
         if (data == "radius") {
             outlet(0, "/circle/" + circles[circle].name + "/radius", circles[circle].radiusO);
@@ -518,5 +536,6 @@ function out(data, circle) {
     }
     outForDump[((circles[circle].name) * 4) - 2] = circles[circle].radiusO;
     outForDump[((circles[circle].name) * 4) - 1] = circles[circle].opacity;
-}    
+}
+out.local = 1;  
 
