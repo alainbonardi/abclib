@@ -4,22 +4,14 @@
 // Automatically generate Maxpat that finds the right abc_lib objet depending on the amount of desired channels
 // abclibrary | Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni © 2019 - 2024 CICM | University Paris 8
 
-//function anything() {
-//}
-//post("number of objects : ",this.patcher.count);
-
-//Ajouter un array pour garder toutes les autres attributes et les placer dans l'objet faust comme ça Ex:'@functiontype 4'
-
 var wrapper = wrapper || {};
 wrapper.numobjects = -1;
 wrapper.theObjects = new Array(100);
 var objectToInstantiate = "";
 var actualobject;
 var withUI = false;
-//var extraAttributes = new Array(100);
 var abcAttributes = "";
 
-//cleanup();//Not working, Javascript-Max-API doesn't count objects created from javascript, only hand made objects. Can't count, can't delete.
 patching();
 
 function patching() {
@@ -38,7 +30,6 @@ function patching() {
 	var addCARTOPOL = false;//If true it will add a cartopol before the output, created to convert trajectories outputs into polar.
 	var patcherName = this.patcher.name;//name of 'abc' object
 	var args = jsarguments;
-	//var jsobjectname = args[0];
 	var order = baseAmbisonicOrder;//We will save in 'order' every first attribute, for HOA objectes is the order, for the others is the first parameter, ex. channels etc...
 	var isHOA = (new RegExp("abc.hoa", "i").test(patcherName));//||(new RegExp("abc_3d", "i").test(jsobjectname));
 	var isMC = (new RegExp("abc.mc", "i").test(patcherName));
@@ -52,7 +43,6 @@ function patching() {
 	}
 
 	var speakers;
-	//var stereo = false;
 	var dimensions = "2d";
 	var sources = 1;//To transform the encoder to multiencoder
 	var mode = "fx";//fx or syn
@@ -84,9 +74,7 @@ function patching() {
 		} else if (args[i] == "@channels" || args[i] == "@chan" || args[i] == "@chans" || args[i] == "@ch") {
 			var channels = args[i + 1];
 			i++;
-		} else if (typeof args[i] !== 'number') {//Other arguments to pass to the abcObject
-			//Extra attributes of the 'abc' objects:
-			//extraAttributes[i] = args[i];
+		} else if (typeof args[i] !== 'number') {
 			abcAttributes += " " + args[i] + " " + args[i + 1];
 			i++;
 		}
@@ -116,7 +104,7 @@ function patching() {
 		if (sources == 1) {
 			objectToInstantiate = "abc_" + dimensions + "_encoder" + order + "~";
 		} else {
-			if (sources > maxMEncoderSources) {//We check if is an HOA object
+			if (sources > maxMEncoderSources) {//We check if it is an HOA object
 				error("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
 				sources = maxMEncoderSources;
 			}
@@ -487,7 +475,6 @@ function patching() {
 	alertMessage.message('fontsize', 20);
 	alertMessage.message('fontface', "bold");
 	alertMessage.message('textjustification', 0);
-	//alertMessage.message('textcolor', "red");
 	alertMessage.message('set', "DO NOT MODIFY THIS ABSTRACTION. \nThis abstraction serves as a wrapper for the objects of the 'abc' library. It automatically selects the correct object and sets the appropriate inputs and outputs. Any modification will cause it to malfunction.");
 	objectToInstantiate += abcAttributes;
 	var abcObject = patcher.newdefault(20, 240, objectToInstantiate);//x,y,name of object
@@ -538,45 +525,7 @@ function patching() {
 
 function anything() {
 }
-function cleanup() {
-	/*
-	this.box.varname = "wrapper"; //Nom donné à l'objet js 
-	function removeAll(obj) {
-		if (obj.varname !== "wrapper") {
-			this.patcher.remove(obj);
-		}
-	}
-	// Appliquer la fonction removeUnlessVarname à tous les objets du patch
-	patcher.apply(removeAll);
-	*/
-	/*
-	for(i=0;i<300;i++){
-		
-	}
-	post("yyy amount of objects : ", this.patcher.count);*/
-	/*
-	var obj = this.patcher.firstobject;
-	post("xxxxx the object name yuhuuu : ",obj.varname);
-	var countertemp = 0;
-	while (obj) {
-		//var tempobj = obj.nextobject;
-		//if (obj.varname != "wrapper") {
-			//this.patcher.remove(obj);
-		//}
-		post("iteration : ",countertemp);
-		countertemp ++;
-		//obj = tempobj;
-		obj = obj.nextobject;
-	}
-	return null;*/
-}
-/*
-function addobject() {//name of object to instantiate,x,y
-	wrapper.numobjects++;
-	actualobject = patcher.newdefault(arguments[1], arguments[2], arguments[0]);//x,y,name of object
-	actualobject.varname = 'abc_w_' + wrapper.numobjects;
-	wrapper.theObjects[wrapper.numobjects] = actualobject;
-}*/
+
 function addobjectauto() {//arguments: object and number of entering position, for the GUI position
 	wrapper.numobjects++;
 	if (arguments[1] == -1) {
