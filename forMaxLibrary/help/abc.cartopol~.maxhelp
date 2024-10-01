@@ -98,6 +98,7 @@
 			}
 , 			{
 				"box" : 				{
+					"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,

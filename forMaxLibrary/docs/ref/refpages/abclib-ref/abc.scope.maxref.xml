@@ -30,36 +30,24 @@ A unique 4 digit number is attributed to each instance and each visualization wi
   </outletlist> -->
 
   <objarglist>
-      <objarg name="drawing-type" optional="1" type="boolean">
-          <digest>
-              type of drawing (points or lines).
-          </digest>
-          <description>
-              [ONLY IN INSPECTOR] type of drawing (points or lines).
-          </description>
-      </objarg>
-
-      <objarg name="drawing-size" optional="1" type="float">
-          <digest>
-              size of the drawing.
-          </digest>
-          <description>
-              [ONLY IN INSPECTOR] size of the drawing.
-          </description>
-      </objarg>
-
-      <objarg name="window-display" optional="1" type="boolean">
-          <digest>
-              display on/off the floating window of the visualization
-          </digest>
-          <description>
-              [ONLY IN INSPECTOR] display on/off the floating window of the visualization
-          </description>
-      </objarg>
   </objarglist>
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="drawing-type" type="boolean" set="1" get="1" size="1">
+      <digest>type of drawing (points or lines).</digest>
+      <description>[ONLY IN INSPECTOR] type of drawing (points or lines).</description>
+    </attribute>
+
+    <attribute name="size" type="float" set="1" get="1" size="1">
+      <digest>size of the drawing.</digest>
+      <description>[ONLY IN INSPECTOR] size of the drawing.</description>
+    </attribute>
+
+    <attribute name="display" type="boolean" set="1" get="1" size="1">
+      <digest>display on/off the floating window of the visualization</digest>
+      <description>[ONLY IN INSPECTOR] display on/off the floating window of the visualization</description>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

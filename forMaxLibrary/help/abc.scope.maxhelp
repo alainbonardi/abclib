@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 682.0, 545.0 ],
+		"rect" : [ 100.0, 100.0, 682.0, 545.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -109,12 +109,12 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-14",
-					"linecount" : 14,
+					"linecount" : 10,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 244.0, 186.0, 323.0, 194.0 ],
-					"text" : "abc.scope is an abstraction to be used within a bpatcher in association with abc.hoa.scope~ object to visualize X-Y signals for instance ambisonic components at the order N. There are 3 signal inputs: X signal, Y signal and a binary signal (1/0) to tell the drawing corresponds to positive (red) values or negative (blue) ones\nThree parameters can be set:\n- the type of drawing: points or lines\n- the size of the drawing (1 by default)\n- display on/off the floating window with the visualization.\nThe three default values can be set thanks to the bpatcher inspector.\nA unique 4 digit number is attributed to each instance and each visualization window"
+					"patching_rect" : [ 6.0, 60.0, 488.0, 141.0 ],
+					"text" : "abc.scope is a bpatcher to be used in association with abc.hoa.scope~ object to visualize X-Y signals for instance ambisonic components at the order N. There are 3 signal inputs: X signal, Y signal and a binary signal (1/0) to tell the drawing corresponds to positive (red) values or negative (blue) ones\nThree parameters can be set as attributs in the inspector:\n'@drawing-type' the type of drawing: points or lines\n'@size' the size of the drawing (1 by default)\n'@display' display on/off the floating window with the visualization.\nThe three default values can be set thanks to the bpatcher inspector.\nA unique 4 digit number is attributed to each instance and each visualization window"
 				}
 
 			}
@@ -125,7 +125,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 45.0, 241.0, 104.0, 22.0 ],
+					"patching_rect" : [ 44.0, 303.0, 104.0, 22.0 ],
 					"text" : "abc.hoa.scope~ 3"
 				}
 
@@ -137,7 +137,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 45.0, 146.0, 122.0, 22.0 ],
+					"patching_rect" : [ 44.0, 208.0, 122.0, 22.0 ],
 					"text" : "abc.mc.multinoise~ 7"
 				}
 
@@ -149,14 +149,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 45.0, 192.5, 197.0, 22.0 ],
+					"patching_rect" : [ 44.0, 255.0, 197.0, 22.0 ],
 					"text" : "abc.mc.substractsynth~ 7 @f0 220."
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0, 1.0, 0 ],
+					"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -170,7 +170,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 45.0, 288.0, 90.0, 110.0 ],
+					"patching_rect" : [ 44.0, 350.0, 90.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -258,9 +258,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",

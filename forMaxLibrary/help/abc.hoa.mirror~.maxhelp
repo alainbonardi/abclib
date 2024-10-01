@@ -166,7 +166,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -187,7 +187,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1188,7 +1188,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 1 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1209,7 +1209,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 1 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
