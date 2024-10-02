@@ -394,6 +394,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-12", 1 ],
+									"midpoints" : [ 150.0, 476.5, 231.5, 476.5 ],
 									"source" : [ "obj-14", 0 ]
 								}
 
@@ -1003,72 +1004,87 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-13::obj-55::obj-3" : [ "number", "number", 0 ],
+			"obj-15::obj-57::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.gotomctopic.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpcredit.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.helpheader.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.decoder~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.hoa.encoder~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.addsynth~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.gain~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.grain~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "abc.mc.multinoise~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
@@ -1099,7 +1115,7 @@
 			}
 , 			{
 				"name" : "abc_help_icon.png",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/media/images",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/media/images",
 				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
@@ -1110,14 +1126,14 @@
 			}
 , 			{
 				"name" : "abc_wrp.js",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "resize_bpatcher.js",
-				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"bootpath" : "~/Documents/Github/abclib/forMaxLibrary/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
