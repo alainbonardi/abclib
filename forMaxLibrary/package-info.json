@@ -5,14 +5,18 @@
 	"tags" : [ "spatial sound processing", "synthesis", "ambisonics", "multi-channel sound processing", "mixed music" ],
 	"homepatcher" : "abc.overview.maxhelp",
 	"max_version_max" : "none",
-	"max_version_min" : "8.0.0",
+	"max_version_min" : "8.2.2",
 	"os" : 	{
 		"macintosh" : 		{
 			"platform" : [ "x64", "aarch64" ],
 			"min_version" : "10.11.x"
+		},
+		"windows" : 		{
+			"platform" : [ "x64"],
+			"min_version" : "10.x"
 		}
 	}
 ,
-	"version" : "1.0.2",
+	"version" : "1.1.0",
 	"website" : "https://github.com/alainbonardi/abclib/tree/master"
 }
