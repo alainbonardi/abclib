@@ -13,7 +13,7 @@
 		},
 		"windows" : 		{
 			"platform" : [ "x64"],
-			"min_version" : "10.x"
+			"min_version" : "none"
 		}
 	}
 ,
