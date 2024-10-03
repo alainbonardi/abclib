@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 172.0, 1272.0, 702.0 ],
+		"rect" : [ 134.0, 172.0, 962.0, 702.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1289,7 +1289,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 6.0, 59.0, 481.0, 194.0 ],
+					"patching_rect" : [ 6.0, 59.0, 483.0, 194.0 ],
 					"text" : "abc.delaychain~ object provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nSince it is a chain of delays, there is no 'abc.delaychain~ 1' object.\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\nA feedback parameter (fdbk) enables to loop the rhythmic structure."
 				}
 
@@ -1746,6 +1746,8 @@
 		"parameters" : 		{
 			"obj-33::obj-1" : [ "umenu[1]", "umenu", 0 ],
 			"obj-36::obj-1" : [ "umenu[2]", "umenu", 0 ],
+			"obj-55::obj-3" : [ "number", "number", 0 ],
+			"obj-67::obj-3" : [ "number[1]", "number", 0 ],
 			"obj-7::obj-1" : [ "umenu", "umenu", 0 ],
 			"parameterbanks" : 			{
 

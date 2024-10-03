@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
+						"rect" : [ 452.0, 126.0, 885.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -588,7 +588,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 452.0, 126.0, 885.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1894,6 +1894,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-22::obj-53::obj-3" : [ "number", "number", 0 ],
+			"obj-23::obj-10::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

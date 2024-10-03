@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 434.0, -1273.0, 532.0, 587.0 ],
+		"rect" : [ 134.0, 172.0, 532.0, 587.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 434.0, -1247.0, 532.0, 561.0 ],
+						"rect" : [ 134.0, 198.0, 532.0, 561.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -627,9 +627,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_action" : "hoa.2d.scope~",
 														"palette_caption" : "hoa.2d.scope~",
-														"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -1139,9 +1139,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_action" : "hoa.2d.scope~",
 										"palette_caption" : "hoa.2d.scope~",
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -1467,6 +1467,7 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
+			"obj-5::obj-2::obj-3" : [ "number", "number", 0 ],
 			"obj-5::obj-5" : [ "mc.live.gain~[1]", "mc.live.gain~[1]", 0 ],
 			"parameterbanks" : 			{
 

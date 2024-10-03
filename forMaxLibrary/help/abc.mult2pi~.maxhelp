@@ -385,7 +385,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 5.5, 61.0, 486.0, 33.0 ],
+					"patching_rect" : [ 5.5, 61.0, 489.0, 33.0 ],
 					"text" : "abc.mult2pi~ multiplies the incoming signal by 2*PI. Therefore a phasor~ between 0 and 1 becomes an angle between 0 and 2*Pi"
 				}
 
@@ -531,6 +531,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-55::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

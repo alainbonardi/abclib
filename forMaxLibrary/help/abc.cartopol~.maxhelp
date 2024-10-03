@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 402.0, 101.0, 912.0, 727.0 ],
+		"rect" : [ 402.0, 101.0, 544.0, 727.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 388.589279000000033, 559.5, 83.0, 20.0 ],
-					"presentation_linecount" : 4,
 					"text" : "Display scope"
 				}
 
@@ -212,13 +211,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-55",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 260.0, 330.0, 50.0, 35.0 ],
-					"text" : "-0.52 -1 0 0"
+					"patching_rect" : [ 260.0, 330.0, 53.0, 22.0 ],
+					"text" : "0 -0. 0 0"
 				}
 
 			}
@@ -939,6 +937,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-7::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.cartopol~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
