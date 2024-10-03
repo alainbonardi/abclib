@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 815.0, 615.0 ],
+		"rect" : [ 100.0, 100.0, 723.0, 615.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 815.0, 589.0 ],
+						"rect" : [ 0.0, 26.0, 723.0, 589.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -375,7 +375,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -402,14 +402,14 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 493.0, 81.0, 182.0, 194.0 ],
+									"patching_rect" : [ 492.0, 81.0, 182.0, 194.0 ],
 									"text" : "abc.rev4~ is a classical reverberation module with 2 controls (with values between 0 and 127): the duration (127 means an 'infinite' duration) and the gain.\n\nAs it is a cascade of delay lines with reinjection, it is proposed in two versions: a stereo one, abc.rev4~, and a quadriphonic one, 'abc.rev4~ @mode quadri' that splits the outputs of the delay lines to the 4 outputs."
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -437,7 +437,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 378.0, 78.0, 82.0, 22.0 ],
+									"patching_rect" : [ 377.0, 78.0, 82.0, 22.0 ],
 									"text" : "loadmess 110"
 								}
 
@@ -450,7 +450,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 283.0, 78.0, 82.0, 22.0 ],
+									"patching_rect" : [ 282.0, 78.0, 82.0, 22.0 ],
 									"text" : "loadmess 110"
 								}
 
@@ -463,7 +463,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 378.0, 85.0, 74.0, 33.0 ],
+									"patching_rect" : [ 377.0, 85.0, 74.0, 33.0 ],
 									"text" : "rev4 gain\n0 to 127"
 								}
 
@@ -476,7 +476,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 277.0, 78.0, 74.0, 47.0 ],
+									"patching_rect" : [ 276.0, 78.0, 74.0, 47.0 ],
 									"text" : "rev4 duration\n0 to 127"
 								}
 
@@ -489,7 +489,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 378.0, 282.0, 50.0, 22.0 ]
+									"patching_rect" : [ 377.0, 282.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -501,7 +501,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 283.0, 282.0, 50.0, 22.0 ]
+									"patching_rect" : [ 282.0, 282.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -513,7 +513,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 378.0, 130.0, 20.0, 140.0 ]
+									"patching_rect" : [ 377.0, 130.0, 20.0, 140.0 ]
 								}
 
 							}
@@ -534,7 +534,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 378.0, 324.0, 97.0, 22.0 ],
+									"patching_rect" : [ 377.0, 324.0, 97.0, 22.0 ],
 									"text" : "revGain $1"
 								}
 
@@ -547,7 +547,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 283.0, 130.0, 20.0, 140.0 ]
+									"patching_rect" : [ 282.0, 130.0, 20.0, 140.0 ]
 								}
 
 							}
@@ -568,7 +568,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 283.0, 324.0, 61.0, 22.0 ],
+									"patching_rect" : [ 282.0, 324.0, 61.0, 22.0 ],
 									"text" : "revDur $1"
 								}
 
@@ -757,7 +757,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-77", 1 ],
-									"midpoints" : [ 387.5, 355.25, 290.5, 355.25 ],
+									"midpoints" : [ 386.5, 355.25, 290.5, 355.25 ],
 									"source" : [ "obj-74", 0 ]
 								}
 
@@ -815,7 +815,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 815.0, 589.0 ],
+						"rect" : [ 100.0, 126.0, 723.0, 589.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -893,7 +893,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 154.0, 92.0, 82.0, 20.0 ],
-									"presentation_linecount" : 2,
 									"text" : "predelay (ms)"
 								}
 
@@ -1295,7 +1294,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1578,7 +1577,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 1 ],
-									"midpoints" : [ 438.5, 458.0, 116.5, 458.0 ],
+									"midpoints" : [ 438.5, 467.0, 116.5, 467.0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -1698,7 +1697,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 1 ],
-									"midpoints" : [ 377.5, 379.25, 177.0, 379.25 ],
+									"midpoints" : [ 377.5, 392.25, 177.0, 392.25 ],
 									"source" : [ "obj-8", 0 ]
 								}
 
@@ -1765,7 +1764,9 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
+			"obj-13::obj-4::obj-3" : [ "number", "number", 0 ],
 			"obj-13::obj-56" : [ "dry gain", "dry gain", 0 ],
+			"obj-14::obj-10::obj-3" : [ "number[1]", "number", 0 ],
 			"obj-14::obj-56" : [ "dry gain[1]", "dry gain", 0 ],
 			"parameterbanks" : 			{
 				"0" : 				{

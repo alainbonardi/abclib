@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 39.0, 126.0, 798.0, 707.0 ],
+						"rect" : [ 0.0, 26.0, 798.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1107,7 +1107,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1288,7 +1288,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1541,7 +1541,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 798.0, 707.0 ],
+						"rect" : [ 39.0, 126.0, 798.0, 707.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1608,7 +1608,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2238,7 +2238,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 1 ],
-									"midpoints" : [ 460.5, 506.5, 89.5, 506.5 ],
+									"midpoints" : [ 460.5, 512.5, 89.5, 512.5 ],
 									"source" : [ "obj-18", 0 ]
 								}
 
@@ -2458,6 +2458,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-72::obj-18::obj-3" : [ "number", "number", 0 ],
+			"obj-73::obj-10::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

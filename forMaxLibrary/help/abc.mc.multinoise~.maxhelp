@@ -690,7 +690,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -768,7 +768,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -909,7 +909,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-9", 1 ],
-									"midpoints" : [ 36.5, 387.5, 116.5, 387.5 ],
+									"midpoints" : [ 36.5, 399.5, 116.5, 399.5 ],
 									"source" : [ "obj-21", 0 ]
 								}
 
@@ -931,7 +931,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-9", 1 ],
-									"midpoints" : [ 70.5, 389.75, 116.5, 389.75 ],
+									"midpoints" : [ 70.5, 399.75, 116.5, 399.75 ],
 									"source" : [ "obj-48", 0 ]
 								}
 
@@ -1232,7 +1232,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1254,7 +1254,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -25.0 ],
+									"args" : [ "@gain", -25.0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1268,7 +1268,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 11.0, 427.0, 189.0, 29.0 ],
+									"patching_rect" : [ 11.0, 427.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1465,6 +1465,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-14::obj-42::obj-3" : [ "number", "number", 0 ],
+			"obj-15::obj-8::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

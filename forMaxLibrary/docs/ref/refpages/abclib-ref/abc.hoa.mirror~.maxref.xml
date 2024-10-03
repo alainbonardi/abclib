@@ -38,10 +38,18 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
-      <attribute name="dimension" type="int" set="1" get="1" size="1">
+      <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
         <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
         <digest>sets the number of dimensions</digest>
-      </attribute>
+      </attribute>-->
+    <attribute name="factor" type="float" set="1" get="1" size="1">
+      <description>sets the factor of mirror sound field [init=1:min=-1:max=1:step=1].<br /><br />
+        If 1, original sound field<br />
+        If -1, original + mirror sound field<br />
+        If 0, mirror sound field<br />
+        </description>
+      <digest>sets the factor of mirror sound field</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -60,12 +68,10 @@
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.hoa.delay~" />
-    <seealso name="abc.hoa.grain~" />
-    <seealso name="abc.hoa.ringmod~" />
-    <seealso name="abc.hoa.gain~" />
+    <seealso name="abc.hoa.wider~" />
     <seealso name="abc.hoa.encoder~" />
     <seealso name="abc.hoa.decoder~" />
     <seealso name="abc.hoa.optim~" />
+    <seealso name="abc.hoa.map~" />
   </seealsolist>
 </c74object>

@@ -42,6 +42,11 @@
         <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
         <digest>sets the number of dimensions</digest>
       </attribute>-->
+
+    <attribute name="width" type="float" set="1" get="1" size="1"> 
+      <description>sets the width variable of the soundfield [init=0:min=0:max=1:step=0.01].<br /><br /></description>
+      <digest>sets the  variable</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -57,10 +62,8 @@
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.hoa.delay~" />
-    <seealso name="abc.hoa.grain~" />
-    <seealso name="abc.hoa.ringmod~" />
-    <seealso name="abc.hoa.gain~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.rotate~" />
     <seealso name="abc.hoa.encoder~" />
     <seealso name="abc.hoa.decoder~" />
     <seealso name="abc.hoa.optim~" />

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 236.0, -1056.0, 839.0, 786.0 ],
+		"rect" : [ 134.0, 100.0, 839.0, 786.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 236.0, -1030.0, 839.0, 760.0 ],
+						"rect" : [ 0.0, 26.0, 839.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -207,14 +207,14 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.916666666666629, 62.0, 617.0, 141.0 ],
+									"patching_rect" : [ 13.916666666666629, 62.0, 620.0, 141.0 ],
 									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127.0 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -698,7 +698,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0 ],
+									"args" : [ "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -712,7 +712,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 28.0, 642.0, 189.0, 29.0 ],
+									"patching_rect" : [ 28.0, 642.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -901,6 +901,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 298.5, 593.75, 125.5, 593.75 ],
 									"source" : [ "obj-2", 0 ]
 								}
 
@@ -982,6 +983,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-43", 1 ],
+									"midpoints" : [ 376.5, 460.5, 223.5, 460.5 ],
 									"source" : [ "obj-48", 0 ]
 								}
 
@@ -1004,6 +1006,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-43", 1 ],
+									"midpoints" : [ 278.5, 460.5, 223.5, 460.5 ],
 									"source" : [ "obj-50", 0 ]
 								}
 
@@ -1118,7 +1121,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 839.0, 760.0 ],
+						"rect" : [ 134.0, 126.0, 839.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1428,7 +1431,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 13.0, 688.0, 54.0, 22.0 ],
+									"patching_rect" : [ 12.0, 688.0, 54.0, 22.0 ],
 									"text" : "mc.dac~"
 								}
 
@@ -1440,14 +1443,14 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 13.0, 655.0, 90.0, 22.0 ],
+									"patching_rect" : [ 12.0, 655.0, 90.0, 22.0 ],
 									"text" : "abc.mc.gain~ 2"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127.0 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1462,7 +1465,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 124.0, 528.0, 75.0, 110.0 ],
+									"patching_rect" : [ 123.0, 528.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1950,7 +1953,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 1 ],
-									"midpoints" : [ 372.5, 461.25, 179.5, 461.25 ],
+									"midpoints" : [ 372.5, 422.25, 179.5, 422.25 ],
 									"source" : [ "obj-15", 0 ]
 								}
 
@@ -1994,7 +1997,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 1 ],
-									"midpoints" : [ 510.5, 461.25, 179.5, 461.25 ],
+									"midpoints" : [ 510.5, 422.25, 179.5, 422.25 ],
 									"source" : [ "obj-31", 0 ]
 								}
 
@@ -2070,6 +2073,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 1 ],
+									"midpoints" : [ 278.5, 421.0, 179.5, 421.0 ],
 									"source" : [ "obj-50", 0 ]
 								}
 
@@ -2077,6 +2081,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 132.5, 646.0, 92.5, 646.0 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -2196,6 +2201,8 @@
 		"lines" : [  ],
 		"parameters" : 		{
 			"obj-64::obj-36::obj-1" : [ "umenu[1]", "umenu", 0 ],
+			"obj-64::obj-55::obj-3" : [ "number", "number", 0 ],
+			"obj-67::obj-2::obj-3" : [ "number[1]", "number", 0 ],
 			"parameterbanks" : 			{
 
 			}

@@ -226,7 +226,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0, 1.0, 0 ],
+					"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -361,7 +361,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.5, 452.0, 70.0, 22.0 ],
+					"patching_rect" : [ 134.0, 452.0, 70.0, 22.0 ],
 					"text" : "loadmess 0"
 				}
 
@@ -374,7 +374,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 135.5, 489.0, 24.0, 24.0 ]
+					"patching_rect" : [ 134.0, 489.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -395,7 +395,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.5, 526.0, 59.0, 22.0 ],
+					"patching_rect" : [ 134.0, 526.0, 59.0, 22.0 ],
 					"text" : "stereo $1"
 				}
 
@@ -437,7 +437,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -452,7 +452,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 223.5, 438.0, 75.0, 110.0 ],
+					"patching_rect" : [ 223.0, 438.0, 75.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -624,6 +624,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 1 ],
+					"midpoints" : [ 232.5, 560.5, 143.5, 560.5 ],
 					"source" : [ "obj-55", 0 ]
 				}
 
@@ -643,6 +644,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-55::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

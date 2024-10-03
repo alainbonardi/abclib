@@ -37,6 +37,10 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="a[index]" type="float" set="1" get="1" size="1">
+      <description>sets the angle of the [index] speaker in degree, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-360:max=360:step=0.01].</description>
+      <digest>sets the angle of the [index] speaker in degree</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->

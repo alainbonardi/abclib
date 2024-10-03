@@ -102,7 +102,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 14.0, 108.5, 60.0, 67.0 ],
+									"patching_rect" : [ 14.0, 108.0, 60.0, 67.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -461,7 +461,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -520,7 +520,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -667,7 +667,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -681,7 +681,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 15.0, 606.0, 190.0, 40.0 ],
+									"patching_rect" : [ 15.0, 606.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -700,7 +700,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1211,6 +1211,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
+									"midpoints" : [ 544.5, 371.5, 674.5, 371.5 ],
 									"order" : 0,
 									"source" : [ "obj-69", 0 ]
 								}
@@ -1234,6 +1235,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-72", 1 ],
+									"midpoints" : [ 600.5, 451.0, 646.5, 451.0 ],
 									"source" : [ "obj-71", 0 ]
 								}
 
@@ -1500,7 +1502,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1514,7 +1516,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 7.0, 618.0, 190.0, 40.0 ],
+									"patching_rect" : [ 7.0, 618.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -2041,7 +2043,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2108,7 +2110,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 453.0, 345.5, 219.0, 40.0 ],
+									"patching_rect" : [ 453.0, 345.5, 221.0, 40.0 ],
 									"text" : "abc.hoa.delay~ 3 @window 400 @deltime 1000 @feedback 0.5"
 								}
 
@@ -2319,7 +2321,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2552,7 +2554,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-9", 1 ],
-									"midpoints" : [ 34.5, 540.25, 186.5, 540.25 ],
+									"midpoints" : [ 34.5, 541.25, 186.5, 541.25 ],
 									"source" : [ "obj-55", 0 ]
 								}
 
@@ -2560,7 +2562,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-9", 1 ],
-									"midpoints" : [ 65.5, 540.75, 186.5, 540.75 ],
+									"midpoints" : [ 65.5, 540.5, 186.5, 540.5 ],
 									"source" : [ "obj-56", 0 ]
 								}
 
@@ -2611,7 +2613,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-26", 1 ],
-									"midpoints" : [ 483.5, 549.75, 630.5, 549.75 ],
+									"midpoints" : [ 483.5, 551.75, 630.5, 551.75 ],
 									"source" : [ "obj-74", 0 ]
 								}
 
@@ -2691,6 +2693,23 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-85::obj-29::obj-3" : [ "number[1]", "number", 0 ],
+			"obj-85::obj-53::obj-3" : [ "number", "number", 0 ],
+			"obj-86::obj-57::obj-3" : [ "number[2]", "number", 0 ],
+			"obj-86::obj-78::obj-3" : [ "number[3]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.drops~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",

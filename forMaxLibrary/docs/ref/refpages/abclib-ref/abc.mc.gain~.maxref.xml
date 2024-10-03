@@ -33,16 +33,20 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the gain of all processes in dB. [init=0:min=-127:max=18:step=0.001].</description>
+      <digest>sets the gain of all processes in dB</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="gain[index]">
+    <method name="gain">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the gain of the [index] process in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
-      <digest>sets the gain of the [index] gain process in dB</digest>
+      <description>sets the gain of all processes in dB. [init=0:min=-127:max=18:step=0.001].</description>
+      <digest>sets the gain of all processes in dB</digest>
     </method>
   </methodlist>
   

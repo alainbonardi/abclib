@@ -33,10 +33,22 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+
+    <attribute name="m[index]" type="float" set="1" get="1" size="1">
+      <description>controls the coefficient of the [index] cell of the matrice. [init=0:min=-1:max=1:step=0.001].</description>
+      <digest>controls the coefficient of the [index] cell of the matrice</digest>
+    </attribute>
+
+    <attribute name="ramp" type="int" set="1" get="1" size="1">
+      <description>The ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds). [init=100:min=0:max=100000:step=1].</description>
+      <digest>The ramp parameter enables to set the crossfade duration</digest>
+    </attribute>
+
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+  
     <method name="m[index]">
       <arglist>
         <arg type="float" />
@@ -44,6 +56,7 @@
       <description>controls the coefficient of the [index] cell of the matrice. [init=0:min=-1:max=1:step=0.001].</description>
       <digest>controls the coefficient of the [index] cell of the matrice</digest>
     </method>
+
     <method name="ramp">
       <arglist>
         <arg type="int" />
@@ -51,6 +64,7 @@
       <description>The ramp parameter enables to set the crossfade duration between the current status of the matrix and the next to come (in milliseconds). [init=100:min=0:max=100000:step=1].</description>
       <digest>The ramp parameter enables to set the crossfade duration</digest>
     </method>
+
   </methodlist>
 
   <seealsolist>

@@ -35,6 +35,41 @@ We added to these 14 oscillators 14 resonant filters tuned at the same frequenci
       <description>sets the mode of jupiterbank (1 or 2). '@mode 2' adds the control of the amplitudes of the 14 oscillators</description>
       <digest>sets the mode of jupiterbank</digest>
     </attribute>
+  
+    <attribute name="k" type="float" set="1" get="1" size="1">
+      <description>sets a constant that determines the harmonic/inharmonic behaviour of the generator [init=1:min=1e-05:max=100:step=1e-05].</description>
+      <digest>sets a constant that determines the harmonic/inharmonic behaviour of the generator</digest>
+    </attribute>
+
+    <attribute name="f0" type="float" set="1" get="1" size="1">
+      <description>sets the fundamental frequency of the generator in Hz. [init=440:min=20:max=20000:step=0.001].</description>
+      <digest>sets the fundamental frequency of the generator in Hz</digest>
+    </attribute>
+
+    <attribute name="osc2filter" type="float" set="1" get="1" size="1">
+      <description>provides a crossfade between the 14 oscillators and the 14 resonant filters (0 => oscillators, 1 => filters). [init=0:min=0:max=1:step=0.01].</description>
+      <digest>sets the fundamental frequency of the generator in Hz</digest>
+    </attribute>
+
+    <attribute name="resg" type="float" set="1" get="1" size="1">
+      <description>sets the gain of the filters. [init=0.1:min=0:max=1:step=0.01].</description>
+      <digest>sets the gain of the filters</digest>
+    </attribute>
+
+    <attribute name="resq" type="float" set="1" get="1" size="1">
+      <description>sets the quality factor of the filters. [init=1000:min=0:max=1000:step=0.1].</description>
+      <digest>sets the quality factor of the filters</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the general gain in dB. [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the general gain in dB</digest>
+    </attribute>  
+
+    <attribute name="fa" type="float" set="1" get="1" size="1">
+      <description>controls of the amplitudes of the 14 oscillators [ONLY FOR '@mode 2']. [init=1:min=0.01:max=100:step=0.01].</description>
+      <digest>controls of the amplitudes of the 14 oscillators</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -44,8 +79,7 @@ We added to these 14 oscillators 14 resonant filters tuned at the same frequenci
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets a constant that determines the harmonic/inharmonic behaviour of the generator [init=1:min=1e-05:max=100:step=1e-05].
-</description>
+      <description>sets a constant that determines the harmonic/inharmonic behaviour of the generator [init=1:min=1e-05:max=100:step=1e-05].</description>
       <digest>sets a constant that determines the harmonic/inharmonic behaviour of the generator</digest>
     </method>
 
@@ -100,9 +134,11 @@ We added to these 14 oscillators 14 resonant filters tuned at the same frequenci
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.peakamp~" />
-    <seealso name="abc.mc.delay~" />
-    <seealso name="abc.mc.gain~" />
+    <seealso name="abc.rissetsbell~" />
+    <seealso name="abc.puckettespaf~" />
+    <seealso name="abc.drops~" />
+    <seealso name="abc.generatorinterface~" />
     <seealso name="abc.mc.addsynth~" />
+    <seealso name="abc.mc.substractsynth~" />
   </seealsolist>
 </c74object>

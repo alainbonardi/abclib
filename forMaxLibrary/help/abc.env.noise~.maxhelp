@@ -62,7 +62,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -176,7 +176,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 123, 0.4, 0 ],
+					"args" : [ "@grainsize", 123, "@rarefaction", 0.4, "@gain", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -210,7 +210,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 200, 0.3, 0 ],
+					"args" : [ "@grainsize", 200, "@rarefaction", 0.3, "@gain", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -245,12 +245,12 @@
 				"box" : 				{
 					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-6",
-					"linecount" : 4,
+					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 6.0, 62.0, 488.0, 60.0 ],
-					"text" : "The abc.env.noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction. \n-argument 1 is the grain size (envelope period in milliseconds)\n-argument 2 is the rarefaction between 0 and 1"
+					"patching_rect" : [ 6.0, 62.0, 488.0, 74.0 ],
+					"text" : "The abc.env.noise~ is a noise generator enveloped with a positive cosine shape (Hanning window). It uses rarefaction. \n'@grainsize' in inspector sets the initial grain size (envelope period in milliseconds)\n'@rarefaction' in inspector sets the initial rarefaction between 0 and 1\n'@gain' in inspector sets the initial level in dB"
 				}
 
 			}
@@ -337,9 +337,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_action" : "hoa.2d.scope~",
 										"palette_caption" : "hoa.2d.scope~",
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -732,6 +732,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-11::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.env.noise~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

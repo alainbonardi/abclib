@@ -41,13 +41,13 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
 					"enablehscroll" : 0,
 					"enablevscroll" : 0,
-					"id" : "obj-7",
+					"id" : "obj-24",
 					"lockeddragscroll" : 0,
 					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
@@ -56,7 +56,28 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 166.0, 306.0, 75.0, 110.0 ],
+					"patching_rect" : [ 192.0, 289.0, 75.0, 110.0 ],
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
+					"bgmode" : 0,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-13",
+					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "abc.scope.maxpat",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"offset" : [ 0.0, 0.0 ],
+					"patching_rect" : [ 401.0, 486.0, 90.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -69,27 +90,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
 					"patching_rect" : [ 156.0, 580.0, 80.0, 33.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ 0.0, 1, 0 ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-25",
-					"lockeddragscroll" : 0,
-					"lockedsize" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "abc.scope.maxpat",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 401.0, 488.0, 90.0, 110.0 ],
-					"viewvisibility" : 1
 				}
 
 			}
@@ -599,7 +599,7 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -621,7 +621,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0.0, 1, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1230,6 +1230,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 312.5, 441.0, 185.5, 441.0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -1275,6 +1276,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
+									"midpoints" : [ 114.5, 431.0, 212.5, 431.0 ],
 									"order" : 0,
 									"source" : [ "obj-2", 0 ]
 								}
@@ -1431,7 +1433,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1627,7 +1629,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 126.0, 817.0, 760.0 ],
+						"rect" : [ 0.0, 26.0, 817.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1691,7 +1693,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1735,7 +1737,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1791,7 +1793,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1988,6 +1990,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-121", 1 ],
+									"midpoints" : [ 62.5, 468.5, 233.5, 468.5 ],
 									"source" : [ "obj-124", 0 ]
 								}
 
@@ -2125,7 +2128,7 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"args" : [ 0.0, 1, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2146,7 +2149,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2510,7 +2513,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 200, 0.3, 0 ],
+									"args" : [ "@grainsize", 200, "@rarefaction", 0.3, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2938,6 +2941,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 15.5, 368.0, 163.5, 368.0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -2981,6 +2985,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
+									"midpoints" : [ 91.5, 344.0, 190.5, 344.0 ],
 									"order" : 0,
 									"source" : [ "obj-2", 0 ]
 								}
@@ -3370,7 +3375,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -3704,7 +3709,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 1 ],
-					"midpoints" : [ 126.5, 535.25, 381.5, 535.25 ],
+					"midpoints" : [ 126.5, 538.25, 381.5, 538.25 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -3765,7 +3770,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-76", 1 ],
-					"midpoints" : [ 25.5, 534.75, 381.5, 534.75 ],
+					"midpoints" : [ 25.5, 538.75, 381.5, 538.75 ],
 					"source" : [ "obj-20", 0 ]
 				}
 
@@ -3786,6 +3791,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-4", 1 ],
+					"midpoints" : [ 201.5, 432.25, 357.5, 432.25 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-42", 0 ],
 					"source" : [ "obj-28", 0 ]
 				}
@@ -3800,7 +3813,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-25", 0 ],
+					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-33", 0 ]
 				}
 
@@ -3836,6 +3849,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"midpoints" : [ 286.5, 427.75, 411.0, 427.75 ],
 					"order" : 0,
 					"source" : [ "obj-38", 0 ]
 				}
@@ -3913,14 +3927,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 1 ],
-					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
+					"midpoints" : [ 285.5, 573.5, 165.5, 573.5 ],
 					"order" : 1,
 					"source" : [ "obj-76", 0 ]
 				}
@@ -3986,6 +3994,24 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-24::obj-3" : [ "number[4]", "number", 0 ],
+			"obj-5::obj-10::obj-3" : [ "number[3]", "number", 0 ],
+			"obj-81::obj-10::obj-3" : [ "number", "number", 0 ],
+			"obj-82::obj-10::obj-3" : [ "number[1]", "number", 0 ],
+			"obj-83::obj-124::obj-3" : [ "number[2]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.env.noise~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

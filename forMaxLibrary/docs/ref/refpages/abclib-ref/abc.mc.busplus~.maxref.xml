@@ -42,5 +42,7 @@
   <seealsolist>
     <seealso name="abc.mc.busmult~" />
     <seealso name="abc.mc.busselect~" />
+    <seealso name="abc.mc.harmo~" />
+    <seealso name="abc.mc.delay~" />
   </seealsolist>
 </c74object>

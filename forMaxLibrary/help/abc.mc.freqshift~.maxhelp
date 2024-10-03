@@ -40,7 +40,19 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 609.0, 608.0, 107.0, 22.0 ],
+					"text" : "abc.mc.chopan~ 8"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -55,7 +67,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 709.5, 481.0, 75.0, 110.0 ],
+					"patching_rect" : [ 709.0, 465.0, 75.0, 110.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -104,7 +116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 623.0, 494.0, 76.0, 62.0 ]
+					"patching_rect" : [ 623.0, 478.0, 76.0, 62.0 ]
 				}
 
 			}
@@ -115,7 +127,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 609.0, 445.0, 90.0, 22.0 ],
+					"patching_rect" : [ 609.0, 429.0, 90.0, 22.0 ],
 					"text" : "mc.combine~ 2"
 				}
 
@@ -446,7 +458,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 748.0, 360.0, 56.0, 22.0 ],
+					"patching_rect" : [ 749.0, 344.0, 56.0, 22.0 ],
 					"text" : "r harmos"
 				}
 
@@ -458,7 +470,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 679.0, 313.0, 106.0, 22.0 ],
+					"patching_rect" : [ 680.0, 313.0, 106.0, 22.0 ],
 					"text" : "abc.delaychain~ 7"
 				}
 
@@ -678,7 +690,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 706.0, 445.0, 117.5, 33.0 ],
+					"patching_rect" : [ 706.0, 429.0, 117.5, 33.0 ],
 					"text" : "original + 7 echoes\nsent to speakers"
 				}
 
@@ -965,7 +977,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -992,7 +1004,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 609.0, 601.0, 90.0, 22.0 ],
+					"patching_rect" : [ 609.0, 581.0, 90.0, 22.0 ],
 					"text" : "abc.mc.gain~ 8"
 				}
 
@@ -1076,7 +1088,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 766.0, 277.0, 38.0, 22.0 ],
+					"patching_rect" : [ 767.0, 277.0, 38.0, 22.0 ],
 					"text" : "r dels"
 				}
 
@@ -1103,7 +1115,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 679.0, 394.0, 136.0, 24.0 ],
+					"patching_rect" : [ 680.0, 378.0, 136.0, 24.0 ],
 					"text" : "abc.mc.freqshift~ 7"
 				}
 
@@ -1328,7 +1340,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
-					"midpoints" : [ 618.5, 295.0, 688.5, 295.0 ],
+					"midpoints" : [ 618.5, 295.0, 689.5, 295.0 ],
 					"order" : 0,
 					"source" : [ "obj-20", 0 ]
 				}
@@ -1459,7 +1471,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 1 ],
-					"midpoints" : [ 688.5, 431.75, 689.5, 431.75 ],
+					"midpoints" : [ 689.5, 415.75, 689.5, 415.75 ],
 					"source" : [ "obj-43", 0 ]
 				}
 
@@ -1467,7 +1479,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-43", 1 ],
-					"midpoints" : [ 757.5, 387.0, 805.5, 387.0 ],
+					"midpoints" : [ 758.5, 371.0, 806.5, 371.0 ],
 					"source" : [ "obj-44", 0 ]
 				}
 
@@ -1507,7 +1519,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-56", 0 ],
+					"destination" : [ "obj-9", 0 ],
 					"source" : [ "obj-50", 0 ]
 				}
 
@@ -1555,7 +1567,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-58", 0 ],
-					"midpoints" : [ 618.5, 479.25, 632.5, 479.25 ],
+					"midpoints" : [ 618.5, 463.25, 632.5, 463.25 ],
 					"order" : 0,
 					"source" : [ "obj-57", 0 ]
 				}
@@ -1628,7 +1640,29 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-56", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
+		"parameters" : 		{
+			"obj-55::obj-3" : [ "number", "number", 0 ],
+			"obj-63::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.delaychain~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
@@ -1694,6 +1728,10 @@
 			}
 , 			{
 				"name" : "abc_chopan4~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_chopan8~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

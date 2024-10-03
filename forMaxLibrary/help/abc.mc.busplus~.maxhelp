@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 708.0, 636.0 ],
+						"rect" : [ 0.0, 26.0, 708.0, 636.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -243,7 +243,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -356,6 +356,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-97", 1 ],
+									"midpoints" : [ 150.5, 275.0, 208.5, 275.0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -414,7 +415,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 708.0, 636.0 ],
+						"rect" : [ 100.0, 126.0, 708.0, 636.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -716,7 +717,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -816,7 +817,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
-									"midpoints" : [ 130.5, 283.5, 50.5, 283.5 ],
+									"midpoints" : [ 130.5, 370.5, 50.5, 370.5 ],
 									"source" : [ "obj-11", 0 ]
 								}
 
@@ -898,6 +899,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-6", 1 ],
+									"midpoints" : [ 219.0, 414.5, 387.5, 414.5 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -1031,6 +1033,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-40::obj-21::obj-3" : [ "number", "number", 0 ],
+			"obj-41::obj-42::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

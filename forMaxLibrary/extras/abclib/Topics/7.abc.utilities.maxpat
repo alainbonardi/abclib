@@ -553,7 +553,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -15 ],
+									"args" : [ "@gain", -15 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -567,7 +567,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 577.0, 284.0, 189.0, 29.0 ],
+									"patching_rect" : [ 577.0, 284.0, 189.0, 26.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1771,7 +1771,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1786,7 +1786,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 275.0, 191.0, 75.0, 110.0 ],
+									"patching_rect" : [ 276.0, 192.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -1944,7 +1944,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 38.0, 160.0, 1188.0, 726.0 ],
+						"rect" : [ 0.0, 26.0, 1188.0, 726.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3125,7 +3125,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -3461,7 +3461,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "float" ],
-									"patching_rect" : [ 653.0, 293.5, 29.5, 22.0 ],
+									"patching_rect" : [ 653.0, 297.0, 29.5, 22.0 ],
 									"text" : "+ 0."
 								}
 
@@ -3485,7 +3485,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 528.0, 278.5, 35.0, 22.0 ],
+									"patching_rect" : [ 528.0, 297.0, 35.0, 22.0 ],
 									"text" : "f0 $1"
 								}
 
@@ -3541,7 +3541,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -3579,10 +3579,10 @@
 									"fontsize" : 14.0,
 									"id" : "obj-54",
 									"maxclass" : "newobj",
-									"numinlets" : 3,
+									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 528.0, 481.5, 134.0, 24.0 ],
+									"patching_rect" : [ 528.0, 481.5, 144.0, 24.0 ],
 									"text" : "abc.mc.busplus~ 5"
 								}
 
@@ -3800,7 +3800,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -3838,7 +3838,7 @@
 									"fontsize" : 14.0,
 									"id" : "obj-17",
 									"maxclass" : "newobj",
-									"numinlets" : 3,
+									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 872.0, 472.5, 135.0, 24.0 ],
@@ -4097,7 +4097,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -4433,7 +4433,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-45", 0 ],
-									"midpoints" : [ 537.5, 277.25, 662.5, 277.25 ],
+									"midpoints" : [ 537.5, 288.25, 662.5, 288.25 ],
 									"order" : 0,
 									"source" : [ "obj-49", 0 ]
 								}
@@ -4458,7 +4458,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 1 ],
-									"midpoints" : [ 662.5, 445.0, 595.0, 445.0 ],
+									"midpoints" : [ 662.5, 445.0, 662.5, 445.0 ],
 									"source" : [ "obj-50", 0 ]
 								}
 
@@ -4744,7 +4744,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -6276,6 +6276,12 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-177::obj-15::obj-3" : [ "number[2]", "number", 0 ],
+			"obj-177::obj-42::obj-3" : [ "number[1]", "number", 0 ],
+			"obj-177::obj-52::obj-3" : [ "number[3]", "number", 0 ],
+			"obj-17::obj-3" : [ "number", "number", 0 ],
+			"obj-182::obj-56::obj-3" : [ "number[4]", "number", 0 ],
+			"obj-185::obj-174::obj-3" : [ "number[5]", "number", 0 ],
 			"obj-185::obj-2" : [ "mc.live.gain~", "mc.live.gain~", 0 ],
 			"parameterbanks" : 			{
 

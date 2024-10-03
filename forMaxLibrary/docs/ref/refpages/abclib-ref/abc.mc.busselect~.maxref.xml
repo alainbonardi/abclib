@@ -33,10 +33,21 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="ramp" type="float" set="1" get="1" size="1">
+      <description>sets the transition ramp duration in milliseconds [init=100:min=0:max=100000:step=1].</description>
+      <digest>sets the transition duration in msec</digest>
+    </attribute>
+
+    <attribute name="leftOrRight" type="boolean" set="1" get="1" size="1">
+      <description>sets the index of the bus to select, 0 for left, 1 for right [init=0:min=0:max=1:step=1].</description>
+      <digest>sets the index of the bus to select</digest>
+    </attribute>
+
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="ramp">
       <arglist>
         <arg type="float" />
@@ -44,6 +55,7 @@
       <description>sets the transition ramp duration in milliseconds [init=100:min=0:max=100000:step=1].</description>
       <digest>sets the transition duration in msec</digest>
     </method>
+
     <method name="leftOrRight">
       <arglist>
         <arg type="boolean" />
@@ -51,10 +63,13 @@
       <description>sets the index of the bus to select, 0 for left, 1 for right [init=0:min=0:max=1:step=1].</description>
       <digest>sets the index of the bus to select</digest>
     </method>
+    
   </methodlist>
 
   <seealsolist>
     <seealso name="abc.mc.busmult~" />
     <seealso name="abc.mc.busplus~" />
+    <seealso name="abc.mc.harmo~" />
+    <seealso name="abc.mc.delay~" />
   </seealsolist>
 </c74object>

@@ -58,8 +58,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 96.0, 8.0, 52.0, 22.0 ],
-					"text" : "25. 120."
+					"patching_rect" : [ 96.0, 8.0, 50.0, 22.0 ],
+					"text" : "22. 111."
 				}
 
 			}

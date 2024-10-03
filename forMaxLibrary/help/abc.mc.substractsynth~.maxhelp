@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 764.0, 694.0 ],
+						"rect" : [ 0.0, 26.0, 764.0, 694.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -273,7 +273,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -324,7 +324,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 292.0, 344.5, 34.0, 22.0 ],
+									"patching_rect" : [ 279.0, 372.0, 34.0, 22.0 ],
 									"text" : "r s11"
 								}
 
@@ -398,7 +398,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-49", 1 ],
-									"midpoints" : [ 301.5, 389.0, 288.5, 389.0 ],
+									"midpoints" : [ 288.5, 389.0, 288.5, 389.0 ],
 									"source" : [ "obj-52", 0 ]
 								}
 
@@ -1019,7 +1019,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127.0 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1405,7 +1405,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 764.0, 694.0 ],
+						"rect" : [ 100.0, 126.0, 764.0, 694.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1812,7 +1812,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127.0 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2116,6 +2116,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-16", 0 ],
+									"midpoints" : [ 418.75, 350.5, 349.5, 350.5 ],
 									"source" : [ "obj-22", 0 ]
 								}
 
@@ -2146,6 +2147,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-54", 0 ],
+									"midpoints" : [ 525.75, 350.5, 456.5, 350.5 ],
 									"source" : [ "obj-47", 0 ]
 								}
 
@@ -2271,6 +2273,22 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-29::obj-55::obj-3" : [ "number", "number", 0 ],
+			"obj-35::obj-56::obj-3" : [ "number[1]", "number", 0 ],
+			"obj-40::obj-42::obj-3" : [ "number[2]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

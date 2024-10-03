@@ -1,0 +1,18 @@
+{
+	"name" : "abclib",
+	"description" : "abclib library is released by the CICM / MUSIDANSE (Centre de Recherches Informatique et Création Musicale, Paris 8 University) and is the result of 20 years of research, teaching and creation in mixed music, expressed as a set of codes in Faust language. The main topics addressed are: spatial sound processing and synthesis using ambisonics multi-channel sound processing utility objects for mixed music",
+	"author" : "Alain Bonardi, Paul Goutmann, David Fierro, Adrien Zanni",
+	"tags" : [ "spatial sound processing", "synthesis", "ambisonics", "multi-channel sound processing", "mixed music" ],
+	"homepatcher" : "abc.overview.maxhelp",
+	"max_version_max" : "none",
+	"max_version_min" : "8.2.2",
+	"os" : 	{
+		"macintosh" : 		{
+			"platform" : [ "x64", "aarch64" ],
+			"min_version" : "10.11.x"
+		}
+	}
+,
+	"version" : "1.1.0",
+	"website" : "https://github.com/alainbonardi/abclib/tree/master"
+}

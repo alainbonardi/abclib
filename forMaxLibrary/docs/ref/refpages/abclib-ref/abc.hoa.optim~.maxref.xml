@@ -45,6 +45,15 @@
         <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
         <digest>sets the number of dimensions</digest>
       </attribute>-->
+
+    <attribute name="optimtype" type="int" set="1" get="1" size="1">
+      <description>sets the optimization type [init=0:min=0:max=2:step=1].<br /><br />
+        If 2, inPhase optimization is used when the audience covers all the circle<br />
+        If 1, maxRe optimization is used when the audience is confined to the center of the circle<br />
+        If 0, basic has no effect<br />
+        </description>
+      <digest>sets the optimization </digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -63,12 +72,10 @@
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.hoa.delay~" />
-    <seealso name="abc.hoa.grain~" />
-    <seealso name="abc.hoa.ringmod~" />
-    <seealso name="abc.hoa.gain~" />
     <seealso name="abc.hoa.encoder~" />
     <seealso name="abc.hoa.decoder~" />
-    <seealso name="abc.hoa.optim~" />
+    <seealso name="abc.hoa.wider~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.map~" />
   </seealsolist>
 </c74object>

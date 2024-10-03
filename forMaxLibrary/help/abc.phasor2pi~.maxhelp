@@ -178,7 +178,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 0, 1.0, 0 ],
+					"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -233,7 +233,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -25.0, 1, 2, 3, 4 ],
+					"args" : [ 1, 2, 3, 4, "@gain", -25.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -247,7 +247,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 37.0, 595.0, 190.0, 40.0 ],
+					"patching_rect" : [ 37.0, 595.0, 190.0, 33.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -266,7 +266,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -471,6 +471,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
+					"midpoints" : [ 155.5, 281.0, 340.5, 281.0 ],
 					"order" : 0,
 					"source" : [ "obj-10", 0 ]
 				}
@@ -591,6 +592,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-8::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

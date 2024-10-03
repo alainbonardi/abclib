@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 376.0, 113.0, 1102.0, 613.0 ],
+		"rect" : [ 100.0, 100.0, 727.0, 613.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -245,7 +245,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127.0 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -291,7 +291,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ 500, 0.7, -5 ],
+					"args" : [ "@grainsize", 500, "@rarefaction", 0.7, "@gain", -5 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -306,7 +306,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 260.0, 156.0, 310.0, 30.0 ],
+					"patching_rect" : [ 259.0, 156.0, 310.0, 30.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -590,9 +590,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -942,7 +942,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 1 ],
-					"midpoints" : [ 269.5, 199.25, 268.5, 199.25 ],
+					"midpoints" : [ 268.5, 199.25, 268.5, 199.25 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -1045,6 +1045,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-55::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.env.noise~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

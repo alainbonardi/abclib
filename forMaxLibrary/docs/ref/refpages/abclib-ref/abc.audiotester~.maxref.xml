@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.audiotester~" module="abclib">
+  <digest>Abclib's audiotester</digest>
+  <description><o>abc.audiotester~</o> enables to test the audio configuration from 1 to 64 loudspeakers by sending a pink noise alternatively to them at a certain frequency.
+<br /><br />
+</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+
+    <attribute name="n" type="int" set="1" get="1" size="1">
+      <description>sets the number of loudspeakers to test[init=2:min=1:max=64:step=1].</description>
+      <digest>sets the number of loudspeakers to test</digest>
+    </attribute>
+
+    <attribute name="freq" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the alternance between speakers. [init=1:min=0.01:max=100:step=0.01].</description>
+      <digest>sets the frequency of the alternance between speakers</digest>
+    </attribute>
+  
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the output gain in dB</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="n">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the number of loudspeakers to test[init=2:min=1:max=64:step=1].</description>
+      <digest>sets the number of loudspeakers to test</digest>
+    </method>
+
+    <method name="freq">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the frequency of the alternance between speakers. [init=1:min=0.01:max=100:step=0.01].</description>
+      <digest>sets the frequency of the alternance between speakers</digest>
+    </method>
+  
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the output gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the output gain in dB</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.mc.multinoise~" />
+    <seealso name="abc.puckettespaf~" />
+    <seealso name="abc.rissetsbell~" />
+  </seealsolist>
+</c74object>

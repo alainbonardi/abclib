@@ -56,7 +56,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 85.0, 137.0, 52.5, 20.0 ],
+					"patching_rect" : [ 86.0, 137.0, 52.5, 20.0 ],
 					"text" : "Sound"
 				}
 
@@ -71,7 +71,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 86.0, 136.0, 48.821442000000047, 22.0 ],
+					"patching_rect" : [ 87.0, 136.0, 48.821442000000047, 22.0 ],
 					"proportion" : 0.5,
 					"rounded" : 10
 				}
@@ -86,7 +86,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 63.0, 136.0, 23.0, 23.0 ],
+					"patching_rect" : [ 64.0, 136.0, 23.0, 23.0 ],
 					"text" : "2",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
@@ -101,7 +101,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 59.0, 134.0, 23.0, 25.0 ],
+					"patching_rect" : [ 60.0, 134.0, 23.0, 25.0 ],
 					"proportion" : 0.5,
 					"shape" : 1
 				}
@@ -171,7 +171,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 69.0, 243.0, 40.0, 22.0 ],
+					"patching_rect" : [ 70.0, 243.0, 40.0, 22.0 ],
 					"text" : "*~ 0.3"
 				}
 
@@ -196,7 +196,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 6.0, 60.0, 475.0, 47.0 ],
+					"patching_rect" : [ 6.0, 60.0, 479.0, 47.0 ],
 					"text" : "abc.musdur is an abstraction to set the duration of a delay line as a musical duration. As a bpatcher, it includes one defaut value: the index of the duration chosen (0 for a whole, 1 for a half, 2 for a quarter, 3 for an 8th, 4 for a 16th, 5 for a 32nd, 6 for a triplet)."
 				}
 
@@ -237,7 +237,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -15 ],
+					"args" : [ "@gain", -15 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -251,7 +251,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 69.0, 371.0, 189.0, 29.0 ],
+					"patching_rect" : [ 69.0, 371.0, 189.0, 26.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -284,7 +284,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 69.0, 163.0, 60.0, 67.0 ],
+					"patching_rect" : [ 70.0, 163.0, 60.0, 67.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -416,9 +416,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
+										"palette_caption" : "hoa.2d.scope~",
 										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
-										"palette_action" : "hoa.2d.scope~",
-										"palette_caption" : "hoa.2d.scope~"
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -752,7 +752,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
-					"midpoints" : [ 300.5, 282.25, 227.5, 282.25 ],
+					"midpoints" : [ 300.5, 281.25, 227.5, 281.25 ],
 					"source" : [ "obj-21", 0 ]
 				}
 
@@ -776,7 +776,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
-					"midpoints" : [ 78.5, 282.0, 150.5, 282.0 ],
+					"midpoints" : [ 79.5, 282.0, 150.5, 282.0 ],
 					"order" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
@@ -807,6 +807,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
+					"midpoints" : [ 144.5, 275.5, 227.5, 275.5 ],
 					"source" : [ "obj-8", 0 ]
 				}
 

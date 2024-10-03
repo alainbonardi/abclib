@@ -236,7 +236,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -20.0, 1, 2, 3, 4 ],
+					"args" : [ 1, 2, 3, 4, "@gain", -20.0 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -250,7 +250,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 21.0, 467.0, 190.0, 40.0 ],
+					"patching_rect" : [ 21.0, 467.0, 190.0, 33.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -269,7 +269,7 @@
 			}
 , 			{
 				"box" : 				{
-					"args" : [ -127 ],
+					"args" : [ "@gain", -127 ],
 					"bgmode" : 0,
 					"border" : 1,
 					"clickthrough" : 0,
@@ -475,6 +475,20 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-8::obj-3" : [ "number", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

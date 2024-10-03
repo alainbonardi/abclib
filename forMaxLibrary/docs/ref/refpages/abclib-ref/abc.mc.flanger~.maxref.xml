@@ -33,10 +33,37 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+
+    <attribute name="rate" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the sinusoid varying the delay in Hz [init=0.5:min=0.01:max=500:step=0.001].</description>
+      <digest>sets the frequency of the sinusoid varying the delay in Hz</digest>
+    </attribute>
+
+    <attribute name="depth" type="float" set="1" get="1" size="1">
+      <description>sets the maximum of the delay duration volume in milliseonds [init=40:min=0:max=1000:step=0.001].</description>
+      <digest>sets the maximum of the delay duration in msec</digest>
+    </attribute>
+
+    <attribute name="offset" type="float" set="1" get="1" size="1">
+      <description>shifts the variation of the delay duration between offset and offset+depth in msec [init=10:min=0:max=200:step=0.001].</description>
+      <digest>shifts the variation of the delay duration between offset and offset+depth</digest>
+    </attribute>
+
+    <attribute name="fdbk" type="float" set="1" get="1" size="1">
+      <description>sets the amount of delayed sound added to the original [init=1:min=0:max=1:step=0.001].</description>
+      <digest>sets the amount of delayed sound added to the original</digest>
+    </attribute>
+
+    <attribute name="spread" type="float" set="1" get="1" size="1">
+      <description>controls spatial spreading [init=0:min=0:max=1:step=0.001].</description>
+      <digest>controls spatial spreading</digest>
+    </attribute>
+
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="rate">
       <arglist>
         <arg type="float" />
@@ -44,6 +71,7 @@
       <description>sets the frequency of the sinusoid varying the delay in Hz [init=0.5:min=0.01:max=500:step=0.001].</description>
       <digest>sets the frequency of the sinusoid varying the delay in Hz</digest>
     </method>
+
     <method name="depth">
       <arglist>
         <arg type="float" />
@@ -51,6 +79,7 @@
       <description>sets the maximum of the delay duration volume in milliseonds [init=40:min=0:max=1000:step=0.001].</description>
       <digest>sets the maximum of the delay duration in msec</digest>
     </method>
+
     <method name="offset">
       <arglist>
         <arg type="float" />
@@ -58,6 +87,7 @@
       <description>shifts the variation of the delay duration between offset and offset+depth in msec [init=10:min=0:max=200:step=0.001].</description>
       <digest>shifts the variation of the delay duration between offset and offset+depth</digest>
     </method>
+
     <method name="fdbk">
       <arglist>
         <arg type="float" />
@@ -65,6 +95,7 @@
       <description>sets the amount of delayed sound added to the original [init=1:min=0:max=1:step=0.001].</description>
       <digest>sets the amount of delayed sound added to the original</digest>
     </method>
+
     <method name="spread">
       <arglist>
         <arg type="float" />
@@ -72,6 +103,7 @@
       <description>controls spatial spreading [init=0:min=0:max=1:step=0.001].</description>
       <digest>controls spatial spreading</digest>
     </method>
+    
   </methodlist>
 
   <seealsolist>

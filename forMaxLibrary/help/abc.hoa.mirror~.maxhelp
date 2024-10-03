@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 381.0, -1282.0, 1048.0, 771.0 ],
+		"rect" : [ 134.0, 117.0, 1048.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 381.0, -1256.0, 1048.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 1048.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -166,7 +166,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -187,7 +187,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 0 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -292,7 +292,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 27.0, 506.0, 24.0, 24.0 ]
+									"patching_rect" : [ 27.0, 511.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -365,7 +365,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -422,7 +422,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 138.0, 314.0, 18.0, 50.0 ],
 									"size" : 3,
-									"value" : 1
+									"value" : 2
 								}
 
 							}
@@ -816,6 +816,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 1 ],
+									"midpoints" : [ 36.5, 581.5, 195.5, 581.5 ],
 									"source" : [ "obj-54", 0 ]
 								}
 
@@ -830,6 +831,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-44", 1 ],
+									"midpoints" : [ 132.5, 580.5, 195.5, 580.5 ],
 									"source" : [ "obj-57", 0 ]
 								}
 
@@ -874,7 +876,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1048.0, 745.0 ],
+						"rect" : [ 134.0, 143.0, 1048.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -914,7 +916,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 608.0, 511.0, 94.0, 58.0 ],
-									"presentation_linecount" : 2,
 									"text" : "take a look at the scope of the original soundfield"
 								}
 
@@ -930,7 +931,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 401.0, 511.0, 101.0, 58.0 ],
-									"presentation_linecount" : 2,
 									"text" : "take a look at the scope of the mirrored soundfield"
 								}
 
@@ -1190,7 +1190,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 1 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1211,7 +1211,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1.0, 1 ],
+									"args" : [ "@drawing-type", 1, "@size", 1.0, "@display", 1 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1255,7 +1255,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 122.0, 240.0, 18.0, 50.0 ],
 									"size" : 3,
-									"value" : 1
+									"value" : 0
 								}
 
 							}
@@ -1399,7 +1399,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1413,14 +1413,14 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 15.0, 633.0, 190.0, 40.0 ],
+									"patching_rect" : [ 15.0, 633.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1775,6 +1775,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-8::obj-4::obj-3" : [ "number", "number", 0 ],
+			"obj-9::obj-43::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",

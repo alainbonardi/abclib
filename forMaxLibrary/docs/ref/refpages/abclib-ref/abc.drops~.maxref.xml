@@ -29,6 +29,40 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="dropperiod" type="float" set="1" get="1" size="1">
+      <description>sets the period of the drop in ms. [init=1000:min=1:max=10000:step=0.01].</description>
+      <digest>sets the period of the drop in ms</digest>
+    </attribute>
+
+    <attribute name="attackdur" type="int" set="1" get="1" size="1">
+      <description>sets the duration of the attack of the envelope in ms. [init=5:min=1:max=100:step=1].</description>
+      <digest>sets the duration of the attack of the envelope in ms</digest>
+    </attribute>
+
+    <attribute name="avgfreq" type="float" set="1" get="1" size="1">
+      <description>sets the average frequency of the randomization of drop frequencies in Hz.  [init=1407:min=50:max=10000:step=0.01].</description>
+      <digest>sets the average frequency of the randomization of drop frequencies in Hz</digest>
+    </attribute>
+
+    <attribute name="dropthinness" type="float" set="1" get="1" size="1">
+      <description>sets the thinness of the impulsion to enter the reason filter (the higher the thinner).[init=50:min=0.01:max=1000:step=0.01].</description>
+      <digest>sets the thinness of the of the drop</digest>
+    </attribute>
+
+    <attribute name="qf" type="int" set="1" get="1" size="1">
+      <description>sets quality factor of the reason filter. [init=50:min=1:max=1000:step=1:cur=50].</description>
+      <digest>sets quality factor of the reason filter</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the gain of the rain drop in dB. [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the gain of the rain drop in dB</digest>
+    </attribute>   
+
+    <attribute name="limiter" type="boolean" set="1" get="1" size="1">
+      <description>sets a limiter on the output or not (1 on, 0 off).</description>
+      <digest>sets a limiter on the output or not </digest>
+    </attribute>  
   </attributelist>
 
   <!--MESSAGES-->
@@ -40,6 +74,7 @@
       <description>sets the period of the drop in ms. [init=1000:min=1:max=10000:step=0.01].</description>
       <digest>sets the period of the drop in ms</digest>
     </method>
+
     <method name="attackdur">
       <arglist>
         <arg type="int" />
@@ -47,6 +82,7 @@
       <description>sets the duration of the attack of the envelope in ms. [init=5:min=1:max=100:step=1].</description>
       <digest>sets the duration of the attack of the envelope in ms</digest>
     </method>
+
     <method name="avgfreq">
       <arglist>
         <arg type="float" />
@@ -54,6 +90,7 @@
       <description>sets the average frequency of the randomization of drop frequencies in Hz.  [init=1407:min=50:max=10000:step=0.01].</description>
       <digest>sets the average frequency of the randomization of drop frequencies in Hz</digest>
     </method>
+
     <method name="dropthinness">
       <arglist>
         <arg type="float" />
@@ -61,6 +98,7 @@
       <description>sets the thinness of the impulsion to enter the reason filter (the higher the thinner).[init=50:min=0.01:max=1000:step=0.01].</description>
       <digest>sets the thinness of the of the drop</digest>
     </method>
+
     <method name="qf">
       <arglist>
         <arg type="int" />
@@ -68,6 +106,7 @@
       <description>sets quality factor of the reason filter. [init=50:min=1:max=1000:step=1:cur=50].</description>
       <digest>sets quality factor of the reason filter</digest>
     </method>
+
     <method name="gain">
       <arglist>
         <arg type="float" />
@@ -75,6 +114,7 @@
       <description>sets the gain of the rain drop in dB. [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the gain of the rain drop in dB</digest>
     </method>   
+    
     <method name="limiter">
       <arglist>
         <arg type="boolean" />

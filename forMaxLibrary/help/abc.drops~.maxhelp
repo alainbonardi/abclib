@@ -300,9 +300,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_action" : "hoa.2d.scope~",
 														"palette_caption" : "hoa.2d.scope~",
-														"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -687,7 +687,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -709,7 +709,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ 0, 1, 2, 3, 4 ],
+									"args" : [ 1, 2, 3, 4, "@gain", 0 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -723,7 +723,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ 0.0, 0.0 ],
-									"patching_rect" : [ 6.0, 589.0, 190.0, 40.0 ],
+									"patching_rect" : [ 6.0, 589.0, 190.0, 33.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -757,7 +757,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 100.0, 339.0, 83.0, 22.0 ],
+									"patching_rect" : [ 117.0, 339.0, 83.0, 22.0 ],
 									"text" : "dropperiod $1"
 								}
 
@@ -771,7 +771,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 100.0, 312.0, 50.0, 22.0 ]
+									"patching_rect" : [ 117.0, 312.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -782,7 +782,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 100.0, 286.0, 92.0, 22.0 ],
+									"patching_rect" : [ 117.0, 286.0, 92.0, 22.0 ],
 									"text" : "expr 1000. / $f1"
 								}
 
@@ -877,7 +877,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 105.0, 147.5, 83.0, 47.0 ],
+									"patching_rect" : [ 106.0, 148.0, 83.0, 47.0 ],
 									"text" : "rotation speed\nof drop #1"
 								}
 
@@ -923,7 +923,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 100.0, 389.0, 58.0, 22.0 ],
+									"patching_rect" : [ 102.0, 389.0, 58.0, 22.0 ],
 									"text" : "speed $1"
 								}
 
@@ -937,7 +937,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 100.0, 239.0, 50.0, 22.0 ]
+									"patching_rect" : [ 101.0, 239.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -948,7 +948,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 100.0, 202.5, 93.0, 22.0 ],
+									"patching_rect" : [ 101.0, 203.0, 93.0, 22.0 ],
 									"text" : "loadmess 1.618"
 								}
 
@@ -985,7 +985,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 6.5, 155.0, 83.0, 47.0 ],
+									"patching_rect" : [ 8.5, 148.0, 83.0, 47.0 ],
 									"text" : "average frequency of drop #1"
 								}
 
@@ -1146,7 +1146,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 6.5, 210.0, 87.0, 22.0 ],
+									"patching_rect" : [ 6.5, 203.0, 87.0, 22.0 ],
 									"text" : "loadmess 700."
 								}
 
@@ -1292,7 +1292,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-33", 0 ],
-									"order" : 1,
+									"order" : 2,
 									"source" : [ "obj-31", 0 ]
 								}
 
@@ -1300,7 +1300,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-35", 0 ],
-									"midpoints" : [ 109.5, 269.75, 503.5, 269.75 ],
+									"midpoints" : [ 110.5, 269.75, 503.5, 269.75 ],
 									"order" : 0,
 									"source" : [ "obj-31", 0 ]
 								}
@@ -1309,7 +1309,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-49", 0 ],
-									"order" : 2,
+									"order" : 1,
 									"source" : [ "obj-31", 0 ]
 								}
 
@@ -1324,7 +1324,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-27", 1 ],
-									"midpoints" : [ 109.5, 417.75, 111.5, 417.75 ],
+									"midpoints" : [ 111.5, 417.75, 111.5, 417.75 ],
 									"source" : [ "obj-33", 0 ]
 								}
 
@@ -1400,7 +1400,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-10", 0 ],
-									"midpoints" : [ 109.5, 367.75, 15.5, 367.75 ],
+									"midpoints" : [ 126.5, 367.75, 15.5, 367.75 ],
 									"source" : [ "obj-46", 0 ]
 								}
 
@@ -2210,7 +2210,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2336,9 +2336,9 @@
 													"autofit" : 1,
 													"id" : "hoa.2d.scope~",
 													"instance_attributes" : 													{
-														"palette_action" : "hoa.2d.scope~",
 														"palette_caption" : "hoa.2d.scope~",
-														"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+														"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+														"palette_action" : "hoa.2d.scope~"
 													}
 ,
 													"maxclass" : "fpic",
@@ -2929,9 +2929,9 @@
 									"autofit" : 1,
 									"id" : "hoa.2d.scope~",
 									"instance_attributes" : 									{
-										"palette_action" : "hoa.2d.scope~",
 										"palette_caption" : "hoa.2d.scope~",
-										"palette_category" : [ "HoaLib", "Interface", "Recent" ]
+										"palette_category" : [ "HoaLib", "Interface", "Recent" ],
+										"palette_action" : "hoa.2d.scope~"
 									}
 ,
 									"maxclass" : "fpic",
@@ -3256,6 +3256,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-17::obj-2::obj-3" : [ "number", "number", 0 ],
+			"obj-20::obj-52::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.drops~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",

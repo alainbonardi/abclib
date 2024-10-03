@@ -28,6 +28,70 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="phasoron" type="boolean" set="1" get="1" size="1">
+      <description>sets the phasor generator (1 is on, 0 is off).</description>
+      <digest>sets the phasor generator (1 is on, 0 is off)</digest>
+    </attribute>
+
+    <attribute name="noiseon" type="boolean" set="1" get="1" size="1">
+      <description>sets the noise generator (1 is on, 0 is off).</description>
+      <digest>sets the noise generator (1 is on, 0 is off)</digest>
+    </attribute>
+
+    <attribute name="sinuson" type="boolean" set="1" get="1" size="1">
+      <description>sets the sinus generator (1 is on, 0 is off).</description>
+      <digest>sets the sinus generator (1 is on, 0 is off)</digest>
+    </attribute>
+
+    <attribute name="phasorfreq" type="float" set="1" get="1" size="1">
+      <description>sets the phasor frequency in Hz. [init=440:min=20:max=20000:step=0.01]</description>
+      <digest>sets the phasor frequency in Hz</digest>
+    </attribute>
+
+    <attribute name="phasorpulserate" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the phasor pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
+      <digest>sets frequency of the phasor pulsation in Hz</digest>
+    </attribute>
+
+    <attribute name="phasorpulseratio" type="int" set="1" get="1" size="1">
+      <description>sets the ratio between sound and silence for the phasor. [init=1:min=0:max=10:step=1]</description>
+      <digest>sets the ratio between sound and silence for the phasor</digest>
+    </attribute>
+
+    <attribute name="sinusfreq" type="float" set="1" get="1" size="1">
+      <description>sets the sinus frequency in Hz. [init=440:min=20:max=20000:step=0.01]</description>
+      <digest>sets the sinus frequency in Hz</digest>
+    </attribute>
+
+    <attribute name="sinuspulserate" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the sinus pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
+      <digest>sets frequency of the sinus pulsation in Hz</digest>
+    </attribute>
+
+    <attribute name="sinuspulseratio" type="int" set="1" get="1" size="1">
+      <description>sets the ratio between sound and silence for the sinus. [init=1:min=0:max=10:step=1]</description>
+      <digest>sets the ratio between sound and silence for the sinus</digest>
+    </attribute>
+
+    <attribute name="noisecutoff" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the low-pass filter on the noise. [init=1760:min=20:max=20000:step=0.01]</description>
+      <digest>sets the frequency of the low-pass filter on the noise.</digest>
+    </attribute>
+
+    <attribute name="noisepulserate" type="float" set="1" get="1" size="1">
+      <description>sets the frequency of the noise pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
+      <digest>sets frequency of the noise pulsation in Hz</digest>
+    </attribute>
+
+    <attribute name="noisepulseratio" type="int" set="1" get="1" size="1">
+      <description>sets the ratio between sound and silence for the noise. [init=1:min=0:max=10:step=1]</description>
+      <digest>sets the ratio between sound and silence for the noise</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the general gain in dB. [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the general gain in dB</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -39,6 +103,7 @@
       <description>sets the phasor generator (1 is on, 0 is off).</description>
       <digest>sets the phasor generator (1 is on, 0 is off)</digest>
     </method>
+
     <method name="noiseon">
       <arglist>
         <arg type="boolean" />
@@ -46,6 +111,7 @@
       <description>sets the noise generator (1 is on, 0 is off).</description>
       <digest>sets the noise generator (1 is on, 0 is off)</digest>
     </method>
+
     <method name="sinuson">
       <arglist>
         <arg type="boolean" />
@@ -53,6 +119,7 @@
       <description>sets the sinus generator (1 is on, 0 is off).</description>
       <digest>sets the sinus generator (1 is on, 0 is off)</digest>
     </method>
+
     <method name="phasorfreq">
       <arglist>
         <arg type="float" />
@@ -60,6 +127,7 @@
       <description>sets the phasor frequency in Hz. [init=440:min=20:max=20000:step=0.01]</description>
       <digest>sets the phasor frequency in Hz</digest>
     </method>
+
     <method name="phasorpulserate">
       <arglist>
         <arg type="float" />
@@ -67,6 +135,7 @@
       <description>sets the frequency of the phasor pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
       <digest>sets frequency of the phasor pulsation in Hz</digest>
     </method>
+
     <method name="phasorpulseratio">
       <arglist>
         <arg type="int" />
@@ -74,6 +143,7 @@
       <description>sets the ratio between sound and silence for the phasor. [init=1:min=0:max=10:step=1]</description>
       <digest>sets the ratio between sound and silence for the phasor</digest>
     </method>
+
     <method name="sinusfreq">
       <arglist>
         <arg type="float" />
@@ -81,6 +151,7 @@
       <description>sets the sinus frequency in Hz. [init=440:min=20:max=20000:step=0.01]</description>
       <digest>sets the sinus frequency in Hz</digest>
     </method>
+
     <method name="sinuspulserate">
       <arglist>
         <arg type="float" />
@@ -88,6 +159,7 @@
       <description>sets the frequency of the sinus pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
       <digest>sets frequency of the sinus pulsation in Hz</digest>
     </method>
+
     <method name="sinuspulseratio">
       <arglist>
         <arg type="int" />
@@ -95,14 +167,15 @@
       <description>sets the ratio between sound and silence for the sinus. [init=1:min=0:max=10:step=1]</description>
       <digest>sets the ratio between sound and silence for the sinus</digest>
     </method>
+
     <method name="noisecutoff">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the frequency of the low-pass filter on the noise. [init=1760:min=20:max=20000:step=0.01]
-</description>
+      <description>sets the frequency of the low-pass filter on the noise. [init=1760:min=20:max=20000:step=0.01]</description>
       <digest>sets the frequency of the low-pass filter on the noise.</digest>
     </method>
+
     <method name="noisepulserate">
       <arglist>
         <arg type="float" />
@@ -110,6 +183,7 @@
       <description>sets the frequency of the noise pulsation in Hz. [init=3:min=0.01:max=20:step=0.01]</description>
       <digest>sets frequency of the noise pulsation in Hz</digest>
     </method>
+
     <method name="noisepulseratio">
       <arglist>
         <arg type="int" />
@@ -117,6 +191,7 @@
       <description>sets the ratio between sound and silence for the noise. [init=1:min=0:max=10:step=1]</description>
       <digest>sets the ratio between sound and silence for the noise</digest>
     </method>
+    
     <method name="gain">
       <arglist>
         <arg type="float" />

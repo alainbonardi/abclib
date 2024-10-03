@@ -24,37 +24,25 @@
     </outlet>
   </outletlist> -->
 
-  <objarglist>
-        <objarg name="channel-nmbr" optional="1" type="int">
-          <digest>
-              the channel number of the adc
-          </digest>
-          <description>
-              first argument is the the channel number of the adc.
-          </description>
-      </objarg>
-
-      <objarg name="level" optional="1" type="int">
-          <digest>
-              the init level in dB
-          </digest>
-          <description>
-              the init level in dB
-          </description>
-      </objarg>
-
-      <objarg name="dc-filter" optional="1" type="int">
-          <digest>
-              the enabling of the dc filtering (1/0)
-          </digest>
-          <description>
-              the enabling of the dc filtering (1/0)
-          </description>
-      </objarg>      
+  <objarglist>  
   </objarglist>
 
   <!--ATTRIBUTES-->
   <attributelist>
+    <attribute name="channel" type="int" set="1" get="1" size="1">
+      <digest>sets the channel number of the adc</digest>
+      <description>[ONLY IN INSPECTOR] sets the the channel number of the adc.</description>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <digest>sets the initial level in dB</digest>
+      <description>[ONLY IN INSPECTOR] sets the initial level in dB</description>
+    </attribute>
+
+    <attribute name="dc-filter" type="int" set="1" get="1" size="1">
+          <digest>enables the dc filtering (1/0)</digest>
+          <description>[ONLY IN INSPECTOR] enables the dc filtering (1/0)</description>
+      </attribute>    
   </attributelist>
 
   <!--MESSAGES-->

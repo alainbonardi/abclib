@@ -23,10 +23,12 @@ var circles = [], //table of objects
     mode = "polar",
     toDelete,
     opacityAmount, //Buffer for the print colour
-    i; //An index for the iterative loops
+    i, //An index for the iterative loops
+    flip = false;
 
 declareattribute("precision", null, "set_precision"); //Attribute which can be accessed by the inspector
 declareattribute("mode", null, "set_mode"); //Attribute which can be accessed by the inspector
+declareattribute("flip_axis", null, "set_flip"); //Attribute which can be accessed by the inspector
 //----------------------------------------------//
 //----------------- FUNCTIONS ------------------//
 //----------------------------------------------//
@@ -128,6 +130,7 @@ function deleteTheGoodOne(item) {
 
     return item.name !== toDelete;
 }
+deleteTheGoodOne.local = 1;
 //Painting of the grid circular system
 function paint_grid() {
 
@@ -153,6 +156,7 @@ function paint_grid() {
         stroke(); //Draw the context
     }
 }
+paint_grid.local = 1;
 //Function to calculate the dimensions of the UI window
 function calcAspect() {
 
@@ -162,11 +166,13 @@ function calcAspect() {
     return width / height
 
 }
+calcAspect.local = 1;
 //Clip
 function clip(input, min, max) {
 
     return Math.min(max, Math.max(min, input))
 }
+clip.local = 1;
 //----------------------------------------------//
 //--------------- GETTER SETTER ----------------//
 //----------------------------------------------//
@@ -178,6 +184,8 @@ function set_precision(a) {
     else precision = a;
     mgraphics.redraw();
 }
+set_precision.local = 1;
+
 function set_mode(a) {
 
     if (a == "polar") {
@@ -185,8 +193,22 @@ function set_mode(a) {
     } else if (a == "cartesian") {
         mode = "cartesian";
     }
+    if (circles.length>0){
     out("coordinate", circleHitten);
+    }
 }
+set_mode.local = 1;
+function set_flip(a) {
+    if (a == 0) {
+        flip = false;
+    } else if (a == 1) {
+        flip = true;
+    }
+    if (circles.length>0){
+        out("coordinate", circleHitten);
+    }
+}
+set_flip.local = 1;
 function getvalueof() {
 
     var a = new Array();
@@ -203,6 +225,7 @@ function getvalueof() {
 
     return (a);
 }
+getvalueof.local = 1;
 function setvalueof() {
 
     circles.splice(0, circles.length);
@@ -228,10 +251,12 @@ function setvalueof() {
     circleHitten = 0;
     mgraphics.redraw();
 }
+setvalueof.local = 1;
 function print() {
 
     post(circles[0].name, circles[1].name);
 }
+print.local = 1;
 //----------------------------------------------//
 //--------------- ROUTINE FUNCTIONS ------------//
 //----------------------------------------------//
@@ -273,6 +298,7 @@ function paint() {
     }
     outlet(1, outForDump);
 }
+paint.local = 1;
 //Function to test which source is hitted 
 function hittest(x, y) {
 
@@ -294,6 +320,7 @@ function hittest(x, y) {
     }
     return 0
 }
+hittest.local = 1;
 function onclick(x, y) {
 
     var cursorPosition = sketch.screentoworld(x, y);
@@ -306,6 +333,7 @@ function onclick(x, y) {
     refresh();
 
 }
+onclick.local = 1;
 function ondrag(x, y, button, cmd, shift, caps, opt, ctrl) {
 
     var cursorPosition = sketch.screentoworld(x, y);
@@ -359,6 +387,7 @@ function ondrag(x, y, button, cmd, shift, caps, opt, ctrl) {
     refresh();
     notifyclients(); //Notifies any clients (such as the pattr family of objects), that the object’s current value has changed. 
 }
+ondrag.local = 1;
 function onidle() {
 
     if (!circles[circleHitten].overcircle) {
@@ -366,23 +395,23 @@ function onidle() {
         mgraphics.redraw();
     }
 }
+onidle.local = 1;
 function onidleout() {
 
     circles[circleHitten].overcircle = false;
     mgraphics.redraw();
 }
+onidleout.local = 1;
 function cartopol(x, y) {
 
     // Calculer la distance r depuis l'origine (0, 0)
     const r = Math.sqrt(x * x + y * y);
-    // Calculer l'angle theta en radians
+    // Calculer l'angle theta en radians et décaler l'angle theta de π/2 pour
     var theta = Math.atan2(y, x);
     // Ajuster l'angle theta pour qu'il soit dans l'intervalle de 0 à 2π
     if (theta < 0) {
         theta += 2 * Math.PI;
     }
-    // Décaler l'angle theta de 3π/2 pour correspondre à votre exigence
-    theta += (3 * Math.PI) / 2;
     // Assurer que l'angle reste dans l'intervalle de 0 à 2π
     if (theta >= 2 * Math.PI) {
         theta -= 2 * Math.PI;
@@ -394,6 +423,38 @@ function cartopol(x, y) {
     // Retourner les coordonnées polaires (theta, r)
     return polarCoordinates;
 }
+cartopol.local = 1;
+function flipOfaxis(x, y, outputType){
+if (outputType == "pol"){
+        // Calculer la distance r depuis l'origine (0, 0)
+        const r = Math.sqrt(x * x + y * y);
+        // Calculer l'angle theta en radians et décaler l'angle theta de π/2 pour
+        var theta = Math.atan2(y, x) - (Math.PI/2);
+        // Ajuster l'angle theta pour qu'il soit dans l'intervalle de 0 à 2π
+        if (theta < 0) {
+            theta += 2 * Math.PI;
+        }
+        // Assurer que l'angle reste dans l'intervalle de 0 à 2π
+        if (theta >= 2 * Math.PI) {
+            theta -= 2 * Math.PI;
+        }
+        const polarCoordinates = {
+            theta: theta,
+            r: r
+        };
+        // Retourner les coordonnées polaires (theta, r)
+        return polarCoordinates;
+    }
+    else{
+        const cartesianCoordinates = {
+            x: y,
+            y: (x*-1)
+        };
+        return cartesianCoordinates;
+    }
+}
+flipOfaxis.local = 1;
+/*
 function out(data, circle) {
 
     if (data == "radius") {
@@ -401,20 +462,80 @@ function out(data, circle) {
     } else if (data == "opacity") {
         outlet(0, "/circle/" + circles[circle].name + "/opacity", circles[circle].opacity);
     } else if (data == "coordinate") {
-        if (mode == "polar") {
-            outlet(0, "/circle/" + circles[circle].name + "/pol", cartopol(circles[circle].center[0], circles[circle].center[1]).r, cartopol(circles[circle].center[0], circles[circle].center[1]).theta);
-        } else {
-            outlet(0, "/circle/" + circles[circle].name + "/xy", circles[circle].center[0], circles[circle].center[1]);
+        if (flip == 0){
+            if (mode == "polar") {
+                outlet(0, "/circle/" + circles[circle].name + "/pol", cartopol(circles[circle].center[0], circles[circle].center[1]).r, cartopol(circles[circle].center[0], circles[circle].center[1]).theta);
+            } else {
+                //J'inverse x et y en changeant le signe de y afin de faire une rotation de 90° pour les axes
+                //outlet(0, "/circle/" + circles[circle].name + "/xy", circles[circle].center[1], circles[circle].center[0]*-1);
+                outlet(0, "/circle/" + circles[circle].name + "/xy", circles[circle].center[0], circles[circle].center[1]);
+            }
         }
     }
+    
     if (mode == "polar") {
         outForDump[((circles[circle].name) * 4) - 4] = cartopol(circles[circle].center[0], circles[circle].center[1]).r;
         outForDump[((circles[circle].name) * 4) - 3] = cartopol(circles[circle].center[0], circles[circle].center[1]).theta;
     } else {
+        //J'inverse x et y en changeant le signe de y afin de faire une rotation de 90° pour les axes
+        //outForDump[((circles[circle].name) * 4) - 4] = circles[circle].center[1];
+        //outForDump[((circles[circle].name) * 4) - 3] = (circles[circle].center[0]*-1);
         outForDump[((circles[circle].name) * 4) - 4] = circles[circle].center[0];
-        outForDump[((circles[circle].name) * 4) - 3] = circles[circle].center[1];
+        outForDump[((circles[circle].name) * 4) - 3] = (circles[circle].center[1]);
 
     }
     outForDump[((circles[circle].name) * 4) - 2] = circles[circle].radiusO;
     outForDump[((circles[circle].name) * 4) - 1] = circles[circle].opacity;
 }
+*/
+function out(data, circle) {
+
+    if (flip == false) {
+
+        if (data == "radius") {
+            outlet(0, "/circle/" + circles[circle].name + "/radius", circles[circle].radiusO);
+        } else if (data == "opacity") {
+            outlet(0, "/circle/" + circles[circle].name + "/opacity", circles[circle].opacity);
+        } else if (data == "coordinate") {
+                if (mode == "polar") {
+                    outlet(0, "/circle/" + circles[circle].name + "/pol", cartopol(circles[circle].center[0], circles[circle].center[1]).r, cartopol(circles[circle].center[0], circles[circle].center[1]).theta);
+                } else {
+                    outlet(0, "/circle/" + circles[circle].name + "/xy", circles[circle].center[0], circles[circle].center[1]);
+                }
+        }
+
+        if (mode == "polar") {
+            outForDump[((circles[circle].name) * 4) - 4] = cartopol(circles[circle].center[0], circles[circle].center[1]).r;
+            outForDump[((circles[circle].name) * 4) - 3] = cartopol(circles[circle].center[0], circles[circle].center[1]).theta;
+        } else {
+            outForDump[((circles[circle].name) * 4) - 4] = circles[circle].center[0];
+            outForDump[((circles[circle].name) * 4) - 3] = (circles[circle].center[1]);
+
+        }
+    } else {
+
+        if (data == "radius") {
+            outlet(0, "/circle/" + circles[circle].name + "/radius", circles[circle].radiusO);
+        } else if (data == "opacity") {
+            outlet(0, "/circle/" + circles[circle].name + "/opacity", circles[circle].opacity);
+        } else if (data == "coordinate") {
+                if (mode == "polar") {
+                    outlet(0, "/circle/" + circles[circle].name + "/pol", flipOfaxis(circles[circle].center[0], circles[circle].center[1], "pol").r, flipOfaxis(circles[circle].center[0], circles[circle].center[1], "pol").theta);
+                } else {
+                    outlet(0, "/circle/" + circles[circle].name + "/xy", flipOfaxis(circles[circle].center[0], circles[circle].center[1], "car").x, flipOfaxis(circles[circle].center[0], circles[circle].center[1], "car").y);
+                }
+            }
+        if (mode == "polar") {
+            outForDump[((circles[circle].name) * 4) - 4] = flipOfaxis(circles[circle].center[0], circles[circle].center[1], "pol").r;
+            outForDump[((circles[circle].name) * 4) - 3] = flipOfaxis(circles[circle].center[0], circles[circle].center[1], "pol").theta;
+        } else {
+            outForDump[((circles[circle].name) * 4) - 4] = flipOfaxis(circles[circle].center[0], circles[circle].center[1], "car").x;
+            outForDump[((circles[circle].name) * 4) - 3] = flipOfaxis(circles[circle].center[0], circles[circle].center[1], "car").y;
+
+        }
+    }
+    outForDump[((circles[circle].name) * 4) - 2] = circles[circle].radiusO;
+    outForDump[((circles[circle].name) * 4) - 1] = circles[circle].opacity;
+}
+out.local = 1;  
+

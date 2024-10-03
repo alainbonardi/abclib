@@ -43,6 +43,12 @@
         <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
         <digest>sets the number of dimensions</digest>
       </attribute>-->
+
+    <attribute name="refresh" type="int" set="1" get="1" size="1">
+      <description>sets the refresh time in ms for the visualization [init=10:min=1:max=2000:step=1].<br /><br />
+        </description>
+      <digest>sets the refresh time in ms</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
@@ -58,12 +64,10 @@
   </methodlist>
 
   <seealsolist>
-    <seealso name="abc.hoa.delay~" />
-    <seealso name="abc.hoa.grain~" />
-    <seealso name="abc.hoa.ringmod~" />
-    <seealso name="abc.hoa.gain~" />
     <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.map~" />
     <seealso name="abc.hoa.decoder~" />
     <seealso name="abc.hoa.optim~" />
+    <seealso name="abc.hoa.wider~" />
   </seealsolist>
 </c74object>

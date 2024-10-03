@@ -33,10 +33,26 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+  
+    <attribute name="phi0" type="int" set="1" get="1" size="1">
+      <description>sets the opening angle of the stereo in degrees [init=30:min=1:max=90:step=1].</description>
+      <digest>sets the opening angle of the stereo in degrees</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the volume in dB</digest>
+    </attribute>
+
+    <attribute name="incAngle" type="int" set="1" get="1" size="1">
+      <description>sets the incident angle of the source in degrees when there is only one (<o>for abc.mc.chopan~ 1</o>) [init=0:min=-90:max=90:step=1].</description>
+      <digest>sets the incident angle of the source in degrees when there is only one</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="phi0">
       <arglist>
         <arg type="int" />
@@ -44,6 +60,7 @@
       <description>sets the opening angle of the stereo in degrees [init=30:min=1:max=90:step=1].</description>
       <digest>sets the opening angle of the stereo in degrees</digest>
     </method>
+
     <method name="gain">
       <arglist>
         <arg type="float" />
@@ -51,6 +68,7 @@
       <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
+
     <method name="incAngle">
       <arglist>
         <arg type="int" />
@@ -58,6 +76,7 @@
       <description>sets the incident angle of the source in degrees when there is only one (<o>for abc.mc.chopan~ 1</o>) [init=0:min=-90:max=90:step=1].</description>
       <digest>sets the incident angle of the source in degrees when there is only one</digest>
     </method>
+
   </methodlist>
 
   <seealsolist>

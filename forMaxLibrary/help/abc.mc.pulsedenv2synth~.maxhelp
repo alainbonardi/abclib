@@ -409,7 +409,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 5.5, 62.0, 486.0, 87.0 ],
-									"text" : "abc.mc.pulsedenv2synth~ are multichannel generators of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency).\nThe ratio silence/sound is controlable (ratio).\nThe short envelopes can be decorrelated thanks to spread control (between 0 and 1).\nA lowpass filter (at frequency fc) is applied to the output."
+									"text" : "abc.mc.pulsedenv2synth~ is a multichannel generator of sound bursts based on a sinusoid sound (at carrierFreq frequency) to which short triangular envelopes are applied (at envFreq frequency).\nThe ratio silence/sound is controlable (ratio).\nThe short envelopes can be decorrelated thanks to spread control (between 0 and 1).\nA lowpass filter (at frequency fc) is applied to the output."
 								}
 
 							}
@@ -512,7 +512,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1061,6 +1061,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-39", 0 ],
+									"midpoints" : [ 19.5, 367.0, 135.5, 367.0 ],
 									"order" : 0,
 									"source" : [ "obj-7", 0 ]
 								}
@@ -1515,7 +1516,13 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
+			"obj-6::obj-2::obj-3" : [ "number", "number", 0 ],
 			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
 
 			}
 ,

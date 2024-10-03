@@ -33,10 +33,37 @@
 
   <!--ATTRIBUTES-->
   <attributelist>
+
+    <attribute name="f0" type="float" set="1" get="1" size="1">
+      <description>sets the general fundamental frequency in Hz [init=220:min=0.01:max=15000:step=0.01].</description>
+      <digest>sets the general fundamental frequency in Hz</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets the volume in dB</digest>
+    </attribute>
+    
+    <attribute name="amp[index]" type="float" set="1" get="1" size="1">
+      <description>sets the amplitude of the [index] module in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=dB(1/[index]):min=-127:max=18:step=0.01].</description>
+      <digest>sets the amplitude of the [index] module</digest>
+    </attribute>
+
+    <attribute name="fmult[index]" type="float" set="1" get="1" size="1">
+      <description>sets the multiplier of the fundamental f0 to tune the [index] module, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=[index]:min=0:max=1000:step=0.00001].</description>
+      <digest>sets the multiplier of the fundamental f0 to tune the [index] module</digest>
+    </attribute>
+
+    <attribute name="fbeat[index]" type="float" set="1" get="1" size="1">
+      <description>set the frequency shift of the second oscillator of the [index] module in Hz, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=0:max=20:step=0.01].</description>
+      <digest>set the frequency shift of the second oscillator of the [index] module in Hz</digest>
+    </attribute>
+    
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
+
     <method name="f0">
       <arglist>
         <arg type="float" />
@@ -44,6 +71,7 @@
       <description>sets the general fundamental frequency in Hz [init=220:min=0.01:max=15000:step=0.01].</description>
       <digest>sets the general fundamental frequency in Hz</digest>
     </method>
+
     <method name="gain">
       <arglist>
         <arg type="float" />
@@ -51,6 +79,7 @@
       <description>sets the general volume in dB [init=0:min=-127:max=18:step=0.01].</description>
       <digest>sets the volume in dB</digest>
     </method>
+    
     <method name="amp[index]">
       <arglist>
         <arg type="float" />
@@ -58,6 +87,7 @@
       <description>sets the amplitude of the [index] module in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=dB(1/[index]):min=-127:max=18:step=0.01].</description>
       <digest>sets the amplitude of the [index] module</digest>
     </method>
+
     <method name="fmult[index]">
       <arglist>
         <arg type="float" />
@@ -65,6 +95,7 @@
       <description>sets the multiplier of the fundamental f0 to tune the [index] module, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=[index]:min=0:max=1000:step=0.00001].</description>
       <digest>sets the multiplier of the fundamental f0 to tune the [index] module</digest>
     </method>
+
     <method name="fbeat[index]">
       <arglist>
         <arg type="float" />
@@ -72,6 +103,7 @@
       <description>set the frequency shift of the second oscillator of the [index] module in Hz, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=0:max=20:step=0.01].</description>
       <digest>set the frequency shift of the second oscillator of the [index] module in Hz</digest>
     </method>
+
   </methodlist>
 
   <seealsolist>

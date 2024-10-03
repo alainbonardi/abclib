@@ -905,7 +905,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -1407,6 +1407,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 113.5, 359.0, 194.5, 359.0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -1428,6 +1429,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 646.5, 356.5, 194.5, 356.5 ],
 									"source" : [ "obj-47", 0 ]
 								}
 
@@ -1435,6 +1437,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 732.5, 356.5, 194.5, 356.5 ],
 									"source" : [ "obj-48", 0 ]
 								}
 
@@ -1442,6 +1445,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-20", 0 ],
+									"midpoints" : [ 26.5, 418.5, 147.321441999999934, 418.5 ],
 									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
@@ -1472,6 +1476,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 556.5, 356.5, 194.5, 356.5 ],
 									"source" : [ "obj-58", 0 ]
 								}
 
@@ -1479,6 +1484,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 288.5, 356.5, 194.5, 356.5 ],
 									"source" : [ "obj-59", 0 ]
 								}
 
@@ -1486,6 +1492,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
+									"midpoints" : [ 398.5, 356.5, 194.5, 356.5 ],
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -2761,7 +2768,7 @@
 							}
 , 							{
 								"box" : 								{
-									"args" : [ -127 ],
+									"args" : [ "@gain", -127 ],
 									"bgmode" : 0,
 									"border" : 1,
 									"clickthrough" : 0,
@@ -2776,7 +2783,7 @@
 									"numoutlets" : 1,
 									"offset" : [ 0.0, 0.0 ],
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 130.0, 253.0, 75.0, 110.0 ],
+									"patching_rect" : [ 131.0, 253.0, 75.0, 110.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -3287,7 +3294,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 1 ],
-									"midpoints" : [ 139.5, 378.0, 140.5, 378.0 ],
+									"midpoints" : [ 140.5, 378.0, 140.5, 378.0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -3849,6 +3856,21 @@
 			}
  ],
 		"lines" : [  ],
+		"parameters" : 		{
+			"obj-11::obj-4::obj-3" : [ "number", "number", 0 ],
+			"obj-12::obj-4::obj-3" : [ "number[1]", "number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "abc.gaincontrol.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
