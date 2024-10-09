@@ -486,6 +486,7 @@ function patching() {
 	if (signalData) {
 		var inlet1 = patcher.newdefault(20, 60, "inlet");
 		if (inletsoutlets(abcObject)[0] > 1) {
+			inlet1.message('comment','(multi-channel signal) Input');
 			//post("this are the inputs of the abc object: ",inletsoutlets(abcObject)[0]);
 			objectToInstantiate = "mc.unpack~ " + inletsoutlets(abcObject)[0];
 			var unpacker = patcher.newdefault(20, 180, objectToInstantiate);
@@ -495,6 +496,7 @@ function patching() {
 			}
 		} else {
 			connectobject(inlet1, 0, abcObject, 0);
+			inlet1.message('comment','(signal) Input');
 		}
 		HcontroldataPos += 40;
 	}
@@ -511,6 +513,7 @@ function patching() {
 			mapInlet = patcher.newdefault(60 + 40 * k, 60, "inlet");
 			HcontroldataPos += 40;
 			connectobject(mapInlet, 0, combine, 1 + k);//connect inlets to mc.combine~
+			mapInlet.message('comment','(multi-channel signal) Input');
 		}
 		connectobject(combine, 0, unpacker, 0);//connect combine to abcObject
 	} else if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect' || patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult' || patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {//2 buses of n channels
@@ -519,6 +522,7 @@ function patching() {
 		var combine = patcher.newdefault(20, 120, objectToInstantiate);
 		connectobject(inlet1, 0, combine, 0);
 		var businlet = patcher.newdefault(120, 60, "inlet");
+		businlet.message('comment','(multi-channel signal) Input');
 		connectobject(businlet, 0, combine, 1);//connect inlets to mc.combine~
 		connectobject(combine, 0, unpacker, 0);//connect combine to abcObject
 		HcontroldataPos = 160;
@@ -527,14 +531,13 @@ function patching() {
 	//-----------------------------------------------------
 	if (controlData) {
 		var inlet2 = patcher.newdefault(HcontroldataPos, 60, "inlet");
+		inlet2.message('comment','(control) Input');
 		connectobject(inlet2, 0, abcObject, 0);
 	}
 	//-----------------------------------------------------
 
 	var outlet = patcher.newdefault(20, 420, "outlet");
-
-
-
+	outlet.message('comment','(multi-channel signal) Output');
 
 	if (inletsoutlets(abcObject)[1] > 1) {
 		objectToInstantiate = "mc.pack~ " + (inletsoutlets(abcObject)[1]);
@@ -556,15 +559,6 @@ function patching() {
 	} else {//The ABC object only has 1 output
 		connectobject(abcObject, 0, outlet, 0);
 	}
-
-
-
-
-
-
-
-
-
 
 }
 
