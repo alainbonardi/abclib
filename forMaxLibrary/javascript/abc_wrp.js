@@ -531,14 +531,14 @@ function patching() {
 	}
 	//-----------------------------------------------------
 
-	var outlet = patcher.newdefault(20, 360, "outlet");
+	var outlet = patcher.newdefault(20, 420, "outlet");
 
 
 
 
 	if (inletsoutlets(abcObject)[1] > 1) {
 		objectToInstantiate = "mc.pack~ " + (inletsoutlets(abcObject)[1]);
-		var packer = patcher.newdefault(20, 300, objectToInstantiate);
+		var packer = patcher.newdefault(20, 360, objectToInstantiate);
 		//addobjectauto(objectToInstantiate, 4);
 
 		if (addCARTOPOL) {
@@ -546,6 +546,7 @@ function patching() {
 			connectobject(abcObject, 0, cartopol, 0);
 			connectobject(abcObject, 1, cartopol, 1);
 			connectobject(cartopol, 0, packer, 0);
+			connectobject(cartopol, 1, packer, 1);
 		} else {
 			for (d = 0; d < inletsoutlets(abcObject)[1]; d++) {
 				connectobject(abcObject, d, packer, d);//connect abc object to mc.pack~
