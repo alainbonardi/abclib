@@ -707,7 +707,7 @@ abc_substractSynth_ui(n) = thisSubstractiveSynth
 //AUDIOTESTER
 //--------------------------------------------------------------------------------------//
 //
-abc_audioTester_ui = audioTester(n, nhpmax, freq, gain)
+abc_audioTester_ui = audioTester(nls, nhpmax, freq, gain)
 			with {
 				nhpmax = 64; //maximum number of loudspeakers
 				nls = nentry("v:audioTester/nls", 2, 1, nhpmax, 1); //number of loudspeakers used (from 1 to 64)
