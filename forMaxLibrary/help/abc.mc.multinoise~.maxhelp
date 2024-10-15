@@ -1214,7 +1214,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 373.5, 146.5, 100.0, 210.0 ],
-									"text" : ";\rs11 f0 440;\rs11 fmult00 0.56;\rs11 fmult01 0.56;\rs11 fmult02 0.92;\rs11 fmult03 0.92;\rs11 fmult04 1.19;\rs11 fmult05 1.7;\rs11 fmult06 2.;\rs11 fmult07 2.74;\rs11 fmult08 3.;\rs11 fmult09 3.76;\rs11 fmult10 4.07;\rs11 filterQ 70.;\r"
+									"text" : ";\rs11 f0 440;\rs11 fmult0 0.56;\rs11 fmult1 0.56;\rs11 fmult2 0.92;\rs11 fmult3 0.92;\rs11 fmult4 1.19;\rs11 fmult5 1.7;\rs11 fmult6 2.;\rs11 fmult7 2.74;\rs11 fmult8 3.;\rs11 fmult9 3.76;\rs11 fmult10 4.07;\rs11 filterQ 70.;\r"
 								}
 
 							}

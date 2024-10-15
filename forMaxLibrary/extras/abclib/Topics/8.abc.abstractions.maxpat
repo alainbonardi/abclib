@@ -370,7 +370,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 383.0, 431.0, 94.0, 76.0 ],
-									"text" : ";\rdel1 tempo 60;\rdel1 dur00 0.5;\rdel1 fdbk00 0.4;\r"
+									"text" : ";\rdel1 tempo 60;\rdel1 dur0 0.5;\rdel1 fdbk0 0.4;\r"
 								}
 
 							}
@@ -1025,7 +1025,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 376.0, 282.75, 119.0, 22.0 ],
-									"text" : "loadmess fdbk00 0.5"
+									"text" : "loadmess fdbk0 0.5"
 								}
 
 							}
@@ -1157,7 +1157,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 236.0, 275.5, 56.0, 22.0 ],
-									"text" : "dur00 $1"
+									"text" : "dur0 $1"
 								}
 
 							}

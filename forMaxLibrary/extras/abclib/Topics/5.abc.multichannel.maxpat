@@ -1050,7 +1050,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 311.0, 107.0, 101.0, 317.0 ],
-									"text" : ";\rgctrl2 gs00 100;\rgctrl2 dt00 500;\rgctrl2 fdbk00 0.1;\rgctrl2 gs01 100;\rgctrl2 dt01 750;\rgctrl2 fdbk01 0.2;\rgctrl2 gs02 100;\rgctrl2 dt02 1000;\rgctrl2 fdbk02 0.3;\rgctrl2 gs03 100;\rgctrl2 dt03 1250;\rgctrl2 fdbk03 0.4;\rgctrl2 gs04 100;\rgctrl2 dt04 1500;\rgctrl2 fdbk04 0.5;\rgctrl2 gs05 100;\rgctrl2 dt05 1750;\rgctrl2 fdbk05 0.6;\rgctrl2 gs06 100;\rgctrl2 dt06 2000;\rgctrl2 fdbk06 0.7;\r"
+									"text" : ";\rgctrl2 gs0 100;\rgctrl2 dt0 500;\rgctrl2 fdbk0 0.1;\rgctrl2 gs1 100;\rgctrl2 dt1 750;\rgctrl2 fdbk1 0.2;\rgctrl2 gs2 100;\rgctrl2 dt2 1000;\rgctrl2 fdbk2 0.3;\rgctrl2 gs3 100;\rgctrl2 dt3 1250;\rgctrl2 fdbk3 0.4;\rgctrl2 gs4 100;\rgctrl2 dt4 1500;\rgctrl2 fdbk4 0.5;\rgctrl2 gs5 100;\rgctrl2 dt5 1750;\rgctrl2 fdbk5 0.6;\rgctrl2 gs6 100;\rgctrl2 dt6 2000;\rgctrl2 fdbk6 0.7;\r"
 								}
 
 							}
@@ -1533,7 +1533,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 294.400004386901855, 220.000003278255463, 65.0, 22.0 ],
-									"text" : "trans02 $1"
+									"text" : "trans2 $1"
 								}
 
 							}
@@ -1570,7 +1570,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 225.600003361701965, 220.000003278255463, 65.0, 22.0 ],
-									"text" : "trans01 $1"
+									"text" : "trans1 $1"
 								}
 
 							}
@@ -1607,7 +1607,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 156.000002324581146, 220.000003278255463, 65.0, 22.0 ],
-									"text" : "trans00 $1"
+									"text" : "trans0 $1"
 								}
 
 							}
@@ -2099,7 +2099,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 288.0, 268.0, 108.0, 196.0 ],
-									"text" : ";\rharmos fr00 100;\rharmos gain00 0;\rharmos fr01 -200;\rharmos gain01 2;\rharmos fr02 300;\rharmos gain02 4;\rharmos fr03 -400;\rharmos gain03 6;\rharmos fr04 500;\rharmos gain04 8;\rharmos fr05 -50;\rharmos gain05 10;\r"
+									"text" : ";\rharmos fr0 100;\rharmos gain0 0;\rharmos fr1 -200;\rharmos gain1 2;\rharmos fr2 300;\rharmos gain2 4;\rharmos fr3 -400;\rharmos gain3 6;\rharmos fr4 500;\rharmos gain4 8;\rharmos fr5 -50;\rharmos gain5 10;\r"
 								}
 
 							}
@@ -2134,7 +2134,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 401.0, 268.0, 101.0, 129.0 ],
-									"text" : ";\rdels2 dur00 0.5;\rdels2 dur01 1.;\rdels2 dur02 0.5;\rdels2 dur03 1.;\rdels2 dur04 0.5;\rdels2 dur05 0.25;\rdels2 tempo 200;\r",
+									"text" : ";\rdels2 dur0 0.5;\rdels2 dur1 1.;\rdels2 dur2 0.5;\rdels2 dur3 1.;\rdels2 dur4 0.5;\rdels2 dur5 0.25;\rdels2 tempo 200;\r",
 									"textcolor" : [ 0.2, 0.2, 0.2, 1.0 ]
 								}
 
@@ -3036,7 +3036,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 350.0, 387.0, 56.0, 22.0 ],
-									"text" : "dur02 $1"
+									"text" : "dur2 $1"
 								}
 
 							}
@@ -3104,7 +3104,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 329.0, 286.0, 56.0, 22.0 ],
-									"text" : "dur01 $1"
+									"text" : "dur1 $1"
 								}
 
 							}
@@ -3233,7 +3233,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 311.0, 189.0, 56.0, 22.0 ],
-									"text" : "dur00 $1"
+									"text" : "dur0 $1"
 								}
 
 							}
@@ -3736,7 +3736,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 462.5, 278.5, 93.0, 196.0 ],
-					"text" : ";\rdels dur00 1.;\rdels fdbk00 0.2;\rdels gain00 0.;\rdels dur01 1.5;\rdels fdbk01 0.4;\rdels gain01 -3.;\rdels dur02 2.;\rdels fdbk02 0.6;\rdels gain02 -6.;\rdels dur03 2.5;\rdels fdbk03 0.8;\rdels gain03 -9.;\r"
+					"text" : ";\rdels dur0 1.;\rdels fdbk0 0.2;\rdels gain0 0.;\rdels dur1 1.5;\rdels fdbk1 0.4;\rdels gain1 -3.;\rdels dur2 2.;\rdels fdbk2 0.6;\rdels gain2 -6.;\rdels dur3 2.5;\rdels fdbk3 0.8;\rdels gain3 -9.;\r"
 				}
 
 			}

@@ -209,7 +209,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 291.0, 246.0, 119.0, 22.0 ],
-					"text" : "loadmess fdbk00 0.5"
+					"text" : "loadmess fdbk0 0.5"
 				}
 
 			}
@@ -329,7 +329,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 135.0, 243.0, 56.0, 22.0 ],
-					"text" : "dur00 $1"
+					"text" : "dur0 $1"
 				}
 
 			}

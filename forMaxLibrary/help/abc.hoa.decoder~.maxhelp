@@ -235,7 +235,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 178.0, 493.0, 431.0, 100.0 ],
-									"text" : "- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a00, a01, ..., a09, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+									"text" : "- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a0, a1, ..., a9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 								}
 
 							}
@@ -778,7 +778,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 311.0, 566.0, 431.0, 100.0 ],
-									"text" : "- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a00, a01, ..., a09, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
+									"text" : "- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a0, a1, ..., a9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
 								}
 
 							}
@@ -1125,7 +1125,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 677.0, 499.0, 45.0, 22.0 ],
-									"text" : "a03 $1"
+									"text" : "a3 $1"
 								}
 
 							}
@@ -1160,7 +1160,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 621.0, 469.0, 45.0, 22.0 ],
-									"text" : "a02 $1"
+									"text" : "a2 $1"
 								}
 
 							}
@@ -1208,7 +1208,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 566.0, 442.0, 45.0, 22.0 ],
-									"text" : "a01 $1"
+									"text" : "a1 $1"
 								}
 
 							}
@@ -1280,7 +1280,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 511.0, 416.0, 45.0, 22.0 ],
-									"text" : "a00 $1"
+									"text" : "a0 $1"
 								}
 
 							}

@@ -446,7 +446,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 446.0, 219.0, 108.0, 223.0 ],
-					"text" : ";\rharmos fr00 100;\rharmos gain00 0;\rharmos fr01 -200;\rharmos gain01 2;\rharmos fr02 300;\rharmos gain02 4;\rharmos fr03 -400;\rharmos gain03 6;\rharmos fr04 500;\rharmos gain04 8;\rharmos fr05 -50;\rharmos gain05 10;\rharmos fr06 -100;\rharmos gain05 10;\r"
+					"text" : ";\rharmos fr0 100;\rharmos gain0 0;\rharmos fr1 -200;\rharmos gain1 2;\rharmos fr2 300;\rharmos gain2 4;\rharmos fr3 -400;\rharmos gain3 6;\rharmos fr4 500;\rharmos gain4 8;\rharmos fr5 -50;\rharmos gain5 10;\rharmos fr6 -100;\rharmos gain5 10;\r"
 				}
 
 			}
@@ -541,7 +541,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 315.0, 282.0, 46.0, 22.0 ],
-					"text" : "fr02 $1"
+					"text" : "fr2 $1"
 				}
 
 			}
@@ -578,7 +578,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 246.0, 282.0, 46.0, 22.0 ],
-					"text" : "fr01 $1"
+					"text" : "fr1 $1"
 				}
 
 			}
@@ -615,7 +615,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 177.0, 282.0, 46.0, 22.0 ],
-					"text" : "fr00 $1"
+					"text" : "fr0 $1"
 				}
 
 			}
@@ -1075,7 +1075,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 428.0, 460.5, 95.0, 143.0 ],
-					"text" : ";\rdels dur00 0.5;\rdels dur01 1.;\rdels dur02 0.5;\rdels dur03 1.;\rdels dur04 0.5;\rdels dur05 0.25;\rdels dur06 0.2;\rdels tempo 200;\r",
+					"text" : ";\rdels dur0 0.5;\rdels dur1 1.;\rdels dur2 0.5;\rdels dur3 1.;\rdels dur4 0.5;\rdels dur5 0.25;\rdels dur6 0.2;\rdels tempo 200;\r",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
@@ -1190,7 +1190,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 6.0, 61.0, 485.0, 74.0 ],
-					"text" : "abc.mc.freqshift~ provide parallel multiple frequency shifters. Each line is a frequency shifter in Direct Form 2 provided by a quadruple biquad.\nEach frequency shifter has got a shifting frequency: fr00, fr01, etc. in Hz (positive or negative) and an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
+					"text" : "abc.mc.freqshift~ provide parallel multiple frequency shifters. Each line is a frequency shifter in Direct Form 2 provided by a quadruple biquad.\nEach frequency shifter has got a shifting frequency: fr0, fr1, etc. in Hz (positive or negative) and an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18)"
 				}
 
 			}

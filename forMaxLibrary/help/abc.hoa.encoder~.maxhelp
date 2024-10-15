@@ -271,7 +271,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 61.0, 480.0, 114.0 ],
-									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
+									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s0, s1, ...) of the sources in turns per second and the fixed angles (a0, a1, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
 								}
 
 							}
@@ -572,7 +572,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 718.0, 641.0, 45.0, 22.0 ],
-									"text" : "a03 $1"
+									"text" : "a3 $1"
 								}
 
 							}
@@ -607,7 +607,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 662.0, 641.0, 45.0, 22.0 ],
-									"text" : "a02 $1"
+									"text" : "a2 $1"
 								}
 
 							}
@@ -655,7 +655,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 607.0, 641.0, 45.0, 22.0 ],
-									"text" : "a01 $1"
+									"text" : "a1 $1"
 								}
 
 							}
@@ -702,7 +702,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 552.0, 641.0, 45.0, 22.0 ],
-									"text" : "a00 $1"
+									"text" : "a0 $1"
 								}
 
 							}
@@ -853,7 +853,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 668.0, 303.0, 45.0, 22.0 ],
-									"text" : "s02 $1"
+									"text" : "s2 $1"
 								}
 
 							}
@@ -901,7 +901,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 613.0, 303.0, 45.0, 22.0 ],
-									"text" : "s01 $1"
+									"text" : "s1 $1"
 								}
 
 							}
@@ -948,7 +948,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 558.0, 303.0, 45.0, 22.0 ],
-									"text" : "s00 $1"
+									"text" : "s0 $1"
 								}
 
 							}
@@ -1842,7 +1842,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 61.0, 480.0, 114.0 ],
-									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
+									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s0, s1, ...) of the sources in turns per second and the fixed angles (a0, a1, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
 								}
 
 							}
@@ -2702,7 +2702,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 61.0, 480.0, 114.0 ],
-									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s00, s01, ...) of the sources in turns per second and the fixed angles (a00, a01, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
+									"text" : "abc.hoa.encoder~ object enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle. It is possible to encode a maximum of 8 sources. N varies between 1 and 7.\nFor instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.\nThe speeds (s0, s1, ...) of the sources in turns per second and the fixed angles (a0, a1, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters."
 								}
 
 							}

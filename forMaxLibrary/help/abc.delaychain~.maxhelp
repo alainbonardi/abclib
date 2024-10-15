@@ -759,7 +759,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 352.0, 585.0, 56.0, 22.0 ],
-					"text" : "dur02 $1"
+					"text" : "dur2 $1"
 				}
 
 			}
@@ -884,7 +884,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 352.0, 486.0, 56.0, 22.0 ],
-					"text" : "dur01 $1"
+					"text" : "dur1 $1"
 				}
 
 			}
@@ -1004,7 +1004,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 854.0, 59.0, 97.0, 223.0 ],
-					"text" : ";\rdels dur00 0.5;\rdels gain00 -10.;\rdels dur01 1.;\rdels gain01 -5.;\rdels dur02 0.5;\rdels gain02 -5.;\rdels dur03 1.;\rdels gain03 0.;\rdels dur04 0.5;\rdels gain04 5.;\rdels dur05 0.25;\rdels gain05 5.;\rdels dur06 2.;\rdels gain06 0.;\rdels fdbk 0.3"
+					"text" : ";\rdels dur0 0.5;\rdels gain0 -10.;\rdels dur1 1.;\rdels gain1 -5.;\rdels dur2 0.5;\rdels gain2 -5.;\rdels dur3 1.;\rdels gain3 0.;\rdels dur4 0.5;\rdels gain4 5.;\rdels dur5 0.25;\rdels gain5 5.;\rdels dur6 2.;\rdels gain6 0.;\rdels fdbk 0.3"
 				}
 
 			}
@@ -1243,7 +1243,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 348.0, 397.0, 56.0, 22.0 ],
-					"text" : "dur00 $1"
+					"text" : "dur0 $1"
 				}
 
 			}
@@ -1290,7 +1290,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 6.0, 59.0, 483.0, 194.0 ],
-					"text" : "abc.delaychain~ object provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nSince it is a chain of delays, there is no 'abc.delaychain~ 1' object.\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)\nA feedback parameter (fdbk) enables to loop the rhythmic structure."
+					"text" : "abc.delaychain~ object provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur0, dur1, dur2, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nSince it is a chain of delays, there is no 'abc.delaychain~ 1' object.\nEach delay line has got an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18)\nA feedback parameter (fdbk) enables to loop the rhythmic structure."
 				}
 
 			}

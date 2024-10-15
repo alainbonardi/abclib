@@ -189,7 +189,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 4.0, 58.0, 481.0, 141.0 ],
-									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude.\n"
+									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult0, fmult1, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult0 = 1, fmult1 = 2, fmult2 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp0, amp1, etc. messages. gain (in dB) is the general control of the amplitude.\n"
 								}
 
 							}
@@ -303,7 +303,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 374.0, 263.0, 100.0, 223.0 ],
-									"text" : ";\rs11 f0 440;\rs11 fmult00 0.56;\rs11 fmult01 0.56;\rs11 fmult02 0.92;\rs11 fmult03 0.92;\rs11 fmult04 1.19;\rs11 fmult05 1.7;\rs11 fmult06 2.;\rs11 fmult07 2.74;\rs11 fmult08 3.;\rs11 fmult09 3.76;\rs11 fmult10 4.07;\rs11 fbeat01 1.;\rs11 fbeat03 1.7;\r"
+									"text" : ";\rs11 f0 440;\rs11 fmult0 0.56;\rs11 fmult1 0.56;\rs11 fmult2 0.92;\rs11 fmult3 0.92;\rs11 fmult4 1.19;\rs11 fmult5 1.7;\rs11 fmult6 2.;\rs11 fmult7 2.74;\rs11 fmult8 3.;\rs11 fmult9 3.76;\rs11 fmult10 4.07;\rs11 fbeat1 1.;\rs11 fbeat3 1.7;\r"
 								}
 
 							}
@@ -604,7 +604,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 60.0, 488.0, 141.0 ],
-									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude.\n"
+									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult0, fmult1, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult0 = 1, fmult1 = 2, fmult2 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp0, amp1, etc. messages. gain (in dB) is the general control of the amplitude.\n"
 								}
 
 							}
@@ -758,7 +758,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 715.5, 384.5, 62.0, 22.0 ],
-									"text" : "amp01 $1"
+									"text" : "amp1 $1"
 								}
 
 							}
@@ -780,7 +780,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 631.5, 384.5, 62.0, 22.0 ],
-									"text" : "amp00 $1"
+									"text" : "amp0 $1"
 								}
 
 							}
@@ -851,7 +851,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 507.0, 384.5, 65.0, 22.0 ],
-									"text" : "fbeat01 $1"
+									"text" : "fbeat1 $1"
 								}
 
 							}
@@ -898,7 +898,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 296.0, 384.5, 65.0, 22.0 ],
-									"text" : "fmult01 $1"
+									"text" : "fmult1 $1"
 								}
 
 							}
@@ -1038,7 +1038,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 217.0, 384.5, 65.0, 22.0 ],
-									"text" : "fmult00 $1"
+									"text" : "fmult0 $1"
 								}
 
 							}
@@ -1595,7 +1595,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 62.0, 481.0, 141.0 ],
-									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult00, fmult01, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult00 = 1, fmult01 = 2, fmult02 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp00, amp01, etc. messages. gain (in dB) is the general control of the amplitude.\n"
+									"text" : "abc.mc.addsynth~ object enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator). \nf0 is the general fundamental frequency. fmult0, fmult1, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult0 = 1, fmult1 = 2, fmult2 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp0, amp1, etc. messages. gain (in dB) is the general control of the amplitude.\n"
 								}
 
 							}
@@ -1778,7 +1778,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 250.5, 368.5, 65.0, 22.0 ],
-									"text" : "fmult00 $1"
+									"text" : "fmult0 $1"
 								}
 
 							}
