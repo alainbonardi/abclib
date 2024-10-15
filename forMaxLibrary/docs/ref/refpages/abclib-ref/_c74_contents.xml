@@ -5,6 +5,7 @@
     <refpage name='abc.cartopol~.maxref.xml' />
     <refpage name='abc.delaychain~.maxref.xml' />
     <refpage name='abc.drops~.maxref.xml' />
+    <refpage name='abc.dtd.ui.maxref.xml' />
     <refpage name='abc.env.generator~.maxref.xml' />
     <refpage name='abc.envfollower~.maxref.xml' />
     <refpage name='abc.gaincontrol.maxref.xml' />

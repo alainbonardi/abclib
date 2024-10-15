@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.dtd.ui" module="abclib">
+  <digest>Decorrelation GUI</digest>
+  <description><o>abc.dtd.ui</o> allows for controlling decorrelation in ambisonics. Each segment corresponds to a harmonic, with the position on the horizontal axis representing the delay time applied to the corresponding harmonic. The position on the vertical axis controls the gain of the harmonic. 22 types of distributions are available, and the object is compatible with pattrstorage.
+  </description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="functiontype">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the type of delay distribution between 22 functions. [init=0:min=0:max=22].</description>
+      <digest>sets the type of delay distribution</digest>
+    </method>
+
+    <method name="factor">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the factor of decorrelation. [init=0.:min=0.:max=1.].</description>
+      <digest>sets the factor of decorrelation</digest>
+    </method>
+
+        <method name="delay">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the maximum delay time in ms. [init=0.:min=0.:max=5400.].</description>
+      <digest>sets the maximum delay time in ms</digest>
+    </method>
+  
+
+    <method name="channels">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the number of segments corresponding to circular harmonic. [init=7:min=0:max=15.].</description>
+      <digest>sets the number of segments corresponding to circular harmonic</digest>
+    </method>
+
+  </methodlist>
+  
+  <seealsolist>
+    <seealso name="abc.map.ui" />
+    <seealso name="abc.2plf.ui" />
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.hoa.decorrelation~" />
+    <seealso name="abc.hoa.ringmod~" />
+  </seealsolist>
+</c74object>
