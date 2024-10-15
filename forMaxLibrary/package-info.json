@@ -7,12 +7,16 @@
 	"max_version_max" : "none",
 	"max_version_min" : "8.2.2",
 	"os" : 	{
+		"macintosh" : 		{
+			"platform" : [ "x64", "aarch64" ],
+			"min_version" : "10.11.x"
+		},
 		"windows" : 		{
 			"platform" : [ "x64"],
 			"min_version" : "none"
 		}
 	}
 ,
-	"version" : "1.1.0",
+	"version" : "1.2.0",
 	"website" : "https://github.com/alainbonardi/abclib/tree/master"
 }
