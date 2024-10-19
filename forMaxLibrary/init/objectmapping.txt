@@ -7,6 +7,9 @@ max definesubstitution abc.map.ui bpatcher @name abc.map.ui.maxpat @border 1;
 max objectfile abc.adcinput~ abc.adcinput~;
 max definesubstitution abc.adcinput~ bpatcher @name abc.adcinput~ @border 1;
 
+max objectfile abc.dtd.ui abc.dtd.ui;
+max definesubstitution abc.dtd.ui bpatcher @name abc.dtd.ui.maxpat @border 1;
+
 max objectfile abc.env.noise~ abc.env.noise~;
 max definesubstitution abc.env.noise~ bpatcher @name abc.env.noise~ @border 1;
 
