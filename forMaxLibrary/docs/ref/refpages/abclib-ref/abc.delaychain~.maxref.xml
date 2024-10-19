@@ -7,7 +7,7 @@
   <digest>Abclib's sequential double overlapped delays without reinjection</digest>
   <description><o>abc.delaychain~</o> provide chains of delays (the output of the delay #k is internally connected to the input of the delay #k+1) with a global reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second). 
 
-  Since it is a chain of delays, there is no 'abc.delaychain~ 1' object. Each delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18). A feedback parameter (fdbk) enables to loop the rhythmic structure.
+  Since it is a chain of delays, there is no 'abc.delaychain~ 1' object. Each delay line has got an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18). A feedback parameter (fdbk) enables to loop the rhythmic structure.
     <br /><br /></description>
 
   <!--INLETS-->
@@ -36,12 +36,12 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="dur[index]" type="float" set="1" get="1" size="1">
-      <description>sets the duration of the delay line [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
+      <description>sets the duration of the delay line [index], [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur0, dur1, dur2, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
       <digest>sets the duration of the delay line [index] in musical duration</digest>
     </attribute>
 
     <attribute name="gain[index]" type="float" set="1" get="1" size="1">
-      <description>sets the gain of the [index] delay line in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
+      <description>sets the gain of the [index] delay line in dB, [index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-127:max=18:step=0.001].</description>
       <digest>sets the gain of the [index] delay line in dB</digest>
     </attribute>
 
@@ -67,14 +67,14 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the duration of the delay line [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
+      <description>sets the duration of the delay line [index], [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. These delays lines are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur0, dur1, dur2, etc. These musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm. [init=0:min=0:max=32:step=0.0001]</description>
       <digest>sets the duration of the delay line [index] in musical duration</digest>
     </method>
     <method name="gain[index]">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the gain of the [index] delay line in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
+      <description>sets the gain of the [index] delay line in dB, [index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-127:max=18:step=0.001].</description>
       <digest>sets the gain of the [index] delay line in dB</digest>
     </method>
     <method name="fdbk">
