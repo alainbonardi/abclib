@@ -49,7 +49,7 @@
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="n">
+    <method name="nls">
       <arglist>
         <arg type="int" />
       </arglist>

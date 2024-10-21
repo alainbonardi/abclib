@@ -250,8 +250,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 519.0, 169.0, 58.0, 22.0 ],
-					"text" : "speed $1"
+					"patching_rect" : [ 519.0, 169.0, 38.0, 22.0 ],
+					"text" : "s0 $1"
 				}
 
 			}
@@ -300,7 +300,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 219.0, 234.0, 150.0, 20.0 ],
+					"patching_rect" : [ 292.0, 234.0, 117.0, 20.0 ],
 					"text" : "refresh time in msec"
 				}
 
@@ -334,8 +334,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 112.0, 163.0, 58.0, 22.0 ],
-					"text" : "speed $1"
+					"patching_rect" : [ 112.0, 163.0, 38.0, 22.0 ],
+					"text" : "s0 $1"
 				}
 
 			}
@@ -397,7 +397,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 202.0, 77.0, 22.0 ],
+					"patching_rect" : [ 235.0, 202.0, 77.0, 22.0 ],
 					"text" : "loadmess 10"
 				}
 
@@ -411,7 +411,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 162.0, 234.0, 50.0, 22.0 ]
+					"patching_rect" : [ 235.0, 234.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -432,7 +432,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 162.0, 262.0, 63.0, 22.0 ],
+					"patching_rect" : [ 235.0, 262.0, 63.0, 22.0 ],
 					"text" : "refresh $1"
 				}
 
@@ -523,7 +523,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-17", 1 ],
-					"midpoints" : [ 171.5, 295.0, 539.5, 295.0 ],
+					"midpoints" : [ 244.5, 295.0, 539.5, 295.0 ],
 					"order" : 0,
 					"source" : [ "obj-21", 0 ]
 				}
@@ -532,7 +532,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 1 ],
-					"midpoints" : [ 171.5, 294.5, 132.5, 294.5 ],
+					"midpoints" : [ 244.5, 294.5, 132.5, 294.5 ],
 					"order" : 1,
 					"source" : [ "obj-21", 0 ]
 				}
@@ -625,11 +625,11 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder7~.mxo",
+				"name" : "abc_2d_multiencoder7_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
