@@ -40,6 +40,19 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 422.666678547859192, 19.0, 172.0, 22.0 ],
+					"text" : "abc.hoa.encoder~ @sources 1",
+					"varname" : "abc.hoa.decoder~[8]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-70",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -2016,10 +2029,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "abc_2d_fx_delay1~.mxo",
 				"type" : "iLaX"
 			}
@@ -2061,6 +2070,10 @@
 			}
 , 			{
 				"name" : "abc_2d_mirror7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

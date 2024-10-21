@@ -101,15 +101,12 @@ function patching() {
 		objectToInstantiate = "abc_" + dimensions + "_decoder" + order + "_" + speakers + "~";
 	} else if (patcherName == 'abc.hoa.encoder~' || patcherName == 'abc.hoa.encoder') {
 		if (patcherName == 'abc.hoa.encoder') withUI = true;
-		if (sources == 1) {
-			objectToInstantiate = "abc_" + dimensions + "_encoder" + order + "~";
-		} else {
-			if (sources > maxMEncoderSources) {//We check if it is an HOA object
-				error("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
-				sources = maxMEncoderSources;
-			}
-			objectToInstantiate = "abc_" + dimensions + "_multiencoder" + order + "_" + sources + "~";
+		if (sources > maxMEncoderSources) {
+			error("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
+			sources = maxMEncoderSources;
 		}
+		objectToInstantiate = "abc_" + dimensions + "_multiencoder" + order + "_" + sources + "~";
+		
 	} else if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {
 		if (patcherName == 'abc.hoa.map') withUI = true;
 		if (sources > maxMAPsources) {
