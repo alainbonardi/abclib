@@ -288,7 +288,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 52.0, 212.0, 150.0, 20.0 ],
+					"patching_rect" : [ 52.0, 212.0, 70.0, 20.0 ],
 					"text" : "soundgrain"
 				}
 
@@ -300,7 +300,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 52.0, 194.0, 150.0, 20.0 ],
+					"patching_rect" : [ 52.0, 194.0, 70.0, 20.0 ],
 					"text" : "soundcoat"
 				}
 
@@ -347,10 +347,10 @@
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 219.0, 236.0, 98.0, 22.0 ],
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 212.5, 236.0, 98.0, 22.0 ],
 					"text" : "abc.soundgrain~"
 				}
 
@@ -361,8 +361,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 3,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 118.0, 271.0, 221.0, 22.0 ],
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 118.0, 271.0, 208.0, 22.0 ],
 					"text" : "abc.mc.busselect~ 1 @ramp 3000"
 				}
 
@@ -483,7 +483,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 118.0, 236.0, 94.0, 22.0 ],
 					"text" : "abc.soundcoat~"
 				}
@@ -644,8 +644,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 119.0, 312.0, 187.0, 22.0 ],
-					"text" : "abc.hoa.encoder~ 3 @speed -0.2",
+					"patching_rect" : [ 119.0, 312.0, 167.0, 22.0 ],
+					"text" : "abc.hoa.encoder~ 3 @s0 -0.2",
 					"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 				}
 
@@ -678,7 +678,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 2 ],
-					"midpoints" : [ 39.5, 264.0, 329.5, 264.0 ],
+					"midpoints" : [ 39.5, 264.0, 316.5, 264.0 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -933,7 +933,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder3~.mxo",
+				"name" : "abc_2d_multiencoder3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -957,10 +957,6 @@
 			}
 , 			{
 				"name" : "abc_soundcoat~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

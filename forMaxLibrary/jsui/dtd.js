@@ -132,7 +132,8 @@ var ind = (index + 1) / channels
 function out(){
 var s1, s2, count, del, gain;
 	for(i = 0 ; i < channels; i++){
-            count = i < 10 ? '0' + i : i;
+            //count = i < 10 ? '0' + i : i;
+            count = i;
  	        s1 = "delay" + String(count);
             s2 = "gain" + String(count);
     //NEED TO BE OPTIMIZED BECAUSE WE MAKE THE CALCULUS MULTIPLE TIME

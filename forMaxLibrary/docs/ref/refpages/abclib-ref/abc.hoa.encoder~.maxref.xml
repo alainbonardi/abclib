@@ -49,13 +49,13 @@
       <digest>sets the number of dimensions</digest>
     </attribute>-->
 
-    <attribute name="angle" type="float" set="1" get="1" size="1">
-      <description>sets the angle of the encoded signal in degree [init=0:min=-360:max=360:step=0.01].</description>
+    <attribute name="a[index]" type="float" set="1" get="1" size="1">
+      <description>sets the angle of the [index]th encoded signal in degree.[index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
       <digest>sets the angle of the encoded signal in degree</digest>
     </attribute>
 
-    <attribute name="speed" type="float" set="1" get="1" size="1">
-      <description>sets the rotation speed of the encoded signal in turn/s [init=0:min=-100:max=100:step=0.001].</description>
+    <attribute name="s[index]" type="float" set="1" get="1" size="1">
+      <description>sets the rotation speed of the [index]th encoded signal in turn/s. [index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-100:max=100:step=0.001].</description>
       <digest>sets the angle of the encoded signal in degree</digest>
     </attribute>
 

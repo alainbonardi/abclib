@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 134.0, 158.0, 862.0, 730.0 ],
+		"rect" : [ 134.0, 156.0, 862.0, 730.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 862.0, 704.0 ],
+						"rect" : [ 134.0, 182.0, 862.0, 704.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -356,9 +356,9 @@
 								"box" : 								{
 									"id" : "obj-41",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
+									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 6.0, 162.0, 98.0, 22.0 ],
 									"text" : "abc.soundgrain~"
 								}
@@ -1105,7 +1105,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 184.0, 862.0, 704.0 ],
+						"rect" : [ 0.0, 26.0, 862.0, 704.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1143,7 +1143,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 25.0, 284.0, 120.321441999999934, 35.0 ],
-									"text" : "abc.hoa.encoder~ 1 @angle 45"
+									"text" : "abc.hoa.encoder~ 1 @a0 45"
 								}
 
 							}
@@ -1151,9 +1151,9 @@
 								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
+									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 25.0, 222.0, 98.0, 22.0 ],
 									"text" : "abc.soundgrain~"
 								}
@@ -2161,15 +2161,15 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "abc_2d_fx_decorrelation3~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_2d_map3_1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2205,10 +2205,6 @@
 			}
 , 			{
 				"name" : "abc_poltocar~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

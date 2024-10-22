@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 766.0, 644.0 ],
+						"rect" : [ 100.0, 126.0, 766.0, 644.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -351,13 +351,12 @@
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-28",
-													"linecount" : 2,
 													"maxclass" : "message",
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 296.0, 188.0, 50.0, 22.0 ],
-													"text" : "7.4"
+													"text" : "50."
 												}
 
 											}
@@ -3522,7 +3521,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 766.0, 644.0 ],
+						"rect" : [ 0.0, 26.0, 766.0, 644.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4840,9 +4839,9 @@
 								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
+									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 7.0, 125.0, 98.0, 22.0 ],
 									"text" : "abc.soundgrain~"
 								}
@@ -4986,8 +4985,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 103.0, 184.0, 58.0, 22.0 ],
-									"text" : "speed $1"
+									"patching_rect" : [ 103.0, 184.0, 38.0, 22.0 ],
+									"text" : "s0 $1"
 								}
 
 							}
@@ -5339,11 +5338,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
+				"name" : "abc_2d_fx_ringmod1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_fx_ringmod1~.mxo",
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -5360,10 +5359,6 @@
 				"patcherrelativepath" : "../media/images",
 				"type" : "PNG",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "abc_soundgrain~.mxo",
-				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_wrp.js",

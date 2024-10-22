@@ -6,7 +6,7 @@
 <c74object name="abc.vbap~" module="abclib">
   <digest>Abclib's circular VBAP spatialization with irregular angles</digest>
   <description><o>abc.vbap~</o>object provide implementations of VBAP algorithm  by Ville Pulkki for various number of loudspeakers dispatched on a circle with angles that can be irregular.<br /><br />
-  Angles are given by parameters a00, a01, a02... angles (in degrees). theta is the angle of the virtual source (in degrees).</description>
+  Angles are given by parameters a0, a1, a2... angles (in degrees). theta is the angle of the virtual source (in degrees).</description>
 
   <!--INLETS-->
   <!-- <inletlist>
@@ -38,7 +38,7 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="a[index]" type="float" set="1" get="1" size="1">
-      <description>sets the angle of the [index] speaker in degree, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-360:max=360:step=0.01].</description>
+      <description>sets the angle of the [index] speaker in degree, [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
       <digest>sets the angle of the [index] speaker in degree</digest>
     </attribute>
   </attributelist>
@@ -49,7 +49,7 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the angle of the [index] speaker in degree, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-360:max=360:step=0.01].</description>
+      <description>sets the angle of the [index] speaker in degree, [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
       <digest>sets the angle of the [index] speaker in degree</digest>
     </method>
   </methodlist>

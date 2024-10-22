@@ -446,7 +446,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 579.0, 180.0, 101.0, 143.0 ],
-					"text" : ";\rdels dur00 0.5;\rdels dur01 1.;\rdels dur02 0.5;\rdels dur03 1.;\rdels dur04 0.5;\rdels dur05 0.25;\rdels dur06 0.125;\rdels tempo 200;\r",
+					"text" : ";\rdels dur0 0.5;\rdels dur1 1.;\rdels dur2 0.5;\rdels dur3 1.;\rdels dur4 0.5;\rdels dur5 0.25;\rdels dur6 0.125;\rdels tempo 200;\r",
 					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
@@ -482,7 +482,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 564.0, 339.0, 123.0, 223.0 ],
-					"text" : ";\rharmos trans00 100;\rharmos gain00 0;\rharmos trans01 -200;\rharmos gain01 2;\rharmos trans02 300;\rharmos gain02 4;\rharmos trans03 -400;\rharmos gain03 6;\rharmos trans04 500;\rharmos gain04 8;\rharmos trans05 -600;\rharmos gain05 10;\rharmos trans05 -700;\rharmos gain06 10;\r"
+					"text" : ";\rharmos trans0 100;\rharmos gain0 0;\rharmos trans1 -200;\rharmos gain1 2;\rharmos trans2 300;\rharmos gain2 4;\rharmos trans3 -400;\rharmos gain3 6;\rharmos trans4 500;\rharmos gain4 8;\rharmos trans5 -600;\rharmos gain5 10;\rharmos trans5 -700;\rharmos gain6 10;\r"
 				}
 
 			}
@@ -577,7 +577,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 383.0, 313.0, 65.0, 22.0 ],
-					"text" : "trans02 $1"
+					"text" : "trans2 $1"
 				}
 
 			}
@@ -614,7 +614,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 314.0, 313.0, 65.0, 22.0 ],
-					"text" : "trans01 $1"
+					"text" : "trans1 $1"
 				}
 
 			}
@@ -651,7 +651,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 245.0, 313.0, 65.0, 22.0 ],
-					"text" : "trans00 $1"
+					"text" : "trans0 $1"
 				}
 
 			}
@@ -1200,7 +1200,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 4.821441999999934, 61.0, 486.178558000000066, 87.0 ],
-					"text" : "abc.mc.harmo~ provide parallel multiple harmonizers. Each line is an overlapped harmonizer by Doppler effect.\n\nEach harmonizer has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18) and a transposition coefficient: trans00, trans01, etc. in midicents (100 for an upper semiton, 200 for an upper ton, -400 for a lower major third, ...) "
+					"text" : "abc.mc.harmo~ provide parallel multiple harmonizers. Each line is an overlapped harmonizer by Doppler effect.\n\nEach harmonizer has got an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18) and a transposition coefficient: trans0, trans1, etc. in midicents (100 for an upper semiton, 200 for an upper ton, -400 for a lower major third, ...) "
 				}
 
 			}

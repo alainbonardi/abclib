@@ -34,12 +34,12 @@
   <!--ATTRIBUTES-->
   <attributelist>
     <attribute name="fr[index]" type="float" set="1" get="1" size="1">
-      <description>sets the shifting frequency of the [index] frequency shifter in Hz, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-10000:max=10000:step=0.001].</description>
+      <description>sets the shifting frequency of the [index] frequency shifter in Hz, [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. [init=0:min=-10000:max=10000:step=0.001].</description>
       <digest>sets the shifting frequency of the [index] frequency shifter in Hz</digest>
     </attribute>
 
     <attribute name="gain[index]" type="float" set="1" get="1" size="1">
-      <description>sets the gain of the [index] frequency shifter in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
+      <description>sets the gain of the [index] frequency shifter in dB, [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. [init=0:min=-127:max=18:step=0.001].</description>
       <digest>sets the gain of the [index] frequency shifter in dB</digest>
     </attribute>
 
@@ -52,7 +52,7 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the shifting frequency of the [index] frequency shifter in Hz, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-10000:max=10000:step=0.001].</description>
+      <description>sets the shifting frequency of the [index] frequency shifter in Hz, [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. [init=0:min=-10000:max=10000:step=0.001].</description>
       <digest>sets the shifting frequency of the [index] frequency shifter in Hz</digest>
     </method>
 
@@ -60,7 +60,7 @@
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the gain of the [index] frequency shifter in dB, [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example. [init=0:min=-127:max=18:step=0.001].</description>
+      <description>sets the gain of the [index] frequency shifter in dB, [index] is an integer corresponding to the number of the process from 0, if value inferior to 10 index should be written "6" for example. [init=0:min=-127:max=18:step=0.001].</description>
       <digest>sets the gain of the [index] frequency shifter in dB</digest>
     </method>
     

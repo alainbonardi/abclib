@@ -268,7 +268,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 844.0, 760.0 ],
+						"rect" : [ 270.0, 126.0, 844.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -819,6 +819,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-9", 0 ],
+									"midpoints" : [ 172.5, 294.5, 208.5, 294.5 ],
 									"order" : 0,
 									"source" : [ "obj-87", 0 ]
 								}
@@ -2020,8 +2021,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 115.0, 260.0, 58.0, 22.0 ],
-									"text" : "speed $1"
+									"patching_rect" : [ 115.0, 260.0, 38.0, 22.0 ],
+									"text" : "s0 $1"
 								}
 
 							}
@@ -2388,7 +2389,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 113.0, 304.0, 94.0, 22.0 ],
 					"text" : "abc.soundcoat~"
 				}
@@ -3105,14 +3106,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_2d_encoder3~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "abc_2d_map3_1~.mxo",
 				"type" : "iLaX"
 			}
@@ -3122,6 +3115,14 @@
 			}
 , 			{
 				"name" : "abc_2d_mirror3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_multiencoder1_1~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_multiencoder3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

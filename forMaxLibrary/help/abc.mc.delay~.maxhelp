@@ -208,7 +208,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 13.916666666666629, 62.0, 620.0, 141.0 ],
-									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
+									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur0, dur1, dur2, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk0, fdbk1, fdbk2, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18)"
 								}
 
 							}
@@ -773,7 +773,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 534.0, 391.0, 93.0, 196.0 ],
-									"text" : ";\rdels dur00 1.;\rdels fdbk00 0.2;\rdels gain00 0.;\rdels dur01 1.5;\rdels fdbk01 0.4;\rdels gain01 -3.;\rdels dur02 2.;\rdels fdbk02 0.6;\rdels gain02 -6.;\rdels dur03 2.5;\rdels fdbk03 0.8;\rdels gain03 -9.;\r"
+									"text" : ";\rdels dur0 1.;\rdels fdbk0 0.2;\rdels gain0 0.;\rdels dur1 1.5;\rdels fdbk1 0.4;\rdels gain1 -3.;\rdels dur2 2.;\rdels fdbk2 0.6;\rdels gain2 -6.;\rdels dur3 2.5;\rdels fdbk3 0.8;\rdels gain3 -9.;\r"
 								}
 
 							}
@@ -1159,7 +1159,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 63.0, 620.0, 141.0 ],
-									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur00, dur01, dur02, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk00, fdbk01, fdbk02, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain00, gain01, gain02, etc. in dB (between -127 and +18)"
+									"text" : "abc.mc.delay~ object provides multiple parallel delay lines with reinjection. Each line is a double overlapped delay enabling duration changes without clicking at a maximum speed set by updatefreq parameter which is initialized at 30 Hz (30 Hz means one can change the duration of the delay up to 30 times per second).\nThe other important feature of these delays lines is that all durations are given not in milliseconds but as a musical durations: 1 stands for a quarter, 0.5 for an 8th, 0.25 for a 16th, etc. Durations are parameters dur0, dur1, dur2, etc.\nThese musical durations are automatically converted to milliseconds thanks to the tempo parameter expressed in bpm.\nEach delay line has got an individual feedback: fdbk0, fdbk1, fdbk2, etc. (between 0 and 1)\nEach delay line has got an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18)"
 								}
 
 							}
@@ -1693,7 +1693,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 501.0, 391.0, 61.0, 22.0 ],
-									"text" : "fdbk00 $1"
+									"text" : "fdbk0 $1"
 								}
 
 							}
@@ -1811,7 +1811,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 363.0, 389.0, 56.0, 22.0 ],
-									"text" : "dur00 $1"
+									"text" : "dur0 $1"
 								}
 
 							}

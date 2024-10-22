@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1003.0, 687.0 ],
+						"rect" : [ 100.0, 126.0, 1003.0, 687.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -851,8 +851,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 387.0, 401.0, 58.0, 22.0 ],
-									"text" : "speed $1"
+									"patching_rect" : [ 387.0, 401.0, 38.0, 22.0 ],
+									"text" : "s0 $1"
 								}
 
 							}
@@ -923,8 +923,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 102.0, 389.0, 58.0, 22.0 ],
-									"text" : "speed $1"
+									"patching_rect" : [ 102.0, 389.0, 38.0, 22.0 ],
+									"text" : "s0 $1"
 								}
 
 							}
@@ -1020,7 +1020,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 291.0, 388.0, 84.0, 24.0 ],
 									"text" : "abc.drops~"
 								}
@@ -1133,7 +1133,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 6.0, 384.0, 84.0, 24.0 ],
 									"text" : "abc.drops~"
 								}
@@ -1317,6 +1317,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-50", 1 ],
+									"midpoints" : [ 114.5, 541.0, 185.5, 541.0 ],
 									"source" : [ "obj-32", 0 ]
 								}
 
@@ -1504,7 +1505,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 1003.0, 687.0 ],
+						"rect" : [ 0.0, 26.0, 1003.0, 687.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2202,7 +2203,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 12.0, 411.5, 84.0, 24.0 ],
 									"text" : "abc.drops~"
 								}
@@ -3318,7 +3319,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

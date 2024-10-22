@@ -439,8 +439,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 160.5, 109.0, 55.0, 22.0 ],
-									"text" : "angle $1"
+									"patching_rect" : [ 160.5, 109.0, 39.0, 22.0 ],
+									"text" : "a0 $1"
 								}
 
 							}
@@ -499,8 +499,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 32.5, 109.0, 58.0, 22.0 ],
-									"text" : "speed $1"
+									"patching_rect" : [ 32.5, 109.0, 38.0, 22.0 ],
+									"text" : "s0 $1"
 								}
 
 							}
@@ -748,8 +748,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 160.5, 109.0, 55.0, 22.0 ],
-									"text" : "angle $1"
+									"patching_rect" : [ 160.5, 109.0, 39.0, 22.0 ],
+									"text" : "a0 $1"
 								}
 
 							}
@@ -808,8 +808,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 32.5, 109.0, 58.0, 22.0 ],
-									"text" : "speed $1"
+									"patching_rect" : [ 32.5, 109.0, 38.0, 22.0 ],
+									"text" : "s0 $1"
 								}
 
 							}
@@ -1074,7 +1074,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 548.0, 224.0, 182.0, 22.0 ],
+					"patching_rect" : [ 549.0, 224.0, 182.0, 22.0 ],
 					"text" : "abc.trajectories~ @mode square"
 				}
 
@@ -1295,7 +1295,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-20", 1 ],
-					"midpoints" : [ 372.5, 515.5, 650.5, 515.5 ],
+					"midpoints" : [ 372.5, 522.5, 650.5, 522.5 ],
 					"order" : 0,
 					"source" : [ "obj-23", 0 ]
 				}
@@ -1498,11 +1498,11 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
+				"name" : "abc_2d_map7_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_map7_1~.mxo",
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

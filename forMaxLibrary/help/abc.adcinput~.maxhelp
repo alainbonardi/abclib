@@ -513,7 +513,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 329.0, 360.0, 94.0, 76.0 ],
-					"text" : ";\rdel1 tempo 60;\rdel1 dur00 0.5;\rdel1 fdbk00 0.4;\r"
+					"text" : ";\rdel1 tempo 60;\rdel1 dur0 0.5;\rdel1 fdbk0 0.4;\r"
 				}
 
 			}

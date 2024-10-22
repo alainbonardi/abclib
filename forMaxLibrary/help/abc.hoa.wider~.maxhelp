@@ -88,6 +88,18 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-12",
+									"maxclass" : "toggle",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 69.0, 496.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"floatoutput" : 1,
 									"id" : "obj-14",
 									"maxclass" : "slider",
@@ -475,21 +487,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
-									"outlettype" : [ "multichannelsignal" ],
+									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 23.0, 122.0, 94.0, 22.0 ],
 									"text" : "abc.soundcoat~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-58",
-									"maxclass" : "toggle",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 69.0, 492.0, 29.367346938775711, 29.367346938775711 ]
 								}
 
 							}
@@ -571,8 +571,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 23.0, 160.0, 187.0, 22.0 ],
-									"text" : "abc.hoa.encoder~ 3 @speed -0.2",
+									"patching_rect" : [ 23.0, 160.0, 167.0, 22.0 ],
+									"text" : "abc.hoa.encoder~ 3 @s0 -0.2",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ]
 								}
 
@@ -643,6 +643,13 @@
 									"destination" : [ "obj-8", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-10", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-56", 0 ],
+									"source" : [ "obj-12", 0 ]
 								}
 
 							}
@@ -763,13 +770,6 @@
 									"destination" : [ "obj-3", 1 ],
 									"midpoints" : [ 78.5, 592.75, 128.5, 592.75 ],
 									"source" : [ "obj-56", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-56", 0 ],
-									"source" : [ "obj-58", 0 ]
 								}
 
 							}
@@ -937,7 +937,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder3~.mxo",
+				"name" : "abc_2d_multiencoder3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

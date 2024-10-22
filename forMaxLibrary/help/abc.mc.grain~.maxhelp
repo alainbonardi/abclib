@@ -190,7 +190,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 61.0, 485.0, 100.0 ],
-									"text" : "abc.mc.grain~ object is parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
+									"text" : "abc.mc.grain~ object is parallel granular processes.\ngs0, gs1, gs2, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt0, dt1, dt2, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk0, fdbk1, fdbk2, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf0, rrf1, rrf2, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
 								}
 
 							}
@@ -259,7 +259,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 366.0, 197.0, 101.0, 196.0 ],
-									"text" : ";\rgctrl2 gs00 1500;\rgctrl2 dt00 500;\rgctrl2 fdbk00 0.1;\rgctrl2 gs01 500;\rgctrl2 dt01 750;\rgctrl2 fdbk01 0.2;\rgctrl2 gs02 200;\rgctrl2 dt02 1000;\rgctrl2 fdbk02 0.3;\rgctrl2 gs03 10;\rgctrl2 dt03 1250;\rgctrl2 fdbk03 0.4;\r"
+									"text" : ";\rgctrl2 gs0 1500;\rgctrl2 dt0 500;\rgctrl2 fdbk0 0.1;\rgctrl2 gs1 500;\rgctrl2 dt1 750;\rgctrl2 fdbk1 0.2;\rgctrl2 gs2 200;\rgctrl2 dt2 1000;\rgctrl2 fdbk2 0.3;\rgctrl2 gs3 10;\rgctrl2 dt3 1250;\rgctrl2 fdbk3 0.4;\r"
 								}
 
 							}
@@ -723,7 +723,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 272.5, 250.0, 101.0, 143.0 ],
-									"text" : ";\rgctrl1 gs00 50;\rgctrl1 dt00 500;\rgctrl1 fdbk00 0.2;\rgctrl1 rrf00 0.5;\rgctrl1 gs01 400;\rgctrl1 dt01 100;\rgctrl1 fdbk01 0.1;\rgctrl1 rrf01 0.4;\r"
+									"text" : ";\rgctrl1 gs0 50;\rgctrl1 dt0 500;\rgctrl1 fdbk0 0.2;\rgctrl1 rrf0 0.5;\rgctrl1 gs1 400;\rgctrl1 dt1 100;\rgctrl1 fdbk1 0.1;\rgctrl1 rrf1 0.4;\r"
 								}
 
 							}
@@ -821,7 +821,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 6.0, 62.0, 485.0, 100.0 ],
-									"text" : "abc.mc.grain~ object is parallel granular processes.\ngs00, gs01, gs02, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt00, dt01, dt02, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk00, fdbk01, fdbk02, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf00, rrf01, rrf02, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
+									"text" : "abc.mc.grain~ object is parallel granular processes.\ngs0, gs1, gs2, ... are the grain sizes expressed in milliseconds for the n granulators.\ndt0, dt1, dt2, ... are the maximum delays expressed in milliseconds for the n granulators.\nfdbk0, fdbk1, fdbk2, ... are the feedbacks of the n granulators (between 0 and 1)\nrrf0, rrf1, rrf2, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) "
 								}
 
 							}

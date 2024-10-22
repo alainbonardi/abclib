@@ -51,7 +51,7 @@
     </attribute>
 
     <attribute name="a[index]" type="int" set="1" get="1" size="1">
-      <description>sets the angle of the speaker [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example.</description>
+      <description>sets the angle of the speaker [index], [index] is an integer, if value inferior to 10 index should be written "6" for example.</description>
       <digest>sets the angle of the speaker [index]</digest>
     </attribute>
 
@@ -83,7 +83,7 @@
       <arglist>
         <arg type="int" />
       </arglist>
-      <description>sets the angle of the speaker [index], [index] is a 2 digits integer, if value inferior to 10 index should be written "06" for example.</description>
+      <description>sets the angle of the speaker [index], [index] is an integer, if value inferior to 10 index should be written "6" for example.</description>
       <digest>sets the angle of the speaker [index]</digest>
     </method>
 

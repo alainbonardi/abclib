@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 100.0, 845.0, 848.0 ],
+		"rect" : [ 34.0, 100.0, 1037.0, 848.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,19 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "multichannelsignal" ],
+					"patching_rect" : [ 422.666678547859192, 19.0, 172.0, 22.0 ],
+					"text" : "abc.hoa.encoder~ @sources 1",
+					"varname" : "abc.hoa.decoder~[8]"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-70",
 					"maxclass" : "newobj",
@@ -78,28 +91,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-44",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patching_rect" : [ 1086.0, 1327.0, 63.0, 22.0 ],
-					"text" : "multinoise"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-38",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patching_rect" : [ 1078.0, 1281.0, 79.0, 22.0 ],
-					"text" : "chopan aussi"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-36",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -112,23 +103,11 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-293",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 622.0, 1473.333377242088318, 72.0, 22.0 ],
-					"text" : "abc.rev4~ 9"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-274",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 308.0, 1402.0, 162.0, 22.0 ],
 					"text" : "abc.puckettespaf~ @mode 1"
 				}
@@ -140,7 +119,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 137.280418932437897, 1398.66670835018158, 162.0, 22.0 ],
 					"text" : "abc.puckettespaf~ @mode 2"
 				}
@@ -184,19 +163,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-395",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
-					"patching_rect" : [ 430.275193452835083, 19.266053438186646, 115.0, 22.0 ],
-					"text" : "abc.hoa.encoder~ 9",
-					"varname" : "abc.hoa.decoder~[13]"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-394",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -216,17 +182,6 @@
 					"patching_rect" : [ 656.100010514259338, 96.0, 249.0, 22.0 ],
 					"text" : "abc.hoa.map~ 5 @dimensions 2 @sources 8",
 					"varname" : "abc.hoa.decoder~[12]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-383",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 1848.0, 2084.0, 100.0, 22.0 ]
 				}
 
 			}
@@ -261,7 +216,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 638.450101673603058, 1233.027420043945312, 179.0, 22.0 ],
 					"text" : "abc.mc.randenv~ @mode linear"
 				}
@@ -333,7 +288,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 18.266667187213898, 1270.642095804214478, 83.0, 22.0 ],
 					"text" : "abc.linedrive~"
 				}
@@ -394,7 +349,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 15.0, 215.0, 84.0, 22.0 ],
 					"text" : "abc.mc.grain~"
 				}
@@ -452,7 +407,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 108.0, 338.0, 174.0, 22.0 ],
 					"text" : "abc.mc.delay~ 1 @mode chain"
 				}
@@ -464,7 +419,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.0, 338.0, 86.0, 22.0 ],
 					"text" : "abc.mc.delay~"
 				}
@@ -500,7 +455,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1566.666713356971741, 135.0, 22.0 ],
 					"text" : "abc.mc.substractsynth~"
 				}
@@ -512,7 +467,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 17.333333849906921, 1905.333390116691589, 98.0, 22.0 ],
 					"text" : "abc.soundgrain~"
 				}
@@ -536,7 +491,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 17.333333849906921, 1874.666722536087036, 94.0, 22.0 ],
 					"text" : "abc.soundcoat~"
 				}
@@ -546,7 +501,7 @@
 				"box" : 				{
 					"id" : "obj-192",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 13.333333730697632, 1505.333378195762634, 92.0, 22.0 ],
@@ -644,7 +599,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1434.666709423065186, 148.0, 22.0 ],
 					"text" : "abc.mc.pulsedenv2synth~"
 				}
@@ -656,7 +611,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1398.66670835018158, 106.0, 22.0 ],
 					"text" : "abc.puckettespaf~"
 				}
@@ -680,7 +635,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1810.666720628738403, 91.0, 22.0 ],
 					"text" : "abc.phasor2pi~"
 				}
@@ -692,7 +647,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1842.66672158241272, 88.0, 22.0 ],
 					"text" : "abc.peakamp~"
 				}
@@ -704,7 +659,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 17.333333849906921, 1334.666706442832947, 112.0, 22.0 ],
 					"text" : "abc.mc.multinoise~"
 				}
@@ -752,7 +707,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1778.666719675064087, 77.0, 22.0 ],
 					"text" : "abc.mult2pi~"
 				}
@@ -812,7 +767,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1661.333382844924927, 83.0, 22.0 ],
 					"text" : "abc.linedrive~"
 				}
@@ -848,7 +803,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 18.266667187213898, 1233.027420043945312, 101.0, 22.0 ],
 					"text" : "abc.mc.randenv~"
 				}
@@ -908,7 +863,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.266667127609253, 1104.800016462802887, 92.0, 22.0 ],
 					"text" : "abc.mc.harmo~"
 				}
@@ -920,7 +875,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1749.333385467529297, 90.0, 22.0 ],
 					"text" : "abc.generator~"
 				}
@@ -992,7 +947,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.266667127609253, 1070.400015950202942, 80.0, 22.0 ],
 					"text" : "abc.mc.gain~"
 				}
@@ -1040,7 +995,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.266667127609253, 1036.800015449523926, 100.0, 22.0 ],
 					"text" : "abc.mc.freqshift~"
 				}
@@ -1088,7 +1043,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 992.800014793872833, 94.0, 22.0 ],
 					"text" : "abc.mc.flanger~"
 				}
@@ -1100,7 +1055,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1718.666717886924744, 99.0, 22.0 ],
 					"text" : "abc.envfollower~"
 				}
@@ -1112,7 +1067,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 14.666667103767395, 1690.666717052459717, 68.0, 22.0 ],
 					"text" : "abc.drops~"
 				}
@@ -1208,7 +1163,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.000000476837158, 881.333359599113464, 99.0, 22.0 ],
 					"text" : "abc.mc.busplus~"
 				}
@@ -1256,7 +1211,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.000000476837158, 837.333358287811279, 100.0, 22.0 ],
 					"text" : "abc.mc.busmult~"
 				}
@@ -1278,9 +1233,9 @@
 				"box" : 				{
 					"id" : "obj-102",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 14.666667103767395, 1629.33338189125061, 98.0, 22.0 ],
 					"text" : "abc.audiotester~"
 				}
@@ -1364,7 +1319,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "multichannelsignal" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 16.000000476837158, 752.000022411346436, 106.0, 22.0 ],
 					"text" : "abc.mc.addsynth~"
 				}
@@ -2074,14 +2029,6 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "abc_2d_encoder1~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_2d_encoder7~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "abc_2d_fx_delay1~.mxo",
 				"type" : "iLaX"
 			}
@@ -2123,6 +2070,10 @@
 			}
 , 			{
 				"name" : "abc_2d_mirror7~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_2d_multiencoder1_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2223,10 +2174,6 @@
 			}
 , 			{
 				"name" : "abc_addsynth5~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_audiotester~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -2531,10 +2478,6 @@
 			}
 , 			{
 				"name" : "abc_sounddetector~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "abc_soundgrain~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

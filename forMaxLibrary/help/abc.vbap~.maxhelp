@@ -265,7 +265,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 681.0, 266.0, 439.0, 33.0 ],
-					"text" : "Angles are given by parameters a00, a01, a02... angles (in degrees).\ntheta is the angle of the virtual source (in degrees)."
+					"text" : "Angles are given by parameters a0, a1, a2... angles (in degrees).\ntheta is the angle of the virtual source (in degrees)."
 				}
 
 			}
@@ -446,7 +446,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 599.880961333333175, 285.0, 45.0, 22.0 ],
-					"text" : "a03 $1"
+					"text" : "a3 $1"
 				}
 
 			}
@@ -481,7 +481,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 544.190480666666531, 255.0, 45.0, 22.0 ],
-					"text" : "a02 $1"
+					"text" : "a2 $1"
 				}
 
 			}
@@ -529,7 +529,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 489.309519333333242, 228.0, 45.0, 22.0 ],
-					"text" : "a01 $1"
+					"text" : "a1 $1"
 				}
 
 			}
@@ -576,7 +576,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 434.309519333333242, 202.0, 45.0, 22.0 ],
-					"text" : "a00 $1"
+					"text" : "a0 $1"
 				}
 
 			}

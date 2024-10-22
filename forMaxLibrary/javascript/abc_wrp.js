@@ -33,7 +33,7 @@ function patching() {
 	var order = baseAmbisonicOrder;//We will save in 'order' every first attribute, for HOA objectes is the order, for the others is the first parameter, ex. channels etc...
 	var isHOA = (new RegExp("abc.hoa", "i").test(patcherName));//||(new RegExp("abc_3d", "i").test(jsobjectname));
 	var isMC = (new RegExp("abc.mc", "i").test(patcherName));
-	
+
 	if (typeof args[1] === 'number' && args[1] != 0) {
 		order = args[1];//Max puts a zero when there are no arguments
 		if (order > maxAmbisonicOrder && isHOA == 1) {//We check if is an HOA object
@@ -96,20 +96,17 @@ function patching() {
 	//List of ABC delicious objects:
 	if (patcherName == 'abc.hoa.decoder~' || patcherName == 'abc.hoa.decoder') {
 		if (patcherName == 'abc.hoa.decoder') withUI = true;
-		if(speakersSettedUp == false) speakers = order*2+2;
+		if (speakersSettedUp == false) speakers = order * 2 + 2;
 
 		objectToInstantiate = "abc_" + dimensions + "_decoder" + order + "_" + speakers + "~";
 	} else if (patcherName == 'abc.hoa.encoder~' || patcherName == 'abc.hoa.encoder') {
 		if (patcherName == 'abc.hoa.encoder') withUI = true;
-		if (sources == 1) {
-			objectToInstantiate = "abc_" + dimensions + "_encoder" + order + "~";
-		} else {
-			if (sources > maxMEncoderSources) {//We check if it is an HOA object
-				error("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
-				sources = maxMEncoderSources;
-			}
-			objectToInstantiate = "abc_" + dimensions + "_multiencoder" + order + "_" + sources + "~";
+		if (sources > maxMEncoderSources) {
+			error("abcWrapper => ", "The maximum number sources for the 'multiencoder' object is", maxMEncoderSources, ". Replacing", sources, "by", maxMEncoderSources, ".");
+			sources = maxMEncoderSources;
 		}
+		objectToInstantiate = "abc_" + dimensions + "_multiencoder" + order + "_" + sources + "~";
+		
 	} else if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {
 		if (patcherName == 'abc.hoa.map') withUI = true;
 		if (sources > maxMAPsources) {
@@ -168,10 +165,10 @@ function patching() {
 			addCARTOPOL = true;
 		} else if (mode == "circular") {
 			objectToInstantiate = "abc_" + dimensions + "_polarvariablecircle~"
-		} else{
+		} else {
 			objectToInstantiate = "abc_" + dimensions + "_randomtrajectory" + "~";
 			addCARTOPOL = true;
-			error("abcWrapper => ","Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => ", "Can not instantiate the object ", patcherName, "with the mode:", mode, ". Instead, the object:", objectToInstantiate, "has been instantiated.");
 		}
 		signalData = false;
 	} else if (patcherName == 'abc.hoa.stereoencoder~' || patcherName == 'abc.hoa.stereoencoder') {
@@ -215,6 +212,7 @@ function patching() {
 	} else if (patcherName == 'abc.audiotester~' || patcherName == 'abc.audiotester') {
 		if (patcherName == 'abc.audiotester') withUI = true;
 		objectToInstantiate = "abc_" + "audiotester" + "~";
+		signalData = false;
 	} else if (patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult') {
 		if (patcherName == 'abc.mc.busmult') withUI = true;
 		if (channels) {
@@ -272,7 +270,7 @@ function patching() {
 			objectToInstantiate = "abc_" + "linrandenv" + finalchannels + "~";
 		} else {
 			objectToInstantiate = "abc_" + "cosrandenv" + finalchannels + "~";
-			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:", mode, ". Instead, the object:", objectToInstantiate, "has been instantiated.");
 		}
 	} else if (patcherName == 'abc.drops~' || patcherName == 'abc.drops') {
 		if (patcherName == 'abc.drops') withUI = true;
@@ -335,13 +333,13 @@ function patching() {
 		}
 	} else if (patcherName == 'abc.jupiterbank~' || patcherName == 'abc.jupiterbank') {
 		if (patcherName == 'abc.jupiterbank') withUI = true;
-		if (mode == 1 ||  mode == "fx"){
+		if (mode == 1 || mode == "fx") {
 			objectToInstantiate = "abc_jupiterbank~";
-		} else if (mode == 2){
+		} else if (mode == 2) {
 			objectToInstantiate = "abc_jupiterbank2~";
 		} else {
 			objectToInstantiate = "abc_jupiterbank~";
-			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:", mode, ". Instead, the object:", objectToInstantiate, "has been instantiated.");
 		}
 	} else if (patcherName == 'abc.linedrive~' || patcherName == 'abc.linedrive') {
 		if (patcherName == 'abc.linedrive') withUI = true;
@@ -388,13 +386,13 @@ function patching() {
 		controlData = false;
 	} else if (patcherName == 'abc.puckettespaf~' || patcherName == 'abc.puckettespaf') {
 		if (patcherName == 'abc.puckettespaf') withUI = true;
-		if(mode == 1 || mode == "fx"){
+		if (mode == 1 || mode == "fx") {
 			objectToInstantiate = "abc_" + "puckettespaf~";
-		} else if(mode == 2){
+		} else if (mode == 2) {
 			objectToInstantiate = "abc_" + "puckettespaf2~";
 		} else {
 			objectToInstantiate = "abc_" + "puckettespaf~";
-			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:",mode,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, "with the mode:", mode, ". Instead, the object:", objectToInstantiate, "has been instantiated.");
 		}
 		finalchannels = channels;
 		signalData = false;
@@ -432,7 +430,7 @@ function patching() {
 			} else {
 				objectToInstantiate = "abc_" + "rev4quadri~";
 			}
-		} else if(order > 0 && order <= 4){
+		} else if (order > 0 && order <= 4) {
 			if (order == 1 || order == 2) {
 				objectToInstantiate = "abc_" + "rev4stereo~";
 			} else {
@@ -440,7 +438,7 @@ function patching() {
 			}
 		} else {
 			objectToInstantiate = "abc_" + "rev4stereo~";
-			error("abcWrapper => Can not instantiate the object ", patcherName,". Instead, the object:",objectToInstantiate,"has been instantiated.");
+			error("abcWrapper => Can not instantiate the object ", patcherName, ". Instead, the object:", objectToInstantiate, "has been instantiated.");
 		}
 	} else if (patcherName == 'abc.rissetsbell~' || patcherName == 'abc.rissetsbell') {
 		if (patcherName == 'abc.rissetsbell') withUI = true;
@@ -469,24 +467,41 @@ function patching() {
 		}
 	}
 
-
+	//----------Alert : Don't modify this abstraction
 	var alertMessage = patcher.newdefault(200, 100, "comment");
-	alertMessage.message('patching_rect', 200,100,375,160);
+	alertMessage.message('patching_rect', 200, 100, 375, 160);
 	alertMessage.message('fontsize', 20);
 	alertMessage.message('fontface', "bold");
 	alertMessage.message('textjustification', 0);
 	alertMessage.message('set', "DO NOT MODIFY THIS ABSTRACTION. \nThis abstraction serves as a wrapper for the objects of the 'abc' library. It automatically selects the correct object and sets the appropriate inputs and outputs. Any modification will cause it to malfunction.");
+	//----------
+
 	objectToInstantiate += abcAttributes;
 	var abcObject = patcher.newdefault(20, 240, objectToInstantiate);//x,y,name of object
-	if (signalData){
+
+
+	if (signalData) {
 		var inlet1 = patcher.newdefault(20, 60, "inlet");
-		connectobject(inlet1, 0, abcObject, 0);
+		if (inletsoutlets(abcObject)[0] > 1) {
+			inlet1.message('comment','(multi-channel signal) Input');
+			//post("this are the inputs of the abc object: ",inletsoutlets(abcObject)[0]);
+			objectToInstantiate = "mc.unpack~ " + inletsoutlets(abcObject)[0];
+			var unpacker = patcher.newdefault(20, 180, objectToInstantiate);
+			connectobject(inlet1, 0, unpacker, 0);
+			for (d = 0; d < inletsoutlets(abcObject)[0]; d++) {
+				connectobject(unpacker, d, abcObject, d);//connect mc.unpack~ to abc object
+			}
+		} else {
+			connectobject(inlet1, 0, abcObject, 0);
+			inlet1.message('comment','(signal) Input');
+		}
 		HcontroldataPos += 40;
 	}
 
+
 	//Special cases : Map and Buses:
 	if (patcherName == 'abc.hoa.map~' || patcherName == 'abc.hoa.map') {//n buses of 3 channels
-		disconnectobject(inlet1, 0, abcObject, 0);
+		disconnectobject(inlet1, 0, unpacker, 0);
 		objectToInstantiate = "mc.combine~ " + sources;
 		var combine = patcher.newdefault(20, 120, objectToInstantiate);
 		connectobject(inlet1, 0, combine, 0);
@@ -495,32 +510,53 @@ function patching() {
 			mapInlet = patcher.newdefault(60 + 40 * k, 60, "inlet");
 			HcontroldataPos += 40;
 			connectobject(mapInlet, 0, combine, 1 + k);//connect inlets to mc.combine~
+			mapInlet.message('comment','(multi-channel signal) Input');
 		}
-		connectobject(combine, 0, abcObject, 0);//connect combine to abcObject
-	}
-	if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect' || patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult' || patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {//2 buses of n channels
-		disconnectobject(inlet1, 0, abcObject, 0);
+		connectobject(combine, 0, unpacker, 0);//connect combine to abcObject
+	} else if (patcherName == 'abc.mc.busselect~' || patcherName == 'abc.mc.busselect' || patcherName == 'abc.mc.busmult~' || patcherName == 'abc.mc.busmult' || patcherName == 'abc.mc.busplus~' || patcherName == 'abc.mc.busplus') {//2 buses of n channels
+		disconnectobject(inlet1, 0, unpacker, 0);
 		objectToInstantiate = "mc.combine~ " + 2;
 		var combine = patcher.newdefault(20, 120, objectToInstantiate);
 		connectobject(inlet1, 0, combine, 0);
 		var businlet = patcher.newdefault(120, 60, "inlet");
+		businlet.message('comment','(multi-channel signal) Input');
 		connectobject(businlet, 0, combine, 1);//connect inlets to mc.combine~
-		connectobject(combine, 0, abcObject, 0);//connect combine to abcObject
+		connectobject(combine, 0, unpacker, 0);//connect combine to abcObject
 		HcontroldataPos = 160;
 	}
+
 	//-----------------------------------------------------
-	if(controlData){
+	if (controlData) {
 		var inlet2 = patcher.newdefault(HcontroldataPos, 60, "inlet");
+		inlet2.message('comment','(control) Input');
 		connectobject(inlet2, 0, abcObject, 0);
 	}
-	var outlet = patcher.newdefault(20, 360, "outlet");
-	if(addCARTOPOL){
-		var cartopol = patcher.newdefault(20, 320, "abc_cartopol~");
-		connectobject(abcObject, 0, cartopol, 0);
-		connectobject(cartopol, 0, outlet, 0);
-	}else{
+	//-----------------------------------------------------
+
+	var outlet = patcher.newdefault(20, 420, "outlet");
+	outlet.message('comment','(multi-channel signal) Output');
+
+	if (inletsoutlets(abcObject)[1] > 1) {
+		objectToInstantiate = "mc.pack~ " + (inletsoutlets(abcObject)[1]);
+		var packer = patcher.newdefault(20, 360, objectToInstantiate);
+		//addobjectauto(objectToInstantiate, 4);
+
+		if (addCARTOPOL) {
+			var cartopol = patcher.newdefault(20, 320, "abc_cartopol~");
+			connectobject(abcObject, 0, cartopol, 0);
+			connectobject(abcObject, 1, cartopol, 1);
+			connectobject(cartopol, 0, packer, 0);
+			connectobject(cartopol, 1, packer, 1);
+		} else {
+			for (d = 0; d < inletsoutlets(abcObject)[1]; d++) {
+				connectobject(abcObject, d, packer, d);//connect abc object to mc.pack~
+			}
+		}
+		connectobject(packer, 0, outlet, 0);//connect mc.pack~ to outlet
+	} else {//The ABC object only has 1 output
 		connectobject(abcObject, 0, outlet, 0);
 	}
+
 }
 
 function anything() {
