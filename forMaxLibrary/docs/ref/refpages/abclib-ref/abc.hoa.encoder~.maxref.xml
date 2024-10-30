@@ -67,18 +67,18 @@
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="angle">
+    <method name="a[index]">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the angle of the encoded signal in degree [init=0:min=-360:max=360:step=0.01].</description>
+      <description>sets the angle of the [index]th encoded signal in degree.[index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
       <digest>sets the angle of the encoded signal in degree</digest>
     </method>
-    <method name="speed">
+    <method name="s[index]">
       <arglist>
         <arg type="float" />
       </arglist>
-      <description>sets the rotation speed of the encoded signal in turn/s [init=0:min=-100:max=100:step=0.001].</description>
+      <description>sets the return time in ms of the encoded source to come back to intial position after rotation speed goes back to 0 [init=20:min=0:max=1000:step=1].</description>
       <digest>sets the angle of the encoded signal in degree</digest>
     </method>
     <method name="returntime">
