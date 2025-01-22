@@ -45,6 +45,11 @@
       <digest>sets the number of speakers</digest>
     </attribute>
 
+    <attribute name="dimension" type="int" set="1" get="1" size="1">
+      <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+      <digest>sets the number of dimensions</digest>
+    </attribute>
+
     <attribute name="stereo" type="boolean" set="1" get="1" size="1">
       <description>stereo mode make a stereo reduction of the decoded soundfield [init=0:min=0:max=1:step=1].</description>
       <digest>stereo mode</digest>
