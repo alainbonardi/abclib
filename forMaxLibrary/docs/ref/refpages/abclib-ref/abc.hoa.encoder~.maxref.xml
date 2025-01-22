@@ -4,11 +4,11 @@
 
 
 <c74object name="abc.hoa.encoder~" module="abclib">
-  <digest>Abclib's 2D High Order Ambisonics (HOA) Encoder</digest>
-  <description><o>abc.hoa.encoder~</o> is an 2D High Order Ambisonics (HOA) encoder.
+  <digest>Abclib's High Order Ambisonics (HOA) Encoder</digest>
+  <description><o>abc.hoa.encoder~</o> is an High Order Ambisonics (HOA) encoder.
     <br />
     <br />
-    This object enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees) on the ambisonic circle.</description>
+    This object enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees).</description>
 
     <!--INLETS-->
   <!-- <inletlist>
@@ -44,14 +44,19 @@
       <digest>sets the number of sources</digest>
     </attribute>
 
-    <!--<attribute name="dimension" type="int" set="1" get="1" size="1">
+    <attribute name="dimension" type="int" set="1" get="1" size="1">
       <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
       <digest>sets the number of dimensions</digest>
-    </attribute>-->
+    </attribute>
 
     <attribute name="a[index]" type="float" set="1" get="1" size="1">
       <description>sets the angle of the [index]th encoded signal in degree.[index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
       <digest>sets the angle of the encoded signal in degree</digest>
+    </attribute>
+
+    <attribute name="e[index]" type="float" set="1" get="1" size="1">
+      <description>sets the elevation of the [index]th encoded signal in degree for 3D encoder.[index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-180:max=180:step=0.01].</description>
+      <digest>sets the elevation of the encoded signal in degree for 3D encoder</digest>
     </attribute>
 
     <attribute name="s[index]" type="float" set="1" get="1" size="1">
@@ -73,6 +78,13 @@
       </arglist>
       <description>sets the angle of the [index]th encoded signal in degree.[index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
       <digest>sets the angle of the encoded signal in degree</digest>
+    </method>
+        <method name="e[index]">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets the elevation of the [index]th encoded signal in degree for the 3D encoder.[index] is an integer, if value inferior to 10 index should be written "6" for example. [init=0:min=-360:max=360:step=0.01].</description>
+      <digest>sets the elevation of the encoded signal in degree for the 3D encoder</digest>
     </method>
     <method name="s[index]">
       <arglist>
