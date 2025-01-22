@@ -149,6 +149,9 @@ function patching() {
 	} else if (patcherName == 'abc.hoa.scope~' || patcherName == 'abc.hoa.scope') {
 		if (patcherName == 'abc.hoa.scope') withUI = true;
 		objectToInstantiate = "abc_" + dimensions + "_scope" + order + "~";
+	} else if (patcherName == 'abc.hoa.vector~' || patcherName == 'abc.hoa.vector') {
+		if (patcherName == 'abc.hoa.vector') withUI = true;
+		objectToInstantiate = "abc_" + dimensions + "_vector" + order + "~";
 	} else if (patcherName == 'abc.trajectories~' || patcherName == 'abc.trajectories') {
 		if (patcherName == 'abc.trajectories') withUI = true;
 		if (mode == "fx" || mode == "random") {//We use fx as it's the default setting, but we'll select the random trajectory as default
