@@ -51,10 +51,10 @@
       <digest>sets the mode of decorrelation</digest>
     </attribute>
 
-    <!-- <attribute name="dimension" type="int" set="1" get="1" size="1">
+    <attribute name="dimension" type="int" set="1" get="1" size="1">
       <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
       <digest>sets the number of dimensions</digest>
-    </attribute>-->
+    </attribute>
 
     <attribute name="delay" type="int" set="1" get="1" size="1">
       <description>sets the delay window size in samples, also sets maximum delay value [init=48000, min=10, max=262144, step=1].</description>
@@ -78,7 +78,11 @@
         Possible functions from 0 to 21 correspond to : 
         <br />
         x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
-      <digest>set the function decorralation type</digest>
+      <digest>sets the function decorralation type</digest>
+    </attribute>
+        <attribute name="distributionmode" type="int" set="1" get="1" size="1">
+      <description>sets the distribution type in 3D [init=0, min=0, max=2, step=1]</description>
+      <digest>sets the distribution type in 3D</digest>
     </attribute>
   </attributelist>
 
@@ -118,7 +122,14 @@
         Possible functions from 0 to 21 correspond to : 
         <br />
         x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
-      <digest>set the function decorralation type</digest>
+      <digest>sets the function decorralation type</digest>
+    </method>
+        <method name="distributionmode">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the distribution type in 3D [init=0, min=0, max=2, step=1]</description>
+      <digest>sets the distribution type in 3D</digest>
     </method>
   </methodlist>
 
