@@ -51,6 +51,11 @@
       <digest>sets the mode of modulation</digest>
     </attribute>
 
+    <attribute name="dimension" type="int" set="1" get="1" size="1">
+      <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+      <digest>sets the number of dimensions</digest>
+    </attribute>
+
     <attribute name="frequency-modulation" type="float" set="1" get="1" size="1">
       <description>sets the frequency modulation window size in Hz, also set maximum frequency value [init=48000:min=10:max=262144:step=1].</description>
       <digest>sets the delay window size in samples</digest>
