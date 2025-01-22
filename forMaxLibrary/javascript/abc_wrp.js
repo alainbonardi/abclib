@@ -99,6 +99,9 @@ function patching() {
 		if (speakersSettedUp == false) speakers = order * 2 + 2;
 
 		objectToInstantiate = "abc_" + dimensions + "_decoder" + order + "_" + speakers + "~";
+	} else if (patcherName == 'abc.hoa.binaural~' || patcherName == 'abc.hoa.binaural') {
+		if (patcherName == 'abc.hoa.binaural') withUI = true;
+		objectToInstantiate = "abc_" + dimensions + "_binaural" + order + "~";
 	} else if (patcherName == 'abc.hoa.encoder~' || patcherName == 'abc.hoa.encoder') {
 		if (patcherName == 'abc.hoa.encoder') withUI = true;
 		if (sources > maxMEncoderSources) {
