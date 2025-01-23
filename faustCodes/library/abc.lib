@@ -154,6 +154,28 @@ abc_2d_multiEncoder_ui(N, ns) = ho.multiEncoder(N, ls, la, returntime)
  			la = par(i, ns, a(i, ns));
 };
 
+abc_3d_multiEncoder_ui(N, ns) = ho.multiEncoder3D(N, lAs, lEs, la, le, returntime)
+	with {
+			//the azimut speed of the ith source among p sources, expressed in turns by second for the end user
+			as(i, p) = nentry("v:multiencoder/h:speeds/as%i [unit:s-1]", 0, -100, 100, 0.001);
+			//the elevation speed of the ith source among p sources, expressed in turns by second for the end user
+			es(i, p) = nentry("v:multiencoder/h:speeds/es%i [unit:s-1]", 0, -100, 100, 0.001);
+			//the azimut of the ith source among p sources, expressed in degrees for the end-user
+			a(i, p) = nentry("v:multiencoder/h:angles/a%i [unit:deg]", i * 360 / p, -360, 360, 0.01) * ma.PI / 180.0;
+			//the elevation of the ith source among p sources, expressed in degrees for the end-user
+			e(i, p) = nentry("v:multiencoder/h:angles/e%i [unit:deg]", i * 180 / p, -180, 180, 0.01) * ma.PI / 180.0;
+			//the interpolation time between static position and rotation
+			returntime = hslider("v:multiencoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
+			//ls = list of azimut speeds//
+			lAs = par(i, ns, as(i, ns));
+			//ls = list of elevation speeds//
+			lEs = par(i, ns, es(i, ns));
+			//la = list of azimut//
+ 			la = par(i, ns, a(i, ns));
+			//la = list of elevation//
+ 			le = par(i, ns, e(i, ns));
+};
+
 //
 //--------------------------------------------------------------------------------------//
 //2D MAPS : ONE SOURCE OR MULTISOURCE
