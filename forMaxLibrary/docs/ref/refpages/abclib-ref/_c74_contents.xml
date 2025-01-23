@@ -12,6 +12,7 @@
     <refpage name='abc.generator~.maxref.xml' />
     <refpage name='abc.generatorinterface~.maxref.xml' />
     <refpage name='abc.gotoevent.maxref.xml' />
+    <refpage name='abc.hoa.binaural~.maxref.xml' />
     <refpage name='abc.hoa.decoder~.maxref.xml' />
     <refpage name='abc.hoa.decorrelation~.maxref.xml' />
     <refpage name='abc.hoa.delay~.maxref.xml' />

@@ -58,6 +58,7 @@ max objectfile abc.delaychain~ abc.delaychain~;
 max objectfile abc.drops~ abc.drops~;
 max objectfile abc.envfollower~ abc.envfollower~;
 max objectfile abc.generator~ abc.generator~;
+max objectfile abc.hoa.binaural~ abc.hoa.binaural~;
 max objectfile abc.hoa.decorrelation~ abc.hoa.decorrelation~;
 max objectfile abc.hoa.decoder~ abc.hoa.decoder~;
 max objectfile abc.hoa.delay~ abc.hoa.delay~;

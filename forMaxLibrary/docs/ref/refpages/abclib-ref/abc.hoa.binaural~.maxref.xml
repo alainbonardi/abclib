@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.binaural~" module="abclib">
+  <digest>Abclib's High Order Ambisonics (HOA) Binaural Decoder</digest>
+  <description><o>abc.hoa.binaural~</o> is an High Order Ambisonics (HOA) binaural decoder based on the code of P.Lecomte.
+    <br />
+    <br />
+    This object enable to decode from ambisonic spatial components using binaural decoder of P.Lecomte based on HRIR of the Neumann KU100 from 2D/3D ambisonics flux.<br /><br />
+  </description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="ambisonic-order" optional="1" type="int">
+          <digest>
+            ambisonic order
+          </digest>
+          <description>
+              first argument is the ambisonic order [init=1:min=1:max=7:step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="dimensions" type="int" set="1" get="1" size="1">
+      <description>sets the number of dimensions[init=2:min=2:max=3:step=1].</description>
+      <digest>sets the number of dimensions</digest>
+    </attribute>
+
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets decoder gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets decoder gain</digest>
+    </attribute>
+
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets decoder gain in dB [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets decoder gain</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.encoder~" />
+    <seealso name="abc.hoa.map~" />
+    <seealso name="abc.hoa.stereodecoder~" />
+    <seealso name="abc.hoa.wider~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.optim~" />
+  </seealsolist>
+</c74object>
