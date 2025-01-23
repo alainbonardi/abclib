@@ -1091,7 +1091,7 @@ th(21, i, p) = sqrt(1 - ((i+1) / p - 1)^2);
 //========================================================================================
 
 //----------------------`(ho.)encoder3D`---------------------------------
-// Ambisonic encoder. Encodes a signal in the circular harmonics domain
+// Ambisonic encoder. Encodes a signal in the spherical harmonics domain
 // depending on an order of decomposition, an angle and an elevation. This decoder uses 
 // SN3D norm and ACN channel ordering
 //
@@ -1294,6 +1294,32 @@ with {
 multiAleaEncoder3D(N, lFreq, lAz, lEl, lDeltaAz, lDeltaEl) = par(i, P, aleaEncoder3D(N, ba.take(i+1, lFreq), ba.take(i+1, lAz), ba.take(i+1, lEl), ba.take(i+1, lDeltaAz), ba.take(i+1, lDeltaEl), 2*i, 2*i+1)) :> si.bus((N+1)*(N+1))
 with {
     P = outputs(lFreq); //all lists are supposed to have the same length
+};
+
+//----------------------`(ho.)decoder3D`---------------------------------
+// Ambisonic simple decoder. Decodes an ambisonics sound field for a spherical
+// array of loudspeakers using a direct decoding technic. This decoder uses 
+// SN3D norm and ACN channel ordering. The lenght of the list determines the 
+// number of loudspeakers. 
+//
+// #### Usage
+//
+// ```
+// decoder3D(N, la, le) : _,_,...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `la`: the list of loudspeaker azimut
+// * `le`: the list of loudspeaker elevation
+//----------------------------------------------------------------
+decoder3D(N, la, le) = par(i, (N+1)^2, _) <: par(i, P, speaker(N, azim(i), elev(i))) 
+with {
+    P = outputs(la);
+    azim(i) = ba.take(i+1, la) * ma.PI / 180. ; 
+    elev(i) = ba.take(i+1, le) * ma.PI / 180. ; 
+    speaker(N,theta,phi) = _/(2), si.bus(((N+1)^2)-1), ho.encoder3D(N, 2/P, theta, phi) : si.dot((N+1)^2);
 };
 
 
