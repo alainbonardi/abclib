@@ -399,7 +399,7 @@ with {
 //--------------------------------------------------------------------------------------//
 //fx 3D decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_3d_fx_decorrelation_ui(N) = fxDecorrelation3D(N, delay, winfreq, factor, fdbk, functiontype, mode) 
+abc_3d_fx_decorrelation_ui(N) = fxDecorrelation3D(N, delay, winfreq, factor, fdbk, functiontype, distributionmode) 
 	with {
 		delay = hslider("v:synfxdecorrelation3d/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
@@ -407,7 +407,7 @@ abc_3d_fx_decorrelation_ui(N) = fxDecorrelation3D(N, delay, winfreq, factor, fdb
 		factor = hslider("v:synfxdecorrelation3d/factor", 0, 0, 1, 0.001);
 		fdbk = hslider("v:synfxdecorrelation3d/fdbk", 0, 0, 0.99, 0.001);
 		functiontype = hslider("v:synfxdecorrelation3d/functiontype", 0, 0, 21, 1);
-        mode = hslider("v:synfxdecorrelation3d/mode", 0, 0, 2, 1);
+        distributionmode = hslider("v:synfxdecorrelation3d/distributionmode", 0, 0, 2, 1);
 		//
 };
 
@@ -415,7 +415,7 @@ abc_3d_fx_decorrelation_ui(N) = fxDecorrelation3D(N, delay, winfreq, factor, fdb
 //--------------------------------------------------------------------------------------//
 //syn 3D decorrelation process
 //--------------------------------------------------------------------------------------//
-abc_3d_syn_decorrelation_ui(N) = synDecorrelation3D(N, delay, winfreq, factor, fdbk, functiontype, mode) 
+abc_3d_syn_decorrelation_ui(N) = synDecorrelation3D(N, delay, winfreq, factor, fdbk, functiontype, distributionmode) 
 	with {
 		delay = hslider("v:synfxdecorrelation3d/delay [unit:samples]", 48000, 10, 262144, 1);
 		window = 10; //by default a window of 10 milliseconds for the interpolation of delays//
@@ -423,7 +423,7 @@ abc_3d_syn_decorrelation_ui(N) = synDecorrelation3D(N, delay, winfreq, factor, f
 		factor = hslider("v:synfxdecorrelation3d/factor", 0, 0, 1, 0.001);
 		fdbk = hslider("v:synfxdecorrelation3d/fdbk", 0, 0, 0.99, 0.001);
 		functiontype = hslider("v:synfxdecorrelation3d/functiontype", 0, 0, 21, 1);
-        mode = hslider("v:synfxdecorrelation3d/mode", 0, 0, 2, 1);
+        distributionmode = hslider("v:synfxdecorrelation3d/distributionmode", 0, 0, 2, 1);
 		//
 };
 //
@@ -587,12 +587,12 @@ abc_2d_syn_ringmod_ui(N) = ho.synRingMod(N, f0, factor, functiontype)
 //fx 3D ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_3d_fx_ringmod_ui(N) = fxRingMod3D(N, f0, factor, functiontype, mode)
+abc_3d_fx_ringmod_ui(N) = fxRingMod3D(N, f0, factor, functiontype, distributionmode)
 	with {
 		f0 = hslider("v:synfxringmod3d/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synfxringmod3d/factor", 0, 0, 1, 0.001);
 		functiontype = hslider("v:synfxringmod3d/functiontype", 0, 0, 21, 1);
-        mode = hslider("v:synfxringmod3d/mode", 0, 0, 2, 1);
+        distributionmode = hslider("v:synfxringmod3d/distributionmode", 0, 0, 2, 1);
 };
 
 //
@@ -600,12 +600,12 @@ abc_3d_fx_ringmod_ui(N) = fxRingMod3D(N, f0, factor, functiontype, mode)
 //syn 3D ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_3d_syn_ringmod_ui(N) = synRingMod3D(N, f0, factor, functiontype, mode)
+abc_3d_syn_ringmod_ui(N) = synRingMod3D(N, f0, factor, functiontype, distributionmode)
 	with {
 		f0 = hslider("v:synfxringmod3d/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synfxringmod3d/factor", 0, 0, 1, 0.001);
 		functiontype = hslider("v:synfxringmod3d/functiontype", 0, 0, 21, 1);
-        mode = hslider("v:synfxringmod3d/mode", 0, 0, 2, 1);
+        distributionmode = hslider("v:synfxringmod3d/distributionmode", 0, 0, 2, 1);
 };
 
 //
