@@ -72,6 +72,7 @@ max objectfile abc.hoa.rotate~ abc.hoa.rotate~;
 max objectfile abc.hoa.scope~ abc.hoa.scope~;
 max objectfile abc.hoa.stereodecoder~ abc.hoa.stereodecoder~;
 max objectfile abc.hoa.stereoencoder~ abc.hoa.stereoencoder~;
+max objectfile abc.hoa.vector~ abc.hoa.vector~;
 max objectfile abc.hoa.wider~ abc.hoa.wider~;
 max objectfile abc.jupiterbank~ abc.jupiterbank~;
 max objectfile abc.linedrive~ abc.linedrive~;
