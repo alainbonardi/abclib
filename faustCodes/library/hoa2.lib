@@ -1297,7 +1297,7 @@ with {
 };
 
 //----------------------`(ho.)decoder3D`---------------------------------
-// Ambisonic simple decoder. Decodes an ambisonics sound field for a spherical
+// Regular ambisonic 3D decoder. Decodes an ambisonics sound field for a spherical
 // array of loudspeakers using a direct decoding technic. This decoder uses 
 // SN3D norm and ACN channel ordering. The lenght of the list determines the 
 // number of loudspeakers. 

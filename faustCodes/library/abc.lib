@@ -84,6 +84,31 @@ abc_2d_decoder_ui(N, P) = iDecoder(N, la, direct, offset, stereo, gain)
 			//la = list of angles//
  			la = par(i, P, a(i, P));
 };
+
+//-------`(abc.)abc_3d_decoder_ui`----------
+// UI function for the general regular 3D decoder
+//
+// #### Usage
+//
+// ```
+// _,_, ... : abc_3d_decoder_ui(N, P) : _,_, ...
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `P`: the number of loudspeakers (constant numerical expression)
+//-----------------------------
+abc_3d_decoder_ui(N, P) = decoder3D(N, la, le) 
+	with {
+			//the azimut of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
+			a(i, nls) = nentry("h:decoder/v:azimut/a%i [unit:deg]", i * 360 / nls, -360, 360, 1);
+            //the elevation of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
+			e(i, nls) = nentry("h:decoder/v:elevation/e%i [unit:deg]", i * 180 / nls, 0, 180, 1);
+			//la = list of angles//
+ 			la = par(i, P, a(i, P));
+            le = par(i, P, e(i, P));
+};
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC ENCODERS WITH ROTATION OR STATIC MODES
