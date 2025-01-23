@@ -56,7 +56,7 @@ abc_2d_stereodecoder_ui(N) = thisStereoDecoder
 			gain = hslider("v:decoderStereo2/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			leftDispatcher = _<:(*(1-direct), *(direct));
 			rightDispatcher = _<:(*(direct), *(1-direct));
-			thisStereoDecoder = ho.decoderStereo(N) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
+			thisStereoDecoder = decoderStereo(N) : (*(gain), *(gain)) : (leftDispatcher, rightDispatcher) :> (_, _);
 };
 
 //-------`(abc.)abc_2d_decoder_ui`----------
@@ -114,14 +114,14 @@ abc_3d_decoder_ui(N, P) = decoder3D(N, la, le)
 //AMBISONIC ENCODERS WITH ROTATION OR STATIC MODES
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_encoder_ui(N) = ho.rEncoder(N, speed, angle, returntime)
+abc_2d_encoder_ui(N) = rEncoder(N, speed, angle, returntime)
 	with {
 			speed = hslider("v:encoder/speed [unit:s-1]", 0, -100, 100, 0.001);
 			angle = hslider("v:encoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 ;
 			returntime = hslider("v:encoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 };
 
-abc_3d_encoder_ui(N) = ho.rEncoder3D(N, speedazim, speedelev, azim, elev, returntime)
+abc_3d_encoder_ui(N) = rEncoder3D(N, speedazim, speedelev, azim, elev, returntime)
 	with {
 			speedazim = hslider("v:encoder/speedazim [unit:s-1]", 0, -100, 100, 0.001);
             speedelev = hslider("v:encoder/speedelev [unit:s-1]", 0, -100, 100, 0.001);
@@ -135,12 +135,12 @@ abc_3d_encoder_ui(N) = ho.rEncoder3D(N, speedazim, speedelev, azim, elev, return
 //MULTIPLE AMBISONIC ENCODERS TO PLAY SEVERAL LOCALIZED SOURCES (STATIC ANGLES)
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_stereoEncoder_ui(N) = ho.stereoEncoder(N, angle)
+abc_2d_stereoEncoder_ui(N) = stereoEncoder(N, angle)
 	with {
 			angle = hslider("v:stereoEncoder/angle [unit:deg]", 0, -360, 360, 0.01) * ma.PI / 180.0 : si.smoo;
 };
 
-abc_2d_multiEncoder_ui(N, ns) = ho.multiEncoder(N, ls, la, returntime)
+abc_2d_multiEncoder_ui(N, ns) = multiEncoder(N, ls, la, returntime)
 	with {
 			//the speed of the ith source among p sources, expressed in turns by second for the end user
 			s(i, p) = nentry("v:multiencoder/h:speeds/s%i [unit:s-1]", 0, -100, 100, 0.001);
@@ -154,7 +154,7 @@ abc_2d_multiEncoder_ui(N, ns) = ho.multiEncoder(N, ls, la, returntime)
  			la = par(i, ns, a(i, ns));
 };
 
-abc_3d_multiEncoder_ui(N, ns) = ho.multiEncoder3D(N, lAs, lEs, la, le, returntime)
+abc_3d_multiEncoder_ui(N, ns) = multiEncoder3D(N, lAs, lEs, la, le, returntime)
 	with {
 			//the azimut speed of the ith source among p sources, expressed in turns by second for the end user
 			sa(i, p) = nentry("v:multiencoder/h:speeds/sa%i [unit:s-1]", 0, -100, 100, 0.001);
@@ -183,7 +183,7 @@ abc_3d_multiEncoder_ui(N, ns) = ho.multiEncoder3D(N, lAs, lEs, la, le, returntim
 //
 abc_2d_map_ui(N) = thisMap
 	with {
-		thisMap(x, r, a) = ho.map(N, x, r, a);
+		thisMap(x, r, a) = map(N, x, r, a);
 };
 
 abc_2d_multiMap_ui(N, ns) = par(i, ns, abc_2d_map_ui(N)) :> si.bus(2*N+1);
@@ -212,7 +212,7 @@ abc_2d_multiMap_ui(N, ns) = par(i, ns, abc_2d_map_ui(N)) :> si.bus(2*N+1);
 //0 => ORIGINAL + MIRROR SOUND FIELD
 //-1 => MIRROR SOUND FIELD
 //--------------------------------------------------------------------------------------//
-abc_2d_mirror_ui(N) = ho.mirror(N, factor)
+abc_2d_mirror_ui(N) = mirror(N, factor)
 		with {
 			factor = hslider("factor", 1, -1, 1, 1) : si.smoo;
 };
@@ -260,12 +260,12 @@ abc_3d_vectors_ui(nls) = vectorVE3D(laz, lel)
 //The inPhase Optimization optimize energy vector and put all loudspeakers signals 
 //in phase. It should be used for an auditory.
 //--------------------------------------------------------------------------------------//
-abc_2d_optim_ui(N) = ho.optim(N, optimtype)
+abc_2d_optim_ui(N) = optim(N, optimtype)
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
 };
 
-abc_3d_optim_ui(N) = ho.optim3D(N, optimtype)
+abc_3d_optim_ui(N) = optim3D(N, optimtype)
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
 };
@@ -280,14 +280,14 @@ abc_2d_rotate_ui(N) = thisRotate
 			rotphase = hslider("v:rotate/angle [unit:deg]", 0, -360, 360, 0.01) / 360;
 			returntime = hslider("v:rotate/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//
-			thisRotate =  ho.rotate(N, 2 * ma.PI * abc_rotationorstaticphase(rotfreq, rotphase, returntime));
+			thisRotate =  rotate(N, 2 * ma.PI * abc_rotationorstaticphase(rotfreq, rotphase, returntime));
 };
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC SOUND FIELD ROTATION
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_wider_ui(N) = ho.wider(N, width)
+abc_2d_wider_ui(N) = wider(N, width)
 		with {
 			width = hslider("width", 0, 0, 1, 0.01) : si. smoo;
 };
@@ -296,7 +296,7 @@ abc_2d_wider_ui(N) = ho.wider(N, width)
 //SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_scope_ui(N) = ho.scope(N, refresh)
+abc_2d_scope_ui(N) = scope(N, refresh)
 		with {
 			//refresh time, default is 10 msec
 			refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;
@@ -615,7 +615,7 @@ abc_2d_syn_grain_ui(n) = thissyngrain
 //fx ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_fx_ringmod_ui(N) = ho.fxRingMod(N, f0, factor, functiontype)
+abc_2d_fx_ringmod_ui(N) = fxRingMod(N, f0, factor, functiontype)
 	with {
 		f0 = hslider("v:fxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:fxringmod/factor", 0, 0, 1, 0.001);
@@ -627,7 +627,7 @@ abc_2d_fx_ringmod_ui(N) = ho.fxRingMod(N, f0, factor, functiontype)
 //syn ringmod process
 //--------------------------------------------------------------------------------------//
 //
-abc_2d_syn_ringmod_ui(N) = ho.synRingMod(N, f0, factor, functiontype)
+abc_2d_syn_ringmod_ui(N) = synRingMod(N, f0, factor, functiontype)
 	with {
 		f0 = hslider("v:synfxringmod/f0 [unit:Hz]", 10, 0, 10000, 0.0001);
 		factor = hslider("v:synfxringmod/factor", 0, 0, 1, 0.001);
