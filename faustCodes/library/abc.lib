@@ -264,6 +264,11 @@ abc_2d_optim_ui(N) = ho.optim(N, optimtype)
 		with {
 			optimtype = nentry("optimtype", 0, 0, 2, 1);
 };
+
+abc_3d_optim_ui(N) = ho.optim3D(N, optimtype)
+		with {
+			optimtype = nentry("optimtype", 0, 0, 2, 1);
+};
 //
 //--------------------------------------------------------------------------------------//
 //AMBISONIC SOUND FIELD ROTATION
