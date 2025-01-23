@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.hoa.vector~" module="abclib">
+  <digest>Abclib's Energy and Velocity Vectors computation</digest>
+  <description><o>abc.hoa.vector~</o> computes the coordinate of velocity and energy vectors for a given loudspeaker setup.
+  <br />To understand or anticipate the localization accuracy of an ambisonic reproduction, two indices were theorized by Gerzon, based on Makita's theory of perception: the energy vector and the velocity vector. The velocity and energy vectors are calculated for a given reproduction system.
+<br /><br />
+The velocity vector (denoted as Rv) is valid for frequencies below 700 Hz. Its direction corresponds to the apparent direction of the source, and its magnitude represents the accuracy (or blurriness) of the rendering.
+<br /><br />
+The energy vector (denoted as Re) is the counterpart of the velocity vector for frequencies ranging from 500 Hz to 5 kHz. These localization indices, calculated from the signals sent to the loudspeakers, make it possible to optimize ambisonic signals to achieve the best possible rendering in a given situation.
+</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+      <objarg name="number-of-speakers" optional="0" type="int">
+          <digest>
+              the number of loudspeakers
+          </digest>
+          <description>
+              first argument is the number of loudspeakers [init=1, min=4, max=16, step=1].
+          </description>
+      </objarg>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="dimensions" type="int" set="1" get="1" size="1">
+        <description>sets the number of dimensions [init=2:min=2:max=3:step=1].</description>
+        <digest>sets the number of dimensions</digest>
+    </attribute>
+    <attribute name="a[index]" type="int" set="1" get="1" size="1">
+        <description>sets the azimut angle of the [index] loudspeaker [min=-360:max=360:step=0.001].</description>
+        <digest>sets the azimut angle of the [index] loudspeaker</digest>
+    </attribute>
+    <attribute name="e[index]" type="int" set="1" get="1" size="1">
+        <description>sets the elevation angle of the [index] loudspeaker in 3D [min=-180:max=180:step=0.001].</description>
+        <digest>sets the elevation angle of the [index] loudspeaker</digest>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="a[index]">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the azimut angle of the [index] loudspeaker [min=-360:max=360:step=0.001].</description>
+      <digest>sets the azimut angle of the [index] loudspeaker</digest>
+    </method>
+        <method name="e[index]">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the elevation angle of the [index] loudspeaker in 3D [min=-180:max=180:step=0.001].</description>
+      <digest>sets the elevation angle of the [index] loudspeaker</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.optim~" />
+    <seealso name="abc.hoa.decoder~" />
+    <seealso name="abc.hoa.wider~" />
+    <seealso name="abc.hoa.mirror~" />
+    <seealso name="abc.hoa.map~" />
+  </seealsolist>
+</c74object>
