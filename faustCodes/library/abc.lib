@@ -99,8 +99,9 @@ abc_2d_decoder_ui(N, P) = iDecoder(N, la, direct, offset, stereo, gain)
 // * `N`: the ambisonic order (constant numerical expression)
 // * `P`: the number of loudspeakers (constant numerical expression)
 //-----------------------------
-abc_3d_decoder_ui(N, P) = decoder3D(N, la, le) 
+abc_3d_decoder_ui(N, P) = decoder3D(N, la, le, gain) 
 	with {
+			gain = hslider("h:decoder/v:general/gain [unit:dB]", 0, -127, 18, 0.01) : db2gain;
 			//the azimut of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
 			a(i, nls) = nentry("h:decoder/v:azimut/a%i [unit:deg]", i * 360 / nls, -360, 360, 1);
             //the elevation of the the ith loudspeaker among nls loudspeakers, expressed in degrees for the end-user
