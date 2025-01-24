@@ -3,9 +3,9 @@
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
 
-<c74object name="abc.hoa.vector~" module="abclib">
+<c74object name="abc.vector~" module="abclib">
   <digest>Abclib's Energy and Velocity Vectors computation</digest>
-  <description><o>abc.hoa.vector~</o> computes the coordinate of velocity and energy vectors for a given loudspeaker setup.
+  <description><o>abc.vector~</o> computes the coordinate of velocity and energy vectors for a given loudspeaker setup.
   <br />To understand or anticipate the localization accuracy of an ambisonic reproduction, two indices were theorized by Gerzon, based on Makita's theory of perception: the energy vector and the velocity vector. The velocity and energy vectors are calculated for a given reproduction system.
 <br /><br />
 The velocity vector (denoted as Rv) is valid for frequencies below 700 Hz. Its direction corresponds to the apparent direction of the source, and its magnitude represents the accuracy (or blurriness) of the rendering.

@@ -26,7 +26,6 @@
     <refpage name='abc.hoa.scope~.maxref.xml' />
     <refpage name='abc.hoa.stereodecoder~.maxref.xml' />
     <refpage name='abc.hoa.stereoencoder~.maxref.xml' />
-    <refpage name='abc.hoa.vector~.maxref.xml' />
     <refpage name='abc.hoa.wider~.maxref.xml' />
     <refpage name='abc.jupiterbank~.maxref.xml' />
     <refpage name='abc.jupiterbank2~.maxref.xml' />
@@ -62,4 +61,5 @@
     <refpage name='abc.stereoout~.maxref.xml' />
     <refpage name='abc.trajectories~.maxref.xml' />
     <refpage name='abc.vbap~.maxref.xml' />
+    <refpage name='abc.vector~.maxref.xml' />
 </root>
