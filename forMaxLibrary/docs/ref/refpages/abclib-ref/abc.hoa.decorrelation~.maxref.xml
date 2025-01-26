@@ -124,7 +124,7 @@
         x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
       <digest>sets the function decorralation type</digest>
     </method>
-        <method name="distributionmode">
+    <method name="distributionmode">
       <arglist>
         <arg type="int" />
       </arglist>

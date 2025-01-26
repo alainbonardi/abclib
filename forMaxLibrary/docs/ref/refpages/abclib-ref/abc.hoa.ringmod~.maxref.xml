@@ -56,7 +56,7 @@
       <digest>sets the number of dimensions</digest>
     </attribute>
 
-    <attribute name="frequency-modulation" type="float" set="1" get="1" size="1">
+    <attribute name="f0" type="float" set="1" get="1" size="1">
       <description>sets the frequency modulation window size in Hz, also set maximum frequency value [init=48000:min=10:max=262144:step=1].</description>
       <digest>sets the delay window size in samples</digest>
     </attribute>
@@ -80,11 +80,15 @@
         x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
       <digest>sets the function decorralation type</digest>
     </attribute>
+    <attribute name="distributionmode" type="int" set="1" get="1" size="1">
+      <description>sets the distribution type in 3D [init=0, min=0, max=2, step=1]</description>
+      <digest>sets the distribution type in 3D</digest>
+    </attribute>
   </attributelist>
 
   <!--MESSAGES-->
   <methodlist>
-    <method name="frequency-modulation">
+    <method name="f0">
       <arglist>
         <arg type="float" />
       </arglist>
@@ -116,6 +120,13 @@
         <br />
         x, x^2, sin, log(1+x), sqrt(x), 1-cos(Pi/2*x), (1-cos(Pi*x))/2, 1-(1-x)^2, composite1, x^3, 1-(1-x)^3, composite2, x^4, 1-(1-x)^4, composite3, x^5, 1-(1-x)^5, composite4, 2^(10(x-1)), composite5, 1-sqrt(1-x^2), sqrt(1-(x-1)^2).</description>
       <digest>sets the function decorralation type</digest>
+    </method>
+    <method name="distributionmode">
+      <arglist>
+        <arg type="int" />
+      </arglist>
+      <description>sets the distribution type in 3D [init=0, min=0, max=2, step=1]</description>
+      <digest>sets the distribution type in 3D</digest>
     </method>
   </methodlist>
 
