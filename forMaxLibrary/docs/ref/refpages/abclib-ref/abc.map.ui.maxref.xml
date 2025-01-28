@@ -72,6 +72,22 @@
       <description>makes a flip of 90° (anti-clockwise) on the axis</description>
       <digest>makes a flip of 90° (anti-clockwise) on the axis</digest>
     </method>
+
+    <method name="set_xy">
+      <arglist>
+        <arg type="list" />
+      </arglist>
+      <description>defines the cartesian coordinate of [index] point. Usage: "set_xy [index] x y"</description>
+      <digest>defines the cartesian coordinate of [index] point. Usage: "set_xy [index] x y"</digest>
+    </method>
+
+    <method name="set_ad">
+      <arglist>
+        <arg type="list" />
+      </arglist>
+      <description>defines the polar coordinate of [index] point. Usage: "set_ad [index] azim distance"</description>
+      <digest>defines the polar coordinate of [index] point. Usage: "set_ad [index] azim distance"</digest>
+    </method>
   </methodlist>
 
   <seealsolist>

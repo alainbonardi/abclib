@@ -424,6 +424,20 @@ function cartopol(x, y) {
     return polarCoordinates;
 }
 cartopol.local = 1;
+function poltocar(theta, r) {
+    // Calculer la coordonnée x
+    const x = r * Math.cos(theta);
+    // Calculer la coordonnée y
+    const y = r * Math.sin(theta);
+
+    const cartesianCoordinates = {
+        x: x,
+        y: y
+    };
+    // Retourner les coordonnées cartésiennes (x, y)
+    return cartesianCoordinates;
+}
+poltocar.local = 1;
 function flipOfaxis(x, y, outputType){
 if (outputType == "pol"){
         // Calculer la distance r depuis l'origine (0, 0)
@@ -539,3 +553,34 @@ function out(data, circle) {
 }
 out.local = 1;  
 
+function set_xy(name, x, y){
+    for(i = 0; i < circles.length; i++){
+        if(arguments[1]<=1 && arguments[2]<=1 && arguments[1]>=-1 && arguments[2]>=-1){
+            if(name==circles[i].name){
+                circles[i].center[0] = x;
+                circles[i].center[1] = y;
+                circleHitten = i;
+                out("coordinate",circleHitten);
+                outlet(1, outForDump);
+                notifyclients(); 
+                refresh();
+            }
+        } else {post("Pas à l'échelle");}
+    }
+}
+
+function set_ad(name, a, d){
+    for(i = 0; i < circles.length; i++){
+        if(arguments[2]>0){
+            if(name==circles[i].name){
+                circles[i].center[0] = poltocar(a, d).x;
+                circles[i].center[1] = poltocar(a, d).y;
+                circleHitten = i;
+                out("coordinate",circleHitten);
+                outlet(1, outForDump);
+                notifyclients(); 
+                refresh();
+            }
+        } else {post("Pas à l'échelle");}
+    }
+}
