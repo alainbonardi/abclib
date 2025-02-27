@@ -644,7 +644,7 @@ abc_2d_syn_gain_ui(N) = synGain(N, lg)
 abc_2d_vbap_ui(n) = circularScaledVBAP(la, theta)
 	with {
 		a(i, nls) = nentry("v:vbap/a%i [unit:deg]", i * 360 / nls, -360, 360, 1);
-		theta = nentry("v:vbap/theta [unit:deg]", 0, -360, 360, 0.01);
+		theta = nentry("v:vbap/theta [unit:deg]", 0, -360, 360, 0.01) : si.smoo;
 		//la = list of angles//
  		la = par(i, n, a(i, n));
 	};
