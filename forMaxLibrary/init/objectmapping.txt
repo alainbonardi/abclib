@@ -22,6 +22,9 @@ max definesubstitution abc.generatorinterface~ bpatcher @name abc.generatorinter
 max objectfile abc.gotoevent abc.gotoevent;
 max definesubstitution abc.gotoevent bpatcher @name abc.gotoevent @border 1;
 
+max objectfile abc.help.description abc.help.description;
+max definesubstitution abc.help.description bpatcher @name abc.help.description.maxpat @border 0;
+
 max objectfile abc.quadriout~ abc.quadriout~;
 max definesubstitution abc.quadriout~ bpatcher @name abc.quadriout~ @border 1;
 
@@ -30,6 +33,9 @@ max definesubstitution abc.pict2map bpatcher @name abc.pict2map @border 1;
 
 max objectfile abc.scope abc.scope;
 max definesubstitution abc.scope bpatcher @name abc.scope @border 1;
+
+max objectfile abc.scopeembedded abc.scopeembedded;
+max definesubstitution abc.scopeembedded bpatcher @name abc.scopeembedded @border 1;
 
 max objectfile abc.meters abc.meters;
 max definesubstitution abc.meters bpatcher @name abc.meters @border 1;
