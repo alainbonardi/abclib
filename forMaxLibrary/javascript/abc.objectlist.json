@@ -1,0 +1,104 @@
+{
+	"mc": 
+	{
+    	"objects": [ 
+    	"abc.mc.addsynth~",
+		"abc.mc.busmult~",
+		"abc.mc.busplus~",
+		"abc.mc.busselect~",
+		"abc.mc.chopan~",
+		"abc.mc.delay~",
+		"abc.mc.flanger~",
+		"abc.mc.freqshift~",
+		"abc.mc.gain~",
+		"abc.mc.grain~",
+		"abc.mc.harmo~",
+		"abc.mc.matrix~",
+		"abc.mc.multinoise~",
+		"abc.mc.pulsedenv2synth~",
+		"abc.mc.randenv~",
+		"abc.mc.substractsynth~"
+    	],
+    	"description" : "We provide multichannel processes and utilities until 16 channels."
+    },
+
+    "hoa": 
+	{
+    	"objects": [ 
+    	"abc.hoa.binaural~",
+		"abc.hoa.decoder~",
+		"abc.hoa.decorrelation~",
+		"abc.hoa.delay~",
+		"abc.hoa.encoder~",
+		"abc.hoa.grain~",
+		"abc.hoa.map~",
+		"abc.hoa.mirror~",
+		"abc.hoa.optim~",
+		"abc.hoa.ringmod~",
+		"abc.hoa.rotate~",
+		"abc.hoa.scope~",
+		"abc.hoa.stereodecoder~",
+		"abc.hoa.stereoencoder~",
+		"abc.hoa.wider~"
+    	],
+    	"description" : "We provide 2D and 3D general ambisonic objects, musical processes and geometric processes."
+    },
+
+    "utilities": 
+	{
+    	"objects": [ 
+		"abc.audiotester~",
+		"abc.cartopol~",
+		"abc.envfollower~",
+		"abc.linedrive~",
+		"abc.mult2pi~",
+		"abc.musdur",
+		"abc.peakamp~",
+		"abc.phasor2pi~",
+		"abc.poltocar~",
+		"abc.sounddetector~",
+		"abc.trajectories~",
+		"abc.vector~"
+    	],
+    	"description" : "Various utilities for mixed music."
+    },
+
+	"gui": 
+	{
+    	"objects": [
+    	"abc.2plf.ui",
+		"abc.adcinput~",
+		"abc.env.noise~",
+    	"abc.dtd.ui",
+    	"abc.gaincontrol",
+		"abc.generatorinterface~",
+    	"abc.gotoevent",
+		"abc.map.ui",
+    	"abc.meters~",
+    	"abc.pict2map",
+		"abc.quadriout~",
+		"abc.scope",
+		"abc.scopeembedded",
+		"abc.stereoout~"
+    	],
+    	"description" : "We provide graphical abstractions with bpatchers and jsui embedded into bpatchers."
+    },
+
+	"synthesis": 
+	{
+    	"objects": [
+    	"abc.delaychain~",
+    	"abc.drops~",
+		"abc.generator~",
+		"abc.jupiterbank~",
+		"abc.puckettespaf~",
+		"abc.rev4~",
+		"abc.rissetsbell~",
+		"abc.simplefmburst~",
+		"abc.soundcoat~",
+		"abc.soundgrain~",
+		"abc.vbap~"
+    	],
+    	"description" : "We provide objects for multi-channel synthesis including classical approaches and implementation inspired by historical instruments."
+    }
+}
