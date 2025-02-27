@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.soundgrain~" module="abclib">
+  <digest>Abclib's granulator on a rainstick sound</digest>
+  <description><o>abc.soundgrain~</o> is a granulator on a rainstick sound which is looped at freqmult speed (default value 1, minimum 0.01, maximum 100).<br /><br /></description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="gain" type="float" set="1" get="1" size="1">
+      <description>sets gain of the synthesis in dB. [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets gain of the synthesis in dB</digest>
+    </attribute>
+
+    <attribute name="freqmult" type="float" set="1" get="1" size="1">
+      <description>sets frequency of the loop. [init=1:min=0.01:max=100:step=0.01].</description>
+      <digest>sets frequency of the loop.</digest>
+    </attribute>
+
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+
+    <method name="gain">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets gain of the synthesis in dB. [init=0:min=-127:max=18:step=0.01].</description>
+      <digest>sets gain of the synthesis in dB</digest>
+    </method>
+
+    <method name="freqmult">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>sets frequency of the loop. [init=1:min=0.01:max=100:step=0.01].</description>
+      <digest>sets frequency of the loop</digest>
+    </method>
+
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.peakamp~" />
+    <seealso name="abc.mc.delay~" />
+    <seealso name="abc.mc.gain~" />
+    <seealso name="abc.mc.addsynth~" />
+  </seealsolist>
+</c74object>
