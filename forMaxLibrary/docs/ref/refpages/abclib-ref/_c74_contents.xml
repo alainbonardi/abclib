@@ -56,8 +56,11 @@
     <refpage name='abc.rev4~.maxref.xml' />
     <refpage name='abc.rissetsbell~.maxref.xml' />
     <refpage name='abc.scope.maxref.xml' />
+    <refpage name='abc.scopeembedded.maxref.xml' />
     <refpage name='abc.simplefmburst~.maxref.xml' />
+    <refpage name='abc.soundcoat~.maxref.xml' />
     <refpage name='abc.sounddetector~.maxref.xml' />
+    <refpage name='abc.soundgrain~.maxref.xml' />
     <refpage name='abc.stereoout~.maxref.xml' />
     <refpage name='abc.trajectories~.maxref.xml' />
     <refpage name='abc.vbap~.maxref.xml' />
