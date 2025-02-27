@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 346.0, 368.0, 517.0, 399.0 ],
+		"rect" : [ 788.0, 293.0, 517.0, 399.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 14.0,
@@ -39,25 +39,6 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
-				"box" : 				{
-					"angle" : 0.0,
-					"bgcolor" : [ 0.0, 0.0, 0.0, 0.05 ],
-					"bordercolor" : [ 0.235294, 0.235294, 0.235294, 0.2 ],
-					"id" : "obj-2",
-					"maxclass" : "panel",
-					"mode" : 0,
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 16.0, 16.0, 543.0, 19.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ -10.5, -2.0, 351.0, 38.0 ],
-					"proportion" : 0.39,
-					"rounded" : 0,
-					"shadow" : -1
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 14.0,
@@ -129,6 +110,11 @@
 			}
 , 			{
 				"box" : 				{
+					"bgcolor" : [ 0.756862745098039, 0.756862745098039, 0.756862745098039, 0.11 ],
+					"bubble_bgcolor" : [ 0.755587697029114, 0.755587697029114, 0.755587697029114, 1.0 ],
+					"bubble_outlinecolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bubblepoint" : 0.0,
+					"bubbleusescolors" : 1,
 					"fontname" : "Arial",
 					"fontsize" : 11.595186999999999,
 					"id" : "obj-3",
@@ -139,9 +125,10 @@
 					"patching_rect" : [ 1.0, 1.0, 546.0, 32.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
-					"presentation_rect" : [ 1.0, 1.0, 328.0, 32.0 ],
-					"text" : "abclibrary | Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni © 2019 - 2024 CICM | University Paris 8",
-					"textcolor" : [ 0.317518, 0.317518, 0.317518, 1.0 ]
+					"presentation_rect" : [ 0.5, 1.0, 348.5, 32.0 ],
+					"text" : "abclibrary | A.Bonardi, P.Goutmann, D.Fierro & A.Zanni\n © 2019 - 2025 CICM | University Paris 8",
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"textjustification" : 1
 				}
 
 			}
@@ -183,6 +170,25 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 72.0, 235.0, 63.0, 22.0 ],
 					"text" : "route size"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 0.0,
+					"bgcolor" : [ 0.750970363616943, 0.750970363616943, 0.750970363616943, 1.0 ],
+					"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-2",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 16.0, 16.0, 543.0, 19.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 0.0, 1.0, 349.0, 32.0 ],
+					"proportion" : 0.39,
+					"rounded" : 0,
+					"shadow" : -1
 				}
 
 			}
