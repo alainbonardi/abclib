@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 195.0, -875.0, 885.0, 771.0 ],
+		"rect" : [ -163.0, -908.0, 885.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,6 +42,68 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 6,
+							"revision" : 4,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"showontab" : 2,
+						"assistshowspatchername" : 0,
+						"boxes" : [  ],
+						"lines" : [  ]
+					}
+,
+					"patching_rect" : [ 60.5, 237.0, 25.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p ?"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -57,7 +119,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 195.0, -849.0, 885.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,14 +150,49 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-19",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 147.0, 677.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.binaural~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-13",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 4.5, 62.0, 486.0, 117.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
 									"id" : "obj-18",
 									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 163.0, 356.0, 165.0, 47.0 ],
-									"presentation_linecount" : 3,
 									"text" : "you can control that with headtracker like your phone\n(ex: Sensors2OSC) "
 								}
 
@@ -728,7 +825,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 34.0, 312.0, 201.0, 35.0 ],
+									"patching_rect" : [ 34.0, 312.0, 204.0, 35.0 ],
 									"text" : "abc.hoa.encoder~ 3 @dimensions 2 @sources 2"
 								}
 
@@ -742,7 +839,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 34.0, 485.0, 247.0, 24.0 ],
 									"text" : "abc.hoa.binaural~ 3 @dimensions 2",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
@@ -868,18 +965,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-19",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 146.0, 679.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-22",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -909,19 +994,6 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 87.0, 777.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-24",
-									"linecount" : 7,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 5.0, 61.0, 481.0, 100.0 ],
-									"text" : "abc.hoa.binaural~ enable to decode from ambisonic spatial components using binaural decoder of P.Lecomte based on HRIR of the Neumann KU100. \n\nSee Ambitools website : https://www.sekisushai.net/ambitools/\nAnd the paper : P. Lecomte, P.-A. Gauthier, C. Langrenne, A. Berry, et A. Garcia, « A Fifty-Node Lebedev Grid and Its Applications to Ambisonics », Journal of the Audio Engineering Society, vol. 64, nᵒ 11, p. 868‑881, 2016."
 								}
 
 							}
@@ -1096,7 +1168,6 @@
 					}
 ,
 					"patching_rect" : [ 29.0, 207.0, 88.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1126,7 +1197,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
+						"rect" : [ -163.0, -882.0, 885.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1156,6 +1227,42 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-14",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 147.0, 677.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.binaural~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-13",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 4.5, 61.0, 486.0, 117.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-6",
 									"maxclass" : "newobj",
@@ -1682,7 +1789,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 34.0, 369.0, 201.0, 22.0 ],
 									"text" : "abc.hoa.encoder~ 3 @dimensions 3"
 								}
@@ -1698,7 +1805,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 34.0, 440.0, 147.0, 40.0 ],
 									"text" : "abc.hoa.binaural~ 3 @dimensions 3",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
@@ -1824,18 +1931,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-19",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 146.0, 679.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-22",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -1865,19 +1960,6 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 87.0, 777.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-24",
-									"linecount" : 7,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 5.0, 61.0, 481.0, 100.0 ],
-									"text" : "abc.hoa.binaural~ enable to decode from ambisonic spatial components using binaural decoder of P.Lecomte based on HRIR of the Neumann KU100. \n\nSee Ambitools website : https://www.sekisushai.net/ambitools/\nAnd the paper : P. Lecomte, P.-A. Gauthier, C. Langrenne, A. Berry, et A. Garcia, « A Fifty-Node Lebedev Grid and Its Applications to Ambisonics », Journal of the Audio Engineering Society, vol. 64, nᵒ 11, p. 868‑881, 2016."
 								}
 
 							}
@@ -2106,6 +2188,20 @@
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "abc.bgcomment.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.help.description.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.helpcredit.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
@@ -2141,6 +2237,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc.launch.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.map.ui.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
@@ -2155,11 +2258,23 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "abc_2d_binaural3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_2d_multiencoder3_2~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_2d_rotate3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_3d_binaural3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_3d_multiencoder3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

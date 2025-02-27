@@ -5,10 +5,11 @@
 
 <c74object name="abc.hoa.encoder~" module="abclib">
   <digest>Abclib's High Order Ambisonics (HOA) Encoder</digest>
-  <description><o>abc.hoa.encoder~</o> is an High Order Ambisonics (HOA) encoder.
-    <br />
-    <br />
-    This object enable to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees).</description>
+  <description><o>abc.hoa.encoder~</o> enables to create punctual sources either in rotation at a certain speed or static and located at a precise angle (in degrees). It is possible to encode a maximum of 8 sources in 2D or 3D. N varies between 1 and 7.<br /><br />
+  
+  For instance, at ambisonic order 3, 'abc.hoa.encoder~ 3 @sources 4' enables to encode 4 monophonic sources.<br />
+  The speeds (s0, s1, ...) of the sources in turns per second and the fixed angles (a0, a1, ...) in degrees (when the speeds equal 0), as well as the return time (it) in milliseconds are the control parameters.
+  </description>
 
     <!--INLETS-->
   <!-- <inletlist>

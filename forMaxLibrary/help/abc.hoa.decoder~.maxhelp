@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 195.0, -875.0, 885.0, 771.0 ],
+		"rect" : [ 124.0, -993.0, 885.0, 771.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,6 +42,68 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 6,
+							"revision" : 4,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"showontab" : 2,
+						"assistshowspatchername" : 0,
+						"boxes" : [  ],
+						"lines" : [  ]
+					}
+,
+					"patching_rect" : [ 38.0, 199.0, 25.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p ?"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -57,7 +119,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 195.0, -849.0, 885.0, 745.0 ],
+						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +149,42 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-12",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 148.0, 676.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.binaural~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-15",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 5.0, 62.0, 489.0, 125.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-6",
 									"maxclass" : "newobj",
@@ -571,7 +669,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-4",
-									"lastchannelcount" : 1,
+									"lastchannelcount" : 3,
 									"maxclass" : "mc.live.gain~",
 									"numinlets" : 1,
 									"numoutlets" : 4,
@@ -613,7 +711,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 34.0, 369.0, 201.0, 22.0 ],
 									"text" : "abc.hoa.encoder~ 3 @dimensions 3"
 								}
@@ -629,7 +727,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 34.0, 440.0, 147.0, 40.0 ],
 									"text" : "abc.hoa.binaural~ 3 @dimensions 3",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
@@ -755,18 +853,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-19",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 146.0, 679.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-22",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -796,19 +882,6 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 87.0, 777.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-24",
-									"linecount" : 7,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 5.0, 61.0, 481.0, 100.0 ],
-									"text" : "abc.hoa.binaural~ enable to decode from ambisonic spatial components using binaural decoder of P.Lecomte based on HRIR of the Neumann KU100. \n\nSee Ambitools website : https://www.sekisushai.net/ambitools/\nAnd the paper : P. Lecomte, P.-A. Gauthier, C. Langrenne, A. Berry, et A. Garcia, « A Fifty-Node Lebedev Grid and Its Applications to Ambisonics », Journal of the Audio Engineering Society, vol. 64, nᵒ 11, p. 868‑881, 2016."
 								}
 
 							}
@@ -991,7 +1064,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 885.0, 745.0 ],
+						"rect" : [ 124.0, -967.0, 885.0, 745.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1021,6 +1094,42 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.decoder~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-15",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 5.0, 62.0, 489.0, 125.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 144.5, 680.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-120",
 									"maxclass" : "comment",
@@ -1063,45 +1172,13 @@
 							}
 , 							{
 								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-121",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 202.0, 597.0, 54.0, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-12",
-									"linecount" : 3,
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 371.0, 418.0, 91.0, 47.0 ],
+									"patching_rect" : [ 371.0, 411.5, 110.0, 33.0 ],
 									"text" : "Displays graphic representation"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-13",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 371.0, 416.0, 91.0, 49.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -1129,24 +1206,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 542.0, 180.0, 38.821442000000062, 20.0 ],
+									"patching_rect" : [ 542.0, 181.5, 38.821442000000062, 20.0 ],
 									"text" : "Gain"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-123",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 540.0, 180.0, 40.821442000000062, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -1219,13 +1280,12 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-54",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 510.0, 140.0, 245.0, 33.0 ],
+									"patching_rect" : [ 509.5, 139.0, 245.0, 33.0 ],
 									"text" : "gain, angularoffsert and directangles for the 'abc.hoa.decoder~ 1 @speakers 4' below"
 								}
 
@@ -1476,18 +1536,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-6",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 144.0, 681.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-5",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -1500,27 +1548,13 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-2",
 									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 178.0, 493.0, 431.0, 100.0 ],
+									"patching_rect" : [ 375.0, 466.0, 431.0, 100.0 ],
 									"text" : "- gain is the output gain in dB that can directly be controlled\n- angularoffset is the possible angular shift of the loudspeakers (in degrees)\n- directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise\n- a0, a1, ..., a9, a10, a11... are the angles of the loudspeakers on the circle, making possible to decode an irregular implementation\nIt is possible to decode in stereo when setting the stereo control to 1\n- stereo sets the decoding: 1 for stereo, 0 for ambisonic"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-24",
-									"linecount" : 8,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 5.0, 61.0, 481.0, 114.0 ],
-									"text" : "abc.hoa.decoder~ enable to decode from ambisonic spatial components to sets of loudspeakers. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS. All decoders are compiled for 3 loudspeakers until 16 loudspeakers. \n\nThe first argument is the ambisonic order. \n\nTo change the number of loudspeakers, use the attribute '@speakers' followed by the number of loudspeakers. "
 								}
 
 							}
@@ -1531,7 +1565,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 10.0, 189.0, 114.0, 22.0 ],
+									"patching_rect" : [ 10.0, 199.0, 114.0, 22.0 ],
 									"text" : "mc.pink~ @chans 7"
 								}
 
@@ -1631,7 +1665,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 10.0, 226.0, 60.0, 22.0 ],
+									"patching_rect" : [ 10.0, 233.0, 60.0, 22.0 ],
 									"text" : "mc.*~ 0.1"
 								}
 
@@ -1736,6 +1770,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-9",
+									"local" : 1,
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
@@ -1957,6 +1992,42 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-12",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 147.0, 676.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.decoder~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-15",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 5.0, 62.0, 489.0, 125.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-6",
 									"maxclass" : "newobj",
@@ -2466,7 +2537,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-4",
-									"lastchannelcount" : 1,
+									"lastchannelcount" : 17,
 									"maxclass" : "mc.live.gain~",
 									"numinlets" : 1,
 									"numoutlets" : 4,
@@ -2620,18 +2691,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-19",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 146.0, 679.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-22",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -2650,7 +2709,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 186.0, 449.0, 53.0, 22.0 ],
+									"patching_rect" : [ 186.0, 434.0, 53.0, 22.0 ],
 									"text" : "r dec-3d"
 								}
 
@@ -2674,19 +2733,6 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 87.0, 777.916625999999951, 548.0, 23.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-									"id" : "obj-24",
-									"linecount" : 8,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 5.0, 61.0, 481.0, 114.0 ],
-									"text" : "abc.hoa.decoder~ enable to decode from ambisonic spatial components to sets of loudspeakers. At order 1, by default 4 loudspeakers, at order 2, 6 LS, at order 3, 8 LS, ... at order 7,16 LS. All decoders are compiled for 3 loudspeakers until 16 loudspeakers. \n\nThe first argument is the ambisonic order. \n\nTo change the number of loudspeakers, use the attribute '@speakers' followed by the number of loudspeakers. "
 								}
 
 							}
@@ -2717,7 +2763,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 19.0, 354.0, 201.0, 22.0 ],
 									"text" : "abc.hoa.encoder~ 3 @dimensions 3"
 								}
@@ -2733,8 +2779,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 19.0, 483.0, 186.0, 55.0 ],
+									"outlettype" : [ "multichannelsignal" ],
+									"patching_rect" : [ 19.0, 468.0, 186.0, 55.0 ],
 									"text" : "abc.hoa.decoder~ 3 @dimensions 3 @speakers 16",
 									"textcolor" : [ 0.968627450980392, 0.968627450980392, 0.968627450980392, 1.0 ],
 									"varname" : "faustgen-3857d0"
@@ -2797,6 +2843,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
+									"midpoints" : [ 546.5, 258.5, 345.5, 258.5 ],
 									"source" : [ "obj-33", 0 ]
 								}
 
@@ -2961,7 +3008,21 @@
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "abc.bgcomment.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.help.description.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
@@ -2978,6 +3039,13 @@
 				"name" : "abc.helpheader.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.hoa.binaural~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -3000,6 +3068,13 @@
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.launch.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
@@ -3036,6 +3111,18 @@
 			}
 , 			{
 				"name" : "abc_2d_scope3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_3d_binaural3~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_3d_decoder3_16~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_3d_multiencoder3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

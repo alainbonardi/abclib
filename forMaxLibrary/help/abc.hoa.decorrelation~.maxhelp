@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 806.0, 707.0 ],
+		"rect" : [ 100.0, 100.0, 967.0, 707.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -42,6 +42,68 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 6,
+							"revision" : 4,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 967.0, 681.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"showontab" : 2,
+						"assistshowspatchername" : 0,
+						"boxes" : [  ],
+						"lines" : [  ]
+					}
+,
+					"patching_rect" : [ 56.999999999999886, 255.0, 25.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p ?"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -57,7 +119,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 806.0, 681.0 ],
+						"rect" : [ 100.0, 126.0, 967.0, 681.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -87,6 +149,42 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-7",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 151.0, 605.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.decorrelation~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-4",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 6.0, 62.0, 487.0, 59.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"hidden" : 1,
 									"id" : "obj-31",
@@ -128,24 +226,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 135.0, 155.0, 223.0, 33.0 ],
+									"patching_rect" : [ 130.0, 164.0, 223.0, 33.0 ],
 									"text" : "try the different functiontypes and then the different distributionmodes"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-27",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 131.0, 155.0, 227.0, 33.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -416,18 +498,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-13",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 151.0, 607.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -441,6 +511,7 @@
 , 							{
 								"box" : 								{
 									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 									"id" : "obj-95",
 									"maxclass" : "comment",
 									"numinlets" : 1,
@@ -474,6 +545,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-5",
+									"local" : 1,
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
@@ -513,20 +585,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "multichannelsignal" ],
-									"patching_rect" : [ 6.0, 323.0, 214.0, 71.0 ],
+									"patching_rect" : [ 6.0, 323.0, 217.0, 71.0 ],
 									"text" : "abc.hoa.decorrelation~ 5 @mode fx @delay 192000 @functiontype 3 @dimensions 3"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-39",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 62.0, 481.0, 47.0 ],
-									"text" : "abc.hoa.decorrelation~ objetcs in 'fx' mode apply decorrelation to spatial components already created by encoders or maps for instance.  Each spatial component is delayed and the delay lines are driven by a 'factor' parameter between 0 and 1. "
 								}
 
 							}
@@ -547,22 +607,6 @@
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.738108666666562, 629.0, 334.0, 36.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-106",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 59.0, 481.0, 56.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -671,7 +715,6 @@
 					}
 ,
 					"patching_rect" : [ 30.499999999999886, 231.0, 98.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -700,7 +743,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 806.0, 681.0 ],
+						"rect" : [ 0.0, 26.0, 967.0, 681.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -730,6 +773,137 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-7",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 149.178557999999953, 605.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-16",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 390.0, 220.0, 106.0, 22.0 ],
+									"text" : "r -------commentbg"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-124",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 267.0, 199.5, 47.0, 20.0 ],
+									"text" : "Control"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Avenir Book",
+									"fontsize" : 12.0,
+									"id" : "obj-118",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 240.0, 199.5, 23.0, 23.0 ],
+									"text" : "2",
+									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
+									"id" : "obj-119",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 236.0, 197.5, 23.0, 25.0 ],
+									"proportion" : 0.5,
+									"shape" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-122",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 149.178557999999953, 368.0, 38.821442000000062, 20.0 ],
+									"text" : "Gain"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Avenir Book",
+									"fontsize" : 12.0,
+									"id" : "obj-116",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 124.178557999999953, 368.0, 23.0, 23.0 ],
+									"text" : "1",
+									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
+									"id" : "obj-117",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 120.178557999999953, 366.0, 23.0, 25.0 ],
+									"proportion" : 0.5,
+									"shape" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@name", "abc.hoa.decorrelation~" ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-2",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 6.0, 62.0, 487.0, 59.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"hidden" : 1,
 									"id" : "obj-10",
@@ -922,18 +1096,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-13",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 151.0, 607.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -953,22 +1115,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 378.5, 258.0, 378.0, 87.0 ],
 									"text" : "@delay [10, 262144] sets the maximum delay duration in samples \n@factor [0., 1.] sets the initial decorrelation factor \n@functiontype [0, 21] sets the distribution used to spread delay time \n@fdbk [0., 0.99] sets the initial feedback amount of each delay line\n@mode [syn/fx] sets the mode of processes\n@distributionmode [0, 2] sets the type of distribution in the harmonics"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-108",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 375.25, 258.0, 381.25, 87.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -996,10 +1142,11 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-5",
+									"local" : 1,
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 390.0, 125.0, 45.0, 45.0 ]
+									"patching_rect" : [ 151.238108666666562, 524.0, 45.0, 45.0 ]
 								}
 
 							}
@@ -1013,136 +1160,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 383.0, 362.0, 371.0, 221.0 ],
 									"text" : "The number of spatial components at order N in ambisonics 3D \nis P = (N+1)^2. The outputs are the P delayed signals associated to spatial components.\n\nA coefficient is associated to each spatial component (1-(i+1)/P). \nIf the factor is greater than this threshold the ith delay is (i+1)*delay/P, else the delay is 0. The maximum duration of the delays is given by 'delay' parameter in sample (by default it is 48000, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)\n\nIn 3D mode, there is three types of distributions of the delays in the spherical harmonics :  \n(1) H0 | H-1,1 | H0, 1 | H1, 1 ...\n(2) H0 | H-1,1 | H1, 1 | H0, 1 ...\n(3) H0 | H0, 1 | H-1, 1| H1, 1 ..."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-107",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 375.0, 360.5, 379.0, 222.5 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-124",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 219.0, 263.5, 47.0, 20.0 ],
-									"text" : "Control"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-125",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 215.0, 263.5, 51.0, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 1,
-									"fontname" : "Avenir Book",
-									"fontsize" : 12.0,
-									"id" : "obj-118",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 192.0, 263.5, 23.0, 23.0 ],
-									"text" : "2",
-									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
-									"id" : "obj-119",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 188.0, 261.5, 23.0, 25.0 ],
-									"proportion" : 0.5,
-									"shape" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-122",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 156.0, 360.0, 38.821442000000062, 20.0 ],
-									"text" : "Gain"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-123",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 154.0, 360.0, 40.821442000000062, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 1,
-									"fontname" : "Avenir Book",
-									"fontsize" : 12.0,
-									"id" : "obj-116",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 131.0, 360.0, 23.0, 23.0 ],
-									"text" : "1",
-									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
-									"id" : "obj-117",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 127.0, 358.0, 23.0, 25.0 ],
-									"proportion" : 0.5,
-									"shape" : 1
 								}
 
 							}
@@ -1225,7 +1242,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 6.0, 522.0, 134.0, 49.0 ],
 									"text" : "abc.hoa.decoder~ 3 @dimensions 3 @mode binaural"
 								}
@@ -1255,21 +1272,9 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "" ],
+									"outlettype" : [ "multichannelsignal" ],
 									"patching_rect" : [ 6.0, 193.0, 125.0, 49.0 ],
 									"text" : "abc.hoa.encoder~ 3 @sources 1 @dimensions 3"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-39",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 62.0, 481.0, 47.0 ],
-									"text" : "abc.hoa.decorrelation~ objetcs in 'fx' mode apply decorrelation to spatial components already created by encoders or maps for instance.  Each spatial component is delayed and the delay lines are driven by a 'factor' parameter between 0 and 1. "
 								}
 
 							}
@@ -1290,22 +1295,6 @@
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.738108666666562, 629.0, 334.0, 36.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-106",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 59.0, 481.0, 56.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -1340,6 +1329,24 @@
 								"patchline" : 								{
 									"destination" : [ "obj-65", 0 ],
 									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-93", 0 ],
+									"hidden" : 1,
+									"order" : 0,
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-95", 0 ],
+									"hidden" : 1,
+									"order" : 1,
+									"source" : [ "obj-16", 0 ]
 								}
 
 							}
@@ -1445,7 +1452,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 806.0, 681.0 ],
+						"rect" : [ 0.0, 26.0, 967.0, 681.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1475,6 +1482,124 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 155.0, 605.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-124",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 727.0, 210.0, 47.0, 20.0 ],
+									"text" : "Control"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Avenir Book",
+									"fontsize" : 12.0,
+									"id" : "obj-118",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 700.0, 210.0, 23.0, 23.0 ],
+									"text" : "2",
+									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
+									"id" : "obj-119",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 696.0, 208.0, 23.0, 25.0 ],
+									"proportion" : 0.5,
+									"shape" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-122",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 195.0, 464.0, 38.821442000000062, 20.0 ],
+									"text" : "Gain"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Avenir Book",
+									"fontsize" : 12.0,
+									"id" : "obj-116",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 170.0, 464.0, 23.0, 23.0 ],
+									"text" : "1",
+									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
+									"id" : "obj-117",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 166.0, 462.0, 23.0, 25.0 ],
+									"proportion" : 0.5,
+									"shape" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@text", "abc.hoa.decorrelation~ objetcs in 'man' mode apply decorrelation to spatial components already created by encoders or maps for instance.  Each spatial component is delayed and the delay lines are driven by the GUI abc.dtd.ui. " ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-2",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 6.0, 64.0, 492.0, 53.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-50",
 									"maxclass" : "newobj",
@@ -1774,18 +1899,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-13",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 151.0, 607.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -1832,124 +1945,11 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-5",
+									"local" : 1,
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
 									"patching_rect" : [ 103.0, 459.0, 45.0, 45.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-124",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 693.0, 181.0, 47.0, 20.0 ],
-									"text" : "Control"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-125",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 689.0, 181.0, 51.0, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 1,
-									"fontname" : "Avenir Book",
-									"fontsize" : 12.0,
-									"id" : "obj-118",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 666.0, 181.0, 23.0, 23.0 ],
-									"text" : "2",
-									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
-									"id" : "obj-119",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 662.0, 179.0, 23.0, 25.0 ],
-									"proportion" : 0.5,
-									"shape" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-122",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 195.0, 461.0, 38.821442000000062, 20.0 ],
-									"text" : "Gain"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-123",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 193.0, 461.0, 40.821442000000062, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 1,
-									"fontname" : "Avenir Book",
-									"fontsize" : 12.0,
-									"id" : "obj-116",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 170.0, 461.0, 23.0, 23.0 ],
-									"text" : "1",
-									"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
-									"id" : "obj-117",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 166.0, 459.0, 23.0, 25.0 ],
-									"proportion" : 0.5,
-									"shape" : 1
 								}
 
 							}
@@ -2112,18 +2112,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-39",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 62.0, 481.0, 47.0 ],
-									"text" : "abc.hoa.decorrelation~ objetcs in 'man' mode apply decorrelation to spatial components already created by encoders or maps for instance.  Each spatial component is delayed and the delay lines are driven by the GUI abc.dtd.ui. "
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -2139,22 +2127,6 @@
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.738108666666562, 629.0, 334.0, 36.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-106",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 59.0, 481.0, 56.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -2390,7 +2362,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 806.0, 681.0 ],
+						"rect" : [ 0.0, 26.0, 967.0, 681.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2420,6 +2392,42 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"args" : [ "@text", "The 'functiontype' parameter gives the possibility to choose how the delays are spread between the spatial components with 22 types. This example shows the delay time applyied to each component at the third order (2D) for the first six distribution types when the user controls the factor and the delay parameter. " ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-4",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 9.0, 63.0, 493.0, 64.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 148.0, 605.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"hidden" : 1,
 									"id" : "obj-21",
@@ -2532,18 +2540,6 @@
 									}
 ,
 									"text" : "p gotopatch"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-4",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 147.0, 607.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
 								}
 
 							}
@@ -2718,7 +2714,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 426.0, 537.0, 283.0, 33.0 ],
+									"patching_rect" : [ 426.0, 536.0, 283.0, 33.0 ],
 									"text" : "Delay time of each ambisonic component [0, delay] (after the application of the factor)"
 								}
 
@@ -2792,7 +2788,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 296.0, 188.0, 50.0, 22.0 ],
-													"text" : "865.333333"
+													"text" : "476."
 												}
 
 											}
@@ -3482,7 +3478,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 426.0, 378.5, 283.0, 33.0 ],
+									"patching_rect" : [ 426.0, 379.0, 283.0, 33.0 ],
 									"text" : "Delay time of each ambisonic component [0, delay] (before the application of the factor)"
 								}
 
@@ -5615,18 +5611,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-39",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 8.0, 61.0, 479.0, 60.0 ],
-									"text" : "The 'functiontype' parameter gives the possibility to choose how the delays are spread between the spatial components with 22 types. This example shows the delay time applyied to each component at the third order (2D) for the first six distribution types when the user controls the factor and the delay parameter. "
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"args" : [ "@obj-name", "abc.hoa.decorrelation~", "@obj-desc", "Decorrelation", "processes", "to", "generate", "or", "process", "spatial", "components" ],
 									"bgmode" : 0,
 									"border" : 0,
@@ -5643,70 +5627,6 @@
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.0, 6.0, 485.0, 61.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-106",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 8.0, 58.0, 479.0, 63.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-107",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 426.0, 251.5, 189.0, 23.25 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-6",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 426.0, 378.5, 280.0, 33.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-7",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 426.0, 537.0, 280.0, 33.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -5955,7 +5875,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 806.0, 681.0 ],
+						"rect" : [ 0.0, 26.0, 967.0, 681.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5985,6 +5905,84 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-17",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 150.0, 605.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-16",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 368.0, 235.0, 106.0, 22.0 ],
+									"text" : "r -------commentbg"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-95",
+									"linecount" : 5,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 354.0, 266.0, 378.0, 74.0 ],
+									"presentation_linecount" : 5,
+									"text" : "@delay [10, 262144] sets the maximum delay duration in samples \n@factor [0., 1.] sets the initial decorrelation factor \n@functiontype [0, 21] sets the distribution used to spread delay time \n@fdbk [0., 0.99] sets the initial feedback amount of each delay line\n@mode [syn/fx] sets the mode of processes"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"fontface" : 2,
+									"id" : "obj-93",
+									"linecount" : 10,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 354.0, 346.0, 371.0, 141.0 ],
+									"presentation_linecount" : 10,
+									"text" : "The number of spatial components at order N in ambisonics 2D \nis P = 2*N+1. The outputs are the P delayed signals associated to spatial components.\n\nA coefficient is associated to each spatial component (1-(i+1)/P). \nIf the factor is greater than this threshold the ith delay is (i+1)*delay/P, else the delay is 0. The maximum duration of the delays is given by 'delay' parameter in sample (by default it is 48000, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@text", "abc.hoa.decorrelation~ objects in 'fx' mode apply decorrelation to spatial components already created by encoders or maps for instance.  Each spatial component is delayed and the delay lines are driven by a 'factor' parameter between 0 and 1. " ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-8",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 6.0, 62.0, 501.0, 60.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-15",
 									"maxclass" : "newobj",
@@ -6114,18 +6112,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-13",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 151.0, 607.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-14",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -6174,34 +6160,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-95",
-									"linecount" : 5,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 382.0, 258.0, 378.0, 74.0 ],
-									"text" : "@delay [10, 262144] sets the maximum delay duration in samples \n@factor [0., 1.] sets the initial decorrelation factor \n@functiontype [0, 21] sets the distribution used to spread delay time \n@fdbk [0., 0.99] sets the initial feedback amount of each delay line\n@mode [syn/fx] sets the mode of processes"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-108",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 375.0, 258.0, 375.0, 74.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"args" : [ "@obj-name", "abc.hoa.decorrelation~", "@obj-desc", "Decorrelation", "processes", "to", "generate", "or", "process", "spatial", "components" ],
 									"bgmode" : 0,
 									"border" : 0,
@@ -6224,6 +6182,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-5",
+									"local" : 1,
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
@@ -6233,57 +6192,12 @@
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 2,
-									"id" : "obj-93",
-									"linecount" : 10,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 382.0, 345.0, 371.0, 141.0 ],
-									"text" : "The number of spatial components at order N in ambisonics 2D \nis P = 2*N+1. The outputs are the P delayed signals associated to spatial components.\n\nA coefficient is associated to each spatial component (1-(i+1)/P). \nIf the factor is greater than this threshold the ith delay is (i+1)*delay/P, else the delay is 0. The maximum duration of the delays is given by 'delay' parameter in sample (by default it is 48000, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-107",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 375.0, 342.0, 375.0, 143.25 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 358.0, 508.0, 184.0, 20.0 ],
+									"patching_rect" : [ 358.0, 509.0, 184.0, 20.0 ],
 									"text" : "Displays graphic representation"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-4",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 358.0, 506.0, 179.0, 22.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -6313,22 +6227,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 219.0, 330.0, 47.0, 20.0 ],
 									"text" : "Control"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-125",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 215.0, 330.0, 51.0, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -6370,22 +6268,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 142.0, 401.0, 38.821442000000062, 20.0 ],
 									"text" : "Gain"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-123",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 140.0, 401.0, 40.821442000000062, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -6664,18 +6546,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-39",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 62.0, 481.0, 47.0 ],
-									"text" : "abc.hoa.decorrelation~ objetcs in 'fx' mode apply decorrelation to spatial components already created by encoders or maps for instance.  Each spatial component is delayed and the delay lines are driven by a 'factor' parameter between 0 and 1. "
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"bgmode" : 0,
 									"border" : 0,
 									"clickthrough" : 0,
@@ -6691,22 +6561,6 @@
 									"offset" : [ 0.0, 0.0 ],
 									"patching_rect" : [ 6.738108666666562, 629.0, 334.0, 36.0 ],
 									"viewvisibility" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-106",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 59.0, 481.0, 56.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -6737,6 +6591,24 @@
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
 									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-93", 0 ],
+									"hidden" : 1,
+									"order" : 0,
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-95", 0 ],
+									"hidden" : 1,
+									"order" : 1,
+									"source" : [ "obj-16", 0 ]
 								}
 
 							}
@@ -6899,7 +6771,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 806.0, 681.0 ],
+						"rect" : [ 0.0, 26.0, 967.0, 681.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6929,6 +6801,68 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-12",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 501.0, 18.0, 97.0, 22.0 ],
+									"text" : "abc.comment.bg"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"args" : [ "@text", "abc.hoa.decorrelation~ objects in 'syn' mode generate spatial decorrelated components from one mono signal at a given ambisonic order N. Each spatial component is delayed and the delay lines are driven by a 'factor' parameter between 0 and 1." ],
+									"bgmode" : 0,
+									"border" : 0,
+									"clickthrough" : 0,
+									"enablehscroll" : 0,
+									"enablevscroll" : 0,
+									"id" : "obj-9",
+									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
+									"maxclass" : "bpatcher",
+									"name" : "abc.help.description.maxpat",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"offset" : [ 0.0, 0.0 ],
+									"patching_rect" : [ 6.0, 62.0, 501.0, 60.0 ],
+									"viewvisibility" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
+									"bubble" : 1,
+									"bubble_bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
+									"bubbleside" : 3,
+									"id" : "obj-6",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 149.0, 604.0, 164.0, 24.0 ],
+									"text" : "See also ambisonics topic"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 353.0, 280.0, 106.0, 22.0 ],
+									"text" : "r -------commentbg"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-8",
 									"maxclass" : "newobj",
@@ -7058,18 +6992,6 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
-									"id" : "obj-6",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 148.0, 607.0, 165.0, 20.0 ],
-									"text" : "See also ambisonics topic =>"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-7",
 									"maxclass" : "button",
 									"numinlets" : 1,
@@ -7082,7 +7004,7 @@
 							}
 , 							{
 								"box" : 								{
-									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 1.0 ],
+									"bgcolor" : [ 0.996078431372549, 0.984313725490196, 0.984313725490196, 0.0 ],
 									"id" : "obj-21",
 									"linecount" : 3,
 									"maxclass" : "comment",
@@ -7099,24 +7021,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 403.0, 197.0, 47.0, 20.0 ],
+									"patching_rect" : [ 396.0, 198.0, 47.0, 20.0 ],
 									"text" : "Control"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-125",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 399.0, 197.0, 51.0, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -7126,24 +7032,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 238.0, 348.0, 38.821442000000062, 20.0 ],
+									"patching_rect" : [ 234.0, 349.0, 38.821442000000062, 20.0 ],
 									"text" : "Gain"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-123",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 236.0, 348.0, 40.821442000000062, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -7153,7 +7043,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 131.0, 527.0, 49.0, 20.0 ],
+									"patching_rect" : [ 122.0, 527.0, 49.0, 20.0 ],
 									"text" : "Turn on"
 								}
 
@@ -7284,6 +7174,7 @@
 							}
 , 							{
 								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"id" : "obj-95",
 									"linecount" : 5,
 									"maxclass" : "comment",
@@ -7296,13 +7187,14 @@
 							}
 , 							{
 								"box" : 								{
+									"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 									"fontface" : 2,
 									"id" : "obj-93",
 									"linecount" : 10,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 339.0, 393.0, 371.0, 141.0 ],
+									"patching_rect" : [ 339.0, 391.0, 371.0, 141.0 ],
 									"text" : "The number of spatial components at order N in ambisonics 2D \nis P = 2*N+1. The outputs are the P delayed signals associated to spatial components.\n\nA coefficient is associated to each spatial component (1-(i+1)/P). \nIf the factor is greater than this threshold the ith delay is (i+1)*delay/P, else the delay is 0. The maximum duration of the delays is given by 'delay' parameter in sample (by default it is 48000, minimum is 10 maximum 262144, that is roughly 5,46 sec at 48KHz)"
 								}
 
@@ -7329,18 +7221,6 @@
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 266.0, 166.0, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-39",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 62.0, 485.0, 47.0 ],
-									"text" : "abc.hoa.decorrelation~ objects in 'syn' mode generate spatial decorrelated components from one mono signal at a given ambisonic order N. Each spatial component is delayed and the delay lines are driven by a 'factor' parameter between 0 and 1. "
 								}
 
 							}
@@ -7689,54 +7569,6 @@
 , 							{
 								"box" : 								{
 									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-106",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 6.0, 59.0, 479.0, 54.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-107",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 332.0, 390.0, 375.0, 143.25 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-108",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 332.0, 311.0, 375.0, 74.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
 									"bgcolor" : [ 0.905882352941176, 0.862745098039216, 0.658823529411765, 1.0 ],
 									"id" : "obj-115",
 									"maxclass" : "panel",
@@ -7746,22 +7578,6 @@
 									"patching_rect" : [ 93.0, 525.0, 23.0, 25.0 ],
 									"proportion" : 0.5,
 									"shape" : 1
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"bgcolor" : [ 1.0, 0.996078431372549, 0.984313725490196, 1.0 ],
-									"border" : 1,
-									"id" : "obj-121",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 129.0, 527.0, 54.0, 20.0 ],
-									"proportion" : 0.5,
-									"rounded" : 10
 								}
 
 							}
@@ -7873,6 +7689,24 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-93", 0 ],
+									"hidden" : 1,
+									"order" : 0,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-95", 0 ],
+									"hidden" : 1,
+									"order" : 1,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-2", 1 ],
 									"midpoints" : [ 214.5, 490.5, 187.5, 490.5 ],
 									"source" : [ "obj-53", 0 ]
@@ -7971,7 +7805,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"offset" : [ 0.0, 0.0 ],
-					"patching_rect" : [ 6.738108666666562, 629.0, 445.0, 22.0 ],
+					"patching_rect" : [ 6.0, 635.0, 492.0, 37.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -8019,6 +7853,20 @@
 		}
 ,
 		"dependency_cache" : [ 			{
+				"name" : "abc.bgcomment.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.comment.bg.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "abc.dtd.ui.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
@@ -8027,6 +7875,13 @@
 			}
 , 			{
 				"name" : "abc.gaincontrol.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
+				"patcherrelativepath" : "../misc/others",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.help.description.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/misc/others",
 				"patcherrelativepath" : "../misc/others",
 				"type" : "JSON",
@@ -8079,6 +7934,13 @@
 				"bootpath" : "~/Documents/Max 8/Packages/abclib/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "abc.launch.js",
+				"bootpath" : "~/Documents/Max 8/Packages/abclib/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
@@ -8163,11 +8025,19 @@
 				"type" : "iLaX"
 			}
 , 			{
+				"name" : "abc_3d_decoder3_8~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "abc_3d_fx_decorrelation3~.mxo",
 				"type" : "iLaX"
 			}
 , 			{
 				"name" : "abc_3d_fx_decorrelation5~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "abc_3d_multiencoder3_1~.mxo",
 				"type" : "iLaX"
 			}
 , 			{

@@ -4,11 +4,11 @@
 
 
 <c74object name="abc.hoa.binaural~" module="abclib">
-  <digest>Abclib's High Order Ambisonics (HOA) Binaural Decoder</digest>
-  <description><o>abc.hoa.binaural~</o> is an High Order Ambisonics (HOA) binaural decoder based on the code of P.Lecomte.
-    <br />
-    <br />
-    This object enable to decode from ambisonic spatial components using binaural decoder of P.Lecomte based on HRIR of the Neumann KU100 from 2D/3D ambisonics flux.<br /><br />
+  <digest>Abclib's High Order Ambisonics (HOA) Binaural Decoder based on the code of P.Lecomte</digest>
+  <description><o>abc.hoa.binaural~</o> enable to decode from ambisonic spatial components using binaural decoder of P.Lecomte based on HRIR of the Neumann KU100 from 2D/3D ambisonics flux.
+  <br /><br />
+See Ambitools website : https://www.sekisushai.net/ambitools/<br />
+And the paper : P. Lecomte, P.-A. Gauthier, C. Langrenne, A. Berry, et A. Garcia, « A Fifty-Node Lebedev Grid and Its Applications to Ambisonics », Journal of the Audio Engineering Society, vol. 64, nᵒ 11, p. 868‑881, 2016.
   </description>
 
   <!--INLETS-->
