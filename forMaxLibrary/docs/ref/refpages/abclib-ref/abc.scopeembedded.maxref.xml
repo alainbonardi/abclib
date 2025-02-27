@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+
+<c74object name="abc.scopeembedded" module="abclib">
+  <digest>Abclib's Visualization of X-Y signals using Jitter</digest>
+  <description><o>abc.scopeembedded</o> is an abstraction to be used within a bpatcher in association with abc.hoa.scope~ object to visualize X-Y signals for instance ambisonic components at the order N. There are 3 signal inputs: X signal, Y signal and a binary signal (1/0) to tell the drawing corresponds to positive (red) values or negative (blue) ones.<br /><br />
+  Two parameters can be set by message in the right inlet: the type of drawing, the size of the drawing. The two default values can be set thanks to the bpatcher inspector.
+  A unique 4 digit number is attributed to each instance and each visualization window.</description>
+
+  <!--INLETS-->
+  <!-- <inletlist>
+    <inlet id="0" type="INLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </inlet>
+  </inletlist> -->
+
+  <!--OUTLETS-->
+  <!-- <outletlist>
+    <outlet id="0" type="OUTLET_TYPE">
+      <digest></digest>
+      <description></description>
+    </outlet>
+  </outletlist> -->
+
+  <objarglist>
+  </objarglist>
+
+  <!--ATTRIBUTES-->
+  <attributelist>
+    <attribute name="drawing-type" type="boolean" set="1" get="1" size="1">
+      <digest>type of drawing (points or lines).</digest>
+      <description>[ONLY IN INSPECTOR] type of drawing (points or lines).</description>
+    </attribute>
+
+    <attribute name="size" type="float" set="1" get="1" size="1">
+      <digest>size of the drawing.</digest>
+      <description>[ONLY IN INSPECTOR] size of the drawing.</description>
+    </attribute>
+  </attributelist>
+
+  <!--MESSAGES-->
+  <methodlist>
+    <method name="drawing-type">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>[ONLY IN INSPECTOR] type of drawing (points or lines)</description>
+      <digest>type of drawing (points or lines).</digest>
+    </method>
+
+    <method name="size">
+      <arglist>
+        <arg type="float" />
+      </arglist>
+      <description>[ONLY IN INSPECTOR] size of the drawing.</description>
+      <digest>size of the drawing.</digest>
+    </method>
+  </methodlist>
+
+  <seealsolist>
+    <seealso name="abc.hoa.scope~" />
+    <seealso name="abc.poltocar~" />
+    <seealso name="abc.adcinput~" />
+  </seealsolist>
+</c74object>
