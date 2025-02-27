@@ -70,8 +70,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 6.0, 46.0, 160.0, 22.0 ],
-					"text" : "load 6.abc.synthesis.maxpat"
+					"patching_rect" : [ 6.0, 46.0, 200.0, 22.0 ],
+					"text" : "load abc.overview.synthesis.maxpat"
 				}
 
 			}

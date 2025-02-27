@@ -57,8 +57,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 3.0, 49.0, 230.0, 22.0 ],
-					"text" : "load 1.abc.2d.general.ambisonics.maxpat"
+					"patching_rect" : [ 3.0, 49.0, 201.0, 22.0 ],
+					"text" : "load abc.overview.hoa.basic.maxpat"
 				}
 
 			}
