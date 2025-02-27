@@ -5,7 +5,14 @@
 
 <c74object name="abc.puckettespaf~" module="abclib">
   <digest>Abclib's phase-aligned formant (PAF) generator</digest>
-  <description><o>abc.puckettespaf~</o> consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator. The central frequency cf (Hz) is bordered by two successive multiples of the fundamental frequency f0 (Hz). The bandwith parameter (bw, in Hz) controls the width of the central peak in the spectrum of the PAF generator. Two waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters. This implementation is based on the paper of Miller Puckett: https://msp.ucsd.edu/techniques/v0.11/book-html/node96.html. 
+  <description><o>abc.puckettespaf~</o>consists in a two-cosine carrier signal multiplied by a waveshaping pulse generator. The central frequency cf (Hz) is bordered by two successive multiples of the fundamental frequency f0 (Hz). The bandwith parameter (bw, in Hz) controls the width of the central peak in the spectrum of the PAF generator.<br />
+Two waveshaping functions are provided: either Gaussian (wf = 0) or Cauchy (wf = 1). They are respectively controlled by sigma and a parameters.<br /><br />
+
+PAF synthesis is a basis to generate variable spectra on a pair of harmonics to build formants that enable to create sound close to sung vowels thanks to formants.<br /><br />
+
+'abc.puckettespaf~ @mode 2' object adds the possibility of inharmonic generation by adding a variable phase to the driving phasor controlled by two parameters: ifreq (Hz) and iamp (between 0 and 1). <br /><br />
+
+This implementation is based on the paper of Miller Puckett: https://msp.ucsd.edu/techniques/v0.11/book-html/node96.html.
   <br /><br /></description>
 
   <!--INLETS-->

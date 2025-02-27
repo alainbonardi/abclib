@@ -5,7 +5,9 @@
 
 <c74object name="abc.mc.chopan~" module="abclib">
   <digest>Abclib's panner</digest>
-  <description><o>abc.mc.chopan~</o> provides multisource stereo panning using a generalization of Chowning's algorithm.
+  <description><o>abc.mc.chopan~</o> enable multichannel stereo panning using Chowning model to have a constant acoustic energy and avoiding feeling a loss in the center of the scene (contrary to linear panning). The first source is panned to the left, the last one to the right, and the other ones are progressively spread from the left to the right.<br />
+  - phi0 angle is a parameter to set the opening angle of the stereo in degrees<br />
+  - for abc.mc.chopan~ 1 only, there is an incAngle parameter that controls the incident angle (in degrees) of the incoming sound
     <br /><br /></description>
 
   <!--INLETS-->

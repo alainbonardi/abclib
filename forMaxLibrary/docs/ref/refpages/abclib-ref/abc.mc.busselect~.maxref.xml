@@ -5,8 +5,9 @@
 
 <c74object name="abc.mc.busplus~" module="abclib">
   <digest>Abclib's crossfaded selector of two buses</digest>
-  <description><o>abc.mc.busplus~</o> enables a crossfade between two buses of N signals giving N signals.
-    <br /><br /></description>
+  <description><o>abc.mc.busplus~</o> enable to implement multichannel bus selections (from 1 signal to 15 signals). Two buses are connected to the object, the left one and the right one.<br />
+- the leftOrRight parameter enables to select between the left or the right bus. <br />
+- the ramp parameter enables to set a crossfade duration when switching between the two buses</description>
 
   <!--INLETS-->
   <!-- <inletlist>

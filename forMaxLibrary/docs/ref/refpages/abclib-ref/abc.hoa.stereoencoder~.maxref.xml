@@ -5,10 +5,7 @@
 
 <c74object name="abc.hoa.stereodecoder~" module="abclib">
   <digest>Abclib's 2D High Order Ambisonics (HOA) Stereo Encoder</digest>
-  <description><o>abc.hoa.stereoencoder~</o> is an 2D High Order Ambisonics (HOA) stereo encoder.
-    <br />
-    <br />
-    This objects enable to diffuse a stereo source in ambisonics using two encoders with an opening angle in degrees (initialized to 60 degrees).
+  <description><o>abc.hoa.stereoencoder~</o> enable to diffuse a stereo source in ambisonics using two encoders with an opening angle in degrees (initialized to 60 degrees).
   </description>
 
   <!--INLETS-->

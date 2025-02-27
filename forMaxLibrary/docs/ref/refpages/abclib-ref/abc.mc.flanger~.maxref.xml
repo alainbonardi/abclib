@@ -5,7 +5,14 @@
 
 <c74object name="abc.mc.flanger~" module="abclib">
   <digest>Abclib's multichannel flanger</digest>
-  <description><o>abc.mc.flanger~</o> provides a multichannel flanger. All inputs are connected to the same source. Each flanger has its own output.
+  <description><o>abc.mc.flanger~</o>abc.mc.flanger~ provide classic multichannel flangers with sinusoidal delay<br />
+- rate is the frequency of the sinusoid varying the delay duration<br />
+- depth is the maximum of the delay duration expressed in milliseconds<br />
+- offset enables to shift the variation of the delay duration between offset and offset+depth<br />
+- feeedback is the amount of delayed sound added to the original<br />
+- spread controls spatial spreading<br />
+0 => mono, all outputs identical<br />
+1 => maximum spatial split. For 'abc.mc.flanger~ 2' it means a maximum stereo effect.
     <br /><br /></description>
 
   <!--INLETS-->

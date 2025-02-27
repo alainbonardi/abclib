@@ -5,8 +5,9 @@
 
 <c74object name="abc.mc.freqshift~" module="abclib">
   <digest>Abclib's multichannel frequency shifter</digest>
-  <description><o>abc.mc.freqshift~</o> provides a multichannel frequency shifter. There are n parallel frequency shifters, each having its own input and own output.
-    <br /><br /></description>
+  <description><o>abc.mc.freqshift~</o> provide parallel multiple frequency shifters. Each line is a frequency shifter in Direct Form 2 provided by a quadruple biquad.<br />
+  Each frequency shifter has got a shifting frequency: fr0, fr1, etc. in Hz (positive or negative) and an individual gain: gain0, gain1, gain2, etc. in dB (between -127 and +18)
+  <br /><br /></description>
 
   <!--INLETS-->
   <!-- <inletlist>

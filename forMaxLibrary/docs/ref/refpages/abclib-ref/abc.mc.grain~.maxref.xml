@@ -5,7 +5,11 @@
 
 <c74object name="abc.mc.grain~" module="abclib">
   <digest>Abclib's multichannel granular process</digest>
-  <description><o>abc.mc.grain~</o> provides a multichannel grain process. There are n parallel granulator, each having its own input and own output.
+  <description><o>abc.mc.grain~</o> is parallel granular processes.<br />
+gs0, gs1, gs2, ... are the grain sizes expressed in milliseconds for the n granulators.<br />
+dt0, dt1, dt2, ... are the maximum delays expressed in milliseconds for the n granulators.<br />
+fdbk0, fdbk1, fdbk2, ... are the feedbacks of the n granulators (between 0 and 1)<br />
+rrf0, rrf1, rrf2, ... are the rarefactions of the n granulators (between 0 and 1, 0 means no rarefaction, 1 means total rarefaction) 
     <br /><br /></description>
 
   <!--INLETS-->

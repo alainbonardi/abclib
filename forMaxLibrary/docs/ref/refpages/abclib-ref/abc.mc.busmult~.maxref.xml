@@ -5,7 +5,7 @@
 
 <c74object name="abc.mc.busmult~" module="abclib">
   <digest>Abclib's multiplication of two buses</digest>
-  <description><o>abc.mc.busmult~</o> enables to multiply two buses of N signals (sig#1 of bus#1 is multiplied by sig#1 of bus#2, etc.) giving N signals. It enables N parallel signal modulations.
+  <description><o>abc.mc.busmult~</o> enable to implement multichannel multiplications (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one.
     <br /><br /></description>
 
   <!--INLETS-->

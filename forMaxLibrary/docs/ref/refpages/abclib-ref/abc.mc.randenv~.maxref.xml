@@ -5,7 +5,12 @@
 
 <c74object name="abc.mc.randenv~" module="abclib">
   <digest>Abclib's Random envelopes</digest>
-  <description><o>abc.mc.randenv~</o>  object provides multichannel envelopes with two modes: linear and cosinus. By default the object is in cosinus mode. A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.
+  <description><o>abc.mc.randenv~</o> provides multichannel envelopes with two modes: linear and cosinus. By default the object is in cosinus mode.<br /><br />
+
+A probability distribution is applied to each channel providing for each envelope a factor that is 1 or 0 and enables to apply a statistic duration of silence.<br />
+- If the rarefaction is 0.3, it means 30% of the envelopes are muted (multiplied by 0) and 70% of them are played (multiplied by 1). When the rarefaction is 0., the envelope is constantly played, whereas when it is 1 no sound is played at all (maximum rarefaction).<br />
+- freq parameter is the frequency of the envelope generated.<br />
+- spread parameter controls the phase between the envelopes of the various channels: 0 means no dephasing, 1 means maximum dephasing (for instance half a period when there are 2 channels).
     <br /><br /></description>
 
   <!--INLETS-->

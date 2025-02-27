@@ -5,7 +5,7 @@
 
 <c74object name="abc.mc.busplus~" module="abclib">
   <digest>Abclib's addition of two buses</digest>
-  <description><o>abc.mc.busplus~</o> enables to add two buses of N signals (sig#1 of bus#1 is multiplied by sig#1 of bus#2, etc.) giving N signals.
+  <description><o>abc.mc.busplus~</o> enable to implement multichannel bus additions (from 1 signal to 16 signals). Two buses are connected to the object, the left one and the right one.
     <br /><br /></description>
 
   <!--INLETS-->

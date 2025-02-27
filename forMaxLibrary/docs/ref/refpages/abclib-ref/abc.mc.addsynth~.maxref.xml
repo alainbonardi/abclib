@@ -5,8 +5,10 @@
 
 <c74object name="abc.mc.addsynth~" module="abclib">
   <digest>Abclib's additive synthesis</digest>
-  <description><o>abc.mc.addsynth~</o> provides additive synthesis by adding n elementary sinusoidal generators. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
-    <br /><br /></description>
+  <description><o>abc.mc.addsynth~</o> enable additive synthesis by adding elementary sound modules. Each module includes two oscillators that start at the same frequency but can be tuned finely thanks to fbeat frequencies (fbeat is the frequential increment of the second oscillator).<br /><br />
+  
+  f0 is the general fundamental frequency. fmult0, fmult1, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult0 = 1, fmult1 = 2, fmult2 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp0, amp1, etc. messages. gain (in dB) is the general control of the amplitude.
+  </description>
 
   <!--INLETS-->
   <!-- <inletlist>

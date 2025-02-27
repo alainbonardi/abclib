@@ -5,10 +5,7 @@
 
 <c74object name="abc.hoa.stereodecoder~" module="abclib">
   <digest>Abclib's 2D High Order Ambisonics (HOA) Stereo Decoder</digest>
-  <description><o>abc.hoa.stereodecoder~</o> is an 2D High Order Ambisonics (HOA) stereo decoder.
-    <br />
-    <br />
-    This objects enable to decode from ambisonic spatial components to stereo<br /><br />
+  <description><o>abc.hoa.stereodecoder~</o> enable to decode from ambisonic spatial components to stereo<br />
     - gain is the output gain in dB<br />
     - directangles is 1 for anticlockwise (as in ambisonic norm) and 0 for clockwise <br /><br />
   </description>

@@ -5,7 +5,10 @@
 
 <c74object name="abc.mc.substractsynth~" module="abclib">
   <digest>Abclib's substractive synthesis</digest>
-  <description><o>abc.mc.substractsynth~</o> provides substractive synthesis by adding n elementary filters. Each module includes two oscillators that are initialized at the same frequency but can be finely tuned. Each module has a separate output.
+  <description><o>abc.mc.substractsynth~</o> enable substractive synthesis by instantiating banks of band pass filters on incoming sounds either white, pink, decorrelated etc. sounds (having filterQ as quality factor, and filterG as filter gain).<br /><br />
+
+f0 is the general fundamental frequency. fmult0, fmult1, etc. are the multipliers of f0 to get the frequencies of the partials. For an harmonic spectrum, one can use fmult0 = 1, fmult1 = 2, fmult2 = 3 etc. The amplitudes of the partials (in dB) can also be set individually thanks to amp0, amp1, etc. messages. gain (in dB) is the general control of the amplitude. 
+
     <br /><br /></description>
 
   <!--INLETS-->
