@@ -552,7 +552,7 @@ function patching() {
 
 	//Because of the compilation pipeline binaural objects can't be compiled with RNBO
 	//Instead of that we compile it directly with faust command but there are 1 outlet more than the other objects
-	if (patcherName = "abc.hoa.binaural~") {
+	if (patcherName == "abc.hoa.binaural~") {
 		objectToInstantiate = "mc.pack~ " + (inletsoutlets(abcObject)[1]-1);
 		var packer = patcher.newdefault(20, 360, objectToInstantiate);
 
