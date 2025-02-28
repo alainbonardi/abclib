@@ -146,7 +146,7 @@ abc_2d_multiEncoder_ui(N, ns) = multiEncoder(N, ls, la, returntime)
 			//the speed of the ith source among p sources, expressed in turns by second for the end user
 			s(i, p) = nentry("v:multiencoder/h:speeds/s%i [unit:s-1]", 0, -100, 100, 0.001);
 			//the angle of the ith source among p sources, expressed in degrees for the end-user
-			a(i, p) = nentry("v:multiencoder/h:angles/a%i [unit:deg]", i * 360 / p, -360, 360, 0.01) * ma.PI / 180.0;
+			a(i, p) = nentry("v:multiencoder/h:angles/a%i [unit:deg]", i * 360 / p, -360, 360, 0.01) * ma.PI / 180.0 : si.smoo;
 			//the interpolation time between static position and rotation
 			returntime = hslider("v:multiencoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//ls = list of speeds//
@@ -162,9 +162,9 @@ abc_3d_multiEncoder_ui(N, ns) = multiEncoder3D(N, lAs, lEs, la, le, returntime)
 			//the elevation speed of the ith source among p sources, expressed in turns by second for the end user
 			se(i, p) = nentry("v:multiencoder/h:speeds/se%i [unit:s-1]", 0, -100, 100, 0.001);
 			//the azimut of the ith source among p sources, expressed in degrees for the end-user
-			a(i, p) = nentry("v:multiencoder/h:angles/a%i [unit:deg]", i * 360 / p, -360, 360, 0.01) * ma.PI / 180.0;
+			a(i, p) = nentry("v:multiencoder/h:angles/a%i [unit:deg]", i * 360 / p, -360, 360, 0.01) * ma.PI / 180.0 : si.smoo;
 			//the elevation of the ith source among p sources, expressed in degrees for the end-user
-			e(i, p) = nentry("v:multiencoder/h:angles/e%i [unit:deg]", i * 180 / p, -180, 180, 0.01) * ma.PI / 180.0;
+			e(i, p) = nentry("v:multiencoder/h:angles/e%i [unit:deg]", i * 180 / p, -180, 180, 0.01) * ma.PI / 180.0 : si.smoo;
 			//the interpolation time between static position and rotation
 			returntime = hslider("v:multiencoder/returntime [unit:msec]", 20, 0, 1000, 1) * 0.001;
 			//ls = list of azimut speeds//
