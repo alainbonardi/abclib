@@ -67,7 +67,7 @@ declare copyright "2012-2013 Guillot, Paris, Colafrancesco, CICM labex art H2H, 
 
 //----------------------`(ho.)encoder`---------------------------------
 // Ambisonic encoder. Encodes a signal in the circular harmonics domain
-// depending on an order of decomposition and an angle.
+// depending on an order of decomposition and an angle (ACN SN2D).
 //
 // #### Usage
 //
@@ -86,7 +86,7 @@ encoder(N, x, a) = encoder(N-1, x, a), x*sin(N*a), x*cos(N*a);
 
 
 //-------`(ho.)rEncoder`----------
-// Ambisonic encoder in 2D including source rotation. A mono signal is encoded at a certain ambisonic order
+// Ambisonic encoder in 2D including source rotation (ACN SN2D). A mono signal is encoded at a certain ambisonic order
 // with two possible modes: either rotation with an angular speed, or static with a fixed angle (when speed is zero).
 //
 // #### Usage
@@ -118,7 +118,7 @@ with {
 
 
 //-------`(ho.)aleaEncoder`----------
-// Ambisonic aleatory encoder in 2D. A mono signal is encoded at an ambisonic order
+// Ambisonic aleatory encoder in 2D (ACN SN2D). A mono signal is encoded at an ambisonic order
 // with a random position of the source around an angle inside an angular range.
 //
 // #### Usage
