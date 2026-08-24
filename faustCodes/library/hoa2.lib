@@ -674,7 +674,7 @@ with {
 
 
 //-------`(ho.)scope`----------
-// Produces an XY pair of signals representing the ambisonic sound field in 2D, and a third information that is its signe (0 / 1).
+// Produces an XY pair of signals representing the ambisonic sound field in 2D, and a third information that is its sign (0 / 1).
 //
 // #### Usage
 //
@@ -709,7 +709,52 @@ with {
     thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_,_)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _,_);
 };
 
-
+//-------`(ho.)scope3D`----------
+// Produces an XY pair of signals representing the ambisonic sound field in 3D, and a third information that is its sign (0 / 1).
+//
+// #### Usage
+//
+// ```
+// _,_, ... : scope3D(N, rt, elevationFactor, normalize) : _,_
+// ```
+//
+// Where:
+//
+// * `N`: the ambisonic order (constant numerical expression)
+// * `rt` : refreshment time in milliseconds
+// * 'elevationFactor' : the factor setting the ratio between azimuth and elevation scanning
+// * 'normalize' : applying normalization (1) or not (0)
+//-----------------------------
+scope3D(N, rt, elevationFactor, normalize) = thisScope
+with {
+    f1 = 1 / rt;
+    f2 = f1 / elevationFactor;
+    step = abs(f1) / ma.SR;
+    sig1 = os.phasor(1, f1);
+    th_trigger = (sig1 > step) * (sig1@1 <= step);
+    sig2 = os.phasor(1, -f2) : ba.sAndH((th_trigger));
+    //azimuth angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
+    az = sig1 * 2 * ma.PI;
+    //elevation sweeping elevationFactor times slower
+    el = sig2 * ma.PI - 0.5 * ma.PI;
+    
+    //we get the vector of harmonic functions thanks to the encoding function//
+    harmonicsVector = encoder3D(N, 1, az, el);
+    //
+    nn = (normalize == 1);
+    //
+    normalizedVector(N, cmp) = si.bus(N) <: (si.bus(N), norm) : ro.interleave(N, 2) : par(i, N, /)
+    with {
+        norm = par(i, N, _ <:(_,_) : *) :> *(cmp) : +(1-cmp) : sqrt <: ((_ == 0), (_ > 0), _) : (_,*) : + <: si.bus(N);
+    };
+	//
+    //building (2N+1) normalized vectors
+    inputVector = (*(0.5), par(i, ((N+1)^2-1), _)) : normalizedVector((N+1)^2, nn);
+    normalizedHarmonics = harmonicsVector : normalizedVector((N+1)^2, nn);
+    //
+    rho = (inputVector, normalizedHarmonics) : si.dot((N+1)^2) ;
+    thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_,_, _)), _) : (*(sin(az)*cos(el)), *(cos(az)*cos(el)), *(sin(el)), _) : (*(-1), _,_,_);
+};
 
 //============================Spatial Sound Processes ====================================
 // We propose implementations of processes intricated to the ambisonic model.
