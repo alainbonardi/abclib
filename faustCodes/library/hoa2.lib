@@ -679,7 +679,7 @@ with {
 // #### Usage
 //
 // ```
-// _,_, ... : scope(N, rt) : _,_
+// _,_, ... : scope(N, rt, normalize) : _,_
 // ```
 //
 // Where:
@@ -708,6 +708,8 @@ with {
     rho = (inputVector, normalizedHarmonics) : si.dot(2*N+1) ;
     thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_,_)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _,_);
 };
+
+
 
 //============================Spatial Sound Processes ====================================
 // We propose implementations of processes intricated to the ambisonic model.
