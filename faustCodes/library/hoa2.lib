@@ -674,7 +674,7 @@ with {
 
 
 //-------`(ho.)scope`----------
-// Produces an XY pair of signals representing the ambisonic sound field.
+// Produces an XY pair of signals representing the ambisonic sound field in 2D, and a third information that is its signe (0 / 1).
 //
 // #### Usage
 //
@@ -708,7 +708,6 @@ with {
     rho = (inputVector, normalizedHarmonics) : si.dot(2*N+1) ;
     thisScope = (rho <: (ma.fabs, (_ >= 0))) : ((_ <: (_,_)), _) : (*(sin(theta)), *(cos(theta)), _) : (*(-1), _,_);
 };
-
 
 //============================Spatial Sound Processes ====================================
 // We propose implementations of processes intricated to the ambisonic model.
