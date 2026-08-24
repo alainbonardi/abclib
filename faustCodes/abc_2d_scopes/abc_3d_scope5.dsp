@@ -9,6 +9,6 @@
 //
 declare author "Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni";
 declare licence "LGPLv3";
-declare name "abc_2d_scope4";
+declare name "abc_3d_scope5";
 //
-process = library("abc.lib").abc_2d_scope_ui(4);
+process = library("abc.lib").abc_3d_scope_ui(5);
