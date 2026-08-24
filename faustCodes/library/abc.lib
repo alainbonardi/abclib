@@ -299,12 +299,19 @@ abc_3d_wider_ui(N) = wider3D(N, width)
 };
 //
 //--------------------------------------------------------------------------------------//
-//SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS
+//SCOPE OBJECTS FOR AMBISONIC VIZUALISATION USING XY SCOPE OBJECTS IN 2D AND 3D
 //--------------------------------------------------------------------------------------//
 //
 abc_2d_scope_ui(N) = scope(N, refresh, normalize)
 with {
-	refresh = hslider("v:scope/refresh [unit:msec]", 10, 1, 2000, 1) * 0.001;
+	refresh = hslider("v:scope/refresh [unit:msec]", 10, 0.01, 2000, 0.01) * 0.001;
+	normalize = hslider("v:scope/normalize", 1, 0, 1, 1); 
+};
+//
+abc_3d_scope_ui(N) = scope3D(N, refresh, elevationFactor, normalize)
+with {
+	refresh = hslider("refresh [unit:msec]", 0.12, 0.01, 2000, 0.01) * 0.001;
+	elevationFactor = hslider("elevationFactor", 15, 1, 100, 1);
 	normalize = hslider("v:scope/normalize", 1, 0, 1, 1); 
 };
 
