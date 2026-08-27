@@ -9,6 +9,6 @@
 //
 declare author "Alain Bonardi, Paul Goutmann, David Fierro & Adrien Zanni";
 declare licence "LGPLv3";
-declare name "abc_3d_wider7";
+declare name "abc_3d_multiencoder4_5";
 //
-process = library("abc.lib").abc_3d_wider_ui(7);
+process = library("abc.lib").abc_3d_multiEncoder_ui(4, 5);
