@@ -731,8 +731,9 @@ with {
     f2 = f1 / elevationFactor;
     step = abs(f1) / ma.SR;
     sig1 = os.phasor(1, f1);
-    th_trigger = (sig1 > step) * (sig1@1 <= step);
-    sig2 = os.phasor(1, -f2) : ba.sAndH((th_trigger));
+    //removed the sample and hold to provide continuous variation of the elevation
+    //th_trigger = (sig1 > step) * (sig1@1 <= step);
+    sig2 = os.phasor(1, -f2); //: ba.sAndH((th_trigger));
     //azimuth angle sweeping at a speed corresponding to refresh period between 0 and 2*PI
     az = sig1 * 2 * ma.PI;
     //elevation sweeping elevationFactor times slower
